@@ -252,7 +252,7 @@ First, $(x, e_i x) = (e_i x, e_i e_i x) = -(e_i x, x) = -(x, e_i x)$, so $(x, e_
 
 Now we try to find representations of $C_k$.  What are they?  To start with, here's a table:
 \[\begin{array}{cccc|cc} % this table might go better after the calculations.  most the definition of phi over to the right as a log of a_k.  use less ridiculous notation for matrix rings.  why are these the minimum dimensions of the representations??
-& & \hbox{dim of min rep $a_k = 2^{\phi_k}$} & \phi_k \\
+& & a_k & \phi_k = \log_2 a_k \\
 C_0^+ & \R & 1 & 0 & C_0^- & \R \\
 C_1^+ & \C & 2 & 1 & C_1^- & \R^2 \\
 C_2^+ & \mathbb{H} & 4 & 2 & C_2^- & \R(2) \\
@@ -298,7 +298,19 @@ C_k^+ & \cong C_2^+ \otimes C_{k-2}^- \\
 & \cong C_4^+ \otimes (C_4^+ \otimes C_{k-8}^+) \cong C_8^+ \otimes C_{k-8}^+ \\
 & \cong C_{k-8}^+(16).
 \end{align*}
-(Similarly, $C_k^- \cong C_{k-8}^-(16)$.)  Next, we can quickly determine the dimensions $a_k$.  The fourth column is $\phi_k = \log_2 a_k$, where $a_k$ is the dimension of the minimal representation.  From $C_k^+ \cong C_{k-8}^+(16)$ we get that $a_{k+8} = 16 a_k$, or $\phi(k + 8) = \phi(k) + 4$. % be consistent about whether phi should be a subscript or a function
+(Similarly, $C_k^- \cong C_{k-8}^-(16)$.)
+
+The third column, $a_k$, corresponds to the minimal representation of the Clifford algebra $C_k^+$.  We can quickly determine this column using the following lemma:
+\begin{lem}
+We compute the following dimensions of minimal representations of algebras:
+\begin{enumerate}
+\item When $A$ is a skew field, $A$ acting on itself is a minimal representation, so the minimal dimension is $1$.
+\item When $A$ is a skew field and $A(n)$ is the space of $n \times n$-matrices over $A$, then $A(n)$ acting on $A^n$ is a minimal representation, so the minimal dimension is $n$.
+\item When $A$ and $B$ are two algebras, then the dimension of a minimal representation for $A \otimes B$ is the minimum of the dimensions for minimal representations of $A$ and $B$ individually.
+\end{enumerate}
+\end{lem}
+\begin{proof} These are easy exercises in commutative algebra. \end{proof}
+The fourth column is $\phi_k = \log_2 a_k$, where $a_k$ is the dimension of the minimal representation.  From $C_k^+ \cong C_{k-8}^+(16)$ we get that $a_{k+8} = 16 a_k$, or $\phi(k + 8) = \phi(k) + 4$. % be consistent about whether phi should be a subscript or a function
 
 Finally, we can apply this to vector fields on spheres.  There are $k$ linearly independent vector fields on $S^{a_k - 1}$; by taking $c$ copies of the vector space and using the diagonal action, there are $k$ linearly independent vector fields on $S^{ca_k - 1}$.  Now fix the dimension $n-1$ of the sphere and maximize $k$; i.e., for $S^{n-1}$, maximize $\{k : a_k \mid n\} = \{ k : \phi(k) \le \nu(n)\}$ (where $\nu(n)$ is the function from before).  The first few cases are:
 \[\begin{array}{c|ccccccc}
