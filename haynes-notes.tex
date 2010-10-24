@@ -91,6 +91,7 @@
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{rem}[thm]{Remark}
 \newtheorem{ithm}{Theorem}[section]
+\newtheorem{ex}{Exercise}
 \newrefformat{sec}{\textsection\ref{#1}}
 \renewcommand{\cftsecpresnum}{Unit\;}
 \setlength{\cftsecnumwidth}{4em}
@@ -112,7 +113,7 @@
 
 \section{Foreword} % <<<
 
-These are notes from a course taught by Haynes Miller at MIT in the fall of 1989 in honor of Frank Adams, after his passing.  They were originally written by Matthew Ando, and were later transcribed and updated by Eric Peterson, with figures provided by Yi-Wei Chan, Meng Guo, and Matt Mahowald.
+These are notes from a course taught by Haynes Miller at MIT in the fall of 1989 in honor of Frank Adams, after his passing.  They were originally written by Matthew Ando, and were later transcribed and updated by Eric Peterson and Aaron Mazel-Gee, with figures provided by Yi-Wei Chan, Meng Guo, and Matt Mahowald.
 
 At the moment, I'm just copying the notes straight down, omitting unnecessary pictures.  Eventually I hope to tidy it up into something more of a book form, but that half of the project is hard to start on until all the notes are in one place and edited for correctness.
 
@@ -328,7 +329,7 @@ We'll now start attacking the second part of the vector field problem.  Recall t
 
 Now we will find a consequence for the existence of such a section in the homotopy theory of $\RP^{k-1}$.  To start with, there are two important facts about $\RP^{k-1}$.  The first is the existence of a fiber bundle $\Z/2 \into S^{k-1} \onto \RP^{k-1}$ obtained by identifying antipodal points on $S^{k-1}$.  The second is the existence of the ``tautological line bundle'' $L = \{(l, x) \in \RP^{k-1} \times \R^k \mid x \in l\} \onto \RP^{k-1}$, where one thinks of $\RP^{k-1}$ as the space of lines through the origin on $\R^k$.  These two constructions are, of course, related: there is a metric on $L$ induced by the metric in $\R^k$; taking the vectors of length $1$ in each fiber gives $S(L) \cong S^{k-1}$, the unit sphere bundle of $L$.
 
-On the other hand, we can recover $L$ as $S^{k-1} \times_{\Z/2} \R$; this is an example of the ``Borel construction.'' % define what a twisted product is
+On the other hand, we can recover $L$ as $S^{k-1} \times_{\Z/2} \R$; this is an example of the ``Borel construction.'' % define what a twisted product is.  it would a lso be useful to talk about why the Borel construction is useful; you can sort of always move to your favorite spot in the fiber.  this definition should also match use of the borel construction in unit 6
 More generally, if $F$ is any space with a $\Z/2$ action, we get a bundle with fiber $F$ by taking $F \into S^{k-1} \times_{\Z/2} F \onto \RP^{k-1}$.  What follows from a section $s$ of $V_{n, k} \onto S^{n-1}$ is:
 \begin{lem}
 If there is a section $s$, then there is a bundle map over $\RP^{k-1}$ of the form
@@ -413,11 +414,11 @@ E & \rTo^{\hbox{fib. h. eq.}} & B \times S^{n-1} & \rTo & S^{n-1} \\
 & \rdTo & \dTo \\
 & & B.
 \end{diagram}
-Now by the theorem of Dold from before, the composite of the horizontal arrows contains all the information about the fiber homotopy equivalence, i.e., this equivalence is equivalent to a map $f: E \to S^{n-1}$ which is a homotopy equivalence on each fiber of $E$.  Another way to think about this is as a bundle map
+Now by the theorem of Dold from before, the composite of the horizontal arrows contains all the information about the fiber homotopy equivalence, i.e., this equivalence is equivalent to a map $f: E \to S^{n-1}$ which is a homotopy equivalence on each fiber of $E$.  Another way to think about this is as a bundle map % maybe Dold isn't necessary here? figure out what is.
 \begin{diagram}[height=2em]
 E & \rTo^f & S^{n-1} \\
 \dTo & & \dTo \\
-B & \rTo & \ptspace,
+B & \rTo & \ptspace, % maybe draw these diagrams differently, since the lower-left S^n doesn't come from B in any real way; it's the fiber over the basepoint in B.
 \end{diagram}
 which induces a map
 \begin{diagram}[height=2em]
@@ -425,49 +426,51 @@ T(E) & \rTo & S^n \\
 \uTo & \ruTo_\simeq \\
 S^n,
 \end{diagram}
-where the homotopy equivalence of $f$ restricted to each fiber implies that the map $S^n \to S^n$ is a homotopy equivalence; such a triangle is called a ``coreduction.''  Now the game is to show obstructions to the splitting off of this $n$-sphere, which is in fact the bottom-dimensional cell in $T(E)$.
+where the homotopy equivalence of $f$ restricted to each fiber implies that the map $S^n \to S^n$ is a homotopy equivalence; such a triangle is called a ``coreduction.''  Now the game is to find obstructions to the splitting off of this $n$-sphere, which is in fact the bottom-dimensional cell in $T(E)$.
 
-Of course, what we really want is an obstruction to a fiber homotopy equivalence between $nL$ and $n \epsilon$, and a coreduction of $T(E)$ need not imply that $E$ itself is a fiber homotopy equivalence.  To find out what we \emph{do} get from a coreduction of $T(E)$, we look at another construction of the Thom space (and think of the name Bott when thinking about $T(E)$ in this way).  We build $T(E)$ in two steps:
+Of course, what we really want is an obstruction to a fiber homotopy equivalence between $nL$ and $n \epsilon$, and a coreduction of $T(E)$ need not imply that $E$ itself is fiber homotopy trivial.  To find out what we \emph{do} get from a coreduction of $T(E)$, we look at another construction of the Thom space (and think of the name Bott when thinking about $T(E)$ in this way).  We build $T(E)$ in two steps:
 \begin{enumerate}
-\item Collapse to a sphere in each fiber, i.e., take $D(F) / S(F)$ in each fiber of $E \to B$.  This gives a sphere bundle, along with a ``section at $\infty$ given by the image of $S(F)$ in each fiber.
+\item Collapse to a sphere in each fiber $F$, i.e., take $D(F) / S(F)$ in each fiber of $E \to B$.  This gives a sphere bundle, along with a ``section at $\infty$'' given by the image of $S(F)$ in each fiber.
 \item Collapse the section at $\infty$ to a point.
 \end{enumerate}
-This exhibits $T(E)$ as the sphere bundle $S(E \oplus \epsilon)$ with the $1$-section of $\epsilon$, which is homeomorphic to $B$, smashed to a point, so $T(E) = S(E \oplus \epsilon) / B$, after identifying $B$ with that section.
+This exhibits $T(E)$ as the sphere bundle $S(E \oplus \epsilon)$ with the $1$-section of $\epsilon$, which is homeomorphic to $B$, smashed to a point, so $T(E) = S(E \oplus \epsilon) / B$, after identifying $B$ with that section. % the difference here is that you're adding a point at infinity to each fiber, then collecting all the points at infinity together.
 
 Now the fiber in $S(E \oplus \epsilon)$ is the same as the $S^n$ sitting in $T(E)$, so with this construction a coreduction for $T(E)$ gives
 \begin{diagram}[height=2em]
 S(E \oplus \varepsilon) & \rTo & T(E) & \rTo & S^n \\
 & \luTo & \uTo & \ruTo_\simeq \\
 & & S^n.
-\end{diagram}
-If the base $B$ is connected, then from Dold's theorem it follows that $E \oplus \epsilon$ is fiber homotopy trivial.  So a coreduction of $T(E)$ implies that $E \oplus \epsilon$ is fiber homotopy trivial.
+\end{diagram} % in fact, in all of these diagrams, it would be nice if S^n weren't sitting in the base's position.
+If the base $B$ is connected, then from Dold's theorem it follows that $E \oplus \epsilon$ is fiber homotopy trivial. % this sentence is completely vacuous when B is a CW-complex, so who cares about Dold's theorem
+So a coreduction of $T(E)$ implies that $S(E \oplus \epsilon)$.
 
-This is a process of stabilization: the lesson of today's discussion is that we have to play back and forth with various processes of this kind: suspend the Thom space, sum in a trivial bundle, and so on.  These connections yield the natural role of $K$-theory.
+This is a process of stabilization: the lesson of this discussion is that we have to play back and forth with various processes of this kind: suspend the Thom space, sum in a trivial bundle, and so on.  These connections yield the natural role of $K$-theory. % maybe we could include a diagram exemplifying that the Thom space of eps (+) E is the same as the suspension of the Thom space of E
 
-Now a few introductory words on $K$-theory: let $X$ be a finite complex (it is at least necessary that $X$ be a compact Hausdorff space).  Let $Vect(X)$ be the set of isomorphism classes of vector bundles over $X$\footnote{Why is $Vect(X)$ a set?}  The Whitney sum gives a monoid structure to $Vect(X)$, with zero given by the $0$-dimensional vector bundle.  Now one applies the ``Grothendieck construction,'' which simply means to add formal inverses, making a group; explicitly, take equivalence classes of pairs $(V, W) \sim (V', W')$ if $E + V + W' \cong V' + W + E$ (where $(V, W)$ is supposed to represent the formal difference ``$V - W$'').  This is an abelian group called $KO(X)$.
+% maybe this belongs in the next day :)
+Now a few introductory words on $K$-theory: let $X$ be a finite complex (it is at least necessary that $X$ be a compact Hausdorff space).  Let $Vect(X)$ be the set of isomorphism classes of vector bundles over $X$.\footnote{Why is $Vect(X)$ a set?}  The Whitney sum gives a monoid structure to $Vect(X)$, with zero given by the $0$-dimensional vector bundle.  Now one applies the ``Grothendieck construction,'' which simply means to add formal inverses, making a group; explicitly, we have an equivalence relation $(V, W) \sim (V', W')$ if $E + V + W' \cong V' + W + E$ (where $E$ is any vector bundle).  Here, $(V, W)$ is supposed to represent the formal difference ``$V - W$''.  This is an abelian group, called $KO(X)$.
 
 Now it may not seem that $KO(X)$ has topological significance, but in view of the above, it quickly becomes apparent that it does.  For if $V \oplus n\epsilon \cong W \oplus n\epsilon$ ($V$ and $W$ are said to be ``stably isomorphic''), then the classes $[V]$ and $[W]$ are equal in $KO(X)$.  Moreover, if $X$ is a compact Hausdorff space, it goes both ways.  Suppose $[V] = [W]$, so $V + E \cong W + E$ for some $E$.  Over a compact Hausdorff space, any vector bundle $E$ is a subbundle of a sufficiently big trivial bundle
 \begin{diagram}[height=2em]
-E & \rInto & X \times \R^n \\
+E & \rInto & X \times \R^N \\
 \dTo & \ldTo \\
 X,
 \end{diagram}
-as we shall see next time.  By choosing a metric on $\R^n$, we get an orthogonal complement $F \to X$ such that $E \oplus F$ is trivial.  Then $V \oplus E \oplus F \cong W \oplus E \oplus F$, so $V$ and $W$ are stably isomorphic!
+as we shall see next time.  By choosing a metric on $\R^N$, we get an orthogonal complement $F \to X$ such that $E \oplus F$ is trivial.  Then $V \oplus E \oplus F \cong W \oplus E \oplus F$, so $V$ and $W$ are stably isomorphic!
 
 % >>>
 
 \section{Building $K$-theory and $J$-theory} % <<<
 
-Throughout, let $X$ be a pointed compact Hausdorff space.  Recall that $KO(X)$ was defined to be the abelian group given by the Grothendieck construction of the monoid $Vect(X)$.  If $f: X \to Y$ and $E \to Y$ is a vector bundle, then $E$ pulls back by $f$ to a vector bundle $f^* E \to X$, inducing a map $f^*: KO(Y) \to KO(X)$.  Pullbacks by homotopic maps induce isomorphic bundles, so $f \simeq g$ implies $f^* = g^*$.
+Throughout, let $X$ be a pointed compact Hausdorff space.  Recall that $KO(X)$ was defined to be the abelian group given by the Grothendieck construction on the monoid $Vect(X)$.  If $f: X \to Y$ is a map and $E \to Y$ is a vector bundle, then $E$ pulls back by $f$ to a vector bundle $f^* E \to X$, so we have a map $f^*: KO(Y) \to KO(X)$.  Pullbacks by homotopic maps induce isomorphic bundles, so $f \simeq g$ implies $f^* = g^*$.  Hence, we get a map $KO: ho\mathsf{Top} \to \mathsf{AbGrp}$. % it would be smart to come up with a notation for vector bundles, like f^* E downarrow X
 
-Now the canonical maps $\ptspace \to X \to \ptspace$ induce map $KO(\ptspace) \stackrel{\eta}{\to} KO(X) \stackrel{\epsilon} \to KO(\ptspace)$.  It is clear that $KO(\ptspace) = \Z$, that $\im \eta$ consists of trivial bundles, and that $\epsilon$ takes the dimension of the fiber over the basepoint.  Reduced $KO$-theory is defined in terms of these maps; there are two definitions:
-\[
+Now the canonical maps $\ptspace \to X \to \ptspace$ induce maps $KO(\ptspace) \stackrel{\eta}{\to} KO(X) \stackrel{\epsilon} \to KO(\ptspace)$.  It is clear that $KO(\ptspace) = \Z$, that $\im \eta$ consists of trivial bundles, and that $\epsilon$ takes the dimension of the fiber over the basepoint.  Reduced $KO$-theory is defined in terms of these maps.  There are two equivalent definitions: % point out that this sequence is induced by the triangle pt --> X --> pt, with the composite a homotopy equivalence.
+\[ % this isn't defined piecewise, so we are we using this bracket notation?
 \widetilde{KO}(X) = \begin{cases}
-\ker \epsilon & \hbox{-- virtual vector bundles, i.e., formal differences $V - W$ with $\dim V = \dim W$, or} \\
-\coker \eta & \hbox{-- $[W] = [W]$ if and only if $V \oplus m \epsilon \cong W \oplus n \epsilon$}.
+\ker \epsilon & \hbox{: virtual vector bundles, i.e., formal differences $V - W$ with the same rank, or} \\
+\coker \eta & \hbox{: $[V] = [W]$ if and only if $V \oplus m \epsilon \cong W \oplus n \epsilon$}. % aaron finds this line confusing, so we should change it
 \end{cases}\]
 
-Next let's see, as advertised last time, how to embed a vector bundle in a high-dimensional trivial bundle.  Suppose $p: E \to X$ is an $n$-dimensional vector bundle.  Because $X$ is compact Hausdorff, it has a finite open over $U_1, \ldots, U_k$ that trivializes $E$, that is, there are homeomorphisms
+Next we'll see, as advertised last time, how to embed a vector bundle into a high-dimensional trivial bundle.  Suppose $p: E \to X$ is a rank $n$ vector bundle.  Because $X$ is compact Hausdorff, it has a finite open cover $U_1, \ldots, U_k$ that trivializes $E$.  That is, there are homeomorphisms $f_i$ with
 \begin{diagram}[height=2em]
 E|_{U_i} & \rTo^{f_i} & U_i \times \R^n \\
 \dTo<p & \ldTo>{\pi} \\
@@ -480,51 +483,58 @@ g_i =
 E|_{U_i} \stackrel{f_i}{\to} U \times \R^n \stackrel{(x, v) \mapsto \phi_i(x) \cdot v}{\longrightarrow} \R^n, \\
 \hbox{$0$ on $E$ away from $U_i$}.
 \end{cases}\]
-The $g_i$ give a linear embedding $f: E \to X \times (\R^n)^k$ defined by $f(e) = (p(e), g_1(e), \ldots, g_k(e))$.  This map in fact gives more: to each $x \in X$ we associate via $f$ the $n$-dimensional subspace $f(E_x)$ of $\R^{nk = N}$.  This induces a map $g: X \to G_{N, n}$, the Grassmannian of $n$-planes in $\R^N$.  Over $G_{N, n}$ is the ``canonical $n$-plane bundle $E_{N, n}$,'' and we have in fact expressed $E \to X$ as the pullback of the canonical bundle along $g$.  From this point of view it is clear that the choice of $N$ is somewhat arbitrary; there is an obvious inclusion $G_{N, n} \subseteq G_{N+1, n} \subseteq G_{N+2, n} \subseteq \cdots$, and $E$ can be induced from the canonical bundles over $G_{N, n}$ for any sufficiently large $N$.  Thus $BO(n) = \bigcup_N G_{N, n}$, and $Vect_n(X) \stackrel{\cong}{\to} [X, BO(n)]$.
+The $g_i$ give a linear embedding $f: E \to X \times (\R^n)^k$ defined by $f(e) = (p(e), g_1(e), \ldots, g_k(e))$.
 
-What happens when we go to $KO(X)$?  The equivalence $V \sim V \oplus \epsilon$ gives us $\widetilde{KO}$, so we get $\widetilde{KO}$ by identifying an element of $[X, BO(n)]$ with an element of $[X, BO(n+1)]$ when all it does is add a trivial bundle.  Now if $EO(n)$ is the canonical $n$-plane bundle over $BO(n)$, then $EO(n) \oplus \epsilon$ is an $(n+1)$-plane bundle, and there is a classifying map
+This map in fact gives more: to each $x \in X$ we associate the $n$-dimensional subspace $f(E_x)$ of $\R^N$ with $N = nk$.  This induces a classifying map $h$ from $X$ to the Grassmannian of $n$-planes in $\R^N$.  Over $G_{N, n}$ is the tautological $n$-plane bundle $E_{N, n}$, \[E_{N, n} = \{(v, p) \mid p \in G_{N, n}, \hbox{$v$ a member of the subspace associated to $p$}\}\] and we have in fact expressed $E \to X$ as the pullback of the tautological bundle along $h$.  From this point of view it is clear that the choice of $N$ is somewhat arbitrary; there are obvious inclusions $G_{N, n} \subseteq G_{N+1, n} \subseteq G_{N+2, n} \subseteq \cdots$, and $E$ can be induced from the tautological bundle over $G_{N, n}$ for any sufficiently large $N$.  Thus we have a classifying space $BO(n) = \bigcup_N G_{N, n}$, and it represents rank $n$ vector bundles over $X$ via $Vect_n(X) \stackrel{\cong}{\to} [X, BO(n)]$.
+
+What happens when we descend to $KO(X)$?  First, the equivalence $V \sim V \oplus \epsilon$ gives us $\widetilde{KO}$, % is Grothendieck(Vect) / this relation the same as Vect / this relation?
+so we get $\widetilde{KO}$ by identifying an element of $[X, BO(n)]$ with an element of $[X, BO(n+1)]$ when all it does is add a trivial bundle.  Now if $EO(n)$ is the tautological $n$-plane bundle over $BO(n)$, % should this be called the canonical O(n)-bundle?  should we warn the reader we're going to mix these things together using the Borel construction?
+then $EO(n) \oplus \epsilon$ is an $(n+1)$-plane bundle, and there is a sequence of classifying maps
 \begin{diagram}
 EO(n) \oplus \epsilon & & EO(n+1) \oplus \epsilon \\
 \dTo & & \dTo \\
 BO(n) & \rTo & BO(n+1) & \rTo & \cdots.
 \end{diagram}
-The colimit $\bigcup_n BO(n)$ is called $BO$, and $\widetilde{KO}(X) = [X, BO]$.  Finally, $KO$ remembers dimension, so $KO(X) = [X, \Z \times BO]$.
+The colimit $\bigcup_n BO(n)$ is called $BO$, and $\widetilde{KO}(X) = [X, BO]$.  Finally, $KO$ remembers dimension, so $KO(X) = [X, \Z \times BO]$. % where Z keeps track of the virtual dimension
 
-Now let's talk about $J$-theory.  If $V$ and $W$ are vector bundles over $X$, then we write $V \sim_J W$ if $S(V \oplus n \epsilon) \simeq S(W \oplus n \epsilon)$; i.e., the idea is analogous to $K$ on the level of sphere bundles.  This defines an additive equivalence relation on $KO(X)$, and $J(X)$ is defined to be the quotient subgroup of $KO(X)$ given by this relation, and $\tilde J(X)$ the image of $\widetilde{KO}(X)$.  Now from the Clifford algebra story we know that over $\RP^k$ the canonical line bundle $L$ has $a_k L \cong a_k \epsilon$.  Considering the class $[L] - 1 \in \widetilde{KO}(\RP^k)$, this means $a_k([L] - 1) = 0$.
+Now let's talk about $J$-theory.  If $V$ and $W$ are vector bundles over $X$, then we write $V \sim_J W$ if $S(V \oplus n \epsilon) \simeq S(W \oplus n \epsilon)$; i.e., the idea is analogous to $K$ on the level of sphere bundles.  This defines an additive equivalence relation on $KO(X)$, and $J(X)$ is defined to be the quotient subgroup of $KO(X)$ given by this relation, and $\tilde J(X)$ the image of $\widetilde{KO}(X)$. % there should be an equation attached to this last sentence
+Now from the Clifford algebra story we know that over $\RP^k$ the tautological line bundle $L$ has $a_k L \cong a_k \epsilon$. % this a_k was defined in day 2, remind the reader
+Considering the class $[L] - 1 \in \widetilde{KO}(\RP^k)$, this means $a_k([L] - 1) = 0$. % say early on that we're going to identify n eps with n.
 \begin{thm}(Adams)
 $\widetilde{KO}(\RP^k) \stackrel{\cong}{\onto} \tilde J(\RP^k)$ is an isomorphism.
 \end{thm}
-In other words, there are no other trivializations, and so
+In other words, there are no other trivializations, and so % remind the reader that we were talking about coreductions earlier
 \begin{cor}
-If $S(nL) \to \RP^k$ is fiber homotopy trivial, then $a_k$ divides $n$, so there are at most $\rho(n) - 1$ vector fields on $S^{n-1}$.
+If $S(nL) \to \RP^k$ is fiber homotopy trivial, then $a_k$ divides $n$, so there are at most $\rho(n) - 1$ vector fields on $S^{n-1}$. % this should have a proof attached, reminding the reader of the chain of implications
 \end{cor}
-On of the things we get out of this theorem is that $\widetilde{KO}(\RP^k)$ is finite; in general, $\tilde J(X)$ is finite whenever
+One of the things we get out of this theorem is that $\widetilde{KO}(\RP^k)$ is finite; this follows from the following theorem: % really i think this and the previous immediate theorems should be moved down below Atiyah's theorem
 \begin{thm}(Atiyah)
 If $X$ is a finite connected complex, then $\tilde J(X)$ is finite.
 \end{thm}
 \begin{proof}(Sketch, anyway.)
-A vector bundle over $X$ is classified by a map $X \to BO(n)$.  Similarly a sphere bundle should have a similar classifying procedure.  In general, the structure group would have to be taken to be $Homeo(S^{n-1})$, but since we are only concerned with fiber homotopy equivalences we should be able to use that monoid $G_n$ of homotopy self-equivalences of $S^{n-1}$.  Such a classifying procedure exists; call the corresponding space $BG_n$.  Now there is a map $O_n \into G_n$, and hence maps
+A vector bundle over $X$ is classified by a map $X \to BO(n)$.  Similarly a sphere bundle should have a similar classifying procedure.  In general, the structure group would have to be taken to be $Homeo(S^{n-1})$, % use the same formula as below, but without the basepoints
+but since we are only concerned with fiber homotopy equivalences we should be able to use the monoid $G_n$ of homotopy self-equivalences of $S^{n-1}$.  Such a classifying procedure exists; call the corresponding space $BG_n$.  Now there is a natural inclusion $O_n \into G_n$, and hence maps
 \begin{diagram}[width=2em,height=2em]
 BO(n) & \rTo & BG_n \\
 \dTo & & \dTo \\
 BO & \rTo & BG.
 \end{diagram}
-We then make two claims: $\tilde J(X)$ is the image of $[X, BO] \to [X, BG]$, and $[X, BG]$ is finite.  We prove this last part cell-by-cell, so what we really need to show is that $\pi_i(BG_n)$ is finite for $i$ much smaller than $n$.  Since $X$ is finite, $[X, BG] \simeq [X, BG_n]$ for some $n$ sufficiently larger than the top-dimensional cell of $X$, so this is enough.  There is a fibration $G_n \to \ptspace \to BG_n$, so the homotopy groups of $G_n$ are the same as those of $BG_n$, with a shift.  We are then left with showing that $\pi_i G_n$ is finite (again, for $i$ must smaller than $n$).  Now an element of $G_n$ is a map $S^{n-1} \to S^{n-1}$; by evaluating at the basepoint in $S^{n-1}$ we get a map $G_n \to S^{n-1}$.  This is a fibration with fiber homotopy equivalent to the subspace of $Maps(S^{n-1}, S^{n-1}$ of degree $\pm 1$.  This fiber is equivalent to $\Loops^{n-1}_{\pm} S^{n-1}$, and for $i$ much smaller than $n$, $\pi_i G_n \cong \pi_n(\Loops^{n-1}_\pm, S^{n-1})$ and $\pi_i(\Loops^{n-1}_\pm, S^{n-1}) \subset \pi_{i+n-1} S^{n-1} = \pi_i^S$, which is known to be finite by a theorem of Serre.
+We then make two claims: $\tilde J(X)$ is the image of $[X, BO] \to [X, BG]$, and $[X, BG]$ is finite.  We prove this last part cell-by-cell, so what we really need to show is that $\pi_i(BG_n)$ is finite for $i$ much smaller than $n$.  Since $X$ is finite, $[X, BG] \simeq [X, BG_n]$ for some $n$ sufficiently larger than the top-dimensional cell of $X$, so this is enough.  There is a fibration $G_n \to EG_n \to BG_n$, and hence $\pi_i BG_n \cong \pi_{i-1} G_n$.  We are then left with showing that $\pi_i G_n$ is finite (again, for $i$ must smaller than $n$).  Now an element of $G_n$ is a map $S^{n-1} \to S^{n-1}$; by evaluating at the basepoint in $S^{n-1}$ we get a map $G_n \to S^{n-1}$.  This is a fibration whose fiber is homotopy equivalent to $\Loops^{n-1}_{\pm 1}S^{n-1} := \{f: (S^{n-1}, s_0) \to (S^{n-1}, s_0) : \deg f = \pm 1\} \subseteq Maps(S^{n-1}, S^{n-1})$.  For $i$ much smaller than $n$, $\pi_i G_n \cong \pi_i(\Loops^{n-1}_\pm S^{n-1})$ and $\pi_i(\Loops^{n-1}_\pm S^{n-1}) \subset \pi_i(\Loops^{n-1} S^{n-1}) = \pi_{i+n-1} S^{n-1} = \pi_i^S$, which is known to be finite by a theorem of Serre.
 \end{proof}
 
 % >>>
 
 \section{Geometry and the Steenrod squares} % <<<
 
-Today begins a several days blitz on Steenrod operations, from a somewhat geometric point of view.  To begin, remember that ordinary cohomology is representable:
+Today begins a several days blitz on Steenrod operations, from a somewhat geometric point of view.  To begin, remember that reduced ordinary cohomology is representable:
 \[
-\tilde H^q(X; \pi) = [X, K(\pi, q)]_+
+\tilde H^q(X; \pi) = [X, K(\pi, q)]
 .\]
 For example,
 \[
 \tilde H^q S^n = \pi_n K(\pi, q) = \begin{cases}\pi & q = n, \\ 0 & q \ne n.\end{cases}
 \]
-A basepoint gives a lot more than you might think at first.  For example, a basepoint in $X$ gives a filtration of $X^n$:
+A basepoint gives a lot more than you might think at first.  For example, a basepoint in $X$ gives a filtration of the $n$-fold product $X^n$:
 \[
 X^n \supset F_k X^n = \{(x_1, \ldots, x_k) \mid \hbox{at least $n-k$ of the $x_i$ are $*$}\}
 .\]
@@ -535,9 +545,10 @@ F_0 X^n & \subseteq & F_1 X^n & \subseteq & \cdots & \subseteq & F_{n-1} X^n & \
 \ptspace & & \bigvee_{i=1}^n X & & & & \hbox{``Fat wedge''} & & X^n.
 \end{diagram}
 
-Suppose $\pi \subseteq \Sigma_n$.  $\pi$ acts on $X^n$ by permuting the coordinates, and this action respects our filtration (in this discussion, we will be concerned mostly with the case $\pi = \Z/2$.)  Consider the space $E\pi$, a contractible CW-complex with a free $\pi$-action.  For example, if $\pi = \Z/2$, then $\pi$ acts antipodally on $S^{n-1}$.  $S^{n-1}$ is not contractible, but its image is contractible in $S^n$; that is, the inclusion $S^{n-1} \into S^n$ is null-homotopic.  So the direct limit of the inclusions $S^{n-1} \subset S^n \subset \cdots = \bigcup_n S^n = S^\infty$ is contractible and has a free $\pi$-action.  The orbit space $E\pi/\pi = B\pi$ is clearly seen to be $\RP^\infty$.
+Suppose $\pi$ is a subgroup of the symmetric group $\Sigma_n$.  $\pi$ acts on $X^n$ by permuting the coordinates, and this action respects our filtration (in this discussion, we will be concerned mostly with the case $\pi = \Z/2$.)  Consider the space $E\pi$, a contractible CW-complex with a free $\pi$-action.
+For example, if $\pi = \Z/2$, then $\pi$ acts antipodally on $S^{n-1}$.  $S^{n-1}$ is not contractible, but its image is contractible in $S^n$; that is, the inclusion $S^{n-1} \into S^n$ is null-homotopic.  So the direct limit of the inclusions $S^{n-1} \subset S^n \subset \cdots = \bigcup_n S^n = S^\infty$ is contractible and has a free $\pi$-action.  The orbit space $E\pi/\pi = B\pi$ is clearly seen to be $\RP^\infty$. % awkwardly phrased.  is it important to give an explicit construction of Epi?  we've always been using EG for various G....
 
-Okay, so here's the key construction: on the universal $\pi$-bundle $E\pi \to B\pi$, do the Borel construction to mix in $X^n$, where $\pi$ acts on $X^n$ by permuting the factors;
+Okay, so here's the key construction: on the universal $\pi$-bundle $E\pi \to B\pi$, use the Borel construction to mix in $X^n$, where $\pi$ acts on $X^n$ by permuting the factors;
 \begin{diagram}
 X^n & \rTo & E\pi \times_\pi X^n \\
 & & \dTo \\
@@ -560,7 +571,7 @@ This is almost the smash product, but $E\pi$ doesn't have a basepoint.  But we c
 \[
 \frac{E\pi \times_\pi X^n}{E\pi \times_\pi F_{n-1}X^n} = E\pi_+ \sprod_\pi X^{(n)}
 ,\]
-where the $\pi$ means to take the orbit space of the diagonal action on $E\pi_+ \sprod X^{(n)}.$  This is called the ``$\pi$-adic construction'' on $X$ (for lack, really, of a better name), and will be written $D_\pi(X)$.
+where the symbol $\sprod_\pi$ means to take the orbit space of the diagonal action on $E\pi_+ \sprod X^{(n)}.$  This is called the ``$\pi$-adic construction'' on $X$ (for lack, really, of a better name), and will be written $D_\pi(X)$.
 
 This space is of some concern; first we want to know its cohomology.
 \begin{lem}
@@ -573,116 +584,135 @@ Let $\tilde H^i X = 0$ for $i < q$, where coefficients are taken in a field, and
 \begin{proof}
 One could produce a CW-complex for $D_\pi X$ having no cells of dimension less than $nq$.  Alternatively, one can use a relative Serre spectral sequence, with twisted coefficients since $B \pi$ is not simply connected; in fact $B \pi$ is a $K(\pi, 1)$.
 \[
-H^*(B\pi; \{H^*(X^n, F_{n-1} X^n)\}) \Rightarrow \tilde H^*(D_\pi X)
+E_2^{*, *} = H^*(B\pi; \{H^*(X^n, F_{n-1} X^n)\}) \Rightarrow \tilde H^*(D_\pi X)
 .\]
-Now $H^*(X^n, F_{n-1} X^n) \cong \tilde H^* X^{(n)} \cong \tilde H^*(X)^{\otimes n}$, and this last isomorphism is equivariant with respect to permutations, a fact that is not trivial and likely to be false with other cohomology theories.  It follows that in the spectral sequence everything is zero below the horizontal line at $nq$ in the $E_2$ term.  So,
+Now $H^*(X^n, F_{n-1} X^n) \cong \tilde H^* X^{(n)} \cong \tilde H^*(X)^{\otimes n}$, and this last isomorphism is equivariant with respect to permutations, a fact that is not trivial (and likely to be false with other cohomology theories).  It follows that in the spectral sequence everything is zero below the horizontal line at height $nq$ in the $E_2$ term.  So, % why?
 \[
 \tilde H^{nq}(D_\pi X) = H^0(B\pi; \{\tilde H^q(X)^{\otimes n}\}) = (\tilde H^q(X)^{\otimes n})^\pi
 .\qedhere\]
 \end{proof}
 
-This is the key fact that gives the Steenrod operations; all else follows more or less from it.  Take for example the case $K = K(\Z/2, q)$.
+This is the key fact that gives the Steenrod operations; all else follows more or less from it.  Take for example the case $K = K(\Z/2, q)$. % rework this section so that we can swap out singular cohomology for something else.  this seems to be the key confusing step
 \begin{align*}
-H^i K & = 0, i < q \\
-H^q K & = \Z/2,
+\tilde H^i(K; \Z/2) & = 0, \hspace{5em} i < q \\
+\tilde H^q(K; \Z/2) & = \Z/2,
 \end{align*}
-by the Hurewicz theorem.  So $\tilde H^{nq} D_\pi K = \Z/2$ (taking coefficients in $\Z/2$).  Moreover the spectral sequence shows that the map
+by the Hurewicz theorem.  So $\tilde H^{nq}(D_\pi K; \Z/2) = \Z/2$.  Moreover the spectral sequence for $\pi \into E\pi_+ \sprod K^{(n)} \xrightarrow{p} E\pi_+ \sprod_\pi K^{(n)}$ shows that the map
 \[
-\Z/2 = \tilde H^{nq} D_\pi K \stackrel{i^*, \cong}{\to} \tilde H^{nq} K^{(n)}
+\Z/2 = \tilde H^{nq} D_\pi K \stackrel{p^*}{\to} \tilde H^{nq} K^{(n)} % this breaks if the action of pi isn't transitive
 \]
 is an isomorphism.  Now $\tilde H^{nq} K^{(n)}$ contains an element $\iota_q^{\sprod n}$, the $n$-fold smash power of the fundamental class $\iota_q \in \tilde H^q K$, and we have
 \begin{cor}
-There is a unique class $P_\pi i_q \in \tilde H^{nq} D_\pi K$ such that $i^* P_\pi \iota_q = \iota_q^{\sprod n}$.
+There is a unique class $P_\pi \iota_q \in \tilde H^{nq} D_\pi K$ such that $i^* P_\pi \iota_q = \iota_q^{\sprod n}$.
 \end{cor}
-So if $X$ is any pointed space,
+So if $X$ is any pointed space, we have correspondences
 \begin{align*}
-u \in \tilde H^q X & \leftrightarrow [X, K] \\
+\tilde H^q X & \leftrightarrow [X, K] \\
 f^* \iota_q & \leftrightarrow [f].
 \end{align*}
-Representing $u$ as a (homotopy class of) map(s) $u: X \to K$, we have an induced map $X^{(n)} \stackrel{u^{\sprod n}}{\to} K^{(n)} \stackrel{\iota_q^{\sprod n}}{\to} K(\Z/2, nq)$, and then
+We will freely confuse these sets.  Representing $u$ as a (homotopy class of) map(s) $u: X \to K$, we have an induced map $X^{(n)} \stackrel{u^{\sprod n}}{\to} K^{(n)} \stackrel{\iota_q^{\sprod n}}{\to} K(\Z/2, nq)$, and then the diagram
 \begin{diagram}
 X^{(n)} & \rTo^{u^{\sprod n}} & K^{(n)} & \rTo^{\iota_q^{\sprod n}} & K(\Z/2, nq) \\
-\dTo<i & & \dTo>i & \ruTo_{P_\pi \iota_q} \\
+\dTo<p & & \dTo>p & \ruTo_{P_\pi \iota_q} \\
 D_\pi X & \rTo^{D_\pi u^{\sprod n}} & D_\pi K
 \end{diagram}
-shows that there is a unique class $P_\pi u \in \tilde H^{nq} D_\pi X$ such that $i^* P_\pi u = u^{\sprod n}$.  $P_\pi u$ is called the ``Steenrod power'' of $u$.  Finally, the diagonal map $\Delta: X \to X^{(n)}$ is equivariant ($\pi$ acts trivially on the single factor $X$), and this induces
+induces a diagram on cohomology
+\begin{diagram}
+\tilde H^{nq} X^{(n)} & \lTo^{(u^{\sprod n})^*} & \tilde H^{nq} K^{(n)} & \lTo^{(\iota_q^{\sprod n})^*} & \tilde H^{nq} K(\Z/2, nq) \\
+\uTo<{p^*}>\cong & & \uTo>{p^*}<\cong & \ldTo_{(P_\pi \iota_q)^*} \\
+\tilde H^{nq} D_\pi X & \lTo^{(D_\pi u^{\sprod n})^*} & \tilde H^{nq} D_\pi K
+\end{diagram}
+which shows that there is a unique class $P_\pi u = P_\pi \iota_q \circ D_\pi u^{\sprod n} \in \tilde H^{nq} D_\pi X$ such that $p^* P_\pi u = \iota_q^{\sprod n} \circ u^{\sprod n}$.  $P_\pi u$ is called the ``Steenrod power'' of $u$.  Finally, the diagonal map $\Delta: X \to X^{(n)}$ is equivariant ($\pi$ acts trivially on the single factor $X$), and this induces
 \begin{diagram}
 E\pi_+ \sprod_\pi X & \rTo^\Delta & E \pi_+ \sprod X^{(n)} \\
 \dEqualto & & \dEqualto \\
 B \pi_+ \sprod X & \rTo_j & D_\pi X.
 \end{diagram}
-Now, take the case $\pi = \Z/2$, $n = 2$; write $D_2$ for $D_\pi$ and $P$ for $P_\pi$.  $B\pi = \RP^\infty$ as we saw above, and $H^* B\pi = \tilde H^* B\pi = (\Z/2)[x]$ with $|x| = 1$, hence $\tilde H^*(B\pi_+ \sprod X) \cong H^*(B \pi) \otimes \tilde H^* X$.  Now in $\tilde H^*(B \pi_+ \sprod X)$ we have the class $j^* P u$ for any $u \in \tilde H^q X$.  This isomorphism means we can write
+So, any $u \in \tilde H^q X$ gives us a class $j^* P_\pi u \in \tilde H^{nq}(B \pi_+ \sprod X)$.
+
+The case we will develop in full is $\pi = \Z/2$, $n = 2$, so let's restrict attention to that, writing $P$ for $P_\pi$.  $B\pi = \RP^\infty$ as we saw above, and $H^* B\pi = \tilde H^* B\pi_+ = (\Z/2)[x]$ with $|x| = 1$, hence $\tilde H^*(B\pi_+ \sprod X) \cong H^*(B \pi) \otimes \tilde H^* X$.  This isomorphism means we can write
 \begin{align*}
 \tilde H^*(B \pi_+ \sprod X) & \cong H^*(B \pi) \otimes \tilde H^* X \\
 j^* P u & = \sum_{i=0}^q x^{q-i} \otimes \Sq^i u,
 \end{align*}
 where $\Sq^i u$ is of degree $q + i$, and we take this to be \emph{the} definition of $\Sq^i u$.
 
-Note that the above can be to a large extent carried out in other theories, giving similar operations.  Mostly one needs to have computed $H^*(B \pi \sprod X)$.  Now let's start finding properties of the Squares.  First of all, we don't even knkow that they're not all zero yet.  But in the diagram, if $|u| = q$,
-\begin{diagram}
-B\pi_+ \sprod X & \rTo^j & D_\pi X & & \sum_{i=0}^q x^{q-i} \otimes \Sq^i u & \lMapsto & P u\\
-\uTo<k & & \uTo>i & & \dMapsto & & \dMapsto \\
-X & \rTo^\Delta & X^{(i)}, & & u \cup u & \lMapsto & u^{\sprod 2}.
-\end{diagram}
-Now, by the pull-back $k^*: H^*(B \pi) \otimes \tilde H^* X \to \tilde H^* X$, all powers of $x$, the generator of $H^* B \pi$, except $0$ are killed.  So $\Sq^q u = u^2$.
+Note that the above can be to a large extent carried out in other cohomology theories, giving similar operations.  Mostly one needs to have computed $H^*(B \pi \sprod X)$.
 
-Next, the Cartan formula:
-\begin{align*}
-D_\pi(X \sprod Y) = E \pi_+ \sprod_\pi (X \sprod Y)^{(2)} & \stackrel{\delta}{\to} E \pi_+ \sprod X^{(2)} \sprod E \pi_+ \sprod Y^{(2)} \\
-(e, (x_1, y_1), (x_2, y_2)) & \mapsto (e, (x_1, y_1); e, (x_2, y_2)).
-\end{align*}
-And moreover, the diagram
+Now let's start finding properties of the squares.  First of all, we don't even know that they're not all zero yet.  But we have the following diagram
 \begin{diagram}
-(X \sprod Y)^{(2)} & \rTo^i & D_\pi(X \sprod Y) & \lTo^j & D \pi_+ \sprod (X \sprod Y) \\
-\dTo<T & & \dTo>\delta & & \dTo>{\tilde \Delta} \\
-X^{(i)} \sprod Y^{(i)} & \rTo^{i \sprod i} & D_\pi X \sprod D_\pi Y & \rTo^{j \sprod j} & B \pi_+ \sprod X \sprod B \pi_+ \sprod Y
+B\pi_+ \sprod X & \rTo^j & D_\pi X \\
+\uTo<k & & \uTo>p \\
+S^0 \sprod X & \rTo^\Delta & X^{(2)}, % we should check that k induces the projection map on cohomology
+\end{diagram}
+which induces the following action on cohomology classes:
+\begin{diagram}
+\sum_{i=0}^q x^{q-i} \otimes \Sq^i u & \lMapsto & P u \\
+\dMapsto & & \dMapsto \\
+u \smile u & \lMapsto & u^{\sprod 2}.
+\end{diagram}
+Now, the pullback $k^*: H^* B\pi_+ \otimes H^* X$ acts by quotienting the power series generator $x \in H^* B\pi_+$, i.e., sends $x^m \otimes y$ to zero for $m > 0$ and any $y \in H^* X$.  So $\Sq^q u = u^2$.
+
+Next, we derive the Cartan formula, beginning with the calculation
+\begin{align*}
+D_\pi(X \sprod Y) = E \pi_+ \sprod_\pi (X \sprod Y)^{(2)} & \stackrel{\delta}{\to} E \pi_+ \sprod_\pi X^{(2)} \sprod E \pi_+ \sprod_\pi Y^{(2)} = D_\pi X \sprod D_\pi Y, \\
+(e, (x_1, y_1), (x_2, y_2)) & \mapsto (e, (x_1, x_2); e, (y_1, y_2)).
+\end{align*}
+Moreover, the diagram
+\begin{diagram}
+(X \sprod Y)^{(2)} & \rTo^p & D_\pi(X \sprod Y) & \lTo^j & B \pi_+ \sprod (X \sprod Y) \\
+\dTo<{T} & & \dTo>\delta & & \dTo>{\Delta_{B \pi_+}} \\
+X^{(2)} \sprod Y^{(2)} & \rTo^{p \sprod p} & D_\pi X \sprod D_\pi Y & \lTo^{j \sprod j} & B \pi_+ \sprod X \sprod B \pi_+ \sprod Y
 \end{diagram}
 commutes.
 \begin{lem}
 $\delta^*(Pu \sprod Pv) = P(u \sprod v)$.
 \end{lem}
 \begin{proof}
-We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$.  Then $D_\pi(X \sprod Y)$ has lowest dimensional cohomology in dimension $2(p + q)$, and here it is $\Z/2$.  But $i^*(Pu \sprod Pv) = (\iota_q \sprod \iota_q)^{\sprod 2}$; $P(u \sprod v)$ is by definition the unique class in $H^{2(p+q)} D_\pi(X \sprod Y)$ for which this holds.
+We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$.  Then the lowest dimensional cohomology of $D_\pi(X \sprod Y)$ is $\Z/2$ in dimension $2(p + q)$.  But $(\delta p)^*(P\iota_p \sprod P\iota_q) = ((p \sprod p)T)^* (\iota_p \sprod \iota_q)$ equals $(\iota_p \sprod \iota_q)^{\sprod 2}$, and $P(\iota_p \sprod \iota_q)$ is defined to be the unique class in $H^{2(p+q)} D_\pi(X \sprod Y)$ for which this holds. % we have two nonzero things living in the same dimension, where there's only one nonzero element.
 \end{proof}
 
 \begin{cor}
-(Cartan formula) $\Sq^k(u \sprod v) = \sum_{i+j = k} \Sq^i u \sprod \Sq^j v$.
+(Cartan formula).  $\Sq^k(u \sprod v) = \sum_{i+j = k} \Sq^i u \sprod \Sq^j v$.
 \end{cor}
 \begin{proof}
 \begin{align*}
-j^* P(u \sprod v) = \sum_k x^{p+q-k} \otimes \Sq^k(u \sprod v) \\
-= j^* \delta^*(Pu \sprod Pv) & = \tilde \Delta^* (j \sprod j)^*(Pu \sprod Pv) \\
-& = \tilde \Delta^*[(\sum x^{p-i} \Sq^i u) \sprod (\sum x^{q-j} \Sq^j v)] \\
+\sum_k x^{p+q-k} \otimes \Sq^k(u \sprod v) & = j^* P(u \sprod v) \\
+& = j^* \delta^*(Pu \sprod Pv) \\
+& = \Delta_{B \pi_+}^* (j \sprod j)^*(Pu \sprod Pv) \\
+& = \Delta_{B \pi_+}^*\left[\left(\sum_i x^{p-i} \otimes \Sq^i u\right) \sprod \left(\sum_j x^{q-j} \otimes \Sq^j v\right)\right] \\ % be careful about mixing smash products and tensor products.  this happened earlier too.
 & = \sum_{i, j}x^{p+q-i-j} \otimes \Sq^i u \sprod \Sq^j v.\qedhere
 \end{align*}
 \end{proof}
 \begin{cor}
-(Internal version).  Taking $X = Y$, and using $\Delta: X \to X \times X$, $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$.
+(Internal version).  Taking $X = Y$ and using $\Delta: X \to X \times X$, $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$.
 \end{cor}
-Ex: What are possible equations on $S^1$?  Show that $\Sq^0 e = e$, where $e$ is the generator of $\tilde H^1 S^1 = \Z/2$.
+
+\begin{ex}
+Show that $\Sq^0 e = e$, where $e$ is the generator of $\tilde H^1 S^1 = \Z/2$.
+\end{ex}
 
 % >>>
 
 \section{Properties of the squares} % <<<
 
-We continue to derive properties of the Steenrod squares using the construction from last time.  Recall from last time that $\pi \subseteq \Sigma_k$ and a space $X$ gave us $D_\pi X = E \pi_+ \sprod_\pi X^{(n)}$, and we had the inclusions
+We continue to derive properties of the Steenrod squares.  Recall that by choosing $\pi \subseteq \Sigma_n$ and a space $X$ we get a space $D_\pi X = E \pi_+ \sprod_\pi X^{(n)}$ along with inclusions
 \begin{diagram}
 B\pi_+ \sprod X & \rTo^j & E\pi_+ \sprod_\pi X^{(n)} & \rEqualto & D_\pi X \\
-& & \uTo>i \\
+& & \uTo>p \\
 & & X^{(n)}.
 \end{diagram}
-
 Working with field coefficients, we found there was a unique natural transformation $P_\pi: \tilde H^q X \to \tilde H^{nq} D_\pi X$ such that
 \[
-i^* P_\pi u = u^{\sprod n}
+p^* P_\pi u = u^{\sprod n}
 \]
-for all $u \in \tilde H^q X$.  In the case that $\pi = \Z/2$, $n = 2$, we use the K\"unneth isomorphism $\tilde H^*(B \pi_+ \sprod X) \cong \tilde H^*(B \pi_+) \otimes \tilde H^* X$, and the fact that $\tilde H^*(B \pi_+) = H^*B \pi = (\Z/2)[x]$, $|x| = 1$ to write for each $u \in \tilde H^qX$,
+for all $u \in \tilde H^q X$.  In the case that $\pi = \Z/2$, $n = 2$, we use the K\"unneth isomorphism $\tilde H^* (B \pi_+ \sprod X) \cong \tilde H^*B \pi_+ \otimes \tilde H^* X$ and the fact that $\tilde H^* B \pi_+ = H^*B \pi = (\Z/2)[x]$ to write for each $u \in \tilde H^qX$,
 \[
-\tilde H^*(B \pi_+ \sprod X) \ni j^* P_\pi u = \sum_{i=0}^q x^{q-i} \otimes \Sq^i u
+j^* P_\pi u = \sum_{i=0}^q x^{q-i} \otimes \Sq^i u \in \tilde H^*(B \pi_+ \sprod X)
 .\]
-This was the definition of $\Sq^i u$.  Since $P_* u$ has degree $2q$, $\Sq^i u$ has degree $q + i$.
+This characterizes $\Sq^i u$.  Since $P_\pi u \in \tilde H^* D_\pi X$ has degree $2q$ and $x \in \tilde H^* B\pi$ has degree $1$, $\Sq^i u \in \tilde H^* X$ has degree $q + i$.
 
-These properties of $\Sq^i$ are immediate or were shown last time:
+These properties of $\Sq^i$ are immediate or were shown previously:
 \begin{itemize}
 \item $\Sq^i$ is a natural transformation of functors $\tilde H^* \to \tilde H^{*+i}$.
 \item $\Sq^i u = 0$ for $i > q$, $u \in \tilde H^q X$.
@@ -691,25 +721,25 @@ These properties of $\Sq^i$ are immediate or were shown last time:
 \end{itemize}
 In addition, it was an exercise to show that $\Sq^0 e = e$, where $e$ is the generator of $\tilde H^1 S^1$.  This important fact has several consequences.
 \begin{cor}
-$\Sq^k$ commutes with the suspension homomorphism $\sigma: \tilde H^q(X) \to \tilde H^{q+1} \Sigma X$.
+$\Sq^k$ commutes with the suspension homomorphism $\sigma: \tilde H^q X \to \tilde H^{q+1} \Sigma X$.  We say that $\Sq$ is a ``stable operation.''
 \end{cor}
 \begin{proof}
+The diagram
 \begin{diagram}
-\sigma = \tilde H^q X & \rTo & \tilde H^{q+1} \Sigma X \\
+\tilde H^q X & \rTo^\sigma & \tilde H^{q+1} \Sigma X \\
 \dEqualto & \ruTo_{\sprod e} \\
 \tilde H^q X \otimes \tilde H^1 S^1
 \end{diagram}
 defines the suspension homomorphism.  So,
 \[
-\Sq^k \sigma u = \Sq^k(u \sprod e) = \Sq^k u \sprod \Sq^0 e = \sigma \Sq^k u.
+\Sq^k(\sigma u) = \Sq^k(u \sprod e) = \Sq^k u \sprod \Sq^0 e = \sigma \Sq^k u
 .\qedhere\]
 \end{proof}
-This means that $\Sq^k$ is a ``stable operation.''
 \begin{cor}
 $\Sq^0: \tilde H^q X \to \tilde H^q X$ is the identity.
 \end{cor}
 \begin{proof}
-It suffices to check this on the class $\iota_q \in \tilde H^q(K_q)$, ($K_q = K(\Z/2, q)$).  For $q = 1$, $\Sq^0 \iota_1 \ne 0$ because it wasn't for $S^1$.  But $\tilde H^1 K_1 = \Z/2$, so $\Sq^0$ is the identity on $\iota_1$.  Furthermore, $\Sq^0(e^{\sprod q}) \in \tilde H^q S^q$ is also undisturbed by application of the Cartan formula and the fact that $\Sq^*$ commutes with suspensions.  It follows that $\Sq^0 \iota_q = \iota_q$.
+It suffices to check this on the class $\iota_q \in \tilde H^q(K_q)$, writing $K_q = K(\Z/2, q)$.  For $q = 1$, $\Sq^0 \iota_1 \ne 0$ because this is the universal case and the previous exercise showed that it pulls back to the nontrivial class $e$ on $S^1$.  But $\tilde H^1 K_1 = \Z/2$, so $\Sq^0$ is the identity on $\iota_1$.  Furthermore, $\Sq^0$ leaves $e^{\sprod q} \in \tilde H^q S^q$ undisturbed, by an application of the Cartan formula and the fact that the squares commute with suspensions.  It follows that $\Sq^0 \iota_q = \iota_q$.
 \end{proof}
 
 \begin{rem}
@@ -717,37 +747,37 @@ The map $\beta: \tilde H^q X \to \tilde H^{q+1} X$ given by
 \begin{diagram}
 \tilde H^q X & \rTo^\beta & \tilde H^{q+1} X \\
 \dTo<\delta & \ruTo_{\mathrm{reduction}} \\
-\tilde H^{q+1}(X; \Z)
+\tilde H^{q+1}(X; \Z),
 \end{diagram}
 where $\delta$ is the zigzag map of the coefficient sequence $0 \to \Z \stackrel{\cdot 2}{\to} \Z \to \Z/2 \to 0$ is called the Bockstein homomorphism.  It is $\Sq^1$.
 \end{rem}
 
 \begin{rem}
-$\Sq^k$ is a homomorphism.
+$\Sq^k$ is a group homomorphism.
 \end{rem}
 \begin{proof}
-Letting cohomology classes be represented by maps into $K(\pi, q)$s, we have
+Representing cohomology classes by maps into $K(\pi, q)$s, we have
 \begin{diagram}
 K_q & \rTo^{\Sq^k \iota_q} K_{q+k} \\
 \uTo<u & \ruTo_{\Sq^k u} \\
 X.
 \end{diagram}
-That $\Sq^k$ commutes with suspension in this context means that the diagram below commutes:
+Since $\Sq^k$ commutes with suspension in this context means that the diagram below commutes:
 \begin{diagram}
 \Sigma K_q & \rTo^{\Sigma \Sq^k \iota_q} & \Sigma K_{q+k} \\
 \dTo<\sigma & & \dTo>\sigma \\
 K_{q+1} & \rTo^{\Sq^k \iota_{q+1}} & K_{q+k+1}.
 \end{diagram}
-Taking the adjoint of each map in the square, we get
+Using the adjunction between $\Suspend$ and $\Loops$, we get
 \begin{diagram}
 K_q & \rTo^{\Sq^k \iota_q} & K_{q+k} \\
 \dTo<\simeq & & \dTo>\simeq \\
 \Omega K_{q+1} & \rTo^{\Omega \Sq^k \iota_{q+1}} & \Omega K_{q+k+1},
 \end{diagram}
-so $\Sq^k$ is an $H$-map.  The $H$-space structure on $K_q$ represents the addition on $\tilde H^q$, so it follows that $\Sq^k$ is a homomorphism.
+so $\Sq^k$ is an $H$-space map (or an $H$-map).  The $H$-space structure on $K_q$ represents the addition on $\tilde H^q$, so it follows that $\Sq^k$ is a homomorphism.
 \end{proof}
 
-The last basic fact about the squares is the Adem relations, for which we will take an approach using generating functions, following Bullett-MacDonald~\cite{BullettMacDonald}.  First, for $u \in \tilde H^q X$ define $\Sq_q u = \sum x^{-k} \Sq^k u$, where $|x| = 1$, so $\Sq_x$ is homogenous of degree 0.  For example, if $u \in \tilde H^1(X)$, $\Sq_x u = u + x^{-1} u^2 = u^2(u^{-1} + x^{-1})$.  This $\Sq_x$ occurs naturally in our setting as our $j^* P u = x^q \Sq_x u.$  $\Sq_x$ has the nice property that it is a ring homomorphism, as shown by the Cartan formula.  Second, take $\Sigma_k$ to be the symmetric group acting on four letters, arrange the letters into a square, and let $\omega$ be the subgroup which covers permutations of the rows.  If $\pi = \Z/2$, then we have an exact sequence $\pi^2 \to \omega \to \pi$, with kernel corresponding to permutations within the two rows and cokernel corresponding to the interchanging of the two rows.  $\omega$ is sometimes called the ``wreath product'' $\pi \wr \pi$; it is in fact $D_8$, the $2$-Sylow subgroup of $\Sigma_k$.
+The last basic fact about the squares is the Adem relations, for which we will take an approach using generating functions in the indeterminate $x$, following Bullett-MacDonald~\cite{BullettMacDonald}.  First, for $u \in \tilde H^q X$ define $\Sq_x u = \sum x^{-k} \Sq^k u$, where $|x| = 1$ so that $\Sq_x$ is homogenous of degree 0.  For example, if $u \in \tilde H^1(X)$, $\Sq_x u = u + x^{-1} u^2 = u^2(u^{-1} + x^{-1})$.  This $\Sq_x$ occurs naturally in the above as $j^* P u = x^q \Sq_x u.$  Also, $\Sq_x$ has the nice property that it is a ring homomorphism, as shown by the Cartan formula.  Second, take $\Sigma_4$ to be the symmetric group acting on four letters, arrange the letters into a square, and let $\omega$ be the subgroup of permutations which preserves the rows or transposes them, along with intra-row permutations.  If $\pi = \Z/2$, then we have an exact sequence $\pi^2 \to \omega \to \pi$, with kernel corresponding to permutations within the two rows and cokernel corresponding to the interchanging of the two rows.  The group $\omega$ is sometimes called the ``wreath product'' $\pi \wr \pi$; it is in fact $D_8$, the $2$-Sylow subgroup of $\Sigma_4$.
 
 Now, what is an $\omega$-space $X$?  $X$ is a $\pi$-space with a $\pi$-equivariant $\pi^2$ action; i.e., we have
 \begin{diagram}[height=1em]
@@ -755,10 +785,10 @@ Now, what is an $\omega$-space $X$?  $X$ is a $\pi$-space with a $\pi$-equivaria
 \circlearrowright & & \circlearrowright \\
 \pi & & \pi,
 \end{diagram}
-where the action on the left is the diagonal action.  An example of an $\omega$-space is $E \pi \times (E \pi)^2$, with $\pi^2$ acting on the right-hand factor by the antipodal map and $\pi$ acting on the total space by the antipodal map crossed with an exchange of factors in $(E \pi)^2$.  The total space is contractible and its $\omega$-action is free; hence it is an $E \omega$, and we compute
+where the action on the left is the diagonal action.  An example of an $\omega$-space is $E \pi \times (E \pi)^2$.  The $\pi^2$ action is on the right-hand factor, with \[(x, y) \cdot (a, b, c) = (a, x \cdot b, y \cdot c),\] and $\pi$ acting on $E \pi \times (E \pi)^2)$, where the nontrivial element has action \[-1 \cdot (a, b, c) = (-a, c, b).\]  The total space is contractible and its $\omega$-action is free; hence it is an $E \omega$, and we compute % should this section actually be (a, b, c) = (-a, -c, -b)?  Does it matter?  we already quotiented by the pi action on E pi...  plus, the original text reads "acting... by the antipodal map crossed with an exchange of factors in (E pi )^2."
 \begin{align*}
 B \omega & = (E \pi \times (E \pi)^2) / \omega \\
-& = E \pi \times (B \pi)^2 / \pi \\
+& = (E \pi \times (B \pi)^2) / \pi \\
 & = E \pi \times_\pi (B \pi)^2.
 \end{align*}
 
@@ -766,7 +796,7 @@ On one hand, giving a space $X$ a basepoint, we can do the $\omega$-adic constru
 \[
 D_\omega X = E \omega_+ \sprod_\omega X^{(4)} = \frac{E \omega \times_\omega X^4}{E \omega \times_\omega F_3 X^4}
 .\]
-But this mixing in of $X$ corresponds to mixing in $X$ in the above construction of $E \omega$: $E \omega \times_\omega X^4 = E \pi \times_\pi (E\pi \times X^2)^2$ and this is the iteration of the $\pi$-reduced power operation on $X$.  All this goes to show that $D_\omega X = E \omega_+ \sprod_\omega X^{(4)} = D_\pi(D_\pi X)$, so we have iterated the $\pi$-adic construction!  That ought to be a good thing, because the Adem relations concern iterated Steenrod operations.
+But this mixing in of $X$ corresponds to mixing in $X$ in the above construction of $E \omega$: we have $E \omega \times_\omega X^4 = E \pi \times_\pi (E\pi \times_\pi X^2)^2$ and this is the iteration of the $\pi$-reduced power operation on $X$.  All this goes to show that $D_\omega X = E \omega_+ \sprod_\omega X^{(4)} = D_\pi(D_\pi X)$, so we have iterated the $\pi$-adic construction!  That ought to be a good thing, because the Adem relations concern iterated Steenrod operations.
 
 Now we have a diagram
 \begin{diagram}
@@ -780,23 +810,24 @@ B \pi_+ \sprod B \pi_+ \sprod X & \rInto & B \omega_+ \sprod X \\
 & \luTo(1, 2)_{T \sprod 1} \ruInto(1, 2) & \\
 & B \pi_+ \sprod B \pi_+ \sprod X.
 \end{diagram}
-The claim about this diagram is that the bottom triangle commutes up to homotopy.  This is because the flip map $T$ in
+We claim that the bottom triangle commutes up to homotopy.  This is because the flip map $T$ in the diagram of exact sequences
 \begin{diagram}
-\pi \times \pi \\
-\dTo & \rdTo(2,1) & \omega & \rTo & \pi \ni t,\\
-\pi \times \pi & \ruTo(2,1)
+\pi \times \pi & \rTo & \omega & \rTo & \pi \\
+\dTo<T & & \dTo & & \dEqualto \\
+\pi \times \pi & \rTo & \omega & \rTo & \pi
 \end{diagram}
-$c_t |_{\pi^2} = T$, is induced by conjugation by the image of the nontrivial element $t$ of the right-hand $\pi$.  And it is a basic fact about classifying spaces that a map $c_t: \omega \to \omega$ induces a map $B c_t: B \omega \to B \omega$ which is homotopic to the identity (essentially, $c_t$ moves the basepoint).  So in some sense the whole point of $\omega$ was to convert the outer automorphism $T: \pi \times \pi \to \pi \times \pi$ to an inner automorphism.  It follows that the map $j: B\pi_+ \sprod B\pi_+ \sprod X \to D_\pi(D_\pi X)$ is up to homotopy $\pi$-equivariant, where $\pi$ flips the factors on the left and leaves the right fixed.
+is induced by conjugation by the image of the nontrivial element $t$ of the right-hand $\pi$.  And it is a basic fact about classifying spaces that a conjugation map $c_t: \omega \to \omega$ induces a map $B c_t: B \omega \to B \omega$ which is homotopic to the identity (essentially, $c_t$ moves the basepoint). % is this right?  i don't think this is homotopic to the identity
+So in some sense the whole point of $\omega$ was to convert the outer automorphism $T: \pi \times \pi \to \pi \times \pi$ to an inner automorphism.  It follows that the map $D_\pi j \circ j: B\pi_+ \sprod B\pi_+ \sprod X \to D_\pi(D_\pi X)$ is $\pi$-equivariant up to homotopy.
 
 Now if $u \in \tilde H^q X$, we have
 \begin{diagram}[width=2em,height=2em]
-P_\omega u & \in & \tilde H^{4q}(D \omega X) \\
+P_\omega u & \in & \tilde H^{4q}(D_\omega X) \\
 \dEqualto & & \dEqualto \\
 P(Pu) & \in & \tilde H^{4q}(D_\pi D_\pi X).
 \end{diagram}
-Now $j^* D_\pi(j)^* P(P u) \in \tilde H^*(B\pi_+ \sprod B\pi_+ \sprod X) \cong (\Z/2)[x, y] \otimes \tilde H^* X$, and the homotopy equivalence of the flipa ction on the $B\pi_+$s means that this class is symmetric in $x$ and $y$.  So,
+Now $(D_\pi j \circ j)^* P(P u) \in \tilde H^*(B\pi_+ \sprod B\pi_+ \sprod X) \cong (\Z/2)[x, y] \otimes \tilde H^* X$, and the $\pi$-equivariance up to homotopy above means that this class is symmetric in $x$ and $y$.  So,
 \begin{align*}
-j^* D_\pi(j)^* P(P u) & = j^* P(j^* P u) \\
+(D_\pi j \circ j)^* P(P u) & = j^* P(j^* P u) \\ % disambiguate those js
 & = j^* P(y^q \Sq_y u) \\
 & = x^{2q} \Sq_x(y^q \Sq_y u) \\
 & = x^{2q} \Sq_x(y^q) \Sq_x \Sq_y u \\
