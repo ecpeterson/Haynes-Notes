@@ -117,6 +117,8 @@ These are notes from a course taught by Haynes Miller at MIT in the fall of 1989
 
 At the moment, I'm just copying the notes straight down, omitting unnecessary pictures.  Eventually I hope to tidy it up into something more of a book form, but that half of the project is hard to start on until all the notes are in one place and edited for correctness.
 
+If anything in this document confuses you, check out the original notes at the following links: \href{http://www-math.mit.edu/~hrm/papers/vf1.pdf}{http://www-math.mit.edu/~hrm/papers/vf1.pdf}, \href{http://www-math.mit.edu/~hrm/papers/vf2.pdf}{http://www-math.mit.edu/~hrm/papers/vf2.pdf}.  I'm sure lots of things have been miscopied from the originals!
+
 % >>>
 
 \section{Introduction to vector fields on spheres} % <<<
@@ -839,12 +841,13 @@ is symmetric in $x$ and $y$.  This is the shortest statement of the Adem relatio
 
 \section{Deriving the usual Adem relations} % <<<
 
-Last time we got as far as showing $\Sq_x \Sq_y u = \Sq_y \Sq_x u$, where $\Sq_x = \sum_{i \ge 0} x^{-i} \Sq^i$, and $|x| = |y| = 1$, and $x$ and $y$ represent $1$-dimensional classes in $\tilde H^* \RP^\infty$.  Today we'll see how this gives the more standard form of the Adem relations.
+Last time we got as far as showing $\Sq_x \Sq_y u = \Sq_y \Sq_x u$, where $\Sq_x = \sum_{i \ge 0} x^{-i} \Sq^i$, and $|x| = |y| = 1$, and $x$ and $y$ represent $1$-dimensional classes in $\tilde H^* \RP^\infty$. % what the hell
+Today we'll see how this gives the more standard form of the Adem relations.
 
 To begin,
 \begin{align*}
 \Sq_x y & = y + x^{-1} y^2 = y^2(y^{-1} + x^{-1}) \\
-\Sq_y x & = x + y^{-1} x^2 = x^2(x^{-1} + y^{_1}).
+\Sq_y x & = x + y^{-1} x^2 = x^2(x^{-1} + y^{-1}).
 \end{align*}
 Recall that the Cartan formula implies that $\Sq_x$ is a ring homomorphism.  So,
 \begin{align*}
@@ -852,7 +855,7 @@ Recall that the Cartan formula implies that $\Sq_x$ is a ring homomorphism.  So,
 & = \sum_{j \ge 0}(\Sq_x y)^{-j} \Sq_x \Sq^j \\
 & = \sum_{j \ge 0} y^{-2j}(x^{-1} + y^{-1})^{-j} \Sq_x \Sq^j.
 \end{align*}
-Now this first piece is a mess, so, taking a lesson from calculus, we make a variable substitution $t = y^{-2}(y^{-1} + x^{-1})^{-1})$.  So $|t| = -1$, and now
+Now this first piece is a mess, so, taking a lesson from calculus, we make a variable substitution $t = y^{-2}(y^{-1} + x^{-1})^{-1}$.  So $|t| = -1$, and now
 \begin{align*}
 \Sq_x \Sq_y & = \sum_{j \ge 0} t^j \Sq_x \Sq^j \\
 & = \sum_{j \ge 0} t^j \sum_{i \ge 0} x^{-1} \Sq^i \Sq^j \\
@@ -866,9 +869,10 @@ Again, letting $s = x^{-1}$, so $|s| = -1$, we have $\Sq_x \Sq_y = \sum_{i, j \g
 \end{align*}
 We thus need to know how to express $y$ in terms of $t$ and $s$.
 
-Now, $t^{-1} = y^2(x^{-1} + y^{-1}) = y + x^{-1} y^2 = y + s y^2$.  A tthis point we could pull out the quadratic formula, but that seems ill-advised over $\Z/2$.  Instead, we use the theory of residues: if $f(z)$ is a power series, then the coefficient of $z^m$ in $f(z)$ is the residue of $\frac{f(z)}{z^{m+1}}dz$.  (Normally there's a factor of $2 \pi i$ or something floating around, but once again this seems ill-advised in $\Z/2$.)  Now we are going to take advantage of the $dz$ to change variables and the claim is that this works for power series over any ring.\footnote{This is nearly true, nearly false.  It does work in this case.  See note at the end of this section.}  So in our case, we take the coefficient of $(t^{-1})^k$ in $y^m$: $\res \frac{y^m}{(t^{-1})^{k+1}} d(t^{-1})$.  We calculate that $d(t^{-1}) = dy + sdy^2 = dy + 2sydy = dy$.  We then have $\res \frac{y^m dy}{y^{k+1}(1 + sy)^{k+1}} = \res \frac{(1+sy)^{-k-1} dy}{y^{k-m+1}}$, which is equal to the coefficient of $y^{k-m}$ in $(1+sy)^{-k-1} = \binom{-k-1}{k-m}s^{k-m}$, where we simply agree that $(1 + z)^m = \sum \binom{m}{k} z^k$ for $m \in \Z$, and for $k < 0$, $\binom{m}{k} = 0$.
+Now, $t^{-1} = y^2(x^{-1} + y^{-1}) = y + x^{-1} y^2 = y + s y^2$.  At this point we could pull out the quadratic formula, but that seems ill-advised over $\Z/2$.  Instead, we use the theory of residues: if $f(z)$ is a power series, then the coefficient of $z^m$ in $f(z)$ is the residue of $\frac{f(z)}{z^{m+1}}dz$.  (Normally there's a factor of $2 \pi i$ or something floating around, but once again this seems ill-advised in $\Z/2$.)  Now we are going to take advantage of the $dz$ to change variables and the claim is that this works for power series over any ring.\footnote{This is nearly true, nearly false.  It does work in this case.  See note at the end of this section. % ... what note?
+}  So in our case, we take the coefficient of $(t^{-1})^k$ in $y^m$: \[\res \frac{y^m}{(t^{-1})^{k+1}} d(t^{-1}).\]  We calculate that $d(t^{-1}) = dy + sdy^2 = dy + 2sydy = dy$.  We then have \[\res \frac{y^m dy}{y^{k+1}(1 + sy)^{k+1}} = \res \frac{(1+sy)^{-k-1} dy}{y^{k-m+1}},\] which is equal to the coefficient of $y^{k-m}$ in $(1+sy)^{-k-1} = \binom{-k-1}{k-m}s^{k-m}$, where we simply agree that $(1 + z)^m = \sum \binom{m}{k} z^k$ for $m \in \Z$, and for $k < 0$, $\binom{m}{k} = 0$.
 
-So we know what it is, provided we know what the binomial coefficients are.  To sum up,
+So we know what $y$ is in terms of $s$ and $t$, provided we know what the binomial coefficients are.  To sum up,
 \[
 y^m = \sum_{k \ge m} \binom{-k-1}{k-m} s^{k-m} t^{-k}
 ,\]
@@ -880,9 +884,9 @@ Now, in $\Sq_x \Sq_y$, the coefficient of $s^a t^b$ is $\Sq^a \Sq^b$.  In $\Sq_y
 \[
 \Sq^a \Sq^b = \sum_j \binom{b-j-1}{a-2j} \Sq^{a+b-j} \Sq^j
 ,\]
-and this last formula is aclled the ``Adem relation.''  One thing to notice is that if $a \le 2b$, then since $a \ge 2j$ we have $b \ge j$, so $a + b -j \ge 2j$.  So these relations let you express $\Sq^a \Sq^b$ for $a \le 2b$ as a sum of $\Sq^i \Sq^j$, where $i \ge 2j$.  Such $\Sq^i \Sq^j$ are called \emph{admissable}.
+and this last formula is called the ``Adem relation.''  One thing to notice is that if $a \le 2b$, then since $a \ge 2j$ we have $b \ge j$, so $a + b -j \ge 2j$.  So these relations let you express $\Sq^a \Sq^b$ for $a \le 2b$ as a sum of $\Sq^i \Sq^j$, where $i \ge 2j$.  Such $\Sq^i \Sq^j$ are called \emph{admissable}.
 
-So the tensor algebra on the squares $T(\Sq^1, \Sq^2, \ldots)$ modulo the Adem relations acts on $H^*(X; \Z/2)$.  This algebra $T(\Sq^1, \ldots) / \hbox{Adem relations}$ is called the ``Steenrod algebra.''  It is denoted $\SA$.
+So the tensor algebra on the squares $T(\Sq^1, \Sq^2, \ldots)$ modulo the Adem relations acts on $H^*(X; \Z/2)$.  This algebra $T(\Sq^1, \ldots) / \{\hbox{Adem relations}\}$ is called the ``Steenrod algebra.''  It is denoted $\SA$.
 \begin{lem}
 $\SA$ is generated by $\Sq^{2^i}$, and these are indecomposable.
 \end{lem}
@@ -912,15 +916,15 @@ But,
 So, $\Sq^c = \Sq^{c-2^k} \Sq^{2^k} + \mathrm{decomposables}$, and $\Sq^{c - 2^k}$ is decomposable.
 \end{proof}
 
-$\tilde H^* X$ is an $\SA$-module, and $\Sq^i x = 0$ if $i > |x|$; such things are called ``unstable $\SA$-modules,'' even though this is bad terminology.  Moreover, $x^2 = \Sq^{|x|} x$, and $\Sq(xy) = \Sq(x) \Sq(y)$.  Such a thing is called an ``unstable $\SA$-algebra.''  If $\CatOf{Unstable-\SA-Algebras}$ is the category of these, then the functor $\tilde H^* : \CatOf{Spaces} \to \CatOf{GradedVectorSpaces}$ factors as
+$\tilde H^* X$ is an $\SA$-module, and $\Sq^i x = 0$ if $i > |x|$; such things are called ``unstable $\SA$-modules,'' even though this is bad terminology.  Moreover, $x^2 = \Sq^{|x|} x$, and $\Sq(xy) = \Sq(x) \Sq(y)$; such a thing is called an ``unstable $\SA$-algebra.''  If $\CatOf{Unstable-\SA-Algebras}$ is the category of these, then the functor $\tilde H^* : \CatOf{Spaces} \to \CatOf{GradedVectorSpaces}$ factors as
 \begin{diagram}
 \tilde H^*: \CatOf{Spaces} & \rTo & \CatOf{Unstable-\SA-Algebras} \\
 & \rdTo & \dTo \\
 & & \CatOf{GradedVectorSpaces},
 \end{diagram}
-and $\CatOf{Unstable-\SA-Algebras}$ is the largest algebraic category through which $\tilde H^*$ factors.
+and $\CatOf{Unstable-\SA-Algebras}$ is the largest algebraic category through which $\tilde H^*$ factors. % what is an algebraic category and why is this the largest?
 
-Before we stop, let's take a look again at the formula $y^m = \sum_{k \ge m} \binom{-k-1}{k-m} s^{t-m} t^{-k}$.  It follows that $y = \sum_{k \ge 1} \binom{-k-1}{k-1} s^{k-1} t^{-k}$.  On the other hand, we know $y = t^{-1} + sy^2$.  Since squaring is a homomorphism in $\Z/2$, we get
+Let's take another look at the formula $y^m = \sum_{k \ge m} \binom{-k-1}{k-m} s^{t-m} t^{-k}$.  Setting $m=1$ gives \[y = \sum_{k \ge 1} \binom{-k-1}{k-1} s^{k-1} t^{-k}.\]  On the other hand, we know $y = t^{-1} + sy^2$.  Since squaring is a homomorphism in $\Z/2$, we get
 \begin{align*}
 y & = t^{-1} + sy^2 \\
 & = t^{-1} + s(t^{-2} + s^2 y^4) \\
@@ -936,94 +940,104 @@ which tells you that
 
 \section{Using the squares and Thom spaces} % <<<
 
+% somewhere in here we start using / for vector bundles; be consistent with \onto from earlier or \downarrow as suggested
+
 \begin{wrapfigure}{r}{0.3\textwidth}
 \centering\includegraphics[width=0.3\textwidth]{figures/11.pdf}
 \caption{\small Cell diagram of $C(f)$.}
 \end{wrapfigure}
-Now that we've learned some facts about the Squares, we're in a position to apply them to some of the problems that came up earlier.  First, remember from a long time ago that the Hopf invariant $\pi_{2n-1}S^k \to \Z$ obtained by $S^{2n-1} \stackrel{f}{\to} S^n \to C(f)$ gives $x^2 = H(f)y = \Sq^n x$ for $x$ the cell in dimension $n$ and $y$ the cell in dimension $2n$.  If $H(f)$ is odd, then reduction mod 2 leaves $H(f)$ nonzero.  Now if $n \ne 2^i$, then $\Sq^n$ is decomposable in terms of lower squares, which means there had to be cohomology between $n$ and $2n$ somewhere for these lower squares to hit, which is a contradiction.  Therefore, we get
-\begin{thm} (Adem -- he realized as soon as he got the relations that this was a consequence:)
+Now that we've learned some facts about the squares, we're in a position to apply them to some of the problems that came up earlier.  First, recall that the Hopf invariant $H: \pi_{2n-1} S^n \to \Z$ obtained by $S^{2n-1} \stackrel{f}{\to} S^n \to C(f)$ gives $x^2 = H(f) \cdot y \equiv \Sq^n x$ for $x$ representing the cell in dimension $n$ and $y$ the cell in dimension $2n$.  If $H(f)$ is odd, then reduction mod 2 leaves $H(f)$ nonzero.  Now if $n \ne 2^i$, then $\Sq^n$ is decomposable in terms of lower squares, and hence $\Sq^n x = 0$ as there's no cohomology between $x$ and $y$.  Therefore, we get
+\begin{thm}[Adem\footnote{He realized as soon as he got the relations that this was a consequence.}]
 If there is an element of odd Hopf invariant on $S^n$, then $n$ is a power of two.
 \end{thm}
 
 \begin{wrapfigure}{r}{0.3\textwidth}
 \centering\includegraphics[width=0.3\textwidth]{figures/12.pdf}
-\caption{\small Diagram of $C(g)$.}
+\caption{\small Diagram of $C(g)$.} % this figure should be some kind of staircase of suspensions to see what's going on
 \end{wrapfigure}
-Now if $g$ is any map $S^{2n+k-1} \stackrel{g}{\to} S^{n+k} \to C(g)$, then we no longer have a cup-product that gives possibilities for relations, but we still have $\Sq^n$, so we can define $\tilde Hg$ by $\Sq^n x = \tilde H(g) y$.  The fact that $\Sq^n$ commutes with suspensions means
+Now if $g$ is any map $S^{2n+k-1} \stackrel{g}{\to} S^{n+k} \to C(g)$, then we no longer have a nontrivial cup-product, but we still have $\Sq^n$, so we can define a generalized Hopf invariant $\tilde H(g)$ by $\Sq^n x = \tilde H(g) y$, giving $\tilde H: \pi_{2n+k-1}S^{n+k} \to \Z/2$.  The fact that $\Sq^n$ commutes with suspensions means
 \begin{diagram}
 f & & \pi_{2n-1} S^n & \rTo^H & \Z \\
 \dMapsto & & \dTo & & \dTo \\
-\Sigma^k f & & \pi_{2n-Hk} S^{n+k} & \rTo^{\tilde H} & \Z/2
+\Sigma^k f & & \pi_{2n+k-1} S^{n+k} & \rTo^{\tilde H} & \Z/2
 \end{diagram}
-commutes.  $\pi_{2n+1+k} S^{n+k}$ is independent of $k$ for $k \ge 1$; in other words we have turned the unstable question into a related stable one.
+commutes.  $\pi_{2n+k-1} S^{n+k}$ is independent of $k$ for $k \ge 1$; in other words we have turned the unstable question into a related stable one.
 
-Recall next another fact we had, more directly related to the vector field problem: if $S^{n-1}$ has $(k-1)$ vector fields, then $nL$ over $\RP^{k-1}$ is fiber homotopy trivial, and this in turn implies the existence of a ``coreduction''
+Recall next another fact we had, more directly related to the vector field problem: if $S^{n-1}$ has $(k-1)$ everywhere linearly independent vector fields, then $nL \onto \RP^{k-1}$ is fiber homotopy trivial, and this in turn implies the existence of a ``coreduction''
 \begin{diagram}
-T(nL / \RP^{k-1}) & \cong & \Sigma^n \RP^{k-1}_+ & \rTo & S^n \\
+T(nL) & \cong & \Sigma^n \RP^{k-1}_+ & \rTo & S^n \\
 \uTo & & & \ruTo(4,2)_\simeq &  \\
 S^n.
 \end{diagram}
-Now we're in a position to study, using the Squares, when we can split off the $S^n$ from $T(nL / \RP^{k-1})$.  Remember that we found
+Now we're in a position to study, using the squares, the question of when we can split off the $S^n$ from $T(nL)$.  Remember that we found
 \[
-T(nL / \RP^{k-1}) = \RP^{n+k-1}/\RP^{n-1} = \RP^{n+k-1}_n
+T(nL) = \RP^{n+k-1}/\RP^{n-1} = \RP^{n+k-1}_n
 ,\]
-called ``stunted projective space.''  Its mod 2 cohomology is $\tilde H^*(\RP^{n+k-1}_n) = \langle x^n, x^{n+1}, \ldots, x^{n+k-1} \rangle$, where $|x^n| = n$, and it comes in an obvious way from the cohomology of $\RP^{n+k-1}$.  Now the coreduction above implies that the class $x^n$ in $\tilde H^n \RP^{n+k-1}_n$pulls back from the generator of $\tilde H^n S^n$.  Thus $\Sq^{i>0}$ is trivial on $x^n$ since it is on $S^n$.  Now $x \in \tilde H^1 \RP^{n+k-1}$ is a 1-dimensional class, so $\Sq x = x + x^2$, and we have shown that the fiber homotopy triviality of $nL / \RP^{k-1}$ implies
+called ``stunted projective space.''  Its mod 2 cohomology is $\tilde H^*(\RP^{n+k-1}_n) = \langle x^n, x^{n+1}, \ldots, x^{n+k-1} \rangle$, where $|x^i| = i$, and it comes in an obvious way from the cohomology of $\RP^{n+k-1}$.  Now the coreduction above implies that the class $x^n$ in $\tilde H^n \RP^{n+k-1}_n$ pulls back from the generator of $\tilde H^n S^n$.  Thus $\Sq^i$ for $i > 0$ is trivial on $x^n$ since it is on $S^n$.  Now $x \in \tilde H^1 \RP^{n+k-1}$ is a 1-dimensional class, so $\Sq x = x + x^2 = x(1+x)$, and we have shown that the fiber homotopy triviality of $nL \onto \RP^{k-1}$ implies that we've calculated this same square another way:
 \[
-\Sq x^n = x^n(1 + x^n) \cong x^n \pmod{x^{n+k}}
+\Sq x^n = x^n(1 + x)^n = x^n
 ,\]
-or that $(1+x)^n \cong 1 \pmod{x^k}$.  Writen $n = \sum 2^i$, distinct powers of 2.  Then
+which implies that $(1+x)^n \equiv 1 \pmod{x^k}$.  Write $n = \sum_{i \in I} 2^i$, a sum of distinct powers $i \in I$ of 2.  Then, where $\nu$ is the smallest $i$ occuring in $I$,
 \[
-(1+x)^n = \prod_i (1 + x)^{2^i} = \prod (1 + x^{2^i}) = 1 + x^{2^\nu} + \hbox{higher powers}
-,\]
-where $\nu$ is the smallest power of 2 occuring in $n$, and $(1 + x)^n \cong 1 \pmod{x^k}$ implies that $2^\nu \ge k$.  Here's a table of $\nu(n)$, $2^{\nu(n)}$, and $\rho(n)$ for some small $n$:
+(1+x)^n = \prod_{i \in I} (1 + x)^{2^i} = \prod_{i \in I} (1 + x^{2^i}) = 1 + x^{2^\nu} + \hbox{higher powers}
+.\]
+That $(1 + x)^n \equiv 1 \pmod{x^k}$ implies that $2^\nu \ge k$.  Recall that our goal is to show that $\rho(n) - 1$, the number of linearly independent vector fields on $S^{n-1}$ which we constructed using Clifford algebras, is equal to the actual number of linearly independent vector fields on $S^{n-1}$ by bounding it above.  Here's a table of $\nu(n)$, $2^{\nu(n)}$, and $\rho(n)$ for some small $\nu(n)$:
 \[
 \begin{array}{c|cccccc}
 \nu(n) & 0 & 1 & 2 & 3 & 4 & 5 \\
 \hline
 2^{\nu(n)} & 1 & 2 & 4 & 8 & 16 & 32 \\
 \hline
-\rho & 1 & 2 & 4 & 8 & 9 & 10.
+\rho(n) & 1 & 2 & 4 & 8 & 9 & 10.
 \end{array}
 \]
 For $\nu(n) \le 3$, then, we have obtained an exact answer.  But asymptotically, we're doing pretty badly.
 
 There's another approach to this sort of calculation with Thom spaces and squares.  Remember that for an $S^{n-1}$-bundle $E$, we had
 \begin{diagram}
-S^{n-1} & \rTo & E & \subset & C_B E \\
+S^{n-1} & \rTo & E & \subset & C_B E & \lTo & D^n \\
 & & & \rdTo(1, 1) \ldTo(1, 1) B \\
 \end{diagram}
-and $T(E) = C_B E / E$.  So $\tilde H^* T(E) = H^*(C_B E, E)$.  Now we can use the relative Serre Spectral Sequence to get a spectral sequence
+and $T(E) = C_B E / E$.  So $\tilde H^* T(E) = H^*(C_B E, E)$.  Now we can use the relative Serre spectral sequence to get a spectral sequence
 \[
 H^*(B, \{H^*(D^n, S^{n-1})\}) \Rightarrow \tilde H^* T(E)
 .\]
-But this spectral sequence has $E_2$ non-zero only at the $n$-level, so we get $H^*(B, \{H^n(D^n, S^{n-1})\}) \cong \tilde H^* T(E)$.  Now, in general, $B$ is not simply connected, so we need twisted coefficients.  But if we have that the system of local coefficients is trivial, then this isomorphism is the Thom isomorphism.  An orientation of $E$ is then just that: a choice of trivialization of this local coefficient system.  Now working over $\Z/2$ coefficients, this coefficient system is already canonically trivial, so the concern about orientation doesn't mean anything, and we get $H^*(B; \Z/2) \cong \tilde H^{*+n} T(E)$ anyway.  For example, in the case of $nL / \RP^{k-1}$ we see trivially that the isomorphism comes from multiplication by $x^n$.  This comes out in general from the multiplicative structure of the spectral sequence; namely, $H^0 B \ni 1 \leftrightarrow U \in \tilde H^n T(E)$, called the ``Thom class.''  So $\tilde H^* T(E) = H^*(C_B E, E)$ is a module over $H^* B$ in the sense that
+But this spectral sequence has $E_2$ non-zero only at the $n$-level, so we get $H^*(B, \{H^n(D^n, S^{n-1})\}) \cong \tilde H^* T(E)$.  In general $B$ is not simply connected, so we need twisted coefficients.  But if we have that the system of local coefficients is trivial, then this isomorphism is the Thom isomorphism.  An orientation of $E$ is then just that: a choice of trivialization of this local coefficient system.  Now working over $\Z/2$ coefficients, this coefficient system is already canonically trivial, so the concern about orientation doesn't mean anything, and we get $H^*(B; \Z/2) \cong \tilde H^{*+n} T(E)$ anyway.  For example, in the case of $nL \onto \RP^{k-1}$ we see trivially that the isomorphism comes from multiplication by $x^n$.  This comes out in general from the multiplicative structure of the spectral sequence; namely, $H^0 B \ni 1 \leftrightarrow u \in \tilde H^n T(E)$, called the ``Thom class.''  So $\tilde H^* T(E) = H^*(C_B E, E)$ is a module over $H^* B$ in the sense that we can define a composite $\smile$ by
 \begin{diagram}
 H^* B \otimes H^*(C_B E, E) & \rTo^{p^* \otimes 1} & H^*(C_B E) \otimes H^*(C_B E, E) \\
-& \rdTo_\cup & \dTo>u \\
+& \rdDashto_\smile & \dTo>{\smile} \\
 & & H^*(C_B E, E),
 \end{diagram}
-where the cup map is always called the cup product, i.e., sort of ignoring the pulling back part, since $C_B E$ is a disk bundle.  The Thom isomorphism says that cup-product by the Thom class $u$ is an isomorphism $\cup u: H^* B \cong \tilde H^* T(E)$.  This enables us to talk about $\tilde H^* TE$ without much reference to $TE$ expect the Thom class.  So given a class $y \in \tilde H^* T(E)$, we write it as $x \cup u$, $x \in H^* B$.  Then $\Sq y = \Sq x \cup \Sq u$ by the Cartan formula, so all we need to know is $\Sq u$.  Again, in terms of $H^* B$, we write $\Sq^k u = w_k \cup u$, where $w_k \in H^k B$.  $w_k = w_k(E)$ is called the ``$k$th Stiefel-Whitney class of $E$.''
+where the cup map is always called the cup product, i.e., sort of ignoring the pulling back part, since $C_B E$ is a disk bundle.  The Thom isomorphism says that cup-product by the Thom class $u$ is an isomorphism $\smile u: H^* B \cong \tilde H^* T(E)$.  This enables us to talk about $\tilde H^* TE$ without much reference to $TE$ beyond the Thom class.  So given a class $y \in \tilde H^* T(E)$, we write it as $xu = x \smile u$, $x \in H^* B$.  Then $\Sq y = (\Sq x)(\Sq u)$ by the Cartan formula, so all we need to know is $\Sq u$.  Again using the Thom isomorphism, we write $\Sq^k u = w_k u$, where $w_k \in H^k B$.  $w_k = w_k(E)$ is called the ``$k$th Stiefel-Whitney class of $E$,'' and we write $w = \sum_{k \ge 0} w_k$.
 
 These facts are immediate consequences:
 \begin{itemize}
 \item $w_k$ depends only on the fiber homotopy type of the sphere bundle.
-\item $\Sq^0 U = U$, so $w_0 = 1$.
+\item $\Sq^0 u = u$, so $w_0 = 1$.
 \item $w_k = 0$ for $k > n$.
-\item Whitney sum formula: (Whitney says this is the hardest theorem he ever proved, but he had the wrong definition of Stiefel-Whitney classes.)  Let $E' / B'$ be an $S^{n-1}$-bundle and $E'' / B''$ be a $S^{q-1}$-bundle; we build their product as $E' \hat\ast E'' = E / B' \times B'' = B$, an $S^{p+q-1}$-bundle.  Now, $T(E) = T(E') \sprod T(E'')$, and the Thom classes match up because the fibers do, that is, $u = u' \sprod u''$.  Thus, $\Sq u = \Sq(u' \sprod u'') = \Sq u' \sprod \Sq u''$; in addition, the second expression models $w(E) \cup u$ and the third expression models $w(E') \sprod w(E'') \cup u' \sprod u''$.  Therefore, $w(E) = w(E') \sprod w(E'')$ by the Cartan formula.  Finally, $w(n\varepsilon) = 1$, so $w(E \oplus n\varepsilon) = w(E)$ (now thinking of vector bundles).
+\item Whitney sum formula: (Whitney says this is the hardest theorem he ever proved, but he had the wrong definition of Stiefel-Whitney classes.)  Let $E' / B'$ be an $S^{n-1}$-bundle and $E'' / B''$ be a $S^{q-1}$-bundle; we build the fiberwise join $E' \hat\ast E'' = E / B' \times B'' = B$, an $S^{p+q-1}$-bundle.  Now, $T(E) = T(E') \sprod T(E'')$, and the Thom classes match up because the fibers do, % this doesn't make sense without characterizing the Thom class as the thing tha trestricts to the generator on each fiber
+that is, $u = u' \sprod u''$.  Thus, $\Sq u = \Sq(u' \sprod u'') = \Sq u' \sprod \Sq u''$; in addition, the first expression models $w(E) \smile u$ and the third expression models $w(E') \sprod w(E'') \smile u' \sprod u''$.  Therefore, $w(E) = w(E') \sprod w(E'')$.
+\item Stability: One calculates $w(n\varepsilon) = 1$, so $w(V \oplus n\varepsilon) = w(V)$ (making a notational identification of $V$ with $S(V)$).
 \end{itemize}
 
-Now the Thom class of $nL / \RP^{k-1}$, as we saw, is $x^n$.  So $w(L) = 1 + x$, and $w(nL) = (1+x)^n$.  So $nL / \RP^{k-1}$ is fiber homotopy trivial only if $(1+x)^n \cong 1 \pmod{x^k}$, which is the same result we obtained before.  Now the program is to improve the results by pursuing a similar set of results in $KO$-theory.
+Now the Thom class of $nL \onto \RP^{k-1}$, as we saw, is $x^n$.  So $w(L) = 1 + x$, and $w(nL) = (1+x)^n$.  So $nL \onto \RP^{k-1}$ is fiber homotopy trivial only if $(1+x)^n \equiv 1 \pmod{x^k}$, which is the same result we obtained before.  Now the program is to improve the results by pursuing a similar set of results in $KO$-theory.
 
 % >>>
 
 \section{Structure on $K$-theory} % <<<
 
-This isn't a course about $K$-theory, it's a course that uses $K$-theory.  So were not going to see proofs of lots of basic theorems of $K$-theory; in particular I'm not going to prove the periodicity theorem.  However, we will need some facts which we'll review today.
+This isn't a course about $K$-theory, it's a course that uses $K$-theory.  So we're not going to see proofs of lots of basic theorems of $K$-theory; in particular I'm not going to prove the periodicity theorem.  However, we will need some facts which we'll review now.
 
-Recall that we defined the group $\widetilde{KO}(X)$ by doing the same constructions using complex vector bundles, we get $\tilde K(X)$.  Let's see what $\tilde K S^2$ is.  $S^2$ splits into contractible hemispheres $D_\pm$ over which any vector bundle is trivial, $D_\pm \times \C^n$.  The construction of a vector bundle on $S^2$ amounts to choosing over each point on the equator $S^1$ a linear isomorphism $\C^n \to \C^n$ in a continuous manner, i.e., a map $S^1 \to GL_n(\C)$.  So, $\mathrm{Vect}_{n,\C}(S^2) \cong \pi_1 GL_n(\C)$.  This way of constructing vector bundles is called the ``clutching construction.''  Now the map $\det: GL_n(\C) \to \C^\times$ is an isomorphism on $\pi_1$, so $\pi_1 GL_n(\C) = \Z$, and $\tilde K S^2 = \Z$.  For $n = 1$, the generator of $\pi_1 GL_n(\C)$ can be represented by the embedding of $S^1 \into \C^\times$, and from this (with enough thought) it can be seen that the generator of $\tilde K S^2$ is $(\bundle{L} - 1)$, where $\bundle{L}$ is the tautological (complex) line bundle over $\CP^1 = S^2$ and $1$ represents the trivial line bundle.
+Recall that we previously defined the group $\widetilde{KO}(X)$, and by doing the same constructions using complex vector bundles we get $\tilde K(X)$.  Let's see what $\tilde K S^2$ is.  $S^2$ splits into contractible hemispheres $D_\pm$ over which any vector bundle is trivial, $D_\pm \times \C^n$.  The construction of a vector bundle on $S^2$ therefore amounts to choosing over each point on the equator $S^1$ a linear isomorphism $\C^n \to \C^n$ in a continuous manner, i.e., a map $S^1 \to GL_n(\C)$.  So, $\mathrm{Vect}_{n,\C}(S^2) \cong \pi_1 GL_n(\C)$.  This way of constructing vector bundles is called the ``clutching construction.''  There are compatible deformation retractions
+\begin{diagram}
+\cdots & \rInto & GL_n(\C) & \rInto & GL_{n+1}(\C) & \rInto & \cdots \\
+& & \dTo>r & & \dTo>r \\
+\cdots & \rInto & U(n) & \rInto & U(n+1) & \rInto & \cdots,
+\end{diagram}
+and hence we may assume all our maps are into $U(n)$ instead.\footnote{This amounts to saying that every complex vector bundle admits a Hermitian inner product.}  Each inclusion occurs as the fiber of a bundle $U(n+1) \to S^{2n+1}$, and hence we calculate using the long exact sequence of homotopy groups that $\pi_1 U(n) \cong \pi_1 U(n+1)$ induced by these inclusions for $n \ge 1$ --- and, futhermore, $\pi_1 U(1) \cong \pi_1 S^1 = \Z$, and so we have $\tilde K(S^2) \cong \Z$.  The generator of $\pi_1 U(1)$ can be represented by the identity, which as a clutching function represents $\bundle{L} \onto \CP^1 \simeq S^2$, the tautological (complex) line bundle.  Hence, a generator of $\tilde K S^2$ is $\bundle L - 1$, since all elements of $\tilde K X$ have virtual dimension zero.  Similarly, since all the unitary groups are connected, $\tilde K(S^1) = 0$.
 
 \begin{rem}
-$\widetilde{KO} S^8 = \Z$ (and in fact is generated by the tautological Cayley $\mathbb{H}$-line bundle, considered as a 4-dimensional real bundle over $\mathbb{H}P^2 \simeq S^8$.)  (What happens if we use octonions?)
+In the real case, we have $\widetilde{KO}(S^8) = \Z$ and in fact is generated by the tautological Cayley $\mathbb{H}$-line bundle, considered as a 4-dimensional real bundle over $\mathbb{H}P^2 \simeq S^8$. (What happens if we use octonions?) % is this last bit right?  and what about the octonions?
 \end{rem}
 
 \begin{thm}(Bott periodicity)
@@ -1033,45 +1047,57 @@ $\widetilde{KO} S^8 = \Z$ (and in fact is generated by the tautological Cayley $
 \end{align*}
 \end{thm}
 
-A word on this tensor product: an element of $\tilde K X$ is a ``virtual vector bundle'' $V - m$, where $m$ is the trivial bundle of dimension $m - \dim V$.  So if $V - m \in \tilde KX$ and $W - n \in \tilde KS^2$, then we defined earlier their exterior tensor product over $X \times S^2$: $(V - m)\hat\otimes(W - n) = V \hat\otimes W - m \hat\otimes W - V \hat\otimes n + m \hat\otimes n$.  Consider now what this bundle looks like over $X \vee S^2$: on $X \times \ptspace$, $W$ is trivial, so we get $V \hat\otimes n - m \hat\otimes n - V \hat\otimes n + m \hat\otimes n = 0$; on $\ptspace \times S^2$ we see that $V$ is trivial, so we get $m \hat\otimes W - m \hat\otimes W - m \hat\otimes n + m \hat\otimes n = 0$.  The ``$= 0$'' here means that in fact $-V$ is represented by some bundle $ + V^\perp$ such that $V \oplus V^\perp$ is trivial, so $V \hat\otimes n - V \hat\otimes n = V \hat\otimes n + V^\perp \hat\otimes n = (V + V^\perp)\otimes n$ - trivial.  In other words, the bundle $(V - m) \hat\otimes (W - n)$ is trivial over $X \wsum S^2$, and so pulls back from a vector bundle over $X \sprod S^2$.
+A word on this tensor product: an element of $\tilde K X$ is a ``virtual vector bundle'' $V - m$, where $m$ is the trivial bundle of dimension $m = \dim V$.  So if $V - m \in \tilde KX$ and $W - n \in \tilde KS^2$, then we defined earlier their exterior tensor product over $X \times S^2$: $(V - m)\hat\otimes(W - n) = V \hat\otimes W - m \hat\otimes W - V \hat\otimes n + m \hat\otimes n$.  Consider now what this bundle looks like over $X \vee S^2 \subseteq X \times S^2$: on $X \times \ptspace$, $W$ is trivial, so we get $V \hat\otimes n - m \hat\otimes n - V \hat\otimes n + m \hat\otimes n = 0$; on $\ptspace \times S^2$ we see that $V$ is trivial, so we get $m \hat\otimes W - m \hat\otimes W - m \hat\otimes n + m \hat\otimes n = 0$.  Hence, the bundle $(V - m) \hat\otimes (W - n)$ is trivial over $X \wsum S^2$, and so pulls back from a vector bundle over $X \sprod S^2$.  This at least exhibits the map above.
 
-This fact means that we have a cohomology theory, which in turn means that we can compute (where ``compute'' here unfortunately means only that we have spectral sequences).  So next let's see how the periodicity theorem can be used to make $KO$, $K$ the $0$th groups of a generalized cohomology theory.  In fact, the first thing we see is that $\widetilde{KO}$ is representable; recall that $\widetilde{KO} X = [X, BO \times \Z]_+$ (we'll start writing $B$ for $BO \times \Z$).  One thing we want is long exact sequences.  Now its a general fact that for a map of pointed spaces $f: A \to X$ if we take the mapping cone $A \stackrel{f}{\to} X \to X \cup_f CA = C(f)$, then the sequence
+Next let's see how the periodicity theorem can be used to make $KO$ and $K$ the $0$th groups of periodic generalized cohomology theories with periods $8$ and $2$ respectively.  In fact, the first thing we see is that $\widetilde{KO}$ is representable; recall that $\widetilde{KO} X$ is given by pointed homotopy classes of maps $X \to BO \times \Z$, denoted $[X, BO \times \Z]$ (we'll start writing $B$ for $BO \times \Z$).  Cued by the suspension isomorphism from singular cohomology, for $n \ge 0$ we define
+\begin{align*}
+\widetilde{KO}^{-n} X & = \widetilde{KO}(\Suspend^n X), \\
+\widetilde{KO}^n(X) & = \widetilde{KO}(\Suspend^{8k-n}X) \hbox{\:for any $k$ with $8k > n$}, \\
+KO^*(X) &= \widetilde{KO}^* X_+, \\
+KO^*(X, A) & = \widetilde{KO}^*(X \cup CA).
+\end{align*}
+
+For this to be considered a cohomology theory we need some long exact sequences.  Now its a general fact that for a map of pointed spaces $f: A \to X$ if we take the mapping cone $A \stackrel{f}{\to} X \to X \cup_f CA = C(f)$, then the sequence
 \[
-[A, B]_+ \from [X, B]_+ \from [X \cup CA, B]_+
+[A, B] \from [X, B] \from [X \cup CA, B]
 \]
 is exact.  Moreover, when $B$ is an $H$-space then the induced homomorphisms of groups are exact.  Now we can continue; that is, take the mapping cone of $X \to X \cup_f CA$:
 \[
 A \stackrel{f}{\to} X \stackrel{i}{\to} X \cup_f CA \to (X \cup_f CA) \cup_i CX \to \cdots
 \]
 
-\begin{wrapfigure}{r}{0.4\textwidth}
-\centering\includegraphics[width=0.3\textwidth]{figures/13.pdf}
-\caption{\small The going-around quotient.}
-\end{wrapfigure}
+%\begin{wrapfigure}{r}{0.4\textwidth}
+%\centering\includegraphics[width=0.3\textwidth]{figures/13.pdf}
+%\caption{\small The going-around quotient.}
+%\end{wrapfigure}
 Now, if $f$ is nice enough, $X \cup CA$ will be homotopic to $X / A$.  Certainly $(X \cup CA) \cup CX \simeq \frac{X \cup CA}{X}$, so the sequence becomes
 \[
 A \to X \to X \cup CA \to \Suspend A \to \Suspend X \to \cdots
 ,\]
-and moreover the map $\Suspend A \to \Suspend X$ can in fact by given by $\Sigma f$ up to homotopy.  This sequence is called the ``Barratt-Puppe'' sequence.  We can then apply a Hom-functor to get a long exact sequence
+and moreover the map $\Suspend A \to \Suspend X$ can in fact by given by $\Sigma f$ up to homotopy.  This sequence is called the ``Barratt-Puppe'' sequence.  We can then apply the Hom-functor $[-, B]$ to get a long exact sequence\footnote{Applying $[-, Z]$ will gives a long exact sequence of pointed sets for any $X$.  Since our $Z = B$ is an $H$-group, this gives a long exact sequence of groups.}
 \[
-[A, B]_+ \from [X, B]_+ \from [X \cup CA, B]_+ \stackrel{\delta}{\from} [\Suspend A, B]_+ \from [\Suspend X, B]_+ \from \cdots
+[A, B] \from [X, B] \from [X \cup CA, B] \stackrel{\delta}{\from} [\Suspend A, B] \from [\Suspend X, B] \from \cdots
+.\]
+Identifying groups as above, we produce a long exact sequence
+\[
+\widetilde{KO}^0 (A) \from \widetilde{KO}^0(X) \from KO^0(X, A) \from \widetilde{KO}^{-1}(A) \from \widetilde{KO}^{-1}(X) \from \cdots
 ,\]
-and if $[A, B]_+$ is $\tilde K^0(A)$ then $[\Suspend A, B]_+$ should be $\tilde K^{-1} A$.  So we get all these facts about a generalized cohomology theory for free as soon as we know it's representable.  But by the periodicity theorem we know that 
-\begin{align*}
-\widetilde{KO}^0(A)& \cong \widetilde{KO}^0(S^8 \sprod A) = \widetilde{KO}^0(\Suspend^8 A) = \widetilde{KO}^{-8}(A), \\
-\tilde K^0 A & \cong \tilde K^0 \Suspend^2 A = \tilde K^{-2} A.
-\end{align*}
-So we define $\widetilde{KO}^{-n} X = \widetilde{KO}(\Suspend^n X)$, $\widetilde{KO}^n(X) = \widetilde{KO}(\Suspend^{8k-n}X)$ for $8k > n$, and $KO^*(X) = \widetilde{KO}^* X_+$, and similarly for $\tilde K^n X$.
+and via periodicity we have the full long exact sequence
+\[
+\cdots \from KO^1(X, A) \from \widetilde{KO}^0 (A) \from \widetilde{KO}^0(X) \from KO^0(X, A) \from \widetilde{KO}^{-1}(A) \from \widetilde{KO}^{-1}(X) \from \cdots
+.\]
+This justifies our choice of definition of $\widetilde{KO}^*$ above.  This whole setup works similarly for complex $K$-theory.
 
-Now it's an important fact aboutt $\tilde K^* X$ that it's a commutative ring: $\tilde K S^2 = \Z$ with generator $(\bundle{L} - 1)$, and $\tilde K^{-2} \ptspace \ni x$, called the ``periodicity element,'' so $K^* \pt = \Z[x^{\pm 1}]$, the Laurent series ring, where $x$ has degree $-2$.  Similarly, there is a ring structure for $\widetilde{KO}^*$:
+Now it's an important fact about $\tilde K^* X$ that it's a commutative ring: we calculated $\tilde K^0 S^1 = 0$ and $\tilde K^0 S^2 = \Z$ with generator $(\bundle{L} - 1)$, which gives a generator $x \in \tilde K^{-2} S^0 = K^{-2} \ptspace$, called the ``periodicity element.''  So $K^* = K^* \ptspace = \Z[x^{\pm 1}]$, the Laurent series ring, where $|x| = -2$.  Similarly, there is a ring structure for $KO^*$:
 \[
 \begin{array}{c|ccccccccc}
 n & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 \hline
-\widetilde{KO}^{-n} \ptspace & \Z & \Z/2 & \Z/2 & 0 & \Z & 0 & 0 & 0 & \Z \\
-\mathrm{generator} & 1 & \eta & \eta^2 & & q & & & & p.
+KO^{-n} \ptspace & \Z & \Z/2 & \Z/2 & 0 & \Z & 0 & 0 & 0 & \Z \\
+\mathrm{generator} & 1 & \eta & \eta^2 & & q & & & & p,
 \end{array}
 \]
+with relations $2\eta = 0$, $\eta^3 = 0$, $\eta q = 0$, $q^2 = 4p$ and $p$ is the periodicity element (so, for example, $KO^{-10}(\ptspace) = \langle p\eta^2 \rangle \cong \Z/2$).
 
 Unfortunately, we shall need more than just the ring structure; we'll see operations.  Now one way to get operations in $K$-theory is to look for operations on vector spaces, apply these fiber-wise to get operations on vector bundles, and then squeeze out operations on $K$-theory.  The most useful of these is $V \to \Lambda^k(V)$, the $k$th exterior power.  By means of this method we get a $k$th exterior power bundle $\Lambda^k E / B$.  Unfortunately extending to $K$-theory is hard because $\Lambda^k$ is not additive.  But there is a natural isomorphism $\Lambda^k(V \oplus W) = \bigoplus_{i+j = k} \Lambda^i V \otimes \Lambda^j W$.  This (which looks like a Cartan formula) inspires the definition $\Lambda_t(V) = \sum_{i \ge 0} t^i \Lambda^i(V)$.  Now $\Lambda_t(V \oplus W) = \Lambda_t(V) \cdot \Lambda_t(W)$.  So the operation still isn't additive, but it's exponential -- it takes sums to produces.  That's good enough, as it turns out.  So $\Lambda_t$ is a homomorphism of abelian groups $\Lambda_t: \mathrm{Vect}(X) \to 1 + KO(X)\llbracket t \rrbracket^\times$.  But by definition of $KO(X)$, there is a group homomorphism $\lambda_t: KO(X) \to 1 + KO(X) \llbracket t \rrbracket^\times$ such that the map $\Lambda_t$ factors as
 \begin{diagram}
