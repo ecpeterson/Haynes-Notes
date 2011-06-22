@@ -230,7 +230,7 @@ For the time being, take a step back and recall the action $O(n) \times S^{n-1} 
 
 \section{Clifford algebras} % <<<
 
-In this lecture we will see how many vector fields on spheres we can construct using linear algebra; we will use Clifford algebras.  For more information, see for example the book by Stong~\cite{Stong}.
+In this lecture we will see how many vector fields on spheres we can construct using linear algebra; we will use Clifford algebras.  For more information, see for example the book by Strang~\cite{Strang}.
 
 For $k \ge 0$, the Clifford algebra $C_k$ is a free associative algebra over $\R$ with generators $e_1, \ldots, e_k$, subject to the relations
 \begin{align*}
@@ -1099,9 +1099,9 @@ KO^{-n} \ptspace & \Z & \Z/2 & \Z/2 & 0 & \Z & 0 & 0 & 0 & \Z \\
 \]
 with relations $2\eta = 0$, $\eta^3 = 0$, $\eta q = 0$, $q^2 = 4p$ and $p$ is the periodicity element (so, for example, $KO^{-10}(\ptspace) = \langle p\eta^2 \rangle \cong \Z/2$).
 
-Unfortunately, we shall need more than just the ring structure; we'll see operations.  Now one way to get operations in $K$-theory is to look for operations on vector spaces, apply these fiber-wise to get operations on vector bundles, and then squeeze out operations on $K$-theory.  The most useful of these is $V \to \Lambda^k(V)$, the $k$th exterior power.  By means of this method we get a $k$th exterior power bundle $\Lambda^k E / B$.  Unfortunately extending to $K$-theory is hard because $\Lambda^k$ is not additive.  But there is a natural isomorphism $\Lambda^k(V \oplus W) = \bigoplus_{i+j = k} \Lambda^i V \otimes \Lambda^j W$.  This (which looks like a Cartan formula) inspires the definition $\Lambda_t(V) = \sum_{i \ge 0} t^i \Lambda^i(V)$.  Now $\Lambda_t(V \oplus W) = \Lambda_t(V) \cdot \Lambda_t(W)$.  So the operation still isn't additive, but it's exponential -- it takes sums to produces.  That's good enough, as it turns out.  So $\Lambda_t$ is a homomorphism of abelian groups $\Lambda_t: \mathrm{Vect}(X) \to 1 + KO(X)\llbracket t \rrbracket^\times$.  But by definition of $KO(X)$, there is a group homomorphism $\lambda_t: KO(X) \to 1 + KO(X) \llbracket t \rrbracket^\times$ such that the map $\Lambda_t$ factors as
+Unfortunately, we shall need more than just the ring structure; we'll need operations.  One way to get operations in $K$-theory is to look for operations on vector spaces, apply these fiber-wise to get operations on vector bundles, and then squeeze out operations on $K$-theory.  The most useful of these is $V \mapsto \Lambda^k(V)$, the $k$th exterior power.  By means of this method we get a $k$th exterior power bundle $\Lambda^k E / B$.  Unfortunately extending to $K$-theory is hard because $\Lambda^k$ is not additive.  But there is a natural isomorphism $\Lambda^k(V \oplus W) = \bigoplus_{i+j = k} \Lambda^i V \otimes \Lambda^j W$.  This (which looks like a Cartan formula) inspires the definition $\Lambda_t(V) = \sum_{i \ge 0} t^i \Lambda^i(V)$.  Now $\Lambda_t(V \oplus W) = \Lambda_t(V) \cdot \Lambda_t(W)$.  So the operation still isn't additive, but it's exponential -- it takes sums to products.  That's good enough, as it turns out.  So $\Lambda_t$ induces a homomorphism of abelian groups $\Lambda_t: \mathrm{Vect}(X) \to 1 + KO(X)\llbracket t \rrbracket^\times$.  But by definition of $KO(X)$, there is a group homomorphism $\lambda_t: KO(X) \to KO(X) \llbracket t \rrbracket^\times$ such that the map $\Lambda_t$ factors as
 \begin{diagram}
-\mathrm{Vect}(X) & \rTo^{\Lambda_t} & 1 + KO(X) \llbracket t \rrbracket^\times \\
+\mathrm{Vect}(X) & \rTo^{\Lambda_t} & KO(X) \llbracket t \rrbracket^\times \\
 \dTo & \ruTo_{\lambda_t} \\
 KO(X),
 \end{diagram}
@@ -1111,23 +1111,23 @@ i.e., for $[E], [F] \in KO(X)$,
 ,\]
 like total Steenrod operations.  Of course if $E$ is a vector bundle, then $\lambda^j(E) = \Lambda^j(E) = 0$ for $j > \dim E$ (where $\lambda^j$ is defined, of course, by $\lambda_t(E) = 1 + \sum_{k \ge 1} t^k \lambda^k(E)$.)
 
-The $\lambda$ operations are all very well, but they are hard to work with because they depend on the ring structure of $KO(X)$.  We really want an additive operation, so one thing to try is to take a logarithm, in search of a family of operations $\psi^k$ such that on line bundles, $\psi^k(L) = L^{\otimes k}$.  Once again, we start with a generating function $\psi_t(x) = \sum_{k \ge 1} \psi^k(x) t^k$, then our conditions on $\psi^k$ mean:
+The $\lambda$ operations are all very well, but they are hard to work with because they depend on the ring structure of $KO(X)$.  We really want an additive ``power operation,'' so one thing to try is to take a logarithm in search of a family of operations $\psi^k$ such that on line bundles we get $\psi^k(L) = L^{\otimes k}$.  Once again, we start with a generating function $\psi_t(x) = \sum_{k \ge 1} \psi^k(x) t^k$, then our conditions on $\psi^k$ become:
 \begin{align*}
 \psi_t(x + y) & = \psi_t x + \psi_t y, \\
-\psi_t(L) = \sum_{k \ge 1} L^k t^k = \frac{Lt}{1 - Lt}.
+\psi_t(L) & = \sum_{k \ge 1} L^k t^k = \frac{Lt}{1 - Lt}.
 \end{align*}
-The first obvious candidate is by $\lambda_t$, but unfortunately this has denominators, and we don't know what $1/n$ means in $KO(X)$.  So the next possibility is $\frac{d}{dt} \log \lambda_t(x) = \frac{\frac{d}{dt} \lambda_t(x)}{\lambda_t(x)}$, and $\lambda_t(x)^{-1}$ is well-defined in $1 + KO(x) \llbracket t \rrbracket^\times$, and so we have the first property.  Now for $L$ a line bundle,
+The first obvious candidate is \[\log \lambda_t(x) = \sum_{i=0}^\infty (-1)^i \frac{(\lambda_t(x) - 1)^i}{i} = (\lambda_t(x) - 1) - \frac{(\lambda_t(x) - 1)^2}{2} + \frac{(\lambda_t(x) - 1)^3}{3} - \cdots,\] but unfortunately this has denominators,\footnote{Check the $t^2$ coefficient!} and we don't know what $1/n$ means in $KO(X)$.  Our next guess is $\frac{d}{dt} \log \lambda_t(x) = \frac{\frac{d}{dt} \lambda_t(x)}{\lambda_t(x)}$ (and $\lambda_t(x)^{-1}$ exists), and so we have additivity, the first property.  Now for $L$ a line bundle,
 \[
 \frac{d}{dt} \log (1 + tL) = \frac{L}{1 + tL}
 .\]
-Fix with $-t$ to get $\frac{d}{dt} \log(1 - tL) = \frac{-L}{1 - tL}$.  Finally, multiply by $-t$ to get $\frac{tL}{1 + tL}$.  So the coefficient of $t^k$ in $\frac{-t \frac{d}{dt} \lambda_{-t}(E)}{\lambda_{-t}(E)}$ is the $k$th ``Adams operation,'' $\psi^k$.
+Replace $t$ with $-t$ to get $\frac{d}{dt} \log(1 - tL) = \frac{-L}{1 - tL}$.  And, to normalize, multiply by $-t$ to get $\frac{tL}{1 - tL} = \sum_{k \ge 1}^\infty t^k L^k$.  We define the $k$th ``Adams operation'' applied to $E$, $\psi^k(E)$, to be the coefficient of $t^k$ in \[\frac{-t \frac{d}{dt} \lambda_{-t}(E)}{\lambda_{-t}(E)}.\]
 
-To finish today, the theorem is:
+Now, we seek to prove the following properties and show that they characterize the Adams operations:
 \begin{thm}
-There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that \ldots
+There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that:
 \begin{itemize}
-\item $\psi^k$ is a ring homomorphism for each $k$.
-\item $\psi^k \psi^l = \psi^{kl}$.
+\item $\psi^k$ is a ring homomorphism for each $k$,
+\item $\psi^k \psi^l = \psi^{kl}$, and
 \item $\psi^k(L) = L^{\otimes k}$.
 \end{itemize}
 \end{thm}
@@ -1136,28 +1136,24 @@ There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that \ldots
 
 \section{Building $K$-theory operations from representation theory} % <<<
 
-Last time we discussed the ring $KO^* = KO^* \ptspace$ and said it was
+Previously, we discussed the ring $KO^* = KO^* \ptspace$ and said it was
 \[
 KO^* = \Z[\eta, q, p^{\pm 1}], |\eta| = -1, |q| = -4, |p| = -8
 ,\]
-along with the relations $2 \eta = 0$, $\eta q = 0$, $\eta^3 = 0$, and $q^2 = 4p$.  Furthermore we defined operations $\psi^k$ on $KO(X)$ which are ring homomorphism and satisfy
-\[
-\psi^k \psi^l = \psi^{kl}, \psi^k L = L^{\otimes k}
-\]
-for line bundles $L$.  In order to get a better handle on these, we are going to need some character theory, so today will be a few words on representation theory.
+along with the relations $2 \eta = 0$, $\eta q = 0$, $\eta^3 = 0$, and $q^2 = 4p$.  Furthermore we defined operations $\psi^k$ on $KO(X)$ which are ring homomorphisms and satisfy $\psi^k \psi^l = \psi^{kl}$ and, for line bundles $L$, $\psi^k L = L^{\otimes k}$.  In order to get a better handle on these, we need some character theory, which belongs to the broader field of representation theory.
 
-Let $G$ be a compact Lie group (e.g., $G = U(n)$, the group of $(n \times n)$ unitary matrices); then a representation of $G$ is a finite-dimenaionsl complex vector space $V$ together with a linear action of $G$; two representations $V$ and $V'$ are isomorphic if and only if there is a $G$-equivariant linear isomorphism $\alpha: V \stackrel{\cong}{\to} V'$.
+Let $G$ be a compact Lie group (e.g., $G$ a unitary group).  A representation of $G$ is defined to be a finite-dimensional complex vector space $V$ together with a linear action of $G$.  Two representations $V$ and $V'$ are isomorphic if and only if there is a $G$-equivariant linear isomorphism $\alpha: V \stackrel{\cong}{\to} V'$.
 
-Choose a Hermitian inner product on $V$.  By averaging, we can make a $G$-invariant inner product $\langle - , - \rangle: \langle gx, gy \rangle = \langle x, y \rangle$, so $g$ is unitary.  Picking an orthonormal basis gives $g$ as a unitary matrix, and the representation becomes a map $\rho: G \to U(n)$, where $\rho$ is a continuous homomorphism.  With these data, an isomorphism of representations looks like a matrix $M$ on these bases such that $\rho'(g) = M \rho(g) M^{-1}$ for all $g \in G$.
+Choose any Hermitian inner product on $V$.  By averaging over the Lie group\footnote{Averaging makes sense because $G$ is compact.}, we can make a $G$-invariant inner product $\langle - , - \rangle: \langle gx, gy \rangle = \langle x, y \rangle$, so $g$ is unitary.  Picking an orthonormal basis gives $g$ as a unitary matrix, and the representation becomes a map $\rho: G \to U(n)$, where $\rho$ is a continuous homomorphism.  With these data, an isomorphism of representations looks like a matrix $M$ in terms of these bases such that $\rho'(g) = M \rho(g) M^{-1}$ for all $g \in G$.
 
-Okay, once we have matrices it makes sense to talk about the trace; define $\tr(\rho g) = \chi_V(g)$, called the ``character of $V$,'' which is a function $\chi_V: G \to \C$.  $\chi_V$ is called a ``class function'' because it is constant on conjugacy classes in $G$.  In particular if two representations $V$ and $V'$ are isomorphic, then $\chi_V = \chi_{V'}$.
+Once we have matrices it makes sense to talk about the trace; define $\chi_V(g) = \tr(\rho(g))$.  This gives a function $\chi_V: G \to \C$, called the ``character of $V$.''  We call $\chi_V$ a ``class function'' because it is constant on conjugacy classes\footnote{The trace is invariant under cyclic permutations.} in $G$.  In particular if two representations $V$ and $V'$ are isomorphic, then $\chi_V = \chi_{V'}$.
 
-$\chi$ is by far the easiest way to understand representations, and in fact it tells all: define $\mathrm{Rep}_n(G) = \Hom(G, U(n)) / \mathrm{conjugacy}$.  Then $\mathrm{Rep}(G) = \coprod_n \mathrm{Rep}_n G$ is a monoid, so applying the Grothendieck construction we get $R(G)$, called the ``representation ring'' of $G$.  The map $V \to \chi_V$ induces a map $\chi: R(G) \to \{\hbox{class functions $G \to \C$}\}$.
+Characters are by far the easiest way to understand representations, and in fact they tell all: define $\mathrm{Rep}_n(G) = \Hom(G, U(n)) / \sim$.  Then $\mathrm{Rep}(G) = \coprod_n \mathrm{Rep}_n G$ is a semiring with addition given by $\oplus$ and multiplication by $\otimes$ with the diagonal extension of the $G$-action, so applying the Grothendieck construction we get $R(G)$, called the ``representation ring'' of $G$.  The map $V \to \chi_V$ induces a map $\chi: R(G) \to \{\hbox{class functions $G \to \C$}\}$.
 
 \begin{rem}
-$\chi(V \oplus W) = \chi_V + \chi_W$, and $\chi_{V \otimes W} = \chi_V \chi_W$.
+$\chi_{V \oplus W} = \chi_V + \chi_W$, and $\chi_{V \otimes W} = \chi_V \chi_W$.
 \end{rem}
-The second fact is true because $\tr(A \otimes B) = \tr A \tr B$ for matrices $A$ and $B$, i.e., for $A \in U(m)$ and $B \in U(n)$, identify $U(m)$ with $\Aut \C^m$ and $U(n)$ with $\Aut \C^n$, then $A \otimes B \in \Aut (\C^m \otimes_\C \C^n)$.  Now any unitary matrix has a diagonalization (this is the deepest fact of this lecture!) and if $\{x_1, \ldots, x_m\}$ and $\{y_1, \ldots, y_n\}$ are bases of eigenvectors for $A$ and $B$, then $\{x_i \otimes y_j\}$ is a basis of eigenvectors for $A \otimes B$, and the eigenvalue for $x_i \otimes y_j$ is the product of the eigenvalues for $x_i$ in $A$ and $y_j$ in $B$.
+The second fact is true because $\tr(A \otimes B) = \tr A \tr B$ for matrices $A$ and $B$.\footnote{If $A \in U(m) \cong \operatorname{Isom} \C^m$ and $B \in U(n) \cong \operatorname{Isom} \C^n$, then $A \otimes B \in U(mn) \cong \operatorname{Isom} (\C^m \otimes_\C \C^n)$.}  Indeed, any unitary matrix has a diagonalization (this is the deepest fact of this section!)\ and if $\{x_1, \ldots, x_m\}$ and $\{y_1, \ldots, y_n\}$ are bases of eigenvectors for $A$ and $B$, then $\{x_i \otimes y_j\}$ is a basis of eigenvectors for $A \otimes B$, and the eigenvalue for $x_i \otimes y_j$ is the product of the eigenvalues for $x_i$ in $A$ and $y_j$ in $B$.
 
 \begin{rem}
 $\chi$ is injective, and in fact $R(G) \otimes_\Z \C \stackrel{\cong}{\to} \{\hbox{class functions}\}$.
