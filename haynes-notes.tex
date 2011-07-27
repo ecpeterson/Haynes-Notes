@@ -3,36 +3,66 @@
 %% <<< header
 
 \documentclass{article}
-\newcommand{\OutputFrontMatter}{}
-\newcommand{\OutputForeword}{}
-\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{}
-\newcommand{\OutputCliffordAlgebras}{}
+\newcommand{\OutputEVERYTHING}{}
+%\newcommand{\OutputFrontMatter}{}
+%\newcommand{\OutputForeword}{}
+%\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{}
+%\newcommand{\OutputCliffordAlgebras}{}
 \newcommand{\OutputBuildingThomSpaces}{}
-\newcommand{\OutputFactsAboutThomSpaces}{}
-\newcommand{\OutputBuildingKandJtheory}{}
-\newcommand{\OutputGeometryAndTheSteenrodSquares}{}
-\newcommand{\OutputPropertiesOfTheSquares}{}
-\newcommand{\OutputDerivingTheUsualAdemRelations}{}
-\newcommand{\OutputUsingTheSquaresAndThomSpaces}{}
-\newcommand{\OutputStructureOnKtheory}{}
-\newcommand{\OutputBuildingKtheoryOperatorsFromRepresentationTheory}{}
-\newcommand{\OutputBuildingTheAdamsPowerOperations}{}
-\newcommand{\OutputProofOfHopfInvariantOne}{}
-\newcommand{\OutputTheJamesConstruction}{}
-\newcommand{\OutputTheMapsEandHinTheEHPLES}{}
-\newcommand{\OutputWhiteheadProductsAndTheEHPSS}{}
-\newcommand{\OutputTheStableCategory}{}
-\newcommand{\OutputHomotopicalAlgebraAndDuality}{}
-\newcommand{\OutputDualities}{}
-\newcommand{\OutputTheStructureOfStuntedProjectiveSpace}{}
-\newcommand{\OutputMatchingTheEHPSStoAtiyahHirzebruck}{}
-\newcommand{\OutputTheSpaceOfLittleCubes}{}
-\newcommand{\OutputTheBeckerGottliebTransfer}{}
-\newcommand{\OutputTheAdamsConjecture}{}
-\newcommand{\OutputSomeSummandsOfTheStableHomotopyGroupsOfSpheres}{}
-\newcommand{\OutputTheBibliography}{}
+%\newcommand{\OutputFactsAboutThomSpaces}{}
+%\newcommand{\OutputBuildingKandJtheory}{}
+%\newcommand{\OutputGeometryAndTheSteenrodSquares}{}
+%\newcommand{\OutputPropertiesOfTheSquares}{}
+%\newcommand{\OutputDerivingTheUsualAdemRelations}{}
+%\newcommand{\OutputUsingTheSquaresAndThomSpaces}{}
+%\newcommand{\OutputStructureOnKtheory}{}
+%\newcommand{\OutputBuildingKtheoryOperatorsFromRepresentationTheory}{}
+%\newcommand{\OutputBuildingTheAdamsPowerOperations}{}
+%\newcommand{\OutputProofOfHopfInvariantOne}{}
+%\newcommand{\OutputTheJamesConstruction}{}
+%\newcommand{\OutputTheMapsEandHinTheEHPLES}{}
+%\newcommand{\OutputWhiteheadProductsAndTheEHPSS}{}
+%\newcommand{\OutputTheStableCategory}{}
+%\newcommand{\OutputHomotopicalAlgebraAndDuality}{}
+%\newcommand{\OutputDualities}{}
+%\newcommand{\OutputTheStructureOfStuntedProjectiveSpace}{}
+%\newcommand{\OutputMatchingTheEHPSStoAtiyahHirzebruck}{}
+%\newcommand{\OutputTheSpaceOfLittleCubes}{}
+%\newcommand{\OutputTheBeckerGottliebTransfer}{}
+%\newcommand{\OutputTheAdamsConjecture}{}
+%\newcommand{\OutputSomeSummandsOfTheStableHomotopyGroupsOfSpheres}{}
+%\newcommand{\OutputTheBibliography}{}
 
-
+\ifx\OutputEVERYTHING\undefined\else
+\providecommand{\OutputFrontMatter}{}
+\providecommand{\OutputForeword}{}
+\providecommand{\OutputIntroductionToVectorFieldsOnSpheres}{}
+\providecommand{\OutputCliffordAlgebras}{}
+\providecommand{\OutputBuildingThomSpaces}{}
+\providecommand{\OutputFactsAboutThomSpaces}{}
+\providecommand{\OutputBuildingKandJtheory}{}
+\providecommand{\OutputGeometryAndTheSteenrodSquares}{}
+\providecommand{\OutputPropertiesOfTheSquares}{}
+\providecommand{\OutputDerivingTheUsualAdemRelations}{}
+\providecommand{\OutputUsingTheSquaresAndThomSpaces}{}
+\providecommand{\OutputStructureOnKtheory}{}
+\providecommand{\OutputBuildingKtheoryOperatorsFromRepresentationTheory}{}
+\providecommand{\OutputBuildingTheAdamsPowerOperations}{}
+\providecommand{\OutputProofOfHopfInvariantOne}{}
+\providecommand{\OutputTheJamesConstruction}{}
+\providecommand{\OutputTheMapsEandHinTheEHPLES}{}
+\providecommand{\OutputWhiteheadProductsAndTheEHPSS}{}
+\providecommand{\OutputTheStableCategory}{}
+\providecommand{\OutputHomotopicalAlgebraAndDuality}{}
+\providecommand{\OutputDualities}{}
+\providecommand{\OutputTheStructureOfStuntedProjectiveSpace}{}
+\providecommand{\OutputMatchingTheEHPSStoAtiyahHirzebruck}{}
+\providecommand{\OutputTheSpaceOfLittleCubes}{}
+\providecommand{\OutputTheBeckerGottliebTransfer}{}
+\providecommand{\OutputTheAdamsConjecture}{}
+\providecommand{\OutputSomeSummandsOfTheStableHomotopyGroupsOfSpheres}{}
+\providecommand{\OutputTheBibliography}{}
+\fi
 
 \usepackage{fullpage}
 %\setlength{\textheight}{43pc}
@@ -171,15 +201,15 @@ Suppose that $n$ is even, so $n = 2k$ for some $k$.  Then $S^{n-1}$ can be thoug
 \centering\includegraphics[width=0.2\textwidth]{figures/fig2.pdf}
 \caption{\small An orthonormal $2$-frame at $x$.}
 \end{wrapfigure}
-Now the next question is how many linearly independent vector fields there are on $S^{n-1}$.  Using Gram-Schmidt we can reduce to the case that any set of linearly independent vector fields on the sphere form an orthonormal set at each point.  This is interesting in its own right; what we shall see in the long run is that it is equivalent to some important problems in homotopy theory.  For the time being, the way we will think of this is in terms of
+Now the next question is how many linearly independent vector fields there are on $S^{n-1}$.  Using Gram-Schmidt we can reduce to the case that any set of linearly independent vector fields on the sphere form an orthonormal set at each point.  This is interesting in its own right; we shall see in the long run that this question is equivalent to some important problems in homotopy theory.  For the time being, the way we will think of this is in terms of
 \begin{align*}
 V_{n, k} & = \{\hbox{orthonormal $k$-frames in $\R^n$}\} \subset (S^{n-1})^k, \\
-v_i: & S^{n-1} \to V_{n, k}, \hbox{a vector field}, \\ % the _i shouldn't be here, and this should be a frame field, not a vetor field
-\pi: & V_{n, k} \to S^{n-1}, \hbox{the first projection}.
+\pi: &\,\, V_{n, k} \to S^{n-1}, \hbox{the first projection}, \\
+v: &\,\, S^{n-1} \to V_{n, k}\hbox{ a section of $\pi$, i.e.\ a vector field}.
 \end{align*}
-You can check that this is locally trivial and thus gives a fiber bundle, and $v$ is in these terms a section of this bundle.  So now the question has become: what is the largest $k$ for which this bundle has a section?
+You can check that $\pi$ locally trivial and thus gives a fiber bundle, and $v$ is in these terms a section of this bundle.  So now the question has become: what is the largest $k$ for which this bundle has a section?
 
-\begin{thm}(Hurwitz, Radon, Eckmann; Adams)
+\begin{thm}[Hurwitz, Radon, Eckmann; Adams]
 Write $n$ as $n = k \cdot 2^\nu$ for $k$ odd, and $\nu$ as $\nu = 4b + c$, $0 \le c \le 3$, and set $\rho(n) = 8b + 2^c$.  Then there exist $\rho(n) - 1$ independent vector fields on $S^{n-1}$ (Hurwitz-Radon-Eckmann) and no more (Adams).
 \end{thm}
 The first curious fact here is that $\rho$ depends only on the even part of $n$.
@@ -195,17 +225,17 @@ There are two steps to proving this:
 \item Show there are no more, which is much harder, and was the first major victory for $K$-theory.
 \end{enumerate}
 Before going on, now a corollary which in fact was known before this theorem was proved:
-\begin{cor}(Kervaire, c.1956)
+\begin{cor}[Kervaire, c.1956]
 A sphere is said to be parallelizable when there is a basis for the tangent space, i.e., $\rho(n) = n$.  This occurs exactly when $n = 1$, $2$, $4$, or $8$, so the only spheres which have trivial tangent bundles are $S^0$, $S^1$, $S^3$, and $S^7$.
 \end{cor}
 
-A closely related problem is the so-called ``Hopf invariant 1 problem.''  Suppose $S^{n-1}$ is parallelizable, or equivalently that there is a section of $O(n) = V_{n, n} \to S^{n-1}$, called $v$.  Now a point in any ``Stiefel manifold'' $V_{n, k}$ can be written as a $(n \times k)$-matrix whose columns are orthogonal and have norm $1$.  Now $O(n)$ acts on $\R^n$ and induces an action on $S^{n-1}$.  Combining this with the section $v$ gives % don't start sentences with Now twice
+A closely related problem is the so-called ``Hopf invariant 1 problem.''  Suppose $S^{n-1}$ is parallelizable, or equivalently that there is a section of $O(n) = V_{n, n} \to S^{n-1}$, called $v$.  Now a point in any ``Stiefel manifold'' $V_{n, k}$ can be written as a $(n \times k)$-matrix whose columns are orthogonal and have norm $1$.  The group $O(n)$ acts on $\R^n$ and this action induces an action on $S^{n-1}$.  Combining this with the section $v$ gives 
 \begin{diagram}
 O(n) \times S^{n-1} & \rTo & S^{n-1} \\
 \uTo & \ruTo \\
 S^{n-1} \times S^{n-1},
 \end{diagram}
-given by the maps
+and when the second coordinate is $e_1$, as $v$ is a section, we have
 \begin{diagram}
 (v(x), e_1) & \rMapsto & x \\
 \uMapsto & \ruMapsto \\
@@ -216,20 +246,24 @@ Now $v(e_1) = I$, so we find that a parallelizable $(n-1)$-sphere has a multipli
 \[
 \begin{array}{cccc}
 S^0 & S^1 & S^3 & S^7 \\
-\Z/2 & \C & \hbox{quaternions} & \hbox{``Cayley numbers''}.
+\R & \C & \hbox{quaternions} & \hbox{``Cayley numbers''}.
 \end{array}\]
-In view of the results above, a natural question is: When $S^{n-1}$ can be given the structure of an $H$-space?
+In view of the results above, a natural question is: When can $S^{n-1}$ be given the structure of an $H$-space?
 
 \begin{wrapfigure}{r}{0.3\textwidth}
 \centering\includegraphics[width=0.2\textwidth]{figures/fig3.pdf}
 \caption{\small Diagram of the cone on $X$.}
 \end{wrapfigure}
-To attack this problem, it is helpful first to think about the map $\mu$ in ridiculous generality, sort of like thinking about a bilinear form as a tensor product.  Namely, consider a map $\mu: X \times Y \to Z$, and consider the cone over $X$ which is defined to be the quotient $X \times I /\{(x, 0) \sim (x', 0)\}$.  The map $\mu$ then induces a map $CX \times Y \to CZ$ by $((x, t), y) \mapsto (\mu(x, y), t)$, and similarly a map $X \times CY \to CZ$.  $X \times Y$ includes into both $CX \times Y$ and $X \times CY$ as $((x, 1), y)$ and $(x, (y, 1))$ respectively, and $Z$ includes into $CZ$ as $(z, 1)$.  Putting these together, we get a diagram
+To attack this problem, it is helpful first to think about the map $\mu$ in ridiculous generality, sort of like thinking about a bilinear form in terms of a tensor product.  Namely, consider a map $\mu: X \times Y \to Z$, and consider the cone over $X$ which is defined to be the quotient $X \times I /\{(x, 0) \sim (x', 0)\}$.  The map $\mu$ then induces a map $CX \times Y \to CZ$ by $((x, t), y) \mapsto (\mu(x, y), t)$, and similarly a map $X \times CY \to CZ$.  $X \times Y$ includes into both $CX \times Y$ and $X \times CY$ as $((x, 1), y)$ and $(x, (y, 1))$ respectively, and $Z$ includes into $CZ$ as $(z, 1)$.  Putting these together, we get a diagram
 \begin{figure}[h!]
 \centering\includegraphics[width=0.35\textwidth]{figures/fig4.pdf} % this guy is missing some arrows
 \end{figure}
 
-The commutativity means that we can take the disjoint union of $CX \times Y$ and $X \times CY$ and identify along the copy of $X \times Y$ in each, then take two copies of $CZ$ and identify along their bases, and get a conglomerate map $H(\mu): X \ast Y \to \Suspend Z$, where $\ast$ denotes join and $\Suspend$ denotes suspension.  This process is called the ``Hopf construction'' for $\mu$, hence the name $H(\mu)$.
+The commutativity means that we can take the disjoint union of $CX \times Y$ and $X \times CY$ and identify along the copy of $X \times Y$ in each, then take two copies of $CZ$ and identify along their bases, and get a conglomerate map $H(\mu): X \ast Y \to \Suspend Z$, where $\ast$ denotes join and $\Suspend$ denotes suspension.
+That is, the diagram above constitutes a map between two diagrams of shape $\bullet\leftarrow\bullet\rightarrow\bullet$, which induces a map $H(\mu)$ between their colimits (pushouts).
+This process is called the ``Hopf construction'' for $\mu$, hence the name $H(\mu)$. 
+
+
 
 We note two facts about the join: first, $S^{p-1} \ast S^{q-1} = S^{p + q - 1}$, which follows from the more general statement that $X \ast Y = \Suspend(X \sprod Y)$ for reasonable $X$ and $Y$, e.g., CW-complexes.  In the case of an $H$-space, $H(\mu)$ can be written as a map $X \ast X \to \Suspend X$, and if $X = S^{n-1}$, this is a map $S^{2n-1} \to S^n$, i.e., a homotopy class of a the $n$-sphere, something to be prized and studied. % use \pi_n notation here
 
@@ -246,7 +280,7 @@ H^*(S^n \cup_{H(\mu)} e^{2n}) =
 \Z & \hbox{generated by $1$ in degree $0$.}
 \end{cases}
 \]
-Using the cup product, $x^2 = \alpha y$ for some $\alpha \in \Z$, where for now $\alpha$ is well-defined only up to sign.  This coefficient $\alpha$ is called the Hopf invariant of $\mu$.  We make the unsubstantiated claim that $\alpha = \pm 1$ for $H(\mu)$, i.e., for any multiplication on the $(n-1)$-sphere.  As examples, we have
+Using the cup product, $x^2 = \alpha y$ for some $\alpha \in \Z$, where for now $\alpha$ is well-defined only up to sign.  This coefficient $\alpha$ is called the Hopf invariant of $\mu$.  We make the unsubstantiated claim that $\alpha = \pm 1$ for $H(\mu)$ whenver $\mu$ is an $H$-space multiplication on the $(n-1)$-sphere.  As examples, we have
 \begin{diagram}
 S^3 & \rTo & S^2 & \rTo & S^2 \cup e^4 = \CP^2, \\
 S^7 & \rTo & S^4 & \rTo & S^4 \cup e^8 = \mathbb{H}P^2, \\
@@ -255,7 +289,7 @@ S^{15} & \rTo & S^8 & \rTo & S^8 \cup e^{16} = \mathbb{O}P^2,
 where the last is called the ``Cayley projective plane.''  (Note that nonassociativity of Cayley multiplication implies that there are no other Cayley projective spaces.) % what does this mean?  no higher OP^n, right?  not that there's anything after O...?
 
 So now the question is: for what spheres is there an element of $\pi_{2n-1} S^n$ of Hopf invariant $1$?
-\begin{thm}(Adams) % hopf invariant was only defined for n > 1 :)
+\begin{thm}[Adams] % hopf invariant was only defined for n > 1 :)
 If $\pi_{2n-1} S^n$ contains an element of Hopf invariant $1$, then $n = 1$, $2$, $4$, or $8$.
 \end{thm}
 For the time being, take a step back and recall the action $O(n) \times S^{n-1} \to S^{n-1}$.  Any $\alpha \in \pi_k O(n)$ (not necessarily from a section) induces a map $S^k \times S^{n-1} \to O(n) \times S^{n-1} \to S^{n-1}$.  Doing the Hopf construction here induces a map $S^{k+n} \to S^n$, i.e., we get what turns out to be a homomorphism $J: \pi_k O(n) \to \pi_{n+k} S^n$ called the ``$J$-homomorphism.''  For $k < n$, $\pi_k O(n)$ are known by Bott periodicity, hence there is much interest in the image of $J$.  Note that for $k < n$, $n + k > 2k$, and this is the so-called ``stable range'' where things often seem to work better; one then thinks of $J$ as a map $\pi_* O \to \pi_*^S$.  The Adams conjectures are concerned with the image of this $J$. % should stablility really be mentioned here?
@@ -267,7 +301,7 @@ For the time being, take a step back and recall the action $O(n) \times S^{n-1} 
 
 In this lecture we will see how many vector fields on spheres we can construct using linear algebra; we will use Clifford algebras.  For more information, see for example the book by Strang~\cite{Strang}.
 
-For $k \ge 0$, the Clifford algebra $C_k$ is a free associative algebra over $\R$ with generators $e_1, \ldots, e_k$, subject to the relations
+For $k \ge 0$, the Clifford algebra $C_k$ is the associative $\R$-algebra generated by $e_1, \ldots, e_k$, subject to relations
 \begin{align*}
 e_i e_j + e_j e_i & = 0 \hbox{\;for $i \ne j$}, \\
 e_i^2 & = -1.
@@ -275,34 +309,38 @@ e_i^2 & = -1.
 For example,
 \begin{align*}
 C_0 & = \R, \\
-C_1 & \cong \C, \hbox{note: you can identify $e_1$ with $i$ or $-i$, so the iso. is not canonical} \\
-C_2 & \cong \mathbb{H}, \hbox{with, say, $e_1 \mapsto i$, $e_2 \mapsto j$, $e_1 e_2 \mapsto k$}
+C_1 & \cong \C, \hbox{ note: you can identify $e_1$ with $i$ or $-i$, so the iso.\ is not canonical} \\
+C_2 & \cong \mathbb{H}, \hbox{ with, say, $e_1 \mapsto i$, $e_2 \mapsto j$, $e_1 e_2 \mapsto k$}
 \end{align*}
-Note that the relations specify that we can give a basis for $C_k$ as the set of words $\{e_{i_1} \cdots e_{i_m} \mid m \ge 0, i_1 < \cdots < i_m\}$ made up of ordered nonrepeating sequences of $e_i$s.  So $\dim C_k = 2^k$.  Note also that the collection $G_k = \{ \pm e_{i_1} \cdots e_{i_m} \mid m \ge 0, i_1 < \cdots < i_m\}$ is a multiplicative subgroup of $C_k$.  Also, $C_k$ comes equipped with an antiautomorphism $C_k \to C_k$, defined on generators by $\bar e_i = -e_i$, and extended to $C_k$ as an antiautomorphism.  It is an anti-involution in the sense that $\overline{xy} = \bar y \bar x$.
+Note that the relations specify that we can give a basis for $C_k$ as the set of words $\{e_{i_1} \cdots e_{i_m} \mid m \ge 0, i_1 < \cdots < i_m\}$ made up of ordered nonrepeating sequences of the generators.  So $\dim C_k = 2^k$.  Note also that the collection $G_k = \{ \pm e_{i_1} \cdots e_{i_m} \mid m \ge 0, i_1 < \cdots < i_m\}$ is a multiplicative subgroup of $C_k$.  Also, $C_k$ comes equipped with an antiautomorphism $C_k \to C_k$, defined on generators by $\bar e_i = -e_i$, and extended to $C_k$ as an antiautomorphism.  It is an anti-involution in the sense that $\overline{xy} = \bar y \bar x$.
 
-Before describing the $C_k$ further, let's look at how they can be used to construct vector fields on spheres.  One gets there by finding representations of $C_k$. Suppose $V$ is an $n$-dimensional vector space with a $C_k$-module structure, i.e., a map $C_k \otimes_\R V \to V$.  $V$ is then a representation of $C_k$.  Next choose any inner product on $V$.  By averaging over the action of $G_k$ we can construct a $G_k$-invariant inner product $(-, -)$.  Let $S(V)$ denote the unit sphere of $V$, and note that points of $S(V)$ are invariant under action by the $e_i$.  We claim
+Before describing the $C_k$ further, let's look at how they can be used to construct vector fields on spheres.  One gets there by finding representations of $C_k$. Suppose $V$ is an $n$-dimensional vector space with a $C_k$-module structure $C_k \otimes_\R V \to V$.  $V$ is then a representation of $C_k$.  Next choose any inner product on $V$.  By averaging over the action of $G_k$ we can construct a $G_k$-invariant inner product $(-, -)$.  Let $S(V)$ denote the unit sphere of $V$, and note that points of $S(V)$ are invariant under action by the $e_i$.  We claim
 \begin{thm}
 For $x \in S(V)$, $\{e_1 x, \ldots, e_k x\}$ defines an orthonormal $k$-frame on $S(V) \cong S^{n-1}$.
 \end{thm}
 \begin{proof}
 First, $(x, e_i x) = (e_i x, e_i e_i x) = -(e_i x, x) = -(x, e_i x)$, so $(x, e_i x) = 0$ and $e_i x$ is tangent to $S(V)$ at $x$.  Second, if $i \ne j$, we have $(e_i x, e_j x) = (e_i e_j e_i x, e_i e_j e_j x) = (-e_i^2 e_j x, e_i e_j^2 x) = (e_j x, (-e_i x)) = -(e_i x, e_j x)$.  So $(e_i x, e_j x) = 0$, and $e_i x$ and $e_j x$ are orthogonal.
 \end{proof}
+In particular, one way to find an orthonormal $k$-frame on $S^{n-1}$ is to find an $n$-dimensional $C_k$-module. To find as may orthonormal vector fields as possible of $S^{n-1}$ we should find the largest $k$ such that $C_k$ admits an $n$-dimensional module.
+Thus we will search for low-dimensional representations of $C_k$.
 
-Now we try to find representations of $C_k$.  What are they?  To start with, here's a table:
-\[\begin{array}{cccc|cc} % this table might go better after the calculations.  most the definition of phi over to the right as a log of a_k.  use less ridiculous notation for matrix rings.  why are these the minimum dimensions of the representations??
-& & a_k & \phi_k = \log_2 a_k \\
-C_0^+ & \R & 1 & 0 & C_0^- & \R \\
-C_1^+ & \C & 2 & 1 & C_1^- & \R^2 \\
-C_2^+ & \mathbb{H} & 4 & 2 & C_2^- & \R(2) \\
-C_3^+ & \mathbb{H}^2 & 4 & 2 & C_3^- & \C(2) \\
-C_4^+ & \mathbb{H}(2) & 8 & 3 & C_4^- & \mathbb{H}(2) \\
-C_5^+ & \C(4) & 8 & 3 & C_5^- & \mathbb{H}(2)^2 \\
-C_6^+ & \R(8) & 8 & 3 & C_6^- & \mathbb{H}(4) \\
-C_7^+ & \R(8)^2 & 8 & 3 & C_7^- & \C(8) \\
-C_8^+ & \R(16) & 16 & 4 & C_8^- & \R(16).
+From now on, write $C^+_k$ for $C_k$. As we identify more of the algebras $C^+_k$, we build up the following table. The column $C^+_k$ identifies the isomorphism type of $C^+_k$ in terms of better known $\R$-algebras. Here, if $A$ is an $\R$-algebra, $A(r)$ is used as a shorthand for the algebra of $r\times r$ matrices with entries in $A$. For each $k$, we write $a_k$ for the minimal dimension of a nonzero $C^+_k$-module (see lemma \ref{MinRepsOfAlgs}). Note that $\mathbb{H}^2$ acts on $\mathbb{H}\cong\R^4$ via $(a,b)c=ac\overline{b}$, and similarly, $\R(8)^2$ acts on $\R^8$ via $(M,N)v=MvN^\textup{tr}$. The last column will be identified later.
+%Michael: Should say here `of a minimal C_k-module, as shown in lemma \ref{}....' or something
+\[\begin{array}{c|ccccc} % this table might go better after the calculations.  most the definition of phi over to the right as a log of a_k.  use less ridiculous notation for matrix rings.  why are these the minimum dimensions of the representations??
+k& C^+_k& a_k & \varphi_k = \log_2 a_k &C^-_k \\\hline
+0 & \R & 1 & 0 & \R \\
+1 & \C & 2 & 1 & \R^2 \\
+2 & \mathbb{H} & 4 & 2 & \R(2) \\
+3 & \mathbb{H}^2 & 4 & 2 & \C(2) \\
+4 & \mathbb{H}(2) & 8 & 3 & \mathbb{H}(2) \\
+5 & \C(4) & 8 & 3 & \mathbb{H}(2)^2 \\
+6 & \R(8) & 8 & 3 & \mathbb{H}(4) \\
+7 & \R(8)^2 & 8 & 3 & \C(8) \\
+8 & \R(16) & 16 & 4 & \R(16).
 \end{array}\] % the multiplication in the product of two algebras is component-wise -- wouldn't hurt to mention this
-How did we build this?  To begin with, a Clifford algebra is associated with a bilinear form, and we'll start by changing the form.  So let $C_k^-$ be the free associative algebra over $\R$ on the generators, with relations as above, % just write out these relations, there aren't many
-but with $e_i^2 = 1$.  For the same reasons as $C_k$ (which from now on we call $C_k^+$), $C_k^-$ is $2^k$-dimensional.  So what are the $C_k^-$?  $C_1^-$ has $1$ generator, whose square is $1$.  So $C_1^- \cong \R^2$, with $e_1 \mapsto (1, -1)$ (or $(-1, 1)$).  $C_2^- \cong \R(2)$ is the algebra of $(2 \times 2)$-matrices over $\R$.  The isomorphism is very noncanonical; try sending % awk
+To identify the algebras $C_k^+$ it is useful to introduce a Clifford algebra associated to a different bilinear form. Let $C_k^-$ be the associative $\R$-algebra generated by $e_1, \ldots, e_k$, subject to relations $e_ie_j+e_je_i=0$ (for $i\neq j)$ and $e_i^2=1$. For the same reasons as $C_k$ (which from now on we call $C_k^+$), $C_k^-$ is $2^k$-dimensional.
+
+  So what are the $C_k^-$?  $C_1^-$ has $1$ generator, whose square is $1$.  So $C_1^- \cong \R^2$, with $e_1 \mapsto (1, -1)$ (or $(-1, 1)$).  $C_2^- \cong \R(2)$ is the algebra of $(2 \times 2)$-matrices over $\R$.  The isomorphism is very noncanonical; try sending % awk
 $e_1$ to reflection through $L_1$ and $e_2$ to reflection through $L_2$, where $L_1$ and $L_2$ are any lines separated by $45$ degrees.  Thus, $e_1e_2$ and $e_2e_1$ correspond to rotation by $90$ degrees, one clockwise and the other counterclockwise, depending upon the relative orientation of the lines.  This could get very tiring very quickly; fortunately that's as far as we need to go.  From now on, we use
 \begin{lem}
 For $k \ge 2$, $C_k^\pm \cong C_2^\pm \otimes C_{k-2}^\mp$.
@@ -320,7 +358,7 @@ e_1e_2 \otimes e_{i-2} &: i > 2
 works.  (As an exercise, complete this proof.)
 \end{proof}
 
-The remaining $C_k^\pm$ in the table can be computed in succession using this lemma, sort of like ``tying up the laces on a skate;'' to do this one uses the following isomorphisms:
+The remaining $C_k^\pm$ in the table can be computed in succession using this lemma, sort of like ``tying up the laces on a skate''; to do this one uses the following isomorphisms:
 \begin{align*}
 (\R \times \R) \otimes A & \cong A \times A \\
 \R(n) \otimes A & \cong A(n) \\
@@ -339,7 +377,7 @@ C_k^+ & \cong C_2^+ \otimes C_{k-2}^- \\
 (Similarly, $C_k^- \cong C_{k-8}^-(16)$.)
 
 The third column, $a_k$, corresponds to the minimal representation of the Clifford algebra $C_k^+$.  We can quickly determine this column using the following lemma:
-\begin{lem}
+\begin{lem}\label{MinRepsOfAlgs}
 We compute the following dimensions of minimal representations of algebras:
 \begin{enumerate}
 \item When $A$ is a skew field, $A$ acting on itself is a minimal representation, so the minimal dimension is $1$.
@@ -347,14 +385,16 @@ We compute the following dimensions of minimal representations of algebras:
 \item When $A$ and $B$ are two algebras, then the dimension of a minimal representation for $A \otimes B$ is the minimum of the dimensions for minimal representations of $A$ and $B$ individually.
 \end{enumerate}
 \end{lem}
+%Michael: Does this cover k=3,7
 \begin{proof} These are easy exercises in commutative algebra. \end{proof}
-The fourth column is $\phi_k = \log_2 a_k$, where $a_k$ is the dimension of the minimal representation.  From $C_k^+ \cong C_{k-8}^+(16)$ we get that $a_{k+8} = 16 a_k$, or $\phi(k + 8) = \phi(k) + 4$. % be consistent about whether phi should be a subscript or a function
+The fourth column is $\varphi_k = \log_2 a_k$, where $a_k$ is the dimension of the minimal representation.  From $C_k^+ \cong C_{k-8}^+(16)$ we get that $a_{k+8} = 16 a_k$, or $\varphi_{k + 8} = \varphi_k + 4$.
+% be consistent about whether phi should be a subscript or a function
 
-Finally, we can apply this to vector fields on spheres.  There are $k$ linearly independent vector fields on $S^{a_k - 1}$; by taking $c$ copies of the vector space and using the diagonal action, there are $k$ linearly independent vector fields on $S^{ca_k - 1}$.  Now fix the dimension $n-1$ of the sphere and maximize $k$; i.e., for $S^{n-1}$, maximize $\{k : a_k \mid n\} = \{ k : \phi(k) \le \nu(n)\}$ (where $\nu(n)$ is the function from before).  The first few cases are:
+Finally, we can apply this to vector fields on spheres.  There are $k$ linearly independent vector fields on $S^{a_k - 1}$; by taking $c$ copies of the vector space and using the diagonal action, there are $k$ linearly independent vector fields on $S^{ca_k - 1}$.  Now fix the dimension $n-1$ of the sphere and maximize $k$; i.e., for $S^{n-1}$, maximize $\{k\,:\,a_k | n\} = \{ k\,:\, \varphi_k \le \nu(n)\}$ (where $\nu(n)$ is the function from before).  The first few cases are:
 \[\begin{array}{c|ccccccc}
 \nu(n) & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
 \hline
-k_{max} & 0 & 1 & 3 & 7 & 8 & 9 & 11.
+k_{max} & 0 & 1 & 3 & 7 & 8 & 9 & 11
 \end{array}\]
 and this is exactly $\rho(n) - 1$ from before.  So we have succeeded in constructing $\rho(n) - 1$ linearly independent vector fields on the $(n-1)$-sphere.  It turns out that this is the best we can do using linear algebra --- in fact this really is the best we can do with any tools.
 
@@ -385,7 +425,7 @@ One point worth mentioning here is that $\hat s$ could have been defined as a ma
 The fact that $\hat s$ induces the identity over $\pm e_1$ means that $\hat s$ induces a homotopy equivalence on each fiber.  Explicitly, for any open and connected $U \subseteq \RP^{k-1}$ such that $nL|_U$ is trivial and such that $\hat s_b$ is a homotopy equivalence for some $b \in U$, it follows that $\hat s$ induces a map $U \to \Hom(S^{n-1}, S^{n-1})$.  As $U$ is connected, it lands entirely in one path-connected component of $\Hom(S^{n-1}, S^{n-1})$, and hence the map on fibers is a homotopy equivalence.
 
 We have two bundles $E$ and $E'$ over a base $B$ and a bundle map $f: E \to E'$ which induces a homotopy equivalence on each fiber.  What we really want is a map $g$ going back so that $fg$ and $gf$ are homotopic through bundle maps to the respective identity maps;  $f$ is then called a ``fiber homotopy equivalence.''  Fortunately there is a very nice theorem due to Dold:
-\begin{lem}(Dold)
+\begin{lem}[Dold]
 Suppose $E$ and $E'$ are fibrations over $B$ with a bundle map $f$ inducing a homotopy equivlanence on each fiber.  If $E$ and $E'$ have the homotopy type of CW complexes and $B$ is connected, then $f$ has a fiber homotopy inverse.
 \end{lem}
 \begin{proof}
@@ -537,7 +577,7 @@ The colimit $\bigcup_n BO(n)$ is called $BO$, and $\widetilde{KO}(X) = [X, BO]$.
 Now let's talk about $J$-theory.  If $V$ and $W$ are vector bundles over $X$, then we write $V \sim_J W$ if $S(V \oplus n \epsilon) \simeq S(W \oplus n \epsilon)$; i.e., the idea is analogous to $K$ on the level of sphere bundles.  This defines an additive equivalence relation on $KO(X)$, and $J(X)$ is defined to be the quotient subgroup of $KO(X)$ given by this relation, and $\tilde J(X)$ the image of $\widetilde{KO}(X)$. % there should be an equation attached to this last sentence
 Now from the Clifford algebra story we know that over $\RP^k$ the tautological line bundle $L$ has $a_k L \cong a_k \epsilon$. % this a_k was defined in day 2, remind the reader
 Considering the class $[L] - 1 \in \widetilde{KO}(\RP^k)$, this means $a_k([L] - 1) = 0$. % say early on that we're going to identify n eps with n.
-\begin{thm}(Adams)
+\begin{thm}[Adams]
 $\widetilde{KO}(\RP^k) \stackrel{\cong}{\onto} \tilde J(\RP^k)$ is an isomorphism.
 \end{thm}
 In other words, there are no other trivializations, and so % remind the reader that we were talking about coreductions earlier
@@ -545,7 +585,7 @@ In other words, there are no other trivializations, and so % remind the reader t
 If $S(nL) \to \RP^k$ is fiber homotopy trivial, then $a_k$ divides $n$, so there are at most $\rho(n) - 1$ vector fields on $S^{n-1}$. % this should have a proof attached, reminding the reader of the chain of implications
 \end{cor}
 One of the things we get out of this theorem is that $\widetilde{KO}(\RP^k)$ is finite; this follows from the following theorem: % really i think this and the previous immediate theorems should be moved down below Atiyah's theorem
-\begin{thm}(Atiyah)
+\begin{thm}[Atiyah]
 If $X$ is a finite connected complex, then $\tilde J(X)$ is finite.
 \end{thm}
 \begin{proof}(Sketch, anyway.)
@@ -709,8 +749,7 @@ $\delta^*(Pu \sprod Pv) = P(u \sprod v)$.
 We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$.  Then the lowest dimensional cohomology of $D_\pi(X \sprod Y)$ is $\Z/2$ in dimension $2(p + q)$.  But $(\delta p)^*(P\iota_p \sprod P\iota_q) = ((p \sprod p)T)^* (\iota_p \sprod \iota_q)$ equals $(\iota_p \sprod \iota_q)^{\sprod 2}$, and $P(\iota_p \sprod \iota_q)$ is defined to be the unique class in $H^{2(p+q)} D_\pi(X \sprod Y)$ for which this holds. % we have two nonzero things living in the same dimension, where there's only one nonzero element.
 \end{proof}
 
-\begin{cor}
-(Cartan formula).  $\Sq^k(u \sprod v) = \sum_{i+j = k} \Sq^i u \sprod \Sq^j v$.
+\begin{cor}[Cartan formula]  $\Sq^k(u \sprod v) = \sum_{i+j = k} \Sq^i u \sprod \Sq^j v$.
 \end{cor}
 \begin{proof}
 \begin{align*}
@@ -721,8 +760,7 @@ We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$
 & = \sum_{i, j}x^{p+q-i-j} \otimes \Sq^i u \sprod \Sq^j v.\qedhere
 \end{align*}
 \end{proof}
-\begin{cor}
-(Internal version).  Taking $X = Y$ and using $\Delta: X \to X \times X$, $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$.
+\begin{cor}[Internal version]  Taking $X = Y$ and using $\Delta: X \to X \times X$, $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$.
 \end{cor}
 
 \begin{ex}
@@ -1076,7 +1114,7 @@ and hence we may assume all our maps are into $U(n)$ instead.\footnote{This amou
 In the real case, we have $\widetilde{KO}(S^8) = \Z$ and in fact is generated by the tautological Cayley $\mathbb{H}$-line bundle, considered as a 4-dimensional real bundle over $\mathbb{H}P^2 \simeq S^8$. (What happens if we use octonions?) % is this last bit right?  and what about the octonions?
 \end{rem}
 
-\begin{thm}(Bott periodicity)
+\begin{thm}[Bott periodicity]
 \begin{align*}
 \tilde K X \otimes \tilde K S^2 & \stackrel{\cong}{\to} \tilde K(X \sprod S^2) \\
 \widetilde{KO} X \otimes \widetilde{KO} S^8 & \stackrel{\cong}{\to} \widetilde{KO}(X \sprod S^8).
@@ -1567,7 +1605,7 @@ Well the loop structure makes $H_* \Loops \Suspend X$ into an algebra, so $\alph
 If $X$ is connected, $R$ is a principal ideal domain, and $H_*(X; R)$ is torsion-free, then $T \tilde H_*(X; R) \stackrel{\alpha^*}{\to} H_*(\Loops \Suspend X; R)$ is an isomorphism.
 \end{thm}
 Now since $H_*(X; R)$ is torsion-free, $\bigoplus{k \ge 0} \tilde H_*(X)^{\otimes k} \cong \bigoplus_{j \ge 0} \tilde H_* X^{(k)} \cong \tilde H_*(\bigvee_{k \ge 0} X^{(k)})$, so you might hope idealistically that $\Suspend \Loops X$ splits as a wedge of smash pwoers of $X$.  Of course that's not true, but amazingly enough
-\begin{thm}(James, probably)
+\begin{thm}[James, probably]
 It \emph{does} split after one suspension.  That is, when $X$ is a connected CW-complex, there is a homotopy equivalence
 \[
 \Suspend \Loops \Suspend X \simeq \bigvee_{k \ge 1} \Suspend X^{(k)}
@@ -2169,7 +2207,7 @@ S^{2n-1} & \rTo^{\id} & S^{2n-1} & \rTo^{e^2} & \Loops^2 S^{2n+1} \\
 and this corresponds to $\iota_{2n+1} \in [S^{2n-1}, \Loops^2 S^{2n+1}] = [S^{2n+1}, S^{2n+1}]$.
 \end{cor}
 And so we get
-\begin{thm}(G.\ Whitehead)
+\begin{thm}[G.\ Whitehead]
 \[
 \ker(\pi_{2n-1} S^n \stackrel{e}{\to} \pi_{2n} S^{2n+1}) = \begin{cases} 0 & \hbox{when $n = 1, 3, 7$} \\ \Z/2 \langle W_n \rangle & \hbox{$n$ odd otherwise} \\ \Z \langle W_n \rangle & \hbox{$n$ even}. \end{cases}
 \]
@@ -2920,7 +2958,7 @@ Now if $X = \Suspend^n A$ then we have the map $\alpha: A \to \Loops^n \Sigma^n 
 \end{diagram}
 with the bottom $\sim$ meaning the identification in 1) above, which we won't mark down from now on.
 
-\begin{thm}(May)
+\begin{thm}[May]
 If $A$ is path-connected, this composite is a weak equivalence.
 \end{thm}
 This is the basic theorem in the theory of iterated loop spaces.  Note that it bear ssome resemblance to James' theorem.
@@ -3152,7 +3190,7 @@ Well, now we can use classical theorems about the Euler characteristic to study 
 \caption{\small Picture of $S_\epsilon$ about a zero at $x$.}
 \end{wrapfigure}
 Let $M^n$ be a compact Riemannian manifold and let $v$ be a non-degenerate vector field (i.e., $v(M)$ intersects the zero section $\zeta(M)$ of $TM$ transversally).  Then around each zero $x$ of $v$ there is a small sphere $S_\epsilon(x)$ so that $V|_{S_\epsilon(x)} \ne 0$.  Define $i_x$ to be the degree of $\frac{v}{\|v\|}|_{S_\epsilon(x)}: S^{n-1}_\epsilon \to S^{n-1} = \pm 1$.
-\begin{thm}(Hopf)
+\begin{thm}[Hopf]
 $\chi(M) = \sum_{\substack{x \in M \\ v(x) = 0}} i_x$.
 \end{thm}
 \begin{proof}
@@ -3168,7 +3206,7 @@ b \in B \rightsquigarrow \bigoplus_{p(x) = b} \xi_x = (p_* \xi)_b
 .\]
 
 This is more than you might hope for; it says there's an underlying map $\mathrm{Vect}(E) \to \mathrm{Vect}(B)$.  But in fact, the two constructions are the same:
-\begin{lem}(Nontrivial!)
+\begin{lem}[Nontrivial!]
 \begin{diagram}
 KO(E) & \rTo^{t(p)^*} & KO(B) \\
 \uInto & & \uInto \\
@@ -3301,7 +3339,7 @@ Now we can use the $\mu_k$s to check the Adams conjecture: $\psi^k V - V$ differ
 
 The trick -- which is the key point in understanding the Adams conjecture -- is the map $f_k: V \to \mu_k$ given by $f_k(z) = z^k$, which is equivariant with respect to the $O(2)$ action on either side, but certainly not linear; it won't induce a map of vector bundles, but it will induce one of sphere bundles, which is degree $k$ on each fiber.  The result then follows from
 \end{enumerate}
-\begin{lem}(Adams' Mod $k$ Dold Lemma, Adams, $J(X)$ I, Topology around 1965)
+\begin{lem}[Adams' Mod $k$ Dold Lemma, Adams, $J(X)$ I, Topology around 1965]
 Let $B$ be a finite complex and let $\xi, \xi'$ be vector bundles over $B$.  Suppose $f: S(\xi) \to S(\xi')$ is degree $k$ on each fiber.  Then $k^e(J(\xi) - J(\xi')) = 0$ for some $e$.
 \end{lem}
 
