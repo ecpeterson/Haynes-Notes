@@ -3,6 +3,37 @@
 %% <<< header
 
 \documentclass{article}
+\newcommand{\OutputFrontMatter}{}
+\newcommand{\OutputForeword}{}
+\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{}
+\newcommand{\OutputCliffordAlgebras}{}
+\newcommand{\OutputBuildingThomSpaces}{}
+\newcommand{\OutputFactsAboutThomSpaces}{}
+\newcommand{\OutputBuildingKandJtheory}{}
+\newcommand{\OutputGeometryAndTheSteenrodSquares}{}
+\newcommand{\OutputPropertiesOfTheSquares}{}
+\newcommand{\OutputDerivingTheUsualAdemRelations}{}
+\newcommand{\OutputUsingTheSquaresAndThomSpaces}{}
+\newcommand{\OutputStructureOnKtheory}{}
+\newcommand{\OutputBuildingKtheoryOperatorsFromRepresentationTheory}{}
+\newcommand{\OutputBuildingTheAdamsPowerOperations}{}
+\newcommand{\OutputProofOfHopfInvariantOne}{}
+\newcommand{\OutputTheJamesConstruction}{}
+\newcommand{\OutputTheMapsEandHinTheEHPLES}{}
+\newcommand{\OutputWhiteheadProductsAndTheEHPSS}{}
+\newcommand{\OutputTheStableCategory}{}
+\newcommand{\OutputHomotopicalAlgebraAndDuality}{}
+\newcommand{\OutputDualities}{}
+\newcommand{\OutputTheStructureOfStuntedProjectiveSpace}{}
+\newcommand{\OutputMatchingTheEHPSStoAtiyahHirzebruck}{}
+\newcommand{\OutputTheSpaceOfLittleCubes}{}
+\newcommand{\OutputTheBeckerGottliebTransfer}{}
+\newcommand{\OutputTheAdamsConjecture}{}
+\newcommand{\OutputSomeSummandsOfTheStableHomotopyGroupsOfSpheres}{}
+\newcommand{\OutputTheBibliography}{}
+
+
+
 \usepackage{fullpage}
 %\setlength{\textheight}{43pc}
 %\setlength{\textwidth}{28pc}
@@ -107,12 +138,13 @@
 %% >>> header
 
 \begin{document}
-
+\ifx\OutputFrontMatter\undefined\else
 \maketitle
 \tableofcontents
+\fi
 
 \section{Foreword} % <<<
-
+\ifx\OutputForeword\undefined\else
 These are notes from a course taught by Haynes Miller at MIT in the fall of 1989 in honor of Frank Adams, after his passing.  They were originally written by Matthew Ando, and were later transcribed and updated by Eric Peterson and Aaron Mazel-Gee, with figures provided by Yi-Wei Chan, Meng Guo, and Matt Mahowald.
 
 At the moment, I'm just copying the notes straight down, omitting unnecessary pictures.  Eventually I hope to tidy it up into something more of a book form, but that half of the project is hard to start on until all the notes are in one place and edited for correctness.
@@ -120,8 +152,10 @@ At the moment, I'm just copying the notes straight down, omitting unnecessary pi
 If anything in this document confuses you, check out the original notes at the following links: \href{http://www-math.mit.edu/~hrm/papers/vf1.pdf}{http://www-math.mit.edu/~hrm/papers/vf1.pdf}, \href{http://www-math.mit.edu/~hrm/papers/vf2.pdf}{http://www-math.mit.edu/~hrm/papers/vf2.pdf}.  I'm sure lots of things have been miscopied from the originals!
 
 % >>>
-
+\fi
 \section{Introduction to vector fields on spheres} % <<<
+\ifx\OutputIntroductionToVectorFieldsOnSpheres\undefined\else
+
 We shall discuss some classical topics in homotopy theory.  A great deal of what we will cover owes much to the work of Frank Adams.  Today we look at a few of the problems (which turn out to have deep general significance), and begin with vector fields on spheres.  We define $S^{n-1} = \{x \in \R^n \mid \|x\| = 1\}$.  The idea is to assign to each point $x \in S^{n-1}$ a vector $v(x)$ tangent to $x$ in a smooth way, i.e., to find a map $v: S^{n-1} \to \R^n$ such that $v(x) \perp x$ for all $x \in S^{n-1}$.
 
 \begin{wrapfigure}{r}{0.3\textwidth}
@@ -227,8 +261,9 @@ If $\pi_{2n-1} S^n$ contains an element of Hopf invariant $1$, then $n = 1$, $2$
 For the time being, take a step back and recall the action $O(n) \times S^{n-1} \to S^{n-1}$.  Any $\alpha \in \pi_k O(n)$ (not necessarily from a section) induces a map $S^k \times S^{n-1} \to O(n) \times S^{n-1} \to S^{n-1}$.  Doing the Hopf construction here induces a map $S^{k+n} \to S^n$, i.e., we get what turns out to be a homomorphism $J: \pi_k O(n) \to \pi_{n+k} S^n$ called the ``$J$-homomorphism.''  For $k < n$, $\pi_k O(n)$ are known by Bott periodicity, hence there is much interest in the image of $J$.  Note that for $k < n$, $n + k > 2k$, and this is the so-called ``stable range'' where things often seem to work better; one then thinks of $J$ as a map $\pi_* O \to \pi_*^S$.  The Adams conjectures are concerned with the image of this $J$. % should stablility really be mentioned here?
 
 % >>>
-
+\fi
 \section{Clifford algebras} % <<<
+\ifx\OutputCliffordAlgebras\undefined\else
 
 In this lecture we will see how many vector fields on spheres we can construct using linear algebra; we will use Clifford algebras.  For more information, see for example the book by Strang~\cite{Strang}.
 
@@ -279,7 +314,7 @@ e_i \mapsto
 \begin{cases}
 e_1 \otimes 1 & : i = 1, \\
 e_2 \otimes 1 & : i = 2, \\
-e_1e_2 \otimes e_{i-2} & i > 2
+e_1e_2 \otimes e_{i-2} &: i > 2
 \end{cases}
 \]
 works.  (As an exercise, complete this proof.)
@@ -324,9 +359,9 @@ k_{max} & 0 & 1 & 3 & 7 & 8 & 9 & 11.
 and this is exactly $\rho(n) - 1$ from before.  So we have succeeded in constructing $\rho(n) - 1$ linearly independent vector fields on the $(n-1)$-sphere.  It turns out that this is the best we can do using linear algebra --- in fact this really is the best we can do with any tools.
 
 %>>>
-
+\fi
 \section{Building Thom spaces} % <<<
-
+\ifx\OutputBuildingThomSpaces\undefined\else
 We'll now start attacking the second part of the vector field problem.  Recall that the Stiefel manifold $V_{n, k}$ of $k$-frames on $\R^n$ is given by $(n \times k)$-matrices with orthonormal columns, and projection onto the first column gives a fiber bundle $V_{n, k-1} \into V_{n, k} \onto S^{n-1}$.  The existence of a section $s$ of this bundle is equivalent to the existence of $(k-1)$ orthonormal vector fields on $S^{n-1}$.
 
 Now we will find a consequence for the existence of such a section in the homotopy theory of $\RP^{k-1}$.  To start with, there are two important facts about $\RP^{k-1}$.  The first is the existence of a fiber bundle $\Z/2 \into S^{k-1} \onto \RP^{k-1}$ obtained by identifying antipodal points on $S^{k-1}$.  The second is the existence of the ``tautological line bundle'' $L = \{(l, x) \in \RP^{k-1} \times \R^k \mid x \in l\} \onto \RP^{k-1}$, where one thinks of $\RP^{k-1}$ as the space of lines through the origin on $\R^k$.  These two constructions are, of course, related: there is a metric on $L$ induced by the metric in $\R^k$; taking the vectors of length $1$ in each fiber gives $S(L) \cong S^{k-1}$, the unit sphere bundle of $L$.
@@ -378,9 +413,9 @@ Next, we return to $nL$, the bundle over $\RP^{k-1}$, where $L$ is the tautologi
 But there's even more structure around.  Remarking that $\RP^{n+k-1}$ forms a vector bundle over rank $n$ over $\RP^{k-1}$ and using the inclusion of the open unit ball in $\R^n$ to $\R^n$, one can construct a map from $D(\nu)$ to $\RP^{n+k-1}$ such that $S(\nu)$ maps to $\RP^{n-1}$ and which is a relative homeomorphism $(D(\nu), S(\nu)) \to (\RP^{n+k-1}, \RP^{n-1})$.\footnote{One candidate for the map is $(l, \xi_1, \ldots, \xi_n) \mapsto \begin{cases}(1 - \|\xi\|z, \langle \xi_1, z\rangle, \ldots, \langle \xi_n, z\rangle) & : \| \xi \| < 1, \\ (0, \xi_1, \ldots, \xi_n) & : \|\xi\| = 1. \end{cases}$}  It follows that the Thom space of $nL$ is given by $\RP^{n+k-1}/\RP^{n-1}$, so $nL$'s being fiber homotopy trivial now implies $T(n\epsilon) \simeq T(nL) \cong \RP^{n+k-1}/\RP^{n-1}$.
 
 % >>>
-
+\fi
 \section{Facts about Thom spaces} % <<<
-
+\ifx\OutputFactsAboutThomSpaces\undefined\else
 We'll now look at Thom spaces in more detail, and in particular in relation to some other standard constructions on fiber bundles.  First of all, we have a product: given two bundles $F \to E \to B$ and $F' \to E' \to B'$, we can build a bundle $F \times F' \to E \times E' \to B \times B'$.  Now if $B = B'$, you can pull this bundle back along the diagonal map to a bundle $F \times F' \to E \times_B E' \to B$, called the ``fiberwise product.''  If $E$ and $E'$ are vector bundles, then $E \times_B E'$ is called the ``Whitney sum,'' denoted $E \oplus E'$.
 
 \begin{wrapfigure}{r}{0.33\textwidth} % maybe it would be better to give a drawing more reflective of the construction
@@ -460,9 +495,9 @@ X,
 as we shall see next time.  By choosing a metric on $\R^N$, we get an orthogonal complement $F \to X$ such that $E \oplus F$ is trivial.  Then $V \oplus E \oplus F \cong W \oplus E \oplus F$, so $V$ and $W$ are stably isomorphic!
 
 % >>>
-
+\fi
 \section{Building $K$-theory and $J$-theory} % <<<
-
+\ifx\OutputBuildingKandJtheory\undefined\else
 Throughout, let $X$ be a pointed compact Hausdorff space.  Recall that $KO(X)$ was defined to be the abelian group given by the Grothendieck construction on the monoid $Vect(X)$.  If $f: X \to Y$ is a map and $E \to Y$ is a vector bundle, then $E$ pulls back by $f$ to a vector bundle $f^* E \to X$, so we have a map $f^*: KO(Y) \to KO(X)$.  Pullbacks by homotopic maps induce isomorphic bundles, so $f \simeq g$ implies $f^* = g^*$.  Hence, we get a map $KO: ho\mathsf{Top} \to \mathsf{AbGrp}$. % it would be smart to come up with a notation for vector bundles, like f^* E downarrow X
 
 Now the canonical maps $\ptspace \to X \to \ptspace$ induce maps $KO(\ptspace) \stackrel{\eta}{\to} KO(X) \stackrel{\epsilon} \to KO(\ptspace)$.  It is clear that $KO(\ptspace) = \Z$, that $\im \eta$ consists of trivial bundles, and that $\epsilon$ takes the dimension of the fiber over the basepoint.  Reduced $KO$-theory is defined in terms of these maps.  There are two equivalent definitions: % point out that this sequence is induced by the triangle pt --> X --> pt, with the composite a homotopy equivalence.
@@ -525,9 +560,9 @@ We then make two claims: $\tilde J(X)$ is the image of $[X, BO] \to [X, BG]$, an
 \end{proof}
 
 % >>>
-
+\fi
 \section{Geometry and the Steenrod squares} % <<<
-
+\ifx\OutputGeometryAndTheSteenrodSquares\undefined\else
 Today begins a several days blitz on Steenrod operations, from a somewhat geometric point of view.  To begin, remember that reduced ordinary cohomology is representable:
 \[
 \tilde H^q(X; \pi) = [X, K(\pi, q)]
@@ -695,8 +730,9 @@ Show that $\Sq^0 e = e$, where $e$ is the generator of $\tilde H^1 S^1 = \Z/2$.
 \end{ex}
 
 % >>>
-
+\fi
 \section{Properties of the squares} % <<<
+\ifx\OutputPropertiesOfTheSquares\undefined\else
 
 We continue to derive properties of the Steenrod squares.  Recall that by choosing $\pi \subseteq \Sigma_n$ and a space $X$ we get a space $D_\pi X = E \pi_+ \sprod_\pi X^{(n)}$ along with inclusions
 \begin{diagram}
@@ -838,9 +874,9 @@ Now $(D_\pi j \circ j)^* P(P u) \in \tilde H^*(B\pi_+ \sprod B\pi_+ \sprod X) \c
 is symmetric in $x$ and $y$.  This is the shortest statement of the Adem relations.
 
 % >>>
-
+\fi
 \section{Deriving the usual Adem relations} % <<<
-
+\ifx\OutputDerivingTheUsualAdemRelations\undefined\else
 Last time we got as far as showing $\Sq_x \Sq_y u = \Sq_y \Sq_x u$, where $\Sq_x = \sum_{i \ge 0} x^{-i} \Sq^i$, and $|x| = |y| = 1$, and $x$ and $y$ represent $1$-dimensional classes in $\tilde H^* \RP^\infty$. % what the hell
 Today we'll see how this gives the more standard form of the Adem relations.
 
@@ -937,9 +973,9 @@ which tells you that
 \]
 
 % >>>
-
+\fi
 \section{Using the squares and Thom spaces} % <<<
-
+\ifx\OutputUsingTheSquaresAndThomSpaces\undefined\else
 % somewhere in here we start using / for vector bundles; be consistent with \onto from earlier or \downarrow as suggested
 
 \begin{wrapfigure}{r}{0.3\textwidth}
@@ -1023,9 +1059,9 @@ that is, $u = u' \sprod u''$.  Thus, $\Sq u = \Sq(u' \sprod u'') = \Sq u' \sprod
 Now the Thom class of $nL \onto \RP^{k-1}$, as we saw, is $x^n$.  So $w(L) = 1 + x$, and $w(nL) = (1+x)^n$.  So $nL \onto \RP^{k-1}$ is fiber homotopy trivial only if $(1+x)^n \equiv 1 \pmod{x^k}$, which is the same result we obtained before.  Now the program is to improve the results by pursuing a similar set of results in $KO$-theory.
 
 % >>>
-
+\fi
 \section{Structure on $K$-theory} % <<<
-
+\ifx\OutputStructureOnKtheory\undefined\else
 This isn't a course about $K$-theory, it's a course that uses $K$-theory.  So we're not going to see proofs of lots of basic theorems of $K$-theory; in particular I'm not going to prove the periodicity theorem.  However, we will need some facts which we'll review now.
 
 Recall that we previously defined the group $\widetilde{KO}(X)$, and by doing the same constructions using complex vector bundles we get $\tilde K(X)$.  Let's see what $\tilde K S^2$ is.  $S^2$ splits into contractible hemispheres $D_\pm$ over which any vector bundle is trivial, $D_\pm \times \C^n$.  The construction of a vector bundle on $S^2$ therefore amounts to choosing over each point on the equator $S^1$ a linear isomorphism $\C^n \to \C^n$ in a continuous manner, i.e., a map $S^1 \to GL_n(\C)$.  So, $\mathrm{Vect}_{n,\C}(S^2) \cong \pi_1 GL_n(\C)$.  This way of constructing vector bundles is called the ``clutching construction.''  There are compatible deformation retractions
@@ -1133,9 +1169,9 @@ There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that:
 \end{thm}
 
 % >>>
-
+\fi
 \section{Building $K$-theory operations from representation theory} % <<<
-
+\ifx\OutputBuildingKtheoryOperatorsFromRepresentationTheory\undefined\else
 Previously, we discussed the ring $KO^* = KO^* \ptspace$ and said it was
 \[
 KO^* = \Z[\eta, q, p^{\pm 1}], |\eta| = -1, |q| = -4, |p| = -8
@@ -1208,9 +1244,9 @@ Note that the additive condition requires $\theta_0 = 0$.
 \end{rem}
 
 % >>>
-
+\fi
 \section{Building the Adams power operations} % <<<
-
+\ifx\OutputBuildingTheAdamsPowerOperations\undefined\else
 Recall that for a compact Lie group $G$ we identified a representation of $G$ with a continuous homomorphism $\rho: G \to U(n)$ which allowed us to speak of the class function $\chi_\rho$, the ``character'' of the representation.  The induced map $RG \into \{\hbox{class function $G \to \C$}\}$ is injective, so we identify $\rho$ with its image under $\chi$.  Recall also that a sequence of virtual representations $\theta_* = \{\theta_n \in RU(n)\}$ is ``additive'' if $\theta_m \oplus \theta_n = \sigma^* \theta_{m+n}$.
 
 The additional fact to bring to bear now is that any $M \in U(m+n)$ is conjugate to a diagonal matrix \[\left[\begin{array}{cccc}x_1 & 0 & \cdots & 0 \\ 0 & \ddots \\ \vdots & & \ddots \\ 0 & & & z_{m+n}\end{array}\right],\] and this diagonal matrix is in the image of $U(m) \times U(n) \into U(m+n)$.  It follows that $\theta_{m+n}$ (thought of as a class function) is determined by $\theta_1$!  Now $\theta_1 \in RU(1)$ and $RU(1) \cong \Z[x^{\pm 1}]$ is a Laurent series ring on the tautological representation of $U(1)$.  So we start by defining $\psi_1^k = z^k$, $k > 0$.  It is now fairly clear how to go about
@@ -1316,9 +1352,9 @@ R(U(n)) & \rTo^{i^*} & R(O(n)) \\
 \end{diagram}
 
 % >>>
-
+\fi
 \section{Proof of the Hopf invariant 1 theorem} % <<<
-
+\ifx\OutputProofOfHopfInvariantOne\undefined\else
 Okay, today we prove Hopf invariant 1.  First, note this fact about the Adams operations:
 \begin{lem}
 For $p$ prime, $\psi^p(x) \equiv x^p \pmod{p}$ in $K(X)$ (so think of $\psi^p$ as an improvement of the Frobenius ring homomorphism).
@@ -1504,9 +1540,9 @@ Now for $k > 0$, $3^{2^kd}+1 = 9^{2^{k-1}d}+1 \equiv 2 \pmod 8$, so $2$ divides 
 as advertised.
 
 % >>>
-
+\fi
 \section{The James construction} % <<<
-
+\ifx\OutputTheJamesConstruction\undefined\else
 Today we start looking at consequences of the vector field problem.  First, remember the group $J(X)$.  This was the quotient of $KO(X)$ by the equivalence generated on the level of bundles by $V \simeq_J W$ if and only if $S(V \oplus n \varepsilon) \simeq_{f.h.e.} S(W \oplus n \varepsilon)$.  An immediate consequence of the last few days' work is
 \begin{thm}
 The surjection $\widetilde{KO}(\RP^m) \onto \tilde J(\RP^m)$ is actually an isomorphism.
@@ -1747,9 +1783,9 @@ H^* \Loops S^{2k} & \cong H^* S^{2k-1} \otimes H^* \Loops S^{4k-1} \\
 but now since the homology isomorphism was only one of coalgebras, this is only an isomorphism of algebras.
 
 % >>>
-
+\fi
 \section{The maps $e$ and $h$ in the EHP long exact sequence} % <<<
-
+\ifx\OutputTheMapsEandHinTheEHPLES\undefined\else
 The march to the EHP sequence continues.  Recall for a connected CW complex $X$ the James construction gave a homotopy equivalence
 \[
 \bigvee_{k \ge 0} \Suspend X^{(k)} \stackrel{\simeq}{\to} \Suspend \Loops \Suspend X
@@ -1972,9 +2008,9 @@ H^{n-1}S^{n-1} & \lTo^{\mu(x_0, -)^*}_{\cdot b} & H^{n-1} S^{n-1}.
 \end{proof}
 
 % >>>
-
+\fi
 \section{Whitehead products and the EHP spectral sequence} % <<<
-
+\ifx\OutputWhiteheadProductsAndTheEHPSS\undefined\else
 OK, so now we'll go back to the EHP sequence, and conclude this look at the map $h$ by seeing what we get from the existence of elements of Hopf invariant 1.  Last time we found an element of Hopf invariant one $\nu: S^7 \to S^4$ which came from the Hopf construction on quaternion multiplication $S^3 \times S^3 \to S^3$.  In the EHP sequence this appears as the $\pi_6$ level of $S^3 \to \Loops S^4 \stackrel{h}{\to} \Loops S^7$.  We can fit $\nu$ into this picture by
 \begin{diagram}
 S^3 & \rTo & \Loops S^4 \\
@@ -2183,9 +2219,9 @@ But we cna get more otu of this information: notice that this is the \emph{only}
 
 
 % >>>
-
+\fi
 \section{The stable category} % <<<
-
+\ifx\OutputTheStableCategory\undefined\else
 Last time we saw the introduction of the EHP spectral sequence.  Remember the $E^1$ term looked like this: INKSCAPE  In introducing it the claim was made that studying this spectral sequence would help to attack the theorem about desuspending $W_n$.  In order to see why this might be true, let's take a look at how to interpret the differentials in the spectral sequence.  Note that this discussion will apply in general to any spectral sequence arising from an exact couple.
 
 To start with, recall how the spectral sequence arises.  It came from the exact couple we got by applying homotopy to the fibrations
@@ -2287,9 +2323,9 @@ In other words, in the $S$-category, $T(V) \simeq \Suspend^n (\pt{X})$ implies t
 As a final remark, note that now we can talk about $T(\mathrm{virtual bundle})$; for example, $T(V - \varepsilon_n) = \Suspend^{-n} T(V)$.
 
 % >>>
-
+\fi
 \section{Homotopical algebra and duality} % <<<
-
+\ifx\OutputHomotopicalAlgebraAndDuality\undefined\else
 Well, let's continue with the discussion of stable homotopy, and really enter the stratosphere at this point, at least for a short while.  So remember last time we ended with the notion of a category $\CatOf{C}$, the $S$-category of finite complexes.  In this category there is an important notion of ``exact triangles:'' $X \to Y \to Z \to \Suspend X$ is an exact triangle if it is homotopy equivalence to $X \stackrel{f}{\to} Y \to Cf \to \Suspend X$ on the level of spaces, perhaps after suspending a lot.  Two important facts about exact triangles are
 \begin{enumerate}
 \item A sequence $X \to Y \to Z \to \Suspend X$ is exact if and only if $\{W, -\}$ is exact for all $W \in \CatOf{C}$.
@@ -2385,9 +2421,9 @@ A finite complex is built out of spheres using exact triangles, so we get
 \end{cor}
 
 % >>>
-
+\fi
 \section{Dualities} % <<<
-
+\ifx\OutputDualities\undefined\else
 We were talking about duality; the last thing mentioned was the ``function spectrum'' $F(X, Y)$ satisfying $\{W, F(X, Y)\} \cong \{X \sprod W, Y\}$ for all $W \in \CatOf{S}$.  If $X$ is finite then $F(X, Y) = (DX) \sprod Y$.  Now call $Y = E$, take $W = S^n$, and assume $X$ is finite, then
 \begin{diagram}
 \pi_n DX \sprod E & \cong & \{X \sprod S^n, E\} \\
@@ -2499,9 +2535,9 @@ Now we'd like $f$ to be an equivalence; this isn't always true, but if some reas
 \end{rem}
 
 % >>>
-
+\fi
 \section{The structure of stunted projective space} % <<<
-
+\ifx\OutputTheStructureOfStuntedProjectiveSpace\undefined\else
 Today we look at the attaching maps for stunted projective spaces.  In fact, the attaching maps we're going to look at are the ``stable relative attaching maps,'' so perhaps we should begin by saying what that means.  Suppose $X$ is a CW complex; then it has a skeletal filtration $Sk_* X$.  The $(k+1)$-skeleton is obtained from the $k$-skeleton by attaching $(k+1)$-cells as in
 \begin{diagram}
 Sk_k X & \subseteq & Sk_{k+1} X \\
@@ -2726,9 +2762,9 @@ S^{n - \rho(n) - 1}.
 \end{diagram}
 
 % >>>
-
+\fi
 \section{Matching the EHP sequence to Atiyah-Hirzebruch} % <<<
-
+\ifx\OutputMatchingTheEHPSStoAtiyahHirzebruck\undefined\else
 Last time we used a ``folk theorem'' due to Toda and Adams to the effect that the virtual bundle over $S^{\rho(n)}$ classified by $g_{\nu(n)}$ has as its Thom space the space $Cj_{\nu(n)}$ from the cofibration sequence
 \[
 S^{\rho(n) - 1} \stackrel{j_{\nu(n)}}{\to} S^0 \to Cj_{\nu(n)}
@@ -2852,9 +2888,9 @@ So $w_{n-1}$ desuspends to an element in $\pi_{2n-\rho(n)-2} S^{n-\rho(n)}$ and 
 \end{thm}
 
 % >>>
-
+\fi
 \section{The space of little cubes} % <<<
-
+\ifx\OutputTheSpaceOfLittleCubes\undefined\else
 Today we'll examine where the Snaith maps come from, but you're going to have to believe some things.  Some references for this include May's book~\cite{May}, Cohen's paper~\cite{Cohen}, and Kuhn's paper~\cite{Kuhn}.  Remember, we're trying to construct maps
 \[
 \Loops^n S^0 \stackrel{s_n}{\to} Q\RP^{n-1}
@@ -2958,9 +2994,9 @@ So, looping once,
 There's lots of work still to be done: you have to check the compatibility of the maps and so forth.  But the model's so simple it's not hard to believe that it works.  For more information, see Kuhn's paper~\cite{Kuhn}.
 
 % >>>
-
+\fi
 \section{The Becker-Gottlieb transfer} % <<<
-
+\ifx\OutputTheBeckerGottliebTransfer\undefined\else
 One of the advantages of a topics course is that you can change direction in midstream.  So now let's study the Adams conjecture for a while, starting with a tool by Becker and Gottlieb which enables us to get a slicker proof than the original ones of Quillen and Friedlander.  It's a construction that's of interest anyway: ``transfer.''  The basic construction is so simple that it's hard to concentrate on it long enough to appreciate how much information it contains.
 \begin{enumerate}
 \item Pontrjagin-Thom construction: If $X$ is a locally compact Hausdorff space and $U \subseteq X$ is an open subset, then you get a map $\pt{X} \to \pt{X} / (\pt{X} \setminus U) \simeq \pt{U}$ from the one-point compactification of $X$ to that of $U$, just by collapsing out the complement of $U$ in $\pt{X}$.  This is called the ``Pontrjagin-Thom collapse,'' and it gives a contravariance you may not have noticed before.  The construction is natural with respect to proper maps: if $f: X \to X'$ is proper, $U' \subseteq X$, and $U = f^{-1}(U')$, then you get
@@ -3178,9 +3214,9 @@ So $k^{4n}(\psi^k f^* - f^* \psi^k) = 0$, and $n$ depended only on $f$.
 \end{proof}
 
 % >>>
-
+\fi
 \section{The Adams conjecture} % <<<
-
+\ifx\OutputTheAdamsConjecture\undefined\else
 Well, nothing in topology ever proceeds in a straightforward way; usually you end up having to talk about some ``relative'' version.  This time, we'll use a sort of ``relative'' transfer.  So, as before, let $F \to E \stackrel{p}{\to} B$ be a smooth fiber bundle with $F$ and $B$ compact; let $\xi$ over $B$ be a vector bundle, and consider
 \begin{diagram}
 p^* \xi & \rTo & \xi \\
@@ -3294,9 +3330,9 @@ Now let $\Sigma_{n-1}$ act on $F(V)$ by fixing the last element; then there is a
 The left summand is killed by $k^e$ and the right summand is killed by $k^f$ for some $f$ by the proof of the adams conjecture for $2$-plane bundles.
 
 % >>>
-
+\fi
 \section{Some summands of the stable homotopy groups of spheres} % <<<
-
+\ifx\OutputSomeSummandsOfTheStableHomotopyGroupsOfSpheres\undefined\else
 All right, today we'll study the meaning of the Adams conjecture; in particular I'm going to tell you about the space $J$.  We've talked about the $KO$ spectrum, representing real $K$-theory: $KO^*(X) = \{X, KO\}$.  It is a sequence of spaces $\{KO_n\}$ with maps $\alpha_n: \Suspend KO_n \to KO_{n+1}$, with
 \begin{align*}
 KO_{8n} & = \Z \times BO \\
@@ -3628,7 +3664,8 @@ The desuspension of $w_n$s brings us to the Kervaire Invariant classes.  Notice 
 \end{itemize}
 Other things have been done: you could investigate further how the classes that are in $\pi_*^S$ behave in the EHP sequence; for example, you could try to compute $p(j_k)$.  Mahowald's theorem tells good information about when these are nonzero.  Feder, Gittler, and Lan~\cite{FGL} have shown other classes for which $p(j_k) = 0$.  But the Kervaire Invariant classes represent a real missing case here, about which relatively little is known.
 % >>>
-
+\fi
+\ifx\OutputTheBibliography\undefined\else
 \begin{thebibliography}{Hatcher}
 \bibitem{Adams} J.\ Frank Adams.  \emph{Stable Homotopy and Generalised Homology}.  University of Chicago Press, 1974.
 \bibitem{Atiyah} Michael Atiyah.  \emph{Thom Complexes}.  Proceedings of the London Mathematical Society, 1960.
@@ -3640,5 +3677,5 @@ Other things have been done: you could investigate further how the classes that 
 \bibitem{Milnor} John Milnor, \emph{Topology from a Differentiable Viewpoint.}
 \bibitem{Whitehead} George Whitehead.  \emph{Homotopy theory}.  MIT Press, 1971.
 \end{thebibliography}
-
+\fi
 \end{document}
