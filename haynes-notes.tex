@@ -16,12 +16,12 @@
 \usepackage[all]{xy}
 
 
-%\newcommand{\OutputEVERYTHING}{}
+\newcommand{\OutputEVERYTHING}{}
 %\newcommand{\OutputFrontMatter}{}
 %\newcommand{\OutputForeword}{}
 %\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{}
 %\newcommand{\OutputCliffordAlgebras}{}
-\newcommand{\OutputBuildingThomSpaces}{}
+%\newcommand{\OutputBuildingThomSpaces}{}
 %\newcommand{\OutputFactsAboutThomSpaces}{}
 %\newcommand{\OutputBuildingKandJtheory}{}
 %\newcommand{\OutputGeometryAndTheSteenrodSquares}{}
@@ -495,13 +495,22 @@ One can think of the mapping cylinder $p:S(E)\to B$ as being the disk bundle $D(
 Next, we return to $nL$, the bundle over $\RP^{k-1}$, where $L$ is the tautological line bundle.  We claim that this bundle is the normal bundle $\nu$ of the inclusion $\RP^{k-1} \into \RP^{n+k-1}$ induced by the inclusion $\R^k \into \R^{n+k}$.  To wit, pick a point $l \in \RP^{n+k-1}$ parametrized as $l(t)$, a line in $\R^{n+k}$.  Let $\pi l \in \RP^{k-1}$ be the projection of this line to a line in $\R^k$.  We can recover the line $l$ in $\R^{k+n} \cong \R^k \times \R \times \cdots \times \R$ by $l(t) = (\pi l(t), \lambda_1(\pi l(t)), \ldots, \lambda_n(\pi l(t)))$ for some functions $\lambda_i$ dependent upon $l$.  Clearly $\lambda_i(rv) = r \lambda_i(v)$, so $\lambda_i \in L^*$.  Hence the normal bundle can be identified with $nL^*$.  Since $nL$ comes equipped with a metric, this gives an isomorphism of the normal bundle $\nu$ with $nL$.
 
 % what?
-But there's even more structure around.  Remarking that $\RP^{n+k-1}$ forms a vector bundle of rank $n$ over $\RP^{k-1}$ and using the inclusion of the open unit ball in $\R^n$ to $\R^n$, one can construct a map from $D(\nu)$ to $\RP^{n+k-1}$ such that $S(\nu)$ maps to $\RP^{n-1}$ and which is a relative homeomorphism $(D(\nu), S(\nu)) \to (\RP^{n+k-1}, \RP^{n-1})$.\footnote{One candidate for the map $D(\nu)\to\RP^{n+k-1}$ can be specified as follows. View $D(\nu)$ as $D(nL)$, where $nL\subset \RP^{k-1}\times (\R^k)^n$ inherits its metric from the standard Euclidean metric on $(\R^k)^n$. Then a point of $D(\nu)$ is an $n+1$-tuple $(\R\{z\},r_1z,r_2z,\ldots,r_nz)$, where $z\in R^k$ has length one, $\|r\|^2=\sum r_i^2\leq1$. The map sends this point to $(z,r_1,r_2,\ldots,r_n)$.}
-It follows that the Thom space of $nL$ is given by $\RP^{n+k-1}/\RP^{n-1}$, so $nL$'s being fiber homotopy trivial now implies $T(n\epsilon) \simeq T(nL) \cong \RP^{n+k-1}/\RP^{n-1}$.
+But there's even more structure around.  \textit{ Remarking that $\RP^{n+k-1}$ forms a vector bundle of rank $n$ over $\RP^{k-1}$ and using the inclusion of the open unit ball in $\R^n$ to $\R^n$} \textsc{(what does this mean?)} , one can construct a map from $D(\nu)$ to $\RP^{n+k-1}$ such that $S(\nu)$ maps to $\RP^{n-1}$ and which is a relative homeomorphism $(D(\nu), S(\nu)) \to (\RP^{n+k-1}, \RP^{n-1})$.\footnote{One candidate for the map $D(\nu)\to\RP^{n+k-1}$ can be specified as follows. View $D(\nu)$ as $D(nL)$, where $nL\subset \RP^{k-1}\times (\R^k)^n$ inherits its metric from the standard Euclidean metric on $(\R^k)^n$. Then a point of $D(\nu)$ is an $n+1$-tuple $(\R\{z\},r_1z,r_2z,\ldots,r_nz)$, where $z\in R^k$ has length one, $\|r\|^2=\sum r_i^2\leq1$. The map sends this point to $(z,r_1,r_2,\ldots,r_n)$.}
+It follows that the Thom space of $nL$ is $T(nL)\simeq\RP^{n+k-1}/\RP^{n-1}$. In particular, if $nL$ is being fiber homotopy trivial, then $T(n\epsilon) \simeq T(nL) \cong \RP^{n+k-1}/\RP^{n-1}$.
 %
 % sends $([z], r_1z, \ldots, r_nz)\in D(\nu)\subseteq \R P^{k-1}\times (\R^k)^n$, where $[z]=\R z\in\RP^{k-1}$ for $z\in\R^k$ to }
 
 % >>>
 \fi
+\BoxedNote{
+\Bullet If $V_{n, k} \onto S^{n-1}$ sections, then $S(nL)\onto \R P^{k-1}$ is fiber homotopy trivial.
+
+\Bullet $nL\onto \R P^{k-1}$ is the normal bundle of this inclusion into $\R P^{n+k-1}$.
+
+\Bullet $T(nL)\simeq \RP^{n+k-1}_n:=\R P^{n+k-1}/\R P^{n-1}$.
+
+\Bullet In particular, if $S^{n-1}$ admits $k-1$ vector fields, then $T(n\epsilon)\simeq \R P^{n+k-1}_n$.
+}
 \section{Facts about Thom spaces} % <<<
 \ifx\OutputFactsAboutThomSpaces\undefined\else
 We'll now look at Thom spaces in more detail, and in particular in relation to some other standard constructions on fiber bundles.  First of all, we have a product: given two bundles $F \to E \to B$ and $F' \to E' \to B'$, we can build a bundle $F \times F' \to E \times E' \to B \times B'$.  Now if $B = B'$, you can pull this bundle back along the diagonal map to a bundle $F \times F' \to E \times_B E' \to B$, called the ``fiberwise product.''  If $E$ and $E'$ are vector bundles, then $E \times_B E'$ is called the ``Whitney sum,'' denoted $E \oplus E'$.
