@@ -3,7 +3,20 @@
 %% <<< header
 
 \documentclass{article}
-\newcommand{\OutputEVERYTHING}{}
+
+\usepackage{fullpage}
+%\setlength{\textheight}{43pc}
+%\setlength{\textwidth}{28pc}
+\usepackage{amssymb,mathrsfs,float,stmaryrd,yhmath,prettyref,amsthm}
+\usepackage{xcolor,graphicx,tocloft}
+\usepackage{diagrams}
+\usepackage[pdftex]{hyperref}
+\usepackage{wrapfig}
+
+\usepackage[all]{xy}
+
+
+%\newcommand{\OutputEVERYTHING}{}
 %\newcommand{\OutputFrontMatter}{}
 %\newcommand{\OutputForeword}{}
 %\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{}
@@ -64,14 +77,15 @@
 \providecommand{\OutputTheBibliography}{}
 \fi
 
-\usepackage{fullpage}
-%\setlength{\textheight}{43pc}
-%\setlength{\textwidth}{28pc}
-\usepackage{amssymb,mathrsfs,float,stmaryrd,yhmath,prettyref,amsthm}
-\usepackage{xcolor,graphicx,tocloft}
-\usepackage{diagrams}
-\usepackage[pdftex]{hyperref}
-\usepackage{wrapfig}
+\newcommand{\BoxedNote}[1]{
+\begin{center}\fbox{\begin{minipage}{.75\textwidth}
+#1
+\end{minipage}}
+\end{center}
+}
+\newcommand{\Bullet}{\ensuremath{\bullet} }
+
+
 
 % <<< preamble containing our shorthands
 % common sets
@@ -296,6 +310,18 @@ For the time being, take a step back and recall the action $O(n) \times S^{n-1} 
 
 % >>>
 \fi
+\BoxedNote{\Bullet $S^{n-1}$ has $k-1$ linearly independent vector fields iff $V_{n,k}\downarrow S^{n+1}$ has a section.
+
+\Bullet The largest $k$ such that there is such a section is $\rho(n)$, where we write $n=\textup{odd}\cdot 2^{\nu}$, $\nu=4b+c$ for $0\leq c\leq3$, and $\rho=8b+2^c$.
+
+\Bullet The Hopf construction takes a map $\mu:X\times Y\to Z$ to a map $H(\mu):X*Y\to\Sigma Z$.
+
+\Bullet If $S^{n-1}$ is parallelizable, it can be made into an H-space (essentially, apply the Hopf construction to a section $V_{n,n}\downarrow S^{n-1}$.) This happens when $n=1,2,4,8$ by the previous point.
+
+\Bullet (It is claimed that) if $\mu$ is an $H$-space multiplication on $S^{n-1}$, $H(\mu)$ has Hopf invariant one. We'll see that there is only an element of Hopf invariant one when $n=1,2,4,8$.
+
+\Bullet The $J$-homomorphism $J:\pi_kO(n)\to \pi_{n+k}(S^n)$ sends $\alpha:S^k\to O(n)$ to the Hopf construction applied to $S^k\times S^{n-1}\xrightarrow{\alpha\times1}O(n)\times S^{n+1}\to S^{n-1}$.
+}
 \section{Clifford algebras} % <<<
 \ifx\OutputCliffordAlgebras\undefined\else
 
@@ -397,28 +423,38 @@ Finally, we can apply this to vector fields on spheres.  There are $k$ linearly 
 k_{max} & 0 & 1 & 3 & 7 & 8 & 9 & 11
 \end{array}\]
 and this is exactly $\rho(n) - 1$ from before.  So we have succeeded in constructing $\rho(n) - 1$ linearly independent vector fields on the $(n-1)$-sphere.  It turns out that this is the best we can do using linear algebra --- in fact this really is the best we can do with any tools.
-
-%>>>
 \fi
+\BoxedNote{
+\Bullet We have constructed $k$ vector fields on $S^{n-1}$ whenever $a_k|n$, where $a_k=2^{\varphi_k}$ is the minimal dimension of a representation of $C_k$.
+
+\Bullet We also noted that $a_k|n\iff k\leq\rho(n)-1$, and thus have constructed as many vector fields as possible.}
+%>>>
+
 \section{Building Thom spaces} % <<<
 \ifx\OutputBuildingThomSpaces\undefined\else
 We'll now start attacking the second part of the vector field problem.  Recall that the Stiefel manifold $V_{n, k}$ of $k$-frames on $\R^n$ is given by $(n \times k)$-matrices with orthonormal columns, and projection onto the first column gives a fiber bundle $V_{n, k-1} \into V_{n, k} \onto S^{n-1}$.  The existence of a section $s$ of this bundle is equivalent to the existence of $(k-1)$ orthonormal vector fields on $S^{n-1}$.
 
-Now we will find a consequence for the existence of such a section in the homotopy theory of $\RP^{k-1}$.  To start with, there are two important facts about $\RP^{k-1}$.  The first is the existence of a fiber bundle $\Z/2 \into S^{k-1} \onto \RP^{k-1}$ obtained by identifying antipodal points on $S^{k-1}$.  The second is the existence of the ``tautological line bundle'' $L = \{(l, x) \in \RP^{k-1} \times \R^k \mid x \in l\} \onto \RP^{k-1}$, where one thinks of $\RP^{k-1}$ as the space of lines through the origin on $\R^k$.  These two constructions are, of course, related: there is a metric on $L$ induced by the metric in $\R^k$; taking the vectors of length $1$ in each fiber gives $S(L) \cong S^{k-1}$, the unit sphere bundle of $L$.
+Now we will find a consequence for the existence of such a section in the homotopy theory of $\RP^{k-1}$.  To start with, there are two important facts about $\RP^{k-1}$.  The first is the existence of a fiber bundle $\Z/2 \into S^{k-1} \onto \RP^{k-1}$ obtained by identifying antipodal points on $S^{k-1}$.  The second is the existence of the ``tautological line bundle'' $L = \{(l, x) \in \RP^{k-1} \times \R^k \mid x \in l\} \onto \RP^{k-1}$, where one thinks of $\RP^{k-1}$ as the space of lines through the origin on $\R^k$.  These two constructions are, of course, related: there is a metric on $L$ induced by the metric in $\R^k$; taking the vectors of length $1$ in each fiber gives $S(L)$, the unit sphere bundle of $L$, and $S(L) \cong S^{k-1}$.
 
 On the other hand, we can recover $L$ as $S^{k-1} \times_{\Z/2} \R$; this is an example of the ``Borel construction.'' % define what a twisted product is.  it would a lso be useful to talk about why the Borel construction is useful; you can sort of always move to your favorite spot in the fiber.  this definition should also match use of the borel construction in unit 6
 More generally, if $F$ is any space with a $\Z/2$ action, we get a bundle with fiber $F$ by taking $F \into S^{k-1} \times_{\Z/2} F \onto \RP^{k-1}$.  What follows from a section $s$ of $V_{n, k} \onto S^{n-1}$ is:
 \begin{lem}
-If there is a section $s$, then there is a bundle map over $\RP^{k-1}$ of the form
-\begin{diagram}[height=2em]
-\hat{s}: S(n \epsilon) & \rTo & S(n L) \\
-\uEqualto & & \uEqualto \\
-\RP^{k-1} \times S^{n-1} & & S^{k-1} \times_{\Z/2} S^{n-1},
-\end{diagram}
-where $\epsilon$ is the trivial bundle of dimension $1$ and $\Z$ acts on bundles by direct sum.  The map $\hat s$ acts as the identity on the fiber over the point $\pm e_1$, which we take as the basepoint in $\RP^{k-1}$.
+If there is a section $s$, then there is a bundle map $\hat s$ over $\RP^{k-1}$ of the form
+%\begin{diagram}[height=2em]
+%\hat{s}: S(n \epsilon) & \rTo & S(n L) \\
+%\uEqualto & & \uEqualto \\
+%\RP^{k-1} \times S^{n-1} & & S^{k-1} \times_{\Z/2} S^{n-1},
+%\end{diagram}
+\[\xymatrix@R=.6cm{
+\makebox[0cm][r]{$\RP^{k-1} \times S^{n-1}=$\ }S(n \epsilon)\ar[r]^{\hat s}\ar[d]&
+S(nL)\makebox[0cm][l]{\ $=S^{k-1} \times_{\Z/2} S^{n-1}$}\ar[d]\\
+\RP^{k-1}\ar@{=}[r]&\RP^{k-1}
+}\]
+which acts as the identity on the fiber over the point $\pm e_1$, which we take as the basepoint in $\RP^{k-1}$.
+(Here $\epsilon$ is the trivial bundle of dimension $1$ and $\Z$ acts on bundles by direct sum.)
 \end{lem}
 \begin{proof}
-Define $\hat s: \R^k \times S^{n-1} \to \R^k \times S^{n-1}$ by $\hat s(x, v) = (x, s(v) x)$.  It is straightforward to see $|s(v) x| = 1$ if $|x| = 1$, so $\hat s$ maps $S^{k-1} \times S^{n-1} \to S^{k-1} \times S^{n-1}$.  Quotienting the target by $\Z/2$, we have \[\hat s(-x, v) = (-x, -s(v)x) = (x, s(v) x) = \hat{s}(x, v),\] so it descends to a quotient on the source: $\hat{s}: \RP^{k-1} \times S^{n-1} = S(n \epsilon) \to S^{k-1} \times_{\Z/2} S^{n-1} = S(nL)$.  Finally, $s(v)e_1 = v$, so $\hat{s}(e_1, v) = (e_1, v)$.
+Define $\hat s: \R^k \times S^{n-1} \to \R^k \times S^{n-1}$ by $\hat s(x, v) = (x, s(v) x)$.  It is straightforward to see $|s(v) x| = 1$ if $|x| = 1$, so $\hat s$ maps $S^{k-1} \times S^{n-1} \to S^{k-1} \times S^{n-1}$.  Quotienting the target by $\Z/2$, we have \[\hat s(-x, v) = (-x, -s(v)x) = (x, s(v) x) = \hat{s}(x, v),\] so it descends to a quotient on the source: $\hat{s}: \RP^{k-1} \times S^{n-1} = S(n \epsilon) \to S^{k-1} \times_{\Z/2} S^{n-1} = S(nL)$.  Finally, $s(v)e_1 = v$ (as $s$ is a section), so $\hat{s}(e_1, v) = (e_1, v)$.
 \end{proof}
 One point worth mentioning here is that $\hat s$ could have been defined as a map $n \epsilon \to n L$, but it would not necessarily have been linear on each fiber (as $s(v)$ is not necessarily linear), so the map would not have been in a strict sense a map of vector bundles.  Previously, we constructed such sections $s$ using Clifford algebras, and in that case $s$ was in fact linear.  In some sense, then, the problem is to find out whether you can get more vector fields by modifying them in some clever way.
 
@@ -426,7 +462,7 @@ The fact that $\hat s$ induces the identity over $\pm e_1$ means that $\hat s$ i
 
 We have two bundles $E$ and $E'$ over a base $B$ and a bundle map $f: E \to E'$ which induces a homotopy equivalence on each fiber.  What we really want is a map $g$ going back so that $fg$ and $gf$ are homotopic through bundle maps to the respective identity maps;  $f$ is then called a ``fiber homotopy equivalence.''  Fortunately there is a very nice theorem due to Dold:
 \begin{lem}[Dold]
-Suppose $E$ and $E'$ are fibrations over $B$ with a bundle map $f$ inducing a homotopy equivlanence on each fiber.  If $E$ and $E'$ have the homotopy type of CW complexes and $B$ is connected, then $f$ has a fiber homotopy inverse.
+Suppose $E$ and $E'$ are fibrations over $B$ with a bundle map $f$ inducing a homotopy equivalence on each fiber.  If $E$ and $E'$ have the homotopy type of CW complexes and $B$ is connected, then $f$ has a fiber homotopy inverse.
 \end{lem}
 \begin{proof}
 See \cite{James}.
@@ -437,20 +473,32 @@ If $V_{n, k} \onto S^{n-1}$ sections, then $S(nL) \onto \RP^{k-1}$ is fiber homo
 \end{cor}
 Ultimately we will show the result of Adams that this implies that $k \le \rho(n) - 1$, i.e., that $a_k$ divides $n$.
 
+
 \begin{wrapfigure}{r}{0.3\textwidth}
 \centering\includegraphics[width=0.2\textwidth]{figures/fig7.pdf}
 \caption{\small Diagram of the mapping cylinder of $f$.}
 \end{wrapfigure} % define the mapping cylinder, since we defined the mapping cone earlier.  in fact, this figure belongs to such a discussion, and should be treated separately.  why is this important that we can do it for "any" sphere bundle??
-Next we look at the consequences of the discussion so far in terms of Thom spaces.  Suppose $E \onto B$ is a vector bundle with a metric, so there's a nice sphere bundle $p$ defined as the composite $S(E) \into E \onto B$.  In order to understand the map $p$, we could look again at the mapping cone $M_p = B \cup_p C_{S(E)}$ of $p$.  If we construct the cone in two stages, leaving pinching the cone for the ``second stage,'' the intermediate space is called the ``mapping cylinder,'' and it is homotopy equivalent to $Y$.  Moreover there is a nice inclusion $X \into \hbox{mapping cylinder}$ which is a cofibration.  Now in the case of $p: S(E) \onto B$, the mapping cone is called the Thom space, $T(E)$.  In fact, it doesn't matter how you replace the space $Y$ with a homotopy equivalent space; the point of the mapping cylinder is that you can make the Thom construction on any sphere bundle.  In the case of the vector bundle $E$, one can think of the mapping cylinder of $S(E)$ as being the disk bundle $D(E)$ of vectors of length less than or equal to $1$; the Thom space is then the quotient space $D(E) / S(E)$.  As a passing remark, the fibers of these two bundles over a basepoint $b \in B$ are $S^{n-1} \subset S(E)$ and $D^n \subset D(E)$, and pinching the former out of the latter gives an $S^n$ in $T(E)$.  So if $B$ is connected, the Thom space comes with a unique, distinguished class in $\pi_n T(E)$.
+Next we look at the consequences of the discussion so far in terms of Thom spaces.  Suppose $E \onto B$ is a vector bundle with a metric, so there's a nice sphere bundle $p$ defined as the composite $S(E) \into E \onto B$.  In order to understand the map $p$, we could look again at the mapping cone $Cp = B \cup_p C_{S(E)}$ of $p$.  
+
+Given a map $f:X\to Y$, we can construct the cone $Cf$ in two stages, leaving pinching the cone for the ``second stage''. The intermediate space $Mf=X\times I\cup_f Y$ is called the ``mapping cylinder,'' and it is homotopy equivalent to $Y$.  Moreover there is a nice inclusion $X \into Mf$ which is a cofibration. Then $Cf$ is obtained by collapsing the image of $X$ in $Mf$.
+
+In fact, it doesn't matter how you replace the space $Y$ with a homotopy equivalent space: as long as the map $f$ is replaced by a cofibration, collapsing out its image we obtain a space homotopic to the mapping cone.
+%This is true, right?
+
+Now in the case of $p: S(E) \onto B$, the mapping cone is called the Thom space, $T(E)$. 
+One can think of the mapping cylinder $p:S(E)\to B$ as being the disk bundle $D(E)$ of vectors of length less than or equal to $1$; the Thom space is then the quotient space $D(E) / S(E)$.  As a passing remark, the fibers of these two bundles over a basepoint $b \in B$ are $S^{n-1} \subset S(E)$ and $D^n \subset D(E)$, and pinching the former out of the latter gives an $S^n$ in $T(E)$.  So if $B$ is connected and $E$ is oriented, the Thom space comes with a unique, distinguished class in $\pi_n T(E)$.
 
 \begin{wrapfigure}{r}{0.5\textwidth}
 \centering\includegraphics[width=0.4\textwidth]{figures/fig8.pdf}
 \caption{\small Recovering $l$.}
 \end{wrapfigure} % how can we make it clear that the lambda_i depend upon the point l in RP^k-1?
-Next, we return to $nL$, the bundle over $\RP^{k-1}$, where $L$ is the tautological line bundle.  We claim that this bundle is the normal bundle of the inclusion $\RP^{k-1} \into \RP^{n+k-1}$ induced by the inclusion $\R^k \into \R^{n+k}$.  To wit, pick a point $l \in \RP^{n+k-1}$ parametrized as $l(t)$, a line in $\R^{n+k}$.  Let $\pi l \in \RP^{k-1}$ be the projection of this line to a line in $\R^k$.  We can recover the line $l$ in $\R^{k+n} \cong \R^k \times \R \times \cdots \times \R$ by $l(t) = (\pi l(t), \lambda_1(\pi l(t)), \ldots, \lambda_n(\pi l(t)))$ for some functions $\lambda_i$ dependent upon $l$.  Clearly $\lambda_i(rv) = r \lambda_i(v)$, so $\lambda_i \in L^*$.  Hence the normal bundle can be identified with $nL^*$.  Since $nL$ comes equipped with a metric, this gives an isomorphism of the normal bundle $\nu$ with $nL$.
+Next, we return to $nL$, the bundle over $\RP^{k-1}$, where $L$ is the tautological line bundle.  We claim that this bundle is the normal bundle $\nu$ of the inclusion $\RP^{k-1} \into \RP^{n+k-1}$ induced by the inclusion $\R^k \into \R^{n+k}$.  To wit, pick a point $l \in \RP^{n+k-1}$ parametrized as $l(t)$, a line in $\R^{n+k}$.  Let $\pi l \in \RP^{k-1}$ be the projection of this line to a line in $\R^k$.  We can recover the line $l$ in $\R^{k+n} \cong \R^k \times \R \times \cdots \times \R$ by $l(t) = (\pi l(t), \lambda_1(\pi l(t)), \ldots, \lambda_n(\pi l(t)))$ for some functions $\lambda_i$ dependent upon $l$.  Clearly $\lambda_i(rv) = r \lambda_i(v)$, so $\lambda_i \in L^*$.  Hence the normal bundle can be identified with $nL^*$.  Since $nL$ comes equipped with a metric, this gives an isomorphism of the normal bundle $\nu$ with $nL$.
 
 % what?
-But there's even more structure around.  Remarking that $\RP^{n+k-1}$ forms a vector bundle over rank $n$ over $\RP^{k-1}$ and using the inclusion of the open unit ball in $\R^n$ to $\R^n$, one can construct a map from $D(\nu)$ to $\RP^{n+k-1}$ such that $S(\nu)$ maps to $\RP^{n-1}$ and which is a relative homeomorphism $(D(\nu), S(\nu)) \to (\RP^{n+k-1}, \RP^{n-1})$.\footnote{One candidate for the map is $(l, \xi_1, \ldots, \xi_n) \mapsto \begin{cases}(1 - \|\xi\|z, \langle \xi_1, z\rangle, \ldots, \langle \xi_n, z\rangle) & : \| \xi \| < 1, \\ (0, \xi_1, \ldots, \xi_n) & : \|\xi\| = 1. \end{cases}$}  It follows that the Thom space of $nL$ is given by $\RP^{n+k-1}/\RP^{n-1}$, so $nL$'s being fiber homotopy trivial now implies $T(n\epsilon) \simeq T(nL) \cong \RP^{n+k-1}/\RP^{n-1}$.
+But there's even more structure around.  Remarking that $\RP^{n+k-1}$ forms a vector bundle of rank $n$ over $\RP^{k-1}$ and using the inclusion of the open unit ball in $\R^n$ to $\R^n$, one can construct a map from $D(\nu)$ to $\RP^{n+k-1}$ such that $S(\nu)$ maps to $\RP^{n-1}$ and which is a relative homeomorphism $(D(\nu), S(\nu)) \to (\RP^{n+k-1}, \RP^{n-1})$.\footnote{One candidate for the map $D(\nu)\to\RP^{n+k-1}$ can be specified as follows. View $D(\nu)$ as $D(nL)$, where $nL\subset \RP^{k-1}\times (\R^k)^n$ inherits its metric from the standard Euclidean metric on $(\R^k)^n$. Then a point of $D(\nu)$ is an $n+1$-tuple $(\R\{z\},r_1z,r_2z,\ldots,r_nz)$, where $z\in R^k$ has length one, $\|r\|^2=\sum r_i^2\leq1$. The map sends this point to $(z,r_1,r_2,\ldots,r_n)$.}
+It follows that the Thom space of $nL$ is given by $\RP^{n+k-1}/\RP^{n-1}$, so $nL$'s being fiber homotopy trivial now implies $T(n\epsilon) \simeq T(nL) \cong \RP^{n+k-1}/\RP^{n-1}$.
+%
+% sends $([z], r_1z, \ldots, r_nz)\in D(\nu)\subseteq \R P^{k-1}\times (\R^k)^n$, where $[z]=\R z\in\RP^{k-1}$ for $z\in\R^k$ to }
 
 % >>>
 \fi
