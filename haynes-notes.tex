@@ -16,7 +16,7 @@
 \usepackage[all]{xy}
 
 
-\newcommand{\OutputEVERYTHING}{  everything  }
+%\newcommand{\OutputEVERYTHING}{  everything  }
 %\newcommand{\OutputFrontMatter}{}
 %\newcommand{\OutputForeword}{0}
 %\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{1}
@@ -24,7 +24,7 @@
 %\newcommand{\OutputBuildingThomSpaces}{3}
 %\newcommand{\OutputFactsAboutThomSpaces}{4}
 %\newcommand{\OutputBuildingKandJtheory}{5}
-%\newcommand{\OutputGeometryAndTheSteenrodSquares}{6}
+\newcommand{\OutputGeometryAndTheSteenrodSquares}{6}
 %\newcommand{\OutputPropertiesOfTheSquares}{7}
 %\newcommand{\OutputDerivingTheUsualAdemRelations}{8}
 %\newcommand{\OutputUsingTheSquaresAndThomSpaces}{9}
@@ -706,18 +706,18 @@ We then make two claims: $\widetilde J(X)$ is the image of $[X, BO] \to [X, BG]$
 \ifx\OutputGeometryAndTheSteenrodSquares\undefined\else
 Today begins a several days blitz on Steenrod operations, from a somewhat geometric point of view.  To begin, remember that reduced ordinary cohomology is representable:
 \[
-\widetilde H^q(X; \pi) = [X, K(\pi, q)]
-.\]
-For example,
-\[
+\widetilde H^q(X; \pi) = [X, K(\pi, q)].
+%.\]
+\qquad\textup{For example:}\qquad
+%\[
 \widetilde H^q S^n = \pi_n K(\pi, q) = \begin{cases}\pi & q = n, \\ 0 & q \ne n.\end{cases}
 \]
-A basepoint gives a lot more than you might think at first.  For example, a basepoint in $X$ gives a filtration of the $n$-fold product $X^n$:
+A basepoint gives a lot more than you might think at first.  For example, a basepoint $\ast\in X$ gives a filtration of the $n$-fold product $X^n$:
 \[
-X^n \supset F_k X^n = \{(x_1, \ldots, x_k) \mid \hbox{at least $n-k$ of the $x_i$ are $*$}\}
+X^n \supset F_k X^n = \{(x_1, \ldots, x_k) \mid \hbox{at most $k$ of the $x_i$ differ from $*$}\}
 .\]
 So,
-\begin{diagram}
+\begin{diagram}[height=1.3em]
 F_0 X^n & \subseteq & F_1 X^n & \subseteq & \cdots & \subseteq & F_{n-1} X^n & \subseteq & F_n X^n \\
 \uEqualto & & \uEqualto & & & & \uEqualto & & \uEqualto \\
 \ptspace & & \bigvee_{i=1}^n X & & & & \hbox{``Fat wedge''} & & X^n.
@@ -726,22 +726,21 @@ F_0 X^n & \subseteq & F_1 X^n & \subseteq & \cdots & \subseteq & F_{n-1} X^n & \
 Suppose $\pi$ is a subgroup of the symmetric group $\Sigma_n$.  $\pi$ acts on $X^n$ by permuting the coordinates, and this action respects our filtration (in this discussion, we will be concerned mostly with the case $\pi = \Z/2$.)  Consider the space $E\pi$, a contractible CW-complex with a free $\pi$-action.
 For example, if $\pi = \Z/2$, then $\pi$ acts antipodally on $S^{n-1}$.  $S^{n-1}$ is not contractible, but its image is contractible in $S^n$; that is, the inclusion $S^{n-1} \into S^n$ is null-homotopic.  So the direct limit of the inclusions $S^{n-1} \subset S^n \subset \cdots = \bigcup_n S^n = S^\infty$ is contractible and has a free $\pi$-action.  The orbit space $E\pi/\pi = B\pi$ is clearly seen to be $\RP^\infty$. % awkwardly phrased.  is it important to give an explicit construction of Epi?  we've always been using EG for various G....
 
-Okay, so here's the key construction: on the universal $\pi$-bundle $E\pi \to B\pi$, use the Borel construction to mix in $X^n$, where $\pi$ acts on $X^n$ by permuting the factors;
-\begin{diagram}
+Okay, so here's the key construction: on the universal $\pi$-bundle $E\pi \to B\pi$, use the Borel construction to mix in $X^n$, where $\pi$ acts on $X^n$ by permuting the factors; we thus obtain a locally trivial bundle over $B\pi$ with fiber $X^n$:
+\begin{diagram}[height=1.7em]
 X^n & \rTo & E\pi \times_\pi X^n \\
 & & \dTo \\
 & & B\pi.
 \end{diagram}
+(Recall that $\pi$ acts diagonally on $E\pi \times X^n$, and $E\pi \times_\pi X^n$ is obtained as the quotient space of this action.)  This construction is called the ``$\pi$-extended power of $X$.''
 
-Recall that $\pi$ acts diagonally on $E\pi \times X^n$, and $E\pi \times_\pi X^n$ is obtained as the quotient space of this action.  This construction is called the ``$\pi$-extended power of $X$.''
-
-Now the fact that the $\pi$-action on $X^n$ respects our filtration means that we have a sub-bundle
-\begin{diagram}
+Now the fact that the $\pi$-action on $X^n$ respects the filtration means that we have a sub-bundle
+\begin{diagram}[height=1.7em]
 E\pi \times_\pi F_{n-1}X^n & \subseteq & E\pi \times_\pi X^n \\
 \dTo & & \dTo \\
 B\pi & \rEqualto & B\pi.
 \end{diagram}
-We want to pinch this subbundle to a point.  First, $X^n / F_{n-1} X^n$ is the $n$-fold smash product of $X$ with itself, $X^{(n)}$:
+We want to pinch this subbundle to a point.  First, as $X^n / F_{n-1} X^n\cong X^{(n)}:=X\sprod\cdots\sprod X$, the $n$-fold smash product of $X$ with itself, we have:
 \[
 \frac{E\pi \times_\pi X^n}{E\pi \times_\pi F_{n-1} X^n} = \frac{E\pi \times_\pi X^{(n)}}{E\pi \times_\pi \ptspace}
 .\]
@@ -754,10 +753,9 @@ where the symbol $\sprod_\pi$ means to take the orbit space of the diagonal acti
 This space is of some concern; first we want to know its cohomology.
 \begin{lem}
 Let $\widetilde H^i X = 0$ for $i < q$, where coefficients are taken in a field, and $\widetilde H^q X$ is finite dimensional.  Then,
-\begin{align*}
-\widetilde H^i D_\pi X & = 0 & \hbox{for $i < nq$} \\
-\widetilde H^{nq} D_\pi X & = (H^q(X)^{\times n})^\pi.
-\end{align*}
+\[\widetilde H^i(D_\pi X)=
+\begin{cases}0;&\textup{if }i<nq;\\(H^q(X)^{\otimes n})^\pi;&\textup{if }i=nq;\\???;&\textup{if }i>nq\end{cases}
+\]
 \end{lem}
 \begin{proof}
 One could produce a CW-complex for $D_\pi X$ having no cells of dimension less than $nq$.  Alternatively, one can use a relative Serre spectral sequence, with twisted coefficients since $B \pi$ is not simply connected; in fact $B \pi$ is a $K(\pi, 1)$.
@@ -769,15 +767,19 @@ Now $H^*(X^n, F_{n-1} X^n) \cong \widetilde H^* X^{(n)} \cong \widetilde H^*(X)^
 \widetilde H^{nq}(D_\pi X) = H^0(B\pi; \{\widetilde H^q(X)^{\otimes n}\}) = (\widetilde H^q(X)^{\otimes n})^\pi
 .\qedhere\]
 \end{proof}
+\noindent This is the key fact that gives the Steenrod operations; all else follows more or less from it.
 
-This is the key fact that gives the Steenrod operations; all else follows more or less from it.  Take for example the case $K = K(\Z/2, q)$. % rework this section so that we can swap out singular cohomology for something else.  this seems to be the key confusing step
-\begin{align*}
-\widetilde H^i(K; \Z/2) & = 0, \hspace{5em} i < q \\
-\widetilde H^q(K; \Z/2) & = \Z/2,
-\end{align*}
-by the Hurewicz theorem.  So $\widetilde H^{nq}(D_\pi K; \Z/2) = \Z/2$.  Moreover the spectral sequence for $\pi \into E\pi_+ \sprod K^{(n)} \xrightarrow{p} E\pi_+ \sprod_\pi K^{(n)}$ shows that the map
+Take for example the case $K = K(\Z/2, q)$. By the Hurewicz theorem and universal coefficients theorem: % rework this section so that we can swap out singular cohomology for something else.  this seems to be the key confusing step
+\[\widetilde H^i(K; \Z/2)=0\text{ \ for $i<q$, and \ }\widetilde H^q(K; \Z/2)=\Z/2.\]
+%%%$\widetilde H^i(K; \Z/2)$ is zero for $i<q$ and is $\Z/2$ when $i=q$.
+%\begin{align*}
+%\widetilde H^i(K; \Z/2) & = 0, \hspace{5em} i < q \\
+%\widetilde H^q(K; \Z/2) & = \Z/2,
+%\end{align*}
+%by the Hurewicz theorem.  
+So $\widetilde H^{nq}(D_\pi K; \Z/2) = \Z/2$.  Moreover the spectral sequence for $\pi \into E\pi_+ \sprod K^{(n)} \xrightarrow{\ p\ } E\pi_+ \sprod_\pi K^{(n)}$ shows that the map
 \[
-\Z/2 = \widetilde H^{nq} D_\pi K \stackrel{p^*}{\to} \widetilde H^{nq} K^{(n)} % this breaks if the action of pi isn't transitive
+\Z/2 = \widetilde H^{nq} D_\pi K \xrightarrow{\ p^*\,} \widetilde H^{nq} K^{(n)} % this breaks if the action of pi isn't transitive
 \]
 is an isomorphism.  Now $\widetilde H^{nq} K^{(n)}$ contains an element $\iota_q^{\sprod n}$, the $n$-fold smash power of the fundamental class $\iota_q \in \widetilde H^q K$, and we have
 \begin{cor}
@@ -870,6 +872,7 @@ Show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 S^1 = \Z/
 
 % >>>
 \fi
+\BoxedNote{}
 \section{Properties of the squares} % <<<
 \ifx\OutputPropertiesOfTheSquares\undefined\else
 
@@ -1014,6 +1017,7 @@ is symmetric in $x$ and $y$.  This is the shortest statement of the Adem relatio
 
 % >>>
 \fi
+\BoxedNote{}
 \section{Deriving the usual Adem relations} % <<<
 \ifx\OutputDerivingTheUsualAdemRelations\undefined\else
 Last time we got as far as showing $\Sq_x \Sq_y u = \Sq_y \Sq_x u$, where $\Sq_x = \sum_{i \ge 0} x^{-i} \Sq^i$, and $|x| = |y| = 1$, and $x$ and $y$ represent $1$-dimensional classes in $\widetilde H^* \RP^\infty$. % what the hell
@@ -1113,6 +1117,7 @@ which tells you that
 
 % >>>
 \fi
+\BoxedNote{}
 \section{Using the squares and Thom spaces} % <<<
 \ifx\OutputUsingTheSquaresAndThomSpaces\undefined\else
 % somewhere in here we start using / for vector bundles; be consistent with \onto from earlier or \downarrow as suggested
@@ -1199,6 +1204,7 @@ Now the Thom class of $nL \onto \RP^{k-1}$, as we saw, is $x^n$.  So $w(L) = 1 +
 
 % >>>
 \fi
+\BoxedNote{}
 \section{Structure on \texorpdfstring{$K$}{K}-theory} % <<<
 \ifx\OutputStructureOnKtheory\undefined\else
 This isn't a course about $K$-theory, it's a course that uses $K$-theory.  So we're not going to see proofs of lots of basic theorems of $K$-theory; in particular I'm not going to prove the periodicity theorem.  However, we will need some facts which we'll review now.
@@ -1309,6 +1315,7 @@ There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that:
 
 % >>>
 \fi
+\BoxedNote{}
 \section{Building \texorpdfstring{$K$}{K}-theory operations from representation theory} % <<<
 \ifx\OutputBuildingKtheoryOperatorsFromRepTheory\undefined\else
 Previously, we discussed the ring $KO^* = KO^* \ptspace$ and said it was
@@ -1384,6 +1391,7 @@ Note that the additive condition requires $\theta_0 = 0$.
 
 % >>>
 \fi
+\BoxedNote{}
 \section{Building the Adams power operations} % <<<
 \ifx\OutputBuildingTheAdamsPowerOperations\undefined\else
 Recall that for a compact Lie group $G$ we identified a representation of $G$ with a continuous homomorphism $\rho: G \to U(n)$ which allowed us to speak of the class function $\chi_\rho$, the ``character'' of the representation.  The induced map $RG \into \{\hbox{class function $G \to \C$}\}$ is injective, so we identify $\rho$ with its image under $\chi$.  Recall also that a sequence of virtual representations $\theta_* = \{\theta_n \in RU(n)\}$ is ``additive'' if $\theta_m \oplus \theta_n = \sigma^* \theta_{m+n}$.
@@ -1492,6 +1500,7 @@ R(U(n)) & \rTo^{i^*} & R(O(n)) \\
 
 % >>>
 \fi
+\BoxedNote{}
 \section{Proof of the Hopf invariant 1 theorem} % <<<
 \ifx\OutputProofOfHopfInvariantOne\undefined\else
 Okay, today we prove Hopf invariant 1.  First, note this fact about the Adams operations:
@@ -1680,6 +1689,7 @@ as advertised.
 
 % >>>
 \fi
+\BoxedNote{}
 \section{The James construction} % <<<
 \ifx\OutputTheJamesConstruction\undefined\else
 Today we start looking at consequences of the vector field problem.  First, remember the group $J(X)$.  This was the quotient of $KO(X)$ by the equivalence generated on the level of bundles by $V \simeq_J W$ if and only if $S(V \oplus n \varepsilon) \simeq_{f.h.e.} S(W \oplus n \varepsilon)$.  An immediate consequence of the last few days' work is
@@ -1923,6 +1933,7 @@ but now since the homology isomorphism was only one of coalgebras, this is only 
 
 % >>>
 \fi
+\BoxedNote{}
 \section{The maps \texorpdfstring{$e$ and $h$}{e and h} in the EHP long exact sequence} % <<<
 \ifx\OutputTheMapsEandHinTheEHPLES\undefined\else
 The march to the EHP sequence continues.  Recall for a connected CW complex $X$ the James construction gave a homotopy equivalence
@@ -2148,6 +2159,7 @@ H^{n-1}S^{n-1} & \lTo^{\mu(x_0, -)^*}_{\cdot b} & H^{n-1} S^{n-1}.
 
 % >>>
 \fi
+\BoxedNote{}
 \section{Whitehead products and the EHP spectral sequence} % <<<
 \ifx\OutputWhiteheadProductsAndTheEHPSS\undefined\else
 OK, so now we'll go back to the EHP sequence, and conclude this look at the map $h$ by seeing what we get from the existence of elements of Hopf invariant 1.  Last time we found an element of Hopf invariant one $\nu: S^7 \to S^4$ which came from the Hopf construction on quaternion multiplication $S^3 \times S^3 \to S^3$.  In the EHP sequence this appears as the $\pi_6$ level of $S^3 \to \Loops S^4 \stackrel{h}{\to} \Loops S^7$.  We can fit $\nu$ into this picture by
@@ -2359,6 +2371,7 @@ But we cna get more otu of this information: notice that this is the \emph{only}
 
 % >>>
 \fi
+\BoxedNote{}
 \section{The stable category} % <<<
 \ifx\OutputTheStableCategory\undefined\else
 Last time we saw the introduction of the EHP spectral sequence.  Remember the $E^1$ term looked like this: INKSCAPE  In introducing it the claim was made that studying this spectral sequence would help to attack the theorem about desuspending $W_n$.  In order to see why this might be true, let's take a look at how to interpret the differentials in the spectral sequence.  Note that this discussion will apply in general to any spectral sequence arising from an exact couple.
@@ -2463,6 +2476,7 @@ As a final remark, note that now we can talk about $T(\mathrm{virtual bundle})$;
 
 % >>>
 \fi
+\BoxedNote{}
 \section{Homotopical algebra and duality} % <<<
 \ifx\OutputHomotopicalAlgebraAndDuality\undefined\else
 Well, let's continue with the discussion of stable homotopy, and really enter the stratosphere at this point, at least for a short while.  So remember last time we ended with the notion of a category $\CatOf{C}$, the $S$-category of finite complexes.  In this category there is an important notion of ``exact triangles:'' $X \to Y \to Z \to \Suspend X$ is an exact triangle if it is homotopy equivalence to $X \stackrel{f}{\to} Y \to Cf \to \Suspend X$ on the level of spaces, perhaps after suspending a lot.  Two important facts about exact triangles are
@@ -2561,6 +2575,7 @@ A finite complex is built out of spheres using exact triangles, so we get
 
 % >>>
 \fi
+\BoxedNote{}
 \section{Dualities} % <<<
 \ifx\OutputDualities\undefined\else
 We were talking about duality; the last thing mentioned was the ``function spectrum'' $F(X, Y)$ satisfying $\{W, F(X, Y)\} \cong \{X \sprod W, Y\}$ for all $W \in \CatOf{S}$.  If $X$ is finite then $F(X, Y) = (DX) \sprod Y$.  Now call $Y = E$, take $W = S^n$, and assume $X$ is finite, then
@@ -2675,6 +2690,7 @@ Now we'd like $f$ to be an equivalence; this isn't always true, but if some reas
 
 % >>>
 \fi
+\BoxedNote{}
 \section{The structure of stunted projective space} % <<<
 \ifx\OutputTheStructureOfStuntedProjectiveSpace\undefined\else
 Today we look at the attaching maps for stunted projective spaces.  In fact, the attaching maps we're going to look at are the ``stable relative attaching maps,'' so perhaps we should begin by saying what that means.  Suppose $X$ is a CW complex; then it has a skeletal filtration $Sk_* X$.  The $(k+1)$-skeleton is obtained from the $k$-skeleton by attaching $(k+1)$-cells as in
@@ -2902,6 +2918,7 @@ S^{n - \rho(n) - 1}.
 
 % >>>
 \fi
+\BoxedNote{}
 \section{Matching the EHP sequence to Atiyah-Hirzebruch} % <<<
 \ifx\OutputMatchingTheEHPSStoAtiyahHirzebruck\undefined\else
 Last time we used a ``folk theorem'' due to Toda and Adams to the effect that the virtual bundle over $S^{\rho(n)}$ classified by $g_{\nu(n)}$ has as its Thom space the space $Cj_{\nu(n)}$ from the cofibration sequence
@@ -3028,6 +3045,7 @@ So $w_{n-1}$ desuspends to an element in $\pi_{2n-\rho(n)-2} S^{n-\rho(n)}$ and 
 
 % >>>
 \fi
+\BoxedNote{}
 \section{The space of little cubes} % <<<
 \ifx\OutputTheSpaceOfLittleCubes\undefined\else
 Today we'll examine where the Snaith maps come from, but you're going to have to believe some things.  Some references for this include May's book~\cite{May}, Cohen's paper~\cite{Cohen}, and Kuhn's paper~\cite{Kuhn}.  Remember, we're trying to construct maps
@@ -3134,6 +3152,7 @@ There's lots of work still to be done: you have to check the compatibility of th
 
 % >>>
 \fi
+\BoxedNote{}
 \section{The Becker-Gottlieb transfer} % <<<
 \ifx\OutputTheBeckerGottliebTransfer\undefined\else
 One of the advantages of a topics course is that you can change direction in midstream.  So now let's study the Adams conjecture for a while, starting with a tool by Becker and Gottlieb which enables us to get a slicker proof than the original ones of Quillen and Friedlander.  It's a construction that's of interest anyway: ``transfer.''  The basic construction is so simple that it's hard to concentrate on it long enough to appreciate how much information it contains.
@@ -3354,6 +3373,7 @@ So $k^{4n}(\psi^k f^* - f^* \psi^k) = 0$, and $n$ depended only on $f$.
 
 % >>>
 \fi
+\BoxedNote{}
 \section{The Adams conjecture} % <<<
 \ifx\OutputTheAdamsConjecture\undefined\else
 Well, nothing in topology ever proceeds in a straightforward way; usually you end up having to talk about some ``relative'' version.  This time, we'll use a sort of ``relative'' transfer.  So, as before, let $F \to E \stackrel{p}{\to} B$ be a smooth fiber bundle with $F$ and $B$ compact; let $\xi$ over $B$ be a vector bundle, and consider
@@ -3470,6 +3490,7 @@ The left summand is killed by $k^e$ and the right summand is killed by $k^f$ for
 
 % >>>
 \fi
+\BoxedNote{}
 \section{Some summands of the stable homotopy groups of spheres} % <<<
 \ifx\OutputSomeSummandsOfStableHomotopyOfSpheres\undefined\else
 All right, today we'll study the meaning of the Adams conjecture; in particular I'm going to tell you about the space $J$.  We've talked about the $KO$ spectrum, representing real $K$-theory: $KO^*(X) = \{X, KO\}$.  It is a sequence of spaces $\{KO_n\}$ with maps $\alpha_n: \Suspend KO_n \to KO_{n+1}$, with
@@ -3804,6 +3825,7 @@ The desuspension of $w_n$s brings us to the Kervaire Invariant classes.  Notice 
 Other things have been done: you could investigate further how the classes that are in $\pi_*^S$ behave in the EHP sequence; for example, you could try to compute $p(j_k)$.  Mahowald's theorem tells good information about when these are nonzero.  Feder, Gittler, and Lan~\cite{FGL} have shown other classes for which $p(j_k) = 0$.  But the Kervaire Invariant classes represent a real missing case here, about which relatively little is known.
 % >>>
 \fi
+\BoxedNote{}
 \ifx\OutputTheBibliography\undefined\else
 \begin{thebibliography}{Hatcher}
 \bibitem{Adams} J.\ Frank Adams.  \emph{Stable Homotopy and Generalised Homology}.  University of Chicago Press, 1974.
