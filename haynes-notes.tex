@@ -84,6 +84,7 @@
 }
 \newcommand{\Bullet}{\ensuremath{\bullet} }
 \newcommand{\Vect}{\textup{Vect}}
+\newcommand{\DASH}{\textup{---}}
 
 
 % <<< preamble containing our shorthands
@@ -94,6 +95,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\G}{\mathbb{G}}
+\newcommand{\F}{\mathbb{F}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\RP}{\R P}
 \newcommand{\CP}{\C P}
@@ -750,88 +752,137 @@ This is almost the smash product, but $E\pi$ doesn't have a basepoint.  But we c
 ,\]
 where the symbol $\sprod_\pi$ means to take the orbit space of the diagonal action on $E\pi_+ \sprod X^{(n)}.$  This is called the ``$\pi$-adic construction'' on $X$ (for lack, really, of a better name), and will be written $D_\pi(X)$.
 
-This space is of some concern; first we want to know its cohomology.
-\begin{lem}
-Let $\widetilde H^i X = 0$ for $i < q$, where coefficients are taken in a field, and $\widetilde H^q X$ is finite dimensional.  Then,
-\[\widetilde H^i(D_\pi X)=
-\begin{cases}0;&\textup{if }i<nq;\\(H^q(X)^{\otimes n})^\pi;&\textup{if }i=nq;\\???;&\textup{if }i>nq\end{cases}
+Now a map $f:X\to Y$ induces a map $D_\pi(X)\to D_\pi(Y)$, making $D_\pi$ into a functor.
+Moreover, there is a map $i_X:X^{(n)}\to D_\pi(X)$ \textbf{constructed somehow}. The maps $i_X$ constitute a natural transformation of functors $D_\pi\to (\textup{---})^{(n)}$, in the sense that for every $f:X\to Y$, there is a commuting diagram:
+\[\xymatrix@R=6mm{
+X^{(n)}\ar[r]_{f^{\wedge n}}\ar[d]_{i_X}&
+Y^{(n)}\ar[d]^{i_Y}\\
+D_\pi X\ar[r]^{D_\pi f}&
+D_\pi Y
+}
 \]
+There are a number of functors and natural transformations that will soon be in use. For clarity, we make a list:
+\begin{itemize}
+\item $D_\pi(\DASH):\mathsf{Top}_*\to\mathsf{Top}_*$ as described above.
+\item $(\textup{---})^{(n)}:\mathsf{Top}_*\to\mathsf{Top}_*$, the $n$-fold smash product.
+\item $\widetilde H^*(\DASH):=\widetilde H^*(\textup{---};\F_p):\mathsf{Top}_*\to\mathsf{ComGrAlg}_{\F_p}$, ordinary reduced cohomology with coefficients in the field of $p$ elements, for some chosen prime $p$. This takes values in the category of (graded)-commutative graded $\F_p$-algebras.
+\item $i_\DASH:(\DASH)^{(n)}\to D_\pi(\DASH)$, the natural transformation described above.
+\item $(\DASH)^{\wedge n}:\widetilde H^r(\textup{---};\F)\to\widetilde H^{nr}((\DASH)^{(n)})$, the $n$-fold exterior power of a cohomology class.
+\end{itemize}
+
+ 
+
+The space $D_\pi Z$ is of some concern; first we want to know its cohomology.
+\begin{lem}
+Let $\widetilde H^i Z = 0$ for $i < q$, where coefficients are taken in a field, and $\widetilde H^q Z$ is finite dimensional.  Then,
+\[\widetilde H^i(D_\pi Z)=
+\begin{cases}0;&\textup{if }i<nq;\\(\widetilde H^q(Z)^{\otimes n})^\pi;&\textup{if }i=nq;\\???;&\textup{if }i>nq\end{cases}
+\]
+\textbf{And the map $i^*:\widetilde H^{nq}(D_\pi Z)\to \widetilde H^{np}(Z^{(n)})$ is the inclusion of the $\pi$-invariants in $\widetilde H^q(Z)^{\otimes n}$, \textup{\textsc{or something like this}}.}
 \end{lem}
 \begin{proof}
-One could produce a CW-complex for $D_\pi X$ having no cells of dimension less than $nq$.  Alternatively, one can use a relative Serre spectral sequence, with twisted coefficients since $B \pi$ is not simply connected; in fact $B \pi$ is a $K(\pi, 1)$.
+%One could produce a CW-complex for $D_\pi Z$ having no cells of dimension less than $nq$. No, one cannot! What if $Z$ is a $K(Z/3,d)$ and the field is $Z/2$? Then $H^*(Z;Z/2)=0$, but there's plenty of cells.
+One can use a relative Serre spectral sequence, with twisted coefficients since $B \pi$ is not simply connected; in fact $B \pi$ is a $K(\pi, 1)$.
 \[
-E_2^{*, *} = H^*(B\pi; \{H^*(X^n, F_{n-1} X^n)\}) \Rightarrow \widetilde H^*(D_\pi X)
+E_2^{*, *} = H^*(B\pi; \{H^*(Z^n, F_{n-1} Z^n)\}) \Rightarrow \widetilde H^*(D_\pi Z)
 .\]
-Now $H^*(X^n, F_{n-1} X^n) \cong \widetilde H^* X^{(n)} \cong \widetilde H^*(X)^{\otimes n}$, and this last isomorphism is equivariant with respect to permutations, a fact that is not trivial (and likely to be false with other cohomology theories).  It follows that in the spectral sequence everything is zero below the horizontal line at height $nq$ in the $E_2$ term.  So, % why?
+Now $H^*(Z^n, F_{n-1} Z^n) \cong \widetilde H^* Z^{(n)} \cong \widetilde H^*(Z)^{\otimes n}$, and this last isomorphism is equivariant with respect to permutations, a fact that is not trivial (and likely to be false with other cohomology theories).  It follows that in the spectral sequence everything is zero below the horizontal line at height $nq$ in the $E_2$ term.  So, % why?
 \[
-\widetilde H^{nq}(D_\pi X) = H^0(B\pi; \{\widetilde H^q(X)^{\otimes n}\}) = (\widetilde H^q(X)^{\otimes n})^\pi
+\widetilde H^{nq}(D_\pi Z) = H^0(B\pi; \{\widetilde H^q(Z)^{\otimes n}\}) = (\widetilde H^q(Z)^{\otimes n})^\pi
 .\qedhere\]
 \end{proof}
 \noindent This is the key fact that gives the Steenrod operations; all else follows more or less from it.
 
-Take for example the case $K = K(\Z/2, q)$. By the Hurewicz theorem and universal coefficients theorem: % rework this section so that we can swap out singular cohomology for something else.  this seems to be the key confusing step
-\[\widetilde H^i(K; \Z/2)=0\text{ \ for $i<q$, and \ }\widetilde H^q(K; \Z/2)=\Z/2.\]
-%%%$\widetilde H^i(K; \Z/2)$ is zero for $i<q$ and is $\Z/2$ when $i=q$.
+From here on, for all $r$, let $K_r$ denote $K(\Z/p,r)$ and $\widetilde H^r$ denote $\widetilde H^r(\textup{---};\Z/p)$, for some chosen prime $p$.  By the Hurewicz theorem and universal coefficients theorem: % rework this section so that we can swap out singular cohomology for something else.  this seems to be the key confusing step
+\[\widetilde H^iK_q=0\text{ \ for $i<q$, and \ }\widetilde H^qK_q=\Z/p.\]
+%%%$\widetilde H^i(K_q; \Z/2)$ is zero for $i<q$ and is $\Z/2$ when $i=q$.
 %\begin{align*}
-%\widetilde H^i(K; \Z/2) & = 0, \hspace{5em} i < q \\
-%\widetilde H^q(K; \Z/2) & = \Z/2,
+%\widetilde H^i(K_q; \Z/2) & = 0, \hspace{5em} i < q \\
+%\widetilde H^q(K_q; \Z/2) & = \Z/2,
 %\end{align*}
 %by the Hurewicz theorem.  
-So $\widetilde H^{nq}(D_\pi K; \Z/2) = \Z/2$.  Moreover the spectral sequence for $\pi \into E\pi_+ \sprod K^{(n)} \xrightarrow{\ p\ } E\pi_+ \sprod_\pi K^{(n)}$ shows that the map
+So $\widetilde H^{nq}D_\pi K_q= \Z/p$.  Moreover \textbf{the spectral sequence for $\pi \into E\pi_+ \sprod K_q^{(n)} \xrightarrow{\ p\ } E\pi_+ \sprod_\pi K_q^{(n)}$ shows that (?)} the map
 \[
-\Z/2 = \widetilde H^{nq} D_\pi K \xrightarrow{\ p^*\,} \widetilde H^{nq} K^{(n)} % this breaks if the action of pi isn't transitive
+\Z/2 = \widetilde H^{nq} D_\pi K_q \xrightarrow{\ i^*\,} \widetilde H^{nq} K_q^{(n)} % this breaks if the action of pi isn't transitive
 \]
-is an isomorphism.  Now $\widetilde H^{nq} K^{(n)}$ contains an element $\iota_q^{\sprod n}$, the $n$-fold smash power of the fundamental class $\iota_q \in \widetilde H^q K$, and we have
+is an isomorphism.  Now $\widetilde H^{nq} K_q^{(n)}$ contains an element $\iota_q^{\sprod n}$, the $n$-fold smash power of the fundamental class $\iota_q \in \widetilde H^q K_q$, and we have
 \begin{cor}
-There is a unique class $P_\pi \iota_q \in \widetilde H^{nq} D_\pi K$ such that $i^* P_\pi \iota_q = \iota_q^{\sprod n}$.
+There is a unique class $P_\pi \iota_q \in \widetilde H^{nq} D_\pi K_q$ such that $i^* P_\pi \iota_q = \iota_q^{\sprod n}$. That is, there is a unique pointed map $P_\pi\imath_q$ up to homotopy making the following diagram commute up to homotopy:
+\[\xymatrix@R=6mm{
+K_q^{(n)}\ar[d]^i\ar[r]^{\imath_q^{(n)}}&
+K_{nq}\\
+D_\pi K_q\ar@{.>}[ru]_{P_\pi\imath_q}
+}\]
 \end{cor}
-So if $X$ is any pointed space, we have correspondences
-\begin{align*}
-\widetilde H^q X & \leftrightarrow [X, K] \\
-f^* \iota_q & \leftrightarrow [f].
-\end{align*}
-We will freely confuse these sets.  Representing $u$ as a (homotopy class of) map(s) $u: X \to K$, we have an induced map $X^{(n)} \stackrel{u^{\sprod n}}{\to} K^{(n)} \stackrel{\iota_q^{\sprod n}}{\to} K(\Z/2, nq)$, and then the diagram
-\begin{diagram}
-X^{(n)} & \rTo^{u^{\sprod n}} & K^{(n)} & \rTo^{\iota_q^{\sprod n}} & K(\Z/2, nq) \\
-\dTo<p & & \dTo>p & \ruTo_{P_\pi \iota_q} \\
-D_\pi X & \rTo^{D_\pi u^{\sprod n}} & D_\pi K
-\end{diagram}
-induces a diagram on cohomology
-\begin{diagram}
-\widetilde H^{nq} X^{(n)} & \lTo^{(u^{\sprod n})^*} & \widetilde H^{nq} K^{(n)} & \lTo^{(\iota_q^{\sprod n})^*} & \widetilde H^{nq} K(\Z/2, nq) \\
-\uTo<{p^*}>\cong & & \uTo>{p^*}<\cong & \ldTo_{(P_\pi \iota_q)^*} \\
-\widetilde H^{nq} D_\pi X & \lTo^{(D_\pi u^{\sprod n})^*} & \widetilde H^{nq} D_\pi K
-\end{diagram}
-which shows that there is a unique class $P_\pi u = P_\pi \iota_q \circ D_\pi u^{\sprod n} \in \widetilde H^{nq} D_\pi X$ such that $p^* P_\pi u = \iota_q^{\sprod n} \circ u^{\sprod n}$.  $P_\pi u$ is called the ``Steenrod power'' of $u$.  Finally, the diagonal map $\Delta: X \to X^{(n)}$ is equivariant ($\pi$ acts trivially on the single factor $X$), and this induces
-\begin{diagram}
+\noindent Here, we have abused notationally the correspondence
+$\widetilde H^q X  \longleftrightarrow [X, K_q]_\ast$ given by % \\
+$f^* \iota_q  \longleftrightarrow [f]$ which holds for pointed spaces $X$. Will will continue to freely confuse these sets.
+Now suppose that $X$ is any space (with no assumptions on its cohomology), and $u\in\widetilde H^qX$.
+Representing $u\in \widetilde H^q(X)$ as a (homotopy class of) map(s) $u: X \to K_q$, we have a diagram:%n induced map $X^{(n)} \stackrel{u^{\sprod n}}{\to} K_q^{(n)} \stackrel{\iota_q^{\sprod n}}{\to} K_{nq}$, and then the diagram
+\[\xymatrix@R=6mm{
+X^{(n)}\ar[r]^{u^{\wedge n}}\ar[d]^i&
+K_q^{(n)}\ar[d]^i\ar[r]^{\imath_q^{\wedge n}}&
+K_{nq}\\
+D_\pi X\ar[r]^{D_\pi u}&
+D_\pi K_q\ar@{.>}[ru]_{P_\pi\imath_q}
+}
+\raisebox{-.5cm}{\textup{\qquad which induces:\qquad}}
+\xymatrix@R=6mm{
+\widetilde H^{nq}X^{(n)}&
+\widetilde H^{nq}K_q^{(n)}\ar[l]_{(u^{\wedge n})^*}&
+\widetilde H^{nq}K_{nq}\makebox[0cm][l]{$\,\ni\imath_{nq}$}
+\ar@{.>}[dl]^{(P_\pi\imath_q)^*}\ar[l]_{(\imath_q^{\wedge n})^*}\\
+\widetilde H^{nq}D_\pi X\ar[u]_{i^*}&
+\widetilde H^{nq}D_\pi K_q\ar[l]_{(D_\pi u)^*}\ar[u]_{i^*}^\cong
+}\phantom{\,\ni\imath_{nq}}\]
+\begin{lem}
+There is a unique natural transformation\footnote{Recall $\widetilde H^r$ is shorthand for $\widetilde H^r(\textup{---},\Z/2)$.} $P_\pi:H^q(\textup{---})\longrightarrow H^{nq}D_\pi(\textup{---})$ such that $i_X^*P_\pi u=u^{\wedge n}$ for all $u\in H^q(X)$. $P_\pi u$ is called the \emph{``Steenrod power''} of $u$.
+\end{lem}
+%\begin{diagram}
+%X^{(n)} & \rTo^{u^{\sprod n}} & K_q^{(n)} & \rTo^{\iota_q^{\sprod n}} & K_{nq}\\
+%\dTo<p & & \dTo>p & \ruTo_{P_\pi \iota_q} \\
+%D_\pi X & \rTo^{D_\pi u^{\sprod n}} & D_\pi K_q
+%\end{diagram}
+%induces a (\textbf{WRONG}) diagram on cohomology
+%\begin{diagram}
+%\widetilde H^{nq} X^{(n)} & \lTo^{(u^{\sprod n})^*} & \widetilde H^{nq} K_q^{(n)} & \lTo^{(\iota_q^{\sprod n})^*} & \widetilde H^{nq} K_{nq}\\
+%\uTo<{p^*}>\cong & & \uTo>{p^*}<\cong & \ldTo_{(P_\pi \iota_q)^*} \\
+%\widetilde H^{nq} D_\pi X & \lTo^{(D_\pi u^{\sprod n})^*} & \widetilde H^{nq} D_\pi K_q
+%\end{diagram}
+%which shows that there is a unique class $P_\pi u = P_\pi \iota_q \circ D_\pi u^{\sprod n} \in \widetilde H^{nq} D_\pi X$ such that $p^* P_\pi u = \iota_q^{\sprod n} \circ u^{\sprod n}$.  
+Finally, the diagonal map $\Delta: X \to X^{(n)}$ is equivariant, where we let $\pi$ act trivially on the single factor $X$, and this induces
+\begin{diagram}[height=1.3em]
 E\pi_+ \sprod_\pi X & \rTo^\Delta & E \pi_+ \sprod X^{(n)} \\
 \dEqualto & & \dEqualto \\
 B \pi_+ \sprod X & \rTo_j & D_\pi X.
 \end{diagram}
 So, any $u \in \widetilde H^q X$ gives us a class $j^* P_\pi u \in \widetilde H^{nq}(B \pi_+ \sprod X)$.
 
-The case we will develop in full is $\pi = \Z/2$, $n = 2$, so let's restrict attention to that, writing $P$ for $P_\pi$.  $B\pi = \RP^\infty$ as we saw above, and $H^* B\pi = \widetilde H^* B\pi_+ = (\Z/2)[x]$ with $|x| = 1$, hence $\widetilde H^*(B\pi_+ \sprod X) \cong H^*(B \pi) \otimes \widetilde H^* X$.  This isomorphism means we can write
-\begin{align*}
-\widetilde H^*(B \pi_+ \sprod X) & \cong H^*(B \pi) \otimes \widetilde H^* X \\
-j^* P u & = \sum_{i=0}^q x^{q-i} \otimes \Sq^i u,
-\end{align*}
-where $\Sq^i u$ is of degree $q + i$, and we take this to be \emph{the} definition of $\Sq^i u$.
+The case we will develop in full is $\pi = \Z/2$, $n = 2$, and $p=2$, so we spcialise to this case now, writing $P$ for $P_\pi$ (and $\widetilde H^*$ for $\widetilde H^*(;\F_2)$).  $B\pi = \RP^\infty$ as we saw above, and $H^* B\pi = \widetilde H^* B\pi_+ = (\Z/2)[x]$ with $|x| = 1$, hence $\widetilde H^*(B\pi_+ \sprod X) \cong H^*(B \pi) \otimes \widetilde H^* X$.  This isomorphism means that given $u\in\widetilde H^qX$, we can write
+%\begin{align*}
+%\widetilde H^*(B \pi_+ \sprod X) & \cong H^*(B \pi) \otimes \widetilde H^* X \\
+%j^* P u & = \sum_{i=-q}^q x^{q-i} \otimes \Sq^i u,
+%\text{\qquad where $\Sq^iu\in 
+%\end{align*}
+\[j^* P u  = \sum_{i=-q}^q x^{q-i} \otimes \Sq^i u,
+\text{\qquad where }\Sq^iu\in \widetilde H^{q+i}X.\]
+where $\Sq^i u$ is of degree $q + i$, and we take this to be \emph{the} definition of $\Sq^i u$. We can note immediately that $\Sq^i$ is a natural transformation $\widetilde H^q\to\widetilde H^{q+i}$. Moreover, it is immediate that $\Sq^i u$ is zero when $-q\leq i<0$, since this holds in the universal case $K(\Z/2,q)$.
 
 Note that the above can be to a large extent carried out in other cohomology theories, giving similar operations.  Mostly one needs to have computed $H^*(B \pi \sprod X)$.
 
-Now let's start finding properties of the squares.  First of all, we don't even know that they're not all zero yet.  But we have the following diagram
-\begin{diagram}
-B\pi_+ \sprod X & \rTo^j & D_\pi X \\
-\uTo<k & & \uTo>p \\
-S^0 \sprod X & \rTo^\Delta & X^{(2)}, % we should check that k induces the projection map on cohomology
-\end{diagram}
-which induces the following action on cohomology classes:
-\begin{diagram}
-\sum_{i=0}^q x^{q-i} \otimes \Sq^i u & \lMapsto & P u \\
-\dMapsto & & \dMapsto \\
-u \smile u & \lMapsto & u^{\sprod 2}.
-\end{diagram}
-Now, the pullback $k^*: H^* B\pi_+ \otimes H^* X$ acts by quotienting the power series generator $x \in H^* B\pi_+$, i.e., sends $x^m \otimes y$ to zero for $m > 0$ and any $y \in H^* X$.  So $\Sq^q u = u^2$.
+Now let's start finding properties of the squares.  First of all, we don't even know that they're not all zero yet. Choose $u\in \widetilde H^q(X)$. We have the following diagram
+\[\xymatrix@R=.6cm{
+B\pi_+ \sprod X \ar[r]^j & D_\pi X \\
+S^0 \sprod X  \ar[r]^\Delta\ar[u]^k & X^{(2)}\ar[u]^i
+}
+\raisebox{-.5cm}{\textup{\qquad which induces:\qquad}}
+\xymatrix@R=.6cm{
+\sum_{i=0}^q x^{q-i} \otimes \Sq^i u\ar@{|->}[d]&
+\ar@{|->}[l]  Pu \ar@{|->}[d]\\
+u\smile u & u^{\wedge2}\ar@{|->}[l]
+}\raisebox{-.5cm}{\textup{\qquad on $\widetilde H^{2q}(\DASH)$.\qquad}}
+\]
+(Note that $k^*: \Z/2[x]\otimes \widetilde H^* X\to\widetilde H^* X$ is the projection onto $\Z/2\otimes \widetilde H^* X$.) Thus $\Sq^q u = u^2$.
 
 Next, we derive the Cartan formula, beginning with the calculation
 \begin{align*}
@@ -839,17 +890,17 @@ D_\pi(X \sprod Y) = E \pi_+ \sprod_\pi (X \sprod Y)^{(2)} & \stackrel{\delta}{\t
 (e, (x_1, y_1), (x_2, y_2)) & \mapsto (e, (x_1, x_2); e, (y_1, y_2)).
 \end{align*}
 Moreover, the diagram
-\begin{diagram}
-(X \sprod Y)^{(2)} & \rTo^p & D_\pi(X \sprod Y) & \lTo^j & B \pi_+ \sprod (X \sprod Y) \\
+\begin{diagram}[height=1.8em]
+(X \sprod Y)^{(2)} & \rTo^i & D_\pi(X \sprod Y) & \lTo^j & B \pi_+ \sprod (X \sprod Y) \\
 \dTo<{T} & & \dTo>\delta & & \dTo>{\Delta_{B \pi_+}} \\
-X^{(2)} \sprod Y^{(2)} & \rTo^{p \sprod p} & D_\pi X \sprod D_\pi Y & \lTo^{j \sprod j} & B \pi_+ \sprod X \sprod B \pi_+ \sprod Y
+X^{(2)} \sprod Y^{(2)} & \rTo^{i \sprod i} & D_\pi X \sprod D_\pi Y & \lTo^{j \sprod j} & B \pi_+ \sprod X \sprod B \pi_+ \sprod Y
 \end{diagram}
 commutes.
 \begin{lem}
 $\delta^*(Pu \sprod Pv) = P(u \sprod v)$.
 \end{lem}
 \begin{proof}
-We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$.  Then the lowest dimensional cohomology of $D_\pi(X \sprod Y)$ is $\Z/2$ in dimension $2(p + q)$.  But $(\delta p)^*(P\iota_p \sprod P\iota_q) = ((p \sprod p)T)^* (\iota_p \sprod \iota_q)$ equals $(\iota_p \sprod \iota_q)^{\sprod 2}$, and $P(\iota_p \sprod \iota_q)$ is defined to be the unique class in $H^{2(p+q)} D_\pi(X \sprod Y)$ for which this holds. % we have two nonzero things living in the same dimension, where there's only one nonzero element.
+We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$.  Then the lowest dimensional cohomology of $D_\pi(X \sprod Y)$ is $\Z/2$ in dimension $2(p + q)$.  But $(\delta i)^*(P\iota_p \sprod P\iota_q) = ((i \sprod i)T)^* (\iota_p \sprod \iota_q)$ equals $(\iota_p \sprod \iota_q)^{\sprod 2}$, and $P(\iota_p \sprod \iota_q)$ is defined to be the unique class in $H^{2(p+q)} D_\pi(X \sprod Y)$ for which this holds. % we have two nonzero things living in the same dimension, where there's only one nonzero element.
 \end{proof}
 
 \begin{cor}[Cartan formula]  $\Sq^k(u \sprod v) = \sum_{i+j = k} \Sq^i u \sprod \Sq^j v$.
@@ -863,7 +914,8 @@ We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$
 & = \sum_{i, j}x^{p+q-i-j} \otimes \Sq^i u \sprod \Sq^j v.\qedhere
 \end{align*}
 \end{proof}
-\begin{cor}[Internal version]  Taking $X = Y$ and using $\Delta: X \to X \times X$, $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$.
+Taking $X = Y$ and using $\Delta: X \to X \times X$, we obtain:
+\begin{cor}[Internal version]  $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$.
 \end{cor}
 
 \begin{ex}
@@ -872,7 +924,31 @@ Show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 S^1 = \Z/
 
 % >>>
 \fi
-\BoxedNote{}
+\BoxedNote{
+\Bullet Fix $u\in\widetilde H^q(X)$. We summarise 
+% The following diagrams summarise 
+the construction of $\Sq^iu\in \widetilde H^{q+i}(X)$ thus:
+\[\xymatrix@R=3mm@C=5mm{
+B\pi_+\wedge S\ar[r]_j&D_\pi(X)&**[l]{X^{\wedge2}}\ar[l]^{\ \ \ i}\\
+E\pi_+\wedge_\pi X\ar[r]^\Delta\ar@{=}[u]&
+E\pi_+\wedge_\pi X^{(2)}\ar@{=}[u]
+}
+%\raisebox{-.3cm}{\textup{induces:\ }}
+\raisebox{-.3cm}{\textup{on $\widetilde H^{2q}$:\ }}
+\xymatrix@R=3mm@C=5mm{
+%\sum x^{q-i}\otimes \Sq^iu
+\text{\raisebox{-.05em}{$\Sigma$}\,{\small$x^{q-i}\otimes \Sq^iu$}}
+&Pu\ar@{|->}[r]_{i^*}\ar@{|->}[l]^{\qquad\ \ j^*}&u\wedge u\\
+&u\raisebox{0mm}[0cm][0cm]{\makebox[0mm][l]{$\,\in\widetilde H^q(X)$}\ar@{|->}[u]}
+}
+\]
+\Bullet $\Sq^iu=0$ for $i<0$ and $i>q$. $\Sq^qu=u^2$.
+
+\Bullet Internal Cartan formula: $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$.
+
+\Bullet External Cartan formula: $\Sq^k(u \sprod v) = \sum_{i+j = k} \Sq^i u \sprod \Sq^j v$.
+}
+% THERE IS A LOT LEFT TO REPAIR IN THIS CHAPTER!
 \section{Properties of the squares} % <<<
 \ifx\OutputPropertiesOfTheSquares\undefined\else
 
