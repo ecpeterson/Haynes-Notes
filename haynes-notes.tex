@@ -22,9 +22,9 @@
 %\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{1}
 %\newcommand{\OutputCliffordAlgebras}{2}
 %\newcommand{\OutputBuildingThomSpaces}{3}
-%\newcommand{\OutputFactsAboutThomSpaces}{4}
+\newcommand{\OutputFactsAboutThomSpaces}{4}
 %\newcommand{\OutputBuildingKandJtheory}{5}
-\newcommand{\OutputGeometryAndTheSteenrodSquares}{6}
+%\newcommand{\OutputGeometryAndTheSteenrodSquares}{6}
 %\newcommand{\OutputPropertiesOfTheSquares}{7}
 %\newcommand{\OutputTheAdemRelations}{8}
 \newcommand{\OutputUsingTheSquaresAndThomSpaces}{9}
@@ -512,13 +512,13 @@ It follows that the Thom space of $nL$ is $T(nL)\simeq\RP^{n+k-1}/\RP^{n-1}$. In
 %
 \Bullet Dold: suppose $f:E_1\to E_2$ is a map of fibrations $E_i\downarrow B$, the $E_i$ have the homotopy type of a CW-complex, and $B$ is connected. Then if $f$ restricts to a homotopy equivalence on each fiber, it has a fiber homotopy inverse.
 
+\Bullet $nL\onto \R P^{k-1}$ is the normal bundle of the inclusion into $\R P^{n+k-1}$.
+
 \Bullet If $V_{n, k} \onto S^{n-1}$ sections, then $S(nL)\onto \R P^{k-1}$ is fiber homotopy trivial.
 
-\Bullet $nL\onto \R P^{k-1}$ is the normal bundle of this inclusion into $\R P^{n+k-1}$.
+\Bullet $T(nL)\simeq \RP^{n+k-1}_n:=\R P^{n+k-1}/\R P^{n-1}$ ``stunted projective space'' (any $n,k$).
 
-\Bullet $T(nL)\simeq \RP^{n+k-1}_n:=\R P^{n+k-1}/\R P^{n-1}$.
-
-\Bullet In particular, if $S^{n-1}$ admits $k-1$ vector fields, then $T(n\epsilon)\simeq \R P^{n+k-1}_n$.
+\Bullet In particular, if $S^{n-1}$ admits $k-1$ vector fields, $T(n\epsilon)\simeq T(nL)\simeq \R P^{n+k-1}_n$.
 }
 \section{Facts about Thom spaces} % <<<
 \ifx\OutputFactsAboutThomSpaces\undefined\else
@@ -542,7 +542,7 @@ To understand this better, let's look at the trivial sphere bundle $B \times S^{
 \[T(B \times S^{n-1}) = \frac{B \times D^n}{B \times S^{n-1}} \cong \frac{B \times S^n}{B \times \ptspace} \cong \pt{B} \sprod S^n = \Suspend^n(\pt{B}),\]
 and so the Thom space of a bundle can be thought of as a twisted sort of suspension.
 
-Here's an important fact: $T(E\, \widehat \ast\, E') = T(E) \sprod T(E')$, where $\sprod$ denotes the smash product of pointed spaces.  A rough proof in the special case that $E = SV \to B$ and $E' = SW \to B$ is:
+Here's an important fact: $T(E\, \widehat \ast\, E') = T(E) \sprod T(E')$, where $\sprod$ is the smash product of pointed spaces.  A rough proof in the special case that $E = SV$ and $E' = SW$ for vector bundles $V\downarrow B$ and $V'\downarrow B'$ is:
 %\begin{align*}
 %TV \sprod TW & = T(S(V)) \sprod T(S(W)) \\ %A bit wordy
 %& = \frac{DV}{SV} \sprod \frac{DW}{SW} \\
@@ -552,7 +552,16 @@ Here's an important fact: $T(E\, \widehat \ast\, E') = T(E) \sprod T(E')$, where
 %& = T(S(V \times W)) = T(E\,\widehat \ast\, E').
 %\end{align*}
 \[TV \sprod TW = \frac{DV \times DW}{(SV \times DW) \cup (DV \times SW)}\cong \frac{D(V \times W)}{S(V \times W)}= T(S(V \times W)) = T(E\,\widehat \ast\, E').\]
-In the special case that $E' \to B'$ is $\R^n \to \ptspace$, we get that $T(V \oplus n \epsilon) = T(V) \sprod S^n = \Suspend^n T(V)$.
+In the special case that $E' \to B'$ is $\R^n \to \ptspace$, we get that $T(V \oplus n \epsilon) = T(V) \sprod S^n = \Suspend^n T(V)$. Note that if $V$, $W$ are vector bundles over $B$, it is \textbf{not} the case that $T(V\oplus W)=T(V)\wedge T(W)$. However, we have a pullback diagram (drawn on the left) which induces a map of Thom spaces. This map commutes with the inclusion of the copies of $S^{n+m}$ (on the right, where $\dim_*V=n$ and $\dim_*W=m$):
+\[\xymatrix{
+V\oplus V'\ar[d]\ar[r]&V\times V'\ar[d]\\
+B\ar[r]^\Delta&B\times B
+}\qquad\qquad
+\xymatrix{
+T(V\oplus V'\downarrow B)\ar[r]&T(V\times V'\downarrow B\times B)
+\ar@{=}[r]&T(V\downarrow B)\wedge T(V'\downarrow B)\\
+&S^{n+n'}\ar[ul]\ar[u]\ar@{=}[r]&S^n\wedge S^{n'}\ar[u]
+}\]
 
 The Thom space is useful for deciding whether a fiber bundle is trivial.  To this end, we observe that if $E$ and $E'$ are fiber homotopy equivalent $S^{n-1}$-bundles, then $T(E) \simeq T(E')$ relative to the copies of $S^n$ over the basepoint in $B$.
 \begin{lem}\label{LemOnFHTrivialisations}
@@ -597,7 +606,11 @@ This is a process of stabilization: the lesson of this discussion is that we hav
 \BoxedNote{
 \Bullet The fiberwise join of fiber bundles was constructed. Given $E\downarrow B$, performing the join with $B\downarrow B$ yields a bundle $C_BE$, the fiberwise cone. This recoves the disk bundle from a sphere bundle, and gives another definition of the Thom space of a sphere bundle $E$: $C_BE/E$.
 
-\Bullet $T(E\times E')=T(E)\sprod T(E')$.
+\Bullet $T(E\, \widehat \ast\, E') = T(E) \sprod T(E')$ for bundles $E\downarrow B$ and $E'\downarrow B'$.
+
+\Bullet $T(V\times W\downarrow B\times B')=T(V)\sprod T(W)$, where $V\times W$ is the exterior direct sum of vector bundles $V\downarrow B$ and $W\downarrow B'$.
+
+\Bullet If $V,W$ are vector bundles over $B$, then $T(V\oplus W\downarrow B)\to T(V\times W\downarrow B\times B)$ is not a homotopy equivalence, but is compatible with the various inclusions of spheres over basepoints.
 
 \Bullet If $E,E'$ are f.h.eq.\ $S^{n-1}$-bundles then $T(E)\simeq T(E')$ relative to the copies of $S^n$ over the basepoint.
 
@@ -795,20 +808,20 @@ F_{n-1}Z^n\ar[dd]\ar[rd]\ar@{.>}'[r][rr]&&E\pi\times_\pi F_{n-1}Z^n\ar'[d][dd]\a
 \ast\ar@{.>}'[r][rr]\ar@{=}[rd]&&B\pi\ar@{=}[rd]\\
 &\ast\ar@{.>}[rr]&&B\pi
 }\]
-Now the induced map $Z^{(n)}=\frac{Z^n}{F_{n-1}Z^n}\to\frac{E\pi \times_\pi Z^n}{E\pi \times_\pi F_{n-1}Z^n} = D_\pi Z$ is exactly $i_Z$, so we can study $i^*_Z$ using the associated morphism of relative Serre spectral sequences.
+Now the map $Z^{(n)}=\frac{Z^n}{F_{n-1}Z^n}\longrightarrow\frac{E\pi \times_\pi Z^n}{E\pi \times_\pi F_{n-1}Z^n} = D_\pi Z$ induced by this diagram is exactly $i_Z$, so we can study $i^*_Z$ using the associated morphism of relative Serre spectral sequences.
 
 The relative Serre spectral sequence for the pair on the left has untwisted coefficients:
 \[
-_LE_2^{*, *} = H^*(*; H^*(Z^n, F_{n-1} Z^n)) \Rightarrow \widetilde H^*(Z^{(n)})
+_LE_2^{s,t} = H^s(*; H^t(Z^n, F_{n-1} Z^n)) \Rightarrow \widetilde H^{s+t}(Z^{(n)})
 .\]
 Now $B \pi$ is not simply connected (it is in fact a $K(\pi,1)$), so the second relative Serre spectral sequence will require twisted coefficients:
 \[
-_RE_2^{*, *} = H^*(B\pi; \{H^*(Z^n, F_{n-1} Z^n)\}) \Rightarrow \widetilde H^*(D_\pi Z)
+_RE_2^{s,t} = H^s(B\pi; \{H^t(Z^n, F_{n-1} Z^n)\}) \Rightarrow \widetilde H^{s+t}(D_\pi Z)
 .\]
-Now $H^*(Z^n, F_{n-1} Z^n) \cong \widetilde H^* Z^{(n)} \cong \widetilde H^*(Z)^{\otimes n}$, and this last isomorphism is equivariant with respect to permutations, a fact that is not trivial (and likely to be false with other cohomology theories).  It follows that in both spectral sequences everything is zero below the horizontal line at height $nq$ in the $E_2$ term.  So, % why?
+Now $H^*(Z^n, F_{n-1} Z^n) \cong \widetilde H^* Z^{(n)} \cong \widetilde H^*(Z)^{\otimes n}$, and this last isomorphism is equivariant with respect to permutations, a fact that is not trivial (and likely to be false with other cohomology theories).  It follows that in both spectral sequences everything is zero below the horizontal line at height $nq$ in the $E_2$ term. That is $E_2^{s,t}=0$ for $t<nq$.  So, % why?
 \[
-\widetilde H^{nq}(D_\pi Z) = H^0(B\pi; \{\widetilde H^q(Z)^{\otimes n}\}) = (\widetilde H^q(Z)^{\otimes n})^\pi.\]
-Moreover, the map $i^*_Z:\widetilde H^{nq}(D_\pi Z)\to \widetilde H^{nq}(Z^{(n)})$ is induced by the corresponding map on the $E_2$ page. This is the map 
+\widetilde H^{nq}(D_\pi Z) ={_RE_2^{0,nq}}= H^0(B\pi; \{\widetilde H^q(Z)^{\otimes n}\}) = (\widetilde H^q(Z)^{\otimes n})^\pi.\]
+Moreover, the map $i^*_Z:\widetilde H^{nq}(D_\pi Z)\to \widetilde H^{nq}(Z^{(n)})$ coincides with the induced map $_RE_2^{0,nq}\to{_LE_2^{0,nq}}$, i.e.: % on the $E_2$ page. This is the map 
 \[H^0(B\pi; \{\widetilde H^q(Z)^{\otimes n}\})\to H^0(*;\widetilde H^q(Z)^{\otimes n}),\]
 which is simply the inclusion of the $\pi$-invariants, as desired.
 \end{proof}
@@ -822,7 +835,7 @@ From here on, for all $r$, let $K_r$ denote $K(\Z/p,r)$ and $\widetilde H^r$ den
 %\widetilde H^q(K_q; \Z/2) & = \Z/2,
 %\end{align*}
 %by the Hurewicz theorem.  
-So $\widetilde H^{nq}D_\pi K_q= \Z/p$.  Moreover, as $\pi$ can only act trivially on $\widetilde H^{nq} K_q^{(n)}=\Z/p$ \textbf{is this true?}, the map
+So $\widetilde H^{nq}D_\pi K_q= \Z/p$.  Moreover, as $\pi$ can only act trivially on $\widetilde H^{nq} K_q^{(n)}=\Z/p$ \textbf{(is this true if $p\neq2$, or should we just set $p=2$ already?)}, the map
 \[
 \widetilde H^{nq} D_\pi K_q \xrightarrow{\ i^*\,} \widetilde H^{nq} K_q^{(n)} % this breaks if the action of pi isn't transitive
 \]
@@ -938,7 +951,7 @@ We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$
 Taking $X = Y$ and using $\Delta: X \to X \times X$, we obtain:
 \begin{cor}[Internal version]  $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$.
 \end{cor}
-
+\noindent In particular, it will be convenient to define the total squaring operation $\Sq:\widetilde H^*X\to\widetilde H^*X$, defined by $ u\mapsto\sum_i \Sq^i u$. The Cartan formula states precisely that $\Sq$ is a ring homomorphism.
 \begin{ex}
 Show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 S^1 = \Z/2$.
 \end{ex}
@@ -965,7 +978,7 @@ E\pi_+\wedge_\pi X^{(2)}\ar@{=}[u]
 \]
 \Bullet $\Sq^iu=0$ for $i<0$ and $i>q$. $\Sq^qu=u^2$.
 
-\Bullet Internal Cartan formula: $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$.
+\Bullet Internal Cartan formula: $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$. In particular, the total squaring operation $\Sq$ defined by $ u\mapsto\sum_i \Sq^i u$ is a ring homomorphism.
 
 \Bullet External Cartan formula: $\Sq^k(u \sprod v) = \sum_{i+j = k} \Sq^i u \sprod \Sq^j v$.
 }
@@ -1264,7 +1277,7 @@ which tells you that
 \centering\includegraphics[width=0.3\textwidth]{figures/11.pdf}
 \caption{\small Cell diagram of $C(f)$.}
 \end{wrapfigure}
-Now that we've learned some facts about the squares, we're in a position to apply them to some of the problems that came up earlier.  First, recall that the Hopf invariant $H: \pi_{2n-1} S^n \to \Z$ obtained by $S^{2n-1} \stackrel{f}{\to} S^n \to C(f)$ gives $x^2 = H(f) \cdot y \equiv \Sq^n x$ for $x$ representing the cell in dimension $n$ and $y$ the cell in dimension $2n$.  If $H(f)$ is odd, then reduction mod 2 leaves $H(f)$ nonzero.  Now if $n \ne 2^i$, then $\Sq^n$ is decomposable in terms of lower squares, and hence $\Sq^n x = 0$ as there's no cohomology between $x$ and $y$.  Therefore, we get
+Now that we've learned some facts about the squares, we're in a position to apply them to some of the problems that came up earlier.  First, recall that the Hopf invariant $H: \pi_{2n-1} S^n \to \Z$ is defined as follows. $H(f)$ is to be the unique integer (up to sign) for which $x^2=H(f)y$, where $x$ and $y$ are the generators of $H^n(C(f))$ and $H^{2n}(C(f))$ repectively.\footnote{Note that $C(f)$, the cofiber of $S^{2n-1} \stackrel{f}{\to} S^n$ has three cells, one in dimension $0$, $n$ and $2n$.} In particular, $x^2 = H(f) \cdot y \equiv \Sq^n x$ (mod two), so that $H(f)$ is odd iff $\Sq^nx\neq0$.  However, if $n \ne 2^i$, then $\Sq^n$ is decomposable in terms of lower squares, and $\Sq^n x = 0$ since there's no cohomology between $x$ and $y$.  Therefore, we get
 \begin{thm}[Adem\footnote{He realized as soon as he got the relations that this was a consequence.}]
 If there is an element of odd Hopf invariant on $S^n$, then $n$ is a power of two.
 \end{thm}
@@ -1274,7 +1287,7 @@ If there is an element of odd Hopf invariant on $S^n$, then $n$ is a power of tw
 \caption{\small Diagram of $C(g)$.} % this figure should be some kind of staircase of suspensions to see what's going on
 \end{wrapfigure}
 Now if $g$ is any map $S^{2n+k-1} \stackrel{g}{\to} S^{n+k} \to C(g)$, then we no longer have a nontrivial cup-product, but we still have $\Sq^n$, so we can define a generalized Hopf invariant $\widetilde H(g)$ by $\Sq^n x = \widetilde H(g) y$, giving $\widetilde H: \pi_{2n+k-1}S^{n+k} \to \Z/2$.  The fact that $\Sq^n$ commutes with suspensions means
-\begin{diagram}
+\begin{diagram}[height=2em]
 f & & \pi_{2n-1} S^n & \rTo^H & \Z \\
 \dMapsto & & \dTo & & \dTo \\
 \Sigma^k f & & \pi_{2n+k-1} S^{n+k} & \rTo^{\widetilde H} & \Z/2
@@ -1282,20 +1295,20 @@ f & & \pi_{2n-1} S^n & \rTo^H & \Z \\
 commutes.  $\pi_{2n+k-1} S^{n+k}$ is independent of $k$ for $k \ge 1$; in other words we have turned the unstable question into a related stable one.
 
 Recall next another fact we had, more directly related to the vector field problem: if $S^{n-1}$ has $(k-1)$ everywhere linearly independent vector fields, then $nL \onto \RP^{k-1}$ is fiber homotopy trivial, and this in turn implies the existence of a ``coreduction''
-\begin{diagram}
-T(nL) & \cong & \Sigma^n \RP^{k-1}_+ & \rTo & S^n \\
+\begin{diagram}[height=2em]
+T(nL\downarrow\RP^{k-1}) & \,\cong & \Sigma^n \RP^{k-1}_+ & \rTo & S^n \\
 \uTo & & & \ruTo(4,2)_\simeq &  \\
-S^n.
+S^n
 \end{diagram}
 Now we're in a position to study, using the squares, the question of when we can split off the $S^n$ from $T(nL)$.  Remember that we found
 \[
-T(nL) = \RP^{n+k-1}/\RP^{n-1} = \RP^{n+k-1}_n
+T(nL\downarrow\RP^{k-1}) = \RP^{n+k-1}/\RP^{n-1} =: \RP^{n+k-1}_n
 ,\]
-called ``stunted projective space.''  Its mod 2 cohomology is $\widetilde H^*(\RP^{n+k-1}_n) = \langle x^n, x^{n+1}, \ldots, x^{n+k-1} \rangle$, where $|x^i| = i$, and it comes in an obvious way from the cohomology of $\RP^{n+k-1}$.  Now the coreduction above implies that the class $x^n$ in $\widetilde H^n \RP^{n+k-1}_n$ pulls back from the generator of $\widetilde H^n S^n$.  Thus $\Sq^i$ for $i > 0$ is trivial on $x^n$ since it is on $S^n$.  Now $x \in \widetilde H^1 \RP^{n+k-1}$ is a 1-dimensional class, so $\Sq x = x + x^2 = x(1+x)$, and we have shown that the fiber homotopy triviality of $nL \onto \RP^{k-1}$ implies that we've calculated this same square another way:
+called ``stunted projective space''.  Its mod 2 cohomology is $\widetilde H^*(\RP^{n+k-1}_n) = \langle x^n, x^{n+1}, \ldots, x^{n+k-1} \rangle$, where $|x^i| = i$, and it comes in an obvious way from the cohomology of $\RP^{n+k-1}$.  Now the coreduction above implies that the class $x^n$ in $\widetilde H^n \RP^{n+k-1}_n$ pulls back from the generator of $\widetilde H^n S^n$.  Thus $\Sq^i$ for $i > 0$ is trivial on $x^n$ since it is on $S^n$. That is, $\Sq x^n=x^n$.  Now $x \in \widetilde H^1 \RP^{n+k-1}$ is a 1-dimensional class, so $\Sq x = x + x^2 = x(1+x)$, and as $\Sq$ is a homomorphism, $\Sq x^n = x^n(1+x)^n$. %and we have shown that the fiber homotopy triviality of $nL \onto \RP^{k-1}$ implies that we've calculated this same square another way:
 \[
 \Sq x^n = x^n(1 + x)^n = x^n
 ,\]
-which implies that $(1+x)^n \equiv 1 \pmod{x^k}$.  Write $n = \sum_{i \in I} 2^i$, a sum of distinct powers $i \in I$ of 2.  Then, where $\nu$ is the smallest $i$ occuring in $I$,
+which implies that $(1+x)^n \equiv 1 \pmod{x^k}$.  Write $n = \sum_{i \in I} 2^i$, a sum of distinct powers $i \in I$ of 2.  Then $\nu(n)$ is the smallest $i$ occuring in $I$ (where $n=\textup{odd}\cdot2^{\nu(n)}$ as above), and
 \[
 (1+x)^n = \prod_{i \in I} (1 + x)^{2^i} = \prod_{i \in I} (1 + x^{2^i}) = 1 + x^{2^\nu} + \hbox{higher powers}
 .\]
@@ -1309,34 +1322,41 @@ That $(1 + x)^n \equiv 1 \pmod{x^k}$ implies that $2^\nu \ge k$.  Recall that ou
 \rho(n) & 1 & 2 & 4 & 8 & 9 & 10.
 \end{array}
 \]
-For $\nu(n) \le 3$, then, we have obtained an exact answer.  But asymptotically, we're doing pretty badly.
+For $\nu(n) \le 3$, then, we have obtained an exact answer, but asymptotically, we're doing pretty badly.
 
-There's another approach to this sort of calculation with Thom spaces and squares.  Remember that for an $S^{n-1}$-bundle $E$, we had
+There's another approach to this sort of calculation with Thom spaces and squares.  Remember that for an $S^{n-1}$-bundle $E$, we had an inclusion into the fiberwise mapping cone $C_B E$, a disk bundle:
 \begin{diagram}
-S^{n-1} & \rTo & E & \subset & C_B E & \lTo & D^n \\
+S^{n-1} & \rTo & E & \rInto & C_B E & \lTo & D^n \\
 & & & \rdTo(1, 1) \ldTo(1, 1) B \\
 \end{diagram}
 and $T(E) = C_B E / E$.  So $\widetilde H^* T(E) = H^*(C_B E, E)$.  Now we can use the relative Serre spectral sequence to get a spectral sequence
 \[
-H^*(B, \{H^*(D^n, S^{n-1})\}) \Rightarrow \widetilde H^* T(E)
+E_2^{s,t}=H^s(B, \{H^t(D^n, S^{n-1})\}) \Rightarrow \widetilde H^{s+t} T(E)
 .\]
-But this spectral sequence has $E_2$ non-zero only at the $n$-level, so we get $H^*(B, \{H^n(D^n, S^{n-1})\}) \cong \widetilde H^* T(E)$.  In general $B$ is not simply connected, so we need twisted coefficients.  But if we have that the system of local coefficients is trivial, then this isomorphism is the Thom isomorphism.  An orientation of $E$ is then just that: a choice of trivialization of this local coefficient system.  Now working over $\Z/2$ coefficients, this coefficient system is already canonically trivial, so the concern about orientation doesn't mean anything, and we get $H^*(B; \Z/2) \cong \widetilde H^{*+n} T(E)$ anyway.  For example, in the case of $nL \onto \RP^{k-1}$ we see trivially that the isomorphism comes from multiplication by $x^n$.  This comes out in general from the multiplicative structure of the spectral sequence; namely, $H^0 B \ni 1 \leftrightarrow u \in \widetilde H^n T(E)$, called the ``Thom class.''  So $\widetilde H^* T(E) = H^*(C_B E, E)$ is a module over $H^* B$ in the sense that we can define a composite $\smile$ by
-\begin{diagram}
-H^* B \otimes H^*(C_B E, E) & \rTo^{p^* \otimes 1} & H^*(C_B E) \otimes H^*(C_B E, E) \\
-& \rdDashto_\smile & \dTo>{\smile} \\
-& & H^*(C_B E, E),
-\end{diagram}
-where the cup map is always called the cup product, i.e., sort of ignoring the pulling back part, since $C_B E$ is a disk bundle.  The Thom isomorphism says that cup-product by the Thom class $u$ is an isomorphism $\smile u: H^* B \cong \widetilde H^* T(E)$.  This enables us to talk about $\widetilde H^* TE$ without much reference to $TE$ beyond the Thom class.  So given a class $y \in \widetilde H^* T(E)$, we write it as $xu = x \smile u$, $x \in H^* B$.  Then $\Sq y = (\Sq x)(\Sq u)$ by the Cartan formula, so all we need to know is $\Sq u$.  Again using the Thom isomorphism, we write $\Sq^k u = w_k u$, where $w_k \in H^k B$.  $w_k = w_k(E)$ is called the ``$k$th Stiefel-Whitney class of $E$,'' and we write $w = \sum_{k \ge 0} w_k$.
+But this spectral sequence has $E_2^{s,t}\neq0$ only when $t=n$, so that that everything collapses by the $E_2$ page, and we obtain isomorphisms $H^*(B, \{H^n(D^n, S^{n-1})\}) \cong \widetilde H^{*+n} T(E)$.  In general $B$ is not simply connected, so we need twisted coefficients.  If the system of local coefficients is trivial, then this isomorphism is the Thom isomorphism.  An orientation of $E$ is then just that: a choice of trivialization of this local coefficient system.
 
-These facts are immediate consequences:
+Working over $\Z/2$ coefficients, this coefficient system is already canonically trivial, so the concern about orientation doesn't mean anything, and we get $H^*(B; \Z/2) \cong \widetilde H^{*+n} T(E)$ anyway.  For example, in the case of $nL \onto \RP^{k-1}$ we see trivially that the isomorphism comes from multiplication by $x^n$.  This comes out in general from the multiplicative structure of the spectral sequence, as follows.
+
+First, $1\in H^0 B$ corresponds under the Thom isomorphism to some $u \in \widetilde H^n T(E)$, called the ``Thom class''.  Now $\widetilde H^* T(E) = H^*(C_B E, E)$ is a module over $H^* B$ via the ``cup product'' pairing, the composite:
+\[\xymatrix{
+H^* B \otimes H^*(C_B E, E)\ar[r]^{p^*\otimes1\ \ \ }&H^*(C_B E) \otimes H^*(C_B E, E)\ar[r]^{\hspace{9mm}\smile}& H^*(C_B E, E)
+}\]
+We justify calling this a cup product as $p^*$ is an isomorphism, as $C_BE$ is a disk bundle, so we can almost ignore the ``pulling back'' part of the operation. The Thom isomorphism says that cup-product by the Thom class $u$ is an isomorphism $\smile u: H^* B \cong \widetilde H^* T(E)$.
+
+This enables us to talk about $\widetilde H^* T(E)$ without much reference to $T(E)$ beyond the Thom class.  For example, suppose we wished to calculate $\Sq y$ for some $y\in \widetilde H^* T(E)$. Now $y=xu = x \smile u$, for some unique $x \in H^* B$, and $\Sq y = (\Sq x)(\Sq u)$ by the Cartan formula, so all we need to know is $\Sq u$.  Again using the Thom isomorphism, we write $\Sq^k u = w_k u$, where $w_k \in H^k B$. We call $w_k = w_k(E)$ the ``$k$th Stiefel-Whitney class of $E$'', and we write $w = \sum_{k \ge 0} w_k$, the ``total Stiefel-Whitney class of $E$''.
+
+Of course, if $V$ is a vector bundle, we write $w(V)$ for $w(S(V))$. The following facts follow immediately:
 \begin{itemize}
 \item $w_k$ depends only on the fiber homotopy type of the sphere bundle.
 \item $\Sq^0 u = u$, so $w_0 = 1$.
 \item $w_k = 0$ for $k > n$.
-\item Whitney sum formula: (Whitney says this is the hardest theorem he ever proved, but he had the wrong definition of Stiefel-Whitney classes.)  Let $E' / B'$ be an $S^{n-1}$-bundle and $E'' / B''$ be a $S^{q-1}$-bundle; we build the fiberwise join $E' \hat\ast E'' = E / B' \times B'' = B$, an $S^{p+q-1}$-bundle.  Now, $T(E) = T(E') \sprod T(E'')$, and the Thom classes match up because the fibers do, % this doesn't make sense without characterizing the Thom class as the thing tha trestricts to the generator on each fiber
-that is, $u = u' \sprod u''$.  Thus, $\Sq u = \Sq(u' \sprod u'') = \Sq u' \sprod \Sq u''$; in addition, the first expression models $w(E) \smile u$ and the third expression models $w(E') \sprod w(E'') \smile u' \sprod u''$.  Therefore, $w(E) = w(E') \sprod w(E'')$.
+\item Whitney sum formula:\footnote{Whitney says this is the hardest theorem he ever proved, but he had the wrong definition of Stiefel-Whitney classes.} In short, $w(E'\, \widehat\ast\, E'')=w(E')\wedge w(E'')$ for sphere bundles $E'\downarrow B'$ and $E''\downarrow B''$, and thus $w(V'\oplus V'')=w(V')\wedge w(V'')$ for vector bundles $V',V''$. To make sense of this formula, we must note that $T(E'\, \widehat\ast\, E'')=T(E')\wedge T(E'')$ and $T(V'\oplus V'')=T(V')\wedge T(V'')$.
 \item Stability: One calculates $w(n\varepsilon) = 1$, so $w(V \oplus n\varepsilon) = w(V)$ (making a notational identification of $V$ with $S(V)$).
 \end{itemize}
+\begin{proof}[Proof of Whitney sum formula]
+ Let $E' \downarrow B'$ be an $S^{n-1}$-bundle and $E'' \downarrow B''$ be a $S^{q-1}$-bundle; the fiberwise join $E'\, \widehat\ast\, E'' = E / B' \times B'' = B$ is an $S^{p+q-1}$-bundle.  Now, $T(E) = T(E') \sprod T(E'')$, and the Thom classes match up because the fibers do, % this doesn't make sense without characterizing the Thom class as the thing that restricts to the generator on each fiber
+that is, $u = u' \sprod u''$.  Thus, $\Sq u = \Sq(u' \sprod u'') = \Sq u' \sprod \Sq u''$; in addition, the first expression models $w(E) \smile u$ and the third expression models $w(E') \sprod w(E'') \smile u' \sprod u''$.  Therefore, $w(E) = w(E') \sprod w(E'')$.
+\end{proof}
 
 Now the Thom class of $nL \onto \RP^{k-1}$, as we saw, is $x^n$.  So $w(L) = 1 + x$, and $w(nL) = (1+x)^n$.  So $nL \onto \RP^{k-1}$ is fiber homotopy trivial only if $(1+x)^n \equiv 1 \pmod{x^k}$, which is the same result we obtained before.  Now the program is to improve the results by pursuing a similar set of results in $KO$-theory.
 
