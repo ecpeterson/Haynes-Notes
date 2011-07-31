@@ -26,8 +26,8 @@
 %\newcommand{\OutputBuildingKandJtheory}{5}
 \newcommand{\OutputGeometryAndTheSteenrodSquares}{6}
 %\newcommand{\OutputPropertiesOfTheSquares}{7}
-%\newcommand{\OutputDerivingTheUsualAdemRelations}{8}
-%\newcommand{\OutputUsingTheSquaresAndThomSpaces}{9}
+%\newcommand{\OutputTheAdemRelations}{8}
+\newcommand{\OutputUsingTheSquaresAndThomSpaces}{9}
 %\newcommand{\OutputStructureOnKtheory}{10}
 %\newcommand{\OutputBuildingKtheoryOperatorsFromRepTheory}{11}
 %\newcommand{\OutputBuildingTheAdamsPowerOperations}{12}
@@ -56,7 +56,7 @@
 \providecommand{\OutputBuildingKandJtheory}{5}
 \providecommand{\OutputGeometryAndTheSteenrodSquares}{6}
 \providecommand{\OutputPropertiesOfTheSquares}{7}
-\providecommand{\OutputDerivingTheUsualAdemRelations}{8}
+\providecommand{\OutputTheAdemRelations}{8}
 \providecommand{\OutputUsingTheSquaresAndThomSpaces}{9}
 \providecommand{\OutputStructureOnKtheory}{10}
 \providecommand{\OutputBuildingKtheoryOperatorsFromRepTheory}{11}
@@ -753,7 +753,9 @@ This is almost the smash product, but $E\pi$ doesn't have a basepoint.  But we c
 where the symbol $\sprod_\pi$ means to take the orbit space of the diagonal action on $E\pi_+ \sprod X^{(n)}.$  This is called the ``$\pi$-adic construction'' on $X$ (for lack, really, of a better name), and will be written $D_\pi(X)$.
 
 Now a map $f:X\to Y$ induces a map $D_\pi(X)\to D_\pi(Y)$, making $D_\pi$ into a functor.
-Moreover, there is a map $i_X:X^{(n)}\to D_\pi(X)$ \textbf{constructed somehow}. The maps $i_X$ constitute a natural transformation of functors $D_\pi\to (\textup{---})^{(n)}$, in the sense that for every $f:X\to Y$, there is a commuting diagram:
+Moreover, there is a map $i_X:X^{(n)}\to D_\pi(X)$ constructed as follows. Choose a basepoint $*$ for $E\pi$ and map $X^n\to E\pi\times_\pi X^n$ via $x\mapsto(*,X)$. Note that $F_{n-1}X^n$ maps into $E\pi\times_\pi F_{n-1}X^n$, so that this map descends to a map 
+\[i_X:X^{(n)}=\frac{X^n}{F_{n-1}X^n}\to \frac{E\pi \times_\pi X^n}{E\pi \times_\pi F_{n-1}X^n} = E\pi_+ \sprod_\pi X^{(n)}.\]
+The maps $i_X$ constitute a natural transformation of functors $D_\pi\to (\textup{---})^{(n)}$, in the sense that for every $f:X\to Y$, there is a commuting diagram:
 \[\xymatrix@R=6mm{
 X^{(n)}\ar[r]_{f^{\wedge n}}\ar[d]_{i_X}&
 Y^{(n)}\ar[d]^{i_Y}\\
@@ -761,7 +763,7 @@ D_\pi X\ar[r]^{D_\pi f}&
 D_\pi Y
 }
 \]
-There are a number of functors and natural transformations that will soon be in use. For clarity, we make a list:
+For clarity, we list a number of functors and natural transformations that will soon be in use:
 \begin{itemize}
 \item $D_\pi(\DASH):\mathsf{Top}_*\to\mathsf{Top}_*$ as described above.
 \item $(\textup{---})^{(n)}:\mathsf{Top}_*\to\mathsf{Top}_*$, the $n$-fold smash product.
@@ -778,18 +780,34 @@ Let $\widetilde H^i Z = 0$ for $i < q$, where coefficients are taken in a field,
 \[\widetilde H^i(D_\pi Z)=
 \begin{cases}0;&\textup{if }i<nq;\\(\widetilde H^q(Z)^{\otimes n})^\pi;&\textup{if }i=nq;\\???;&\textup{if }i>nq\end{cases}
 \]
-\textbf{And the map $i^*:\widetilde H^{nq}(D_\pi Z)\to \widetilde H^{np}(Z^{(n)})$ is the inclusion of the $\pi$-invariants in $\widetilde H^q(Z)^{\otimes n}$, \textup{\textsc{or something like this}}.}
+Moreover, $i_Z^*:\widetilde H^{nq}(D_\pi Z)\to \widetilde H^{np}(Z^{(n)})$ is the inclusion of the $\pi$-invariants $(\widetilde H^q(Z)^{\otimes n})^\pi\subset\widetilde H^q(Z)^{\otimes n}$.
 \end{lem}
 \begin{proof}
 %One could produce a CW-complex for $D_\pi Z$ having no cells of dimension less than $nq$. No, one cannot! What if $Z$ is a $K(Z/3,d)$ and the field is $Z/2$? Then $H^*(Z;Z/2)=0$, but there's plenty of cells.
-One can use a relative Serre spectral sequence, with twisted coefficients since $B \pi$ is not simply connected; in fact $B \pi$ is a $K(\pi, 1)$.
+We have a map of bundle-subbundle pairs:
+\[\xymatrix{
+F_{n-1}Z^n\ar@{^{(}->}[r]\ar[d]&Z^n\ar[d]&F_{n-1}Z^n\ar@{^{(}->}[r]\ar[d]&Z^n\ar[d]\\
+F_{n-1}Z^n\ar@{^{(}->}[r]\ar[dr]&Z^n\ar[d]&
+E\pi\times_\pi F_{n-1}Z^n\ar@{^{(}->}[r]\ar[dr]&E\pi\times_\pi Z^n\ar[d]\\
+&{*}&&B\pi
+}\]
+Now the induced map $Z^{(n)}=Z^n/F_{n-1}Z^n\to\frac{E\pi \times_\pi Z^n}{E\pi \times_\pi F_{n-1}Z^n} = D_\pi Z$ is exactly $i_Z$, so we can study $i^*_Z$ using the associated morphism of relative serre spectral sequences.
+
+The spectral sequence for the first pair looks like:
+\[
+E_2^{*, *} = H^*(*; H^*(Z^n, F_{n-1} Z^n)) \Rightarrow \widetilde H^*(Z^{(n)})
+.\]
+Now $B \pi$ is not simply connected (it is in fact a $K(\pi,1)$), so the second relative Serre spectral sequence will require twisted coefficients:
 \[
 E_2^{*, *} = H^*(B\pi; \{H^*(Z^n, F_{n-1} Z^n)\}) \Rightarrow \widetilde H^*(D_\pi Z)
 .\]
-Now $H^*(Z^n, F_{n-1} Z^n) \cong \widetilde H^* Z^{(n)} \cong \widetilde H^*(Z)^{\otimes n}$, and this last isomorphism is equivariant with respect to permutations, a fact that is not trivial (and likely to be false with other cohomology theories).  It follows that in the spectral sequence everything is zero below the horizontal line at height $nq$ in the $E_2$ term.  So, % why?
+Now $H^*(Z^n, F_{n-1} Z^n) \cong \widetilde H^* Z^{(n)} \cong \widetilde H^*(Z)^{\otimes n}$, and this last isomorphism is equivariant with respect to permutations, a fact that is not trivial (and likely to be false with other cohomology theories).  It follows that in both spectral sequences everything is zero below the horizontal line at height $nq$ in the $E_2$ term.  So, % why?
 \[
 \widetilde H^{nq}(D_\pi Z) = H^0(B\pi; \{\widetilde H^q(Z)^{\otimes n}\}) = (\widetilde H^q(Z)^{\otimes n})^\pi
 .\qedhere\]
+Moreover, the map $i^*_Z:\widetilde H^{nq}(D_\pi Z)\to \widetilde H^{nq}(Z^{(n)})$ is induced by the corresponding map on the $E_2$ page. This is the map 
+\[H^0(B\pi; \{\widetilde H^q(Z)^{\otimes n}\})\to H^0(*;\widetilde H^q(Z)^{\otimes n}),\]
+which is simply the inclusion of the $\pi$-invariants, as desired.
 \end{proof}
 \noindent This is the key fact that gives the Steenrod operations; all else follows more or less from it.
 
@@ -801,9 +819,9 @@ From here on, for all $r$, let $K_r$ denote $K(\Z/p,r)$ and $\widetilde H^r$ den
 %\widetilde H^q(K_q; \Z/2) & = \Z/2,
 %\end{align*}
 %by the Hurewicz theorem.  
-So $\widetilde H^{nq}D_\pi K_q= \Z/p$.  Moreover \textbf{the spectral sequence for $\pi \into E\pi_+ \sprod K_q^{(n)} \xrightarrow{\ p\ } E\pi_+ \sprod_\pi K_q^{(n)}$ shows that (?)} the map
+So $\widetilde H^{nq}D_\pi K_q= \Z/p$.  Moreover, as $\pi$ can only act trivially on $\widetilde H^{nq} K_q^{(n)}=\Z/p$ \textbf{is this true?}, the map
 \[
-\Z/2 = \widetilde H^{nq} D_\pi K_q \xrightarrow{\ i^*\,} \widetilde H^{nq} K_q^{(n)} % this breaks if the action of pi isn't transitive
+\widetilde H^{nq} D_\pi K_q \xrightarrow{\ i^*\,} \widetilde H^{nq} K_q^{(n)} % this breaks if the action of pi isn't transitive
 \]
 is an isomorphism.  Now $\widetilde H^{nq} K_q^{(n)}$ contains an element $\iota_q^{\sprod n}$, the $n$-fold smash power of the fundamental class $\iota_q \in \widetilde H^q K_q$, and we have
 \begin{cor}
@@ -951,7 +969,9 @@ E\pi_+\wedge_\pi X^{(2)}\ar@{=}[u]
 % THERE IS A LOT LEFT TO REPAIR IN THIS CHAPTER!
 \section{Properties of the squares} % <<<
 \ifx\OutputPropertiesOfTheSquares\undefined\else
+\textbf{Perhaps we should simply delete everything in small caps.} I haven't edited what's here, since I'm not sure if it's needed. Also, I haven't thought through what's needed for this to generalise to an arbitrary field. Comments about that question might prefer to live in the previous chapter. Also, it would almost certainly be better to merge this chapter with the previous.
 
+\textsc{
 We continue to derive properties of the Steenrod squares.  Recall that by choosing $\pi \subseteq \Sigma_n$ and a space $X$ we get a space $D_\pi X = E \pi_+ \sprod_\pi X^{(n)}$ along with inclusions
 \begin{diagram}
 B\pi_+ \sprod X & \rTo^j & E\pi_+ \sprod_\pi X^{(n)} & \rEqualto & D_\pi X \\
@@ -966,8 +986,9 @@ for all $u \in \widetilde H^q X$.  In the case that $\pi = \Z/2$, $n = 2$, we us
 \[
 j^* P_\pi u = \sum_{i=0}^q x^{q-i} \otimes \Sq^i u \in \widetilde H^*(B \pi_+ \sprod X)
 .\]
-This characterizes $\Sq^i u$.  Since $P_\pi u \in \widetilde H^* D_\pi X$ has degree $2q$ and $x \in \widetilde H^* B\pi$ has degree $1$, $\Sq^i u \in \widetilde H^* X$ has degree $q + i$.
+This characterizes $\Sq^i u$.  Since $P_\pi u \in \widetilde H^* D_\pi X$ has degree $2q$ and $x \in \widetilde H^* B\pi$ has degree $1$, $\Sq^i u \in \widetilde H^* X$ has degree $q + i$.}
 
+\textsc{
 These properties of $\Sq^i$ are immediate or were shown previously:
 \begin{itemize}
 \item $\Sq^i$ is a natural transformation of functors $\widetilde H^* \to \widetilde H^{*+i}$.
@@ -975,32 +996,27 @@ These properties of $\Sq^i$ are immediate or were shown previously:
 \item $\Sq^q u = u^2$ for $u \in \widetilde H^q X$.
 \item (Cartan formula) $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$.
 \end{itemize}
+}
+
 In addition, it was an exercise to show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 S^1$.  This important fact has several consequences.
 \begin{cor}
-$\Sq^k$ commutes with the suspension homomorphism $\sigma: \widetilde H^q X \to \widetilde H^{q+1} \Sigma X$.  We say that $\Sq$ is a ``stable operation.''
+$\Sq^k$ commutes with the suspension homomorphism $\sigma: \widetilde H^q X \to \widetilde H^{q+1} \Sigma X$.  We say that $\Sq^k$ is a ``stable operation.''
 \end{cor}
 \begin{proof}
-The diagram
-\begin{diagram}
-\widetilde H^q X & \rTo^\sigma & \widetilde H^{q+1} \Sigma X \\
-\dEqualto & \ruTo_{\sprod e} \\
-\widetilde H^q X \otimes \widetilde H^1 S^1
-\end{diagram}
-defines the suspension homomorphism.  So,
-\[
-\Sq^k(\sigma u) = \Sq^k(u \sprod e) = \Sq^k u \sprod \Sq^0 e = \sigma \Sq^k u
-.\qedhere\]
+The suspension homomorphism is the composite
+$\sigma:\widetilde H^q X=\widetilde H^q X\otimes\widetilde H^1S^1\xrightarrow{\ \wedge e\ }\widetilde H^{q+1} \Sigma X$, and we calculate: $\Sq^k(\sigma u) = \Sq^k(u \sprod e) = \Sq^k u \sprod \Sq^0 e = \sigma \Sq^k u$.
+
 \end{proof}
 \begin{cor}
 $\Sq^0: \widetilde H^q X \to \widetilde H^q X$ is the identity.
 \end{cor}
 \begin{proof}
-It suffices to check this on the class $\iota_q \in \widetilde H^q(K_q)$, writing $K_q = K(\Z/2, q)$.  For $q = 1$, $\Sq^0 \iota_1 \ne 0$ because this is the universal case and the previous exercise showed that it pulls back to the nontrivial class $e$ on $S^1$.  But $\widetilde H^1 K_1 = \Z/2$, so $\Sq^0$ is the identity on $\iota_1$.  Furthermore, $\Sq^0$ leaves $e^{\sprod q} \in \widetilde H^q S^q$ undisturbed, by an application of the Cartan formula and the fact that the squares commute with suspensions.  It follows that $\Sq^0 \iota_q = \iota_q$.
+It suffices to check this on the class $\iota_q \in \widetilde H^q(K_q)$, writing $K_q = K(\Z/2, q)$.  For $q = 1$, $\Sq^0 \iota_1 \ne 0$ because this is the universal case and the exercise showed that $\Sq^0\imath_1$ pulls back to the nontrivial class $e$ on $S^1$.  But $\widetilde H^1 K_1 = \Z/2$, so $\Sq^0$ is the identity on $\iota_1$.  Furthermore, $\Sq^0$ leaves $e^{\sprod q} \in \widetilde H^q S^q$ undisturbed, by an application of the Cartan formula and the fact that the squares commute with suspensions.  It follows that $\Sq^0 \iota_q = \iota_q$.
 \end{proof}
 
 \begin{rem}
 The map $\beta: \widetilde H^q X \to \widetilde H^{q+1} X$ given by
-\begin{diagram}
+\begin{diagram}[height=2em]
 \widetilde H^q X & \rTo^\beta & \widetilde H^{q+1} X \\
 \dTo<\delta & \ruTo_{\mathrm{reduction}} \\
 \widetilde H^{q+1}(X; \Z),
@@ -1012,36 +1028,74 @@ where $\delta$ is the zigzag map of the coefficient sequence $0 \to \Z \stackrel
 $\Sq^k$ is a group homomorphism.
 \end{rem}
 \begin{proof}
-Representing cohomology classes by maps into $K(\pi, q)$s, we have
-\begin{diagram}
-K_q & \rTo^{\Sq^k \iota_q} K_{q+k} \\
-\uTo<u & \ruTo_{\Sq^k u} \\
-X.
-\end{diagram}
-Since $\Sq^k$ commutes with suspension in this context means that the diagram below commutes:
-\begin{diagram}
-\Sigma K_q & \rTo^{\Sigma \Sq^k \iota_q} & \Sigma K_{q+k} \\
-\dTo<\sigma & & \dTo>\sigma \\
-K_{q+1} & \rTo^{\Sq^k \iota_{q+1}} & K_{q+k+1}.
-\end{diagram}
-Using the adjunction between $\Suspend$ and $\Loops$, we get
-\begin{diagram}
-K_q & \rTo^{\Sq^k \iota_q} & K_{q+k} \\
-\dTo<\simeq & & \dTo>\simeq \\
-\Omega K_{q+1} & \rTo^{\Omega \Sq^k \iota_{q+1}} & \Omega K_{q+k+1},
-\end{diagram}
-so $\Sq^k$ is an $H$-space map (or an $H$-map).  The $H$-space structure on $K_q$ represents the addition on $\widetilde H^q$, so it follows that $\Sq^k$ is a homomorphism.
+This holds for any stable cohomology operation.
+%Using the correspondence $\widetilde H^nX=[X,K(n,\Z/2)]$, and applying
+Representing cohomology classes by maps into Eilenberg MacLane spaces, and using the naturality of $\Sq^k$, for any $u\in \widetilde H^qX$, we have a homotopy commuting diagram:
+\[\xymatrix@C=1.75cm@R=7mm{
+K_q\ar[r]^{\Sq^k\imath_q}&K_{q+k}\\
+X\ar[u]^u\ar[ru]_{\Sq^ku}
+}\]
+That $\Sq^k$ commutes with suspension in this context means that the left hand diagram commutes. Taking adjoints, the right hand diagram commutes:
+\[\xymatrix@C=1.75cm@R=.7cm{
+\Sigma K_q \ar[d]^\sigma\ar[r]^{\Sigma \Sq^k \iota_q} & \Sigma K_{q+k} \ar[d]^\sigma\\
+K_{q+1}  \ar[r]^{\Sq^k \iota_{q+1}} & K_{q+k+1}
+}
+\qquad\qquad
+\xymatrix@C=1.75cm@R=.7cm{
+K_q \ar[d]^\simeq\ar[r]^{\Sq^k \iota_q} &K_{q+k} \ar[d]^\simeq\\
+\Omega K_{q+1}  \ar[r]^{\Omega\Sq^k \iota_{q+1}} & \Omega K_{q+k+1}
+}\]
+so $\Sq^k\imath_q$ is an $H$-space map (or an $H$-map).  The $H$-space structure on $K_q$ represents the addition on $\widetilde H^q$, so it follows that $\Sq^k$ is a homomorphism.
 \end{proof}
 
-The last basic fact about the squares is the Adem relations, for which we will take an approach using generating functions in the indeterminate $x$, following Bullett-MacDonald~\cite{BullettMacDonald}.  First, for $u \in \widetilde H^q X$ define $\Sq_x u = \sum x^{-k} \Sq^k u$, where $|x| = 1$ so that $\Sq_x$ is homogenous of degree 0.  For example, if $u \in \widetilde H^1(X)$, $\Sq_x u = u + x^{-1} u^2 = u^2(u^{-1} + x^{-1})$.  This $\Sq_x$ occurs naturally in the above as $j^* P u = x^q \Sq_x u.$  Also, $\Sq_x$ has the nice property that it is a ring homomorphism, as shown by the Cartan formula.  Second, take $\Sigma_4$ to be the symmetric group acting on four letters, arrange the letters into a square, and let $\omega$ be the subgroup of permutations which preserves the rows or transposes them, along with intra-row permutations.  If $\pi = \Z/2$, then we have an exact sequence $\pi^2 \to \omega \to \pi$, with kernel corresponding to permutations within the two rows and cokernel corresponding to the interchanging of the two rows.  The group $\omega$ is sometimes called the ``wreath product'' $\pi \wr \pi$; it is in fact $D_8$, the $2$-Sylow subgroup of $\Sigma_4$.
 
-Now, what is an $\omega$-space $X$?  $X$ is a $\pi$-space with a $\pi$-equivariant $\pi^2$ action; i.e., we have
+
+
+
+
+% >>>
+\fi
+\BoxedNote{\Bullet $\Sq^k$ is stable --- it commutes with suspension; it is thus a homomorphism.
+
+\Bullet $\Sq^0$ is the identity, $\Sq^1$ is the Bockstein.}
+\section{The Adem relations} % <<<
+\ifx\OutputTheAdemRelations\undefined\else
+
+
+
+
+The last basic fact about the squares is the Adem relations, for which we will take an approach using generating functions in the indeterminate $x$, following Bullett-MacDonald~\cite{BullettMacDonald}.  First, for $u \in \widetilde H^q X$ define $\Sq_x u = \sum x^{-k} \Sq^k u$, where $|x| = 1$ so that $\Sq_x$ is homogenous of degree 0.  For example, if $u \in \widetilde H^1(X)$, $\Sq_x u = u + x^{-1} u^2 = u^2(u^{-1} + x^{-1})$.  This $\Sq_x$ occurs naturally in the above as $j^* P u = x^q \Sq_x u.$  Also, $\Sq_x$ has the nice property that it is a ring homomorphism, as shown by the Cartan formula.
+
+Second, take $\Sigma_4$ to be the symmetric group acting on four letters, arrange the letters into a square, and let $\omega$ be the subgroup of permutations which preserves the rows or transposes them, along with intra-row permutations.\footnote{The group $\omega$ is sometimes called the ``wreath product'' $\pi \wr \pi$; it is in fact $D_8$, the $2$-Sylow subgroup of $\Sigma_4$.} That is, the subgroup generated by the three permutations, $\alpha,\beta,\gamma$: 
+\[
+\newcommand{\DRAWPERM}[5]
+{\left(\begin{array}{cc}a&b\\c&d\end{array}\xrightarrow{\ #5\ }
+\begin{array}{cc}#1&#2\\#3&#4\end{array}\right)}
+\DRAWPERM{b}{a}{c}{d}{\alpha},\qquad
+\DRAWPERM{a}{b}{d}{c}{\beta},\qquad
+\DRAWPERM{c}{d}{a}{b}{\gamma}.
+\]
+Now let $N=\langle\alpha,\beta\rangle$ be the subgroup of permutations preserving the rows, and let $H=\langle \gamma\rangle$ be the subgroup whose only nontrivial element swaps the two rows. Then $\omega$ is the semidirect product $N \rtimes H$. Note that $H$ acts from the left on $N$ via $h\cdot n=hnh^{-1}$. Let $\pi$ be the group $\{\pm1\}$ under multiplication. Then $N=\pi^2$ and $H=\pi$, and the action of $\pi$ on $\pi^2$ is by interchanging factors.
+
+As $\omega=N \rtimes H$, an $\omega$-space is just an $H$-space with an $H$-equivariant $N$-action:
 \begin{diagram}[height=1em]
-\pi^2 \times X & \rTo & X \\
-\circlearrowright & & \circlearrowright \\
-\pi & & \pi,
+N \times X & \rTo & X &&&&\pi^2 \times X & \rTo & X \\
+\circlearrowright & & \circlearrowright &&\textup{i.e.}&&\circlearrowright & & \circlearrowright \\
+H & & H&&&&
+\pi & & \pi
 \end{diagram}
-where the action on the left is the diagonal action.  An example of an $\omega$-space is $E \pi \times (E \pi)^2$.  The $\pi^2$ action is on the right-hand factor, with \[(x, y) \cdot (a, b, c) = (a, x \cdot b, y \cdot c),\] and $\pi$ acting on $E \pi \times (E \pi)^2)$, where the nontrivial element has action \[-1 \cdot (a, b, c) = (-a, c, b).\]  The total space is contractible and its $\omega$-action is free; hence it is an $E \omega$, and we compute % should this section actually be (a, b, c) = (-a, -c, -b)?  Does it matter?  we already quotiented by the pi action on E pi...  plus, the original text reads "acting... by the antipodal map crossed with an exchange of factors in (E pi )^2."
+%Now, what is an $\omega$-space $X$?  $X$ is a $\pi$-space with a $\pi$-equivariant $\pi^2$ action; i.e., we have
+%\begin{diagram}[height=1em]
+%\pi^2 \times X & \rTo & X \\
+%\circlearrowright & & \circlearrowright \\
+%\pi & & \pi,
+%\end{diagram}
+where the action of $\pi$ on $\pi^2\times X$ is the diagonal action.  An example of an $\omega$-space is $E \pi \times (E \pi)^2$. We view $E\pi$ as $S^\infty$ equipped with the antipodal map $a\mapsto-a$, so that the action of $\pi$ on $E_\pi$ can be written simply as $(\pm1,a)\mapsto\pm a$. The $\pi^2$ action is on the right-hand factor, with 
+%\[(x, y) \cdot (a, b, c) = (a, x \cdot b, y \cdot c),\]
+\[((\pm1,\pm'1),(a,b,c))\mapsto(a, \pm b, \pm' c),\]
+% and $\pi$ acting on $E \pi \times (E \pi)^2)$, 
+and the $\pi$ action is diagonal, acting as usual on the first factor, and by interchanging factors in the second:
+\[(-1, (a, b, c)) = (-a, c, b).\]  The total space is contractible and its $\omega$-action is free; hence it is an $E \omega$, and we compute % should this section actually be (a, b, c) = (-a, -c, -b)?  Does it matter?  we already quotiented by the pi action on E pi...  plus, the original text reads "acting... by the antipodal map crossed with an exchange of factors in (E pi )^2."
 \begin{align*}
 B \omega & = (E \pi \times (E \pi)^2) / \omega \\
 & = (E \pi \times (B \pi)^2) / \pi \\
@@ -1054,32 +1108,31 @@ D_\omega X = E \omega_+ \sprod_\omega X^{(4)} = \frac{E \omega \times_\omega X^4
 .\]
 But this mixing in of $X$ corresponds to mixing in $X$ in the above construction of $E \omega$: we have $E \omega \times_\omega X^4 = E \pi \times_\pi (E\pi \times_\pi X^2)^2$ and this is the iteration of the $\pi$-reduced power operation on $X$.  All this goes to show that $D_\omega X = E \omega_+ \sprod_\omega X^{(4)} = D_\pi(D_\pi X)$, so we have iterated the $\pi$-adic construction!  That ought to be a good thing, because the Adem relations concern iterated Steenrod operations.
 
-Now we have a diagram
-\begin{diagram}
-(X^{(2)})^{(2)} & \cong & X^{(4)} \\
-\dTo & & \dTo \\
-D_\pi(D_\pi X) & \cong & D_\omega X \\
-\uTo<{D_\pi j} & & \\
-D_\pi(B \pi_+ \sprod X) & & \uTo>j \\
-\uTo<j & & \\
-B \pi_+ \sprod B \pi_+ \sprod X & \rInto & B \omega_+ \sprod X \\
-& \luTo(1, 2)_{T \sprod 1} \ruInto(1, 2) & \\
-& B \pi_+ \sprod B \pi_+ \sprod X.
-\end{diagram}
-We claim that the bottom triangle commutes up to homotopy.  This is because the flip map $T$ in the diagram of exact sequences
-\begin{diagram}
-\pi \times \pi & \rTo & \omega & \rTo & \pi \\
-\dTo<T & & \dTo & & \dEqualto \\
-\pi \times \pi & \rTo & \omega & \rTo & \pi
-\end{diagram}
-is induced by conjugation by the image of the nontrivial element $t$ of the right-hand $\pi$.  And it is a basic fact about classifying spaces that a conjugation map $c_t: \omega \to \omega$ induces a map $B c_t: B \omega \to B \omega$ which is homotopic to the identity (essentially, $c_t$ moves the basepoint). % is this right?  i don't think this is homotopic to the identity
+Now we have a diagram commuting up to homotopy:
+\[\xymatrix@R=7mm@C=.5cm{
+(X^{(2)})^{(2)} \ar[d]_i\ar@{=}[rr]&& X^{(4)} \ar[d]^i\\
+D_\pi(D_\pi X) \ar[rr]^\cong && D_\omega X \\
+D_\pi(B \pi_+ \sprod X) \ar[u]^{D_\pi j} 
+&B \pi_+ \sprod B \pi_+ \sprod X\ar[dr]_{T\sprod1}\\
+B \pi_+ \sprod B \pi_+ \sprod X \ar[u]^j\ar[rr]^{\xi\wedge1}
+\ar[ur]_{\xi\wedge1}&& B \omega_+ \sprod X\ar[uu]_j
+%&B \pi_+ \sprod B \pi_+ \sprod X.\ar[ul]^{T\sprod1}\ar[ur]
+}\]
+Here, the map $\xi$ is induced by the inclusion $\pi^2\to\omega$.
+We claim that the bottom triangle commutes up to homotopy.  This is because the flip map $T$ in% the diagram of exact sequences
+\[\xymatrix@R=1mm{
+\pi\times\pi\ar[dd]^T\ar[rd]\\
+&\omega\ar[r]&\pi\makebox[0cm][l]{$\,\ni t$}\\
+\pi\times\pi\ar[ru]
+}\]
+is induced by conjugation by the image of the nontrivial element $t$ of the right-hand $\pi$, and it is a basic fact about classifying spaces that a conjugation map $c_t: \omega \to \omega$ induces a map $B c_t: B \omega \to B \omega$ which is homotopic to the identity (essentially, $c_t$ moves the basepoint). % is this right?  i don't think this is homotopic to the identity
 So in some sense the whole point of $\omega$ was to convert the outer automorphism $T: \pi \times \pi \to \pi \times \pi$ to an inner automorphism.  It follows that the map $D_\pi j \circ j: B\pi_+ \sprod B\pi_+ \sprod X \to D_\pi(D_\pi X)$ is $\pi$-equivariant up to homotopy.
 
 Now if $u \in \widetilde H^q X$, we have
-\begin{diagram}[width=2em,height=2em]
+\begin{diagram}[width=2em,height=1.4em]
 P_\omega u & \in & \widetilde H^{4q}(D_\omega X) \\
 \dEqualto & & \dEqualto \\
-P(Pu) & \in & \widetilde H^{4q}(D_\pi D_\pi X).
+P(Pu) & \in & \raisebox{0cm}[0cm][0cm]{\,$\widetilde H^{4q}$}(D_\pi D_\pi X).
 \end{diagram}
 Now $(D_\pi j \circ j)^* P(P u) \in \widetilde H^*(B\pi_+ \sprod B\pi_+ \sprod X) \cong (\Z/2)[x, y] \otimes \widetilde H^* X$, and the $\pi$-equivariance up to homotopy above means that this class is symmetric in $x$ and $y$.  So,
 \begin{align*}
@@ -1091,11 +1144,8 @@ Now $(D_\pi j \circ j)^* P(P u) \in \widetilde H^*(B\pi_+ \sprod B\pi_+ \sprod X
 \end{align*}
 is symmetric in $x$ and $y$.  This is the shortest statement of the Adem relations.
 
-% >>>
-\fi
-\BoxedNote{}
-\section{Deriving the usual Adem relations} % <<<
-\ifx\OutputDerivingTheUsualAdemRelations\undefined\else
+\textbf{the old chapter break}
+
 Last time we got as far as showing $\Sq_x \Sq_y u = \Sq_y \Sq_x u$, where $\Sq_x = \sum_{i \ge 0} x^{-i} \Sq^i$, and $|x| = |y| = 1$, and $x$ and $y$ represent $1$-dimensional classes in $\widetilde H^* \RP^\infty$. % what the hell
 Today we'll see how this gives the more standard form of the Adem relations.
 
@@ -1171,13 +1221,14 @@ But,
 So, $\Sq^c = \Sq^{c-2^k} \Sq^{2^k} + \mathrm{decomposables}$, and $\Sq^{c - 2^k}$ is decomposable.
 \end{proof}
 
-$\widetilde H^* X$ is an $\SA$-module, and $\Sq^i x = 0$ if $i > |x|$; such things are called ``unstable $\SA$-modules,'' even though this is bad terminology.  Moreover, $x^2 = \Sq^{|x|} x$, and $\Sq(xy) = \Sq(x) \Sq(y)$; such a thing is called an ``unstable $\SA$-algebra.''  If $\CatOf{Unstable-\SA-Algebras}$ is the category of these, then the functor $\widetilde H^* : \CatOf{Spaces} \to \CatOf{GradedVectorSpaces}$ factors as
-\begin{diagram}
+$\widetilde H^* X$ is an $\SA$-module, and $\Sq^i x = 0$ if $i > |x|$; such things are called ``unstable $\SA$-modules,'' even though this is bad terminology.  Moreover, $x^2 = \Sq^{|x|} x$, and $\Sq(xy) = \Sq(x) \Sq(y)$; such a thing is called an ``unstable $\SA$-algebra.''  %If $\CatOf{Unstable-\SA-Algebras}$ is the category of these, then 
+The functor $\widetilde H^* : \CatOf{Spaces} \to \CatOf{GradedVectorSpaces}$ factors as
+\begin{diagram}[height=2em]
 \widetilde H^*: \CatOf{Spaces} & \rTo & \CatOf{Unstable-\SA-Algebras} \\
 & \rdTo & \dTo \\
 & & \CatOf{GradedVectorSpaces},
 \end{diagram}
-and $\CatOf{Unstable-\SA-Algebras}$ is the largest algebraic category through which $\widetilde H^*$ factors. % what is an algebraic category and why is this the largest?
+and $\CatOf{Unstable-\SA-Algebras}$ is the maximal algebraic category through which $\widetilde H^*$ factors. % what is an algebraic category and why is this the largest?
 
 Let's take another look at the formula $y^m = \sum_{k \ge m} \binom{-k-1}{k-m} s^{t-m} t^{-k}$.  Setting $m=1$ gives \[y = \sum_{k \ge 1} \binom{-k-1}{k-1} s^{k-1} t^{-k}.\]  On the other hand, we know $y = t^{-1} + sy^2$.  Since squaring is a homomorphism in $\Z/2$, we get
 \begin{align*}
@@ -1193,7 +1244,15 @@ which tells you that
 
 % >>>
 \fi
-\BoxedNote{}
+\BoxedNote{
+\Bullet For $a<2b$, $\Sq^a\Sq^b=\sum\binom{b-j-1}{a-2j}\Sq^{a+b-j}\Sq^j$. Note that in this sum only involves $0\leq j\leq a/2$. In particular, the terms on the right have $a+b-j\geq 2j$.
+
+\Bullet Say that a sequence $\Sq^{i_1}\cdots \Sq^{i_r}$ is admissible if $i_j\geq2i_{j+1}$. The Adem relations allow one to express inadmissible sequences in terms of admissible ones.
+
+\Bullet The Steenrod algebra $\SA$ is the tensor algebra on symbols $\Sq^i$, modulo the Adem relations. $\widetilde H^*X$ is an ``unstable $\SA$-module''.
+
+\Bullet The only indecomposable $\Sq^i$ are those for which $i$ is a power of two.
+}
 \section{Using the squares and Thom spaces} % <<<
 \ifx\OutputUsingTheSquaresAndThomSpaces\undefined\else
 % somewhere in here we start using / for vector bundles; be consistent with \onto from earlier or \downarrow as suggested
