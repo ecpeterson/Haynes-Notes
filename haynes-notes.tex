@@ -183,6 +183,8 @@
 %% >>> header
 
 \begin{document}
+\SelectTips{cm}{11}
+
 \ifx\OutputFrontMatter\undefined\else
 \maketitle
 \tableofcontents
@@ -784,27 +786,28 @@ Moreover, $i_Z^*:\widetilde H^{nq}(D_\pi Z)\to \widetilde H^{np}(Z^{(n)})$ is th
 \end{lem}
 \begin{proof}
 %One could produce a CW-complex for $D_\pi Z$ having no cells of dimension less than $nq$. No, one cannot! What if $Z$ is a $K(Z/3,d)$ and the field is $Z/2$? Then $H^*(Z;Z/2)=0$, but there's plenty of cells.
-We have a map of bundle-subbundle pairs:
-\[\xymatrix{
-F_{n-1}Z^n\ar@{^{(}->}[r]\ar[d]&Z^n\ar[d]&F_{n-1}Z^n\ar@{^{(}->}[r]\ar[d]&Z^n\ar[d]\\
-F_{n-1}Z^n\ar@{^{(}->}[r]\ar[dr]&Z^n\ar[d]&
-E\pi\times_\pi F_{n-1}Z^n\ar@{^{(}->}[r]\ar[dr]&E\pi\times_\pi Z^n\ar[d]\\
-&{*}&&B\pi
+We have a map (drawn with dotted arrows) of bundle-subbundle pairs:
+\[\xymatrix@!0@C=1.7cm@R=.8cm{
+F_{n-1}Z^n\ar[dd]\ar[rd]\ar@{.>}[rr]&&F_{n-1}Z^n\ar'[d][dd]\ar[rd]\\
+&Z^n\ar[dd]\ar@{.>}[rr]&&\ar[dd]Z^n\\
+F_{n-1}Z^n\ar[dd]\ar[rd]\ar@{.>}'[r][rr]&&E\pi\times_\pi F_{n-1}Z^n\ar'[d][dd]\ar[rd]\\
+&Z^n\ar[dd]\ar@{.>}[rr]&&\ar[dd]E\pi\times_\pi Z^n\\
+\ast\ar@{.>}'[r][rr]\ar@{=}[rd]&&B\pi\ar@{=}[rd]\\
+&\ast\ar@{.>}[rr]&&B\pi
 }\]
-Now the induced map $Z^{(n)}=Z^n/F_{n-1}Z^n\to\frac{E\pi \times_\pi Z^n}{E\pi \times_\pi F_{n-1}Z^n} = D_\pi Z$ is exactly $i_Z$, so we can study $i^*_Z$ using the associated morphism of relative serre spectral sequences.
+Now the induced map $Z^{(n)}=\frac{Z^n}{F_{n-1}Z^n}\to\frac{E\pi \times_\pi Z^n}{E\pi \times_\pi F_{n-1}Z^n} = D_\pi Z$ is exactly $i_Z$, so we can study $i^*_Z$ using the associated morphism of relative Serre spectral sequences.
 
-The spectral sequence for the first pair looks like:
+The relative Serre spectral sequence for the pair on the left has untwisted coefficients:
 \[
-E_2^{*, *} = H^*(*; H^*(Z^n, F_{n-1} Z^n)) \Rightarrow \widetilde H^*(Z^{(n)})
+_LE_2^{*, *} = H^*(*; H^*(Z^n, F_{n-1} Z^n)) \Rightarrow \widetilde H^*(Z^{(n)})
 .\]
 Now $B \pi$ is not simply connected (it is in fact a $K(\pi,1)$), so the second relative Serre spectral sequence will require twisted coefficients:
 \[
-E_2^{*, *} = H^*(B\pi; \{H^*(Z^n, F_{n-1} Z^n)\}) \Rightarrow \widetilde H^*(D_\pi Z)
+_RE_2^{*, *} = H^*(B\pi; \{H^*(Z^n, F_{n-1} Z^n)\}) \Rightarrow \widetilde H^*(D_\pi Z)
 .\]
 Now $H^*(Z^n, F_{n-1} Z^n) \cong \widetilde H^* Z^{(n)} \cong \widetilde H^*(Z)^{\otimes n}$, and this last isomorphism is equivariant with respect to permutations, a fact that is not trivial (and likely to be false with other cohomology theories).  It follows that in both spectral sequences everything is zero below the horizontal line at height $nq$ in the $E_2$ term.  So, % why?
 \[
-\widetilde H^{nq}(D_\pi Z) = H^0(B\pi; \{\widetilde H^q(Z)^{\otimes n}\}) = (\widetilde H^q(Z)^{\otimes n})^\pi
-.\qedhere\]
+\widetilde H^{nq}(D_\pi Z) = H^0(B\pi; \{\widetilde H^q(Z)^{\otimes n}\}) = (\widetilde H^q(Z)^{\otimes n})^\pi.\]
 Moreover, the map $i^*_Z:\widetilde H^{nq}(D_\pi Z)\to \widetilde H^{nq}(Z^{(n)})$ is induced by the corresponding map on the $E_2$ page. This is the map 
 \[H^0(B\pi; \{\widetilde H^q(Z)^{\otimes n}\})\to H^0(*;\widetilde H^q(Z)^{\otimes n}),\]
 which is simply the inclusion of the $\pi$-invariants, as desired.
