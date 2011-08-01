@@ -28,8 +28,8 @@
 %\newcommand{\OutputPropertiesOfTheSquares}{7}
 %\newcommand{\OutputTheAdemRelations}{8}
 %\newcommand{\OutputUsingTheSquaresAndThomSpaces}{9}
-\newcommand{\OutputStructureOnKtheory}{10}
-%\newcommand{\OutputBuildingKtheoryOperatorsFromRepTheory}{11}
+%\newcommand{\OutputStructureOnKtheory}{10}
+\newcommand{\OutputBuildingKtheoryOperatorsFromRepTheory}{11}
 %\newcommand{\OutputBuildingTheAdamsPowerOperations}{12}
 %\newcommand{\OutputProofOfHopfInvariantOne}{13}
 %\newcommand{\OutputTheJamesConstruction}{14}
@@ -1518,7 +1518,19 @@ There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that:
 
 % >>>
 \fi
-\BoxedNote{Complete me!}
+\BoxedNote{
+\Bullet $\widetilde K(S^2)=\Z\langle[\bundle L]-1\rangle$ where $\bundle L\downarrow \CP^1$ is the tautologous $\C$-line bundle.
+
+\Bullet $\widetilde {KO}(S^8)=\Z\langle[\bundle L]-4\rangle$, with $\bundle L\downarrow \mathbb{H}P^2$ the tautologous $\mathbb{H}$-line bundle.
+
+\Bullet $\widetilde K(X)$ is extended to a cohomology theory via $K^{-n}X:=K(\Sigma^nX)$ ($n\geq0$) and via periodicity for $n<0$. $\widetilde K^*(\ptspace)=\Z[p^{\pm1}]$ for $p=\bundle L-1\in \widetilde K^{-2}(\ptspace)$ the periodicity element. The same story holds for $\widetilde {KO}$, but it's more complicated.
+
+\Bullet As $\Lambda^t(V\oplus W)\cong\oplus \Lambda^{t_1}(V)\otimes\Lambda^{t_2}(W)$, defining $\Lambda_t(V):=\sum t^i\Lambda^t(V)$ we get $\lambda_t:KO(X)\to1+t\,KO(X)\llbracket t \rrbracket$ taking sum to product.
+
+\Bullet Using the generating function $-t\frac{d}{dt}\log \lambda_{-t}(E)=\sum t^k\psi^k(E)$, we obtain additive operations on $KO(X)$ such that $\psi^k(L)=L^{\otimes k}$, the ``Adams operations''.
+
+\Bullet We'll see later that they are characterised by three properties:\\\phantom{space}(i) they are ring homomorphisms; (ii) $\psi^k\psi^l=\psi^{kl}$; and (iii) $\psi^k(L)=L^{\otimes k}$.
+}
 \section{Building \texorpdfstring{$K$}{K}-theory operations from representation theory} % <<<
 \ifx\OutputBuildingKtheoryOperatorsFromRepTheory\undefined\else
 Previously, we discussed the ring $KO^* = KO^* \ptspace$ and said it was
