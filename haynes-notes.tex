@@ -22,13 +22,13 @@
 %\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{1}
 %\newcommand{\OutputCliffordAlgebras}{2}
 %\newcommand{\OutputBuildingThomSpaces}{3}
-\newcommand{\OutputFactsAboutThomSpaces}{4}
+%\newcommand{\OutputFactsAboutThomSpaces}{4}
 %\newcommand{\OutputBuildingKandJtheory}{5}
 %\newcommand{\OutputGeometryAndTheSteenrodSquares}{6}
 %\newcommand{\OutputPropertiesOfTheSquares}{7}
 %\newcommand{\OutputTheAdemRelations}{8}
-\newcommand{\OutputUsingTheSquaresAndThomSpaces}{9}
-%\newcommand{\OutputStructureOnKtheory}{10}
+%\newcommand{\OutputUsingTheSquaresAndThomSpaces}{9}
+\newcommand{\OutputStructureOnKtheory}{10}
 %\newcommand{\OutputBuildingKtheoryOperatorsFromRepTheory}{11}
 %\newcommand{\OutputBuildingTheAdamsPowerOperations}{12}
 %\newcommand{\OutputProofOfHopfInvariantOne}{13}
@@ -437,27 +437,27 @@ and this is exactly $\rho(n) - 1$ from before.  So we have succeeded in construc
 \ifx\OutputBuildingThomSpaces\undefined\else
 We'll now start attacking the second part of the vector field problem.  Recall that the Stiefel manifold $V_{n, k}$ of $k$-frames on $\R^n$ is given by $(n \times k)$-matrices with orthonormal columns, and projection onto the first column gives a fiber bundle $V_{n, k-1} \into V_{n, k} \onto S^{n-1}$.  The existence of a section $s$ of this bundle is equivalent to the existence of $(k-1)$ orthonormal vector fields on $S^{n-1}$.
 
-Now we will find a consequence for the existence of such a section in the homotopy theory of $\RP^{k-1}$.  To start with, there are two important facts about $\RP^{k-1}$.  The first is the existence of a fiber bundle $\Z/2 \into S^{k-1} \onto \RP^{k-1}$ obtained by identifying antipodal points on $S^{k-1}$.  The second is the existence of the ``tautological line bundle'' $L = \{(l, x) \in \RP^{k-1} \times \R^k \mid x \in l\} \onto \RP^{k-1}$, where one thinks of $\RP^{k-1}$ as the space of lines through the origin on $\R^k$.  These two constructions are, of course, related: there is a metric on $L$ induced by the metric in $\R^k$; taking the vectors of length $1$ in each fiber gives $S(L)$, the unit sphere bundle of $L$, and $S(L) \cong S^{k-1}$.
+Now we will find a consequence for the existence of such a section in the homotopy theory of $\RP^{k-1}$.  To start with, there are two important facts about $\RP^{k-1}$.  The first is the existence of a fiber bundle $\Z_2 \into S^{k-1} \onto \RP^{k-1}$ obtained by identifying antipodal points on $S^{k-1}$.  The second is the existence of the ``tautological line bundle'' $L = \{(l, x) \in \RP^{k-1} \times \R^k \mid x \in l\} \onto \RP^{k-1}$, where one thinks of $\RP^{k-1}$ as the space of lines through the origin on $\R^k$.  These two constructions are, of course, related: there is a metric on $L$ induced by the metric in $\R^k$; taking the vectors of length $1$ in each fiber gives $S(L)$, the unit sphere bundle of $L$, and $S(L) \cong S^{k-1}$.
 
-On the other hand, we can recover $L$ as $S^{k-1} \times_{\Z/2} \R$; this is an example of the ``Borel construction.'' % define what a twisted product is.  it would a lso be useful to talk about why the Borel construction is useful; you can sort of always move to your favorite spot in the fiber.  this definition should also match use of the borel construction in unit 6
-More generally, if $F$ is any space with a $\Z/2$ action, we get a bundle with fiber $F$ by taking $F \into S^{k-1} \times_{\Z/2} F \onto \RP^{k-1}$.  What follows from a section $s$ of $V_{n, k} \onto S^{n-1}$ is:
+On the other hand, we can recover $L$ as $S^{k-1} \times_{\Z_2} \R$; this is an example of the ``Borel construction.'' % define what a twisted product is.  it would a lso be useful to talk about why the Borel construction is useful; you can sort of always move to your favorite spot in the fiber.  this definition should also match use of the borel construction in unit 6
+More generally, if $F$ is any space with a $\Z_2$ action, we get a bundle with fiber $F$ by taking $F \into S^{k-1} \times_{\Z_2} F \onto \RP^{k-1}$.  What follows from a section $s$ of $V_{n, k} \onto S^{n-1}$ is:
 \begin{lem}
 If there is a section $s$, then there is a bundle map $\hat s$ over $\RP^{k-1}$ of the form
 %\begin{diagram}[height=2em]
 %\hat{s}: S(n \epsilon) & \rTo & S(n L) \\
 %\uEqualto & & \uEqualto \\
-%\RP^{k-1} \times S^{n-1} & & S^{k-1} \times_{\Z/2} S^{n-1},
+%\RP^{k-1} \times S^{n-1} & & S^{k-1} \times_{\Z_2} S^{n-1},
 %\end{diagram}
 \[\xymatrix@R=.6cm{
 \makebox[0cm][r]{$\RP^{k-1} \times S^{n-1}=$\ }S(n \epsilon)\ar[r]^{\hat s}\ar[d]&
-S(nL)\makebox[0cm][l]{\ $=S^{k-1} \times_{\Z/2} S^{n-1}$}\ar[d]\\
+S(nL)\makebox[0cm][l]{\ $=S^{k-1} \times_{\Z_2} S^{n-1}$}\ar[d]\\
 \RP^{k-1}\ar@{=}[r]&\RP^{k-1}
 }\]
 which acts as the identity on the fiber over the point $\pm e_1$, which we take as the basepoint in $\RP^{k-1}$.
 (Here $\epsilon$ is the trivial bundle of dimension $1$ and $\Z$ acts on bundles by direct sum.)
 \end{lem}
 \begin{proof}
-Define $\hat s: \R^k \times S^{n-1} \to \R^k \times S^{n-1}$ by $\hat s(x, v) = (x, s(v) x)$.  It is straightforward to see $|s(v) x| = 1$ if $|x| = 1$, so $\hat s$ maps $S^{k-1} \times S^{n-1} \to S^{k-1} \times S^{n-1}$.  Quotienting the target by $\Z/2$, we have \[\hat s(-x, v) = (-x, -s(v)x) = (x, s(v) x) = \hat{s}(x, v),\] so it descends to a quotient on the source: $\hat{s}: \RP^{k-1} \times S^{n-1} = S(n \epsilon) \to S^{k-1} \times_{\Z/2} S^{n-1} = S(nL)$.  Finally, $s(v)e_1 = v$ (as $s$ is a section), so $\hat{s}(e_1, v) = (e_1, v)$.
+Define $\hat s: \R^k \times S^{n-1} \to \R^k \times S^{n-1}$ by $\hat s(x, v) = (x, s(v) x)$.  It is straightforward to see $|s(v) x| = 1$ if $|x| = 1$, so $\hat s$ maps $S^{k-1} \times S^{n-1} \to S^{k-1} \times S^{n-1}$.  Quotienting the target by $\Z_2$, we have \[\hat s(-x, v) = (-x, -s(v)x) = (x, s(v) x) = \hat{s}(x, v),\] so it descends to a quotient on the source: $\hat{s}: \RP^{k-1} \times S^{n-1} = S(n \epsilon) \to S^{k-1} \times_{\Z_2} S^{n-1} = S(nL)$.  Finally, $s(v)e_1 = v$ (as $s$ is a section), so $\hat{s}(e_1, v) = (e_1, v)$.
 \end{proof}
 One point worth mentioning here is that $\hat s$ could have been defined as a map $n \epsilon \to n L$, but it would not necessarily have been linear on each fiber (as $s(v)$ is not necessarily linear), so the map would not have been in a strict sense a map of vector bundles.  Previously, we constructed such sections $s$ using Clifford algebras, and in that case $s$ was in fact linear.  In some sense, then, the problem is to find out whether you can get more vector fields by modifying them in some clever way.
 
@@ -532,9 +532,9 @@ If $E$ and $E'$ are sphere bundles, this construction isn't very satisfying, bec
 \[
 X \ast Y = \frac{X \times I \times Y}{(x, 1, y) \sim (x, 1, y'), (x, 0, y) \sim (x', 0, y)}.
 \]
-Now we define a fiberwise join by doing this on each fiber to get a bundle $F \ast F' \to E\, \widehat\ast\,  E' \to B \times B'$, where \[E\, \widehat\ast\, E' = \frac{E \times I \times E'}{\substack{\hbox{$(x, 1, y) \sim (x, 1, y')$ if $p'y = p'y'$}, \\ \hbox{$(x, 0, y) \sim (x', 0, y)$ if $px = px'$.}}}\]  One can check that this construction yields something locally trivial.  The fiberwise join for sphere bundles is related to the fiberwise product of vector bundles: if $V$ and $W$ are vector bundles, then $S(V \times W) = SV \,\widehat \ast \,SW$.  Moreover, if $B = B'$ we can once again pull back by the diagonal map on $B$, and we get $SV \ast_B SW = S(V \oplus W)$.
+Now we define a fiberwise join by doing this on each fiber to get a bundle $F \ast F' \to E\mathop{\widehat\ast}E' \to B \times B'$, where \[E\mathop{\widehat\ast}E' = \frac{E \times I \times E'}{\substack{\hbox{$(x, 1, y) \sim (x, 1, y')$ if $p'y = p'y'$}, \\ \hbox{$(x, 0, y) \sim (x', 0, y)$ if $px = px'$.}}}\]  One can check that this construction yields something locally trivial.  The fiberwise join for sphere bundles is related to the fiberwise product of vector bundles: if $V$ and $W$ are vector bundles, then $S(V \times W) = SV \,\widehat \ast \,SW$.  Moreover, if $B = B'$ we can once again pull back by the diagonal map on $B$, and we get $SV \ast_B SW = S(V \oplus W)$.
 
-In the case that $Y = \ptspace$, $X \ast Y = CX$ is the cone over $X$.  Applying this in the fiberwise join, we transport a bundle $F \to E \to B$ to a bundle $CF \to C_B E \to B$, where $C_BE:=E\,\widehat\ast\,B$.  Applying this to a sphere bundle $E \to B$ gives a disk bundle $C_B E \to B$, and it's easy to check that if $V$ is a vector bundle, then $D(V) = C_B S(V)$, so we have a way of recovering the disk bundle from the sphere bundle.
+In the case that $Y = \ptspace$, $X \ast Y = CX$ is the cone over $X$.  Applying this in the fiberwise join, we transport a bundle $F \to E \to B$ to a bundle $CF \to C_B E \to B$, where $C_BE:=E\mathop{\widehat\ast}B$.  Applying this to a sphere bundle $E \to B$ gives a disk bundle $C_B E \to B$, and it's easy to check that if $V$ is a vector bundle, then $D(V) = C_B S(V)$, so we have a way of recovering the disk bundle from the sphere bundle.
 
 Now back to Thom spaces.  Recall that if $E \onto B$ is a sphere bundle, its Thom space is $T(E) = C_B E / E$, and if the fiber over the basepoint of $B$ in $E$ is $S^{n-1}$, then $CS^{n-1} = D^n \subset C_B E$, which becomes an $S^n \subset T(E)$.  The Thom space comes equipped with a canonical basepoint which is the image of $E$, which has been crushed to a point.  If $V \onto B$ is a vector bundle, then $T(V)$ is defined to be $T(S(V))$, and also $T(0) = \pt{B}:=B \amalg \ptspace$.\footnote{By convention, $0$ denotes the rank zero vector bundle.  In this case $S(0) = E = \emptyset$, and we write $T(\emptyset) = B / \emptyset = B \amalg \ptspace$ also by convention.  This is done so that the smash product identity below works.}
 
@@ -552,15 +552,17 @@ Here's an important fact: $T(E\, \widehat \ast\, E') = T(E) \sprod T(E')$, where
 %& = T(S(V \times W)) = T(E\,\widehat \ast\, E').
 %\end{align*}
 \[TV \sprod TW = \frac{DV \times DW}{(SV \times DW) \cup (DV \times SW)}\cong \frac{D(V \times W)}{S(V \times W)}= T(S(V \times W)) = T(E\,\widehat \ast\, E').\]
-In the special case that $E' \to B'$ is $\R^n \to \ptspace$, we get that $T(V \oplus n \epsilon) = T(V) \sprod S^n = \Suspend^n T(V)$. Note that if $V$, $W$ are vector bundles over $B$, it is \textbf{not} the case that $T(V\oplus W)=T(V)\wedge T(W)$. However, we have a pullback diagram (drawn on the left) which induces a map of Thom spaces. This map commutes with the inclusion of the copies of $S^{n+m}$ (on the right, where $\dim_*V=n$ and $\dim_*W=m$):
+In the special case that $E' \to B'$ is $\R^n \to \ptspace$, we get that $T(V \oplus n \epsilon) = T(V) \sprod S^n = \Suspend^n T(V)$.
+
+Note that if $V$, $W$ are vector bundles over $B$, it is \textbf{not} the case that $T(V\oplus W)=T(V)\wedge T(W)$. However, we have a pullback diagram (drawn on the left) which induces a map of Thom spaces (drawn on the right). This map commutes with the inclusion of the copies of $S^{n+m}$ (where $\dim_*V=n$ and $\dim_*W=m$):
 \[\xymatrix{
-V\oplus V'\ar[d]\ar[r]&V\times V'\ar[d]\\
+V\oplus W\ar[d]\ar[r]&V\times W\ar[d]\\
 B\ar[r]^\Delta&B\times B
 }\qquad\qquad
 \xymatrix{
-T(V\oplus V'\downarrow B)\ar[r]&T(V\times V'\downarrow B\times B)
-\ar@{=}[r]&T(V\downarrow B)\wedge T(V'\downarrow B)\\
-&S^{n+n'}\ar[ul]\ar[u]\ar@{=}[r]&S^n\wedge S^{n'}\ar[u]
+T(V\oplus W\downarrow B)\ar[r]&T(V\times W\downarrow B\times B)
+\ar@{=}[r]&T(V\downarrow B)\wedge T(W\downarrow B)\\
+&S^{n+m}\ar[ul]\ar[u]\ar@{=}[r]&S^n\wedge S^{m}\ar[u]
 }\]
 
 The Thom space is useful for deciding whether a fiber bundle is trivial.  To this end, we observe that if $E$ and $E'$ are fiber homotopy equivalent $S^{n-1}$-bundles, then $T(E) \simeq T(E')$ relative to the copies of $S^n$ over the basepoint in $B$.
@@ -715,7 +717,7 @@ We then make two claims: $\widetilde J(X)$ is the image of $[X, BO] \to [X, BG]$
 
 \Bullet$\widetilde {KO}(X)$ can be viewed as (i) $\Vect(X)/\approx$, where $\approx$ is generated by $V\approx X\oplus\epsilon$, or (ii) as equivalence classes of virtual vector bundles $V-W$, where $\dim V=\dim W$.
 
-\Bullet Adams: $\widetilde{KO}(\RP^k)=\Z/a_k\Z$ generated by $\Z$, and the canonical epimorphism $\widetilde{KO}(\RP^k)\to\widetilde{J}(\RP^k)$ is an isomorphism, solving the vector field problem.
+\Bullet Adams: $\widetilde{KO}(\RP^k)=\Z/a_k\Z$ generated by $[L]-1$, and the canonical epimorphism $\widetilde{KO}(\RP^k)\to\widetilde{J}(\RP^k)$ is an isomorphism, solving the vector field problem.
 
 \Bullet Atiyah: $\widetilde J(X)$ is finite for $X$ a finite connected complex.
 }
@@ -740,8 +742,8 @@ F_0 X^n & \subseteq & F_1 X^n & \subseteq & \cdots & \subseteq & F_{n-1} X^n & \
 \ptspace & & \bigvee_{i=1}^n X & & & & \hbox{``Fat wedge''} & & X^n.
 \end{diagram}
 
-Suppose $\pi$ is a subgroup of the symmetric group $\Sigma_n$.  $\pi$ acts on $X^n$ by permuting the coordinates, and this action respects our filtration (in this discussion, we will be concerned mostly with the case $\pi = \Z/2$.)  Consider the space $E\pi$, a contractible CW-complex with a free $\pi$-action.
-For example, if $\pi = \Z/2$, then $\pi$ acts antipodally on $S^{n-1}$.  $S^{n-1}$ is not contractible, but its image is contractible in $S^n$; that is, the inclusion $S^{n-1} \into S^n$ is null-homotopic.  So the direct limit of the inclusions $S^{n-1} \subset S^n \subset \cdots = \bigcup_n S^n = S^\infty$ is contractible and has a free $\pi$-action.  The orbit space $E\pi/\pi = B\pi$ is clearly seen to be $\RP^\infty$. % awkwardly phrased.  is it important to give an explicit construction of Epi?  we've always been using EG for various G....
+Suppose $\pi$ is a subgroup of the symmetric group $\Sigma_n$.  $\pi$ acts on $X^n$ by permuting the coordinates, and this action respects our filtration (in this discussion, we will be concerned mostly with the case $\pi = \Z_2$.)  Consider the space $E\pi$, a contractible CW-complex with a free $\pi$-action.
+For example, if $\pi = \Z_2$, then $\pi$ acts antipodally on $S^{n-1}$.  $S^{n-1}$ is not contractible, but its image is contractible in $S^n$; that is, the inclusion $S^{n-1} \into S^n$ is null-homotopic.  So the direct limit of the inclusions $S^{n-1} \subset S^n \subset \cdots = \bigcup_n S^n = S^\infty$ is contractible and has a free $\pi$-action.  The orbit space $E\pi/\pi = B\pi$ is clearly seen to be $\RP^\infty$. % awkwardly phrased.  is it important to give an explicit construction of Epi?  we've always been using EG for various G....
 
 Okay, so here's the key construction: on the universal $\pi$-bundle $E\pi \to B\pi$, use the Borel construction to mix in $X^n$, where $\pi$ acts on $X^n$ by permuting the factors; we thus obtain a locally trivial bundle over $B\pi$ with fiber $X^n$:
 \begin{diagram}[height=1.7em]
@@ -827,15 +829,15 @@ which is simply the inclusion of the $\pi$-invariants, as desired.
 \end{proof}
 \noindent This is the key fact that gives the Steenrod operations; all else follows more or less from it.
 
-From here on, for all $r$, let $K_r$ denote $K(\Z/p,r)$ and $\widetilde H^r$ denote $\widetilde H^r(\textup{---};\Z/p)$, for some chosen prime $p$.  By the Hurewicz theorem and universal coefficients theorem: % rework this section so that we can swap out singular cohomology for something else.  this seems to be the key confusing step
-\[\widetilde H^iK_q=0\text{ \ for $i<q$, and \ }\widetilde H^qK_q=\Z/p.\]
-%%%$\widetilde H^i(K_q; \Z/2)$ is zero for $i<q$ and is $\Z/2$ when $i=q$.
+From here on, for all $r$, let $K_r$ denote $K(\Z_p,r)$ and $\widetilde H^r$ denote $\widetilde H^r(\textup{---};\Z_p)$, for some chosen prime $p$.  By the Hurewicz theorem and universal coefficients theorem: % rework this section so that we can swap out singular cohomology for something else.  this seems to be the key confusing step
+\[\widetilde H^iK_q=0\text{ \ for $i<q$, and \ }\widetilde H^qK_q=\Z_p.\]
+%%%$\widetilde H^i(K_q; \Z_2)$ is zero for $i<q$ and is $\Z_2$ when $i=q$.
 %\begin{align*}
-%\widetilde H^i(K_q; \Z/2) & = 0, \hspace{5em} i < q \\
-%\widetilde H^q(K_q; \Z/2) & = \Z/2,
+%\widetilde H^i(K_q; \Z_2) & = 0, \hspace{5em} i < q \\
+%\widetilde H^q(K_q; \Z_2) & = \Z_2,
 %\end{align*}
 %by the Hurewicz theorem.  
-So $\widetilde H^{nq}D_\pi K_q= \Z/p$.  Moreover, as $\pi$ can only act trivially on $\widetilde H^{nq} K_q^{(n)}=\Z/p$ \textbf{(is this true if $p\neq2$, or should we just set $p=2$ already?)}, the map
+So $\widetilde H^{nq}D_\pi K_q= \Z_p$.  Moreover, as $\pi$ can only act trivially on $\widetilde H^{nq} K_q^{(n)}=\Z_p$ \textbf{(is this true if $p\neq2$, or should we just set $p=2$ already?)}, the map
 \[
 \widetilde H^{nq} D_\pi K_q \xrightarrow{\ i^*\,} \widetilde H^{nq} K_q^{(n)} % this breaks if the action of pi isn't transitive
 \]
@@ -870,7 +872,7 @@ D_\pi K_q\ar@{.>}[ru]_{P_\pi\imath_q}
 \widetilde H^{nq}D_\pi K_q\ar[l]_{(D_\pi u)^*}\ar[u]_{i^*}^\cong
 }\phantom{\,\ni\imath_{nq}}\]
 \begin{lem}
-There is a unique natural transformation\footnote{Recall $\widetilde H^r$ is shorthand for $\widetilde H^r(\textup{---},\Z/2)$.} $P_\pi:H^q(\textup{---})\longrightarrow H^{nq}D_\pi(\textup{---})$ such that $i_X^*P_\pi u=u^{\wedge n}$ for all $u\in H^q(X)$. $P_\pi u$ is called the \emph{``Steenrod power''} of $u$.
+There is a unique natural transformation\footnote{Recall $\widetilde H^r$ is shorthand for $\widetilde H^r(\textup{---};\Z_2)$.} $P_\pi:H^q(\textup{---})\longrightarrow H^{nq}D_\pi(\textup{---})$ such that $i_X^*P_\pi u=u^{\wedge n}$ for all $u\in H^q(X)$. $P_\pi u$ is called the \emph{``Steenrod power''} of $u$.
 \end{lem}
 %\begin{diagram}
 %X^{(n)} & \rTo^{u^{\sprod n}} & K_q^{(n)} & \rTo^{\iota_q^{\sprod n}} & K_{nq}\\
@@ -892,7 +894,7 @@ B \pi_+ \sprod X & \rTo_j & D_\pi X.
 \end{diagram}
 So, any $u \in \widetilde H^q X$ gives us a class $j^* P_\pi u \in \widetilde H^{nq}(B \pi_+ \sprod X)$.
 
-The case we will develop in full is $\pi = \Z/2$, $n = 2$, and $p=2$, so we spcialise to this case now, writing $P$ for $P_\pi$ (and $\widetilde H^*$ for $\widetilde H^*(;\F_2)$).  $B\pi = \RP^\infty$ as we saw above, and $H^* B\pi = \widetilde H^* B\pi_+ = (\Z/2)[x]$ with $|x| = 1$, hence $\widetilde H^*(B\pi_+ \sprod X) \cong H^*(B \pi) \otimes \widetilde H^* X$.  This isomorphism means that given $u\in\widetilde H^qX$, we can write
+The case we will develop in full is $\pi = \Z_2$, $n = 2$, and $p=2$, so we spcialise to this case now, writing $P$ for $P_\pi$ (and $\widetilde H^*$ for $\widetilde H^*(;\F_2)$).  $B\pi = \RP^\infty$ as we saw above, and $H^* B\pi = \widetilde H^* B\pi_+ = \Z_2[x]$ with $|x| = 1$, hence $\widetilde H^*(B\pi_+ \sprod X) \cong H^*(B \pi) \otimes \widetilde H^* X$.  This isomorphism means that given $u\in\widetilde H^qX$, we can write
 %\begin{align*}
 %\widetilde H^*(B \pi_+ \sprod X) & \cong H^*(B \pi) \otimes \widetilde H^* X \\
 %j^* P u & = \sum_{i=-q}^q x^{q-i} \otimes \Sq^i u,
@@ -900,7 +902,7 @@ The case we will develop in full is $\pi = \Z/2$, $n = 2$, and $p=2$, so we spci
 %\end{align*}
 \[j^* P u  = \sum_{i=-q}^q x^{q-i} \otimes \Sq^i u,
 \text{\qquad where }\Sq^iu\in \widetilde H^{q+i}X.\]
-where $\Sq^i u$ is of degree $q + i$, and we take this to be \emph{the} definition of $\Sq^i u$. We can note immediately that $\Sq^i$ is a natural transformation $\widetilde H^q\to\widetilde H^{q+i}$. Moreover, it is immediate that $\Sq^i u$ is zero when $-q\leq i<0$, since this holds in the universal case $K(\Z/2,q)$.
+where $\Sq^i u$ is of degree $q + i$, and we take this to be \emph{the} definition of $\Sq^i u$. We can note immediately that $\Sq^i$ is a natural transformation $\widetilde H^q\to\widetilde H^{q+i}$. Moreover, it is immediate that $\Sq^i u$ is zero when $-q\leq i<0$, since this holds in the universal case $K(\Z_2,q)$.
 
 Note that the above can be to a large extent carried out in other cohomology theories, giving similar operations.  Mostly one needs to have computed $H^*(B \pi \sprod X)$.
 
@@ -916,7 +918,7 @@ S^0 \sprod X  \ar[r]^\Delta\ar[u]^k & X^{(2)}\ar[u]^i
 u\smile u & u^{\wedge2}\ar@{|->}[l]
 }\raisebox{-.5cm}{\textup{\qquad on $\widetilde H^{2q}(\DASH)$.\qquad}}
 \]
-(Note that $k^*: \Z/2[x]\otimes \widetilde H^* X\to\widetilde H^* X$ is the projection onto $\Z/2\otimes \widetilde H^* X$.) Thus $\Sq^q u = u^2$.
+(Note that $k^*: \Z_2[x]\otimes \widetilde H^* X\to\widetilde H^* X$ is the projection onto $\Z_2\otimes \widetilde H^* X$.) Thus $\Sq^q u = u^2$.
 
 Next, we derive the Cartan formula, beginning with the calculation
 \begin{align*}
@@ -934,7 +936,7 @@ commutes.
 $\delta^*(Pu \sprod Pv) = P(u \sprod v)$.
 \end{lem}
 \begin{proof}
-We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$.  Then the lowest dimensional cohomology of $D_\pi(X \sprod Y)$ is $\Z/2$ in dimension $2(p + q)$.  But $(\delta i)^*(P\iota_p \sprod P\iota_q) = ((i \sprod i)T)^* (\iota_p \sprod \iota_q)$ equals $(\iota_p \sprod \iota_q)^{\sprod 2}$, and $P(\iota_p \sprod \iota_q)$ is defined to be the unique class in $H^{2(p+q)} D_\pi(X \sprod Y)$ for which this holds. % we have two nonzero things living in the same dimension, where there's only one nonzero element.
+We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$.  Then the lowest dimensional cohomology of $D_\pi(X \sprod Y)$ is $\Z_2$ in dimension $2(p + q)$.  But $(\delta i)^*(P\iota_p \sprod P\iota_q) = ((i \sprod i)T)^* (\iota_p \sprod \iota_q)$ equals $(\iota_p \sprod \iota_q)^{\sprod 2}$, and $P(\iota_p \sprod \iota_q)$ is defined to be the unique class in $H^{2(p+q)} D_\pi(X \sprod Y)$ for which this holds. % we have two nonzero things living in the same dimension, where there's only one nonzero element.
 \end{proof}
 
 \begin{cor}[Cartan formula]  $\Sq^k(u \sprod v) = \sum_{i+j = k} \Sq^i u \sprod \Sq^j v$.
@@ -953,7 +955,7 @@ Taking $X = Y$ and using $\Delta: X \to X \times X$, we obtain:
 \end{cor}
 \noindent In particular, it will be convenient to define the total squaring operation $\Sq:\widetilde H^*X\to\widetilde H^*X$, defined by $ u\mapsto\sum_i \Sq^i u$. The Cartan formula states precisely that $\Sq$ is a ring homomorphism.
 \begin{ex}
-Show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 S^1 = \Z/2$.
+Show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 S^1 = \Z_2$.
 \end{ex}
 
 % >>>
@@ -998,7 +1000,7 @@ Working with field coefficients, we found there was a unique natural transformat
 \[
 p^* P_\pi u = u^{\sprod n}
 \]
-for all $u \in \widetilde H^q X$.  In the case that $\pi = \Z/2$, $n = 2$, we use the K\"unneth isomorphism $\widetilde H^* (B \pi_+ \sprod X) \cong \widetilde H^*B \pi_+ \otimes \widetilde H^* X$ and the fact that $\widetilde H^* B \pi_+ = H^*B \pi = (\Z/2)[x]$ to write for each $u \in \widetilde H^qX$,
+for all $u \in \widetilde H^q X$.  In the case that $\pi = \Z_2$, $n = 2$, we use the K\"unneth isomorphism $\widetilde H^* (B \pi_+ \sprod X) \cong \widetilde H^*B \pi_+ \otimes \widetilde H^* X$ and the fact that $\widetilde H^* B \pi_+ = H^*B \pi = \Z_2[x]$ to write for each $u \in \widetilde H^qX$,
 \[
 j^* P_\pi u = \sum_{i=0}^q x^{q-i} \otimes \Sq^i u \in \widetilde H^*(B \pi_+ \sprod X)
 .\]
@@ -1027,7 +1029,7 @@ $\sigma:\widetilde H^q X=\widetilde H^q X\otimes\widetilde H^1S^1\xrightarrow{\ 
 $\Sq^0: \widetilde H^q X \to \widetilde H^q X$ is the identity.
 \end{cor}
 \begin{proof}
-It suffices to check this on the class $\iota_q \in \widetilde H^q(K_q)$, writing $K_q = K(\Z/2, q)$.  For $q = 1$, $\Sq^0 \iota_1 \ne 0$ because this is the universal case and the exercise showed that $\Sq^0\imath_1$ pulls back to the nontrivial class $e$ on $S^1$.  But $\widetilde H^1 K_1 = \Z/2$, so $\Sq^0$ is the identity on $\iota_1$.  Furthermore, $\Sq^0$ leaves $e^{\sprod q} \in \widetilde H^q S^q$ undisturbed, by an application of the Cartan formula and the fact that the squares commute with suspensions.  It follows that $\Sq^0 \iota_q = \iota_q$.
+It suffices to check this on the class $\iota_q \in \widetilde H^q(K_q)$, writing $K_q = K(\Z_2, q)$.  For $q = 1$, $\Sq^0 \iota_1 \ne 0$ because this is the universal case and the exercise showed that $\Sq^0\imath_1$ pulls back to the nontrivial class $e$ on $S^1$.  But $\widetilde H^1 K_1 = \Z_2$, so $\Sq^0$ is the identity on $\iota_1$.  Furthermore, $\Sq^0$ leaves $e^{\sprod q} \in \widetilde H^q S^q$ undisturbed, by an application of the Cartan formula and the fact that the squares commute with suspensions.  It follows that $\Sq^0 \iota_q = \iota_q$.
 \end{proof}
 
 \begin{rem}
@@ -1037,7 +1039,7 @@ The map $\beta: \widetilde H^q X \to \widetilde H^{q+1} X$ given by
 \dTo<\delta & \ruTo_{\mathrm{reduction}} \\
 \widetilde H^{q+1}(X; \Z),
 \end{diagram}
-where $\delta$ is the zigzag map of the coefficient sequence $0 \to \Z \stackrel{\cdot 2}{\to} \Z \to \Z/2 \to 0$ is called the Bockstein homomorphism.  It is $\Sq^1$.
+where $\delta$ is the zigzag map of the coefficient sequence $0 \to \Z \stackrel{\cdot 2}{\to} \Z \to \Z_2 \to 0$ is called the Bockstein homomorphism.  It is $\Sq^1$.
 \end{rem}
 
 \begin{rem}
@@ -1045,7 +1047,7 @@ $\Sq^k$ is a group homomorphism.
 \end{rem}
 \begin{proof}
 This holds for any stable cohomology operation.
-%Using the correspondence $\widetilde H^nX=[X,K(n,\Z/2)]$, and applying
+%Using the correspondence $\widetilde H^nX=[X,K(n,\Z_2)]$, and applying
 Representing cohomology classes by maps into Eilenberg MacLane spaces, and using the naturality of $\Sq^k$, for any $u\in \widetilde H^qX$, we have a homotopy commuting diagram:
 \[\xymatrix@C=1.75cm@R=7mm{
 K_q\ar[r]^{\Sq^k\imath_q}&K_{q+k}\\
@@ -1150,7 +1152,7 @@ P_\omega u & \in & \widetilde H^{4q}(D_\omega X) \\
 \dEqualto & & \dEqualto \\
 P(Pu) & \in & \raisebox{0cm}[0cm][0cm]{\,$\widetilde H^{4q}$}(D_\pi D_\pi X).
 \end{diagram}
-Now $(D_\pi j \circ j)^* P(P u) \in \widetilde H^*(B\pi_+ \sprod B\pi_+ \sprod X) \cong (\Z/2)[x, y] \otimes \widetilde H^* X$, and the $\pi$-equivariance up to homotopy above means that this class is symmetric in $x$ and $y$.  So,
+Now $(D_\pi j \circ j)^* P(P u) \in \widetilde H^*(B\pi_+ \sprod B\pi_+ \sprod X) \cong \Z_2[x, y] \otimes \widetilde H^* X$, and the $\pi$-equivariance up to homotopy above means that this class is symmetric in $x$ and $y$.  So,
 \begin{align*}
 (D_\pi j \circ j)^* P(P u) & = j^* P(j^* P u) \\ % disambiguate those js
 & = j^* P(y^q \Sq_y u) \\
@@ -1190,7 +1192,7 @@ Again, letting $s = x^{-1}$, so $|s| = -1$, we have $\Sq_x \Sq_y = \sum_{i, j \g
 \end{align*}
 We thus need to know how to express $y$ in terms of $t$ and $s$.
 
-Now, $t^{-1} = y^2(x^{-1} + y^{-1}) = y + x^{-1} y^2 = y + s y^2$.  At this point we could pull out the quadratic formula, but that seems ill-advised over $\Z/2$.  Instead, we use the theory of residues: if $f(z)$ is a power series, then the coefficient of $z^m$ in $f(z)$ is the residue of $\frac{f(z)}{z^{m+1}}dz$.  (Normally there's a factor of $2 \pi i$ or something floating around, but once again this seems ill-advised in $\Z/2$.)  Now we are going to take advantage of the $dz$ to change variables and the claim is that this works for power series over any ring.\footnote{This is nearly true, nearly false.  It does work in this case.  See note at the end of this section. % ... what note?
+Now, $t^{-1} = y^2(x^{-1} + y^{-1}) = y + x^{-1} y^2 = y + s y^2$.  At this point we could pull out the quadratic formula, but that seems ill-advised over $\Z_2$.  Instead, we use the theory of residues: if $f(z)$ is a power series, then the coefficient of $z^m$ in $f(z)$ is the residue of $\frac{f(z)}{z^{m+1}}dz$.  (Normally there's a factor of $2 \pi i$ or something floating around, but once again this seems ill-advised in $\Z_2$.)  Now we are going to take advantage of the $dz$ to change variables and the claim is that this works for power series over any ring.\footnote{This is nearly true, nearly false.  It does work in this case.  See note at the end of this section. % ... what note?
 }  So in our case, we take the coefficient of $(t^{-1})^k$ in $y^m$: \[\res \frac{y^m}{(t^{-1})^{k+1}} d(t^{-1}).\]  We calculate that $d(t^{-1}) = dy + sdy^2 = dy + 2sydy = dy$.  We then have \[\res \frac{y^m dy}{y^{k+1}(1 + sy)^{k+1}} = \res \frac{(1+sy)^{-k-1} dy}{y^{k-m+1}},\] which is equal to the coefficient of $y^{k-m}$ in $(1+sy)^{-k-1} = \binom{-k-1}{k-m}s^{k-m}$, where we simply agree that $(1 + z)^m = \sum \binom{m}{k} z^k$ for $m \in \Z$, and for $k < 0$, $\binom{m}{k} = 0$.
 
 So we know what $y$ is in terms of $s$ and $t$, provided we know what the binomial coefficients are.  To sum up,
@@ -1207,14 +1209,14 @@ Now, in $\Sq_x \Sq_y$, the coefficient of $s^a t^b$ is $\Sq^a \Sq^b$.  In $\Sq_y
 ,\]
 and this last formula is called the ``Adem relation.''  One thing to notice is that if $a \le 2b$, then since $a \ge 2j$ we have $b \ge j$, so $a + b -j \ge 2j$.  So these relations let you express $\Sq^a \Sq^b$ for $a \le 2b$ as a sum of $\Sq^i \Sq^j$, where $i \ge 2j$.  Such $\Sq^i \Sq^j$ are called \emph{admissable}.
 
-So the tensor algebra on the squares $T(\Sq^1, \Sq^2, \ldots)$ modulo the Adem relations acts on $H^*(X; \Z/2)$.  This algebra $T(\Sq^1, \ldots) / \{\hbox{Adem relations}\}$ is called the ``Steenrod algebra.''  It is denoted $\SA$.
+So the tensor algebra on the squares $T(\Sq^1, \Sq^2, \ldots)$ modulo the Adem relations acts on $H^*(X; \Z_2)$.  This algebra $T(\Sq^1, \ldots) / \{\hbox{Adem relations}\}$ is called the ``Steenrod algebra.''  It is denoted $\SA$.
 \begin{lem}
 $\SA$ is generated by $\Sq^{2^i}$, and these are indecomposable.
 \end{lem}
 \begin{proof}
 We first show that the $\Sq^{2^i}$ are indecomposable and then show that all others are decomposable.
 
-After we took all the trouble to maintain homogeneity, we chop it: define $\Sq = \Sq^0 + \Sq^1 + \cdots$.  By the Cartan formula, $\Sq$ is a ring homomorphism.  In particular, it acts on $\widetilde H^* \RP^\infty = (\Z/2)[x]$, $|x| = 1$.  Now, $\Sq x = x + x^2$, so
+After we took all the trouble to maintain homogeneity, we chop it: define $\Sq = \Sq^0 + \Sq^1 + \cdots$.  By the Cartan formula, $\Sq$ is a ring homomorphism.  In particular, it acts on $\widetilde H^* \RP^\infty = \Z_2[x]$, $|x| = 1$.  Now, $\Sq x = x + x^2$, so
 \begin{align*}
 \Sq x^{2^i} & = (\Sq x)^{2^i} = (x + x^2)^{2^i} = x^{2^i} + x^{2^{i+1}} \\
 & = \Sq^0 x^{2^i} + \Sq^{2^i} x^{2^i}.
@@ -1246,7 +1248,7 @@ The functor $\widetilde H^* : \CatOf{Spaces} \to \CatOf{GradedVectorSpaces}$ fac
 \end{diagram}
 and $\CatOf{Unstable-\SA-Algebras}$ is the maximal algebraic category through which $\widetilde H^*$ factors. % what is an algebraic category and why is this the largest?
 
-Let's take another look at the formula $y^m = \sum_{k \ge m} \binom{-k-1}{k-m} s^{t-m} t^{-k}$.  Setting $m=1$ gives \[y = \sum_{k \ge 1} \binom{-k-1}{k-1} s^{k-1} t^{-k}.\]  On the other hand, we know $y = t^{-1} + sy^2$.  Since squaring is a homomorphism in $\Z/2$, we get
+Let's take another look at the formula $y^m = \sum_{k \ge m} \binom{-k-1}{k-m} s^{t-m} t^{-k}$.  Setting $m=1$ gives \[y = \sum_{k \ge 1} \binom{-k-1}{k-1} s^{k-1} t^{-k}.\]  On the other hand, we know $y = t^{-1} + sy^2$.  Since squaring is a homomorphism in $\Z_2$, we get
 \begin{align*}
 y & = t^{-1} + sy^2 \\
 & = t^{-1} + s(t^{-2} + s^2 y^4) \\
@@ -1265,7 +1267,7 @@ which tells you that
 
 \Bullet Say that a sequence $\Sq^{i_1}\cdots \Sq^{i_r}$ is admissible if $i_j\geq2i_{j+1}$. The Adem relations allow one to express inadmissible sequences in terms of admissible ones.
 
-\Bullet The Steenrod algebra $\SA$ is the tensor algebra on symbols $\Sq^i$, modulo the Adem relations. $\widetilde H^*X$ is an ``unstable $\SA$-module''.
+\Bullet The Steenrod algebra $\SA$ is the tensor algebra on symbols $\Sq^i$, modulo the Adem relations. $\widetilde H^*X$ is an ``unstable $\SA$-algebra''.
 
 \Bullet The only indecomposable $\Sq^i$ are those for which $i$ is a power of two.
 }
@@ -1286,11 +1288,11 @@ If there is an element of odd Hopf invariant on $S^n$, then $n$ is a power of tw
 \centering\includegraphics[width=0.3\textwidth]{figures/12.pdf}
 \caption{\small Diagram of $C(g)$.} % this figure should be some kind of staircase of suspensions to see what's going on
 \end{wrapfigure}
-Now if $g$ is any map $S^{2n+k-1} \stackrel{g}{\to} S^{n+k} \to C(g)$, then we no longer have a nontrivial cup-product, but we still have $\Sq^n$, so we can define a generalized Hopf invariant $\widetilde H(g)$ by $\Sq^n x = \widetilde H(g) y$, giving $\widetilde H: \pi_{2n+k-1}S^{n+k} \to \Z/2$.  The fact that $\Sq^n$ commutes with suspensions means
+Now if $g$ is any map $S^{2n+k-1} \stackrel{g}{\to} S^{n+k} \to C(g)$, then we no longer have a nontrivial cup-product, but we still have $\Sq^n$, so we can define a generalized Hopf invariant $\widetilde H(g)$ by $\Sq^n x = \widetilde H(g) y$, giving $\widetilde H: \pi_{2n+k-1}S^{n+k} \to \Z_2$.  The fact that $\Sq^n$ commutes with suspensions means
 \begin{diagram}[height=2em]
 f & & \pi_{2n-1} S^n & \rTo^H & \Z \\
 \dMapsto & & \dTo & & \dTo \\
-\Sigma^k f & & \pi_{2n+k-1} S^{n+k} & \rTo^{\widetilde H} & \Z/2
+\Sigma^k f & & \pi_{2n+k-1} S^{n+k} & \rTo^{\widetilde H} & \Z_2
 \end{diagram}
 commutes.  $\pi_{2n+k-1} S^{n+k}$ is independent of $k$ for $k \ge 1$; in other words we have turned the unstable question into a related stable one.
 
@@ -1324,22 +1326,22 @@ That $(1 + x)^n \equiv 1 \pmod{x^k}$ implies that $2^\nu \ge k$.  Recall that ou
 \]
 For $\nu(n) \le 3$, then, we have obtained an exact answer, but asymptotically, we're doing pretty badly.
 
-There's another approach to this sort of calculation with Thom spaces and squares.  Remember that for an $S^{n-1}$-bundle $E$, we had an inclusion into the fiberwise mapping cone $C_B E$, a disk bundle:
-\begin{diagram}
-S^{n-1} & \rTo & E & \rInto & C_B E & \lTo & D^n \\
-& & & \rdTo(1, 1) \ldTo(1, 1) B \\
-\end{diagram}
+There's another approach to this sort of calculation with Thom spaces and squares.  Suppose that $E$ is an $S^{n-1}$-bundle over a base $B$, which we will always assume to be connected. There is an inclusion into the fiberwise mapping cone $C_B E$, a disk bundle:
+\[\xymatrix@R=.6cm{
+S^{n-1}\ar[r]&E\,\ar@{^{(}->}[r]\ar[d]&C_BE\ar[d]&D^n\ar[l]\\
+&B\ar@{=}[r]&B
+}\]
 and $T(E) = C_B E / E$.  So $\widetilde H^* T(E) = H^*(C_B E, E)$.  Now we can use the relative Serre spectral sequence to get a spectral sequence
 \[
 E_2^{s,t}=H^s(B, \{H^t(D^n, S^{n-1})\}) \Rightarrow \widetilde H^{s+t} T(E)
 .\]
 But this spectral sequence has $E_2^{s,t}\neq0$ only when $t=n$, so that that everything collapses by the $E_2$ page, and we obtain isomorphisms $H^*(B, \{H^n(D^n, S^{n-1})\}) \cong \widetilde H^{*+n} T(E)$.  In general $B$ is not simply connected, so we need twisted coefficients.  If the system of local coefficients is trivial, then this isomorphism is the Thom isomorphism.  An orientation of $E$ is then just that: a choice of trivialization of this local coefficient system.
 
-Working over $\Z/2$ coefficients, this coefficient system is already canonically trivial, so the concern about orientation doesn't mean anything, and we get $H^*(B; \Z/2) \cong \widetilde H^{*+n} T(E)$ anyway.  For example, in the case of $nL \onto \RP^{k-1}$ we see trivially that the isomorphism comes from multiplication by $x^n$.  This comes out in general from the multiplicative structure of the spectral sequence, as follows.
+Working over $\Z_2$ coefficients, this coefficient system is already canonically trivial, so the concern about orientation doesn't mean anything, and we get $H^*(B; \Z_2) \cong \widetilde H^{*+n} T(E)$ anyway.  For example, in the case of $nL \onto \RP^{k-1}$ we see trivially that the isomorphism comes from multiplication by $x^n$.  This comes out in general from the multiplicative structure of the spectral sequence, as follows.
 
 First, $1\in H^0 B$ corresponds under the Thom isomorphism to some $u \in \widetilde H^n T(E)$, called the ``Thom class''.  Now $\widetilde H^* T(E) = H^*(C_B E, E)$ is a module over $H^* B$ via the ``cup product'' pairing, the composite:
 \[\xymatrix{
-H^* B \otimes H^*(C_B E, E)\ar[r]^{p^*\otimes1\ \ \ }&H^*(C_B E) \otimes H^*(C_B E, E)\ar[r]^{\hspace{9mm}\smile}& H^*(C_B E, E)
+H^*(B) \otimes H^*(C_B E, E)\ar[r]^{p^*\otimes1\ \ \ }&H^*(C_B E) \otimes H^*(C_B E, E)\ar[r]^{\hspace{9mm}\smile}& H^*(C_B E, E)
 }\]
 We justify calling this a cup product as $p^*$ is an isomorphism, as $C_BE$ is a disk bundle, so we can almost ignore the ``pulling back'' part of the operation. The Thom isomorphism says that cup-product by the Thom class $u$ is an isomorphism $\smile u: H^* B \cong \widetilde H^* T(E)$.
 
@@ -1350,19 +1352,53 @@ Of course, if $V$ is a vector bundle, we write $w(V)$ for $w(S(V))$. The followi
 \item $w_k$ depends only on the fiber homotopy type of the sphere bundle.
 \item $\Sq^0 u = u$, so $w_0 = 1$.
 \item $w_k = 0$ for $k > n$.
-\item Whitney sum formula:\footnote{Whitney says this is the hardest theorem he ever proved, but he had the wrong definition of Stiefel-Whitney classes.} In short, $w(E'\, \widehat\ast\, E'')=w(E')\wedge w(E'')$ for sphere bundles $E'\downarrow B'$ and $E''\downarrow B''$, and thus $w(V'\oplus V'')=w(V')\wedge w(V'')$ for vector bundles $V',V''$. To make sense of this formula, we must note that $T(E'\, \widehat\ast\, E'')=T(E')\wedge T(E'')$ and $T(V'\oplus V'')=T(V')\wedge T(V'')$.
-\item Stability: One calculates $w(n\varepsilon) = 1$, so $w(V \oplus n\varepsilon) = w(V)$ (making a notational identification of $V$ with $S(V)$).
+\item External Whitney sum formula:\footnote{Whitney says this is the hardest theorem he ever proved, but he had the wrong definition of Stiefel-Whitney classes.} $w(E'\mathop{\widehat\ast}E''\downarrow B'\times B'')=w(E'\downarrow B')\times w(E''\downarrow B'')$ for sphere bundles $E'\downarrow B'$ and $E''\downarrow B''$.
+\item Internal Whitney sum formula: $w(E'\mathop{\ast_B} E''\downarrow B)=w((E'\downarrow B)\smile w(E''\downarrow B))$ for sphere bundles $E'\downarrow B$ and $E''\downarrow B$.
+In particular, $w(V'\oplus V'')=w(V')\smile w(V'')$ for vector bundles $V',V''$ over $B$.
+\item Stability: One calculates $w(n\varepsilon) = 1$, so that $w(V \oplus n\epsilon) = w(V)$  (using the Whitney sum formula).
 \end{itemize}
+\begin{lem}\label{ThomClassLem}
+Suppose that $E\downarrow B$ is an $S^{n-1}$-bundle over a connected base, and that $s:S^n\to T(E)$ is the inclusion of copy of $S^n$ over the basepoint, and that $u\in H^n(T(E))$ is the Thom class. Then $s^*(u)$ is the generator $\mathit{o}\in H^n(S^n)$ that corresponds to the standard orientation\footnote{That is, the orientation on $S^n=(D^n,S^{n-1})$ which was used to trivialise the coefficient system used in the Serre spectral sequence which provided the Thom isomorphism.} of $S^n$.
+%Alternatively, $u$ is the class dual to $s_*(S^n)\in H_n(T(E))$.
+\end{lem}
+\begin{proof}
+This follows by naturality of the Thom isomorphism for oriented maps of oriented $S^{n-1}$-bundles, once it has been checked for the trivial $S^{n-1}$-bundle $\mathcal{E}=S^{n-1}\downarrow*$ (a simple task). Consider the map of oriented $S^{n-1}$-bundles (shown at left):
+\[\xymatrix{
+\mathcal{E}\ar[r]\ar[d]&E\ar[d]\\
+\ast\ar[r]&B
+}\qquad\qquad\qquad\qquad
+{
+\xymatrix{
+\makebox[0mm][r]{$S^n=\,$}T(\mathcal{E})\ar[r]&T(E)\\
+S^n\ar@{=}[u]\ar[ur]
+}\qquad\qquad\qquad
+\xymatrix{
+u_\mathcal{E}\ar@{=}[d]&\ar@{|->}[l]u_E\ar@{|->}[dl]\\
+\mathit{o}
+}}\]
+This map induces the commuting diagram in the middle: a map of Thom spaces relative to $S^n$. Using this commuting diagram, we can calculate $s^*(u_E)$ in two different ways (at right) to obtain the result.
+\end{proof}
 \begin{proof}[Proof of Whitney sum formula]
- Let $E' \downarrow B'$ be an $S^{n-1}$-bundle and $E'' \downarrow B''$ be a $S^{q-1}$-bundle; the fiberwise join $E'\, \widehat\ast\, E'' = E / B' \times B'' = B$ is an $S^{p+q-1}$-bundle.  Now, $T(E) = T(E') \sprod T(E'')$, and the Thom classes match up because the fibers do, % this doesn't make sense without characterizing the Thom class as the thing that restricts to the generator on each fiber
-that is, $u = u' \sprod u''$.  Thus, $\Sq u = \Sq(u' \sprod u'') = \Sq u' \sprod \Sq u''$; in addition, the first expression models $w(E) \smile u$ and the third expression models $w(E') \sprod w(E'') \smile u' \sprod u''$.  Therefore, $w(E) = w(E') \sprod w(E'')$.
+ Let $E' \downarrow B'$ be an $S^{n-1}$-bundle and $E'' \downarrow B''$ be a $S^{m-1}$-bundle; let $E\downarrow B$ be the fiberwise join, an $S^{m+n-1}$-bundle.  Now, $T(E) = T(E') \sprod T(E'')$, and moreover, $u = u' \sprod u''$. To see this, recall that the inclusion $S^{n+m}\hookrightarrow T(E)$ is the wedge of the inclusions $S^{n}\hookrightarrow T(E')$ and $S^{m}\hookrightarrow T(E'')$. Now by the characterisation of $u$ in lemma \ref{ThomClassLem}, we see that $u$ pulls back to the orientation generator in $H^{n+m}(S^n\wedge S^m)$, which is the wedge of the orientation generators in $H^n(S^n)$ and $H^m(S^m)$.
+
+Thus, $\Sq u = \Sq(u' \sprod u'') = \Sq u' \sprod \Sq u''$. Note that the first expression models $w(E) \smile u$, while the third expression models $w(E') \sprod w(E'') \smile u' \sprod u''$.  Therefore, $w(E) = w(E') \sprod w(E'')$.
 \end{proof}
 
 Now the Thom class of $nL \onto \RP^{k-1}$, as we saw, is $x^n$.  So $w(L) = 1 + x$, and $w(nL) = (1+x)^n$.  So $nL \onto \RP^{k-1}$ is fiber homotopy trivial only if $(1+x)^n \equiv 1 \pmod{x^k}$, which is the same result we obtained before.  Now the program is to improve the results by pursuing a similar set of results in $KO$-theory.
 
 % >>>
 \fi
-\BoxedNote{}
+\BoxedNote{
+\Bullet Using the decomposability of $\Sq^i$ for $i\neq2^j$, there can only be an element of Hopf invariant one in $\pi_{2n-1}S^n$ if $n=2^j$.
+
+\Bullet $\Sq x^n=x^n(1+x)^n$, where $x^n\in\widetilde H^n\RP^{n+k-1}_n$. If there is a coreduction, then $\Sq x^n$ must equal $x^n$. Thus, a necessary condition for $k-1$ fields on $S^{n-1}$ is that $(1+x)^n\equiv 1$ in $\Z_2[x]/(x^k)$, which implies $2^\nu(n)\geq k$.
+
+\Bullet For an oriented $S^{n-1}$-bundle $E$, $\widetilde H^*(T(E))$ is an $H^*(B)$-module under ``$\smile$'':
+\[\xymatrix{H^*(B) \otimes H^*(C_B E, E)\ar[r]^{p^*\otimes1\ \ \ }&H^*(C_B E) \otimes H^*(C_B E, E)\ar[r]^{\hspace{9mm}\smile}& H^*(C_B E, E)}\]
+Defined the Thom class $u\in H^n(T(E))$ such that $\smile u$ is the Thom isomorphism $H^*(B)\to\widetilde H^{*+n}(T(E))$.
+
+\Bullet The Stiefel-Whitney classes $w_i(E)\in H^i(B)$ are defined by $w(E)\smile u=\Sq u$. They vanish for $i>n$, and $w_0=1$. They satisfy the Whitney sum formula $w(V\oplus W)=w(V)\smile w(W)$, and are stable: $w(V\oplus \epsilon)=w(V)$.
+}
 \section{Structure on \texorpdfstring{$K$}{K}-theory} % <<<
 \ifx\OutputStructureOnKtheory\undefined\else
 This isn't a course about $K$-theory, it's a course that uses $K$-theory.  So we're not going to see proofs of lots of basic theorems of $K$-theory; in particular I'm not going to prove the periodicity theorem.  However, we will need some facts which we'll review now.
@@ -1373,27 +1409,32 @@ Recall that we previously defined the group $\widetilde{KO}(X)$, and by doing th
 & & \dTo>r & & \dTo>r \\
 \cdots & \rInto & U(n) & \rInto & U(n+1) & \rInto & \cdots,
 \end{diagram}
-and hence we may assume all our maps are into $U(n)$ instead.\footnote{This amounts to saying that every complex vector bundle admits a Hermitian inner product.}  Each inclusion occurs as the fiber of a bundle $U(n+1) \to S^{2n+1}$, and hence we calculate using the long exact sequence of homotopy groups that $\pi_1 U(n) \cong \pi_1 U(n+1)$ induced by these inclusions for $n \ge 1$ --- and, futhermore, $\pi_1 U(1) \cong \pi_1 S^1 = \Z$, and so we have $\widetilde K(S^2) \cong \Z$.  The generator of $\pi_1 U(1)$ can be represented by the identity, which as a clutching function represents $\bundle{L} \onto \CP^1 \simeq S^2$, the tautological (complex) line bundle.  Hence, a generator of $\widetilde K S^2$ is $\bundle L - 1$, since all elements of $\widetilde K X$ have virtual dimension zero.  Similarly, since all the unitary groups are connected, $\widetilde K(S^1) = 0$.
+and hence we may assume all our maps are into $U(n)$ instead.\footnote{This amounts to saying that every complex vector bundle admits a Hermitian inner product.}  Each inclusion on the bottom row occurs as the fiber of a bundle\footnote{Note that $U(n+1)$ acts on $S^{2n+1}$. Choosing a basepoint $b\in S^{2n+1}$, the map $U(n+1)\to S^{2n+1}$ given by $x\mapsto xb$ is a fibration with fiber the stabiliser of $b$. Of course, the stabiliser is $U(n)$.} $U(n+1) \to S^{2n+1}$, and hence we calculate using the long exact sequence of homotopy groups that $\pi_1 U(n) \cong \pi_1 U(n+1)$ induced by these inclusions for $n \ge 1$. In particular, $\pi_1 U(1) \cong \pi_1 S^1 = \Z$, so that $\pi_1 U(n)\simeq \Z$, where homotopy class corresponding to $k\in \Z$ is that of the map $z\mapsto\textup{diag}(z^k,1,1,\ldots)$ for $z\in S^1=U(1)$.
+
+Now if $V_{n,k}$ is the $n$-dimensional complex bundle obtained by clutching along the element of $\pi_1 U(n)$ corresponding to $k\in\Z$, it is not hard to see that $V_{n,k}\oplus V_{n',k'}$ is isomorphic to $V_{n+n',k+k'}$. From this we see that $\widetilde K(S^2) \cong \Z$, generated by $[V_{1,1}]-1$.
+
+Now we have represented the generator of $\pi_1 U(1)$ as the identity, which as a clutching function represents $\bundle{L} \onto \CP^1 \simeq S^2$, the tautological (complex) line bundle.  Hence, a generator of $\widetilde K S^2$ is $[\bundle L] - 1$.  Similarly, since all the unitary groups are connected, $\widetilde K(S^1) = 0$.
 
 \begin{rem}
-In the real case, we have $\widetilde{KO}(S^8) = \Z$ and in fact is generated by the tautological Cayley $\mathbb{H}$-line bundle, considered as a 4-dimensional real bundle over $\mathbb{H}P^2 \simeq S^8$. (What happens if we use octonions?) % is this last bit right?  and what about the octonions?
+In the real case, we have $\widetilde{KO}(S^8) = \Z$, generated by the tautological Cayley $\mathbb{H}$-line bundle, considered as a 4-dimensional real bundle over $\mathbb{H}P^2 \simeq S^8$. (What happens if we use octonions?) % is this last bit right?  and what about the octonions?
 \end{rem}
 
 \begin{thm}[Bott periodicity]
 \begin{align*}
-\widetilde K X \otimes \widetilde K S^2 & \stackrel{\cong}{\to} \widetilde K(X \sprod S^2) \\
-\widetilde{KO} X \otimes \widetilde{KO} S^8 & \stackrel{\cong}{\to} \widetilde{KO}(X \sprod S^8).
+\widetilde K (X) \otimes \widetilde K (S^2) & \stackrel{\cong}{\to} \widetilde K(X \sprod S^2) \\
+\widetilde{KO} (X) \otimes \widetilde{KO} (S^8) & \stackrel{\cong}{\to} \widetilde{KO}(X \sprod S^8).
 \end{align*}
 \end{thm}
 
-A word on this tensor product: an element of $\widetilde K X$ is a ``virtual vector bundle'' $V - m$, where $m$ is the trivial bundle of dimension $m = \dim V$.  So if $V - m \in \widetilde KX$ and $W - n \in \widetilde KS^2$, then we defined earlier their exterior tensor product over $X \times S^2$: $(V - m)\hat\otimes(W - n) = V \hat\otimes W - m \hat\otimes W - V \hat\otimes n + m \hat\otimes n$.  Consider now what this bundle looks like over $X \vee S^2 \subseteq X \times S^2$: on $X \times \ptspace$, $W$ is trivial, so we get $V \hat\otimes n - m \hat\otimes n - V \hat\otimes n + m \hat\otimes n = 0$; on $\ptspace \times S^2$ we see that $V$ is trivial, so we get $m \hat\otimes W - m \hat\otimes W - m \hat\otimes n + m \hat\otimes n = 0$.  Hence, the bundle $(V - m) \hat\otimes (W - n)$ is trivial over $X \wsum S^2$, and so pulls back from a vector bundle over $X \sprod S^2$.  This at least exhibits the map above.
+A word on this tensor product: an element of $\widetilde K (X)$ is a ``virtual vector bundle'' $V - m$, where $m$ is the trivial bundle of dimension $m = \dim V$.  If $V - m \in \widetilde K(X)$ and $W - n \in \widetilde K(S^2)$, then we define earlier their exterior tensor product over $X \times S^2$ in the obvious way: $(V - m)\hat\otimes(W - n) = V \hat\otimes W - m \hat\otimes W - V \hat\otimes n + m \hat\otimes n$.  Consider now what this bundle looks like over $X \vee S^2 \subseteq X \times S^2$: on $X \times \ptspace$, $W$ is trivial, so we get $V \hat\otimes n - m \hat\otimes n - V \hat\otimes n + m \hat\otimes n = 0$; on $\ptspace \times S^2$ we see that $V$ is trivial, so we get $m \hat\otimes W - m \hat\otimes W - m \hat\otimes n + m \hat\otimes n = 0$.  Hence, the bundle $(V - m) \hat\otimes (W - n)$ is trivial over $X \wsum S^2$, and so pulls back from a vector bundle over $X \sprod S^2$.  This at least exhibits the map above.
 
-Next let's see how the periodicity theorem can be used to make $KO$ and $K$ the $0$th groups of periodic generalized cohomology theories with periods $8$ and $2$ respectively.  In fact, the first thing we see is that $\widetilde{KO}$ is representable; recall that $\widetilde{KO} X$ is given by pointed homotopy classes of maps $X \to BO \times \Z$, denoted $[X, BO \times \Z]$ (we'll start writing $B$ for $BO \times \Z$).  Cued by the suspension isomorphism from singular cohomology, for $n \ge 0$ we define
+Next let's see how the periodicity theorem can be used to make $KO$ and $K$ the $0^\textup{th}$ groups of periodic generalized cohomology theories with periods $8$ and $2$ respectively.  The first thing we observe is that $\widetilde{KO}$ is representable; recall that $\widetilde{KO}(X)$ is given by pointed homotopy classes of maps $X \to BO \times \Z$, denoted $[X, BO \times \Z]$ (we'll start writing $B$ for $BO \times \Z$).  Cued by the suspension isomorphism from singular cohomology, for $n \ge 0$ we define:
 \begin{align*}
-\widetilde{KO}^{-n} X & = \widetilde{KO}(\Suspend^n X), \\
-\widetilde{KO}^n(X) & = \widetilde{KO}(\Suspend^{8k-n}X) \hbox{\:for any $k$ with $8k > n$}, \\
+\qquad\qquad\qquad
+\widetilde{KO}^{-n} (X) & = \widetilde{KO}(\Suspend^n X)\hbox{\ for $n\geq0$}, \\
+\widetilde{KO}^n(X) & = \widetilde{KO}(\Suspend^{8k-n}X) \hbox{\ for any $k$ with $8k > n$}, \\
 KO^*(X) &= \widetilde{KO}^* X_+, \\
-KO^*(X, A) & = \widetilde{KO}^*(X \cup CA).
+KO^*(X, A) & = \widetilde{KO}^*(X \cup CA) \textup{\ when $A\hookrightarrow X$ is a cofibration.}
 \end{align*}
 
 For this to be considered a cohomology theory we need some long exact sequences.  Now its a general fact that for a map of pointed spaces $f: A \to X$ if we take the mapping cone $A \stackrel{f}{\to} X \to X \cup_f CA = C(f)$, then the sequence
@@ -1413,7 +1454,7 @@ Now, if $f$ is nice enough, $X \cup CA$ will be homotopic to $X / A$.  Certainly
 \[
 A \to X \to X \cup CA \to \Suspend A \to \Suspend X \to \cdots
 ,\]
-and moreover the map $\Suspend A \to \Suspend X$ can in fact by given by $\Sigma f$ up to homotopy.  This sequence is called the ``Barratt-Puppe'' sequence.  We can then apply the Hom-functor $[-, B]$ to get a long exact sequence\footnote{Applying $[-, Z]$ will gives a long exact sequence of pointed sets for any $X$.  Since our $Z = B$ is an $H$-group, this gives a long exact sequence of groups.}
+and moreover the map $\Suspend A \to \Suspend X$ can in fact by given by $\Sigma f$ up to homotopy.  This sequence is called the ``Barratt-Puppe'' sequence.  We can then apply the Hom-functor $[-, B]$ to get a long exact sequence\footnote{Applying $[-, Z]$ will give a long exact sequence of pointed sets for any $X$.  Since our $Z = B$ is an $H$-group, this gives a long exact sequence of groups.}
 \[
 [A, B] \from [X, B] \from [X \cup CA, B] \stackrel{\delta}{\from} [\Suspend A, B] \from [\Suspend X, B] \from \cdots
 .\]
@@ -1427,39 +1468,43 @@ and via periodicity we have the full long exact sequence
 .\]
 This justifies our choice of definition of $\widetilde{KO}^*$ above.  This whole setup works similarly for complex $K$-theory.
 
-Now it's an important fact about $\widetilde K^* X$ that it's a commutative ring: we calculated $\widetilde K^0 S^1 = 0$ and $\widetilde K^0 S^2 = \Z$ with generator $(\bundle{L} - 1)$, which gives a generator $x \in \widetilde K^{-2} S^0 = K^{-2} \ptspace$, called the ``periodicity element.''  So $K^* = K^* \ptspace = \Z[x^{\pm 1}]$, the Laurent series ring, where $|x| = -2$.  Similarly, there is a ring structure for $KO^*$:
+Now it's an important fact about $\widetilde K^* (X)$ that it's a commutative ring: we calculated $\widetilde K^0 (S^1) = 0$ and $\widetilde K^0 (S^2) = \Z$ with generator $(\bundle{L} - 1)$, which gives a generator $x \in \widetilde K^{-2} (S^0) = K^{-2} (\ptspace)$, called the ``periodicity element.''  So $K^* := K^* (\ptspace) = \Z[x^{\pm 1}]$, the Laurent series ring, where $|x| = -2$.  Similarly, there is a ring structure for $KO^*$:
 \[
 \begin{array}{c|ccccccccc}
 n & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 \hline
-KO^{-n} \ptspace & \Z & \Z/2 & \Z/2 & 0 & \Z & 0 & 0 & 0 & \Z \\
+KO^{-n} (\ptspace) & \Z & \Z_2 & \Z_2 & 0 & \Z & 0 & 0 & 0 & \Z \\
 \mathrm{generator} & 1 & \eta & \eta^2 & & q & & & & p,
 \end{array}
 \]
-with relations $2\eta = 0$, $\eta^3 = 0$, $\eta q = 0$, $q^2 = 4p$ and $p$ is the periodicity element (so, for example, $KO^{-10}(\ptspace) = \langle p\eta^2 \rangle \cong \Z/2$).
+with relations $2\eta = 0$, $\eta^3 = 0$, $\eta q = 0$, $q^2 = 4p$, where $p$ is the periodicity element. For example, $KO^{-10}(\ptspace) = \langle p\eta^2 \rangle \cong \Z_2$ and $KO^{6}(\ptspace) = \langle p^{-1}\eta^2 \rangle \cong \Z_2$, so that $KO^*$ is the ring with generators $\eta,q,p^{\pm1}$ and the given relations.
 
-Unfortunately, we shall need more than just the ring structure; we'll need operations.  One way to get operations in $K$-theory is to look for operations on vector spaces, apply these fiber-wise to get operations on vector bundles, and then squeeze out operations on $K$-theory.  The most useful of these is $V \mapsto \Lambda^k(V)$, the $k$th exterior power.  By means of this method we get a $k$th exterior power bundle $\Lambda^k E / B$.  Unfortunately extending to $K$-theory is hard because $\Lambda^k$ is not additive.  But there is a natural isomorphism $\Lambda^k(V \oplus W) = \bigoplus_{i+j = k} \Lambda^i V \otimes \Lambda^j W$.  This (which looks like a Cartan formula) inspires the definition $\Lambda_t(V) = \sum_{i \ge 0} t^i \Lambda^i(V)$.  Now $\Lambda_t(V \oplus W) = \Lambda_t(V) \cdot \Lambda_t(W)$.  So the operation still isn't additive, but it's exponential -- it takes sums to products.  That's good enough, as it turns out.  So $\Lambda_t$ induces a homomorphism of abelian groups $\Lambda_t: \mathrm{Vect}(X) \to 1 + KO(X)\llbracket t \rrbracket^\times$.  But by definition of $KO(X)$, there is a group homomorphism $\lambda_t: KO(X) \to KO(X) \llbracket t \rrbracket^\times$ such that the map $\Lambda_t$ factors as
-\begin{diagram}
-\mathrm{Vect}(X) & \rTo^{\Lambda_t} & KO(X) \llbracket t \rrbracket^\times \\
+Unfortunately, we shall need more than just the ring structure; we'll need operations.  One way to get operations in $K$-theory is to look for operations on vector spaces, apply these fiber-wise to get operations on vector bundles, and then squeeze out operations on $K$-theory.  The most useful of these is $V \mapsto \Lambda^k(V)$, the $k$th exterior power.  By means of this method we get a $k^\textup{th}$ exterior power bundle $\Lambda^k E \downarrow B$ from a bundle $E\downarrow B$.  Unfortunately extending to $K$-theory is hard because $\Lambda^k$ is not additive. 
+
+There is, however, a natural isomorphism $\Lambda^k(V \oplus W) = \bigoplus_{i+j = k} \Lambda^i V \otimes \Lambda^j W$.  This (which looks like a Cartan formula) inspires the definition $\Lambda_t(V) = \sum_{i \ge 0} t^i \Lambda^i(V)$.  Now $\Lambda_t(V \oplus W) = \Lambda_t(V) \cdot \Lambda_t(W)$, so the operation still isn't additive, but it's exponential --- it takes sums to products.  That's good enough, as it turns out.  So $\Lambda_t$ induces a homomorphism of commutative monoids $\Lambda_t: \mathrm{Vect}(X) \to 1 + t\,KO(X)\llbracket t \rrbracket$, where the target is the group (under multiplication) of formal power series in $t$ with coefficients in $KO(X)$ and constant term one.
+
+By definition of $KO(X)$, there is a group homomorphism $\lambda_t: KO(X) \to 1+t\,KO(X) \llbracket t \rrbracket$ such that the map $\Lambda_t$ factors as
+\begin{diagram}[height=2em]
+\mathrm{Vect}(X) & \rTo^{\Lambda_t} & 1+t\,KO(X) \llbracket t \rrbracket\\
 \dTo & \ruTo_{\lambda_t} \\
 KO(X),
 \end{diagram}
-i.e., for $[E], [F] \in KO(X)$,
-\[
-\lambda_t([E] + [F]) = \lambda_t[E] \cdot \lambda_t[F]
-,\]
-like total Steenrod operations.  Of course if $E$ is a vector bundle, then $\lambda^j(E) = \Lambda^j(E) = 0$ for $j > \dim E$ (where $\lambda^j$ is defined, of course, by $\lambda_t(E) = 1 + \sum_{k \ge 1} t^k \lambda^k(E)$.)
+That $\lambda_t$ is a group homomorphism is to say that ,
+%\[
+$\lambda_t(A + B) = \lambda_t(A) \cdot \lambda_t(B),$
+%,\]
+for $A, B \in KO(X)$. This behaviour is like that of total Steenrod operations.  Of course if $E$ is a vector bundle, then $\lambda^j(E) = \Lambda^j(E) = 0$ for $j > \dim E$ (where $\lambda^j$ is defined, of course, by $\lambda_t(E) = 1 + \sum_{k \ge 1} t^k \lambda^k(E)$.)
 
-The $\lambda$ operations are all very well, but they are hard to work with because they depend on the ring structure of $KO(X)$.  We really want an additive ``power operation,'' so one thing to try is to take a logarithm in search of a family of operations $\psi^k$ such that on line bundles we get $\psi^k(L) = L^{\otimes k}$.  Once again, we start with a generating function $\psi_t(x) = \sum_{k \ge 1} \psi^k(x) t^k$, then our conditions on $\psi^k$ become:
+The $\lambda$ operations are all very well, but they are hard to work with because they depend on the ring structure of $KO(X)$.  We really want an additive ``power operation,'' so one thing to try is to take a logarithm, in search of a family of operations $\psi^k$ such that on line bundles we get $\psi^k(L) = L^{\otimes k}$.  Once again, we start with a generating function $\psi_t(x) = \sum_{k \ge 1} \psi^k(x) t^k$, then our conditions on $\psi^k$ become:
 \begin{align*}
-\psi_t(x + y) & = \psi_t x + \psi_t y, \\
+\psi_t(x + y) & = \psi_t (x) + \psi_t (y), \\
 \psi_t(L) & = \sum_{k \ge 1} L^k t^k = \frac{Lt}{1 - Lt}.
 \end{align*}
 The first obvious candidate is \[\log \lambda_t(x) = \sum_{i=0}^\infty (-1)^i \frac{(\lambda_t(x) - 1)^i}{i} = (\lambda_t(x) - 1) - \frac{(\lambda_t(x) - 1)^2}{2} + \frac{(\lambda_t(x) - 1)^3}{3} - \cdots,\] but unfortunately this has denominators,\footnote{Check the $t^2$ coefficient!} and we don't know what $1/n$ means in $KO(X)$.  Our next guess is $\frac{d}{dt} \log \lambda_t(x) = \frac{\frac{d}{dt} \lambda_t(x)}{\lambda_t(x)}$ (and $\lambda_t(x)^{-1}$ exists), and so we have additivity, the first property.  Now for $L$ a line bundle,
 \[
 \frac{d}{dt} \log (1 + tL) = \frac{L}{1 + tL}
 .\]
-Replace $t$ with $-t$ to get $\frac{d}{dt} \log(1 - tL) = \frac{-L}{1 - tL}$.  And, to normalize, multiply by $-t$ to get $\frac{tL}{1 - tL} = \sum_{k \ge 1}^\infty t^k L^k$.  We define the $k$th ``Adams operation'' applied to $E$, $\psi^k(E)$, to be the coefficient of $t^k$ in \[\frac{-t \frac{d}{dt} \lambda_{-t}(E)}{\lambda_{-t}(E)}.\]
+Replace $t$ with $-t$ to get $\frac{d}{dt} \log(1 - tL) = \frac{-L}{1 - tL}$.  And, to normalize, multiply by $-t$ to get $\frac{tL}{1 - tL} = \sum_{k \ge 1}^\infty t^k L^k$.  We define the $k^\textup{th}$ ``Adams operation'' applied to $E$, $\psi^k(E)$, to be the coefficient of $t^k$ in \[\frac{-t \frac{d}{dt} \lambda_{-t}(E)}{\lambda_{-t}(E)}.\]
 
 Now, we seek to prove the following properties and show that they characterize the Adams operations:
 \begin{thm}
@@ -1467,13 +1512,13 @@ There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that:
 \begin{itemize}
 \item $\psi^k$ is a ring homomorphism for each $k$,
 \item $\psi^k \psi^l = \psi^{kl}$, and
-\item $\psi^k(L) = L^{\otimes k}$.
+\item $\psi^k(L) = L^{\otimes k}$ for line bundles $L$.
 \end{itemize}
 \end{thm}
 
 % >>>
 \fi
-\BoxedNote{}
+\BoxedNote{Complete me!}
 \section{Building \texorpdfstring{$K$}{K}-theory operations from representation theory} % <<<
 \ifx\OutputBuildingKtheoryOperatorsFromRepTheory\undefined\else
 Previously, we discussed the ring $KO^* = KO^* \ptspace$ and said it was
@@ -1909,18 +1954,18 @@ Now the Bott-Samelson theorem says that the product of these composities as $k$ 
 
 Now note that the Bott-Samelson theorem required that $H^*(X; R)$ be torsion-free and $R$ a principal ideal domain.  However, the claim is that this theorem of James holes for arbitrary coefficients, in particular with $\Z$-coefficients; in fact, we have a general proposition:
 \begin{lem}
-If $X \to Y$ induces an isomorphism on homology $H_*(X; F) \stackrel{\cong}{\to} H_*(Y; F)$ for $F$ either $\Z/p$ or $\Q$, then $H_*(X; \Z) \stackrel{\cong}{\to} H_*(Y; \Z)$.
+If $X \to Y$ induces an isomorphism on homology $H_*(X; F) \stackrel{\cong}{\to} H_*(Y; F)$ for $F$ either $\Z_p$ or $\Q$, then $H_*(X; \Z) \stackrel{\cong}{\to} H_*(Y; \Z)$.
 \end{lem}
 \begin{proof}
 Use the universal coefficient theorem cleverly many times.  First, for any $p$, the sequence
 \begin{diagram}
-0 & \rTo & \Z/p & \rTo & \Z/p^2 & \rTo & \Z/p & \rTo & 0
+0 & \rTo & \Z_p & \rTo & \Z_p^2 & \rTo & \Z_p & \rTo & 0
 \end{diagram}
-gives the isomorphism with $\Z/p^2$ coefficients; then
+gives the isomorphism with $\Z_p^2$ coefficients; then
 \begin{diagram}
-0 & \rTo & \Z/p^n & \rTo & \Z/p^{n+1} & \rTo & \Z/p & \rTo & 0
+0 & \rTo & \Z_p^n & \rTo & \Z_{p^{n+1}} & \rTo & \Z_p & \rTo & 0
 \end{diagram}
-in general so for $\Z/p^n$ coefficients for all $n$.  Now the limit $\Z_p = \cdots \into \Z/p^n \into \Z/p^{n+1} \into \cdots = \bigcup \Z/p^n$, the ``Pr\"ufer group'' also gives an isomorphism because homology commutes with direct limits.\footnote{By the way, $\Z_p$ is the quotient in the short exact sequence $0 \to \Z \to \Z[1/p] \to \Z[1/p]/\Z \to 0$.}  Then in fact $\Q/\Z = \bigoplus_{\hbox{$p$ prime}} \Z_p$ (this is more or less the method of partial fractions, if you think about it), so we are done.
+in general so for $\Z_{p^n}$ coefficients for all $n$.  Now the limit $\Z_p = \cdots \into \Z_{p^n} \into \Z_{p^{n+1}} \into \cdots = \bigcup \Z_{p^n}$, the ``Pr\"ufer group'' also gives an isomorphism because homology commutes with direct limits.\footnote{By the way, $\Z_p$ is the quotient in the short exact sequence $0 \to \Z \to \Z[1/p] \to \Z[1/p]/\Z \to 0$.}  Then in fact $\Q/\Z = \bigoplus_{\hbox{$p$ prime}} \Z_p$ (this is more or less the method of partial fractions, if you think about it), so we are done.
 \end{proof}
 
 Now the proof of the James' Theorem relied on some heavy stuff: Bott-Samelson, the Hurewicz theorem, and the JHC Whitehead theorem.  You may think that's too slick, and you would be right, because we skipped over the ``James construction.''  The biggest difficulties above were caused by the failure of loop composition to associate.  The idea is to replace $\Loops X$ with a homotopy equivalent space, the ``Moore loops,'' where composition \emph{does} associate.
@@ -2222,14 +2267,14 @@ In the case that $n$ is odd, there are two steps; first we show $h \mid H$, then
 S^{2n+1} & \rTo^f & S^{n+1} & \rTo & C(f) & \rTo & S^{2n+1} \\
 \dEqualto & & \uTo>\beta & & \uTo & & \dEqualto \\
 S^{2n+1} & \rTo^{\Suspend \hat f} & \Suspend \Loops S^{n+1} & \rTo & \Suspend C(\hat f) & \rTo & S^{2n+1} & \rTo^{\Suspend^2 \hat f} & \Suspend \Loops S^{n+1} \\
-& & 0 & \lTo & \Z/h & \lTo & \Z & \lTo^{\cdot h} & \Z \hbox{in $H^{2n+1}$}, \\
+& & 0 & \lTo & \Z_h & \lTo & \Z & \lTo^{\cdot h} & \Z \hbox{in $H^{2n+1}$}, \\
 & & x & \lMapsto & x, y & \lMapsto & y \in H{2n+2} \\
 & & \dMapsto<{\beta^*} & & \dMapsto & & \dMapsto \\
 & & x & \lMapsto^{H^{n+1}} & x, y & \lMapsto^{H^{2n+1}} & y,
 \end{diagram}
-$x^2 = Hy$ in $H^* C(f)$ implies that $x^2 = Hy$ in $H^* \Suspend C \hat f$.  But recall that $x^2 = 0$ in any cohomology theory on any suspension, so $Hy = 0$ in $H^*(\Suspend C \hat f) \cong \Z/h$, where $h = \deg \Suspend^2 \hat f$ in dimension $2n+2$, which is equivalent to $deg \hat f$ in dimension $2n$.  This implies that $h \mid H$.
+$x^2 = Hy$ in $H^* C(f)$ implies that $x^2 = Hy$ in $H^* \Suspend C \hat f$.  But recall that $x^2 = 0$ in any cohomology theory on any suspension, so $Hy = 0$ in $H^*(\Suspend C \hat f) \cong \Z_h$, where $h = \deg \Suspend^2 \hat f$ in dimension $2n+2$, which is equivalent to $deg \hat f$ in dimension $2n$.  This implies that $h \mid H$.
 
-To show that $H \mid h$, we study $\Loops C(f)$.  First we want to show that $H_{2n} \Loops C f = \Z/H$.  In the rational cohomology spectral sequence for the fibration $\Loops Cf \to PCf \to Cf$, we compute a crucial differential:
+To show that $H \mid h$, we study $\Loops C(f)$.  First we want to show that $H_{2n} \Loops C f = \Z_H$.  In the rational cohomology spectral sequence for the fibration $\Loops Cf \to PCf \to Cf$, we compute a crucial differential:
 DRAW A SPECTRAL SEQUENCE
 Because there is no torsion in these two groups, the integral cohomology spectral sequence embeds in the rational cohomology spectral sequence, and is dual to the homology spectral sequence.  So the same differential is multiplied by $H$ in the homology spectral sequence:
 DRAW ANOTHER SPECTRAL SEQUENCE.
@@ -2243,7 +2288,7 @@ In dimension $2n$, $H_{2n} \alpha$ is an isomorphism, and so
 \[
 g \alpha \stackrel{\Loops f}{\mapsto} h \cdot \mathrm{gen} \mapsto 0 \in H_{2n}(\Loops Cf)
 ,\]
-since the composite is null-homotopic, so $h = 0$ in $\Z/H$, and $H \mid h$.  Notice that in case $H$ and $h$ is zero, the appropriate argument shows the other is as well.
+since the composite is null-homotopic, so $h = 0$ in $\Z_H$, and $H \mid h$.  Notice that in case $H$ and $h$ is zero, the appropriate argument shows the other is as well.
 \end{proof}
 
 Maybe now we should show that there exists an element of Hopf invariant 1; after all the results we have proven so far have been negative.  Let's see that an $H$-space structure $S^{n-1}$ yields an element of Hopf invariant one on $S^n$, then real, complex, quaternionic, and Cayley multiplication will provide elements of Hopf invariant one on $S^1$, $S^2$, $S^4$, and $S^8$.
@@ -2480,7 +2525,7 @@ and this corresponds to $\iota_{2n+1} \in [S^{2n-1}, \Loops^2 S^{2n+1}] = [S^{2n
 And so we get
 \begin{thm}[G.\ Whitehead]
 \[
-\ker(\pi_{2n-1} S^n \stackrel{e}{\to} \pi_{2n} S^{2n+1}) = \begin{cases} 0 & \hbox{when $n = 1, 3, 7$} \\ \Z/2 \langle W_n \rangle & \hbox{$n$ odd otherwise} \\ \Z \langle W_n \rangle & \hbox{$n$ even}. \end{cases}
+\ker(\pi_{2n-1} S^n \stackrel{e}{\to} \pi_{2n} S^{2n+1}) = \begin{cases} 0 & \hbox{when $n = 1, 3, 7$} \\ \Z_2 \langle W_n \rangle & \hbox{$n$ odd otherwise} \\ \Z \langle W_n \rangle & \hbox{$n$ even}. \end{cases}
 \]
 \end{thm}
 
@@ -2524,7 +2569,7 @@ d_1: \pi_2 \Loops^3 S^5 \stackrel{p}{\to} \pi_1 \Loops^2 S^2 \stackrel{h}{\to} \
 .\]
 INKSCAPE Well, on the bottom row all we need to know is what happens to $\iota_{2s+1} \in \pi_s \Loops^{s+1} \S^{2s+1} = \pi_{2s+1} S^{2s+1} = \Z \langle \iota_{2s+1} \rangle$.  But we already computed that considering that $\iota_{2s+1} \in \pi_{2s-1} \Loops^2 S^{2s+1}$, we get $p(\iota_{2s-1}) = W_s$, $p: \pi_{2s-1} \Loops^2 S^{2s+1} \to \pi_{2s-1} S^s$.  $d_1(\iota_{2s+1})$ is thus $h(W_s) \in \pi_{2s-1} S^{2s-1}$, which is $\pm 2 \iota_{2s-1}$ when $s$ is even or $0$ when $s$ is odd.  So in fact we can write INKSCAPE
 
-But we cna get more otu of this information: notice that this is the \emph{only} differential \emph{into} the bottom row, and the only differential \emph{out} of the obttom row for columns $s \le 2$.  So we can truncate this spectral sequence and nothing more happens: INKSCAPE  This spectral sequence computes $\pi_* \Loops^3 S^3$, so we have found that $\pi_4 S^3 \cong \Z/2$.  But by the Freudenthal theorem, for stem degree $1$ $S^3$ is already in the stable range.  So in fact $\pi_{n+1} S^n = \Z/2$ for $n \ge 3$.  And this in turn lets us fill in a whole row of the original spectral sequence INKSCAPE.
+But we cna get more otu of this information: notice that this is the \emph{only} differential \emph{into} the bottom row, and the only differential \emph{out} of the obttom row for columns $s \le 2$.  So we can truncate this spectral sequence and nothing more happens: INKSCAPE  This spectral sequence computes $\pi_* \Loops^3 S^3$, so we have found that $\pi_4 S^3 \cong \Z_2$.  But by the Freudenthal theorem, for stem degree $1$ $S^3$ is already in the stable range.  So in fact $\pi_{n+1} S^n = \Z_2$ for $n \ge 3$.  And this in turn lets us fill in a whole row of the original spectral sequence INKSCAPE.
 
 
 % >>>
@@ -2616,7 +2661,7 @@ by taking $n$ large enough.  The fiber of $\Suspend^n X \wsum \Suspend^n Y \to \
 
 So, surprise, the wedge is the product in this category.  Well, that's nice; now let's add ``formal desuspensions.'' Somehow the point is that now $\{\Suspend X, \Suspend Y\} \overset{\cong}{\underset{\Suspend}{\from}} \{X, Y\}$ we've really obliterated the difference between the morphism sets here; we've made $\Suspend$ a fully faithful functor.  Now the idea is to make it into an isomorphism.  To fix it up, we'll simply put in formal desuspensions.  The new category, the $S$-category, has as objects pairs $(X, n)$, where $X$ is a finite complex and $n$ is an integer, the ``formal $n$-fold suspension of $X$.''  And $\mathrm{morph}\{(X, m), (Y, n)\} = [\Suspend^{m+k} X, \Suspend^{n+k} Y]$ for $k$ much larger than 0, namely $k$ big enough that $k > m$, $k > n$, and larger still so that one is in the stable range, i.e., $\mathrm{morph}\{(X, m), (Y, n)\} = \{\Suspend^{m+k} X, \Suspend^{n+k} Y\}$ for $k$ much larger than 0, i.e., $k > m$ and $k > n$.
 
-Note that $(X, 1) \stackrel{\cong}{\to} (\Suspend X, 0)$, i.e., the ``formal suspension'' is isomorphic to the informal suspension.  So we write $(X, n)$ and $\Suspend^n X$ and $\mathrm{morph}\{(X, m), (Y, n)\}$ as $\{\Suspend^m X, \Suspend^n Y\}$.  But now we have the object $(X, -1) = \Suspend^{-1} X$.  And so we talk about formerly pathological objects like $\{S^0, S^1\} = [S^k, S^{k-1}]$, for $k$ much larger than 0, which we know to be $\Z/2$.
+Note that $(X, 1) \stackrel{\cong}{\to} (\Suspend X, 0)$, i.e., the ``formal suspension'' is isomorphic to the informal suspension.  So we write $(X, n)$ and $\Suspend^n X$ and $\mathrm{morph}\{(X, m), (Y, n)\}$ as $\{\Suspend^m X, \Suspend^n Y\}$.  But now we have the object $(X, -1) = \Suspend^{-1} X$.  And so we talk about formerly pathological objects like $\{S^0, S^1\} = [S^k, S^{k-1}]$, for $k$ much larger than 0, which we know to be $\Z_2$.
 
 As an example of how things work, remember earlier we studied the group $J(X)$ which had to do with stable fiber homotopy equivalence.  Let $V/X$ be an $(n-1)$-sphere bundle.  A long time ago we saw that $V/X$ being fiber homotopy trivial implied a splitting
 \begin{diagram}
@@ -2911,20 +2956,20 @@ S^{n-2} & \rTo^\pi & \RP^{n-2} & \rTo & \RP^{n-1} & \rEqualto & C\pi \\
 \begin{array}{ccccc}
 e & p(2^e) & KO^* & \mathrm{generator} & \pi_{*-1}^S \\
 \hline
-0 & 1 & \Z/2 & g_0 & -2 \iota \\
-1 & 2 & \Z/2 & g_1 & \eta \\
+0 & 1 & \Z_2 & g_0 & -2 \iota \\
+1 & 2 & \Z_2 & g_1 & \eta \\
 2 & 4 & \Z & g_2 & \nu \\
 3 & 8 & \Z & g_3 & \sigma \\
-4 & 9 & \Z/2 & g_4 & \eta \sigma \\
-5 & 10 & \Z/2 & g_5 & \eta^2 \sigma.
+4 & 9 & \Z_2 & g_4 & \eta \sigma \\
+5 & 10 & \Z_2 & g_5 & \eta^2 \sigma.
 \end{array}
 \]
-Note that in degree zero, $\pi_0^S O = \Z/2$, but $\pi_0^S S = \Z$, so $j$ can't be a homomorphism -- but in other degrees it is.
+Note that in degree zero, $\pi_0^S O = \Z_2$, but $\pi_0^S S = \Z$, so $j$ can't be a homomorphism -- but in other degrees it is.
 
 To describe the attaching maps the discussion will begin where the answer is, which may seem like a funny place at first, so have patience.  Recall that
 \begin{align*}
-\widetilde{KO} \left( \RP^{\rho(n) - 1} \right) & = \Z/2^{\nu(n)} \langle L - 1 \rangle \\
-\widetilde{KO} \left( \RP^{\rho(n)} \right) & = \Z/2^{\nu(n) + 1} \langle L - 1 \rangle.
+\widetilde{KO} \left( \RP^{\rho(n) - 1} \right) & = \Z_{2^{\nu(n)}} \langle L - 1 \rangle \\
+\widetilde{KO} \left( \RP^{\rho(n)} \right) & = \Z_{2^{\nu(n) + 1}} \langle L - 1 \rangle.
 \end{align*}
 Now these two fit into a cofiber sequence
 \[
@@ -2933,10 +2978,10 @@ Now these two fit into a cofiber sequence
 which gives an exact sequence
 \begin{diagram}
 \widetilde{KO} S^{\rho(n)} & \rTo & \widetilde{KO} \left( \RP^{\rho(n)} \right) & \rOnto & \widetilde{KO} \left( \RP^{\rho(n) - 1} \right) \\
-& & \Z/2^{\nu(n) + 1} \langle L - 1 \rangle & \rOnto^f & \Z/2^{\nu(n)} \langle L - 1 \rangle \\
-\hbox{($\Z$ or $\Z/2$)} \langle g_{\nu(n)} \rangle & \rTo & \ker f \cong \Z/2, \\
+& & \Z_{2^{\nu(n) + 1}} \langle L - 1 \rangle & \rOnto^f & \Z_{2^{\nu(n)}} \langle L - 1 \rangle \\
+\hbox{($\Z$ or $\Z_2$)} \langle g_{\nu(n)} \rangle & \rTo & \ker f \cong \Z_2, \\
 \end{diagram}
-where $g_{\nu(n)}$ maps to the generator of the kernel.  Notice that in $\Z/2^{\nu(n) + 1} \langle L - 1\rangle$, $2^{\nu(n)}(L - 1)$ is congruent to any of its odd multiplies.  But $n$ is an odd multiple of $2^{\nu(n)}$, so for the generator of $\ker f$ we can take $n(1 - L)$.  In terms of bundles this means that $n(1 - L)$ over $\RP^{\rho(n)}$ is classified by a map into $BO$ that factors through the map $\RP^{\rho(n)} \to S^{\rho(n)}$ by the map $S^{\rho(n)} \stackrel{g_{\nu(n)}}{\to} BO$:
+where $g_{\nu(n)}$ maps to the generator of the kernel.  Notice that in $\Z_{2^{\nu(n) + 1}} \langle L - 1\rangle$, $2^{\nu(n)}(L - 1)$ is congruent to any of its odd multiplies.  But $n$ is an odd multiple of $2^{\nu(n)}$, so for the generator of $\ker f$ we can take $n(1 - L)$.  In terms of bundles this means that $n(1 - L)$ over $\RP^{\rho(n)}$ is classified by a map into $BO$ that factors through the map $\RP^{\rho(n)} \to S^{\rho(n)}$ by the map $S^{\rho(n)} \stackrel{g_{\nu(n)}}{\to} BO$:
 \begin{diagram}
 n(1 - L) & \rTo & E(g_{\nu(n)}) \\
 \dTo & & \dTo \\
@@ -3015,7 +3060,7 @@ the top cell of $\RP^{n-2}_{n-\rho(n)-1}$ pulls all the way back to the $(n-\rho
 & & & \ldDashto^\exists & \dTo>{\mathrm{id}} \\
 \Suspend^{-n+1} \RP^{n-2}_{n - \rho(n) - 1} & \rTo & \Suspend^{-n+1} \RP^{n-1}_{n-\rho(n)-1} & \rTo & S^0 & \rTo^\pi & \Suspend^{-n+2} \RP^{n-2}_{n-\rho(n)-1},
 \end{diagram}
-because the sequence is an exact triangle, a map going back as above.  Looking at what that means in terms of the dual, it means there is a stable splitting of the $0$-sphere $S^0 \stackrel{\from}{\to} \Suspend^n \RP^{\rho(n)-n}_{-n} = T(n(1-L) \downarrow \RP^{\rho(n)})$ which would mean that $n(1-L)$ is stably fiber-homotopy trivial, equivalently that $nL$ is stably fiber-homotopy trivial.  But by the vector field problem, it's not: $n(1-L) = n(1-L) \ne 0$ in $\widetilde J \RP^{\rho(n)} = \Z/2^{\nu(n)+1} \langle L - 1 \rangle$.
+because the sequence is an exact triangle, a map going back as above.  Looking at what that means in terms of the dual, it means there is a stable splitting of the $0$-sphere $S^0 \stackrel{\from}{\to} \Suspend^n \RP^{\rho(n)-n}_{-n} = T(n(1-L) \downarrow \RP^{\rho(n)})$ which would mean that $n(1-L)$ is stably fiber-homotopy trivial, equivalently that $nL$ is stably fiber-homotopy trivial.  But by the vector field problem, it's not: $n(1-L) = n(1-L) \ne 0$ in $\widetilde J \RP^{\rho(n)} = \Z_{2^{\nu(n)+1}} \langle L - 1 \rangle$.
 
 Now it's an easy matter to get back to the general case: consider $\RP^{n-1}_{-N}$, where $N \ge -(n - \rho(n) - 1)$.  Then we have the diagram
 \begin{diagram}
@@ -3597,7 +3642,7 @@ B & \rTo^f & \RP^N,
 so $1 - \xi = f^*(1 - L)$, and $\widetilde{KO}(\RP^N)$ is a finite 2-group generated by $(1-L)$.
 \item The next case is that $\xi$ is a $2$-dimensional bundle.  Let $P$ be the associated principal bundle so that $\xi  = P \times_{O(2)} \R^2$.  We described the Adams operations $\psi^k$ in terms of representations, so now we have to think a little about the representation theory of $O(2)$: what is $O(2)$?  Well, there are two parts:
 \begin{diagram}
-S^1 & \rEqualto & SO(2) & \rInto & O(2) & \pile{\rTo \\ \lTo} & \Z/2,
+S^1 & \rEqualto & SO(2) & \rInto & O(2) & \pile{\rTo \\ \lTo} & \Z_2,
 \end{diagram}
 where the splitting comes from choosing any reflection, say $r$ is the reflection through the $x$-axis.
 
@@ -3624,7 +3669,7 @@ Let $B$ be a finite complex and let $\xi, \xi'$ be vector bundles over $B$.  Sup
 
 Well, this is as far as Adams got; he decided it was unreasonable of others to expect him to do more.  Now you need a trick to be able to finish in a finite amount of time.
 
-To do the general case we'll make a few reductions, namely to oriented $2n$-dimensional bundles.  A vector bundle $\xi$ over $B$ has a Stiefel-Whitney class $w_1(\xi) \in H^1(B; \Z/2)$ which is the obstruction to the orientability of $\xi$.  Now elements of $H^1(B; \Z/2)$ are in one-to-one correspondence via $w_1$ with line bundles.
+To do the general case we'll make a few reductions, namely to oriented $2n$-dimensional bundles.  A vector bundle $\xi$ over $B$ has a Stiefel-Whitney class $w_1(\xi) \in H^1(B; \Z_2)$ which is the obstruction to the orientability of $\xi$.  Now elements of $H^1(B; \Z_2)$ are in one-to-one correspondence via $w_1$ with line bundles.
 
 Now perform the $L$ and $\widetilde L$ constructions fiberwise on the bundle $\xi$ over $B$ and you get a fiber bundle
 \begin{diagram}
@@ -3672,8 +3717,8 @@ Another way to ask this question is this: every spectrum has a space associated 
 * & \pi_*(\Z \times BO) & \psi^k \\
 \hline
 0 & \Z \\
-1 & \Z/2 \langle \eta \rangle & \eta \mapsto k \eta \\
-2 & \Z/2 \langle \eta^2 \rangle & \eta \mapsto k^2 \eta \\
+1 & \Z_2 \langle \eta \rangle & \eta \mapsto k \eta \\
+2 & \Z_2 \langle \eta^2 \rangle & \eta \mapsto k^2 \eta \\
 3 & 0 \\
 4 & \Z \langle g_4 \rangle & g_4 \mapsto k^{2k} g_4 \\
 5 & 0 \\
@@ -3725,17 +3770,17 @@ as a sequence of connective covers.  You can do this for spectra, in which case 
 \begin{array}{c|ccccccccc}
 * & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & (8) \\
 \hline
-\pi_* bo & \Z_{(2)} & \Z/2 & \Z/2 & 0 & \Z_{(2)} & 0 & 0 & 0
+\pi_* bo & \Z_{(2)} & \Z_2 & \Z_2 & 0 & \Z_{(2)} & 0 & 0 & 0
 \end{array}
 \]
 but now we restrict to $* > 0$.  The construction of $\Psi^k$ gives an operation on connective real $K$-theory $\Psi^k: bo \to bo$ and we know its effect on homotopy groups ($k = 3$ in what's to follow):
 \begin{diagram}[width=2.5em]
 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 \\
-\Z_{(2)} & \Z/2 & \Z/2 & 0 & \Z_{(2)} & 0 & 0 & 0 & \Z_{(2)} & \Z/2 & \Z/2 & 0 & \Z_{(2)} & 0 & 0 & 0 & \Z_{(2)} \\
+\Z_{(2)} & \Z_2 & \Z_2 & 0 & \Z_{(2)} & 0 & 0 & 0 & \Z_{(2)} & \Z_2 & \Z_2 & 0 & \Z_{(2)} & 0 & 0 & 0 & \Z_{(2)} \\
 \dTo<= & \dTo<= & \dTo<= & & \dTo>{\cdot 9} & & & & \dTo>{\cdot 81} & & & & \dTo>{\cdot 729} & & & & \dTo>{\cdot 9^4} \\
-\Z_{(2)} & \Z/2 & \Z/2 & & \Z/2 & & & & \Z_{(2)} & \Z/2 & \Z/2 & & \Z_{(2)} & & & & \Z_{(2)}.
+\Z_{(2)} & \Z_2 & \Z_2 & & \Z_2 & & & & \Z_{(2)} & \Z_2 & \Z_2 & & \Z_{(2)} & & & & \Z_{(2)}.
 \end{diagram}
-Notice that $\Psi^3$ induces the identity in dimensions below $4$.  So consider the map $\Psi^3 - 1: bo \to bo$; now the map acts as $0, 0, 0, \ldots, \cdot 9 - 1, \ldots, \cdot 81 -1, \ldots$ in homotopy.  You could just take the fiber of this map, but because $\Psi^3 - 1$ induces zero in homotopy in dimensions one and two you would get copies of $\Z/2$ from both ends, and these are in fact unnecessary: the map $\Psi^3 - 1$ lifts to the $4$-connective cover\footnote{Why? I need to check the obstruction theory here.}
+Notice that $\Psi^3$ induces the identity in dimensions below $4$.  So consider the map $\Psi^3 - 1: bo \to bo$; now the map acts as $0, 0, 0, \ldots, \cdot 9 - 1, \ldots, \cdot 81 -1, \ldots$ in homotopy.  You could just take the fiber of this map, but because $\Psi^3 - 1$ induces zero in homotopy in dimensions one and two you would get copies of $\Z_2$ from both ends, and these are in fact unnecessary: the map $\Psi^3 - 1$ lifts to the $4$-connective cover\footnote{Why? I need to check the obstruction theory here.}
 \begin{diagram}
 & & bo \langle 4, \ldots, \infty \rangle \\
 & \ruDashto^{\exists \varphi} & \dTo \\
@@ -3751,19 +3796,19 @@ J & \rTo & BO & \rTo & BSpin.
 OK, we can figure out the homotopy of $J$ because we know about all the things that go into it.  Recall that $\nu(9^k - 1) = \nu(k) + 3$, so $9^k - 1$ is an odd multiple of $2^{\nu(k) + 3}$, or equivalently an odd multiple of $8k$.  Hence $\Psi^3 - 1$ acts either as $0$ or as multiplication by $8k$ and by a unit in $\Z_{(2)}$.  So we get
 \begin{diagram}
 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-\pi_* J & \Z_{(2)} & \Z/2 & \Z/2 & \Z/8 & 0 & 0 & 0 & \Z/16 \\
+\pi_* J & \Z_{(2)} & \Z_2 & \Z_2 & \Z_8 & 0 & 0 & 0 & \Z_{16} \\
 & \dTo & \dTo & \dTo & \dTo & \dTo & & & \\
-\pi_* bo & \Z_{(2)} & \Z/2 & \Z/2 & 0 & \Z_{(2)} & 0 & 0 & 0 \\
+\pi_* bo & \Z_{(2)} & \Z_2 & \Z_2 & 0 & \Z_{(2)} & 0 & 0 & 0 \\
 & \dTo>0 & \dTo>0 & \dTo>0 & & \dTo>{\cdot 9 - 1} & & & \\
 \pi_* bo \langle 4, \ldots, \infty \rangle & 0 & 0 & 0 & 0 & \Z_{(2)} & 0 & 0 & 0.
 \end{diagram}
 \begin{diagram}[width=3.5em]
 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 \\
-\pi_* J & \Z/2 & (\Z/2)^2 & \Z/2 & \Z/8 & 0 & 0 & 0 & \Z/32 & \Z/2 \\
+\pi_* J & \Z_2 & \Z_2^2 & \Z_2 & \Z_8 & 0 & 0 & 0 & \Z_{32} & \Z_2 \\
 & \dTo>0 & \dTo \\
-\pi_* bo & \Z_{(2)} & \Z/2 & \Z/2 & 0 & \Z_{(2)} & 0 & 0 & 0 & \Z \\
+\pi_* bo & \Z_{(2)} & \Z_2 & \Z_2 & 0 & \Z_{(2)} & 0 & 0 & 0 & \Z \\
 & \dTo>{\cdot 81 - 1} & \dTo>0 & \dTo>0 & & \dTo>{\cdot 9^3 - 1} & & & & \dTo>{\cdot 9^4 - 1} \\
-\pi_* bo \langle 4, \ldots, \infty \rangle & \Z_{(2)} & \Z/2 & \Z/2 & 0 & \Z_{(2)} & 0 & 0 & 0 & \Z.
+\pi_* bo \langle 4, \ldots, \infty \rangle & \Z_{(2)} & \Z_2 & \Z_2 & 0 & \Z_{(2)} & 0 & 0 & 0 & \Z.
 \end{diagram}
 
 What's the point?  The point is, this has to do with homotopy groups of spheres.  You have
@@ -3804,21 +3849,21 @@ One game you can play now is to try to get out some information on unstable homo
 \[
 \begin{array}{cccccc}
 & \pi_* Spin & \pi_* J & \pi_* BO & \hbox{New names} & \hbox{Traditional names} \\
-1 & 0 & \Z/2 \langle \alpha_1 \rangle & \Z/2 & \alpha_1 & \eta \\
-2 & 0 & \Z/2 \langle \alpha_2 \rangle & \Z/2 & \alpha_2 & \eta^2 \\
-3 & \Z & \Z/8 \langle j_2  \rangle & 0 & \alpha_3 = 4 j_2 & j_2 = \nu \\
+1 & 0 & \Z_2 \langle \alpha_1 \rangle & \Z_2 & \alpha_1 & \eta \\
+2 & 0 & \Z_2 \langle \alpha_2 \rangle & \Z_2 & \alpha_2 & \eta^2 \\
+3 & \Z & \Z_8 \langle j_2  \rangle & 0 & \alpha_3 = 4 j_2 & j_2 = \nu \\
 4 & 0 & 0 & \Z \\
 5 & 0 & 0 & 0 \\
 6 & 0 & 0 & 0 \\
-7 & \Z & \Z/16 \langle j_3 \rangle & 0 & \alpha_4 = 8j_3 & j_3 = \sigma \\
-8 & \Z/2 & \Z/2 \langle j_4 \rangle & \Z & & j_4 = \eta \sigma \\
-9 & \Z/2 & \Z/2 \langle j_6 \rangle \oplus \Z/2 \langle \alpha_5 \rangle & \Z/2 & & \mu_9, j_5 = \eta^2 \sigma \\
-10 & 0 & \Z/2 \langle \alpha_6 \rangle & \Z/2 & \alpha_6 & \eta \mu_9 \\
-11 & \Z & \Z/8 \langle j_6 \rangle & 0 & \alpha_7 = 4 j_6 = \eta^2 \mu_9 & j_6, \eta^2 \mu_9 \\
+7 & \Z & \Z_{16} \langle j_3 \rangle & 0 & \alpha_4 = 8j_3 & j_3 = \sigma \\
+8 & \Z_2 & \Z_2 \langle j_4 \rangle & \Z & & j_4 = \eta \sigma \\
+9 & \Z_2 & \Z_2 \langle j_6 \rangle \oplus \Z_2 \langle \alpha_5 \rangle & \Z_2 & & \mu_9, j_5 = \eta^2 \sigma \\
+10 & 0 & \Z_2 \langle \alpha_6 \rangle & \Z_2 & \alpha_6 & \eta \mu_9 \\
+11 & \Z & \Z_8 \langle j_6 \rangle & 0 & \alpha_7 = 4 j_6 = \eta^2 \mu_9 & j_6, \eta^2 \mu_9 \\
 12 & 0 & 0 & \Z \\
 13 & 0 & & 0 \\
 14 & 0 & & 0 \\
-15 & \Z & \Z/32 \langle j_7 \rangle & 0 & \alpha_8 = 16j_7 & j_7.
+15 & \Z & \Z_{32} \langle j_7 \rangle & 0 & \alpha_8 = 16j_7 & j_7.
 \end{array}
 \]
 
@@ -3864,7 +3909,7 @@ bo \sprod R \simeq \bigvee_{k \ge 0} \Suspend^{4k} H\Z_{(2)},
 \]
 and
 \[
-bo \langle 4, \ldots, \infty \rangle \sprod R \simeq \bigvee_{k \ge 1} \Suspend^{4k} H \Z_{(2)} \vee \bigvee_{k \ge 1} \Suspend^{4k+2} H\Z/2
+bo \langle 4, \ldots, \infty \rangle \sprod R \simeq \bigvee_{k \ge 1} \Suspend^{4k} H \Z_{(2)} \vee \bigvee_{k \ge 1} \Suspend^{4k+2} H\Z_2
 .\]
 And so we computed $j \sprod R$ from the sequence
 \begin{diagram}
@@ -3880,54 +3925,54 @@ It's a rational calculation; there's just not that much to do.  The result is st
 2 \\
 3 \\
 4 & & \Z_{(2)} & \stackrel{=}{\to} & \Z_{(2)} \\
-5 & \Z/2 \langle \sigma_1 \rangle \\
-6 & & & & \Z/2 \\
-7 & \Z/2 \langle \tau_1 \rangle \\
+5 & \Z_2 \langle \sigma_1 \rangle \\
+6 & & & & \Z_2 \\
+7 & \Z_2 \langle \tau_1 \rangle \\
 8 & & \Z_{(2)} & \stackrel{\cdot 2}{\to} & \Z_{(2)} \\
-9 & \Z/2 \langle \sigma_2 \rangle \\
-10 & & & & \Z/2 \\
+9 & \Z_2 \langle \sigma_2 \rangle \\
+10 & & & & \Z_2 \\
 11 \\
 12 & & \Z_{(2)} & \stackrel{=}{\to} & \Z_{(2)} \\
-13 & \Z/2 \langle \sigma_3 \rangle \\
-14 & & & & \Z/2 \\
-15 & \Z/4 \langle \tau_2 \rangle \\
+13 & \Z_2 \langle \sigma_3 \rangle \\
+14 & & & & \Z_2 \\
+15 & \Z_4 \langle \tau_2 \rangle \\
 16 & & \Z_{(2)} & \stackrel{\cdot 4}{\to} & \Z_{(2)} \\
-17 & \Z/2 \langle \sigma_4 \rangle.
+17 & \Z_2 \langle \sigma_4 \rangle.
 \end{array}
 \]
 That's it!
 \begin{align*}
-j_{8k-1}(R) & = \Z/2^{\nu(k)+1} \langle \tau_k \rangle & k \ge 1, \\
-j_{4k+1}(R) & = \Z/2 \langle \sigma_k \rangle & k \ge 1.
+j_{8k-1}(R) & = \Z_{2^{\nu(k)+1}} \langle \tau_k \rangle & k \ge 1, \\
+j_{4k+1}(R) & = \Z_2 \langle \sigma_k \rangle & k \ge 1.
 \end{align*}
 Now we're really interested in $\RP^\infty$.
 \[
 \begin{array}{cccc}
 & j \sprod \RP^\infty & j \sprod S^0 & j \sprod R \\
 0 & \Z & \Z & \Z_{(2)} \\
-1 & \Z/2 & \Z/2 \langle \alpha_1 \rangle \\
-2 & \Z/2 & \Z/2 \langle \alpha_2 \rangle \\
-3 & \Z/8 & \Z/8 \langle j_2 \rangle \\
-4 & \Z/2 \langle \sigma_1 \rangle \\
-5 & 0 & & \Z/2 \langle \sigma_1 \rangle \\
-6 & \Z/2 \langle \tau_1 \rangle \\
-7 & \Z/16 & \Z/16 \langle j_3 \rangle & \Z/2 \langle \tau_1 \rangle \\
-8 & \Z/2 \oplus (\Z/2 \langle \sigma_2 \rangle) & \Z/2 \langle j_4 \rangle \\
-9 & \Z/2 \oplus \Z/2 & \Z/2 \oplus \Z/2 & \Z/2 \langle \sigma_2 \rangle \\
-10 & \Z/2 & \Z/2 \\
-11 & \Z/8 & \Z/8 \langle j_6 \rangle \\
-12 & \Z/2 \langle \sigma_3 \rangle & 0 \\
-13 & 0 & 0 & \Z/2 \langle \sigma_3 \rangle \\
-14 & \Z/2 \langle \tau_2 \rangle  & 0 \\
-15 & \Z/32 & \Z/32 \langle j_7 \rangle & \Z/4 \langle \tau_2 \rangle \\
-16 & \Z/2 \oplus \Z/2 \langle \sigma_4 \rangle & \Z/2 \langle j_8 \rangle.
+1 & \Z_2 & \Z_2 \langle \alpha_1 \rangle \\
+2 & \Z_2 & \Z_2 \langle \alpha_2 \rangle \\
+3 & \Z_8 & \Z_8 \langle j_2 \rangle \\
+4 & \Z_2 \langle \sigma_1 \rangle \\
+5 & 0 & & \Z_2 \langle \sigma_1 \rangle \\
+6 & \Z_2 \langle \tau_1 \rangle \\
+7 & \Z_{16} & \Z_{16} \langle j_3 \rangle & \Z_2 \langle \tau_1 \rangle \\
+8 & \Z_2 \oplus (\Z_2 \langle \sigma_2 \rangle) & \Z_2 \langle j_4 \rangle \\
+9 & \Z_2 \oplus \Z_2 & \Z_2 \oplus \Z_2 & \Z_2 \langle \sigma_2 \rangle \\
+10 & \Z_2 & \Z_2 \\
+11 & \Z_8 & \Z_8 \langle j_6 \rangle \\
+12 & \Z_2 \langle \sigma_3 \rangle & 0 \\
+13 & 0 & 0 & \Z_2 \langle \sigma_3 \rangle \\
+14 & \Z_2 \langle \tau_2 \rangle  & 0 \\
+15 & \Z_{32} & \Z_{32} \langle j_7 \rangle & \Z_4 \langle \tau_2 \rangle \\
+16 & \Z_2 \oplus \Z_2 \langle \sigma_4 \rangle & \Z_2 \langle j_8 \rangle.
 \end{array}
 \]
 AND AN UNREADABLE ROW.  Various things could happen, but in fact nothing else does:
 \[
 j_* \RP^\infty \cong j_* \oplus \langle t_k, \sigma_k \rangle.
 \]
-So now we've computed the $E^2$-term and the ``abutment'' of the Atiyah-Hirzebruch spectral sequence $H^*(\RP^\infty; j_*) \Rightarrow j_* \RP^\infty$.  A picture is attached of what the filtration looks like; we've really reached the outer limits of human comprehension here.  Note that each of the dots is a $\Z/2$, so a non-zero differential connecting two dots is death to both of them.  So you get to $E^\infty$ from $E^2$ pretty quickly, and you can see a good deal of $E^\infty$ in this picture.
+So now we've computed the $E^2$-term and the ``abutment'' of the Atiyah-Hirzebruch spectral sequence $H^*(\RP^\infty; j_*) \Rightarrow j_* \RP^\infty$.  A picture is attached of what the filtration looks like; we've really reached the outer limits of human comprehension here.  Note that each of the dots is a $\Z_2$, so a non-zero differential connecting two dots is death to both of them.  So you get to $E^\infty$ from $E^2$ pretty quickly, and you can see a good deal of $E^\infty$ in this picture.
 
 Remember what we had: there were three exact couples
 \begin{diagram}
@@ -3966,7 +4011,7 @@ What does this tell us about our picture?  For elements in the image of $J$, the
 \begin{diagram}
 \pi_*^S S^0 & \rTo & \pi_*^S \RP^\infty & \rTo & j_* \RP^\infty & \rTo & j_*  \RP^\infty_n
 \end{diagram}
-with $n$ odd, then $\pi_*^S S^0 \to j_* \RP^\infty_n = \Z/2$ is the Hopf invariant.  So you have an element of Hopf invariant 1 if you have a survivor in the bottom row.
+with $n$ odd, then $\pi_*^S S^0 \to j_* \RP^\infty_n = \Z_2$ is the Hopf invariant.  So you have an element of Hopf invariant 1 if you have a survivor in the bottom row.
 
 The issue of the desuspension of $w_n$ (and so of vector fields on spheres) became a picture of differentials off classes in the bottom row of the Atiyah-Hirzebruch spectral sequence for $\pi_*^S \RP^\infty$; the desuspension of $w_n$ is represented by the end of the differential.
 
