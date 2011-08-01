@@ -1507,7 +1507,7 @@ The first obvious candidate is \[\log \lambda_t(x) = \sum_{i=0}^\infty (-1)^i \f
 Replace $t$ with $-t$ to get $\frac{d}{dt} \log(1 - tL) = \frac{-L}{1 - tL}$.  And, to normalize, multiply by $-t$ to get $\frac{tL}{1 - tL} = \sum_{k \ge 1}^\infty t^k L^k$.  We define the $k^\textup{th}$ ``Adams operation'' applied to $E$, $\psi^k(E)$, to be the coefficient of $t^k$ in \[\frac{-t \frac{d}{dt} \lambda_{-t}(E)}{\lambda_{-t}(E)}.\]
 
 Now, we seek to prove the following properties and show that they characterize the Adams operations:
-\begin{thm}
+\begin{thm}\textbf{False claim:} 
 There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that:
 \begin{itemize}
 \item $\psi^k$ is a ring homomorphism for each $k$,
@@ -1529,7 +1529,7 @@ There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that:
 
 \Bullet Using the generating function $-t\frac{d}{dt}\log \lambda_{-t}(E)=\sum t^k\psi^k(E)$, we obtain additive operations on $KO(X)$ such that $\psi^k(L)=L^{\otimes k}$, the ``Adams operations''.
 
-\Bullet We'll see later that they are characterised by three properties:\\\phantom{space}(i) they are ring homomorphisms; (ii) $\psi^k\psi^l=\psi^{kl}$; and (iii) $\psi^k(L)=L^{\otimes k}$.
+\Bullet \textbf{False claim:} The Adams operations are characterised by three properties:\\\phantom{space}(i) they are ring homomorphisms; (ii) $\psi^k\psi^l=\psi^{kl}$; and (iii) $\psi^k(L)=L^{\otimes k}$.
 }
 \section{Building \texorpdfstring{$K$}{K}-theory operations from representation theory} % <<<
 \ifx\OutputBuildingKtheoryOperatorsFromRepTheory\undefined\else
@@ -1537,41 +1537,47 @@ Previously, we discussed the ring $KO^* = KO^* \ptspace$ and said it was
 \[
 KO^* = \Z[\eta, q, p^{\pm 1}], |\eta| = -1, |q| = -4, |p| = -8
 ,\]
-along with the relations $2 \eta = 0$, $\eta q = 0$, $\eta^3 = 0$, and $q^2 = 4p$.  Furthermore we defined operations $\psi^k$ on $KO(X)$ which are ring homomorphisms and satisfy $\psi^k \psi^l = \psi^{kl}$ and, for line bundles $L$, $\psi^k L = L^{\otimes k}$.  In order to get a better handle on these, we need some character theory, which belongs to the broader field of representation theory.
+along with the relations $2 \eta = 0$, $\eta q = 0$, $\eta^3 = 0$, and $q^2 = 4p$.  Furthermore we defined operations $\psi^k$ on $KO(X)$ which \textbf{(will be shown to have the following properties)} are ring homomorphisms and satisfy $\psi^k \psi^l = \psi^{kl}$ and, for line bundles $L$, $\psi^k L = L^{\otimes k}$.  In order to get a better handle on these, we need some character theory, which belongs to the broader field of representation theory.
 
-Let $G$ be a compact Lie group (e.g., $G$ a unitary group).  A representation of $G$ is defined to be a finite-dimensional complex vector space $V$ together with a linear action of $G$.  Two representations $V$ and $V'$ are isomorphic if and only if there is a $G$-equivariant linear isomorphism $\alpha: V \stackrel{\cong}{\to} V'$.
+Let $G$ be a compact Lie group (e.g., $G=U(n)$, the group of $n\times n$ unitary matrices).  A representation of $G$ is a finite-dimensional complex vector space $V$ together with a linear action of $G$.  Two representations $V$ and $V'$ are isomorphic if and only if there is a $G$-equivariant linear isomorphism $\alpha: V \stackrel{\cong}{\to} V'$.
 
-Choose any Hermitian inner product on $V$.  By averaging over the Lie group\footnote{Averaging makes sense because $G$ is compact.}, we can make a $G$-invariant inner product $\langle - , - \rangle: \langle gx, gy \rangle = \langle x, y \rangle$, so $g$ is unitary.  Picking an orthonormal basis gives $g$ as a unitary matrix, and the representation becomes a map $\rho: G \to U(n)$, where $\rho$ is a continuous homomorphism.  With these data, an isomorphism of representations looks like a matrix $M$ in terms of these bases such that $\rho'(g) = M \rho(g) M^{-1}$ for all $g \in G$.
+Choose any Hermitian inner product on $V$.  By averaging over the group,\footnote{As $G$ is a compact Lie group it admits a Haar measure, so we can `average'.} we can form a $G$-invariant inner product $\langle - , - \rangle$. Then $G$ acts by unitary transformations on $V$, that is $\langle gx, gy \rangle = \langle x, y \rangle$, for all $g\in G$.  Picking an orthonormal basis gives each $g\in G$ as a unitary matrix, and the representation becomes a map $\rho: G \to U(n)$, where $\rho$ is a continuous homomorphism.  With these data, an isomorphism of representations looks like a matrix $M$ in terms of these bases such that $\rho'(g) = M \rho(g) M^{-1}$ for all $g \in G$.
 
 Once we have matrices it makes sense to talk about the trace; define $\chi_V(g) = \tr(\rho(g))$.  This gives a function $\chi_V: G \to \C$, called the ``character of $V$.''  We call $\chi_V$ a ``class function'' because it is constant on conjugacy classes\footnote{The trace is invariant under cyclic permutations.} in $G$.  In particular if two representations $V$ and $V'$ are isomorphic, then $\chi_V = \chi_{V'}$.
+Using characters is by far the easiest way to understand representations, and in fact they tell everything, as we will see in remark \ref{chiisinjectivo}.
 
-Characters are by far the easiest way to understand representations, and in fact they tell all: define $\mathrm{Rep}_n(G) = \Hom(G, U(n)) / \sim$.  Then $\mathrm{Rep}(G) = \coprod_n \mathrm{Rep}_n G$ is a semiring with addition given by $\oplus$ and multiplication by $\otimes$ with the diagonal extension of the $G$-action, so applying the Grothendieck construction we get $R(G)$, called the ``representation ring'' of $G$.  The map $V \to \chi_V$ induces a map $\chi: R(G) \to \{\hbox{class functions $G \to \C$}\}$.
+Define $\mathrm{Rep}_n(G) := \Hom(G, U(n)) /\textup{conjugacy}$.  Then $\mathrm{Rep}(G) := \coprod_n \mathrm{Rep}_n G$ is a semiring with addition given by $\oplus$ and multiplication by $\otimes$.\footnote{$G$ acts diagonally on the tensor produuct of $G$-modules.} Applying the Grothendieck construction to $\mathrm{Rep}(G)$ we obtain the ``representation ring'' of $G$, denoted $R(G)$.  The map $V \to \chi_V$ induces a map $\chi: R(G) \to \{\hbox{class functions $G \to \C$}\}$.
 
 \begin{rem}
 $\chi_{V \oplus W} = \chi_V + \chi_W$, and $\chi_{V \otimes W} = \chi_V \chi_W$.
 \end{rem}
-The second fact is true because $\tr(A \otimes B) = \tr A \tr B$ for matrices $A$ and $B$.\footnote{If $A \in U(m) \cong \operatorname{Isom} \C^m$ and $B \in U(n) \cong \operatorname{Isom} \C^n$, then $A \otimes B \in U(mn) \cong \operatorname{Isom} (\C^m \otimes_\C \C^n)$.}  Indeed, any unitary matrix has a diagonalization (this is the deepest fact of this section!)\ and if $\{x_1, \ldots, x_m\}$ and $\{y_1, \ldots, y_n\}$ are bases of eigenvectors for $A$ and $B$, then $\{x_i \otimes y_j\}$ is a basis of eigenvectors for $A \otimes B$, and the eigenvalue for $x_i \otimes y_j$ is the product of the eigenvalues for $x_i$ in $A$ and $y_j$ in $B$.
+The second fact is true because $\tr(A \otimes B) = \tr A \tr B$ for matrices $A$ and $B$.\footnote{If $A \in U(m) \cong \operatorname{Isom} \C^m$ and $B \in U(n) \cong \operatorname{Isom} \C^n$, then $A \otimes B \in U(mn) \cong \operatorname{Isom} (\C^m \otimes_\C \C^n)$. Note that here we implicity choose an identification of $\C^m\otimes_\C\C^n$ with $\C^{mn}$ --- there is a ``standard'' way to do so in which $A\otimes B$ is represented by the Kronecker product of matrices $A$ and $B$.}  Indeed, any unitary matrix has a diagonalization\footnote{``This is the deepest fact of the lecture.''} and if $\{x_1, \ldots, x_m\}$ and $\{y_1, \ldots, y_n\}$ are bases of eigenvectors for $A$ and $B$, then $\{x_i \otimes y_j\}$ is a basis of eigenvectors for $A \otimes B$, and the eigenvalue for $x_i \otimes y_j$ is the product of the eigenvalues for $x_i$ in $A$ and $y_j$ in $B$.
 
-\begin{rem}
+\begin{rem}\label{chiisinjectivo}
 $\chi$ is injective, and in fact $R(G) \otimes_\Z \C \stackrel{\cong}{\to} \{\hbox{class functions}\}$.
 \end{rem}
-Recall that the first construction of the Adams operations used an operation on vector spaces to yield an operation on bundles, and then finally an operation on $K$-theory.  Now we shall use representations to construct new vector bundles out of old ones.  First we will need the notion of the principal bundle associated to a vector bundle: if $E / X$ is an $n$-dimensional complex vector bundle and $X$ is paracompact, you can pick a Hermitian metric on $E$ and get an orthonormal basis on each fiber (meaning, a continuously varying choice of orthonormal basis).  Let $P(E)$ be the set of all ordered orthonormal bases on fibers.  Another way to think about it is that each point in $P(E)$ is a linear isometry $\C^n \cong E_x$.  Now there is a projection $P(E) \to X$; there is a fiberwise section of $U(n)$ on $P(E)$ given by composition; if $\alpha \in P(E)$ determines $\alpha: \C^n \stackrel{\cong}{\to} E_x$, then we get for $g \in U(n)$,
+Recall that the first construction of the Adams operations used an operation on vector spaces to yield an operation on bundles, and then finally an operation on $K$-theory.  Now we shall use representations to construct new vector bundles out of old ones.  First we will need the notion of the principal bundle associated to a vector bundle: if $E \downarrow X$ is an $n$-dimensional complex vector bundle and $X$ is paracompact, you can pick a Hermitian metric on $E$ and get an orthonormal basis on each fiber (meaning, a continuously varying choice of orthonormal basis).  Let $P(E)$ be the set of all ordered orthonormal bases on fibers.  Another way to think about it is that each point in $P(E)$ is a linear isometry $\C^n \cong E_x$.  Now there is a projection $P(E) \to X$; there is a fiberwise action of $U(n)$ on $P(E)$ given by composition: if $\alpha \in P(E)$ determines $\alpha: \C^n \stackrel{\cong}{\to} E_x$, then we get for $g \in U(n)$,
 \begin{diagram}
 \C^n & \rTo^\alpha_\cong & E_x \\
 & \luTo(1,1)<g>\cong \ruTo(1,1)<\cong>{\alpha g} \C^n.
 \end{diagram}
-Moreover, it is clear that this action gives $P(E) / X$ the structure of a principal $U(n)$-bundle, the ``associated principal bundle to $E$.''
+Moreover, it is clear that this action gives $P(E) \downarrow X$ the structure of a principal $U(n)$-bundle, the ``associated principal bundle to $E$.''
 
-Now the construction of $P(E)$ involved the choice of a Hermitian metric $\langle - , - \rangle$ for $E / X$.  But if $\langle -, - \rangle'$ is another Hermitian metric for $E / X$, then so\footnote{A Hermitian inner product is required to satisfy $\langle x, x \rangle > 0$ for $x \ne 0$; this provides the non-degeneracy of $\langle - , - \rangle_t$.} is $t \langle -, - \rangle' + (1-t) \langle -, - \rangle = \langle - , - \rangle_t$ for $0 \le t \le 1$, and thus we get a metric for the bundle $E \times I / X \times I$.  If you look at $P(E \times I) / X \times I$, the restriction to $X \times \{0\}$ is $P_{\langle\rangle}(E)$, and the restriction to $X \times \{1\}$ is $P_{\langle\rangle'}(E)$, so $P_{\langle\rangle}(E) \cong P_{\langle\rangle'}(E)$ as $U(n)$-bundles.
+Now the construction of $P(E)$ involved the choice of a Hermitian metric $\langle - , - \rangle$ for $E \downarrow X$.  But if $\langle -, - \rangle'$ is another Hermitian metric for $E \downarrow X$, then so\footnote{A Hermitian inner product is required to satisfy $\langle x, x \rangle > 0$ for $x \ne 0$; this provides the non-degeneracy of $\langle - , - \rangle_t$.} is $t \langle -, - \rangle' + (1-t) \langle -, - \rangle = \langle - , - \rangle_t$ for $0 \le t \le 1$. Thus we obtain a metric for the bundle $E \times I \downarrow X \times I$.  
+Now the restriction of $P(E \times I) \downarrow X \times I$ to $X \times \{0\}$ is $P_{\langle-,-\rangle}(E)$, while the restriction to $X \times \{1\}$ is $P_{\langle-,-\rangle'}(E)$, so that $P_{\langle-,-\rangle}(E) \cong P_{\langle-,-\rangle'}(E)$ as $U(n)$-bundles.
 
-Now let $V$ be a representation of $U(n)$.  Then from a complex vector bundle $E / X$, we can form the bundle $\alpha_V(E) = (P(E) \times_{U(n)} V) / X$, yielding a new vector bundle with fiber $V$.  Clearly $\alpha_{V \oplus W}(E) = \alpha_V(E) \oplus \alpha_W(E)$, so for a fixed vector bundle $E$, $V \mapsto \alpha_V(E)$ defines an additive homomorphism $\mathrm{Rep} U(n) \to \mathrm{Vect}(X) \to K(X)$, so by the universality property of the Grothendieck construction this extends through $R U(n)$:
-\begin{diagram}
-\mathrm{Rep} U(n) & \rTo^{\alpha_-(E)} & K(X) \\
-\dTo & \ruTo \\
-R U(n).
+Now let $V$ be a representation of $U(n)$.  Then from a complex vector bundle $E \downarrow X$, we can form the bundle $\alpha_V(E) = (P(E) \times_{U(n)} V) \downarrow X$, yielding a new vector bundle with fiber $V$. 
+
+Now fix an $n$-dimensional vector bundle $E$. Clearly $\alpha_{V \oplus W}(E) = \alpha_V(E) \oplus \alpha_W(E)$, so that $V \mapsto \alpha_V(E)$ defines an additive homomorphism $\mathrm{Rep} (U(n)) \to \mathrm{Vect}(X) \to K(X)$. By the universality property of the Grothendieck construction this extends to $R (U(n))$:
+\begin{diagram}[height=2em]
+\mathrm{Rep} (U(n)) & \rTo^{\alpha_-(E)} & K(X) \\
+\dTo & \ruTo_{\theta\longmapsto\theta(E)} \\
+R (U(n)).
 \end{diagram}
 
-Turning this around, a fixed $\theta \in R U(n)$ assigns to an $n$-dimensional vector bundle $E / X$ a well-defined element $\theta(E)$ of $K(X)$; what we really want is to assign to an element $E$ of $K(X)$ another element of $K(X)$.  In particular, we have to worry about different values of $n$; moreover, we want to get an additive homomorphism.  In other words, we want to choose $\theta_n \in RU(n)$ for $n \ge 0$ in such a way that $\theta_m E^m \oplus \theta_n F^n = \theta_{m+n}(E \oplus F)$ in $K(X)$.
+Turning this around, a fixed $\theta \in R (U(n))$ assigns to an $n$-dimensional vector bundle $E \downarrow X$ a well-defined element $\theta(E)$ of $K(X)$; what we really want is to assign to an element $E$ of $K(X)$ another element of $K(X)$.  In particular, we have to worry about different values of $n$; moreover, we want to get an additive homomorphism.
+
+It will suffice to choose $\theta_n \in R(U(n))$ for $n \ge 0$ in such a way that $\theta_m (E^m) \oplus \theta_n (F^n) = \theta_{m+n}(E \oplus F)$ in $K(X)$. This data can then be used to define an additive homomorphism $\theta:\coprod_n\! \mathrm{Vect}_n(X) \to K(X)$, which (by universality) extends to an operation $\theta:K(X)\to K(X)$.
 
 Direct sum gives a homomorphism $RU(m) \times RU(n) \stackrel{\oplus}{\to} R(U(m) \times U(n))$; one way to think of it is that the projections $U(m) \stackrel{pr_1}{\from} U(m) \times U(n) \stackrel{pr_2}{\to} U(n)$ yield pullbacks of characters, and $\theta_m \oplus \theta_n = pr_1^* \theta_m + pr_2^* \theta_n$, so $\chi_{\theta_m \oplus \theta_n}(M, N) = \chi_{\theta_m}(M) + \chi_{\theta_n}(N)$.  On the other hand, the map $U(m) \times U(n) \stackrel{\sigma}{\to} U(m+n)$ given by $(M, N) \mapsto \left[\begin{array}{c|c}M & 0 \\ \hline 0 & N\end{array}\right]$ defines a pullback $\sigma^*: RU(m+n) \to R(U(m) \times U(n))$ defined by $\chi_{\sigma^* \theta_{m+n}}(M, N) = \chi_{\theta_{m+n}}\left( \left[\begin{array}{c|c}M \\ \hline & N\end{array}\right] \right)$.
 
@@ -1579,8 +1585,8 @@ We define $\theta = \{\theta_n \in RU(n), n \ge 0\}$ to be an ``additive sequenc
 \begin{rem}
 If $\theta$ is additive then $\theta_m E^m \oplus \theta_n F^n = \theta_{m+n}(E \oplus F)$.
 \end{rem}
-\begin{proof}
-Our proof sketch pretends that $\theta_m$ corresponds to a genuine representation $V_m$.  Then $\theta_{m+n}(E \oplus F) = P(E \oplus F) \times_{U(m+n)} V_{m+n}$.  Now it takes some thought, but it is in fact true that
+\begin{proof}[Sketch of proof]
+We'll pretend that $\theta_m$ corresponds to a genuine representation $V_m$.  Then $\theta_{m+n}(E \oplus F) = P(E \oplus F) \times_{U(m+n)} V_{m+n}$.  Now it takes some thought, but it is in fact true that
 \begin{align*}
 P(E \oplus F) & = (P(E) \times_X P(F)) \times_{U(m) \times U(n)} U(m + n), \\
 \theta_{m+n}(E \oplus F) & = (P(E) \times_X P(F) \times_{U(m) \times U(n)} U(m+n)) \times_{U(m+n)} V_{m+n} \\
@@ -1590,15 +1596,15 @@ P(E \oplus F) & = (P(E) \times_X P(F)) \times_{U(m) \times U(n)} U(m + n), \\
 & = \theta_m E \oplus \theta_n F.\qedhere
 \end{align*}
 \end{proof}
-So an additive sequence $\theta$ defines an additive homomorphism $\prod_n \mathrm{Vect}_n(X) \to K(X)$, and so extends to give an operation
+So an additive sequence $\theta$ defines an additive homomorphism $\coprod_n\! \mathrm{Vect}_n(X) \to K(X)$, and so extends to give an operation
 \begin{diagram}
-\prod_n \mathrm{Vect}_n(X) & \rTo^\theta & K(X) \\
+\coprod_n\! \mathrm{Vect}_n(X) & \rTo^\theta & K(X) \\
 \dTo & \ruTo_\theta \\
 K(X).
 \end{diagram}
 This is how we shall present the Adams operations $\psi^k$; next time, we shall prove
 \begin{thm}
-For $k \ge 1$, there is a unique\footnote{The uniqueness assertion is false for real $KO$-theory.  See the note at the end of last lecture.} additive sequence $\psi^k = \{\psi^k_n \in RU(n)\}$ such that $\psi_1^k$ is the $k$th power map, i.e., $\chi_{\psi^k_1}(z) = z^k$, where $z \in U(1)$.
+For $k \ge 1$, there is a unique\footnote{The uniqueness assertion is false for real $KO$-theory.  See the note at the end of last lecture.} additive sequence $\psi^k = \{\psi^k_n \in R(U(n))\}$ such that $\psi_1^k$ is the $k$th power map, i.e., $\chi_{\psi^k_1}(z) = z^k$, where $z \in U(1)$.
 \end{thm}
 \begin{rem}
 Note that the additive condition requires $\theta_0 = 0$.
