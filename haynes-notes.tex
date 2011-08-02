@@ -28,7 +28,7 @@
 %\newcommand{\OutputPropertiesOfTheSquares}{7}
 %\newcommand{\OutputTheAdemRelations}{8}
 %\newcommand{\OutputUsingTheSquaresAndThomSpaces}{9}
-%\newcommand{\OutputStructureOnKtheory}{10}
+\newcommand{\OutputStructureOnKtheory}{10}
 %\newcommand{\OutputBuildingKtheoryOperatorsFromRepTheory}{11}
 \newcommand{\OutputBuildingTheAdamsPowerOperations}{12}
 %\newcommand{\OutputProofOfHopfInvariantOne}{13}
@@ -187,7 +187,7 @@
 \begin{document}
 \SelectTips{cm}{11}
 
-\ifx\OutputFrontMatter\undefined\else
+\ifx\OutputFrontMatter\undefined\hrule\else
 \maketitle
 \tableofcontents
 \fi
@@ -1408,7 +1408,7 @@ Defined the Thom class $u\in H^n(T(E))$ such that $\smile u$ is the Thom isomorp
 This isn't a course about $K$-theory, it's a course that uses $K$-theory.  So we're not going to see proofs of lots of basic theorems of $K$-theory; in particular I'm not going to prove the periodicity theorem.  However, we will need some facts which we'll review now.
 
 Recall that we previously defined the group $\widetilde{KO}(X)$, and by doing the same constructions using complex vector bundles we get $\widetilde K(X)$.  Let's see what $\widetilde K S^2$ is.  $S^2$ splits into contractible hemispheres $D_\pm$ over which any vector bundle is trivial, $D_\pm \times \C^n$.  The construction of a vector bundle on $S^2$ therefore amounts to choosing over each point on the equator $S^1$ a linear isomorphism $\C^n \to \C^n$ in a continuous manner, i.e., a map $S^1 \to GL_n(\C)$.  So, $\mathrm{Vect}_{n,\C}(S^2) \cong \pi_1 GL_n(\C)$.  This way of constructing vector bundles is called the ``clutching construction.''  There are compatible deformation retractions
-\begin{diagram}
+\begin{diagram}[height=2em]
 \cdots & \rInto & GL_n(\C) & \rInto & GL_{n+1}(\C) & \rInto & \cdots \\
 & & \dTo>r & & \dTo>r \\
 \cdots & \rInto & U(n) & \rInto & U(n+1) & \rInto & \cdots,
@@ -1509,16 +1509,16 @@ The first obvious candidate is \[\log \lambda_t(x) = \sum_{i=0}^\infty (-1)^i \f
 \frac{d}{dt} \log (1 + tL) = \frac{L}{1 + tL}
 .\]
 Replace $t$ with $-t$ to get $\frac{d}{dt} \log(1 - tL) = \frac{-L}{1 - tL}$.  And, to normalize, multiply by $-t$ to get $\frac{tL}{1 - tL} = \sum_{k \ge 1}^\infty t^k L^k$.  We define the $k^\textup{th}$ ``Adams operation'' applied to $E$, $\psi^k(E)$, to be the coefficient of $t^k$ in \[\frac{-t \frac{d}{dt} \lambda_{-t}(E)}{\lambda_{-t}(E)}.\]
-
-Now, we seek to prove the following properties and show that they characterize the Adams operations:
-\begin{thm}\textbf{False claim:} 
-There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that:
+We seek to prove the following properties of the Adams operations:
+%\begin{thm}\textbf{False claim:} 
+%There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that:
 \begin{itemize}
 \item $\psi^k$ is a ring homomorphism for each $k$,
 \item $\psi^k \psi^l = \psi^{kl}$, and
-\item $\psi^k(L) = L^{\otimes k}$ for line bundles $L$.
+\item $\psi^k(L) = L^{\otimes k}$ for line bundles $L$ (which we already know).
 \end{itemize}
-\end{thm}
+%\end{thm}
+\noindent\textbf{I am unsure how this ties in logically with the next two chapters. How do we know that what we constructed here coincides with what we construct there? Do the properties above characterise the Adams operations on $K(X)$? I should ask somebody who knows.}
 
 % >>>
 \fi
@@ -1590,7 +1590,7 @@ On characters, the map $\oplus$ is defined by $\chi_{\theta_m \oplus \theta_n}(M
 \textup{ induces }\sigma^*: R(U(m+n)) \to R(U(m) \times U(n)).\]
 On characters, $\sigma^*$ is defined by $\chi_{\sigma^* \theta_{m+n}}(M, N) = \chi_{\theta_{m+n}}\left(\sigma(M,N)\right)$.
 
-We define $\theta = \{\theta_n \in RU(n), n \ge 0\}$ to be an ``additive sequence'' when $\theta_m \oplus \theta_n = \sigma^* \theta_{m+n}$ for all $m, n \ge 0$. That is, when for all $m,n\geq0$, we have an equality:
+We define $\theta = \{\theta_n \in R(U(n)), n \ge 0\}$ to be an ``additive sequence'' when $\theta_m \oplus \theta_n = \sigma^* \theta_{m+n}$ for all $m, n \ge 0$. That is, when for all $m,n\geq0$, we have an equality:
 %\[\theta_{m+n}\mapsto \sigma^*\theta_{m+n}=\theta_m\oplus\theta_n\mapsfrom(\theta_m,\theta_n) \textup{ under } R(U(m+n)) \stackrel{\sigma^*}{\to} R(U(m) \times U(n))\stackrel{\oplus}{\from}R(U(m))\oplus R(U(n)).\]
 \[\xymatrix@R=2mm{
 \theta_{m+n}\ar@{|->}[r]& \sigma^*\theta_{m+n}=\theta_m\oplus\theta_n&\ar@{|->}[l]
@@ -1637,7 +1637,7 @@ Note that the additive condition requires $\theta_0 = 0$.
 }
 \section{Building the Adams power operations} % <<<
 \ifx\OutputBuildingTheAdamsPowerOperations\undefined\else
-Recall that for a compact Lie group $G$ we identified a representation of $G$ with a continuous homomorphism $\rho: G \to U(n)$ which allowed us to speak of the class function $\chi_\rho$, the ``character'' of the representation.  The induced map $RG \into \{\hbox{class functions $G \to \C$}\}$ is injective, so we identify $\rho$ with its image under $\chi$.  Recall also that a sequence of virtual representations $\theta_* = \{\theta_n \in RU(n)\}$ is ``additive'' if $\theta_m \oplus \theta_n = \sigma^* \theta_{m+n}$.
+Recall that for a compact Lie group $G$ we identified a representation of $G$ with a continuous homomorphism $\rho: G \to U(n)$ which allowed us to speak of the class function $\chi_\rho$, the ``character'' of the representation.  The induced map $R(G) \into \{\hbox{class functions $G \to \C$}\}$ is injective, so we identify $\rho$ with its image under $\chi$.  Recall also that a sequence of virtual representations $\theta_* = \{\theta_n \in R(U(n))\}$ is ``additive'' if $\theta_m \oplus \theta_n = \sigma^* \theta_{m+n}$.
 
 The additional fact to bring to bear now is that any $M \in U(m+n)$ is conjugate to a diagonal matrix, and this diagonal matrix is in the image of $U(m) \times U(n) \into U(m+n)$.  It follows that $\theta_{m+n}$ (thought of as a class function) is determined by $\theta_1$, when $\theta$ is additive!
 
@@ -1667,9 +1667,9 @@ Note that $s_k$ will in general involve subtractions, so it is not true that $\p
 %& = \sum_{i \le m} z_i^k + \sum_{i > m} z_i^k \\
 %& = \psi^k_m \left[ \begin{array}{ccc} z_1 \\ & \ddots \\ & & z_m\end{array}\right] + \psi^k_n \left[ \begin{array}{ccc}z_{m+1} \\ & \ddots \\ & & z_{m+n} \end{array} \right].
 %\end{align*}
-So now we're where we were with the last definition of $\psi^k$, but we know $\psi^k$ well enough to attack the product structure of $K(X)$.  $RU(m) \otimes RU(n) \stackrel{\otimes}{\to} R(U(n) \times U(m))$ is defined by $\theta_m \otimes \theta_n(M, N) = \theta_m(M) \theta_n(N)$.  Moreover, there is a map $RU(mn) \stackrel{\tau^*}{\to} R(U(m) \times U(n))$ induced by a map $\tau: U(m) \times U(n) \to U(mn)$ by identifying $\C^{mn}$ with $\C^m \otimes_\C \C^n$ and hence $\Aut \C^{mn}$ with $\Aut (\C^m \otimes_\C \C^n)$.  Note that $\tau$ is only well-defined up to conjugacy, since these identifications depend on a choice of ordering of the basis $e_i \otimes f_j$ corresponding to bases $e_i$ for $\C^m$ and $f_j$ for $\C^n$.  But $\tau^*$ is well-defined on class functions.  Note that if $M$ and $N$ have eigenvalues $s_1, \ldots, s_m$ and $t_1, \ldots, t_n$, then $\tau(M, N)$ has eigenvalues $s_i t_j$.
+So now we're where we were with the last definition of $\psi^k$, but we know $\psi^k$ well enough to attack the product structure of $K(X)$.  $R(U(m)) \otimes R(U(n)) \stackrel{\otimes}{\to} R(U(n) \times U(m))$ is defined by $\theta_m \otimes \theta_n(M, N) = \theta_m(M) \theta_n(N)$.  Moreover, there is a map $R(U(mn)) \stackrel{\tau^*}{\to} R(U(m) \times U(n))$ induced by a map $\tau: U(m) \times U(n) \to U(mn)$ by identifying $\C^{mn}$ with $\C^m \otimes_\C \C^n$ and hence $\Aut \C^{mn}$ with $\Aut (\C^m \otimes_\C \C^n)$.  Note that $\tau$ is only well-defined up to conjugacy, since these identifications depend on a choice of ordering of the basis $e_i \otimes f_j$ corresponding to bases $e_i$ for $\C^m$ and $f_j$ for $\C^n$.  But $\tau^*$ is well-defined on class functions.  Note that if $M$ and $N$ have eigenvalues $s_1, \ldots, s_m$ and $t_1, \ldots, t_n$, then $\tau(M, N)$ has eigenvalues $s_i t_j$.
 
-A sequence $\theta_m \in RU(m)$ is called multiplicative if $\theta_m \otimes \theta_n = \tau^* \theta_{mn}$.  In other words, we are following a line of argument analogous to that we just did for additive structure, and an analogous result holds:
+A sequence $\theta_m \in R(U(m))$ is called multiplicative if $\theta_m \otimes \theta_n = \tau^* \theta_{mn}$.  In other words, we are following a line of argument analogous to that we just did for additive structure, and an analogous result holds:
 \begin{thm}
 If $\theta$ is additive and multiplicative, then it defines an operation $K(X) \to K(X)$ which is a ring homomorphism.
 \end{thm}
@@ -1690,7 +1690,7 @@ $\psi^k$ is multiplicative.
 \end{align*}
 \end{proof}
 
-Summarizing, given an additive and multiplicative sequence $\theta_n \in RU(n)$, $n \ge 0$, we get a ring homomorphism $\hat \theta: K(X) \to K(X)$, defined, when $E \in K(X)$ is in fact an $n$-dimensional bundle and $\theta_n$ corresponds to a genuine representation $V_n$, by $\hat \theta(E) = P(E) \times_{U(n)} V_n$.  Moreover, we have $\psi^k$ additive and multiplicative sequences, defined in terms of their images under $\chi: R(U(n)) \to \{\hbox{class functions on $U(n) \to \C$}\}$, satisfying $\psi^k_1(z) = z^k$.  Note that for a line bundle $L$, it follows that $\hat \psi^k(L) = L^{\otimes k}$, since $\psi^k_1$ corresponds to the $k^\textup{th}$ power of the canonical representation of $U(1)$.  So we have nearly all the properties of the Adams operations listed two lectures back; we still need to show the compositional property $\psi^k \psi^l = \psi^{kl}$.
+Summarizing, given an additive and multiplicative sequence $\theta_n \in R(U(n))$, $n \ge 0$, we get a ring homomorphism $\hat \theta: K(X) \to K(X)$, defined, when $E \in K(X)$ is in fact an $n$-dimensional bundle and $\theta_n$ corresponds to a genuine representation $V_n$, by $\hat \theta(E) = P(E) \times_{U(n)} V_n$.  Moreover, we have $\psi^k$ additive and multiplicative sequences, defined in terms of their images under $\chi: R(U(n)) \to \{\hbox{class functions on $U(n) \to \C$}\}$, satisfying $\psi^k_1(z) = z^k$.  Note that for a line bundle $L$, it follows that $\hat \psi^k(L) = L^{\otimes k}$, since $\psi^k_1$ corresponds to the $k^\textup{th}$ power of the canonical representation of $U(1)$.  So we have nearly all the properties of the Adams operations listed two lectures back; we still need to show the compositional property $\psi^k \psi^l = \psi^{kl}$.
 
 \pagebreak
 
@@ -1760,27 +1760,36 @@ From this point of view it is clear that $\hat \varphi (\hat \theta(E)) = P(P(E)
 \end{enumerate}
 \end{proof}
 
-\noindent\textbf{Start from here tomorrow.}
+So now we have all the facts about operations in complex $K$-theory; however, we don't know about the situation for $KO$ yet.  In fact, we note that the real Adams operations are not uniquely characterized by $\psi^k(L) = L^{\otimes k}$ for line bundles $L$, additivity, and $\psi^{kl} = \psi^k \psi^l$.  In $KO$-theory, one can define:
+\[\psi^k(E) = \begin{cases} E & \hbox{$k$ is odd}, \\ \psi^0(E) & \hbox{$k$ is even}, \end{cases}\] where $\psi^0(E)$ is the trivial bundle of dimension equal to the dimension of $E$ over the basepoint of $X$.  This works, since for a real line bundle we have $L^* \cong L$, and we get $L^{\otimes 2} \cong L \otimes L^* \cong \Hom(L, L) \ni 1$, which is a section of the bundle and so $L^{\otimes 2}$ is trivial.
 
-So now we have all the facts about operations in complex $K$-theory; however, we don't know about the situation for $KO$ yet.  In fact, we have to correct a statement from Friday, that the Adams operations are uniquely characterized by $\psi^k(L) = L^{\otimes k}$ for line bundles $L$, additivity, and $\psi^{kl} = \psi^k \psi^l$.  In $KO$-theory, this statement is false: define \[\psi^k(E) = \begin{cases} E & \hbox{$k$ is odd}, \\ \psi^0(E) & \hbox{$k$ is even}, \end{cases}\] where $\psi^0(E)$ is the trivial bundle of dimension equal to the dimension of $E$ over the basepoint of $X$.  This works, since for a real line bundle we have $L^* \cong L$, and we get $L^{\otimes 2} \cong L \otimes L^* \cong \Hom(L, L) \ni 1$, which is a section of the bundle and so $L^{\otimes 2}$ is trivial.
-
-Instead, operations in $KO$ can be obtained from the complex case: use $O(n)$, and for a compact Lie group $G$ use $RO(G)$ the ring of virtual real representations.  Complexification of real representations gives a map $c: RO(G) \to R(G)$ which is monic, and the diagram
-\begin{diagram}
+Adams operations in $KO$ can be obtained from the complex case: use $O(n)$, and for a compact Lie group $G$ use $RO(G)$ the ring of virtual real representations.  Complexification of real representations gives a map $c: RO(G) \to R(G)$ which is monic, and the diagram
+\begin{diagram}[height=2em]
 RO(G) & \rInto^c & R(G) \\
 \dInto<\chi & & \dInto>\chi \\
 \{\hbox{$\R$-class functions}\} & \rInto & \{\hbox{$\C$-class functions}\}
 \end{diagram}
-commutes.  Moreover, there is the inclusion $i: O(n) \into U(n)$ which induces $i^*: RU(n) \to RO(n)$.  The real Adams operations come from additive $RO$-sequences $\{\psi^k_{\R, n}, n \ge 0\}$:
-\begin{diagram}
-& & RO(O(n)) & \ni \psi^k_{\R, n} & = s_k(\Lambda^1, \ldots, \Lambda^k) \\
-& & \dInto & \ldMapsto(2,3) \\
+commutes.  Moreover, there is the inclusion $i: O(n) \into U(n)$ which induces $i^*: R(U(n)) \to R(O(n))$.  The real Adams operations come from the following additive $RO$-sequences $\{\psi^k_{\R, n}\in RO(O(n)), n \ge 0\}$:
+\begin{diagram}[height=2em]
+& & RO(O(n)) & \,\ni \psi^k_{\R, n} &\, := s_k(\Lambda^1, \ldots, \Lambda^n) \\
+& & \dInto^c & \ldMapsto(2,3) \\
 R(U(n)) & \rTo^{i^*} & R(O(n)) \\
-\psi^k_n & \rMapsto & i^* \psi^k_n.
+\psi^k_n & \rMapsto & i^* \psi^k_n
 \end{diagram}
 
 % >>>
 \fi
-\BoxedNote{}
+\BoxedNote{
+\Bullet There is a unique additive sequence $\psi^k$ with $\psi^k_1(z) = z^k$. Moreover, if $M\in U(n)$ has eigenvalues $z_1,\ldots,z_n$, then $\psi_n^k(M)=\sum_{j=1}^n z^k_j=\tr(M^k)$.
+
+\Bullet $\sum_{j=1}^n z^k_j=s_k(\sigma_1,\ldots,\sigma_n)$, and the elementary symmetric polynomial $\sigma_j$ represents the $j^\textup{th}$ exterior power of the canonical rep of $U(n)$.
+
+\Bullet The sequences $\psi^k$ are additive and multiplicative, so define ring endomorphisms of $K$-theory. Of course, $\psi^k(L)=L^{\otimes k}$, since $\psi^k_1(z)=z^k$.
+
+\Bullet By understanding how to compose additive sequences, we prove $\psi^k\psi^l=\psi^{kl}$.
+
+\Bullet We produce operations on $KO$ by mimicking the complex case.
+}
 \section{Proof of the Hopf invariant 1 theorem} % <<<
 \ifx\OutputProofOfHopfInvariantOne\undefined\else
 Okay, today we prove Hopf invariant 1.  First, note this fact about the Adams operations:
