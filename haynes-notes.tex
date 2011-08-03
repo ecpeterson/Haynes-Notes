@@ -28,10 +28,10 @@
 %\newcommand{\OutputPropertiesOfTheSquares}{7}
 %\newcommand{\OutputTheAdemRelations}{8}
 %\newcommand{\OutputUsingTheSquaresAndThomSpaces}{9}
-\newcommand{\OutputStructureOnKtheory}{10}
+%\newcommand{\OutputStructureOnKtheory}{10}
 %\newcommand{\OutputBuildingKtheoryOperatorsFromRepTheory}{11}
-\newcommand{\OutputBuildingTheAdamsPowerOperations}{12}
-%\newcommand{\OutputProofOfHopfInvariantOne}{13}
+%\newcommand{\OutputBuildingTheAdamsPowerOperations}{12}
+\newcommand{\OutputProofOfHopfInvariantOne}{13}
 %\newcommand{\OutputTheJamesConstruction}{14}
 %\newcommand{\OutputTheMapsEandHinTheEHPLES}{15}
 %\newcommand{\OutputWhiteheadProductsAndTheEHPSS}{16}
@@ -1769,10 +1769,12 @@ coincide with those defined using the additive sequences $\psi^k_n$.
 \begin{proof}
 For this discussion, fix $k$. Let $\psi^k$ be the Adams operation as defined using additive sequences, and let $\xi^k$ be that defined using the generating function. Now $\xi^k$ takes any $E\in\Vect_n(X)$ to a certain linear combination of bundles formed by taking tensor products and direct sums of various of the exterior powers of $E$. We can take exactly the same combination of tensor products and direct sums of the exterior powers of the canonical representation of $U(n)$, to obtain an element $\xi^k_n\in R(U(n))$. Of course, $\xi^k_n$ defines an operation $E\mapsto \gamma_n(E):=P(E)\otimes_{U(n)}\xi^k_n$ from $\Vect_n(X)\to K(X)$. It is not hard to see that $\xi^k(E)=\xi^k_n(E)$. Thus $\xi^k$ actually comes from a sequence $\xi^k_n\in R(U(n))$, which we do not know to be additive or multiplicative.
 
-We can show directly though that $\xi^k_n=\psi^k_n$, viewing each as a class function on $U(n)$. Suppose that in the above generating function, we substitute the $j^\textup{th}$ elementary symmetric polynomial in $n$ variables $z_1,\ldots,z_n$ for $\Lambda^i(E)$, for all $i$. Then the generating function becomes $\sum_{i=1}^\infty t^ip_i $, where $p_i=\sum_{j=1}^n z_j^i$ is $i^\textup{th}$ power sum symmetric polynomial.
-To see this, note that by definition of the elementary symmetric polynomials the generating function becomes 
-\[-t\frac{d}{dt}\log\prod_{j=1}^n(1-t z_j)=-t\sum_{j=1}^n\frac{-z_j}{1-tz_j}=t\sum_{j=1}^n \left(z_j+tz_j^2+t^2z_j^3+\cdots\right)=\sum_{k=1}^\infty t^k p_k.\]
-This completes the proof, \textbf{which needs to be made a lot clearer}.
+We can show directly though that $\xi^k_n=\psi^k_n$, viewing each as a class function on $U(n)$. Supposing that $M\in U(n)$ has eigenvalues $z_1,\ldots,z_n$, we saw that the character of $M$ on the $j^\textup{th}$ exterior power of the canonical representation is $\sigma_j$, the $j^\textup{th}$ elementary symmetric polynomial in $n$ variables $z_1,\ldots,z_n$. So, to calculate the character $\xi^k_n$, we should substitute $\sigma_j$ for $\Lambda^j(E)$ in the generating function, and take the $t^k$ coefficient.
+% Suppose that in the above generating function, we substitute the $j^\textup{th}$ elementary symmetric polynomial in $n$ variables $z_1,\ldots,z_n$ for $\Lambda^i(E)$, for all $i$. Then the generating function becomes $\sum_{i=1}^\infty t^ip_i $, where $p_i=\sum_{j=1}^n z_j^i$ is $i^\textup{th}$ power sum symmetric polynomial.
+Now by definition of the elementary symmetric polynomials, we obtain:
+\[-t\frac{d}{dt}\log\sum_{i=0}^\infty t^i\sigma^i
+=-t\frac{d}{dt}\log\prod_{j=1}^n(1-t z_j)=-t\sum_{j=1}^n\frac{-z_j}{1-tz_j}=t\sum_{j=1}^n \left(z_j+tz_j^2+t^2z_j^3+\cdots\right)=\sum_{k=1}^\infty t^k \sum_{l=1}^nz_l^k.\]
+As the $t^k$ coefficient is exactly $\psi^k_n$, this completes the proof.
 \end{proof}
 So now we have all the facts about operations in complex $K$-theory; however, we don't know about the situation for $KO$ yet.  In fact, we note that the real Adams operations are not uniquely characterized by $\psi^k(L) = L^{\otimes k}$ for line bundles $L$, additivity, and $\psi^{kl} = \psi^k \psi^l$.  In $KO$-theory, one can define:
 \[\psi^k(E) = \begin{cases} E & \hbox{$k$ is odd}, \\ \psi^0(E) & \hbox{$k$ is even}, \end{cases}\] where $\psi^0(E)$ is the trivial bundle of dimension equal to the dimension of $E$ over the basepoint of $X$.  This works, since for a real line bundle we have $L^* \cong L$, and we get $L^{\otimes 2} \cong L \otimes L^* \cong \Hom(L, L) \ni 1$, which is a section of the bundle and so $L^{\otimes 2}$ is trivial.
@@ -1798,6 +1800,8 @@ R(U(n)) & \rTo^{i^*} & R(O(n)) \\
 
 \Bullet $\sum_{j=1}^n z^k_j=s_k(\sigma_1,\ldots,\sigma_n)$, and the elementary symmetric polynomial $\sigma_j$ represents the $j^\textup{th}$ exterior power of the canonical rep of $U(n)$.
 
+\Bullet Using this fact we can see that the operations defined by this sequence on $K$-theory coincide with those defined previously using a generating function.
+
 \Bullet The sequences $\psi^k$ are additive and multiplicative, so define ring endomorphisms of $K$-theory. Of course, $\psi^k(L)=L^{\otimes k}$, since $\psi^k_1(z)=z^k$.
 
 \Bullet By understanding how to compose additive sequences, we prove $\psi^k\psi^l=\psi^{kl}$.
@@ -1807,87 +1811,89 @@ R(U(n)) & \rTo^{i^*} & R(O(n)) \\
 \section{Proof of the Hopf invariant 1 theorem} % <<<
 \ifx\OutputProofOfHopfInvariantOne\undefined\else
 Okay, today we prove Hopf invariant 1.  First, note this fact about the Adams operations:
-\begin{lem}
-For $p$ prime, $\psi^p(x) \equiv x^p \pmod{p}$ in $K(X)$ (so think of $\psi^p$ as an improvement of the Frobenius ring homomorphism).
+\begin{lem}\label{frobeniuslemma}
+For $p$ prime, $\psi^p(x) \equiv x^p \pmod{p}$ in $K(X)$ (so think of $\psi^p$ as an improvement of the Frobenius endomorphism of a characteristic $p$ commutative ring).
 \end{lem}
 \begin{proof}
-Suppose $x$ is a vector bundle $E$.  Then we saw last time $\psi^p(E) = s_p(\Lambda^1 E, \ldots, \Lambda^p E)$.  Now \[s_p(\sigma_1, \ldots, \sigma_n) = \sum_{i=1}^n z_i^p = \left( \sum z_i \right)^p + p \cdot v(\sigma_1, \ldots, \sigma_n),\] that is, $\sum_{i=1}^n z_i^p - \left( \sum_i z_i \right)^p$ is a polynomial all of whose coefficients are p-divisible and which is certainly symmetric in the $z_i$.  So it can be written as $p \cdot r(\sigma_1, \ldots, \sigma_n)$.  Well, this looks pretty good; $\sum_{i=1}^n z_i = \sigma_1$, so
+Suppose $x$ is a vector bundle $E$.  We saw last time $\psi^p(E) = s_p(\Lambda^1 (E), \ldots, \Lambda^p (E))$. We can write 
+\[s_p(\sigma_1, \ldots, \sigma_n) = \sum_{i=1}^n z_i^p = \sigma_1^p + p \cdot r(\sigma_1, \ldots, \sigma_n),\]
+for some polynomial $r$, as $\sum_{i=1}^n z_i^p - \sigma_1^p$ is symmetric and divisible by $p$.  Thus:
 \begin{align*}
-\psi^p(E) & = s_p(\Lambda^1 E, \ldots, \Lambda^n E) \\
-& = (\Lambda^1 E)^p + p \cdot r(\Lambda^1 E, \ldots, \Lambda^n E) \\
-& \equiv E^p \pmod p, \\
-\psi^p(E - F) & = \psi^p(E) - \psi^p(F) \\
-& = E^p + p \cdot r(E) - F^p - p \cdot r(F) \\
-& \equiv E^p - F^p \pmod{p} \\
-& \equiv (E - F)^p \pmod{p}. \qedhere
+\psi^p(E) & = s_p(\Lambda^1 (E), \ldots, \Lambda^n (E)) \\
+& = (\Lambda^1 (E))^p + p \cdot r(\Lambda^1 (E), \ldots, \Lambda^n (E)) \\
+& \equiv E^p \pmod p.
 \end{align*}
+To extend this to formal differences $E-F\in K(X)$ is easy, by the standard Frobenius argument:
+\[\psi^p(E - F)  = \psi^p(E) - \psi^p(F)
+\equiv E^p-F^p\equiv(E-F)^p \pmod{p}.\qedhere\]
 \end{proof}
 
-Now we have to talk about products for a while.  Spaces will have basepoints.  Thinking $\widetilde K(X)$ as $\ker K(X) \stackrel{i^*}{\to} K(\ptspace)$ we get a short exact sequence:
-\begin{diagram}
-0 & \rTo & \widetilde K(X) & \rTo & K(X) & \rTo & \Z & \rTo 0,
-\end{diagram}
-where the surjective map splits thanks to the map $K(\ptspace) \to K(X)$ induced by $X \to \ptspace$.  So we can think of this as a sequence
-\begin{diagram}
-0 & \rTo & \widetilde K(X) & \rTo & \widetilde K(X) \oplus \Z & \rTo & \Z & \rTo 0.
-\end{diagram}
-Next tensor the first two terms of this with the same sequence for another space Y; the cokernel is easily computed as
-\begin{diagram}
-0 & \rTo & \widetilde K(X) \otimes \widetilde K(Y) & \rTo & (\widetilde K(X) \oplus \Z) \otimes (\widetilde K(Y) \oplus \Z) & \rTo^\alpha & \widetilde K(X) \oplus \widetilde K(Y) \oplus \Z & \rTo 0.
-\end{diagram}
-The map $\alpha$ takes the degree (i.e., $\Z$) components of the $K(X)$ and $K(Y)$ to their product, which is the degree of the tensor product of the elements sitting over the wedge in $K(X \times Y)$.  You can convince yourself that $\alpha$ is the map that makes this square commute:
-\begin{diagram}[height=2em]
-K(X) \otimes K(Y) & \rTo^\alpha & \widetilde K(X) \oplus \widetilde K(Y) \oplus \Z \\
-& & \dEqualto \\
-\dTo>\times & & \widetilde K(X \wsum Y) \oplus Z \\
-& & \dEqualto \\
-K(X \times Y) & \rTo & K(X \wsum Y).
-\end{diagram}
-Continuing to look at the bottom row of this square, there is an exact sequence
-\begin{diagram}
-0 & \rTo & \widetilde K(X \sprod Y) & \rTo & K(X \sprod Y) & \rTo & K(X \wsum Y) & \rTo & 0.
-\end{diagram}
-Why is this exact?  Well, the point is that $\widetilde K(X \times Y) \to \widetilde K(X \wsum Y)$ splits after one suspension: $\widetilde K(\Suspend(X \times Y)) \to \widetilde K(\Suspend X \wsum \Suspend Y)$, and from this we get
-\begin{diagram}
-\widetilde K^{+1}(\Suspend(X \wsum Y)) & \rTo & \widetilde K^{+1}(\Suspend(X \times Y)) \\
-\dEqualto & & \dEqualto \\
-\widetilde K(X \wsum Y) & \rTo & \widetilde K(X \times Y).
-\end{diagram}
-
-So to do this, we produce a map
-\begin{diagram}
-\Suspend(X \times Y) & \rTo & \Suspend X \wsum \Suspend Y \\
-\uTo & \ruTo_{\simeq} \\
-\Suspend(X \wsum Y),
-\end{diagram}
-so that the diagonal composite map is a homotopy equivalence.  The map is
-\begin{diagram}
-\Suspend(X \wsum Y) & \rInto & \Suspend(X \times Y) & \rTo & \Suspend(X \times Y) \wsum \Suspend(X \times Y) & \rTo & \Suspend X \wsum \Suspend Y \\
-(t, x) & \rMapsto & [t, (x, *)] & \rMapsto & \left\{ \begin{array}{cc}2t(x, *) & t \le \frac{1}{2} \\ 2-2t(x, *) & t \ge \frac{1}{2} \end{array} \right\} & \rMapsto & \begin{array}{cc} (2t, x) & t \le \frac{1}{2} \\ * & t \ge \frac{1}{2}, \end{array}
-\end{diagram}
-and similarly for a point $(t, y)$.
-
-\begin{wrapfigure}{r}{0.4\textwidth}
-\centering\includegraphics[width=0.3\textwidth]{figures/14.pdf}
-\caption{\small The pinch map.}
-\end{wrapfigure}
-But the top half ($t \ge \frac{1}{2}$) is just a cone, which is contractible, so we get the splitting we wanted.  All this goes to show that $\widetilde K(X \times Y) \to \widetilde K(X \wsum Y)$ splits, so the sequence $\widetilde K(X \sprod Y) \to \widetilde K(X \times Y) \to \widetilde K(X \wsum Y)$ is short exact; augmenting the last two terms doesn't harm this, and we get
+Now we have to talk about products for a while.  Spaces will have basepoints, and $i:*\to X$ will stand for the inclusion. We'll identify $K(\ptspace)$ with $\Z$ by taking dimensions, so that for $x\in K(X)$, $i_*x$ will stand for the (possibly negative) integer which takes the dimension of $x$ at the basepoint.  We'll also think of $\widetilde K(X)$ as $\ker K(X) \stackrel{i^*}{\to} K(\ptspace)$, giving a short exact sequence:
+\[\xymatrix{
+0\ar[r]&\widetilde K(X)\ar[r]& K(X)\ar[r]^{\ \ \ i^*}&\Z\ar[r]&0
+}\]
+This is split canonically, as the map $K(\ptspace) \to K(X)$ induced by $X \to \ptspace$ gives a section of $i^*$. So we can think of this as a sequence (where we will abuse notation writing $n$ for $n\epsilon$ for $n\in\Z$):
+\[\xymatrix@R=0mm{
+0\ar[r]&\widetilde K(X)\ar[r]& \widetilde K(X)\oplus\Z\ar[r]^{\ \ \ \ \ i^*}&\Z\ar[r]&0\\
+&x\ar@{|->}[r]&(x,0)\\
+&&(x',n)\ar@{|->}[r]&n.
+}\]
+Tensoring the first two terms of this sequence with the same terms for another space Y, one can check that the following sequence is short exact:% the cokernel is easily computed as
+\[\xymatrix@R=0mm{
+0\ar[r]&\widetilde K(X) \otimes \widetilde K(Y)\ar[r]& (\widetilde K(X) \oplus \Z) \otimes (\widetilde K(Y) \oplus \Z)\ar[r]^{\qquad\alpha}&\widetilde K(X) \oplus \widetilde K(Y) \oplus \Z\ar[r]&0\\
+&(x,y)\ar@{|->}[r]&(x,0)\otimes(y,0)\\
+&&(x',n)\otimes(y',m)\ar@{|->}[r]&(mx',ny',nm).
+}\]
+The map $\alpha$ takes the dimension components in $K(X)$ and $K(Y)$ to their product, which is the dimension of the tensor product of the elements sitting over the wedge in $K(X \times Y)$.  In fact, $\alpha$ is the map that makes this square commute (to check this, we write $\widetilde x$ and $\widetilde y$ for elements in $\widetilde K(X)$ and $\widetilde K(Y)$ and choose $n,m\in\Z$):
+\[\xymatrix@R=5mm{
+K(X) \otimes K(Y)\ar[r]^{\alpha\ \ \ }\ar[dd]^\times&\widetilde K(X) \oplus \widetilde K(Y) \oplus \Z\\
+&\widetilde K(X\vee Y)\oplus \Z\ar@{=}[d]\ar@{=}[u]\\
+K(X\times Y)\ar[r]&K(X\vee Y)
+}\ \ \ \raisebox{-1.1cm}{\text{ on elements: }}\ \ \ 
+\xymatrix@R=5mm{
+(\widetilde x+n) \otimes (\widetilde y+m)\ar@{|->}[r]^{\alpha\hspace{0cm}}\ar@{|->}[dd]^\times&
+(m\widetilde x,n\widetilde y,nm)\ar@{|->}[d]\\
+&(m\widetilde x\vee n\widetilde y,nm)\ar@{|->}[d]\\
+(\widetilde x+n) \times (\widetilde y+m)\ar@{|->}[r]&m\widetilde x\vee n\widetilde y+nm
+}\]
+As $\alpha$ is surjctive, the map on the bottom row of this square is surjective. We would like to determine its kernel. Now we  claim that the map $X\vee Y\to X\times Y$ splits after one suspension. That is, there is a commuting diagram
+\[\xymatrix@R=.8cm@C=1.3cm{
+\Sigma(X\times Y)\ar[r]^{p\hspace{1cm}}&\Sigma(X\times Y)\vee \Sigma(X\times Y)\ar[r]^{\hspace{1cm}\Sigma s_1\vee\Sigma s_2}&\Sigma (X\vee Y)\\
+\Sigma(X\vee Y)\ar[u]\ar[urr]_\simeq
+}\]
+Here $s_1:X\times Y\to X\vee Y$ and $s_2:X\times Y\to X\vee Y$ are defined by $s_1(x,y)=x$ and $s_2(x,y)=y$, and
+$p$ is the pinch map given by 
+$[t,(x,y)]\mapsto\begin{cases}
+[2t,(x,y)]_1&t\leq1/2\\
+[2(1-t),(x,y)]_2&t\geq1/2
+\end{cases}$.
+The diagonal composite is given by:
+\[\xymatrix@C=.35cm{
+(t, x) \ar@{|->}[r]& [t, (x, *)]  \ar@{|->}[r]& 
+\mbox{$\begin{cases}{[2t,(x, *)]}&t\leq1/2\\{[2(1-t),(x, *)]}&t\geq1/2\end{cases}$}
+\ar@{|->}[r]&
+\mbox{$\begin{cases}{[2t,x]}&t\leq1/2\\{*}&t\geq1/2\end{cases}$}
+}\textup{ and }
+\xymatrix@C=.4cm{
+(t, y) \ar@{|->}[r]&
+\mbox{$\begin{cases}{*}&t\leq1/2\\{[2(1-t),y]}&t\geq1/2\end{cases}$}
+}\]
+We can define a homotopy $[0,1/2]\times \Sigma(X\vee Y)\to \Sigma(X\vee Y)$ from this composite to the identity:
+\[(r,t,x)\mapsto \mbox{$\begin{cases}{[t/(1/2+r),x]}&t\leq1/2+r\\{*}&t\geq1/2+r\end{cases}$}
+\text{ \ and \ }
+(r,t,y)\mapsto\mbox{$\begin{cases}{*}&t\leq1/2-r\\
+{[(1-t)/(1/2+r),y]}&t\geq1/2-r\end{cases}$}
+\]
+  All this goes to show that $\widetilde K(X \times Y) \to \widetilde K(X \wsum Y)$ splits, giving a split short exact sequence:
 \begin{diagram}
 0 & \rTo & \widetilde K(X \sprod Y) & \rTo & K(X \times Y) & \rTo & K(X \wsum Y) & \rTo & 0.
 \end{diagram}
-Now we can put these two short exact sequences together using the square from earlier to get
-\begin{diagram}[height=1.5em]
-0 & & 0 \\
-\dTo & & \dTo \\
-\widetilde K(X) \otimes \widetilde K(Y) & \rTo^\sim & \widetilde K(X \sprod Y) \\
-\dTo & & \dTo \\
-K(X) \otimes K(Y) & \rTo^\times & K(X \times Y) \\
-\dTo<\alpha & & \dTo \\
-K(X) \wsum K(Y) & \rEqualto & K(X \wsum Y) \\
-\dTo & & \dTo \\
-0 & & 0.
-\end{diagram}
-The induced map we get $\widetilde K(X) \otimes \widetilde K(Y) \to \widetilde K(X \sprod Y)$ is the smash product map we defined (sort of) that appeared in the statement of Bott periodicity.
+We have all the maps required now to form the following commuting diagram, drawn with solid lines, in which the rows are exact. From diagram we construct the dotted map:
+\[\xymatrix@R=5mm{
+0\ar[r]&\widetilde K(X) \otimes \widetilde K(Y)\ar[r]\ar@{.>}[d]^\wedge&K(X) \otimes K(Y)\ar[r]^{\alpha\ \ \ }\ar[d]^\times&\widetilde K(X) \oplus \widetilde K(Y) \oplus \Z\ar@{=}[d]\ar[r]&0\\
+0\ar[r]&\widetilde K(X \sprod Y)\ar[r]&K(X\times Y)\ar[r]&K(X\vee Y)\ar[r]&0
+}\]
+The dotted map which $\wedge:\widetilde K(X) \otimes \widetilde K(Y) \to \widetilde K(X \sprod Y)$ is the smash product map which appeared in the statement of Bott periodicity, and which we (sort of) defined.
 
 A few words on relative $K$-theory.  Suppose $x \in A \subseteq X$ and the inclusion is nice, viz., a cofibration.  Then $K(X, A) \stackrel{\mathrm{def}}{=} \widetilde K(X / A)$.  There is a product
 \begin{diagram}
@@ -1897,14 +1903,15 @@ K(X, A) \otimes K(Y, B) & \rEqualto & \widetilde K(X / A) \otimes \widetilde K(Y
 \centering\includegraphics[width=0.2\textwidth]{figures/15.pdf}
 \caption{\small Diagram of a relative product, for that last equality.}
 \end{figure}
+
 Now suppose $X = Y$; then we have a diagonal map $\Delta: (X, A \cup B) \to (X \times X, X \times B \cup A \times X)$ which induces a cup product
-\begin{diagram}
-K(X, A) \otimes K(X, B) & \rTo^\smile & K(X, A \cup B) \\
+\begin{diagram}[height=2em]
+K(X, A) \otimes K(X, B) & \rTo^{\qquad\smile} & K(X, A \cup B) \\
 \dEqualto & & \uTo>{\Delta^*} \\
 \widetilde K(X/A) \otimes \widetilde K(X/B) & \rTo & K(X \times X, X \times B \cup A \times X).
 \end{diagram}
-Note when $A \simeq \ptspace \simeq B$ we get
-\begin{diagram}
+Note that when $A \simeq \ptspace \simeq B$ we obtain
+\begin{diagram}[height=2em]
 K(X, A) \otimes K(X, B) & \rTo^\smile & K(X, A \cup B) \\
 \dEqualto & & \uTo>{\Delta^*} \\
 \widetilde K(X) \otimes \widetilde K(X) & \rTo & K(X).
@@ -1913,12 +1920,8 @@ If in addition $A \cup B = X$, we get $K(X, A \cup B) = 0$, so the smash product
 \begin{lem}
 If $X = A \cup B$ and $A \simeq \ptspace \simeq B$, then $\widetilde K(X)^2 = 0$; e.g., any suspension has this property.
 \end{lem}
-For example, $\widetilde K S^2 = \Z \langle \bundle{L} - 1 \rangle$ is subject to the relation $(\bundle{L} - 1)^2 = 0$.  So $K(S^2) = \Z[x]/x^2$.  While we're at it, let's compute the Adams operations.  $\bundle{L}$ is a line bundle, so $\psi^k \bundle{L} = \bundle{L}^k$.  And,
-\begin{align*}
-\psi^k(x) & = \psi^k(\bundle{L} - 1) = \bundle{L} - 1, \\
-\bundle{L} & = 1 + x, \\
-\psi^k(x) & = (1 + x)^k - 1 = kx.
-\end{align*}
+\noindent For example, $\widetilde K S^2 = \Z \langle \bundle{L} - 1 \rangle$ is subject to the relation $(\bundle{L} - 1)^2 = 0$.  So $K(S^2) = \Z[x]/x^2$.  While we're at it, let's compute the Adams operations.  $\bundle{L}$ is a line bundle, so $\psi^k \bundle{L} = \bundle{L}^k$.  Thus
+\[\psi^k(x)  = \psi^k(\bundle{L} - 1) = \bundle{L}^k - 1=(1+x)^k-1=kx.\]
 By Bott, again, we have $\widetilde K(S^{2n}) \stackrel{\cong}{\from} \widetilde K(S^2)^{\otimes n}$, sending $x^{\otimes n}$ to $x_n$, so $K(S^{2n}) \cong \Z[x_n]/x_n^2$.
 
 As for $\psi^k(x_n)$, well, from the ladder above the map $\widetilde K(X) \otimes \widetilde K(S^2) \to \widetilde K(S^2 \sprod X)$ of Bott periodicity comes from the cross-product on $K$-theory, that is to say
@@ -1932,16 +1935,23 @@ So $\psi^k(x_n) = \psi^k(x^{\otimes n}) = \psi^k(x)^n = (kx)^n = k^n x^n$.  The 
 \centering\includegraphics[width=0.2\textwidth]{figures/16.pdf}
 \caption{\small Set-up for the Hopf invariant 1 problem.}
 \end{wrapfigure}
-OK, so now we can use all this equipment to prove that Hopf-invariant 1 problem.  Remember the set up:
-\begin{diagram}[height=1.5em]
-S^{4n-1} & \rTo^f & S^{2n} & \rTo^j & X & \rTo^k & S^{4n} \\
-& & 0 & \lMapsto & y & \lMapsto & x_{2n} \\
-& & x_n & \lMapsto & x.
-\end{diagram}
-Since $f$ is 0 in $K$-theory, the long exact sequence degenerates to a short exact sequence.  So there is an $x \in \widetilde K(X)$ such that it pulls back to $x_n$.  In addition, $\widetilde K(X) \stackrel{k^*}{\from} \widetilde K(S^{4n})$ is injective, so $y^2 = k^* x_{2n}^2 = 0$.  This $K(X)$ has three generators, $\langle 1, x, y \rangle$, and the relations $y^2 = 0$, $x^2 = ay$.  ($x^2 = ay + bx$, but $b = 0$ since $0 = x_n^2 = j^* x^2 = b x_n$.)
-\begin{rem}
+OK, so now we can use all this equipment to prove that Hopf-invariant 1 problem. That is, we want to show that there is no element of Hopf invariant one in $\pi_{4n-1}(S^{2n})$ for $n\neq1,2,4$. Remember the set up:
+\[\xymatrix{
+S^{4n-1}\ar[r]^f & S^{2n} \ar[r]^i & X \ar[r]^k & S^{4n}
+}\]
+Here, $k$ is obtained by collapsing $X=C(f)$ onto its $4n$-cell, i.e.\ by continuing the cofiber sequence. As $f$ is 0 in $K$-theory, the long exact sequence obtained from the cofiber sequence $S^{2n}\to X\to S^{4n}$ degenerates into a short exact sequence of reduced $K$-groups, which splits $\widetilde K(X)$ into $\Z\langle x\rangle\oplus\Z\langle y\rangle$ (as $\widetilde K(S^{2n})$ is free):
+\[\xymatrix@R=0mm{
+0&\ar[l]\widetilde K(S^{2n})&\ar[l]_{\ \ \ i^*}\widetilde K(X)&\ar[l]_{\ j^*}\widetilde K(S^{4n})&0\ar[l]\\
+&x_n&\ar@{|->}[l]x\\
+&&y&\ar@{|->}[l]x_{2n}
+}\]
+%So there is an $x \in \widetilde K(X)$ such that it pulls back to $x_n$. 
+Now $y^2=j^*(x_{2n})^2=0$, $i^*(x^2)=x_n^2=0$ and $i^*(xy)=x_n\cdot0=0$. Thus, for some $a,b\in\Z$, we have
+\[K(X)=\Z\langle1,x,y\rangle\text{ with multiplication }y^2=0,\ x^2=ay,\ xy=by.\]
+%In addition, $\widetilde K(X) \stackrel{j^*}{\from} \widetilde K(S^{4n})$ is injective, so $y^2 = j^* x_{2n}^2 = 0$.  This $K(X)$ has three generators, $\langle 1, x, y \rangle$, and the relations $y^2 = 0$, $x^2 = ay$.  ($x^2 = ay + bx$, but $b = 0$ since $0 = x_n^2 = i^* x^2 = b x_n$.)
+\begin{claim}
 $a$ is the Hopf invariant.
-\end{rem}
+\end{claim}
 \begin{proof}
 There are a variety of ways to justify this claim; for example, you could use the Chern character, which provides a ring homomorphism $K(X) \to H^*(X; \Q)$.  Also the Atiyah-Hirzebruch spectral sequence works nicely: $E_2^{*, *} = H^*(X; K^*(\ptspace)) \Rightarrow K^*(X)$.  $X$ is very simple, so we can write this down easily.  Here's the $E_2$ page:
 
@@ -1950,45 +1960,41 @@ FIGURE OUT HOW TO DRAW SPECTRAL SEQUENCES
 But everything in the $E_2$ term happens in even dimensions, so there are no differentials.  And since the spectral sequence is nice with respect to all the algebraic structure in sight, clearly the $x$ and $y$ represent the generators of $\widetilde K(X)$, and $a = H(f)$.
 \end{proof}
 
-\begin{rem}
-When $a$ is odd, we have $n = 1, 2, 4$.
-\end{rem}
+\begin{thm}
+The Hopf invariant $a$ cannot be odd unless $n = 1, 2, 4$.
+\end{thm}
 \begin{proof}
-We first make a reduction by calculating $\psi^k$.
-\begin{align*}
-\psi^k(x_{2n}) & = k^{2n} x_{2n}, \\
-\psi^k(y) & = k^{2n} y. \\
-j^* \psi^k(x) & = \psi^k j^*(x) = k^n x_n, \\
-\psi^k(x) & = k^n + b_k y, b_k \in \Z.
-\end{align*}
-Recalling the lemma from the beginning of today, we have $ay = x^2 \equiv \psi^2(x) = 2^n x + b_2 y \equiv b_2 y$, working mod 2 where necessary.  So the claim has been reduced to showing that $b_2$ odd implies $n \in \{1, 2, 4\}$.  We need one more $\psi^k$ (namely $psi^3$); recall $\psi^3 \psi^2 = \psi^2 \psi^3$, since they're both equal to $\psi^6$.  Then,
+We'll start by assuming that $a$ is odd.
+Firstly, for each $k$, $i^*(\psi^k(x))=\psi^k(x_n)=k^nx_n$. Moreover, $\psi^k(y)=\psi^k(j^*(x_{2n}))=j^*(\psi^kx_{2n})
+=j^*(k^{2n}x_{2n})=k^{2n}y$. Thus, for some $b_k\in\Z$:
+\[\psi^k(x)=k^nx+b_ky;\textup{ \ and \ }\psi^k(y)=k^{2n}y.\]
+Now using lemma \ref{frobeniuslemma}, and writing $\equiv$ for congruence mod 2:
+\[0\not\equiv ay=x^2\equiv\psi^2(x)=2^nx+b_2y.\]
+Examining $y$ coefficients, we see that $b_2$ must be odd. Now we calculate:
 \begin{align*}
 \psi^3 \psi^2(x) & = \psi^3(2^n x + b_2 y) = 2^n(3^n x + b_3 y) + b_2 3^{2n} y, \\
 \psi^2 \psi^3(x) & = \psi^2(3^n x + b_3 y) = 3^n(2^n x + b_2 y) + b_3 2^{2n} y.
 \end{align*}
-Hence, collecting terms in $y$: $b_3(2^{2n} - 2^n) = b_2(3^{2n} - 3^n)$.  $2^n$ divides the left hand expression, so $2$ divides $b_2$ so long as $2^n$ fails to divide $3^{2n} - 3$ -- equivalently, $2^n$ fails to divide $3^n - 1$.  One shows that
-\[
-\nu_2(3^n-1) = \begin{cases} 1 & \hbox{$n$ odd}, \\ \nu_2(n) + 2 & \hbox{$n$ even}.\end{cases}
-\]
-Using this, we see
-\[
-\begin{array}{c|cccccccc}
-n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
-\hline \nu_2(3^n - 1) & 1 & 3 & 1 & 4 & 1 & 3 & 1 & 5,
-\end{array}
-\]
-so $\nu_2(3^n-1) \ge n$ only when $n$ is equal to $1$, $2$, or $4$.
+Again examining $y$ coefficients gives an equation $b_3(2^{2n} - 2^n) = b_2(3^{2n} - 3^n)$.  $2^n$ divides the left hand expression, and $b_2$ is odd, so $2^n$ must divide $3^n - 1$. The result follows from the next claim.
 \end{proof}
-
-To justify the proof of our assertion about $\nu_2(3^n - 1)$, we have the following argument, due to David Anick: Write $k = \nu_2 n$, and $n = 2^k d$ where $d$ is odd.  If $k = 0$, write $n = 2j + 1$, and $3^{2j+1} - 1 = 9^j \cdot 3 - 1 \equiv 2 \pmod 8$, so $2$ divides $3^\alpha - 1$ once.  Note also $3^{2k+1}+1 = 9^j \cdot 3 + 1 \equiv 4 \pmod 8$, so $2$ divides this twice.  For $k > 0$, note $3^{2^k d} - 1 = (3^{2^{k-1}d} + 1)(3^{2^{k-1}d} - 1)$; continuing we get
+\begin{claim}
+$2^n$ can only divide $3^n - 1$ when $n=1,2,4$.
+\end{claim}
+\begin{proof}
+Writing $\nu(n)$ for the largest number $r$ such that $2^r$ divides $n$, so that $2^n|3^n-1$ iff $\nu(3^n-1)\geq n$. If one can prove the following formula, the result is immediate:
+\[
+\nu(3^n-1) = \begin{cases} 1 & \hbox{$n$ odd}, \\ \nu(n) + 2 & \hbox{$n$ even}.\end{cases}
+\]
+To make this calculation, we have the following argument, due to David Anick. Write $k = \nu( n)$, and $n = 2^k d$ where $d$ is odd.  If $k = 0$, write $n = 2j + 1$, and $3^{2j+1} - 1 = 9^j \cdot 3 - 1 \equiv 2 \pmod 8$, so $2$ divides $3^\alpha - 1$ once.  Note also $3^{2k+1}+1 = 9^j \cdot 3 + 1 \equiv 4 \pmod 8$, so $2$ divides this twice.  For $k > 0$, note $3^{2^k d} - 1 = (3^{2^{k-1}d} + 1)(3^{2^{k-1}d} - 1)$; continuing we get
 \[
 3^{2^k d} - 1 = (3^d + 1) (3^d - 1) (3^{2d} + 1) \cdots (3^{2^{k-1}d} + 1).
 \]
 Now for $k > 0$, $3^{2^kd}+1 = 9^{2^{k-1}d}+1 \equiv 2 \pmod 8$, so $2$ divides $3^{2^k d} + 1$ once.  Counting up terms, we find
 \[
-\nu_2(3^n - 1) = \begin{cases} 1 & \hbox{$n$ odd}, \\ \nu_2(n) + 2 & \hbox{$n$ even}, \end{cases}
+\nu(3^n - 1) = \begin{cases} 1 & \hbox{$n$ odd}, \\ \nu(n) + 2 & \hbox{$n$ even}, \end{cases}
 \]
 as advertised.
+\end{proof}
 
 % >>>
 \fi
