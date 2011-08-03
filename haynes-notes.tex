@@ -1509,7 +1509,9 @@ The first obvious candidate is \[\log \lambda_t(x) = \sum_{i=0}^\infty (-1)^i \f
 \frac{d}{dt} \log (1 + tL) = \frac{L}{1 + tL}
 .\]
 Replace $t$ with $-t$ to get $\frac{d}{dt} \log(1 - tL) = \frac{-L}{1 - tL}$.  And, to normalize, multiply by $-t$ to get $\frac{tL}{1 - tL} = \sum_{k \ge 1}^\infty t^k L^k$.  We define the $k^\textup{th}$ ``Adams operation'' applied to $E$, $\psi^k(E)$, to be the coefficient of $t^k$ in \[\frac{-t \frac{d}{dt} \lambda_{-t}(E)}{\lambda_{-t}(E)}.\]
-We seek to prove the following properties of the Adams operations:
+Of course, this construction could be carried out on $K(X)$ as opposed to $KO(X)$.
+
+We seek to prove the following properties of the Adams operations, and will do so by constructing them from another perspective in the next sections:
 %\begin{thm}\textbf{False claim:} 
 %There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that:
 \begin{itemize}
@@ -1518,7 +1520,7 @@ We seek to prove the following properties of the Adams operations:
 \item $\psi^k(L) = L^{\otimes k}$ for line bundles $L$ (which we already know).
 \end{itemize}
 %\end{thm}
-\noindent\textbf{I am unsure how this ties in logically with the next two chapters. How do we know that what we constructed here coincides with what we construct there? Do the properties above characterise the Adams operations on $K(X)$? I should ask somebody who knows.}
+\noindent\textbf{Do the properties above characterise the Adams operations on $K(X)$?}
 
 % >>>
 \fi
@@ -1759,7 +1761,19 @@ From this point of view it is clear that $\hat \varphi (\hat \theta(E)) = P(P(E)
 \item $\psi^k(\psi^l_n)$ is hard to compute directly because, for arbitrary $n$, $\psi^l_n$ does not come from a real representation.  However, $\psi^l_1$ is a representation, and \[\psi^k(\psi^l_1)(z) = \psi^l_1 \psi^k_1(z) = z^{lk} = \psi^{kl}_1(z).\]  Since an additive sequence is determined by its first element, and since $\psi^k(\psi^l)$ are $\psi^{kl}$ are both additive it follows that $\psi^k \psi^l = \psi^{kl}$.\qedhere
 \end{enumerate}
 \end{proof}
+\begin{claim}
+The Adams operations on $K$-theory defined as coefficients of the generating function
+\[-t \frac{d}{dt}\log \lambda_{-t}(E)\textup{, where }\lambda_t(E)=\sum_{i=0}^\infty t^i\Lambda^i(E)\text{ for } E\in\Vect(X)\]
+coincide with those defined using the additive sequences $\psi^k_n$.
+\end{claim}
+\begin{proof}
+For this discussion, fix $k$. Let $\psi^k$ be the Adams operation as defined using additive sequences, and let $\xi^k$ be that defined using the generating function. Now $\xi^k$ takes any $E\in\Vect_n(X)$ to a certain linear combination of bundles formed by taking tensor products and direct sums of various of the exterior powers of $E$. We can take exactly the same combination of tensor products and direct sums of the exterior powers of the canonical representation of $U(n)$, to obtain an element $\xi^k_n\in R(U(n))$. Of course, $\xi^k_n$ defines an operation $E\mapsto \gamma_n(E):=P(E)\otimes_{U(n)}\xi^k_n$ from $\Vect_n(X)\to K(X)$. It is not hard to see that $\xi^k(E)=\xi^k_n(E)$. Thus $\xi^k$ actually comes from a sequence $\xi^k_n\in R(U(n))$, which we do not know to be additive or multiplicative.
 
+We can show directly though that $\xi^k_n=\psi^k_n$, viewing each as a class function on $U(n)$. Suppose that in the above generating function, we substitute the $j^\textup{th}$ elementary symmetric polynomial in $n$ variables $z_1,\ldots,z_n$ for $\Lambda^i(E)$, for all $i$. Then the generating function becomes $\sum_{i=1}^\infty t^ip_i $, where $p_i=\sum_{j=1}^n z_j^i$ is $i^\textup{th}$ power sum symmetric polynomial.
+To see this, note that by definition of the elementary symmetric polynomials the generating function becomes 
+\[-t\frac{d}{dt}\log\prod_{j=1}^n(1-t z_j)=-t\sum_{j=1}^n\frac{-z_j}{1-tz_j}=t\sum_{j=1}^n \left(z_j+tz_j^2+t^2z_j^3+\cdots\right)=\sum_{k=1}^\infty t^k p_k.\]
+This completes the proof, \textbf{which needs to be made a lot clearer}.
+\end{proof}
 So now we have all the facts about operations in complex $K$-theory; however, we don't know about the situation for $KO$ yet.  In fact, we note that the real Adams operations are not uniquely characterized by $\psi^k(L) = L^{\otimes k}$ for line bundles $L$, additivity, and $\psi^{kl} = \psi^k \psi^l$.  In $KO$-theory, one can define:
 \[\psi^k(E) = \begin{cases} E & \hbox{$k$ is odd}, \\ \psi^0(E) & \hbox{$k$ is even}, \end{cases}\] where $\psi^0(E)$ is the trivial bundle of dimension equal to the dimension of $E$ over the basepoint of $X$.  This works, since for a real line bundle we have $L^* \cong L$, and we get $L^{\otimes 2} \cong L \otimes L^* \cong \Hom(L, L) \ni 1$, which is a section of the bundle and so $L^{\otimes 2}$ is trivial.
 
