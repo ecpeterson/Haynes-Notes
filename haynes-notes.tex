@@ -30,8 +30,8 @@
 %\newcommand{\OutputStructureOnKtheory}{10}
 %\newcommand{\OutputBuildingKtheoryOperatorsFromRepTheory}{11}
 %\newcommand{\OutputBuildingTheAdamsPowerOperations}{12}
-\newcommand{\OutputProofOfHopfInvariantOne}{13}
-%\newcommand{\OutputTheJamesConstruction}{14}
+%\newcommand{\OutputProofOfHopfInvariantOne}{13}
+\newcommand{\OutputTheJamesConstruction}{14}
 %\newcommand{\OutputTheMapsEandHinTheEHPLES}{15}
 %\newcommand{\OutputWhiteheadProductsAndTheEHPSS}{16}
 %\newcommand{\OutputTheStableCategory}{17}
@@ -1693,8 +1693,6 @@ $\psi^k$ is multiplicative.
 
 Summarizing, given an additive and multiplicative sequence $\theta_n \in R(U(n))$, $n \ge 0$, we get a ring homomorphism $\hat \theta: K(X) \to K(X)$, defined, when $E \in K(X)$ is in fact an $n$-dimensional bundle and $\theta_n$ corresponds to a genuine representation $V_n$, by $\hat \theta(E) = P(E) \times_{U(n)} V_n$.  Moreover, we have $\psi^k$ additive and multiplicative sequences, defined in terms of their images under $\chi: R(U(n)) \to \{\hbox{class functions on $U(n) \to \C$}\}$, satisfying $\psi^k_1(z) = z^k$.  Note that for a line bundle $L$, it follows that $\hat \psi^k(L) = L^{\otimes k}$, since $\psi^k_1$ corresponds to the $k^\textup{th}$ power of the canonical representation of $U(1)$.  So we have nearly all the properties of the Adams operations listed two lectures back; we still need to show the compositional property $\psi^k \psi^l = \psi^{kl}$.
 
-\pagebreak
-
 Now if $\varphi$ and $\theta$ are additive sequences they define operations $\hat \varphi$ and $\hat \theta$ on $K(X)$; certainly $\hat \varphi \circ \hat \theta$ is another one.  But in order to pursue the program here, we must realize $\hat \varphi \circ \hat \theta$ as $\hat \xi$, i.e., induced by some additive sequence $\xi$.  In other words, how can we compose $\psi (\theta)$ to give another additive sequence $\xi$?
 
 %Suppose that $\varphi$ is an additive sequence, and that $\theta=\theta_1-\theta_2\in R(G)$, where for $i=1,2$, $\theta_i$ corresponds to a genuine representation $\rho_i:G\to U(n_i)$. Then there are induced maps
@@ -1890,9 +1888,22 @@ We can define a homotopy $[0,1/2]\times \Sigma(X\vee Y)\to \Sigma(X\vee Y)$ from
 We have all the maps required now to form the following commuting diagram, drawn with solid lines, in which the rows are exact. From diagram we construct the dotted map:
 \[\xymatrix@R=5mm{
 0\ar[r]&\widetilde K(X) \otimes \widetilde K(Y)\ar[r]\ar@{.>}[d]^\wedge&K(X) \otimes K(Y)\ar[r]^{\alpha\ \ \ }\ar[d]^\times&\widetilde K(X) \oplus \widetilde K(Y) \oplus \Z\ar@{=}[d]\ar[r]&0\\
-0\ar[r]&\widetilde K(X \sprod Y)\ar[r]&K(X\times Y)\ar[r]&K(X\vee Y)\ar[r]&0
+0\ar[r]&\widetilde K(X \sprod Y)\ar[r]^{c^*}&K(X\times Y)\ar[r]&K(X\vee Y)\ar[r]&0
 }\]
 The dotted map which $\wedge:\widetilde K(X) \otimes \widetilde K(Y) \to \widetilde K(X \sprod Y)$ is the smash product map which appeared in the statement of Bott periodicity, and which we (sort of) defined.
+\begin{lem}\label{smashprodcommadams}
+ The smash product map $\wedge:\widetilde K(X) \otimes \widetilde K(Y) \to \widetilde K(X \sprod Y)$ commutes with Adams operations, in that $\psi^k(x)\wedge\psi^k(y)=\psi^k(x\wedge y)$ for $x\in \widetilde K(X)$ and $y\in \widetilde K(Y)$.
+\end{lem}
+\begin{proof}
+Suppose $x\in \widetilde K(X)$ and $y\in \widetilde K(Y)$ and write $\pi_1:X\times Y\to X$ and $\pi_2:X\times Y\to Y$ for the projections:
+\begin{alignat*}{2}
+\psi^k(x \times y) & = \psi^k(\pi_1^* x \cdot \pi_2^* y) &\qquad&\textup{(by definition of $\times$)} \\
+& =  \psi^k(\pi_1^*x) \cdot  \psi^k(\pi^*_2y)&&\textup{($\psi^k$ is a ring morphism)}\\
+& = \pi_1^* \psi^k(x) \cdot \pi^*_2 \psi^k(y)&&\textup{(by naturality of $\psi^k$)}\\
+&= \psi^k(x)\times \psi^k(y)
+\end{alignat*}
+In particular, $c^*(\psi^k(x)\wedge\psi^k(y))=\psi^k(x\times y)=\psi^k(c^*(x\wedge y))=c^*(\psi^k(x\wedge y))$, yet $c^*$ is injective.
+\end{proof}
 
 A few words on relative $K$-theory.  Suppose $x \in A \subseteq X$ and the inclusion is nice, viz., a cofibration.  Then $K(X, A) \stackrel{\mathrm{def}}{=} \widetilde K(X / A)$.  There is a product
 \begin{diagram}
@@ -1919,16 +1930,19 @@ If in addition $A \cup B = X$, we get $K(X, A \cup B) = 0$, so the smash product
 \begin{lem}
 If $X = A \cup B$ and $A \simeq \ptspace \simeq B$, then $\widetilde K(X)^2 = 0$; e.g., any suspension has this property.
 \end{lem}
-\noindent For example, $\widetilde K S^2 = \Z \langle \bundle{L} - 1 \rangle$ is subject to the relation $(\bundle{L} - 1)^2 = 0$.  So $K(S^2) = \Z[x]/x^2$.  While we're at it, let's compute the Adams operations.  $\bundle{L}$ is a line bundle, so $\psi^k \bundle{L} = \bundle{L}^k$.  Thus
-\[\psi^k(x)  = \psi^k(\bundle{L} - 1) = \bundle{L}^k - 1=(1+x)^k-1=kx.\]
-By Bott, again, we have $\widetilde K(S^{2n}) \stackrel{\cong}{\from} \widetilde K(S^2)^{\otimes n}$, sending $x^{\otimes n}$ to $x_n$, so $K(S^{2n}) \cong \Z[x_n]/x_n^2$.
+\begin{lem}
+For all $n$, $K(S^{2n})=\Z[x_n]/x_n^2$, and $\psi^k(x_n)=k^nx_n.$
+\end{lem}
+\begin{proof}
+\noindent By the previous lemma, $\widetilde K S^2 = \Z \langle \bundle{L} - 1 \rangle$ is subject to the relation $(\bundle{L} - 1)^2 = 0$.  So $K(S^2) = \Z[x_1]/x_1^2$. Now $\bundle{L}$ is a line bundle, so $\psi^k (\bundle{L}) = \bundle{L}^k$.  Thus
+\[\psi^k(x)  = \psi^k(\bundle{L} - 1) = \bundle{L}^k - 1=(1+x_1)^k-1=kx_1.\]
+By Bott, again, we have $\widetilde K(S^{2n}) \stackrel{\cong}{\from} \widetilde K(S^2)^{\otimes n}$, sending $x^{\otimes n}$ to $x_n=x_1^{\wedge n}$, so $K(S^{2n}) \cong \Z[x_n]/x_n^2$.
 
-As for $\psi^k(x_n)$, well, from the ladder above the map $\widetilde K(X) \otimes \widetilde K(S^2) \to \widetilde K(S^2 \sprod X)$ of Bott periodicity comes from the cross-product on $K$-theory, that is to say
-\begin{align*}
-\psi^k(x \times y) & = \psi^k(pr_1^* x \cdot pr_2^* y) \\
-& = pr_1^* \psi^k(x) \cdot pr_2 \psi^k(y).
-\end{align*}
-So $\psi^k(x_n) = \psi^k(x^{\otimes n}) = \psi^k(x)^n = (kx)^n = k^n x^n$.  The Adams operations detect the dimension of an even-dimensional sphere!
+By lemma \ref{smashprodcommadams}, 
+$\psi^k(x_n) = \psi^k(x_1^{\wedge n}) = \psi^k(x_1)^{\wedge n} = (kx_1)^{\wedge n} = k^n x_n$.
+\end{proof}
+\noindent
+In particular, the Adams operations detect the dimension of an even-dimensional sphere!
 
 \begin{wrapfigure}{r}{0.3\textwidth}
 \centering\includegraphics[width=0.2\textwidth]{figures/16.pdf}
@@ -2006,7 +2020,24 @@ We count exactly $2+1+1+\cdots+1=\nu(n)+2$ factors of two in this expression, as
 
 % >>>
 \fi
-\BoxedNote{}
+\BoxedNote{
+\Bullet In $K(X)$, $\psi^p(x) \equiv x^p \pmod{p}$  for $p$ prime.
+
+\Bullet The smash product map (drawn dotted) is induced by the solid vertical morphisms below. It commutes with Adams operations. Here, the lower short exact sequence arises as $X\vee Y\to X\times Y$ splits after one suspension.
+\[\xymatrix@R=5mm{
+0\ar[r]&\widetilde K(X) \otimes \widetilde K(Y)\ar[r]\ar@{.>}[d]^\wedge&K(X) \otimes K(Y)\ar[r]^{\alpha\ \ \ }\ar[d]^\times&\widetilde K(X) \oplus \widetilde K(Y) \oplus \Z\ar@{=}[d]\ar[r]&0\\
+0\ar[r]&\widetilde K(X \sprod Y)\ar[r]&K(X\times Y)\ar[r]&K(X\vee Y)\ar[r]&0
+}\]
+
+\Bullet Products on $K(X)$ vanish if $X$ is the union of contractible subsets (e.g.\ $X=S^{n}$).
+
+\Bullet  $K(S^{2})=\Z[x_1]/x_1^2$. Since $x_1+1$ is a line bundle, $\psi^k(x_1)=(x_1+1)^k-1=kx_1$.
+
+
+\Bullet For all $n$, $K(S^{2n})=\Z[x_n]/x_n^2$, and $\psi^k(x_n)=k^nx_n$, as the smash product map commutes with $\psi^k$. Thus the Adams operations detect the $n$ in $S^{2n}$!%dimension of an even-dimensional sphere!
+
+\Bullet This all comes together to prove Hopf invariant one.
+}
 \section{The James construction} % <<<
 \ifx\OutputTheJamesConstruction\undefined\else
 Today we start looking at consequences of the vector field problem.  First, remember the group $J(X)$.  This was the quotient of $KO(X)$ by the equivalence generated on the level of bundles by $V \simeq_J W$ if and only if $S(V \oplus n \varepsilon) \simeq_{f.h.e.} S(W \oplus n \varepsilon)$.  An immediate consequence of the last few days' work is
