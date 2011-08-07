@@ -81,6 +81,12 @@
 \end{minipage}}
 \end{center}
 }
+\newcommand{\ConfusedBox}[1]{
+\begin{center}\fbox{\begin{minipage}{.95\textwidth}
+#1
+\end{minipage}}
+\end{center}
+}
 \newcommand{\Bullet}{\ensuremath{\bullet} }
 \newcommand{\Vect}{\textup{Vect}}
 \newcommand{\DASH}{\textup{---}}
@@ -192,6 +198,7 @@
 \fi
 
 \section{Foreword} % <<<
+\label{Foreword}
 \ifx\OutputForeword\undefined\else
 These are notes from a course taught by Haynes Miller at MIT in the fall of 1989 in honor of Frank Adams, after his passing.  They were originally written by Matthew Ando, and were later transcribed and updated by Eric Peterson and Aaron Mazel-Gee, with figures provided by Yi-Wei Chan, Meng Guo, and Matt Mahowald.
 
@@ -202,6 +209,7 @@ If anything in this document confuses you, check out the original notes at the f
 % >>>
 \fi
 \section{Introduction to vector fields on spheres} % <<<
+\label{IntroductionToVectorFieldsOnSpheres}
 \ifx\OutputIntroductionToVectorFieldsOnSpheres\undefined\else
 
 We shall discuss some classical topics in homotopy theory.  A great deal of what we will cover owes much to the work of Frank Adams.  Today we look at a few of the problems (which turn out to have deep general significance), and begin with vector fields on spheres.  We define $S^{n-1} = \{x \in \R^n \mid \|x\| = 1\}$.  The idea is to assign to each point $x \in S^{n-1}$ a vector $v(x)$ tangent to $x$ in a smooth way, i.e., to find a map $v: S^{n-1} \to \R^n$ such that $v(x) \perp x$ for all $x \in S^{n-1}$.
@@ -314,7 +322,7 @@ For the time being, take a step back and recall the action $O(n) \times S^{n-1} 
 
 % >>>
 \fi
-\BoxedNote{\Bullet $S^{n-1}$ has $k-1$ linearly independent vector fields iff $V_{n,k}\downarrow S^{n+1}$ has a section.
+\BoxedNote{\Bullet $S^{n-1}$ has $k-1$ linearly independent vector fields iff $V_{n,k}\downarrow S^{n-1}$ has a section.
 
 \Bullet The largest $k$ such that there is such a section is $\rho(n)$, where we write $n=\textup{odd}\cdot 2^{\nu}$, $\nu=4b+c$ for $0\leq c\leq3$, and $\rho=8b+2^c$.
 
@@ -327,6 +335,7 @@ For the time being, take a step back and recall the action $O(n) \times S^{n-1} 
 \Bullet The $J$-homomorphism $J:\pi_kO(n)\to \pi_{n+k}(S^n)$ sends $\alpha:S^k\to O(n)$ to the Hopf construction applied to $S^k\times S^{n-1}\xrightarrow{\alpha\times1}O(n)\times S^{n+1}\to S^{n-1}$.
 }
 \section{Clifford algebras} % <<<
+\label{CliffordAlgebras}
 \ifx\OutputCliffordAlgebras\undefined\else
 
 In this lecture we will see how many vector fields on spheres we can construct using linear algebra; we will use Clifford algebras.  For more information, see for example the book by Strang~\cite{Strang}.
@@ -435,6 +444,7 @@ and this is exactly $\rho(n) - 1$ from before.  So we have succeeded in construc
 %>>>
 
 \section{Building Thom spaces} % <<<
+\label{BuildingThomSpaces}
 \ifx\OutputBuildingThomSpaces\undefined\else
 We'll now start attacking the second part of the vector field problem.  Recall that the Stiefel manifold $V_{n, k}$ of $k$-frames on $\R^n$ is given by $(n \times k)$-matrices with orthonormal columns, and projection onto the first column gives a fiber bundle $V_{n, k-1} \into V_{n, k} \onto S^{n-1}$.  The existence of a section $s$ of this bundle is equivalent to the existence of $(k-1)$ orthonormal vector fields on $S^{n-1}$.
 
@@ -524,6 +534,7 @@ It follows that the Thom space of $nL$ is $T(nL)\simeq\RP^{n+k-1}/\RP^{n-1}$. In
 \Bullet In particular, if $S^{n-1}$ admits $k-1$ vector fields, $T(n\epsilon)\simeq T(nL)\simeq \R P^{n+k-1}_n$.
 }
 \section{Facts about Thom spaces} % <<<
+\label{FactsAboutThomSpaces}
 \ifx\OutputFactsAboutThomSpaces\undefined\else
 We'll now look at Thom spaces in more detail, and in particular in relation to some other standard constructions on fiber bundles.  First of all, we have a product: given two bundles $F \to E \to B$ and $F' \to E' \to B'$, we can build a bundle $F \times F' \to E \times E' \to B \times B'$.  Now if $B = B'$, you can pull this bundle back along the diagonal map to a bundle $F \times F' \to E \times_B E' \to B$, called the ``fiberwise product.''  If $E$ and $E'$ are vector bundles, then $E \times_B E'$ is called the ``Whitney sum,'' denoted $E \oplus E'$.
 
@@ -625,6 +636,7 @@ This is a process of stabilization: the lesson of this discussion is that we hav
 }
 % >>>
 \section{Building \texorpdfstring{$K$}{K}-theory and \texorpdfstring{$J$}{J}-theory} % <<<
+\label{BuildingKandJtheory}
 \ifx\OutputBuildingKandJtheory\undefined\else
 Now a few introductory words on $K$-theory: let $X$ be a pointed %finite complex (it is at least necessary that $X$ be a 
 compact Hausdorff space.  Let $\Vect(X)$ be the set of isomorphism classes of vector bundles over $X$.\footnote{Why is $\Vect(X)$ a set?}  The Whitney sum gives a monoid structure to $\Vect(X)$, with zero given by the $0$-dimensional vector bundle.  Now one applies the ``Grothendieck construction,'' which simply means to add formal inverses, making a group; explicitly, we form equivalence classes of pairs $(V,W)$ under the equivalence relation in which $(V, W) \sim (V', W')$ iff $E + V + W' \cong V' + W + E$ for some vector bundle $E$.  Here, $(V, W)$ is supposed to represent the formal difference ``$V - W$''.  This is an abelian group, called $KO(X)$.
@@ -686,7 +698,7 @@ Finally, $KO$ remembers dimension, so $KO(X) = [X, \Z \times BO]$. % where Z kee
 Now let's talk about $J$-theory.  If $V$ and $W$ are vector bundles over $X$, then we write $V \sim_J W$ if $S(V \oplus n \epsilon)$ and $S(W \oplus n \epsilon)$ are fiber homotopy equivalent for some $n\geq0$. This idea is analogous to $K$ on the level of sphere bundles, and defines an additive equivalence relation on $KO(X)$. $J(X)$ is defined to be the quotient of $KO(X)$ given by this relation, and $\widetilde J(X)$ the image of $\widetilde{KO}(X)$. % there should be an equation attached to this last sentence
 Now from the Clifford algebra story we know that over $\RP^k$ the tautological line bundle $L$ has $a_k L \cong a_k \epsilon$. % this a_k was defined in day 2, remind the reader
 Considering the class $[L] - 1 \in \widetilde{KO}(\RP^k)$, this means $a_k([L] - 1) = 0$. % say early on that we're going to identify n eps with n.
-\begin{thm}[Adams]
+\begin{thm}[Adams]\label{AdamsKORPn}
 $\widetilde{KO}(\RP^k)=\Z/a_k\Z$ generated by $[L]-1$.
 $\widetilde{KO}(\RP^k) \stackrel{\cong}{\onto} \widetilde J(\RP^k)$ is an isomorphism.
 \end{thm}
@@ -725,6 +737,7 @@ We then make two claims: $\widetilde J(X)$ is the image of $[X, BO] \to [X, BG]$
 \Bullet Atiyah: $\widetilde J(X)$ is finite for $X$ a finite connected complex.
 }
 \section{Geometry and the Steenrod squares} % <<<
+\label{GeometryAndTheSteenrodSquares}
 \ifx\OutputGeometryAndTheSteenrodSquares\undefined\else
 Today begins a several days blitz on Steenrod operations, from a somewhat geometric point of view.  To begin, remember that reduced ordinary cohomology is representable:
 \[
@@ -989,6 +1002,7 @@ E\pi_+\wedge_\pi X^{(2)}\ar@{=}[u]
 }
 % THERE IS A LOT LEFT TO REPAIR IN THIS CHAPTER!
 \section{Properties of the squares} % <<<
+\label{PropertiesOfTheSquares}
 \ifx\OutputPropertiesOfTheSquares\undefined\else
 \textbf{Perhaps we should simply delete everything in small caps.} I haven't edited what's here, since I'm not sure if it's needed. Also, I haven't thought through what's needed for this to generalise to an arbitrary field. Comments about that question might prefer to live in the previous chapter. Also, it would almost certainly be better to merge this chapter with the previous.
 
@@ -1080,6 +1094,7 @@ so $\Sq^k\imath_q$ is an $H$-space map (or an $H$-map).  The $H$-space structure
 
 \Bullet $\Sq^0$ is the identity, $\Sq^1$ is the Bockstein.}
 \section{The Adem relations} % <<<
+\label{TheAdemRelations}
 \ifx\OutputTheAdemRelations\undefined\else
 
 
@@ -1275,6 +1290,7 @@ which tells you that
 \Bullet The only indecomposable $\Sq^i$ are those for which $i$ is a power of two.
 }
 \section{Using the squares and Thom spaces} % <<<
+\label{UsingTheSquaresAndThomSpaces}
 \ifx\OutputUsingTheSquaresAndThomSpaces\undefined\else
 % somewhere in here we start using / for vector bundles; be consistent with \onto from earlier or \downarrow as suggested
 
@@ -1334,21 +1350,21 @@ There's another approach to this sort of calculation with Thom spaces and square
 S^{n-1}\ar[r]&E\,\ar@{^{(}->}[r]\ar[d]&C_BE\ar[d]&D^n\ar[l]\\
 &B\ar@{=}[r]&B
 }\]
-and $T(E) = C_B E / E$.  So $\widetilde H^* T(E) = H^*(C_B E, E)$.  Now we can use the relative Serre spectral sequence to get a spectral sequence
+and $T(E) = C_B E / E$.  So $\widetilde H^* (T(E)) = H^*(C_B E, E)$.  Now we can use the relative Serre spectral sequence to get a spectral sequence
 \[
-E_2^{s,t}=H^s(B, \{H^t(D^n, S^{n-1})\}) \Rightarrow \widetilde H^{s+t} T(E)
+E_2^{s,t}=H^s(B, \{H^t(D^n, S^{n-1})\}) \Rightarrow \widetilde H^{s+t}( T(E))
 .\]
-But this spectral sequence has $E_2^{s,t}\neq0$ only when $t=n$, so that that everything collapses by the $E_2$ page, and we obtain isomorphisms $H^*(B, \{H^n(D^n, S^{n-1})\}) \cong \widetilde H^{*+n} T(E)$.  In general $B$ is not simply connected, so we need twisted coefficients.  If the system of local coefficients is trivial, then this isomorphism is the Thom isomorphism.  An orientation of $E$ is then just that: a choice of trivialization of this local coefficient system.
+But this spectral sequence has $E_2^{s,t}\neq0$ only when $t=n$, so that that everything collapses by the $E_2$ page, and we obtain isomorphisms $H^*(B, \{H^n(D^n, S^{n-1})\}) \cong \widetilde H^{*+n} (T(E))$.  In general $B$ is not simply connected, so we need twisted coefficients.  If the system of local coefficients is trivial, then this isomorphism is the Thom isomorphism.  An orientation of $E$ is then just that: a choice of trivialization of this local coefficient system.
 
-Working over $\Z_2$ coefficients, this coefficient system is already canonically trivial, so the concern about orientation doesn't mean anything, and we get $H^*(B; \Z_2) \cong \widetilde H^{*+n} T(E)$ anyway.  For example, in the case of $nL \onto \RP^{k-1}$ we see trivially that the isomorphism comes from multiplication by $x^n$.  This comes out in general from the multiplicative structure of the spectral sequence, as follows.
+Working over $\Z_2$ coefficients, this coefficient system is already canonically trivial, so the concern about orientation doesn't mean anything, and we get $H^*(B; \Z_2) \cong \widetilde H^{*+n} (T(E))$ anyway.  For example, in the case of $nL \onto \RP^{k-1}$ we see trivially that the isomorphism comes from multiplication by $x^n$.  This comes out in general from the multiplicative structure of the spectral sequence, as follows.
 
-First, $1\in H^0 B$ corresponds under the Thom isomorphism to some $u \in \widetilde H^n T(E)$, called the ``Thom class''.  Now $\widetilde H^* T(E) = H^*(C_B E, E)$ is a module over $H^* B$ via the ``cup product'' pairing, the composite:
+First, $1\in H^0 (B)$ corresponds under the Thom isomorphism to some $u \in \widetilde H^n (T(E))$, called the ``Thom class''.  Now $\widetilde H^* (T(E)) = H^*(C_B E, E)$ is a module over $H^* (B)$ via the ``cup product'' pairing, the composite:
 \[\xymatrix{
 H^*(B) \otimes H^*(C_B E, E)\ar[r]^{p^*\otimes1\ \ \ }&H^*(C_B E) \otimes H^*(C_B E, E)\ar[r]^{\hspace{9mm}\smile}& H^*(C_B E, E)
 }\]
-We justify calling this a cup product as $p^*$ is an isomorphism, as $C_BE$ is a disk bundle, so we can almost ignore the ``pulling back'' part of the operation. The Thom isomorphism says that cup-product by the Thom class $u$ is an isomorphism $\smile u: H^* B \cong \widetilde H^* T(E)$.
+We justify calling this a cup product as $p^*$ is an isomorphism, as $C_BE$ is a disk bundle, so we can almost ignore the ``pulling back'' part of the operation. The Thom isomorphism says that cup-product by the Thom class $u$ is an isomorphism $\smile u: H^* (B) \cong \widetilde H^* (T(E))$.
 
-This enables us to talk about $\widetilde H^* T(E)$ without much reference to $T(E)$ beyond the Thom class.  For example, suppose we wished to calculate $\Sq y$ for some $y\in \widetilde H^* T(E)$. Now $y=xu = x \smile u$, for some unique $x \in H^* B$, and $\Sq y = (\Sq x)(\Sq u)$ by the Cartan formula, so all we need to know is $\Sq u$.  Again using the Thom isomorphism, we write $\Sq^k u = w_k u$, where $w_k \in H^k B$. We call $w_k = w_k(E)$ the ``$k$th Stiefel-Whitney class of $E$'', and we write $w = \sum_{k \ge 0} w_k$, the ``total Stiefel-Whitney class of $E$''.
+This enables us to talk about $\widetilde H^* (T(E))$ without much reference to $T(E)$ beyond the Thom class.  For example, suppose we wished to calculate $\Sq y$ for some $y\in \widetilde H^*( T(E))$. Now $y=xu = x \smile u$, for some unique $x \in H^* B$, and $\Sq y = (\Sq x)(\Sq u)$ by the Cartan formula, so all we need to know is $\Sq u$.  Again using the Thom isomorphism, we write $\Sq^k u = w_k u$, where $w_k \in H^k B$. We call $w_k = w_k(E)$ the ``$k$th Stiefel-Whitney class of $E$'', and we write $w = \sum_{k \ge 0} w_k$, the ``total Stiefel-Whitney class of $E$''.
 
 Of course, if $V$ is a vector bundle, we write $w(V)$ for $w(S(V))$. The following facts follow immediately:
 \begin{itemize}
@@ -1392,9 +1408,9 @@ Now the Thom class of $nL \onto \RP^{k-1}$, as we saw, is $x^n$.  So $w(L) = 1 +
 % >>>
 \fi
 \BoxedNote{
-\Bullet Using the decomposability of $\Sq^i$ for $i\neq2^j$, there can only be an element of Hopf invariant one in $\pi_{2n-1}S^n$ if $n=2^j$.
+\Bullet Using the decomposability of $\Sq^i$ for $i\neq2^j$, there can only be an element of Hopf invariant one in $\pi_{2n-1}(S^n)$ if $n=2^j$.
 
-\Bullet $\Sq x^n=x^n(1+x)^n$, where $x^n\in\widetilde H^n\RP^{n+k-1}_n$. If there is a coreduction, then $\Sq x^n$ must equal $x^n$. Thus, a necessary condition for $k-1$ fields on $S^{n-1}$ is that $(1+x)^n\equiv 1$ in $\Z_2[x]/(x^k)$, which implies $2^\nu(n)\geq k$.
+\Bullet $\Sq x^n=x^n(1+x)^n$, where $x^n\in\widetilde H^n(\RP^{n+k-1}_n)$. If there is a coreduction, then $\Sq x^n$ must equal $x^n$. Thus, a necessary condition for $k-1$ fields on $S^{n-1}$ is that $(1+x)^n\equiv 1$ in $\Z_2[x]/(x^k)$, which implies $2^{\nu(n)}\geq k$.
 
 \Bullet For an oriented $S^{n-1}$-bundle $E$, $\widetilde H^*(T(E))$ is an $H^*(B)$-module under ``$\smile$'':
 \[\xymatrix{H^*(B) \otimes H^*(C_B E, E)\ar[r]^{p^*\otimes1\ \ \ }&H^*(C_B E) \otimes H^*(C_B E, E)\ar[r]^{\hspace{9mm}\smile}& H^*(C_B E, E)}\]
@@ -1403,6 +1419,7 @@ Defined the Thom class $u\in H^n(T(E))$ such that $\smile u$ is the Thom isomorp
 \Bullet The Stiefel-Whitney classes $w_i(E)\in H^i(B)$ are defined by $w(E)\smile u=\Sq u$. They vanish for $i>n$, and $w_0=1$. They satisfy the Whitney sum formula $w(V\oplus W)=w(V)\smile w(W)$, and are stable: $w(V\oplus \epsilon)=w(V)$.
 }
 \section{Structure on \texorpdfstring{$K$}{K}-theory} % <<<
+\label{StructureOnKtheory}
 \ifx\OutputStructureOnKtheory\undefined\else
 This isn't a course about $K$-theory, it's a course that uses $K$-theory.  So we're not going to see proofs of lots of basic theorems of $K$-theory; in particular I'm not going to prove the periodicity theorem.  However, we will need some facts which we'll review now.
 
@@ -1537,6 +1554,7 @@ We seek to prove the following properties of the Adams operations, and will do s
 \Bullet \textbf{False claim:} The Adams operations are characterised by three properties:\\\phantom{space}(i) they are ring homomorphisms; (ii) $\psi^k\psi^l=\psi^{kl}$; and (iii) $\psi^k(L)=L^{\otimes k}$.
 }
 \section{Building \texorpdfstring{$K$}{K}-theory operations from representation theory} % <<<
+\label{BuildingKtheoryOperatorsFromRepTheory}
 \ifx\OutputBuildingKtheoryOperatorsFromRepTheory\undefined\else
 Previously, we discussed the ring $KO^* = KO^* \ptspace$ and said it was
 \[
@@ -1637,6 +1655,7 @@ Note that the additive condition requires $\theta_0 = 0$.
 \Bullet The function $\theta$ is an additive homomorphism (and so gives an operation on $K(X)$) when the sequence $\theta$ is ``additive'': when viewing $\theta_m\oplus\theta_n$ as a (virtual) representation of $U(n)\times U(m)$, it coincides with the restriction $\theta_{m+n}|_{U(n)\times U(m)}$.
 }
 \section{Building the Adams power operations} % <<<
+\label{BuildingTheAdamsPowerOperations}
 \ifx\OutputBuildingTheAdamsPowerOperations\undefined\else
 Recall that for a compact Lie group $G$ we identified a representation of $G$ with a continuous homomorphism $\rho: G \to U(n)$ which allowed us to speak of the class function $\chi_\rho$, the ``character'' of the representation.  The induced map $R(G) \into \{\hbox{class functions $G \to \C$}\}$ is injective, so we identify $\rho$ with its image under $\chi$.  Recall also that a sequence of virtual representations $\theta_* = \{\theta_n \in R(U(n))\}$ is ``additive'' if $\theta_m \oplus \theta_n = \sigma^* \theta_{m+n}$.
 
@@ -1801,11 +1820,12 @@ R(U(n)) & \rTo^{i^*} & R(O(n)) \\
 
 \Bullet The sequences $\psi^k$ are additive and multiplicative, so define ring endomorphisms of $K$-theory. Of course, $\psi^k(L)=L^{\otimes k}$, since $\psi^k_1(z)=z^k$.
 
-\Bullet By understanding how to compose additive sequences, we prove $\psi^k\psi^l=\psi^{kl}$.
+\Bullet By observing that we can compose additive sequences, we prove $\psi^k\psi^l=\psi^{kl}$.
 
 \Bullet We produce operations on $KO$ by mimicking the complex case.
 }
 \section{Proof of the Hopf invariant 1 theorem} % <<<
+\label{ProofOfHopfInvariantOne}
 \ifx\OutputProofOfHopfInvariantOne\undefined\else
 Okay, today we prove Hopf invariant 1.  First, note this fact about the Adams operations:
 \begin{lem}\label{frobeniuslemma}
@@ -2039,38 +2059,51 @@ We count exactly $2+1+1+\cdots+1=\nu(n)+2$ factors of two in this expression, as
 \Bullet This all comes together to prove Hopf invariant one.
 }
 \section{The James construction} % <<<
+\label{TheJamesConstruction}
 \ifx\OutputTheJamesConstruction\undefined\else
-Today we start looking at consequences of the vector field problem.  First, remember the group $J(X)$.  This was the quotient of $KO(X)$ by the equivalence generated on the level of bundles by $V \simeq_J W$ if and only if $S(V \oplus n \varepsilon) \simeq_{f.h.e.} S(W \oplus n \varepsilon)$.  An immediate consequence of the last few days' work is
-\begin{thm}
-The surjection $\widetilde{KO}(\RP^m) \onto \widetilde J(\RP^m)$ is actually an isomorphism.
+First, remember the group $J(X)$.  This was the quotient of $KO(X)$ by the equivalence generated on the level of bundles by $V \simeq_J W$ if and only if $S(V \oplus n \varepsilon) \simeq_\textup{f.h.e.} S(W \oplus n \varepsilon)$.  An immediate consequence of the vector field problem is:\footnote{Note that theorem \ref{KOtoJofRPm} is part of theorem \ref{AdamsKORPn} (Adams), and theorem \ref{AdamsKORPn} solves the vector field problem.}
+\ConfusedBox{
+\textbf{Is this the point?}
+Suppose that it is known that $\widetilde{KO}(\RP^m)\simeq\Z/a_m\Z$, and that it is generated by $[\bundle{L}]-1$ (this is the first part of theorem \ref{AdamsKORPn}). Then we can prove the rest of theorem \ref{AdamsKORPn} (i.e.\ theorem \ref{KOtoJofRPm}) using the discussion in section \ref{UsingTheSquaresAndThomSpaces}. Recall that theorem \ref{AdamsKORPn} implies the solution of the vector fields problem.
+\begin{thm} \label{KOtoJofRPm}
+The surjection $\widetilde{KO}(\RP^m) \onto \widetilde J(\RP^m)$ is an isomorphism.
 \end{thm}
 \begin{proof}
-$\widetilde{KO}(\RP^m)$ is generated by $\bundle{L} - 1$.  Now $n(\bundle{L} - 1) \mapsto 0$ means $n \bundle{L}$ is stably fiber homotopy trivial; earlier we showed that this implise a (stable) splitting
-\begin{diagram}
+$n(\bundle{L} - 1) \mapsto 0$ means $n \bundle{L}$ is stably fiber homotopy trivial; this implies a (stable) splitting:
+\begin{diagram}[height=1.52em]
 \RP^{m+n}_n & \rTo & S^n \\
 \uTo & \ruTo_\simeq \\
-S^n.
+S^n
 \end{diagram}
-But now we know that this implies that $\nu(n) > \varphi(m)$, so $n \ge 2^{\varphi(m)}$, so $n(\bundle{L} - 1)$ was already zero in $\widetilde{KO}(\RP^m)$.\footnote{Homework: compute $\widetilde J(S^n)$.}
+But we know from section \ref{UsingTheSquaresAndThomSpaces} that this implies that $\nu(n)\geq m+1$, and since $m\geq \varphi_m$, $a_k=2^{\varphi_m}$ divides $n$, so $n(\bundle{L} - 1)$ was already zero in $\widetilde{KO}(\RP^m)$.\footnote{Homework: compute $\widetilde J(S^n)$.}
 \end{proof}
-
-Relations to problems in unstable homotopy are often mediated by the EHP sequence, so the next topic will be to construct it.  Our starting point will be a theorem of Bott and Samelson about $H_*(\Loops \Suspend X)$; for a proof see Whitehead~\cite{Whitehead}.  There is a map $\alpha: X \to \Loops \Suspend X$ which embeds $X$ as the ``straight loops:''
-\begin{figure}[h!]
-\centering\includegraphics[width=0.3\textwidth]{figures/17.pdf}
-\caption{\small The image of $x$ under $\alpha$.}
-\end{figure}
-Well the loop structure makes $H_* \Loops \Suspend X$ into an algebra, so $\alpha^*: \widetilde H_*(X) \to H_* \Loops \Suspend X$ yields a unique extension $\bigoplus_{k \ge 0} \widetilde H_*(X)^{\otimes k} \stackrel{def}{=} T \widetilde H_* X \stackrel{\tilde \alpha}{\to} H_* \Loops \Suspend X$.  Then the theorem is:
+}
+Relations to problems in unstable homotopy are often mediated by the EHP sequence, so the next topic will be to construct it.  Our starting point will be a theorem of Bott and Samelson about $H_*(\Loops \Suspend X)$; for a proof see Whitehead~\cite{Whitehead}.  There is a map $\alpha: X \to \Loops \Suspend X$ which embeds $X$ as the ``straight loops'': $\alpha$ is adjoint to $\textup{Id}_{\Sigma X}$, and sends $x\in X$ to the loop $t\mapsto [t,x]$.
+%\begin{figure}[h!]
+%\centering\includegraphics[width=0.3\textwidth]{figures/17.pdf}
+%\caption{\small The image of $x$ under $\alpha$.}
+%\end{figure}
+Choose a coefficient ring $R$.
+The loop structure makes $H_* (\Loops \Suspend X)$ into an algebra, so $\alpha_*: \widetilde H_*(X) \to H_* (\Loops \Suspend X)$ yields a unique extension to the tensor algebra $\mathrm{T}(\widetilde H_*(X;R))$ on the $R$-module $\widetilde H_*(X;R)$ (here, tensor products are over $R$):
+\[\xymatrix{
+\mathrm{T}(\widetilde H_*(X;R))\ar[r]^{\overline\alpha}&H_*(\Omega\Sigma X;R)\\
+\ar@{=}[u]\bigoplus_{k\geq0}\widetilde H_*(X;R)^{\otimes k}&
+\widetilde H_*(X;R)\ar@{_{(}->}[l]\ar[u]_{\alpha_*}
+}\]
 \begin{thm}
-If $X$ is connected, $R$ is a principal ideal domain, and $H_*(X; R)$ is torsion-free, then $T \widetilde H_*(X; R) \stackrel{\alpha^*}{\to} H_*(\Loops \Suspend X; R)$ is an isomorphism.
+If $X$ is connected, $R$ is a principal ideal domain, and $H_*(X; R)$ is torsion-free, then $\mathrm{T} (\widetilde H_*(X; R)) \stackrel{\overline \alpha}{\to} H_*(\Loops \Suspend X; R)$ is an isomorphism.
 \end{thm}
-Now since $H_*(X; R)$ is torsion-free, $\bigoplus{k \ge 0} \widetilde H_*(X)^{\otimes k} \cong \bigoplus_{j \ge 0} \widetilde H_* X^{(k)} \cong \widetilde H_*(\bigvee_{k \ge 0} X^{(k)})$, so you might hope idealistically that $\Suspend \Loops X$ splits as a wedge of smash pwoers of $X$.  Of course that's not true, but amazingly enough
+Now since $H_*(X; R)$ is torsion-free:
+\[\bigoplus_{k \ge 0} \widetilde H_*(X;R)^{\otimes k} \cong \bigoplus_{j \ge 0} \widetilde H_* (X^{(k)};R) \cong \widetilde H_*{\left(\textstyle\bigvee_{k \ge 0} X^{(k)};R\right)},\]
+so you might hope idealistically that $\Suspend \Loops X$ splits as a wedge of smash powers of $X$.  Of course that's not true, but amazingly enough, it \emph{does} split after one suspension:
 \begin{thm}[James, probably]
-It \emph{does} split after one suspension.  That is, when $X$ is a connected CW-complex, there is a homotopy equivalence
+When $X$ is a connected CW-complex, there is a homotopy equivalence
 \[
 \Suspend \Loops \Suspend X \simeq \bigvee_{k \ge 1} \Suspend X^{(k)}
 .\]
+Moreover, this equivalence realises the isomorphism $\overline\alpha$ above.
 \end{thm}
-\begin{proof}[Proof sketch]
+\begin{proof}[Proof sketch. \textbf{Come back to this!}]
 First, as $X$ is connected, $\Suspend X^{(k)}$ and $\Suspend \Loops \Suspend X$ are simply connected.  If we produce a map giving an isomorphism in homology, then by the Hurewicz theorem we have a weak equivalence.  Then if you believe that both spaces are CW-complexes and some version of the Whitehead theorem, then we're done.
 
 Now, $[\bigvee_{k \ge 1} \Suspend X^{(k)}, \Suspend \Loops \Suspend X]_* = \prod_{k \ge 1}[\Suspend X^{(k)}, \Suspend \Loops \Suspend X]_*$, which is to say that the wedge is the coproduct in the category of pointed spaces and homotopy classes of maps.  So we construct a map on $\Suspend X^{(k)}$ for $k \ge 1$:
@@ -2090,7 +2123,7 @@ On the other hand the sequence $\Suspend(X \wsum Y) \to \Suspend(X \times Y) \to
 \dTo<\simeq & & \dTo & & \dTo<\simeq \\
 \Suspend X \wsum \Suspend Y & \rTo & \Suspend(X \sprod Y) \wsum \Suspend X \wsum \Suspend Y & \rTo & \Suspend(X \sprod Y).
 \end{diagram}
-The two horizontal lines give exact sequences in homotopy, so by the five lemma and assuming $X$ and $Y$ are CW-complexes, we get a map going back, $\Suspend(X \sprod Y) \wsum \Suspend X \wsum \Suspend Y \to \Suspend (X \times Y)$.  Now the composite $\Suspend(X \sprod Y) \to \Suspend(X \sprod Y) \wsum \Suspend X \wsum \Suspend Y \stackrel{\simeq}{\to} \Suspend(X \times Y)$ gives the first map $\Suspend X^{(k)} \to \Suspend X^k$ in the overall diagram; from its construction we see that it splits the homology of $\Suspend X^k$ as a sum $H_* \Suspend X^{(k)} \oplus H_* ((\Suspend X)^{\wsum k})$.
+The two horizontal lines give exact sequences in homotopy, so by the five lemma and assuming $X$ and $Y$ are CW-complexes, we get a map going back, $\Suspend(X \sprod Y) \wsum \Suspend X \wsum \Suspend Y \to \Suspend (X \times Y)$.  Now the composite $\Suspend(X \sprod Y) \to \Suspend(X \sprod Y) \wsum \Suspend X \wsum \Suspend Y \stackrel{\simeq}{\to} \Suspend(X \times Y)$ gives the first map $\Suspend X^{(k)} \to \Suspend X^k$ in the overall diagram; from its construction we see that it splits the homology of $\Suspend X^k$ as a sum $H_* \Suspend X^{(k)} \oplus H_* ((\Suspend X)^{\wsum k})$ \textbf{incorrect expression}.
 \item The second map in the overall diagram is the suspension of the ``straight loops'' embedding that spawned this whole discussion, repeated $k$ times.
 \item The third map in the overall diagram is the suspension of the loop multiplication map.  Note that loop multiplication is not strictly associative due to parameterization problems, but it is associative up to homotopy.
 \end{enumerate}
@@ -2102,23 +2135,26 @@ Now note that the Bott-Samelson theorem required that $H^*(X; R)$ be torsion-fre
 If $X \to Y$ induces an isomorphism on homology $H_*(X; F) \stackrel{\cong}{\to} H_*(Y; F)$ for $F$ either $\Z_p$ or $\Q$, then $H_*(X; \Z) \stackrel{\cong}{\to} H_*(Y; \Z)$.
 \end{lem}
 \begin{proof}
-Use the universal coefficient theorem cleverly many times.  First, for any $p$, the sequence
+Use the universal coefficient theorem cleverly many times.  First, for any $p$, $f$ induces a map of long exact sequences induced by the short exact sequence
 \begin{diagram}
-0 & \rTo & \Z_p & \rTo & \Z_p^2 & \rTo & \Z_p & \rTo & 0
+0 & \rTo & \Z_p & \rTo & \Z_{p^2} & \rTo & \Z_p & \rTo & 0
 \end{diagram}
-gives the isomorphism with $\Z_p^2$ coefficients; then
+of coefficients. By the five lemma, $H_*(f;\Z_{p^2})$ is an isomorphism. Similarly, using induction on $n$,
 \begin{diagram}
-0 & \rTo & \Z_p^n & \rTo & \Z_{p^{n+1}} & \rTo & \Z_p & \rTo & 0
+0 & \rTo & \Z_{p^n} & \rTo & \Z_{p^{n+1}} & \rTo & \Z_p & \rTo & 0
 \end{diagram}
-in general so for $\Z_{p^n}$ coefficients for all $n$.  Now the limit $\Z_p = \cdots \into \Z_{p^n} \into \Z_{p^{n+1}} \into \cdots = \bigcup \Z_{p^n}$, the ``Pr\"ufer group'' also gives an isomorphism because homology commutes with direct limits.\footnote{By the way, $\Z_p$ is the quotient in the short exact sequence $0 \to \Z \to \Z[1/p] \to \Z[1/p]/\Z \to 0$.}  Then in fact $\Q/\Z = \bigoplus_{\hbox{$p$ prime}} \Z_p$ (this is more or less the method of partial fractions, if you think about it), so we are done.
+shows that $H_*(f;\Z_{p^n})$ is an isomorphism for all $n$.
+
+Now the limit $\Z_{p^\infty} = \cdots \into \Z_{p^n} \into \Z_{p^{n+1}} \into \cdots = \bigcup \Z_{p^n}$ is called the ``Pr\"ufer group''. As homology commutes with direct limits, $H_*(f;\Z_{p^\infty})$ is an isomorphism.  Finally, as $\Q/\Z \cong \bigoplus \Z_{p^\infty}$, the sum being taken over all primes $p$,\footnote{View the Pr\"ufer group $\Z_{p^\infty}$ as the quotient in the short exact sequence $0 \to \Z \to \Z[1/p] \to \Z[1/p]/\Z \to 0$. Define a map $\Q\to\Z_{p^\infty}$ by $a/b+c/p^d\mapsto c/p^d$ whenever $b$ is coprime to $p$. Now note that the induced map $\Q\to\prod\Z_{p^\infty}$ factors through the inclusion of $\bigoplus\Z_{p^\infty}$, that this factorisation is surjective, and that it has kernel $\Z$.}
+we are done.
 \end{proof}
 
 Now the proof of the James' Theorem relied on some heavy stuff: Bott-Samelson, the Hurewicz theorem, and the JHC Whitehead theorem.  You may think that's too slick, and you would be right, because we skipped over the ``James construction.''  The biggest difficulties above were caused by the failure of loop composition to associate.  The idea is to replace $\Loops X$ with a homotopy equivalent space, the ``Moore loops,'' where composition \emph{does} associate.
 
-The ``Moore loops'' on $X$ are incredibly simple: since scaling caused trouble, don't scale!  A Moore loop is a map $\omega: [0, T] \to X$, $T \ge 0$, with $\omega(0) = \omega(T) = *$.  Loop multiplication of a Moore loop $\omega: [0, T] \to X$ and another Moore loop $\tau: [0, S] \to X$ gives a loop $\tau \cdot \omega: [0, T + S] \to X$.  We'll call this space $\Loops X$ too, for extra confusion.  $\Loops X$ comes with a basepoint $*$, the path of length 0, and then $\Omega X$ has a strictly associative product with a strict unit *.  We get a map $\alpha: X \to \Loops \Suspend X$ in the same way (notice the old $\Omega X$ embeds in the Moore loops $\Omega X$).
+The space of ``Moore loops'' on $X$ is incredibly simple: since scaling caused trouble, don't scale!  A Moore loop is a map $\omega: [0, T] \to X$, $T \ge 0$, with $\omega(0) = \omega(T) = *$.  Loop multiplication of a Moore loop $\omega: [0, T] \to X$ and another Moore loop $\tau: [0, S] \to X$ gives a loop $\tau \cdot \omega: [0, T + S] \to X$.  We'll call this space $\Loops X$ too, for extra confusion.  $\Loops X$ comes with a basepoint $*$, the path of length 0, and then $\Omega X$ has a strictly associative product with a strict unit *.  We get a map $\alpha: X \to \Loops \Suspend X$ in the same way (notice that the old $\Omega X$ embeds in the Moore loops $\Omega X$).
 
 Now this $\alpha$ factors
-\begin{diagram}
+\begin{diagram}[height=2em]
 X & \rTo^\alpha & \Loops \Suspend X \\
 & \rdTo(1,1) \ruTo(1,1)_{\tilde \alpha} J(X)
 \end{diagram}
@@ -2131,7 +2167,7 @@ where $\sim$ is generated by $x \cdot * = x$.  And the ``real'' theorem is:
 $\tilde \alpha$ is a homotopy equivalence when $X$ is a connected CW complex.
 \end{thm}
 Notice that this gives a map back, and so a way of constructing maps out of a loop space.  In general, this is hard to do; adjointness is no help for maps \emph{out} of a loop space.  For example, $J(X)$ is filtered by $J_n = \coprod_{j \le n} X^k / \sim$, and we fill out the following commutative diagram with the obvious maps:
-\begin{diagram}
+\begin{diagram}[height=2em]
 X^n & \rTo & J_n(X) & \rTo & J_n(X) / J_{n-1}(X) & \rEqualto & X^n/F_{n-1}X^n \\
     & \rdTo(6,2) &        &      &                     &           & \dEqualto \\
     &      &        &      &                     &           & X^{(n)}.
@@ -2144,145 +2180,183 @@ On the other hand, suspending once we get
 & & \uTo \\
 \Suspend X^n & \rTo & \Suspend J_n(X) & \rTo & \Suspend X^{(n)},
 \end{diagram}
-so after one suspension $J_n(X)$ splits as $\Suspend J_n(X) \simeq \bigvee_{k \le n} \Suspend X^{(k)}$.  Finally, notice that we have a map $h_m$:
-\begin{diagram}
-\bigvee_{k \ge 0} \Suspend X^{(k)} & \pile{\rTo^{\simeq} \\ \lTo_{\exists}} & \Suspend \Omega \Suspend X \\
-\dTo<{\Suspend(\hbox{collapsing})} & \ldTo{\hat h_m} \\
+so after one suspension $J_n(X)$ splits as $\Suspend J_n(X) \simeq \bigvee_{k \le n} \Suspend X^{(k)}$. 
+
+\textbf{Everything above here would like to be rewritten, and re-understood by me.}
+
+Finally, notice that we have a map $\widehat h_m$:
+\begin{diagram}[height=2em]
+\bigvee_{\!k \ge 0} \Suspend X^{(k)} & \pile{\rTo^{\simeq} \\ \lTo_{\exists}} & \Suspend \Omega \Suspend X \\
+\dTo<{\Suspend(\hbox{collapsing})} & \ldTo_{\widehat h_m} \\
 \Suspend X^{(m)}.
 \end{diagram}
-Its adjoint $h_m: \Loops \Suspend X \to \Loops \Suspend X^{(m)}$ is called the ``$m^\textup{th}$ (James-)Hopf invariant.''  OK, so suppose $X = S^n$ and $m = 2$; then $h_2$ is a map $\Loops S^{n+1} \to \Loops \Suspend (S^n)^{(2)} = \Loops S^{2n+1}$.  This is a piece of the EHP sequence; the rest comes from taking the homotopy fiber and looking at the homotopy long exact sequence.
+Its adjoint $h_m: \Loops \Suspend X \to \Loops \Suspend X^{(m)}$ is called the ``$m^\textup{th}$ (James-)Hopf invariant.''  If $X = S^n$ and $m = 2$:
+\[h_2:\Loops S^{n+1} \to \Loops \Suspend (S^n)^{(2)} = \Loops S^{2n+1}.\]
+%; then $h_2$ is a map $\Loops S^{n+1} \to \Loops \Suspend (S^n)^{(2)} = \Loops S^{2n+1}$.  
+This is a piece of the EHP sequence; the rest comes from taking the homotopy fiber and looking at the homotopy long exact sequence. Now to compute $H_n (\Loops S^{n+1})$, we use Bott-Samelson: 
+\[H_* (\Loops S^{n+1}) = \mathrm T(\widetilde H_* (S^n)) = \mathrm T[u_n]\text{ \ where $|u_n| = n$. }\]
+So $h_2$ induces a map $\mathrm T[u_n] \to \mathrm T[u_{2n}]$ which preserves degrees, so it couldn't be an algebra map.  So we'd better try cohomology.
 
-So now let's try to compute $H_n \Loops S^{n+1}$  Actually, $S^{n+1} = \Suspend S^n$, so we could use Bott-Samelson: $H_* \Loops S^{n+1} = T(\widetilde H_* S^n) = T[u]$, $|u| = n$.  Alternatively you could use the path fibration $\Loops S^{n+1} \to PS^{n=1} \to S^{n+1}$, $(n > 0)$, and the Serre spectral sequence gives
+\ConfusedBox{
+The following has become some kind of aside:
 
-DRAW SPECTRAL SEQUENCE
+Alternatively, to compute $H_n(\Omega S^{n+1}$, you could use the path fibration $\Loops S^{n+1} \to PS^{n+1} \to S^{n+1}$, $(n > 0)$, and the Serre spectral sequence gives... (draw it).
 
-Note that if you try to remember grading then $u^2 = (-1) u u$ for $u$ odd, so you lose commutativity by trying to remember grading, which is the reverse somehow of the usual situation.
-
-So $h_2$ induces a map $T[u_n] \to T[u_{2n}]$ which preserves degrees, so it couldnt' be an algebra map.  So we'd better try cohomology.
-\begin{thm}
-With principal ideal coefficients:
-\begin{align*}
-H^* \Loops S^{2n+1} & \cong \Gamma[x_{2n}], \\
-H^* \Loops S^{2n} & \cong \Lambda[x_{2n-1}] \otimes \Gamma[x_{4n-2}], \\
-H_* \Loops S^{2k} & \cong H_* S^{2k-1} \otimes H_* \Loops S^{2k-1},
-\end{align*}
-where the first isomorphism is of Hopf algebras, the second is of algebras, and the third is of coalgebras.  Here, $\Gamma$ is the divided polynomial algebra.
+\textit{Note that if you try to remember grading then $u^2 = (-1) u u$ for $u$ odd, so you lose commutativity by trying to remember grading, which is the reverse somehow of the usual situation. \textbf{I don't really get this.}}
+}
+\begin{thm}\label{ThmAlgStrucLoopsSphere}
+With coefficients in a principal ideal domain \textup{\textbf{(should this say `field'?)}}, there are isomorphisms:
+\begin{alignat}{2}
+H^* (\Loops S^{2n+1}) & \cong \Gamma[x_{2n}]&\qquad&\text{as Hopf algebras}, \label{FirstIsoEqn}\\
+H^* (\Loops S^{2n}) & \cong \Lambda[x_{2n-1}] \otimes \Gamma[x_{4n-2}]&&\text{as algebras}, \label{SecondIsoEqn}\\
+H_* (\Loops S^{2k}) & \cong H_*( S^{2k-1}) \otimes H_* (\Loops S^{2k-1})&&\text{as coalgebras, not as algebras.}\label{ThirdIsoEqn}
+\end{alignat}
+Here, $\Gamma$ stands for the divided polynomial algebra.
 \end{thm}
+We digress a bit to explain this theorem's statement.  First, we always have a diagonal map $\Delta: X \to X \times X$.  Assuming that $X$ is nice enough (or that the coefficients are nice enough), $H_*(X) \otimes H_*(X) \stackrel{\times}{\to} H_*(X \times X)$ is an isomorphism, so there's a map going backwards as well.  We call the composite of $\Delta_*$ with this inverse map a ``coproduct'', denoted $\Delta$:
+\[\xymatrix{
+H_*(X)\ar[rd]_{\Delta_*}\ar[rr]^{\Delta\qquad} &&H_*(X)\otimes H_*(X)\ar[ld]^\times_\cong\\
+&H_*(X\times X)
+}\]
+The coproduct map $\Delta$, along with the obvious map $H_* (X) \to R= H_* (\ptspace)$ gives $H_* (X)$ the structure of a coalgebra.
 
-We digress a bit to explain this theorem's statement.  First, we always have a diagonal map $\Delta: X \to X \times X$.  Assuming that $X$ is nice enough (or that the coefficients are nice enough), we get that $H_*(X) \otimes H_*(X) \stackrel{\times}{\to} H_*(X \times X)$ is an isomorphism, so there's a map going backwards as well.  The composite of this with $\Delta_*$ is another map we also call $\Delta: H_* X \to H_* X \otimes H_* X$.  For obvious reasons this is called a ``coproduct.''  Also, there is the map $H_* X \to H_* \ptspace = R$; then these two together give $H_* X$ the structure of a coalgebra.
-
-What is a coalgebra?  Well, you reverse the diagrams for an algebra; i.e., you have maps $\Delta: C \to C \otimes_R C$ and $\epsilon: C \to R$ satisfying coassociativity, counit, and cocommutativity, corresponding to the following three diagrams:
-\begin{diagram}
+What is a coalgebra?  Well, you reverse the diagrams for an algebra; i.e., you have maps $\Delta: C \to C \otimes_R C$ and $\epsilon: C \to R$ satisfying coassociativity, counitality, and cocommutativity, corresponding to the following three diagrams:
+\begin{diagram}[height=2em]
 C & \rTo^\Delta & C \otimes_R C \\
 \dTo<\Delta & & \dTo>{\Delta \otimes 1} \\
 C \otimes_R C & \rTo^{1 \otimes \Delta} & C \otimes_R C \otimes_R C,
 \end{diagram}
-\begin{diagram}
+\begin{diagram}[height=2em]
 & & C \\
 & \ldTo^\cong & \dTo>\Delta & \rdTo^\cong \\
 R \otimes_R C & \lTo^{\epsilon \otimes 1} & C \otimes_R C & \rTo^{1 \otimes \epsilon} & C \otimes_R R,
 \end{diagram}
-\begin{diagram}
+\begin{diagram}[height=2em]
 C & \rTo^\Delta & C \otimes_R C \\
 & \rdTo^\Delta & \dTo>T \\
 & & C \otimes_R C.
 \end{diagram}
 ($T$ involves a sign change for a graded cocommutative coalgebra.)
 
-Suppose $X$ is connected, so $H_0 X = R$, and there's a well-defined class $1$ in $H_0 X$.  Then if $x \in H_n(X)$ where $n > 0$, $\Delta x = 1 \otimes a + \cdots + b \otimes 1$, where any omitted terms have positive degree both in the left- and right-hand factor.  It is clear that $a = b = x$.  If $H_p X$ vanishes for $p < n$, then $ \Delta x = 1 \otimes x + x \otimes 1$, and $x$ is called ``primitive.''  Note that in dimension zero, well, $\Delta 1 = 1 \otimes 1$.  This property is called ``group-like;'' it should be called ``set-like,'' but nobody does that.\footnote{The reason for this terminology comes from the example $R[G]$; see below.}
+Suppose $X$ is connected, so $H_0( X) = R$, and there's a well-defined class $1$ in $H_0 (X)$.  Then if $x \in H_n(X)$ where $n > 0$, $\Delta x = 1 \otimes a + \cdots + b \otimes 1$, where any omitted terms have positive degree both in the left- and right-hand factor.  It is clear that $a = b = x$ (by counitality).  If $H_p (X)$ vanishes for $p < n$, then $ \Delta x = 1 \otimes x + x \otimes 1$, and $x$ is called ``primitive.''  Note that in dimension zero, well, $\Delta 1 = 1 \otimes 1$.  This property is called ``group-like;'' it should be called ``set-like,'' but nobody does that.\footnote{The reason for this terminology comes from the example $R[G]$; see below.}
 
-If moreover we are looking at $\Loops X$, well, $\Loops X$ is an $H$-space: the map $\mu: \Loops X \times \Loops X \to \Loops X$ satisfies the requirement that the diagram
-\begin{diagram}
+If moreover we are looking at $Y=\Loops X$, well, $\Loops X$ is an $H$-space: the map $\mu: \Loops X \times \Loops X \to \Loops X$ satisfies the requirement that the  forllowing two diagrams homotopy commute:\footnote{Some people call this an associative $H$-space.}
+\begin{diagram}[height=2em]
 \ptspace \times \Loops X & \rTo & \Loops X \times \Loops X & \lTo & \Loops X \times \ptspace \\
 & \rdTo & \dTo>\mu & \ldTo \\
 & & \Loops X
 \end{diagram}
-homotopy commutes, and
-\begin{diagram}
+\begin{diagram}[height=2em]
 \Loops X \times \Loops X \times \Loops X & \rTo^{1 \times \mu} & \Loops X \times \Loops X \\
 \dTo<{\mu \times 1} & & \dTo<\mu \\
 \Loops X \times \Loops X & \rTo^\mu & \Loops X
 \end{diagram}
-homotopy commutes.\footnote{Some people call this an associative $H$-space.}  Over field coefficients, this induces the diagram
-\begin{diagram}
-H_* Y \otimes H_* Y & \rTo^\psi & H_* Y \\
+Over field coefficients, this induces the diagram
+\begin{diagram}[height=2em]
+H_* (Y) \otimes H_* (Y) & \rTo^\psi & H_* (Y) \\
 \dTo>\cong & \ruTo_{\mu_*} \\
 H_*(Y \times Y),
 \end{diagram}
-where the isomorphism is of coalgebras.  (We omit the proof; you have to think about what the tensor product of coalgebras ought to be.)  The map $\psi$ is called the ``Pontrjagin product.''
+where the isomorphism is of coalgebras.  (We omit the proof; you have to think about what the tensor product of coalgebras ought to be.)  The map $\psi$ is called the ``Pontrjagin product''.
 
-What does this mean, though?  It means that $H_* Y$ is a Hopf algebra.  So what's a Hopf algebra?  Well, it's a bunch of structure.  We have maps $\eta: R \to H$ and $\mu: H \otimes H \to H$ that give $H$ an algebra structure and maps $\epsilon: H \to R$ and $\Delta: H \to H \otimes H$ that give $H$ a coalgebra structure.  In addition, $\eta$ and $\mu$ are coalgebra maps, so they give commutative diagrams of the form
-\begin{diagram}
-H \otimes H & & \rTo^\mu & & H \\
-& \rdTo<{\Delta \otimes \Delta} \\
-\dTo<{\Delta_{H \otimes H}} & & H \otimes H \otimes H \otimes H & & \dTo>\Delta \\
-& \ldTo<{1 \otimes T \otimes 1} \\
-H \otimes H \otimes H \otimes H \otimes H & & \rTo^{\mu \otimes \mu} & & H \otimes H,
-\end{diagram}
-\begin{diagram}
-& & H \otimes H & \rTo^\mu & H \\
-& \ldTo^{\epsilon_{H \otimes H}} & \dTo>{\epsilon \otimes \epsilon} & \ldTo(2,4)_\epsilon \\
-R \otimes R \\
-& \rdTo_\mu \\
-& & R,
-\end{diagram}
-\begin{diagram}
-& R \\
-R\ruTo(1,1)^{i\alpha} & \rTo^eta & H\luTo(1,1)^\epsilon \\
-\dTo<\Delta & & \dTo>\Delta \\
-R \otimes R & \rTo^{\eta \otimes \eta} & H \otimes H.
-\end{diagram}
-Now you can check that these diagrams' commuting also insures that $\Delta$ and $\epsilon$ are algebra maps, so the symmetric conditions are equivalent.  Before going on, another important example of a hopf algebra is, for $G$ a group, the group algebra $R[G]$: the elements are the free $R$-module on $G$, and the problem is generated by $[g][h] = [gh]$.  The coalgebra structure comes from $\Delta[g] = [g \otimes g]$ and $\epsilon[g] = 1$ for $g \in G$.  Notice that this explains the terminology ``group-like.''  In fact, the set of group-like elements is exactly the generators.  So the coalgebra structure enables us to recover the generators!
+What does this mean, though?  It means that $H_* (Y)$ is a Hopf algebra.  So what's a Hopf algebra?  Well, it's a bunch of structure.  We have maps $\eta: R \to H$ and $\mu: H \otimes H \to H$ that give $H$ an algebra structure and maps $\epsilon: H \to R$ and $\Delta: H \to H \otimes H$ that give $H$ a coalgebra structure.  In addition, $\eta$ and $\mu$ are coalgebra maps, so they give commutative diagrams of the form:
+\[\xymatrix{
+H\otimes H\ar[r]^\mu\ar[d]^{\Delta\otimes\Delta}
+\ar@/_2pc/[dd]_(.7){\Delta_{H\otimes H}}
+&H\ar[dd]_\Delta\\
+H\otimes H\otimes \makebox[0cm][l]{$H\otimes H$}\ar[d]^{1\otimes T\otimes 1}\\
+H\otimes H\otimes H\otimes H\ar[r]^{\qquad\mu\otimes\mu}&H\otimes H
+}\qquad
+\xymatrix{
+H\otimes H\ar[r]^\mu\ar[d]^{\epsilon\otimes\epsilon}
+\ar@/_1.3pc/[dd]_(.7){\epsilon_{H\otimes H}}
+&H\ar[dld]^\epsilon\\
+R\otimes R\ar[d]\\R
+}\qquad
+\xymatrix@C=3mm{
+&R\\
+R\ar@{=}[ur]\ar[rr]^\eta\ar[d]_\Delta&&H\ar[ul]_\epsilon\ar[d]^\Delta\\
+R\otimes R\ar[rr]^{\eta\otimes\eta}&&H\otimes H
+}\]
+Now you can check that these diagrams commuting implies that $\Delta$ and $\epsilon$ are algebra maps, so the symmetric conditions are equivalent.
 
-Turning to the Bott-Samelson theorem: if $X$ is connected, $R$ is a principal ideal domain, and $H_* X$ is torsion-free, then the theorem gave us an algebra isomorphism $T \widetilde H_n(X)  = H_* \Loops \Suspend X$.  Now we have establed that $H_n \Loops \Suspend X$ is a Hopf algebra; the natural question is what the Hopf algebra structure on $T \widetilde H_* X$ ought to be in order to make the isomorphism one of Hopf algebras.  In particular, what we need is a map $\Delta: T \to T \otimes T$.  It has to be an algebra map, so by the universality property of $T$ all we need to do is produce a map $\tilde \Delta: \widetilde H_*(X) \to T \otimes T$.  It works out that $\tilde \Delta$ is the obvious thing:
-\begin{diagram}
-T \widetilde H_* X & \rTo^\Delta & T \widetilde H_* X \otimes T \widetilde H_* X \\
+Before going on, another important example of a hopf algebra is, for $G$ a group, the group algebra $R[G]$. The elements are the free $R$-module on $G$, and the product is generated by $[g][h] = [gh]$.  The coalgebra structure comes from $\Delta[g] = [g \otimes g]$ and $\epsilon[g] = 1$ for $g \in G$.  Notice that this explains the terminology ``group-like.''  In fact, the set of group-like elements is exactly the generators.  So the coalgebra structure enables us to recover the generators!
+
+Turning to the Bott-Samelson theorem: if $X$ is connected, $R$ is a principal ideal domain, and $H_* (X)$ is torsion-free, then the theorem gave us an algebra isomorphism $\mathrm T (\widetilde H_n(X))  \cong H_* (\Loops \Suspend X)$.  Now that we have establed that $H_n (\Loops \Suspend X)$ is in fact a Hopf algebra, the natural question is what the Hopf algebra structure on $\mathrm T (\widetilde H_* (X))$ ought to be in order that the isomorphism is one of Hopf algebras.  In particular, what we need is a coproduct map $\Delta: \mathrm T \to \mathrm T \otimes \mathrm T$.  It has to be an algebra map, so by the universality property of $\mathrm T$ all we need is a suitable map $\tilde \Delta: \widetilde H_*(X) \to \mathrm T \otimes \mathrm T$, whose unique extension $\Delta$ is a coproduct map:
+\begin{diagram}[height=2em]
+\mathrm T (\widetilde H_* (X)) & \rTo^\Delta & \mathrm T (\widetilde H_* (X)) \otimes \mathrm T (\widetilde H_* (X)) \\
 \uTo & & \uTo \\
-\widetilde H_* X & \rTo^{\tilde \Delta} & \widetilde H_* X \otimes \widetilde H_* X,
+\widetilde H_* (X) & \rTo^{\tilde \Delta} & \widetilde H_* (X) \otimes \widetilde H_* (X),
 \end{diagram}
-where $x \in \widetilde H_* X$, $n > 0$, gives $\Delta x = x \otimes 1 + \tilde \Delta x + 1 \otimes x$.
+It works out that $\tilde \Delta x$ is the obvious thing. For $x \in \widetilde H_n (X)$, with $n > 0$, $\tilde\Delta$ is defined by:
+\[\Delta x = x \otimes 1 + \tilde \Delta x + 1 \otimes x\]
 
-Returning at least to our theorem about $H_* \Loops S^{n+1}$ and $H^* \Loops S^{n+1}$, let's compute the coalgebra structure of $H_* \Loops S^{n+1} = T[u_n]$:
+
+Returning at last to theorem \ref{ThmAlgStrucLoopsSphere}, let's compute the coalgebra structure of $H_* (\Loops S^{n+1}) =\mathrm T[u_n]$:
+\begin{alignat*}{2}
+\Delta u_n & = u_n \otimes 1 + 1 \otimes u_n,&\qquad&\textup{(as there is no room for middle terms)} \\
+\Delta u_n^k & = (u_n \otimes 1 + 1 \otimes u_n)^k,&&\textup{(as $\Delta$ is an algebra map)}
+\end{alignat*}
+In particular, as the product in $\mathrm T[u_n]\otimes \mathrm T[u_n]$ is $(\mu\otimes\mu)\circ (1\otimes T\otimes1)$, where $T(a\otimes b)=(-1)^{|a||b|}(b\otimes a)$:
 \begin{align*}
-\Delta u_n & = u_n \otimes 1 + 1 \otimes u_n, \\
-\Delta (u_n^k) & = (u_n \otimes 1 + 1 \otimes u_n)^k,
+\Delta u_n^2&=(-1)^{0\cdot n}u_n^2\otimes1+(-1)^{0\cdot0}u_n\otimes u_n+(-1)^{n\cdot n}u_n\otimes u_n+(-1)^{n\cdot 0}\otimes u_n^2\\
+&=u_n^2\otimes1+(1+(-1)^{n})(u_n\otimes u_n)+1\otimes u_n^2
 \end{align*}
-first since there's no room for middle terms and second because $\Delta$ is an algebra map.
 \begin{itemize}
-\item When $n$ is even, then the product of the $u_n$ commutes, and we get $\Delta u_n = \sum_{i + j = k} \binom{i+j}{i} u_n^i \otimes u_n^j$.
-\item When $n$ is odd, we get that $u_n^2$ is primitive and has even degree, so
+\item When $n$ is even, we could go on to prove that $\Delta u_n^k = {\displaystyle\sum_{i + j = k}} \binom{i+j}{i} u_n^i \otimes u_n^j$.
+\item When $n$ is odd, we get that $u_n^2$ is primitive. As $u_n^2$ has even degree:
 \begin{align*}
-\Delta u_n^{2k} & = \sum_{i+j=k} \binom{i+j}{i} u_n^{2i} \otimes u_n^{2j}, \\
+\Delta u_n^{2k} & = \sum_{i+j=k} {\textstyle\binom{i+j}{i}} u_n^{2i} \otimes u_n^{2j}, \text{ \ and}\\
 \Delta u_n^{2k+1} & = (\Delta u_n^{2k})(\Delta u_n) \\
-& = \sum_{i+j=k} \binom{i+j}{i} (u_n^{2i+1} \otimes u_n^{2j} + u_n^{2i} \otimes u_n^{2j+1}).
+& = \sum_{i+j=k} {\textstyle\binom{i+j}{i}} (u_n^{2i+1} \otimes u_n^{2j} + u_n^{2i} \otimes u_n^{2j+1}).
 \end{align*}
 \end{itemize}
-So $H_* \Loops S^{2k} \cong H_* S^{2k-1} \otimes H_* \Loops S^{4k-1}$ as coalgebras, though certainly not as algebras.
+So $H_* (\Loops S^{2k} )\cong H_*( S^{2k-1}) \otimes H_* (\Loops S^{4k-1})$ as coalgebras, though certainly not as algebras giving (\ref{ThirdIsoEqn}).
 
-Now consider $H^* \Loops S^{n+1}$.  With any coefficients, the group structure is
+Now consider $H^* (\Loops S^{n+1})$.  With any coefficients, the group structure is
 \[
-H^q(\Loops S^{n+1}; R) = \begin{cases} R \langle x_i \langle & ni = q, \\ 0 & \mathrm{otherwise}. \end{cases}
+H^q(\Loops S^{n+1}; R) = \begin{cases} R \langle z_i \rangle & q=ni\textup{ \,(for each $i\geq0$)}, \\ 0 & \mathrm{otherwise}. \end{cases}
 \]
 Now with field coefficients, let's compute the ring structure.  We can use in this case the pairing of cohomology and homology, so picking $n$ to be even to start, we get
-\begin{align*}
-\langle x_i x_j, u_n^{i+j} \rangle & = \langle \Delta^*(x_i \otimes x_j), u_n^{i+j} \rangle \\
-& = \langle x_i \otimes x_j, \Delta_* u_n^{i+j} \rangle \\
-& = \left\langle x_i \otimes x_j, \sum_{i+j} \binom{i+j}{i} u_n^i \otimes u_n^j \right\rangle \\
-& = \binom{i+j}{i} = \left\langle \binom{i+j}{i} x_{i+j}, u_n^{i+j} \right\rangle,
-\end{align*}
-so $x_i x_j = \binom{i+j}{i} x_{i+j}$.  This algebra is called the divided polynomial algebra on $x_n$, denoted $\Gamma[x_n]$, and we get $H^* \Loops S^{2k+1} \cong \Gamma[x_k]$ as Hopf algebras.
+\begin{alignat*}{2}
+\langle z_i z_j, u_n^{i+j} \rangle & = \langle \Delta^*(z_i \otimes z_j), u_n^{i+j} \rangle&\qquad& \\
+& = \langle z_i \otimes z_j, \Delta_* u_n^{i+j} \rangle \\
+& = \left\langle z_i \otimes z_j, \sum_{i'+j'=i+j} {\textstyle\binom{i'+j'}{i'}} u_n^{i'} \otimes u_n^{j'} \right\rangle&&\text{\ (as $n$ is even)} \\
+& = {\textstyle\binom{i+j}{i}} = \left\langle {\textstyle\binom{i+j}{i}} z_{i+j}, u_n^{i+j} \right\rangle,
+\end{alignat*}
+In particular, $z_i z_j = \binom{i+j}{i} z_{i+j}$. This algebra is called the divided polynomial algebra on $z_1$, denoted $\Gamma[z_1]$, and we get $H^* (\Loops S^{2k+1}) \cong \Gamma[x_{2k}]$ as Hopf algebras, which is (\ref{FirstIsoEqn}).
 
-Similarly, the pairing for the odd case gives
+Similarly, the pairing for the odd case gives (\ref{SecondIsoEqn}):
 \begin{align*}
-H^* \Loops S^{2k} & \cong H^* S^{2k-1} \otimes H^* \Loops S^{4k-1} \\
-& = \cong \Lambda[x_{2k-1}] \otimes \Gamma[x_{4k-2}],
+H^* (\Loops S^{2k}) & \cong H^* (S^{2k-1}) \otimes H^* (\Loops S^{4k-1}) \\
+& \cong \Lambda[x_{2k-1}] \otimes \Gamma[x_{4k-2}],
 \end{align*}
 but now since the homology isomorphism was only one of coalgebras, this is only an isomorphism of algebras.
 
 % >>>
 \fi
-\BoxedNote{}
+\BoxedNote{
+Let $X$ be a connected CW-complex, and $X\stackrel{\alpha}{\to} \Omega\Sigma X$ be the inclusion of $X$ as the straight loops of length one in the space of Moore loops on $X$.
+
+\Bullet If $R$ is a PID, and $H_*(X; R)$ is torsion-free, then $\alpha$ induces an isomorphism $\mathrm{T} (\widetilde H_*(X; R)) \stackrel{\overline \alpha}{\to} H_*(\Loops \Suspend X; R)$.
+
+\Bullet There is an equivalence
+$
+\Suspend \Loops \Suspend X \simeq \bigvee_{k \ge 1} \Suspend X^{(k)}
+$ which realises $\overline\alpha$.
+
+\Bullet The extension of $\alpha$ to $J(X)\stackrel{\tilde\alpha}{\to}\Omega\Sigma X$ is a homotopy equivalence. Define:
+\[\widehat h_m:\left\{\Sigma\Omega\Sigma X\to{\textstyle\bigvee_{\!k \ge 0}} \Suspend X^{(k)}\to\Sigma X^{(m)}\right\}\text{ with adjoint }h_m:\Omega\Sigma X\to\Omega\Sigma X^{(m)}.\]
+
+\Bullet With PID \textup{\textbf{(should this say `field'?)}} coefficients, there are isomorphisms:
+\begin{alignat*}{2}
+H^* (\Loops S^{2n+1}) & \cong \Gamma[x_{2n}]&\qquad&\text{as Hopf algebras}, \\
+H^* (\Loops S^{2n}) & \cong \Lambda[x_{2n-1}] \otimes \Gamma[x_{4n-2}]&&\text{as algebras}, \\
+H_* (\Loops S^{2k}) & \cong H_*( S^{2k-1}) \otimes H_* (\Loops S^{2k-1})&&\text{as coalgebras, not as algebras.}
+\end{alignat*}
+}
 \section{The maps \texorpdfstring{$e$ and $h$}{e and h} in the EHP long exact sequence} % <<<
+\label{TheMapsEandHinTheEHPLES}
 \ifx\OutputTheMapsEandHinTheEHPLES\undefined\else
 The march to the EHP sequence continues.  Recall for a connected CW complex $X$ the James construction gave a homotopy equivalence
 \[
@@ -2509,6 +2583,7 @@ H^{n-1}S^{n-1} & \lTo^{\mu(x_0, -)^*}_{\cdot b} & H^{n-1} S^{n-1}.
 \fi
 \BoxedNote{}
 \section{Whitehead products and the EHP spectral sequence} % <<<
+\label{WhiteheadProductsAndTheEHPSS}
 \ifx\OutputWhiteheadProductsAndTheEHPSS\undefined\else
 OK, so now we'll go back to the EHP sequence, and conclude this look at the map $h$ by seeing what we get from the existence of elements of Hopf invariant 1.  Last time we found an element of Hopf invariant one $\nu: S^7 \to S^4$ which came from the Hopf construction on quaternion multiplication $S^3 \times S^3 \to S^3$.  In the EHP sequence this appears as the $\pi_6$ level of $S^3 \to \Loops S^4 \stackrel{h}{\to} \Loops S^7$.  We can fit $\nu$ into this picture by
 \begin{diagram}
@@ -2721,6 +2796,7 @@ But we cna get more otu of this information: notice that this is the \emph{only}
 \fi
 \BoxedNote{}
 \section{The stable category} % <<<
+\label{TheStableCategory}
 \ifx\OutputTheStableCategory\undefined\else
 Last time we saw the introduction of the EHP spectral sequence.  Remember the $E^1$ term looked like this: INKSCAPE  In introducing it the claim was made that studying this spectral sequence would help to attack the theorem about desuspending $W_n$.  In order to see why this might be true, let's take a look at how to interpret the differentials in the spectral sequence.  Note that this discussion will apply in general to any spectral sequence arising from an exact couple.
 
@@ -2826,6 +2902,7 @@ As a final remark, note that now we can talk about the Thom space of a virtual b
 \fi
 \BoxedNote{}
 \section{Homotopical algebra and duality} % <<<
+\label{HomotopicalAlgebraAndDuality}
 \ifx\OutputHomotopicalAlgebraAndDuality\undefined\else
 Well, let's continue with the discussion of stable homotopy, and really enter the stratosphere at this point, at least for a short while.  So remember last time we ended with the notion of a category $\CatOf{C}$, the $S$-category of finite complexes.  In this category there is an important notion of ``exact triangles:'' $X \to Y \to Z \to \Suspend X$ is an exact triangle if it is homotopy equivalence to $X \stackrel{f}{\to} Y \to Cf \to \Suspend X$ on the level of spaces, perhaps after suspending a lot.  Two important facts about exact triangles are
 \begin{enumerate}
@@ -2925,6 +3002,7 @@ A finite complex is built out of spheres using exact triangles, so we get
 \fi
 \BoxedNote{}
 \section{Dualities} % <<<
+\label{Dualities}
 \ifx\OutputDualities\undefined\else
 We were talking about duality; the last thing mentioned was the ``function spectrum'' $F(X, Y)$ satisfying $\{W, F(X, Y)\} \cong \{X \sprod W, Y\}$ for all $W \in \CatOf{S}$.  If $X$ is finite then $F(X, Y) = (DX) \sprod Y$.  Now call $Y = E$, take $W = S^n$, and assume $X$ is finite, then
 \begin{diagram}
@@ -3040,6 +3118,7 @@ Now we'd like $f$ to be an equivalence; this isn't always true, but if some reas
 \fi
 \BoxedNote{}
 \section{The structure of stunted projective space} % <<<
+\label{TheStructureOfStuntedProjectiveSpace}
 \ifx\OutputTheStructureOfStuntedProjectiveSpace\undefined\else
 Today we look at the attaching maps for stunted projective spaces.  In fact, the attaching maps we're going to look at are the ``stable relative attaching maps,'' so perhaps we should begin by saying what that means.  Suppose $X$ is a CW complex; then it has a skeletal filtration $Sk_* X$.  The $(k+1)$-skeleton is obtained from the $k$-skeleton by attaching $(k+1)$-cells as in
 \begin{diagram}
@@ -3268,6 +3347,7 @@ S^{n - \rho(n) - 1}.
 \fi
 \BoxedNote{}
 \section{Matching the EHP sequence to Atiyah-Hirzebruch} % <<<
+\label{MatchingTheEHPSStoAtiyahHirzebruck}
 \ifx\OutputMatchingTheEHPSStoAtiyahHirzebruck\undefined\else
 Last time we used a ``folk theorem'' due to Toda and Adams to the effect that the virtual bundle over $S^{\rho(n)}$ classified by $g_{\nu(n)}$ has as its Thom space the space $Cj_{\nu(n)}$ from the cofibration sequence
 \[
@@ -3395,6 +3475,7 @@ So $w_{n-1}$ desuspends to an element in $\pi_{2n-\rho(n)-2} S^{n-\rho(n)}$ and 
 \fi
 \BoxedNote{}
 \section{The space of little cubes} % <<<
+\label{TheSpaceOfLittleCubes}
 \ifx\OutputTheSpaceOfLittleCubes\undefined\else
 Today we'll examine where the Snaith maps come from, but you're going to have to believe some things.  Some references for this include May's book~\cite{May}, Cohen's paper~\cite{Cohen}, and Kuhn's paper~\cite{Kuhn}.  Remember, we're trying to construct maps
 \[
@@ -3502,6 +3583,7 @@ There's lots of work still to be done: you have to check the compatibility of th
 \fi
 \BoxedNote{}
 \section{The Becker-Gottlieb transfer} % <<<
+\label{TheBeckerGottliebTransfer}
 \ifx\OutputTheBeckerGottliebTransfer\undefined\else
 One of the advantages of a topics course is that you can change direction in midstream.  So now let's study the Adams conjecture for a while, starting with a tool by Becker and Gottlieb which enables us to get a slicker proof than the original ones of Quillen and Friedlander.  It's a construction that's of interest anyway: ``transfer.''  The basic construction is so simple that it's hard to concentrate on it long enough to appreciate how much information it contains.
 \begin{enumerate}
@@ -3723,6 +3805,7 @@ So $k^{4n}(\psi^k f^* - f^* \psi^k) = 0$, and $n$ depended only on $f$.
 \fi
 \BoxedNote{}
 \section{The Adams conjecture} % <<<
+\label{TheAdamsConjecture}
 \ifx\OutputTheAdamsConjecture\undefined\else
 Well, nothing in topology ever proceeds in a straightforward way; usually you end up having to talk about some ``relative'' version.  This time, we'll use a sort of ``relative'' transfer.  So, as before, let $F \to E \stackrel{p}{\to} B$ be a smooth fiber bundle with $F$ and $B$ compact; let $\xi$ over $B$ be a vector bundle, and consider
 \begin{diagram}
@@ -3840,6 +3923,7 @@ The left summand is killed by $k^e$ and the right summand is killed by $k^f$ for
 \fi
 \BoxedNote{}
 \section{Some summands of the stable homotopy groups of spheres} % <<<
+\label{SomeSummandsOfStableHomotopyOfSpheres}
 \ifx\OutputSomeSummandsOfStableHomotopyOfSpheres\undefined\else
 All right, today we'll study the meaning of the Adams conjecture; in particular I'm going to tell you about the space $J$.  We've talked about the $KO$ spectrum, representing real $K$-theory: $KO^*(X) = \{X, KO\}$.  It is a sequence of spaces $\{KO_n\}$ with maps $\alpha_n: \Suspend KO_n \to KO_{n+1}$, with
 \begin{align*}
