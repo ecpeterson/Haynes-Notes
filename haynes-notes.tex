@@ -31,8 +31,8 @@
 %\newcommand{\OutputBuildingKtheoryOperatorsFromRepTheory}{11}
 %\newcommand{\OutputBuildingTheAdamsPowerOperations}{12}
 %\newcommand{\OutputProofOfHopfInvariantOne}{13}
-\newcommand{\OutputTheJamesConstruction}{14}
-%\newcommand{\OutputTheMapsEandHinTheEHPLES}{15}
+%\newcommand{\OutputTheJamesConstruction}{14}
+\newcommand{\OutputTheMapsEandHinTheEHPLES}{15}
 %\newcommand{\OutputWhiteheadProductsAndTheEHPSS}{16}
 %\newcommand{\OutputTheStableCategory}{17}
 %\newcommand{\OutputHomotopicalAlgebraAndDuality}{18}
@@ -2200,7 +2200,7 @@ So $h_2$ induces a map $\mathrm T[u_n] \to \mathrm T[u_{2n}]$ which preserves de
 \ConfusedBox{
 The following has become some kind of aside:
 
-Alternatively, to compute $H_n(\Omega S^{n+1}$, you could use the path fibration $\Loops S^{n+1} \to PS^{n+1} \to S^{n+1}$, $(n > 0)$, and the Serre spectral sequence gives... (draw it).
+Alternatively, to compute $H_n(\Omega S^{n+1})$, you could use the path fibration $\Loops S^{n+1} \to PS^{n+1} \to S^{n+1}$, $(n > 0)$, and the Serre spectral sequence gives... (draw it).
 
 \textit{Note that if you try to remember grading then $u^2 = (-1) u u$ for $u$ odd, so you lose commutativity by trying to remember grading, which is the reverse somehow of the usual situation. \textbf{I don't really get this.}}
 }
@@ -2341,12 +2341,12 @@ Let $X$ be a connected CW-complex, and $X\stackrel{\alpha}{\to} \Omega\Sigma X$ 
 \Bullet If $R$ is a PID, and $H_*(X; R)$ is torsion-free, then $\alpha$ induces an isomorphism $\mathrm{T} (\widetilde H_*(X; R)) \stackrel{\overline \alpha}{\to} H_*(\Loops \Suspend X; R)$.
 
 \Bullet There is an equivalence
-$
-\Suspend \Loops \Suspend X \simeq \bigvee_{k \ge 1} \Suspend X^{(k)}
-$ which realises $\overline\alpha$.
+$\Suspend \Loops \Suspend X \simeq \bigvee_{\!k \ge 1} \Suspend X^{(k)}$ which realises $\overline\alpha$.
 
-\Bullet The extension of $\alpha$ to $J(X)\stackrel{\tilde\alpha}{\to}\Omega\Sigma X$ is a homotopy equivalence. Define:
+\Bullet The extension of $\alpha$ to $J(X)\stackrel{\tilde\alpha}{\to}\Omega\Sigma X$ is a homotopy equivalence. $\Sigma J(X)$ splits as $\bigvee_{\!k \ge 1} \Suspend X^{(k)}$. We define the $m^\text{th}$ James-Hopf invariant $h_m$ via:
 \[\widehat h_m:\left\{\Sigma\Omega\Sigma X\to{\textstyle\bigvee_{\!k \ge 0}} \Suspend X^{(k)}\to\Sigma X^{(m)}\right\}\text{ with adjoint }h_m:\Omega\Sigma X\to\Omega\Sigma X^{(m)}.\]
+
+\Bullet When $n$ is even, the Hopf algebra $H_*(\Omega S^{n+1})$ is the tensor algebra $\mathrm T[u_n]$, with comultiplication given by $\Delta u_n^k = {\displaystyle\sum_{i + j = k}} \binom{i+j}{i} u_n^i \otimes u_n^j$.
 
 \Bullet With PID \textup{\textbf{(should this say `field'?)}} coefficients, there are isomorphisms:
 \begin{alignat*}{2}
@@ -2358,7 +2358,9 @@ H_* (\Loops S^{2k}) & \cong H_*( S^{2k-1}) \otimes H_* (\Loops S^{2k-1})&&\text{
 \section{The maps \texorpdfstring{$e$ and $h$}{e and h} in the EHP long exact sequence} % <<<
 \label{TheMapsEandHinTheEHPLES}
 \ifx\OutputTheMapsEandHinTheEHPLES\undefined\else
-The march to the EHP sequence continues.  Recall for a connected CW complex $X$ the James construction gave a homotopy equivalence
+The march to the EHP sequence continues.  
+\ConfusedBox{
+\textbf{Keep?} Recall for a connected CW complex $X$ the James construction gave a homotopy equivalence
 \[
 \bigvee_{k \ge 0} \Suspend X^{(k)} \stackrel{\simeq}{\to} \Suspend \Loops \Suspend X
 ,\]
@@ -2372,122 +2374,171 @@ given by smashing everything else to a point gives a composite
 \dTo & \ldTo_{\hat h_m} \\
 \Suspend X^{(m)}
 \end{diagram}
-whose adjoint $h_m: \Loops \Suspend X \to \Loops \Suspend X^{(m)}$ is the ``$m^\textup{th}$ James-Hopf invariant.''  Applying this to the case $X = S^n$ and $m = 2$ gave a map $h_2: \Loops S^{n+1} \to \Loops S^{2n+1}$.  The EHP sequence comes from the long exact sequence of the homotopy we get from taking the homotopy fiber of this map.  To start finding out the fiber, we computed the cohomology of $\Loops S^{n+1}$; recall that
+whose adjoint $h_m: \Loops \Suspend X \to \Loops \Suspend X^{(m)}$ is the ``$m^\textup{th}$ James-Hopf invariant.''}
+Applying the James-Hopf invariant construction when $X = S^n$ and $m = 2$ gives a map $h_2: \Loops S^{n+1} \to \Loops S^{2n+1}$.  The EHP sequence comes from the long exact sequence of the homotopy we get from taking the homotopy fiber of this map.  To start finding out the fiber, we computed the cohomology algebra of $\Loops S^{n+1}$:
 \[
-H^* \Loops S^{n+1} = \begin{cases} \Lambda[x_1] \otimes \Gamma[x_2] & \hbox{when $n$ is odd}, \\ \Gamma[x_1] & \hbox{when $n$ is even}, \end{cases}
+H^* (\Loops S^{n+1}) = \begin{cases} \Lambda[x_1] \otimes \Gamma[x_2] & \hbox{when $n$ is odd}, \\ \Gamma[x_1] & \hbox{when $n$ is even}, \end{cases}\textup{\ \ (where $|x_i| = ni$).}
 \]
-where $|x_i| = ni$.
+
 
 Now the adjoint of the James-Hopf map factors:
 \begin{diagram}
 \Suspend \Loops S^{n+1} & \rTo^{\hat h_2} & S^{2n+1} \\
 & \rdTo(1,1)_{\Suspend h_2} \ruTo(1,1)_\beta \Suspend \Loops S^{2n+1},
 \end{diagram}
-which is just the expression of adjointness between $\Loops$ and $\Suspend$.  $\hat h_2$ came from a splitting, so it splits; i.e., we get
-\begin{diagram}
-S^{2n+1} & \rTo^{\simeq \hbox{identity}} & S^{2n+1} \\
+which is just the expression of adjointness\footnote{
+Here, suppose that $F:\mathscr{D}\longleftrightarrow\mathscr{C}:G$ is an adjunction, that $X\in \mathscr{D}$ and $Y\in\mathscr{C}$, and that $\hat h:X\to GY$ and $h:FX\to Y$ are adjoint. The commuting diagram on the left induces the other commuting diagram, by naturality of the Hom-set isomorphisms:
+\[\xymatrix@R=2em{
+\ar[d]_{\hat h}X\ar[r]_{\hat h}&GY\ar[d]^{G(\text{Id}_Y)}\\
+GY\ar[r]^{\text{Id}}&GY
+}
+\raisebox{-1.7em}{\textup{\qquad induces\qquad}}
+\xymatrix@R=2em{
+\ar[d]_{F(\hat h)}FX\ar[r]_{h}&G\ar[d]^{\text{Id}}\\
+FGY\ar[r]^{\ \ \hat{\text{Id}}=\text{`$\beta$'}}&Y
+}\]
+} between $\Loops$ and $\Suspend$. 
+ $\hat h_2$ came from a splitting, so it splits:
+\begin{diagram}[height=2em]
+S^{2n+1} & \rTo^{\simeq \hbox{\,Id\ \ \ }} & S^{2n+1} \\
 \dInto & & \uTo>{\hat h_2} \\
-\bigvee_{k \ge 0} \Suspend (S^n)^{(k)} & \rTo^{\hbox{James}} & \Suspend \Loops S^{n+1}.
+\bigvee_{\!k \ge 0} \Suspend (S^n)^{(k)} & \rTo^{\hbox{James}} & \Suspend \Loops S^{n+1}.
 \end{diagram}
-Thus $\hat h_2$ is injective in homology.  Looking at the (once-suspended) cohomology of $\Loops S^{n+1}$, it is clear that $H^{2n+1}(\Suspend h_2)$ is an isomorphism, so in dimension $2n$ we get
-\begin{diagram}[height=1em]
-H^{2n}(h_2) : & H^{2n} \Loops S^{n+1} & \lTo^\cong & H^{2n} \Loops \Suspend^{2n+1} \\
-& u_2 & \lMapsto & x_1,
-\end{diagram}
-where $u_2$ is the generator of the $2n$-dimensional level of $\Gamma[u_2]$ and $x_1$ is the bottom generator of $H^* \Loops S^{2n+1}$.
-
-To compute the rest of $h_2^*$ in cohomology, there are two cases:
+Thus $\hat h_2$ is surjective in homology. As $H_{2n+1}(\Sigma\Omega S^{2n+1})\cong\Z$, the surjective map $H_{2n+1}(\hat h_2):\Z\to\Z$ must be an isomorphism. Then the universal coefficients theorem shows that $H^{2n+1}(\hat h_2)$ is an isomorphism.\footnote{Recall that the reduced homology of $\Sigma\Omega S^{n+1}$ consists of a copy of $\Z$ in degrees $n+1$, $2n+1$, $3n+1$, etc.} In particular, $H^{2n+1}(\Suspend h_2)$ is an isomorphism, so that $H^{2n}(\Suspend h_2)$ is an isomorphism.
+To finish computing the map on cohomology induced by $h_2:\Omega S^{n+1}\to \Omega S^{2n+1}$, there are two cases:
 \begin{itemize}
-\item First, assume $n$ to be odd.  $h_2^*: x_1 \mapsto u_2$ is an algebra map, so $k!x_k = x_1^k \mapsto u_2^k = k! u_{2k}$, hence $h_2^*: x_k \mapsto u_{2k}$.  In this case $H^* \Loops S^{n+1} = \Lambda[u_1] \otimes \Gamma[u_2]$, so we should study the fact of $u_1$ in the spectral sequence of the homotopy fibration $F \to \Loops S^{n+1} \to \Loops S^{2n+1}$.  DRAW A SPECTRAL SEQUENCE HERE.  Moreover there can't be anything else in the fiber, because such a thing couldn't survive to $E_\infty$, but on the other hand isn't allowed to hit anything.  So $H^*(F; \Z) = \Lambda[u_1]$, $|u_1| = n$.  On the other other hand, we have a map $\alpha: S^n \to \Loops S^{n+1}$ (the map from the Bott-Samelson theorem).  We produce the diagram
-\begin{diagram}
-& & S^n \\
-& \ldDashto^\gamma & \dTo>\alpha & \rdTo \\
-F & \rTo & \Loops S^{n+1} & \rTo^{h_2} & \Loops S^{2n+1}.
-\end{diagram}
-The rightmost diagonal map can be shown to be null-homotopic by measuring what happens in homology, so the dotted map $\gamma$ exists.  In addition, $\gamma^*$ is an isomorphism in cohomology.  if $n > 1$, then $\pi_1 F = 0$ and $\gamma$ is a homotopy equivalence by the Whitehead theorem.  In case $n = 1$, the long exact homotopy sequence shows $\pi_1 F \cong \pi_1 \Loops S^2 = \Z$, so $\gamma$ is an isomorphism on $\pi_1$.  Now $\gamma$ lifts to a map of universal covering spaces
-\begin{diagram}
+\item First, assume $n$ to be odd. Then $x_1\mapsto u_2$ under $h_2^*$:
+\[\xymatrix@R=.5em{
+\ar@{=}[d]H^*(\Omega S^{n+1})&H^*(\Omega S^{2n+1})\ar[l]_{h_2^*}\ar@{=}[d]\\
+\Lambda[u_1] \otimes \Gamma[u_2]&\Gamma[x_1]\ar[l]
+}
+\raisebox{-1em}{\ \ where:\ \ }
+\xymatrix@R=.5em{
+|x_1|=2n,\makebox[0cm][l]{ and }\\
+|u_i|=ni.
+}
+%\xymatrix{u_2&x_1\ar@{|->}[l]}
+\]
+As $h_2^*$ is an algebra map, $k!x_k = x_1^k \mapsto u_2^k = k! u_{2k}$, hence $h_2^*: x_k \mapsto u_{2k}$.  %In this case $H^* \Loops S^{n+1} = \Lambda[u_1] \otimes \Gamma[u_2]$, so we should study the fate of $u_1$ in the 
+A simple argument using the Serre spectral sequence of the homotopy fibration $F \to \Loops S^{n+1} \to \Loops S^{2n+1}$ (\textbf{draw it})
+%Moreover there can't be anything else in the fiber, because such a thing couldn't survive to $E_\infty$, but on the other hand isn't allowed to hit anything. 
+shows that $H^*(F; \Z) = \Lambda[u_1]$ with $|u_1| = n$. That is, $F$ has the same cohomology algebra as $S^n$. On the other other hand, we have a map $\alpha: S^n \to \Loops S^{n+1}$ (the map from the Bott-Samelson theorem).  We produce the diagram
+\[\xymatrix{
+&S^n\ar[dr]^{\text{null}}\ar@{-->}[ld]_\gamma\ar[d]^\alpha\\
+F\ar[r]^{j\ \ }&\Omega S^{n+1}\ar[r]^{h_2}&\Omega S^{2n+1}
+}
+\raisebox{-2em}{\qquad where $j^*(u_1)=u_1$ and $\alpha^*(u_1)$ generates $H^n(S^n)$.}
+%\raisebox{-2em}{on $H^{n}(\text{---})$:\qquad}
+%\xymatrix{
+%&\pm1\makebox[0cm][l]{$\,\in\Z\simeq H^n(S^n)$}\\
+%\makebox[0cm][r]{$H^n(F)\simeq\Z\ni\,$}\pm1&u_1\ar@{|->}[u]\ar@{|->}[l]
+%}\qquad
+\]
+The rightmost diagonal map can be shown to be null-homotopic by measuring what happens in homology, so the dotted map $\gamma$ exists.  Moreover, $\gamma^*$ is an isomorphism in cohomology.  if $n > 1$, then $\pi_1 (F) = 0$ and $\gamma$ is a homotopy equivalence by the Whitehead theorem.  In case $n = 1$, the long exact homotopy sequence shows $\pi_1 (F) \cong \pi_1 (\Loops S^2) = \Z$, so $\gamma$ is an isomorphism on $\pi_1$.  Now $\gamma$ lifts to a map of universal covering spaces
+\begin{diagram}[height=2em]
 \widetilde F & \rTo^{\tilde \gamma} & \R \\
 \dTo & & \dTo>{e^{i \theta}} \\
 F & \rTo^\gamma & S^1,
 \end{diagram}
-which \emph{are} homotopic by the JHC Whitehead theorem; since $\tilde \gamma$ is equivariant ??? $\gamma: F \to S^1$.  So now for n odd we have the homotopy fibration $S^n \to \Loops S^{n+1} \to \Loops S^{2n+1}$ whose long exact sequence is the EHP sequence
+which \emph{are} homotopic by the Whitehead theorem; since $\tilde \gamma$ is equivariant with respect to deck transformations, $\gamma: F \to S^1$ is a homotopy equivalence (\textbf{I do not understand this}).  So now for n odd we have the homotopy fibration $S^n \to \Loops S^{n+1} \to \Loops S^{2n+1}$ whose long exact sequence is the EHP sequence
 \[
-\cdots \to \pi_i S^n \stackrel{e}{\to} \pi_{i+1} S^{n+1} \stackrel{h}{\to} \pi_{i+1} S^{2n+1} \stackrel{p}{\to} \pi_{i-1} S^n \stackrel{e}{\to} \pi_i S^{n+1} \to \cdots
+\cdots \to \pi_i (S^n) \stackrel{e}{\to} \pi_{i+1} (S^{n+1}) \stackrel{h}{\to} \pi_{i+1} (S^{2n+1}) \stackrel{p}{\to} \pi_{i-1} (S^n) \stackrel{e}{\to} \pi_i (S^{n+1}) \to \cdots
 \]
-
-\item The even $n$ case is even more interesting; then $H^* \Loops S^{n+1} = \Gamma[u_1]$, where now $|u_1| = n$.  $H^{2n}(h_2)$ is still an isomorphism, so that means
-\begin{diagram}[height=1.5em]
-H^{2n} \Loops S^{2n+1} & \rTo^{H^{2n}(h_2)}_{\cong} & H^{2n} \Loops S^{n+1} \\
-x_1 & \rMapsto & u_2.
-\end{diagram}
-Now however $u_2$ isn't this bottom class of the divided polynomial algebra, so it is no longer true that $u_2^k = k! u_{2k}$; instead,
-\begin{align*}
-2 u_2 & = u_1^2 \\
-u_1^{2k} & = (2k)! u_{2k} \\
-2^k u_2^k & = (2k)! u_{2k} \\
-u_2^k & = \frac{(2k)!}{2^k} u_{2k}.
-\end{align*}
+\item The case when $n$ is even is even more interesting. Then $x_1\mapsto u_2$ under $h_2^*$:
+\[\xymatrix@R=.5em{
+\ar@{=}[d]H^*(\Omega S^{n+1})&H^*(\Omega S^{2n+1})\ar[l]_{h_2^*}\ar@{=}[d]\\
+\Gamma[u_1]&\Gamma[x_1]\ar[l]
+}
+\raisebox{-1em}{\ \ where:\ \ }
+\xymatrix@R=.5em{
+|x_1|=2n,\makebox[0cm][l]{ and }\\
+|u_1|=n.
+}
+%\xymatrix{u_2&x_1\ar@{|->}[l]}
+\]
+Now, however, $u_2$ is not this bottom class of the divided polynomial algebra, so it is no longer true that $u_2^k = k! u_{2k}$; instead,
+\[u_2^k=\left(\frac{u_1^2}{2}\right)^k=\frac{(2k)!}{2^k}u_{2k}.\]
 This is a pretty awful number, but if we look at the prime $2$ it's not so bad:
 \[
-\frac{(2k)!}{2^k} = 1 \cdot \frac{2}{2} \cdot 3 \cdot \frac{4}{2} \cdot \cdots \cdot \frac{2k}{2} = k!
+\frac{(2k)!}{2^k} = 1 \cdot \frac{2}{2} \cdot 3 \cdot \frac{4}{2} \cdot \cdots \cdot \frac{2k}{2} = k!\cdot(1\cdot3\cdot\ldots\cdot(2k-1))
 ,\]
-so over $\Z_{(2)}$ this is $k!$ times a unit.  So working over $\Z_{(2)}$, $h_2^* : x_k \mapsto c u_{2k}$ for $c \in \Z_{(2)}^\times$.  So the Serre spectral sequence over $\Z_{(p)}$ looks the same as it did in the odd case, and $H_*(\alpha; \Z_{(2)})$ is an isomorphism.  So $\gamma: S^n \to F$ isn't a homotopy equivalence, but it is an isomorphism on $\pi_*$ localized at 2, by Serre's mod-$\mathscr{C}$ theory.
+so over $\Z_{(2)}$ this is $k!$ times a unit.  So working over $\Z_{(2)}$, $h_2^* : x_k \mapsto (\textup{unit})\cdot u_{2k}$.  So the Serre spectral sequence over $\Z_{(2)}$ looks the same as it did in the odd case, and $H_*(\alpha; \Z_{(2)})$ is an isomorphism.  So $\gamma: S^n \to F$ isn't a homotopy equivalence, but it is an isomorphism on $\pi_*$ localized at 2, by Serre's mod-$\mathscr{C}$ theory.
 \begin{thm}
-Let $\alpha: X \to Y$ be a map of simply connected spaces.  If $H_*\alpha: H_*(X; \Z_{(p)} \to H_*(Y; \Z_{(p)})$ is an isomorphism, then $\alpha_*: \pi_* X \otimes \Z_{(p)} \stackrel{\cong}{\to} \pi_* Y \otimes \Z_{(p)}$ is too.
+Let $\alpha: X \to Y$ be a map of simply connected spaces.  If $\alpha_*: H_*(X; \Z_{(p)}) \to H_*(Y; \Z_{(p)})$ is an isomorphism, then $\alpha_*: \pi_* (X) \otimes \Z_{(p)} \stackrel{\cong}{\to} \pi_* (Y) \otimes \Z_{(p)}$ is too.
 \end{thm}
-So for $n$ even, the $2$-local homotopy groups are the same; only God knows what else but for present purposes we don't care: we get the same EHP sequeneces for $n$ even, but now localized at 2.
+So for $n$ even, the $2$-local homotopy groups are the same; we have no idea about the unlocalised homotopy groups, but for present purposes we don't care: we get the same EHP sequeneces for $n$ even, but now localized at 2.
 \end{itemize}
-Well now there's lots to do.  Each of these maps has its own personality, so we'll take each in term.  $e$ is most familiar, so we'll start with it.
+Well now there's lots to do.  Each of these maps has its own personality, so we'll take each in term.  $e$ is most familiar, so we'll start with it. In fact, $e:\pi_i(S^n)\to\pi_{i+1}(S^{n+1})$ is simply the suspension homomorphism: from the above calculations of $h_2^*$, we see that $e$ is induced by $\alpha:S^n\to \Omega\Sigma S^n$.
 
-You could think of the rest of the maps as the obstruction to $e$ being an isomorphism: since $\pi_{i+1} S^{2n+1} = 0$ for $i \le 2n-1$, you get
+You could think of the rest of the maps as the obstruction to $e$ being an isomorphism: since $\pi_{i+1} (S^{2n+1}) = 0$ for $i \le 2n-1$, we have the following excerpts of the EHP sequence:
 \begin{diagram}[height=1em]
-  &      & \pi_{2n-1} S^n & \rOnto^e & \pi_{2n} S^{n+1} & \rTo & 0 \\
+  &      & \pi_{2n-1} (S^n) & \rOnto^e & \pi_{2n} (S^{n+1}) & \rTo & 0 \\
   &      & \vdots         &          & \vdots \\
-0 & \rTo & \pi_i S^n      & \rTo^e   & \pi_{i+1} S^{n+1} & \rTo & 0,
+0 & \rTo & \pi_i (S^n)      & \rTo^e   & \pi_{i+1} (S^{n+1}) & \rTo & 0,&&\text{($i\leq 2n-2$)}
 \end{diagram}
-so $e: \pi_i S^n \to \pi_{i+1} S^{n+1}$ is epic if $i = 2n-1$ and an isomorphism if $i < 2n-1$.  This is precisely the statement of the Freudenthal suspension theorem for $S^n$, so the homotopy groups $\pi_k S^{2n+1}$ and the $h$ and $p$ maps are the obstructions to extending the Freudenthal suspension theorem to higher dimensions.
+so $e: \pi_i (S^n) \to \pi_{i+1} (S^{n+1})$ is epic if $i = 2n-1$ and an isomorphism if $i < 2n-1$.  This is precisely the statement of the Freudenthal suspension theorem for $S^n$, so the homotopy groups $\pi_k (S^{2n+1})$ and the $h$ and $p$ maps are the obstructions to extending the Freudenthal suspension theorem to higher dimensions.
 
 \begin{wrapfigure}{r}{0.3\textwidth}
 \centering\includegraphics[width=0.2\textwidth]{figures/18.pdf}
-\caption{\small The stable Hopf invariant result.}
+\caption{\small The complex $K$ used to define the stable Hopf invariant.}
 \end{wrapfigure}
-By the way, earlier we studied the Hopf invariant 1 problem; there were two main results: using $\Sq^n$ we found that if there is an element of Hopf invariant 1 in $\pi_{2n-1} S^n$, then $n$ is a power of $2$.  Since $\Sq^n$ commutes with suspension, this is a stable result: for $x$ a class in degree $n+i$ and $y$ a class in $2n+i$, $\Sq^n x = y$ implies that $n$ is a power of $2$.  Then using $K$-theory we showed that $n$ must be 1, 2, 4, or 8.  This result is not obviously stable from $K$-theory because the Adams operations are not stable.  But now the EHP sequence gives this to us: $\pi_{2n-1} \stackrel{e}{\onto} \pi_{n-1}^S = \pi_{2n-1+i} S^{n+i}$ ??? surjective, so no new elements are born after suspending any number of times.  This is an example of the EHP sequence's taking unstable information and giving back stable information.
+By the way, earlier we studied the Hopf invariant 1 problem; there were two main results: using $\Sq^n$ we found that if there is an element of Hopf invariant 1 in $\pi_{2n-1} (S^n)$, then $n$ is a power of $2$. 
+Similarly, we defined a stable version of the Hopf invariant, a homomorphism $\pi_{2n+i-1}(S^{n+i})\to\Z_2$, in which $\Sq^n$ takes the place of the cup square.
+
+Since $\Sq^n$ commutes with suspension, this is a stable result: if $K=S^{n+i}\cup_f e^{2n+i}$ for $f\in\pi_{2n+i-1}(S^{n+i})$, and if $H^{n+i}(K;\Z_2)=\Z_2\langle x\rangle$ and $H^{2n+i}(K;\Z_2)=\Z_2\langle y\rangle$, then $\Sq^n x = y$ implies that $n$ is a power of $2$.  Using $K$-theory we showed that if the (unstable) Hopf invariant is one, then $n$ must be 1, 2, 4, or 8.  This result is not obviously stable from $K$-theory because the Adams operations are not stable.  But now the EHP sequence gives this to us: 
+\[\pi_{2n-1}(S^n) \stackrel{e^i}{\onto} \pi_{2n-1+i} (S^{n+i})\text{ is surjective},\]
+so no new elements are born after suspending any number of times.  This is an example of the EHP sequence taking unstable information and giving back stable information.
 
 Now we move up one row and look at $h$:
 \begin{diagram}
-\pi_{2n+1} S^{n+1} & \rTo^h & \pi_{2n+1} S^{2n+1} & \rTo^p & \pi_{2n-1} S^n & \rTo^e & \pi_{2n} S^{n+1}.
+\pi_{2n+1} (S^{n+1}) & \rTo^h & \pi_{2n+1} (S^{2n+1}) \simeq \Z%& \rTo^p & \pi_{2n-1} (S^n) & \rTo^e & \pi_{2n} (S^{n+1}).
 \end{diagram}
-On the other hand we have the Hopf invariant $H: \pi_{2n+1} S^{n+1} \to \Z$ from earlier.  To keep them straight, $h$ is the ``James-Hopf invariant'' and $H$ is the ``Hopf Hopf invariant.''
-\begin{lem}
+We also have the Hopf invariant $H: \pi_{2n+1} (S^{n+1}) \to \Z$.  To keep them straight, $h$ is the ``James-Hopf invariant'' and $H$ is the ``Hopf Hopf invariant.'' We will show in lemma \ref{HopfisHopfLemma} that the two coincide.
+\begin{claim}
+If $f:S^{2n+1}\to S^{n+1}$ is an element of $\pi_{2n+1} (S^{n+1})$, then $h(f)=\deg\left\{\hat f:S^{2n}\to\Omega\Sigma S^n\right\}$, where $\hat f$ is the adjoint of $f$, and by $\deg\{\hat f\}$ we mean the degree of $H_{2n}(f):\Z\to\Z$, defined only up to sign.
+\end{claim}
+\begin{proof}
+$h(f)$ is the degree of $\hat q$, the adjoint of the composite
+\[q:\xymatrix{
+S^{2n}\ar[r]^{\hat f}&\Omega\Sigma S^n\ar[r]^{h_2}&\Omega\Sigma S^{2n}
+}\]
+Now there are commuting diagrams
+\[\xymatrix@C=.2cm{
+\Sigma S^{2n}\ar[rr]^{{\hat q}}\ar[rd]_{\Sigma q}&&\Sigma S^{2n}\\
+&\Sigma\Omega\Sigma S^{2n}\ar[ru]_{{\epsilon}}
+}\qquad
+\xymatrix@C=.2cm{
+\Sigma\Omega\Sigma S^{n}\ar[rr]^{\Sigma h_2}\ar[rd]_{\hat h_2}&&\Sigma\Omega\Sigma S^{2n}\\
+&\Sigma S^{2n}\ar[ru]_{{\eta}}
+}\]
+From the left diagram,  $h(f)=\deg\hat q=(\deg q)(\deg\epsilon)=\deg q=(\deg\hat f)(\deg h_2)$, where the reader can figure out what we mean each time we write $\deg$. However, from the right diagram, $\deg h_2=\deg\hat h_2=1$ (as $\hat h_2$ is a collapse map). Note that we have used that $\epsilon$ and $\eta$ both have degree one in the appropriate sense.
+\end{proof}
+\begin{lem}\label{HopfisHopfLemma}
 $H = \pm h$, so the names are well-chosen.
 \end{lem}
 \begin{proof}
-First take the case $n$ is even.  Then $x$ in degree $(n+1)$ is connected to $y$ in degree $(2n+2)$ such that $x^2 = Hy$.  But $n+1$ is odd, so $x^2 = 0$ and $H = 0$.
+We'll calculate $h(f)=\pm H(f)$ for $f\in\pi_{2n+1} (S^{n+1})$. First take the case $n$ is even.  Then $H(f)$ is calculated by squaring an odd dimensional cohomology class, so that $H(f) = 0$. 
+%To calculate $h(f)$, we use the previous claim. It is enough to prove that $H_{2n}(\hat f)$ is the zero map. 
 
-What about the James-Hopf invariant?  Remember $h$ comes from $h_2: \Loops S^{n+1} \to \Loops S^{2n+1}$, so a class $f: S^{2n+1} \to S^{n+1}$ composes as
-\[
-S^{2n} \stackrel{\hat f}{\to} \Loops S^{n=1} \stackrel{h_2}{\to} \Loops S^{2n+1}
-.\]
-Now the degree of a map $h_* f: S^{2n+1} \to S^{2n+1}$ is the same as its effect in homology; we compute the effect in dimension $2n$ of the adjoint of $f$.  Since we know that $H_{2n}h$ is an isomorphism, this amounts to computing what happens to a generating $g \in H_{2n} S^{2n}$ under
-\begin{diagram}[height=1em]
-H_{2n} S^{2n} & \rTo^{\hat f_*} & H_{2n} \Loops S^{n+1} \\
-g & \rMapsto & h u_2,
-\end{diagram}
-where $u_2$ is the generating of $H_{2n} \Loops S^{n+1}$.  Note that $\hat f_*$ is a map of coalgebras.  $H_{2n} \Loops S^{n+1}$ is a Hopf algebra whose structure we have computed: $\Delta u_2 = \Delta u_1^2 = u_2 \otimes 1 + 2 u_1 \otimes u_1 + 1 \otimes u_2$.  So,
+Now let $g$ generate $H_{2n}(S^{2n})$, and write $u_2$ as usual for the generator of $H_{2n}(\Omega S^{n+1})$. By the claim, $\hat f_*(g)=h(f)\cdot u_2$ (up to sign). Now $f_*$ is a coalgebra map, and we have computed the Hopf algebra structure on $H_*(\Omega S^{n+1})=\mathrm{T}[u_n]$, so there is a compatibility:
 \begin{diagram}
-g & \rMapsto^{\hat f_*} & h u_2 \\
-\dMapsto & & \dMapsto>\Delta \\
-g \otimes 1 + 1 \otimes g & \rMapsto & h(g \otimes 1 + 1 \otimes g) & \lEqualto u_2 \otimes 1 + 2 u_1 \otimes u_1 + 1 \otimes u_2.
+g & \rMapsto^{\hat f_*} & h(f) u_{2n} \\
+\dMapsto & &\rdMapsto>\Delta \\
+g \otimes 1 + 1 \otimes g & \rMapsto & h(f)(u_2 \otimes 1 + 1 \otimes u_2) & \lEqualto u_2 \otimes 1 + 2 u_1 \otimes u_1 + 1 \otimes u_2.
 \end{diagram}
-But this equality can hold only if $h = 0$, so the James-Hopf invariant is zero as well -- at least on an odd sphere $S^{n+1}$.
+\[\xymatrix{
+g\ar@{|->}[r]_{\hat f_*}\ar@{|->}[d]_{\Delta}&h(f)\cdot u_{2n}\ar@{|->}[dr]^{\Delta}\\
+g\otimes1+1\otimes g\ar@{|->}[r]^{\hat f_*\otimes\hat f_*\qquad\ \ }&\ar@{=}[r]h(f)\cdot(u_{2n}\otimes1+1\otimes u_{2n})&h(f)\cdot(u_{2n}\otimes1+2u_1\otimes u_1+1\otimes u_{2n})
+}\]
+But this equality can hold only if $h(f) = 0$, so we are done when $n$ is even.
 
-In the case that $n$ is odd, there are two steps; first we show $h \mid H$, then that $H \mid h$.  To show that $h \mid H$, study these two Barratt-Puppe sequences and the associated exact sequences in cohomology\footnote{Note that the proof for $h = 0$ no longer applies since now $u_2 = u_1^2$ is primitive; remember $H_* \Loops S^{2k} \cong H_* S^{2k-1} \otimes H_* \Loops S^{4k-1}$ as coalgebras in this case}:
-\begin{diagram}
-S^{2n+1} & \rTo^f & S^{n+1} & \rTo & C(f) & \rTo & S^{2n+1} \\
+In the case that $n$ is odd,\footnote{Note that the argument showing that $h = 0$ no longer applies since now $u_2 = u_1^2$ \emph{is} primitive; recall that there is a coalgebra isomorphism $H_* (\Loops S^{2k}) \cong H_* (S^{2k-1}) \otimes H_* (\Loops S^{4k-1})$ in this case.} there are two steps; first we show $h \mid H$, then that $H \mid h$.  To show that $h \mid H$, study these two Barratt-Puppe sequences and the associated exact sequences in cohomology:
+\begin{diagram}[height=2em]
+S^{2n+1} & \rTo^f & S^{n+1} & \rTo & C(f) & \rTo & S^{2n+2} \\
 \dEqualto & & \uTo>\beta & & \uTo & & \dEqualto \\
-S^{2n+1} & \rTo^{\Suspend \hat f} & \Suspend \Loops S^{n+1} & \rTo & \Suspend C(\hat f) & \rTo & S^{2n+1} & \rTo^{\Suspend^2 \hat f} & \Suspend \Loops S^{n+1} \\
-& & 0 & \lTo & \Z_h & \lTo & \Z & \lTo^{\cdot h} & \Z \hbox{in $H^{2n+1}$}, \\
-& & x & \lMapsto & x, y & \lMapsto & y \in H{2n+2} \\
+S^{2n+1} & \rTo^{\Suspend \hat f} & \Suspend \Loops S^{n+1} & \rTo & \Suspend C(\hat f) & \rTo & S^{2n+2} & \rTo^{\Suspend^2 \hat f} & \Suspend \Loops S^{n+1} \\
+& & 0 & \lTo & \Z_h & \lTo & \Z & \lTo^{\cdot h} & \Z \makebox[0cm][l]{\ \ in $H^{2n+2}$}, \\
+& & x & \lMapsto & x, y & \lMapsto & y \makebox[0cm][l]{$\ \in H^{2n+2}(S^{2n+2})$} \\
 & & \dMapsto<{\beta^*} & & \dMapsto & & \dMapsto \\
 & & x & \lMapsto^{H^{n+1}} & x, y & \lMapsto^{H^{2n+1}} & y,
 \end{diagram}
@@ -2512,8 +2563,8 @@ since the composite is null-homotopic, so $h = 0$ in $\Z_H$, and $H \mid h$.  No
 
 Maybe now we should show that there exists an element of Hopf invariant 1; after all the results we have proven so far have been negative.  Let's see that an $H$-space structure $S^{n-1}$ yields an element of Hopf invariant one on $S^n$, then real, complex, quaternionic, and Cayley multiplication will provide elements of Hopf invariant one on $S^1$, $S^2$, $S^4$, and $S^8$.
 
-We will construct such elements using the ``Hopf construction;'' to understand this construction, it helps to look at it in extreme generality.  Remember from the beginning of the course that this takes a ``multiplication'' $\mu: X \times Y \to Z$ and yields a map $H\mu: X \ast Y \to \Suspend Z$.  The construction (see the first day's notes!) is
-\begin{diagram}[height=2em,width=2em]
+We will construct such elements using the ``Hopf construction;'' to understand this construction, it helps to look at it in extreme generality.  Remember from the beginning of the course that this takes a ``multiplication'' $\mu: X \times Y \to Z$ and yields a map $H\mu: X \ast Y \to \Suspend Z$.  The construction (see the first day's notes!) is by forming a morphism of pushout diagrams, which form the left and right faces of the cube:
+\begin{diagram}[height=1.6em,width=2em]
 X \times Y & & \rTo^\mu & & Z \\
 & \rdTo & & & \vLine & \rdTo \\
 \dTo & & CX \times Y & \rTo & \HonV & & CZ \\
