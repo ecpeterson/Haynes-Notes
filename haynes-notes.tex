@@ -5,14 +5,19 @@
 \documentclass{article}
 
 \usepackage{fullpage}
+\usepackage{ifthen}
 %\setlength{\textheight}{43pc}
 %\setlength{\textwidth}{28pc}
 \usepackage{amssymb,mathrsfs,float,stmaryrd,yhmath,prettyref,amsthm}
 \usepackage{xcolor,graphicx,tocloft}
 \usepackage{diagrams}
-\usepackage[pdftex]{hyperref}
+\usepackage[pdftex,pdfborder={0 0 .5 [1 1]}]{hyperref}
 \usepackage{wrapfig}
 \usepackage[all]{xy}
+\usepackage{tikz}
+%\usetikzlibrary{snakes}
+%\usetikzlibrary{positioning}
+%\usepackage[debug]{sseq}
 
 
 %\newcommand{\OutputEVERYTHING}{  everything  }
@@ -709,7 +714,7 @@ If $S(nL) \to \RP^k$ is fiber homotopy trivial, then $a_k$ divides $n$. In parti
 \begin{proof}
 Suppose that $S(nL)$ is fiber homotopy trivial. Then $n[L]$ equals $n[\epsilon]$ in $\widetilde J(\R P^k)$, and so $n([L]-1)=0$ in $\widetilde{KO}(\RP^k)$, implying that $a_k|n$. This demonstrates the first claim.
 
-Now we saw in chapter 2 that $a_k|n$ iff $k\leq \rho(n)-1$. We saw in chapter 3 that if $V_{n, k+1} \onto S^{n-1}$ sections, then $S(nL)\onto \R P^{k}$ is fiber homotopy trivial. Thus, if $V_{n, k+1} \onto S^{n-1}$ sections, we must have $k\leq\rho(n)-1$.
+Now we saw in unit \ref{CliffordAlgebras} that $a_k|n$ iff $k\leq \rho(n)-1$. We saw in unit \ref{BuildingThomSpaces} that if $V_{n, k+1} \onto S^{n-1}$ sections, then $S(nL)\onto \R P^{k}$ is fiber homotopy trivial. Thus, if $V_{n, k+1} \onto S^{n-1}$ sections, we must have $k\leq\rho(n)-1$.
 \end{proof}
 One of the things we get out of this theorem is that $\widetilde{KO}(\RP^k)$ is finite. In general: % really i think this and the previous immediate theorems should be moved down below Atiyah's theorem
 \begin{thm}[Atiyah]
@@ -845,7 +850,7 @@ which is simply the inclusion of the $\pi$-invariants, as desired.
 \end{proof}
 \noindent This is the key fact that gives the Steenrod operations; all else follows more or less from it.
 
-From here on, for all $r$, let $K_r$ denote $K(\Z_p,r)$ and $\widetilde H^r$ denote $\widetilde H^r(\textup{---};\Z_p)$, for some chosen prime $p$.  By the Hurewicz theorem and universal coefficients theorem: % rework this section so that we can swap out singular cohomology for something else.  this seems to be the key confusing step
+From here on, for all $r$, let $K_r$ denote $K(\Z_p,r)$ and $\widetilde H^r$ denote $\widetilde H^r(\textup{---};\Z_p)$, for some chosen prime $p$.  By the Hurewicz theorem and universal coefficients theorem: % rework this unit so that we can swap out singular cohomology for something else.  this seems to be the key confusing step
 \[\widetilde H^iK_q=0\text{ \ for $i<q$, and \ }\widetilde H^qK_q=\Z_p.\]
 %%%$\widetilde H^i(K_q; \Z_2)$ is zero for $i<q$ and is $\Z_2$ when $i=q$.
 %\begin{align*}
@@ -1004,7 +1009,7 @@ E\pi_+\wedge_\pi X^{(2)}\ar@{=}[u]
 \section{Properties of the squares} % <<<
 \label{PropertiesOfTheSquares}
 \ifx\OutputPropertiesOfTheSquares\undefined\else
-\textbf{Perhaps we should simply delete everything in small caps.} I haven't edited what's here, since I'm not sure if it's needed. Also, I haven't thought through what's needed for this to generalise to an arbitrary field. Comments about that question might prefer to live in the previous chapter. Also, it would almost certainly be better to merge this chapter with the previous.
+\textbf{Perhaps we should simply delete everything in small caps.} I haven't edited what's here, since I'm not sure if it's needed. Also, I haven't thought through what's needed for this to generalise to an arbitrary field. Comments about that question might prefer to live in the previous unit. Also, it would almost certainly be better to merge this unit with the previous.
 
 \textsc{
 We continue to derive properties of the Steenrod squares.  Recall that by choosing $\pi \subseteq \Sigma_n$ and a space $X$ we get a space $D_\pi X = E \pi_+ \sprod_\pi X^{(n)}$ along with inclusions
@@ -1180,7 +1185,7 @@ Now $(D_\pi j \circ j)^* P(P u) \in \widetilde H^*(B\pi_+ \sprod B\pi_+ \sprod X
 \end{align*}
 is symmetric in $x$ and $y$.  This is the shortest statement of the Adem relations.
 
-\textbf{the old chapter break}
+\textbf{the old unit break}
 
 Last time we got as far as showing $\Sq_x \Sq_y u = \Sq_y \Sq_x u$, where $\Sq_x = \sum_{i \ge 0} x^{-i} \Sq^i$, and $|x| = |y| = 1$, and $x$ and $y$ represent $1$-dimensional classes in $\widetilde H^* \RP^\infty$. % what the hell
 Today we'll see how this gives the more standard form of the Adem relations.
@@ -1210,7 +1215,7 @@ Again, letting $s = x^{-1}$, so $|s| = -1$, we have $\Sq_x \Sq_y = \sum_{i, j \g
 \end{align*}
 We thus need to know how to express $y$ in terms of $t$ and $s$.
 
-Now, $t^{-1} = y^2(x^{-1} + y^{-1}) = y + x^{-1} y^2 = y + s y^2$.  At this point we could pull out the quadratic formula, but that seems ill-advised over $\Z_2$.  Instead, we use the theory of residues: if $f(z)$ is a power series, then the coefficient of $z^m$ in $f(z)$ is the residue of $\frac{f(z)}{z^{m+1}}dz$.  (Normally there's a factor of $2 \pi i$ or something floating around, but once again this seems ill-advised in $\Z_2$.)  Now we are going to take advantage of the $dz$ to change variables and the claim is that this works for power series over any ring.\footnote{This is nearly true, nearly false.  It does work in this case.  See note at the end of this section. % ... what note?
+Now, $t^{-1} = y^2(x^{-1} + y^{-1}) = y + x^{-1} y^2 = y + s y^2$.  At this point we could pull out the quadratic formula, but that seems ill-advised over $\Z_2$.  Instead, we use the theory of residues: if $f(z)$ is a power series, then the coefficient of $z^m$ in $f(z)$ is the residue of $\frac{f(z)}{z^{m+1}}dz$.  (Normally there's a factor of $2 \pi i$ or something floating around, but once again this seems ill-advised in $\Z_2$.)  Now we are going to take advantage of the $dz$ to change variables and the claim is that this works for power series over any ring.\footnote{This is nearly true, nearly false.  It does work in this case.  See note at the end of this unit \textbf{(what note?)}. % ... what note?
 }  So in our case, we take the coefficient of $(t^{-1})^k$ in $y^m$: \[\res \frac{y^m}{(t^{-1})^{k+1}} d(t^{-1}).\]  We calculate that $d(t^{-1}) = dy + sdy^2 = dy + 2sydy = dy$.  We then have \[\res \frac{y^m dy}{y^{k+1}(1 + sy)^{k+1}} = \res \frac{(1+sy)^{-k-1} dy}{y^{k-m+1}},\] which is equal to the coefficient of $y^{k-m}$ in $(1+sy)^{-k-1} = \binom{-k-1}{k-m}s^{k-m}$, where we simply agree that $(1 + z)^m = \sum \binom{m}{k} z^k$ for $m \in \Z$, and for $k < 0$, $\binom{m}{k} = 0$.
 
 So we know what $y$ is in terms of $s$ and $t$, provided we know what the binomial coefficients are.  To sum up,
@@ -1527,7 +1532,7 @@ The first obvious candidate is \[\log \lambda_t(x) = \sum_{i=0}^\infty (-1)^i \f
 Replace $t$ with $-t$ to get $\frac{d}{dt} \log(1 - tL) = \frac{-L}{1 - tL}$.  And, to normalize, multiply by $-t$ to get $\frac{tL}{1 - tL} = \sum_{k \ge 1}^\infty t^k L^k$.  We define the $k^\textup{th}$ ``Adams operation'' applied to $E$, $\psi^k(E)$, to be the coefficient of $t^k$ in \[\frac{-t \frac{d}{dt} \lambda_{-t}(E)}{\lambda_{-t}(E)}.\]
 Of course, this construction could be carried out on $K(X)$ as opposed to $KO(X)$.
 
-We seek to prove the following properties of the Adams operations, and will do so by constructing them from another perspective in the next sections:
+We seek to prove the following properties of the Adams operations, and will do so by constructing them from another perspective in unit \ref{BuildingKtheoryOperatorsFromRepTheory}:
 %\begin{thm}\textbf{False claim:} 
 %There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that:
 \begin{itemize}
@@ -1567,7 +1572,7 @@ Let $G$ be a compact Lie group (e.g., $G=U(n)$, the group of $n\times n$ unitary
 Choose any Hermitian inner product on $V$.  By averaging over the group,\footnote{As $G$ is a compact Lie group it admits a Haar measure, so we can `average'.} we can form a $G$-invariant inner product $\langle - , - \rangle$. Then $G$ acts by unitary transformations on $V$, that is $\langle gx, gy \rangle = \langle x, y \rangle$, for all $g\in G$.  Picking an orthonormal basis gives each $g\in G$ as a unitary matrix, and the representation becomes a map $\rho: G \to U(n)$, where $\rho$ is a continuous homomorphism.  With these data, an isomorphism of representations looks like a matrix $M$ in terms of these bases such that $\rho'(g) = M \rho(g) M^{-1}$ for all $g \in G$.
 
 Once we have matrices it makes sense to talk about the trace; define $\chi_V(g) = \tr(\rho(g))$.  This gives a function $\chi_V: G \to \C$, called the ``character of $V$.''  We call $\chi_V$ a ``class function'' because it is constant on conjugacy classes\footnote{The trace is invariant under cyclic permutations.} in $G$.  In particular if two representations $V$ and $V'$ are isomorphic, then $\chi_V = \chi_{V'}$.
-Using characters is by far the easiest way to understand representations, and in fact they tell everything, as we will see in fact \ref{chiisinjectivo}.
+Using characters is by far the easiest way to understand representations, and in fact they tell us everything, as we will see in fact \ref{chiisinjectivo}.
 
 Define $\mathrm{Rep}_n(G) := \Hom(G, U(n)) /\textup{conjugacy}$.  Then $\mathrm{Rep}(G) := \coprod_n \mathrm{Rep}_n G$ is a semiring with addition given by $\oplus$ and multiplication by $\otimes$.\footnote{$G$ acts diagonally on the tensor produuct of $G$-modules.} Applying the Grothendieck construction to $\mathrm{Rep}(G)$ we obtain the ``representation ring'' of $G$, denoted $R(G)$.  The map $V \to \chi_V$ induces a map $\chi: R(G) \to \{\hbox{class functions $G \to \C$}\}$.
 
@@ -2064,7 +2069,7 @@ We count exactly $2+1+1+\cdots+1=\nu(n)+2$ factors of two in this expression, as
 First, remember the group $J(X)$.  This was the quotient of $KO(X)$ by the equivalence generated on the level of bundles by $V \simeq_J W$ if and only if $S(V \oplus n \varepsilon) \simeq_\textup{f.h.e.} S(W \oplus n \varepsilon)$.  An immediate consequence of the vector field problem is:\footnote{Note that theorem \ref{KOtoJofRPm} is part of theorem \ref{AdamsKORPn} (Adams), and theorem \ref{AdamsKORPn} solves the vector field problem.}
 \ConfusedBox{
 \textbf{Is this the point?}
-Suppose that it is known that $\widetilde{KO}(\RP^m)\simeq\Z/a_m\Z$, and that it is generated by $[\bundle{L}]-1$ (this is the first part of theorem \ref{AdamsKORPn}). Then we can prove the rest of theorem \ref{AdamsKORPn} (i.e.\ theorem \ref{KOtoJofRPm}) using the discussion in section \ref{UsingTheSquaresAndThomSpaces}. Recall that theorem \ref{AdamsKORPn} implies the solution of the vector fields problem.
+Suppose that it is known that $\widetilde{KO}(\RP^m)\simeq\Z/a_m\Z$, and that it is generated by $[\bundle{L}]-1$ (this is the first part of theorem \ref{AdamsKORPn}). Then we can prove the rest of theorem \ref{AdamsKORPn} (i.e.\ theorem \ref{KOtoJofRPm}) using the discussion in unit \ref{UsingTheSquaresAndThomSpaces}. Recall that theorem \ref{AdamsKORPn} implies the solution of the vector fields problem.
 \begin{thm} \label{KOtoJofRPm}
 The surjection $\widetilde{KO}(\RP^m) \onto \widetilde J(\RP^m)$ is an isomorphism.
 \end{thm}
@@ -2075,7 +2080,7 @@ $n(\bundle{L} - 1) \mapsto 0$ means $n \bundle{L}$ is stably fiber homotopy triv
 \uTo & \ruTo_\simeq \\
 S^n
 \end{diagram}
-But we know from section \ref{UsingTheSquaresAndThomSpaces} that this implies that $\nu(n)\geq m+1$, and since $m\geq \varphi_m$, $a_k=2^{\varphi_m}$ divides $n$, so $n(\bundle{L} - 1)$ was already zero in $\widetilde{KO}(\RP^m)$.\footnote{Homework: compute $\widetilde J(S^n)$.}
+But we know from unit \ref{UsingTheSquaresAndThomSpaces} that this implies that $\nu(n)\geq m+1$, and since $m\geq \varphi_m$, $a_k=2^{\varphi_m}$ divides $n$, so $n(\bundle{L} - 1)$ was already zero in $\widetilde{KO}(\RP^m)$.\footnote{Homework: compute $\widetilde J(S^n)$.}
 \end{proof}
 }
 Relations to problems in unstable homotopy are often mediated by the EHP sequence, so the next topic will be to construct it.  Our starting point will be a theorem of Bott and Samelson about $H_*(\Loops \Suspend X)$; for a proof see Whitehead~\cite{Whitehead}.  There is a map $\alpha: X \to \Loops \Suspend X$ which embeds $X$ as the ``straight loops'': $\alpha$ is adjoint to $\textup{Id}_{\Sigma X}$, and sends $x\in X$ to the loop $t\mapsto [t,x]$.
@@ -2355,6 +2360,76 @@ H^* (\Loops S^{2n}) & \cong \Lambda[x_{2n-1}] \otimes \Gamma[x_{4n-2}]&&\text{as
 H_* (\Loops S^{2k}) & \cong H_*( S^{2k-1}) \otimes H_* (\Loops S^{2k-1})&&\text{as coalgebras, not as algebras.}
 \end{alignat*}
 }
+\begin{center}
+
+\newcommand{\HopfDiagram}[5]{
+\ifthenelse{\equal{#1}{on}}
+{\colorlet{LeftBar}{green}}
+{\colorlet{LeftBar}{black}}
+\ifthenelse{\equal{#2}{on}}
+{\colorlet{BottomBar}{green}}
+{\colorlet{BottomBar}{black}}
+\ifthenelse{\equal{#1}{on}\OR \equal{#2}{on}}
+{\colorlet{TheDot}{green}}
+{\colorlet{TheDot}{black}}
+
+\colorlet{GlueColor}{red}
+
+\foreach \i in {0,...,9}
+{\draw (#4+0,.1*\i+#5) -- (#4+1-.1*\i,1+#5);}
+\foreach \i in {1,...,9}
+{\draw (#4+.1*\i,0+#5) -- (#4+1,1-.1*\i+#5);}
+
+\draw (#4+1,0+#5) -- (#4+1,1+#5);
+\draw (#4+0,1+#5) -- (#4+1,1+#5);
+\draw[ultra thick,LeftBar] (#4+0,0+#5) -- (#4+0,1+#5);
+\draw[ultra thick,BottomBar] (#4+0,0+#5) -- (#4+1,0+#5);
+\fill[TheDot] (#4+0,0+#5) circle (3.42pt);
+
+\ifthenelse{\equal{#3}{beard}}
+{
+\draw[ultra thick,LeftBar] (#4+-.5,-.5+#5) -- (#4+-.5,1+#5);
+\draw[ultra thick,BottomBar] (#4+-.5,-.5+#5) -- (#4+1,-.5+#5);
+\fill[TheDot] (#4+-.5,-.5+#5) circle (3.4pt);
+\foreach \i in {0,...,10}
+{\draw[GlueColor] (#4+-.1+.11*\i,-.1+#5) -- (#4+-.4+.14*\i,-.4+#5);}
+\foreach \i in {1,...,10}
+{\draw[GlueColor] (#4+-.1,-.1+.11*\i+#5) -- (#4+-.4,-.4+.14*\i+#5);}
+}{}%end \foreach then end \ifthenelse
+
+\ifthenelse{\equal{#3}{ArrowBeard}}
+{
+\draw[ultra thick,LeftBar] (#4+-.5,-.5+#5) -- (#4+-.5,1+#5);
+\draw[ultra thick,BottomBar] (#4+-.5,-.5+#5) -- (#4+1,-.5+#5);
+\fill[TheDot] (#4+-.5,-.5+#5) circle (3.4pt);
+\foreach \i in {0,2,4,6,8,10}
+{\draw[->,GlueColor] (#4+-.1+.11*\i,-.1+#5) -- (#4+-.4+.14*\i,-.4+#5);}
+\foreach \i in {2,4,6,8,10}
+{\draw[->,GlueColor] (#4+-.1,-.1+.11*\i+#5) -- (#4+-.4,-.4+.14*\i+#5);}
+}{}%end \foreach then end \ifthenelse
+}
+\begin{tikzpicture}
+\HopfDiagram{}{on}{}{1}{0}
+\HopfDiagram{on}{}{}{2.5}{0}
+\HopfDiagram{}{on}{ArrowBeard}{6}{0}
+\HopfDiagram{on}{}{ArrowBeard}{8}{0}
+\HopfDiagram{}{}{ArrowBeard}{11.5}{0}
+\HopfDiagram{}{}{ArrowBeard}{13.5}{0}
+
+\HopfDiagram{on}{on}{}{1.75}{3}
+\HopfDiagram{on}{on}{ArrowBeard}{7}{3}
+\HopfDiagram{}{}{ArrowBeard}{12.5}{3}
+
+\draw[->] (3.75,.5) -- (5.25,.5);
+\draw[->] (9.25,.5) -- (10.75,.5);
+\draw[->] (3,3.5) -- (6.25,3.5);
+\draw[->] (8.25,3.5) -- (11.75,3.5);
+\draw[->] (2.25,2.75) -- (2.25,1.25);
+\draw[->] (7.25,2.25) -- (7.25,1.25);
+\draw[->] (7.25+5.5,2.25) -- (7.25+5.5,1.25);
+
+\end{tikzpicture}
+\end{center}
 \section{The maps \texorpdfstring{$e$ and $h$}{e and h} in the EHP long exact sequence} % <<<
 \label{TheMapsEandHinTheEHPLES}
 \ifx\OutputTheMapsEandHinTheEHPLES\undefined\else
@@ -2514,56 +2589,174 @@ Now there are commuting diagrams
 From the left diagram,  $h(f)=\deg\hat q=(\deg q)(\deg\epsilon)=\deg q=(\deg\hat f)(\deg h_2)$, where the reader can figure out what we mean each time we write $\deg$. However, from the right diagram, $\deg h_2=\deg\hat h_2=1$ (as $\hat h_2$ is a collapse map). Note that we have used that $\epsilon$ and $\eta$ both have degree one in the appropriate sense.
 \end{proof}
 \begin{lem}\label{HopfisHopfLemma}
-$H = \pm h$, so the names are well-chosen.
+$h(f)=\pm H(f)$ for all $f\in\pi_{2n+1} (S^{n+1})$, so that the names are well-chosen.
 \end{lem}
 \begin{proof}
-We'll calculate $h(f)=\pm H(f)$ for $f\in\pi_{2n+1} (S^{n+1})$. First take the case $n$ is even.  Then $H(f)$ is calculated by squaring an odd dimensional cohomology class, so that $H(f) = 0$. 
-%To calculate $h(f)$, we use the previous claim. It is enough to prove that $H_{2n}(\hat f)$ is the zero map. 
+We'll calculate $h(f)=\pm H(f)$ for $f\in\pi_{2n+1} (S^{n+1})$. Moreover, we'll write $H$ for $H(f)$ and $h$ for $h(f)$.
 
-Now let $g$ generate $H_{2n}(S^{2n})$, and write $u_2$ as usual for the generator of $H_{2n}(\Omega S^{n+1})$. By the claim, $\hat f_*(g)=h(f)\cdot u_2$ (up to sign). Now $f_*$ is a coalgebra map, and we have computed the Hopf algebra structure on $H_*(\Omega S^{n+1})=\mathrm{T}[u_n]$, so there is a compatibility:
-\begin{diagram}
-g & \rMapsto^{\hat f_*} & h(f) u_{2n} \\
-\dMapsto & &\rdMapsto>\Delta \\
-g \otimes 1 + 1 \otimes g & \rMapsto & h(f)(u_2 \otimes 1 + 1 \otimes u_2) & \lEqualto u_2 \otimes 1 + 2 u_1 \otimes u_1 + 1 \otimes u_2.
-\end{diagram}
+First take the case $n$ is even.  Then $H$ is calculated by squaring an odd dimensional cohomology class, so that $H = 0$. 
+Now let $g$ generate $H_{2n}(S^{2n})$, and write $u_2$ as usual for the generator of $H_{2n}(\Omega S^{n+1})$. By the claim, $\hat f_*(g)=h\cdot u_2$ (up to sign). Now $f_*$ is a coalgebra map, and we have computed the Hopf algebra structure on $H_*(\Omega S^{n+1})=\mathrm{T}[u_n]$, so there is a compatibility:
+%\begin{diagram}
+%g & \rMapsto^{\hat f_*} & h u_{2n} \\
+%\dMapsto & &\rdMapsto>\Delta \\
+%g \otimes 1 + 1 \otimes g & \rMapsto & h(u_2 \otimes 1 + 1 \otimes u_2) & \lEqualto u_2 %\otimes 1 + 2 u_1 \otimes u_1 + 1 \otimes u_2.
+%\end{diagram}
 \[\xymatrix{
-g\ar@{|->}[r]_{\hat f_*}\ar@{|->}[d]_{\Delta}&h(f)\cdot u_{2n}\ar@{|->}[dr]^{\Delta}\\
-g\otimes1+1\otimes g\ar@{|->}[r]^{\hat f_*\otimes\hat f_*\qquad\ \ }&\ar@{=}[r]h(f)\cdot(u_{2n}\otimes1+1\otimes u_{2n})&h(f)\cdot(u_{2n}\otimes1+2u_1\otimes u_1+1\otimes u_{2n})
+g\ar@{|->}[r]_{\hat f_*}\ar@{|->}[d]_{\Delta}&h\cdot u_{2n}\ar@{|->}[dr]^{\Delta}\\
+g\otimes1+1\otimes g\ar@{|->}[r]^{\hat f_*\otimes\hat f_*\qquad}&\ar@{=}[r]h\cdot(u_{2n}\otimes1+1\otimes u_{2n})&h\cdot(u_{2n}\otimes1+2u_1\otimes u_1+1\otimes u_{2n})
 }\]
-But this equality can hold only if $h(f) = 0$, so we are done when $n$ is even.
+But this equality can hold only if $h = 0$, so we are done when $n$ is even.
 
 In the case that $n$ is odd,\footnote{Note that the argument showing that $h = 0$ no longer applies since now $u_2 = u_1^2$ \emph{is} primitive; recall that there is a coalgebra isomorphism $H_* (\Loops S^{2k}) \cong H_* (S^{2k-1}) \otimes H_* (\Loops S^{4k-1})$ in this case.} there are two steps; first we show $h \mid H$, then that $H \mid h$.  To show that $h \mid H$, study these two Barratt-Puppe sequences and the associated exact sequences in cohomology:
 \begin{diagram}[height=2em]
-S^{2n+1} & \rTo^f & S^{n+1} & \rTo & C(f) & \rTo & S^{2n+2} \\
-\dEqualto & & \uTo>\beta & & \uTo & & \dEqualto \\
-S^{2n+1} & \rTo^{\Suspend \hat f} & \Suspend \Loops S^{n+1} & \rTo & \Suspend C(\hat f) & \rTo & S^{2n+2} & \rTo^{\Suspend^2 \hat f} & \Suspend \Loops S^{n+1} \\
-& & 0 & \lTo & \Z_h & \lTo & \Z & \lTo^{\cdot h} & \Z \makebox[0cm][l]{\ \ in $H^{2n+2}$}, \\
-& & x & \lMapsto & x, y & \lMapsto & y \makebox[0cm][l]{$\ \in H^{2n+2}(S^{2n+2})$} \\
-& & \dMapsto<{\beta^*} & & \dMapsto & & \dMapsto \\
-& & x & \lMapsto^{H^{n+1}} & x, y & \lMapsto^{H^{2n+1}} & y,
+S^{2n+1} & \rTo^f & S^{n+1} & \rTo & C(f) & \rTo & S^{2n+2}&\rTo&S^{n+2} \\
+\dEqualto & & \uTo>\beta & & \uTo>\chi & & \dEqualto &&\uTo>{\Sigma\beta}\\
+S^{2n+1} & \rTo^{\Suspend \hat f} & \Suspend \Loops S^{n+1} & \rTo & \Suspend C(\hat f) & \rTo & S^{2n+2} & \rTo^{\Suspend^2 \hat f} & \Suspend^2 \Loops S^{n+1} \\
+%
+0 & \lTo^f & \Z & \lTo & \Z\langle x\rangle & \lTo & 0 \\
+\makebox[0cm][r]{$H^{n+1}$:\qquad}\dEqualto & & \dTo>{\beta^*}<\simeq & & \dTo & & \dEqualto \\
+0 & \lTo^{\Suspend \hat f} & \Z & \lTo & \Z\langle \overline x\rangle & \lTo & 0 &\\ 
+%
+ && 0 & \lTo & \Z\langle y\rangle & \lTo & \Z& \lTo & 0 \\
+\makebox[0cm][r]{$H^{2n+2}$:\qquad}& & \dTo>{\beta^*} & & \dTo & & \dEqualto &&\dTo\\
+&& 0 & \lTo & \Z_h\langle \overline y\rangle & \lTo & \Z & \lTo^{\cdot h} & \Z, \\
 \end{diagram}
-$x^2 = Hy$ in $H^* C(f)$ implies that $x^2 = Hy$ in $H^* \Suspend C \hat f$.  But recall that $x^2 = 0$ in any cohomology theory on any suspension, so $Hy = 0$ in $H^*(\Suspend C \hat f) \cong \Z_h$, where $h = \deg \Suspend^2 \hat f$ in dimension $2n+2$, which is equivalent to $deg \hat f$ in dimension $2n$.  This implies that $h \mid H$.
+Now we may choose the generators $\overline x$ and $\overline y$ such that $x\mapsto \overline x$ and $y\mapsto\overline y$. In particular, $x^2=Hy$ then implies that $\overline x^2=H\overline y$. However, as $\Sigma C(\hat f)$ is a suspension,\footnote{Cup products vanish in any cohomology theory on any suspension.} we have $H\overline y=0$, so that $h|H$.
 
-To show that $H \mid h$, we study $\Loops C(f)$.  First we want to show that $H_{2n} \Loops C f = \Z_H$.  In the rational cohomology spectral sequence for the fibration $\Loops Cf \to PCf \to Cf$, we compute a crucial differential:
-DRAW A SPECTRAL SEQUENCE
-Because there is no torsion in these two groups, the integral cohomology spectral sequence embeds in the rational cohomology spectral sequence, and is dual to the homology spectral sequence.  So the same differential is multiplied by $H$ in the homology spectral sequence:
-DRAW ANOTHER SPECTRAL SEQUENCE.
-Now look at the Barratt-Puppe sequence
-\begin{diagram}
-\Loops S^{2n+1} & \rTo^{\Loops f} & \Loops S^{n+1} & \rTo & \Loops C(f) \\
-\uTo<\alpha & \ruTo_{\hat f} \\
-S^{2n}.
-\end{diagram}
-In dimension $2n$, $H_{2n} \alpha$ is an isomorphism, and so
-\[
-g \alpha \stackrel{\Loops f}{\mapsto} h \cdot \mathrm{gen} \mapsto 0 \in H_{2n}(\Loops Cf)
-,\]
-since the composite is null-homotopic, so $h = 0$ in $\Z_H$, and $H \mid h$.  Notice that in case $H$ and $h$ is zero, the appropriate argument shows the other is as well.
+To show that $H \mid h$, we study the map $\Loops k$, where $k$ is the cofiber map $k:S^{n+1}\to C(f)$. We wish to show that $\Omega S^{n+1}\to\Omega C(f)$ induces a map on $H_{2n}$ of the form $\Z\onto\Z_H$. For then, if we look at the Barratt-Puppe sequence:
+\[\xymatrix@!0@C=2.5cm@R=1.4cm{
+\Omega S^{2n+1}\ar[r]^{\Omega f}&\Omega S^{n+1}\ar[r]&\Omega C(f)\\
+S^{2n}\ar[u]^\alpha\ar[ur]^{\hat f}
+}
+\raisebox{-.6cm}{ on $H_{2n}(\text{---})$: }
+\xymatrix@!0@C=2.5cm@R=1.4cm{
+\Z\ar[r]^{(\Omega f)_*}&\Z\ar@{->>}[r]&\Z_H\\
+\Z\ar[u]^\simeq\ar[ur]^{\hat f_*}_{\cdot h}
+}\]
+In particular, as the composite $S^{2n}\to \Omega C(f)$ is null, $h\mapsto 0$ under $\Z\onto\Z_H$, so that $H|h$.
+
+% First we want to show that $H_{2n} (\Loops C (f)) = \Z_H$.  
+In the rational cohomology spectral sequence for the fibration $\Loops C(f) \to PC(f) \to C(f)$, we compute a crucial differential (marked $(\star)$):
+\begin{center}
+\begin{tikzpicture}
+    %Axes
+	\path (-1,1.5) node {$\Omega S^{n+1}$};
+	\path (+3.5,-.76) node {$S^{n+1}$};
+    \draw[->] (-0.2,0) -- (5.25,0);
+    \draw[->] (0,-0.2) -- (0,2.5);
+    %Horizontal ticks
+    \draw (.5,.05) -- (.5,-.05) node[below] {$0$};
+    \draw (2.5,.05) -- (2.5,-.05) node[below] {$n+1$};
+    \draw (4.5,.05) -- (4.5,-.05) node[below] {$2n+2$};
+    %Vertical Ticks
+    \draw (.05,.5) -- (-.05,.5) node[left] {$0$};
+    \draw (.05,2) -- (-.05,2) node[left] {$n$};
+    %Points
+    \path (.5,.5) node (v00) {$\Q$};
+    \path (2.5,.5) node (v10) {$\Q\langle x\rangle$};
+    \path (4.5,.5) node (v20) {$\Q\langle y\rangle$};
+    \path (.5,2) node (v01) {$\Q$};
+    \path (2.5,2) node (v11) {$\Q$};
+    \path (4.5,2) node (v21) {$\Q$};
+    %Arrow
+    \draw [->] (v01) edge (v10);
+    \draw [->,font=\scriptsize] (v11) 
+		edge node[left]{$(\star)$} (v20);
+    \path (v00) ++(.3,.3) coordinate (v00ur);
+    \path (v10) ++(.3,.3) node (v10ur) {$x$};
+    \path (v20) ++(.3,.3) node (v20ur) {$Hy$};
+    \path (v01) ++(.3,.3) node (v01ur) {$u$};
+    \path (v11) ++(.3,.3) node (v11ur) {$xu$};
+    \path (v21) ++(.3,.3) coordinate (v21ur);
+%    \path (v11ur) node {$ux$};
+%    \path (v20ur) node {$Hux$};
+%    \path (v01ur) node {$u$};
+%    \path (v10ur) node {$x$};
+	\draw [|->] (v01ur) edge (v10ur);
+	\draw [|->] (v11ur) edge (v20ur);
+	\path (6.5, 1.25) node {\phantom{$d_{n+1}(xu)=dx\cdot u+x\cdot du = x^2=Hy$}{$d_{n+1}(xu)=dx\cdot u+x\cdot du = x^2=Hy$}};
+\end{tikzpicture}
+\end{center}
+Because there is no torsion in these two groups, the integral cohomology spectral sequence embeds in the rational cohomology spectral sequence, and is dual to the homology spectral sequence.  So the same differential is multiplication by $H$ in the integral homology spectral sequence (drawn at right):
+
+\begin{center}
+\begin{tikzpicture}
+    %Axes
+	\path (-1,2.75) node {$\Omega S^{n+1}$};
+	\path (+3.5,-.76) node {$S^{n+1}$};
+    \draw[->] (-0.2,0) -- (5.25,0);
+    \draw[->] (0,-0.2) -- (0,4);
+    %Horizontal ticks
+    \draw (.5,.05) -- (.5,-.05) node[below] {$0$};
+    \draw (2.5,.05) -- (2.5,-.05) node[below] {$n+1$};
+    \draw (4.5,.05) -- (4.5,-.05) node[below] {$2n+2$};
+    %Vertical Ticks
+    \draw (.05,.5) -- (-.05,.5) node[left] {$0$};
+    \draw (.05,2) -- (-.05,2) node[left] {$n$};
+    \draw (.05,3.5) -- (-.05,3.5) node[left] {$2n$};
+    %Points
+    \path (.5,.5) node (v00) {$\Z$};
+    \path (2.5,.5) node (v10) {$\Z$};
+    \path (4.5,.5) node (v20) {$0$};
+    \path (.5,2) node (v01) {$\Z$};
+    \path (2.5,2) node (v11) {$\Z$};
+    \path (4.5,2) node (v21) {$0$};
+    \path (.5,3.5) node (v02) {$\Z$};
+    \path (2.5,3.5) node (v12) {$\Z$};
+    \path (4.5,3.5) node (v22) {$0$};
+    %Arrow
+    \draw [->] (v10) edge node[above]{$\simeq$} (v01);
+    \draw [->] (v11) edge node[above]{$\simeq$} (v02);
+
+%	\draw[dashed,->] (5.5,2) -- (7,2);
+%	\draw[dashed,->] (5.5,2+1.5) -- (7,2+1.5);
+%	\draw[dashed,->] (5.5,2-+1.5) -- (7,2-1.5);
+
+
+
+    %Axes
+	\path (8-1,2.75) node {$\Omega C(f)$};
+	\path (8+3.5,-.76) node {$C(f)$};
+    \draw[->] (7.8,0) -- (13.25,0);
+    \draw[->] (8,-0.2) -- (8,4);
+    %Horizontal ticks
+    \draw (8.5,.05) -- (8.5,-.05) node[below] {$0$};
+    \draw (10.5,.05) -- (10.5,-.05) node[below] {$n+1$};
+    \draw (12.5,.05) -- (12.5,-.05) node[below] {$2n+2$};
+    %Vertical Ticks
+    \draw (8.05,.5) -- (8+-.05,.5) node[left] {$0$};
+    \draw (8+.05,2) -- (8+-.05,2) node[left] {$n$};
+    \draw (8+.05,3.5) -- (8+-.05,3.5) node[left] {$2n$};
+    %Points
+    \path (8+.5,.5) node (w00) {$\Z$};
+    \path (8+2.5,.5) node (w10) {$\Z$};
+    \path (8+4.5,.5) node (w20) {$\Z$};
+    \path (8+.5,2) node (w01) {$\Z$};
+    \path (8+2.5,2) node (w11) {$\Z$};
+    \path (8+4.5,2) node (w21) {$\Z$};
+    \path (8+.5,3.5) node (w02) {$\Z_H$};
+    \path (8+2.5,3.5) node (w12) {$\Z_H$};
+    \path (8+4.5,3.5) node (w22) {$\Z_H$};
+    %Arrow
+    \draw [->] (w10) edge node[above]{$\simeq$} (w01);
+%    \draw [->] (w20) edge node[above right]{$\cdot H$} (w11);
+    \draw [->,font=\scriptsize] (w20) 
+		edge node[left]{$(\star)$} node[above]{$\cdot H$} (w11);
+    \draw [->>,font=\scriptsize] (w11) edge node[above] {\ \ $\;d_{n+1}$} (w02);%node[above]{$\simeq$} (w02);
+%    \draw [->] (w21) edge node[above]{$a$} (w12);
+
+	\draw[dashed,->,font=\scriptsize]  (v02) edge [bend left=10] node[above] {$H_{2n}(\Omega k)$} (w02);
+	\draw[dashed,->,font=\scriptsize]  (v11) edge [bend right=10] node[above] {$\chi$}node[below] {$\simeq$} (w11);
+\end{tikzpicture}
+\end{center}
+As the right hand sequence converges to $H_*(\ptspace)$, we deduce that $H_{2n}(\Omega C(f))=\Z_H$, and the differential $d_{n+1}:E^{n+1}_{n+1,n}\to E^{n+1}_{0,2n}$ is the quotient map $\Z\to\Z_H$. 
+
+Now the map $k:S^{n+1}\to C(f)$ induces a morphism of spectral sequences,  from that of the fibration $\Loops S^{n+1} \to PS^{n+1} \to S^{n+1}$ to that of $\Loops C(f) \to PC(f) \to C(f)$, as drawn above. Moreover, the map of interest, $H_{2n}(\Omega k)$, is one of the two dashed arrows. The other dashed arrow, $\chi$, is an isomorphism, as it is induced by the isomorphisms $H_{n+1}(k):H_{n+1}(S^{n+1})\to H_{n+1}(C(f))$ and $H_{n}(\Omega k):H_n(\Omega S^{n+1})\to H_n(\Omega C(f))$. Consideration of the commuting square in the above diagram reveals that $H_{2n}(\Omega k)$ is surjective, and completes the proof.
 \end{proof}
 
-Maybe now we should show that there exists an element of Hopf invariant 1; after all the results we have proven so far have been negative.  Let's see that an $H$-space structure $S^{n-1}$ yields an element of Hopf invariant one on $S^n$, then real, complex, quaternionic, and Cayley multiplication will provide elements of Hopf invariant one on $S^1$, $S^2$, $S^4$, and $S^8$.
+Maybe now we should show that there exists an element of Hopf invariant 1; all the results we have proven so far have been negative.  Let's see that an $H$-space structure $S^{n-1}$ yields an element of Hopf invariant one on $S^n$, then real, complex, quaternionic, and Cayley multiplication will provide elements of Hopf invariant one on $S^1$, $S^2$, $S^4$, and $S^8$.
 
-We will construct such elements using the ``Hopf construction;'' to understand this construction, it helps to look at it in extreme generality.  Remember from the beginning of the course that this takes a ``multiplication'' $\mu: X \times Y \to Z$ and yields a map $H\mu: X \ast Y \to \Suspend Z$.  The construction (see the first day's notes!) is by forming a morphism of pushout diagrams, which form the left and right faces of the cube:
+We will construct such elements using the ``Hopf construction''; to understand this construction, it helps to look at it in extreme generality.  Remember from the beginning of the course that this takes a ``multiplication'' $\mu: X \times Y \to Z$ and yields a map $H\mu: X \ast Y \to \Suspend Z$.  The construction (see unit \ref{IntroductionToVectorFieldsOnSpheres}) is by forming a morphism of pushout diagrams, pictured on the left and right faces of the following cube:
 \begin{diagram}[height=1.6em,width=2em]
 X \times Y & & \rTo^\mu & & Z \\
 & \rdTo & & & \vLine & \rdTo \\
@@ -2571,35 +2764,42 @@ X \times Y & & \rTo^\mu & & Z \\
 & & \dTo & & \dTo \\
 X \times CY & \hLine & \VonH & \rTo & CZ & & \dTo \\
 & \rdTo & & & & \rdTo \\
-& & X \ast Y & & \rTo^{H\mu} & & \Suspend Z.
+& & X \ast Y & & \rTo^{H(\mu)} & & \Suspend Z.
 \end{diagram}
-Now call $H\mu$ by $j$; since the composite $X \ast Y \stackrel{j}{\to} \Suspend Z \to Cj$ is null-homotopic we get a map $k$ in
-\begin{diagram}
-X \ast Y & \rTo^j & \Suspend Z \\
-\dTo & & \dTo \\
-C(X \ast Y) & \rTo^k & Cj,
-\end{diagram}
-and it takes some thought to see that $k$ is a relative homeomorphism off of $X \ast Y$.
-\begin{figure}[h!]
+For brevity, write $j$ for $H(\mu)$; since the composite $X \ast Y \stackrel{j}{\to} \Suspend Z \to Cj$ is null-homotopic, it extends to a  map $k:C(X\ast Y)\to C(j)$
+In fact, we obtain a map $k$ for every nullhomotopy of this composite, and the obvious choice of nullhomotopy gives rise to the obvious map $k:C(X\ast Y)\to C(j)=\Sigma Z\cup_j C(X\ast Y)$.
+In particular, this $k$ is a relative homeomorphism away from $X\ast Y\subset C(X\ast Y)$.
+That is, we have a commutative diagram:
+\[\xymatrix{
+X \ast Y  \ar[d]\ar[r]^j & \Suspend Z\ar[d] \\
+C(X \ast Y)  \ar[r]^{k} \ar[d]& C(j)\ar[d]\\
+C(X\ast Y)/(X\ast Y)\ar[r]^{\ \ \ \ \ \cong}&C(j)/\Sigma Z
+}\]
+
+
+\begin{figure}[h!]\label{John}
 \centering\includegraphics[width=0.4\textwidth]{figures/20.pdf}
 \caption{\small Diagram of the cone of a join.}
 \end{figure}
-Finally, note that $C(X \ast Y) = CX \times CY$.  Now, in our particular case, we have
-\begin{diagram}
-S^{n-1} \times x_0 \\
-\dTo & \rdTo^a \\
-S^{n-1} \times S^{n-1} & \rTo^\mu & S^{n-1} \\
-\uTo & \ruTo_b \\
-x_0 \times S^{n-1},
-\end{diagram}
+Finally, note that $C(X \ast Y) = CX \times CY$, as indicated by figure \ref{John}.  
+
+We are particularly interested in the case where $X=Y=Z=S^{n-1}$:
+\[\xymatrix{
+S^{n-1} \times \{x_0\}\ar[d]
+\ar[rd]^(.6){\ \ a=\deg\left(\mu|_{S^{n-1}\times\{x_0\}}\right)} \\
+S^{n-1}\times S^{n-1}\ar[r]^{\qquad\mu}&S^{n-1}
+&\ar@{~>}[r]&&S^{2n-1}\ar[r]^j& S^n\\
+\{x_0\} \times S^{n-1}\ar[u]
+\ar[ru]_(.6){\ \ b=\deg\left(\mu|_{\{x_0\} \times S^{n-1}}\right)} \\
+}\]
 and the claim is
 \begin{lem}
 The Hopf invariant of $j$ is $\pm ab$; in particular if $a = b = 1$, then $Hj = \pm 1$.
 \end{lem}
 \begin{proof}
 Note $CS^{n-1} = e^n$, the closed $n$-disk.  The maps $k$ and $j$ yield
-\begin{diagram}
-(e^n \times e^n, S^{2n-1}) & \rTo^k & (Cj, S^n) & \lTo & Cj \\
+\begin{diagram}[height=2em]
+(e^n \times e^n, S^{2n-1}) & \rTo^k_{\text{rel.homeo.}} & (Cj, S^n) & \lTo & Cj \\
 \dTo & & \dTo & & \dTo>\Delta \\
 (e^n \times e^n, e^n \times S^{n-1}) \times (e^n \times e^n, S^{n-1} \times e^n) & \rTo & (Cj, e^n_+) \times (Cj, e^n_-) & \lTo ^{\simeq} & Cj \times Cj,
 \end{diagram}
@@ -2608,8 +2808,8 @@ where the middle vertical map is given by the composite
 S^{n-1} \ast S^{n-1} \stackrel{j}{\to} \Suspend S^{n-1} \to Cj = \Suspend S^{n-1} \cup C(S^{n-1} \ast S^{n-1})
 .\]
 Under this we have
-\begin{diagram}
-abx^{\sprod 2} = Hy & \lMapsto^{3.} & Hy & \rMapsto^{2.} & Hy \\
+\begin{diagram}[height=2em]
+abx^{\sprod 2} = Hy & \lMapsto^{\ \ \ 3.} & Hy & \rMapsto^{2.} & Hy \\
 \uMapsto>{5.} & & \uMapsto & & \uMapsto>{1.} \\
 ax \otimes bx & \lMapsto^{4.} & x \otimes x & \lMapsto & x \otimes x,
 \end{diagram}
