@@ -185,6 +185,64 @@
 \setlength{\cftsecnumwidth}{4em}
 \setlength{\cftbeforesecskip}{0em}
 \setcounter{section}{-1}
+
+
+
+\newcommand{\HopfDiagram}[6]{
+\ifthenelse{\equal{#1}{on}}
+{\colorlet{LeftBar}{green}}
+{\colorlet{LeftBar}{black}}
+\ifthenelse{\equal{#2}{on}}
+{\colorlet{BottomBar}{green}}
+{\colorlet{BottomBar}{black}}
+\ifthenelse{\equal{#1}{on}\OR \equal{#2}{on}}
+{\colorlet{TheDot}{green}}
+{\colorlet{TheDot}{black}}
+\ifthenelse{\equal{#3}{BlackBeard}}
+{\colorlet{GlueColor}{black}}
+{\colorlet{GlueColor}{red}}
+\ifthenelse{\equal{#3}{WhiteBeard}}
+{\colorlet{GlueColor}{white}}
+{}
+
+\ifthenelse{\equal{#6}{cone}}
+{\foreach \i in {0,...,9}
+{\draw (#4+0,.1*\i+#5) -- (#4+1-.1*\i,1+#5);}
+\foreach \i in {1,...,9}
+{\draw (#4+.1*\i,0+#5) -- (#4+1,1-.1*\i+#5);}
+\draw (#4+1,0+#5) -- (#4+1,1+#5);
+\draw (#4+0,1+#5) -- (#4+1,1+#5);
+}{}
+
+\ifthenelse{\equal{#6}{BottomBar}}{}
+{\draw[ultra thick,LeftBar] (#4+0,0+#5) -- (#4+0,1+#5);}
+\ifthenelse{\equal{#6}{LeftBar}}{}
+{\draw[ultra thick,BottomBar] (#4+0,0+#5) -- (#4+1,0+#5)};
+\fill[TheDot] (#4+0,0+#5) circle (3.42pt);
+
+\ifthenelse{\equal{#3}{beard}}
+{
+\draw[ultra thick,LeftBar] (#4+-.5,-.5+#5) -- (#4+-.5,1+#5);
+\draw[ultra thick,BottomBar] (#4+-.5,-.5+#5) -- (#4+1,-.5+#5);
+\fill[TheDot] (#4+-.5,-.5+#5) circle (3.4pt);
+\foreach \i in {0,...,10}
+{\draw[GlueColor] (#4+-.1+.11*\i,-.1+#5) -- (#4+-.4+.14*\i,-.4+#5);}
+\foreach \i in {1,...,10}
+{\draw[GlueColor] (#4+-.1,-.1+.11*\i+#5) -- (#4+-.4,-.4+.14*\i+#5);}
+}{}%end \foreach then end \ifthenelse
+
+\ifthenelse{\equal{#3}{ArrowBeard}\OR \equal{#3}{BlackBeard}\OR \equal{#3}{WhiteBeard}}
+{
+\draw[ultra thick,LeftBar] (#4+-.5,-.5+#5) -- (#4+-.5,1+#5);
+\draw[ultra thick,BottomBar] (#4+-.5,-.5+#5) -- (#4+1,-.5+#5);
+\fill[TheDot] (#4+-.5,-.5+#5) circle (3.4pt);
+\foreach \i in {0,2,4,6,8,10}
+{\draw[->,GlueColor] (#4+-.1+.11*\i,-.1+#5) -- (#4+-.4+.14*\i,-.4+#5);}
+\foreach \i in {2,4,6,8,10}
+{\draw[->,GlueColor] (#4+-.1,-.1+.11*\i+#5) -- (#4+-.4,-.4+.14*\i+#5);}
+}{}%end \foreach then end \ifthenelse
+}
+
 % >>>
 
 % <<< title and author information
@@ -2360,76 +2418,7 @@ H^* (\Loops S^{2n}) & \cong \Lambda[x_{2n-1}] \otimes \Gamma[x_{4n-2}]&&\text{as
 H_* (\Loops S^{2k}) & \cong H_*( S^{2k-1}) \otimes H_* (\Loops S^{2k-1})&&\text{as coalgebras, not as algebras.}
 \end{alignat*}
 }
-\begin{center}
 
-\newcommand{\HopfDiagram}[5]{
-\ifthenelse{\equal{#1}{on}}
-{\colorlet{LeftBar}{green}}
-{\colorlet{LeftBar}{black}}
-\ifthenelse{\equal{#2}{on}}
-{\colorlet{BottomBar}{green}}
-{\colorlet{BottomBar}{black}}
-\ifthenelse{\equal{#1}{on}\OR \equal{#2}{on}}
-{\colorlet{TheDot}{green}}
-{\colorlet{TheDot}{black}}
-
-\colorlet{GlueColor}{red}
-
-\foreach \i in {0,...,9}
-{\draw (#4+0,.1*\i+#5) -- (#4+1-.1*\i,1+#5);}
-\foreach \i in {1,...,9}
-{\draw (#4+.1*\i,0+#5) -- (#4+1,1-.1*\i+#5);}
-
-\draw (#4+1,0+#5) -- (#4+1,1+#5);
-\draw (#4+0,1+#5) -- (#4+1,1+#5);
-\draw[ultra thick,LeftBar] (#4+0,0+#5) -- (#4+0,1+#5);
-\draw[ultra thick,BottomBar] (#4+0,0+#5) -- (#4+1,0+#5);
-\fill[TheDot] (#4+0,0+#5) circle (3.42pt);
-
-\ifthenelse{\equal{#3}{beard}}
-{
-\draw[ultra thick,LeftBar] (#4+-.5,-.5+#5) -- (#4+-.5,1+#5);
-\draw[ultra thick,BottomBar] (#4+-.5,-.5+#5) -- (#4+1,-.5+#5);
-\fill[TheDot] (#4+-.5,-.5+#5) circle (3.4pt);
-\foreach \i in {0,...,10}
-{\draw[GlueColor] (#4+-.1+.11*\i,-.1+#5) -- (#4+-.4+.14*\i,-.4+#5);}
-\foreach \i in {1,...,10}
-{\draw[GlueColor] (#4+-.1,-.1+.11*\i+#5) -- (#4+-.4,-.4+.14*\i+#5);}
-}{}%end \foreach then end \ifthenelse
-
-\ifthenelse{\equal{#3}{ArrowBeard}}
-{
-\draw[ultra thick,LeftBar] (#4+-.5,-.5+#5) -- (#4+-.5,1+#5);
-\draw[ultra thick,BottomBar] (#4+-.5,-.5+#5) -- (#4+1,-.5+#5);
-\fill[TheDot] (#4+-.5,-.5+#5) circle (3.4pt);
-\foreach \i in {0,2,4,6,8,10}
-{\draw[->,GlueColor] (#4+-.1+.11*\i,-.1+#5) -- (#4+-.4+.14*\i,-.4+#5);}
-\foreach \i in {2,4,6,8,10}
-{\draw[->,GlueColor] (#4+-.1,-.1+.11*\i+#5) -- (#4+-.4,-.4+.14*\i+#5);}
-}{}%end \foreach then end \ifthenelse
-}
-\begin{tikzpicture}
-\HopfDiagram{}{on}{}{1}{0}
-\HopfDiagram{on}{}{}{2.5}{0}
-\HopfDiagram{}{on}{ArrowBeard}{6}{0}
-\HopfDiagram{on}{}{ArrowBeard}{8}{0}
-\HopfDiagram{}{}{ArrowBeard}{11.5}{0}
-\HopfDiagram{}{}{ArrowBeard}{13.5}{0}
-
-\HopfDiagram{on}{on}{}{1.75}{3}
-\HopfDiagram{on}{on}{ArrowBeard}{7}{3}
-\HopfDiagram{}{}{ArrowBeard}{12.5}{3}
-
-\draw[->] (3.75,.5) -- (5.25,.5);
-\draw[->] (9.25,.5) -- (10.75,.5);
-\draw[->] (3,3.5) -- (6.25,3.5);
-\draw[->] (8.25,3.5) -- (11.75,3.5);
-\draw[->] (2.25,2.75) -- (2.25,1.25);
-\draw[->] (7.25,2.25) -- (7.25,1.25);
-\draw[->] (7.25+5.5,2.25) -- (7.25+5.5,1.25);
-
-\end{tikzpicture}
-\end{center}
 \section{The maps \texorpdfstring{$e$ and $h$}{e and h} in the EHP long exact sequence} % <<<
 \label{TheMapsEandHinTheEHPLES}
 \ifx\OutputTheMapsEandHinTheEHPLES\undefined\else
@@ -2766,6 +2755,21 @@ X \times CY & \hLine & \VonH & \rTo & CZ & & \dTo \\
 & \rdTo & & & & \rdTo \\
 & & X \ast Y & & \rTo^{H(\mu)} & & \Suspend Z.
 \end{diagram}
+To explain this pictorially, we represent $X$, $Y$ and $Z$ each as a single point, and draw $X\ast Y$ as:
+\begin{center}
+\begin{tikzpicture}
+\path (1.25-6,0) node[below] {$C_+X$};
+\path (-6,0) node[below left] {$X$};
+\HopfDiagram{}{}{}{-6}{0}{BottomBar}
+\path (-3,.75) node[left] {$C_-Y$};
+\path (-3,0) node[below left] {$Y$};
+\HopfDiagram{}{}{}{-3}{0}{LeftBar}
+\HopfDiagram{}{}{}{0}{0}{}
+\path (0,.75) node[left] {$X\times C_-Y$};
+\path (1.25,0) node[below] {$C_+X\times Y$};
+\path (0,0) node[below left] {$X\times Y$};
+\end{tikzpicture}
+\end{center}
 For brevity, write $j$ for $H(\mu)$; since the composite $X \ast Y \stackrel{j}{\to} \Suspend Z \to Cj$ is null-homotopic, it extends to a  map $k:C(X\ast Y)\to C(j)$
 In fact, we obtain a map $k$ for every nullhomotopy of this composite, and the obvious choice of nullhomotopy gives rise to the obvious map $k:C(X\ast Y)\to C(j)=\Sigma Z\cup_j C(X\ast Y)$.
 In particular, this $k$ is a relative homeomorphism away from $X\ast Y\subset C(X\ast Y)$.
@@ -2776,7 +2780,30 @@ C(X \ast Y)  \ar[r]^{k} \ar[d]& C(j)\ar[d]\\
 C(X\ast Y)/(X\ast Y)\ar[r]^{\ \ \ \ \ \cong}&C(j)/\Sigma Z
 }\]
 
+\begin{center}
 
+\begin{tikzpicture}
+\HopfDiagram{}{on}{}{1}{0}{cone}
+\HopfDiagram{on}{}{}{2.5}{0}{cone}
+\HopfDiagram{}{on}{ArrowBeard}{6}{0}{cone}
+\HopfDiagram{on}{}{ArrowBeard}{8}{0}{cone}
+\HopfDiagram{}{}{ArrowBeard}{11.5}{0}{cone}
+\HopfDiagram{}{}{ArrowBeard}{13.5}{0}{cone}
+
+\HopfDiagram{on}{on}{}{1.75}{3}{cone}
+\HopfDiagram{on}{on}{ArrowBeard}{7}{3}{cone}
+\HopfDiagram{}{}{WhiteBeard}{12.5}{3}{cone}
+
+\draw[->] (3.75,.5) -- (5.25,.5);
+\draw[->] (9.25,.5) -- (10.75,.5);
+\draw[->] (3,3.5) -- (6.25,3.5);
+\draw[->] (8.25,3.5) -- (11.75,3.5);
+\draw[->] (2.25,2.75) -- (2.25,1.25);
+\draw[->] (7.25,2.25) -- (7.25,1.25);
+\draw[->] (7.25+5.5,2.25) -- (7.25+5.5,1.25);
+
+\end{tikzpicture}
+\end{center}
 \begin{figure}[h!]\label{John}
 \centering\includegraphics[width=0.4\textwidth]{figures/20.pdf}
 \caption{\small Diagram of the cone of a join.}
