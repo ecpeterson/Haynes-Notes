@@ -20,7 +20,7 @@
 %\usepackage[debug]{sseq}
 
 
-%\newcommand{\OutputEVERYTHING}{  everything  }
+\newcommand{\OutputEVERYTHING}{  everything  }
 %\newcommand{\OutputFrontMatter}{}
 %\newcommand{\OutputForeword}{0}
 %\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{1}
@@ -87,9 +87,9 @@
 \end{center}
 }
 \newcommand{\ConfusedBox}[1]{
-\begin{center}\fbox{\begin{minipage}{.95\textwidth}
+\begin{center}\scalebox{.5}{\fbox{\begin{minipage}{\textwidth}
 #1
-\end{minipage}}
+\end{minipage}}}
 \end{center}
 }
 \newcommand{\Bullet}{\ensuremath{\bullet} }
@@ -327,18 +327,18 @@ A sphere is said to be parallelizable when there is a basis for the tangent spac
 \end{cor}
 
 A closely related problem is the so-called ``Hopf invariant 1 problem.''  Suppose $S^{n-1}$ is parallelizable, or equivalently that there is a section of $O(n) = V_{n, n} \to S^{n-1}$, called $v$.  Now a point in any ``Stiefel manifold'' $V_{n, k}$ can be written as a $(n \times k)$-matrix whose columns are orthogonal and have norm $1$.  The group $O(n)$ acts on $\R^n$ and this action induces an action on $S^{n-1}$.  Combining this with the section $v$ gives 
-\begin{diagram}
+\begin{diagram}[height=2em]
 O(n) \times S^{n-1} & \rTo & S^{n-1} \\
 \uTo & \ruTo \\
 S^{n-1} \times S^{n-1},
 \end{diagram}
-and when the second coordinate is $e_1$, as $v$ is a section, we have
-\begin{diagram}
+and $e_1$ is a right-unit of this multiplication on $S^{n-1}$, as $v$ is a section:
+\begin{diagram}[height=2em]
 (v(x), e_1) & \rMapsto & x \\
 \uMapsto & \ruMapsto \\
 (x, e_1).
 \end{diagram}
-So $e_1$ is a right-unit of this multiplication on $S^{n-1}$.  $e_1$ isn't necessarily a left unit, but $v(e_1)$ is a matrix such that $v(e_1)_{i, j}$ is $1$ for $i = j = 0$ and $0$ whenever $i = 0$ or $j = 0$ but not both.  We can therefore correct the situation by replacing $v$ with $v(e_1)^{-1} v$, which will still be a section. % is this actually true?
+Now $e_1$ isn't necessarily a left unit, but $v(e_1)$ is a matrix such that $v(e_1)_{i, j}$ is $1$ for $i = j = 0$ and $0$ whenever $i = 0$ or $j = 0$ but not both.  We can therefore correct the situation by replacing $v$ with $v(e_1)^{-1} v$, which will still be a section. % is this actually true?
 Now $v(e_1) = I$, so we find that a parallelizable $(n-1)$-sphere has a multiplication with a $2$-sided unit.  Such a space is called an $H$-space; to be precise, an $H$-space is a pointed space $(X, x_0)$ with a product $\mu: X \times X \to X$ such that $\mu(x_0, x) = \mu(x, x_0) = x$.  In our cases, we have the correspondence
 \[
 \begin{array}{cccc}
@@ -347,14 +347,17 @@ S^0 & S^1 & S^3 & S^7 \\
 \end{array}\]
 In view of the results above, a natural question is: When can $S^{n-1}$ be given the structure of an $H$-space?
 
-\begin{wrapfigure}{r}{0.3\textwidth}
-\centering\includegraphics[width=0.2\textwidth]{figures/fig3.pdf}
-\caption{\small Diagram of the cone on $X$.}
-\end{wrapfigure}
+\ConfusedBox{
+%\begin{wrapfigure}{r}{0.3\textwidth}
+%\centering\includegraphics[width=0.2\textwidth]{figures/fig3.pdf}
+%\caption{\small Diagram of the cone on $X$.}
+%\end{wrapfigure}
+\textbf{The Hopf construction is treaded so much better in unit \ref{TheMapsEandHinTheEHPLES}. I should really rewrite all this to reference that unit.}
+
 To attack this problem, it is helpful first to think about the map $\mu$ in ridiculous generality, sort of like thinking about a bilinear form in terms of a tensor product.  Namely, consider a map $\mu: X \times Y \to Z$, and consider the cone over $X$ which is defined to be the quotient $X \times I /\{(x, 0) \sim (x', 0)\}$.  The map $\mu$ then induces a map $CX \times Y \to CZ$ by $((x, t), y) \mapsto (\mu(x, y), t)$, and similarly a map $X \times CY \to CZ$.  $X \times Y$ includes into both $CX \times Y$ and $X \times CY$ as $((x, 1), y)$ and $(x, (y, 1))$ respectively, and $Z$ includes into $CZ$ as $(z, 1)$.  Putting these together, we get a diagram
-\begin{figure}[h!]
-\centering\includegraphics[width=0.35\textwidth]{figures/fig4.pdf} % this guy is missing some arrows
-\end{figure}
+%\begin{figure}[h!]
+%\centering\includegraphics[width=0.35\textwidth]{figures/fig4.pdf} % %this guy is missing some arrows
+%\end{figure}
 
 The commutativity means that we can take the disjoint union of $CX \times Y$ and $X \times CY$ and identify along the copy of $X \times Y$ in each, then take two copies of $CZ$ and identify along their bases, and get a conglomerate map $H(\mu): X \ast Y \to \Suspend Z$, where $\ast$ denotes join and $\Suspend$ denotes suspension.
 That is, the diagram above constitutes a map between two diagrams of shape $\bullet\leftarrow\bullet\rightarrow\bullet$, which induces a map $H(\mu)$ between their colimits (pushouts).
@@ -363,6 +366,7 @@ This process is called the ``Hopf construction'' for $\mu$, hence the name $H(\m
 
 
 We note two facts about the join: first, $S^{p-1} \ast S^{q-1} = S^{p + q - 1}$, which follows from the more general statement that $X \ast Y = \Suspend(X \sprod Y)$ for reasonable $X$ and $Y$, e.g., CW-complexes.  In the case of an $H$-space, $H(\mu)$ can be written as a map $X \ast X \to \Suspend X$, and if $X = S^{n-1}$, this is a map $S^{2n-1} \to S^n$, i.e., a homotopy class of a the $n$-sphere, something to be prized and studied. % use \pi_n notation here
+}
 
 \begin{wrapfigure}{r}{0.3\textwidth}
 \centering\includegraphics[width=0.23\textwidth]{figures/fig5.pdf}
@@ -377,7 +381,7 @@ H^*(S^n \cup_{H(\mu)} e^{2n}) =
 \Z & \hbox{generated by $1$ in degree $0$.}
 \end{cases}
 \]
-Using the cup product, $x^2 = \alpha y$ for some $\alpha \in \Z$, where for now $\alpha$ is well-defined only up to sign.  This coefficient $\alpha$ is called the Hopf invariant of $\mu$.  We make the unsubstantiated claim that $\alpha = \pm 1$ for $H(\mu)$ whenver $\mu$ is an $H$-space multiplication on the $(n-1)$-sphere.  As examples, we have
+Using the cup product, $x^2 = \alpha y$ for some $\alpha \in \Z$, where for now $\alpha$ is well-defined only up to sign.  This coefficient $\alpha$ is called the Hopf invariant of $\mu$.  We make the unsubstantiated\footnote{Unsubstantiated for now --- see unit \ref{TheMapsEandHinTheEHPLES}.} claim that $\alpha = \pm 1$ for $H(\mu)$ whenver $\mu$ is an $H$-space multiplication on the $(n-1)$-sphere.  As examples, we have
 \begin{diagram}
 S^3 & \rTo & S^2 & \rTo & S^2 \cup e^4 = \CP^2, \\
 S^7 & \rTo & S^4 & \rTo & S^4 \cup e^8 = \mathbb{H}P^2, \\
@@ -387,9 +391,9 @@ where the last is called the ``Cayley projective plane.''  (Note that nonassocia
 
 So now the question is: for what spheres is there an element of $\pi_{2n-1} S^n$ of Hopf invariant $1$?
 \begin{thm}[Adams] % hopf invariant was only defined for n > 1 :)
-If $\pi_{2n-1} S^n$ contains an element of Hopf invariant $1$, then $n = 1$, $2$, $4$, or $8$.
+If $\pi_{2n-1} (S^n)$ contains an element of Hopf invariant $1$, then $n = 1$, $2$, $4$, or $8$.
 \end{thm}
-For the time being, take a step back and recall the action $O(n) \times S^{n-1} \to S^{n-1}$.  Any $\alpha \in \pi_k O(n)$ (not necessarily from a section) induces a map $S^k \times S^{n-1} \to O(n) \times S^{n-1} \to S^{n-1}$.  Doing the Hopf construction here induces a map $S^{k+n} \to S^n$, i.e., we get what turns out to be a homomorphism $J: \pi_k O(n) \to \pi_{n+k} S^n$ called the ``$J$-homomorphism.''  For $k < n$, $\pi_k O(n)$ are known by Bott periodicity, hence there is much interest in the image of $J$.  Note that for $k < n$, $n + k > 2k$, and this is the so-called ``stable range'' where things often seem to work better; one then thinks of $J$ as a map $\pi_* O \to \pi_*^S$.  The Adams conjectures are concerned with the image of this $J$. % should stablility really be mentioned here?
+For the time being, take a step back and recall the action $O(n) \times S^{n-1} \to S^{n-1}$.  Any $\alpha \in \pi_k (O(n))$ (not necessarily from a section) induces a map $S^k \times S^{n-1} \to O(n) \times S^{n-1} \to S^{n-1}$.  Doing the Hopf construction here induces a map $S^{k+n} \to S^n$, i.e., we get what turns out to be a homomorphism $J: \pi_k (O(n)) \to \pi_{n+k} (S^n)$ called the ``$J$-homomorphism.''  For $k < n$, $\pi_k (O(n))$ are known by Bott periodicity, hence there is much interest in the image of $J$.  Note that for $k < n$, $n + k > 2k$, and this is the so-called ``stable range'' where things often seem to work better; one then thinks of $J$ as a map $\pi_* (O) \to \pi_*^s$.  The Adams conjectures are concerned with the image of this $J$. % should stablility really be mentioned here?
 
 % >>>
 \fi
@@ -403,7 +407,7 @@ For the time being, take a step back and recall the action $O(n) \times S^{n-1} 
 
 \Bullet (It is claimed that) if $\mu$ is an $H$-space multiplication on $S^{n-1}$, $H(\mu)$ has Hopf invariant one. We'll see later that this  can only happen when $n=1,2,4,8$.
 
-\Bullet The $J$-homomorphism $J:\pi_kO(n)\to \pi_{n+k}(S^n)$ sends $\alpha:S^k\to O(n)$ to the Hopf construction applied to $S^k\times S^{n-1}\xrightarrow{\alpha\times1}O(n)\times S^{n+1}\to S^{n-1}$.
+\Bullet The $J$-homomorphism $J:\pi_k(O(n))\to \pi_{n+k}(S^n)$ sends $\alpha:S^k\to O(n)$ to the Hopf construction applied to $S^k\times S^{n-1}\xrightarrow{\alpha\times1}O(n)\times S^{n+1}\to S^{n-1}$.
 }
 \section{Clifford algebras} % <<<
 \label{CliffordAlgebras}
@@ -2419,7 +2423,7 @@ $\Suspend \Loops \Suspend X \simeq \bigvee_{\!k \ge 1} \Suspend X^{(k)}$ which r
 
 \Bullet When $n$ is even, the Hopf algebra $H_*(\Omega S^{n+1})$ is the tensor algebra $\mathrm T[u_n]$, with comultiplication given by $\Delta u_n^k = {\displaystyle\sum_{i + j = k}} \binom{i+j}{i} u_n^i \otimes u_n^j$.
 
-\Bullet With PID \textup{\textbf{(should this say `field'?)}} coefficients, there are isomorphisms:
+\Bullet With PID coefficients, there are isomorphisms:
 \begin{alignat*}{2}
 H^* (\Loops S^{2n+1}) & \cong \Gamma[x_{2n}]&\qquad&\text{as Hopf algebras}, \\
 H^* (\Loops S^{2n}) & \cong \Lambda[x_{2n-1}] \otimes \Gamma[x_{4n-2}]&&\text{as algebras}, \\
@@ -2538,26 +2542,37 @@ so over $\Z_{(2)}$ this is $k!$ times a unit.  So working over $\Z_{(2)}$, $h_2^
 \begin{thm}
 Let $\alpha: X \to Y$ be a map of simply connected spaces.  If $\alpha_*: H_*(X; \Z_{(p)}) \to H_*(Y; \Z_{(p)})$ is an isomorphism, then $\alpha_*: \pi_* (X) \otimes \Z_{(p)} \stackrel{\cong}{\to} \pi_* (Y) \otimes \Z_{(p)}$ is too.
 \end{thm}
-So for $n$ even, the $2$-local homotopy groups are the same; we have no idea about the unlocalised homotopy groups, but for present purposes we don't care: we get the same EHP sequeneces for $n$ even, but now localized at 2.
+So for $n$ even, the $2$-local homotopy groups are the same; we have no idea about the unlocalised homotopy groups, but for present purposes we don't care: we get the same EHP sequences for $n$ even, but now localized at 2.
 \end{itemize}
-
-\pagebreak
-
 \begin{claim}\label{SerreSSEHPfiberArg}
 When $n$ is odd, the cohomology of the fiber $F$ of $h_2$ has the same cohomology algebra as $S^n$, and $F\to \Omega S^{n+1}$ is an isomorphism on $H^n$. When $n$ is even, the same holds after localising at $(2)$.
 \end{claim}
 \begin{proof}
-Whether $n$ is even or odd, we know that the cohomology algebra of $E=\Omega S^{n+1}$ has a copy\footnote{Or a copy of $\Z_{(2)}$ when we are working at $(2)$. The distinction is unimportant and will be ignored} of $\Z$ in each degree which is a multiple of $n$. We also know that if $a\in H^{on}(E)$ and $b\in H^{en}(E)$ are nonzero, where $o$ is odd and $e$ is even, then $ab\neq0$. Finally, the cohomology algebra of $B=\Omega S^{2n+1}$ has a copy of $\Z$ in each degree which is a multiple of $2n$, and we showed above that $H^{2kn}(h_2)$ is an isomorphism for all $k$.
+Let $R$ denote $\Z$ when $n$ is odd, and $\Z_{(2)}$ when $n$ is even. We always use coefficients in $R$, and write $E=\Omega S^{n+1}$ and $B=\Omega S^{2n+1}$. Whether $n$ is even or odd, we know that:
+\begin{itemize}
+\item The cohomology algebra $H^*(E)$ has a copy of $R$ in each degree which is a multiple of $n$.
+\item The cohomology algebra $H^*(B)$ has a copy of $R$ in each degree which is a multiple of $2n$, and the map $h_2^*:H^{2kn}(B)\to H^{2kn}(E)$ is an isomorphism (for all $k\in\N$).
+\item If $a\in H^{n}(E)$ and $b\in H^{2kn}(E)$ are generators (for any $k\in\N$), then $ab$ generates $H^{(2k+1)n}(E)$.\footnote{If $n$ is odd, $H^*(E)=\Lambda[u_1]\otimes \Gamma[u_2]$, and this is obvious. If $n$ is even, we are using coefficients in $\Z_{(2)}$, and $H^*(E)=\Gamma[u_1]$. We calculate $u_1u_{2k}=\binom{2k+1}{1}u_{2k+1}=(2k+1)u_{2k+1}$, and $2k+1$ is a unit in $s\Z_{(2)}$.}
+\end{itemize}
+%Whether $n$ is even or odd, we know that the cohomology algebra of $E=\Omega S^{n+1}$ has a copy of $R$ in each degree which is a multiple of $n$. We also know that if $a\in H^{n}(E)$ and $b\in H^{2kn}(E)$ are generators (for $k\in\N$), then $ab$ generates $H^{(o+e)n}(E)$.\footnote{If $n$ is odd, $H^*(E)=\Lambda[u_1]\otimes \Gamma[u_2]$, and this is obvious. If $n$ is even, we are using coefficients in $\Z_{(2)}$, and $H^*(E)=\Gamma[u_1]$. We calculate $u_1u_{2k}=\binom{2k+1}{1}u_{2k+1}=(2k+1)u_{2k+1}$, and $2k+1$ is a unit in $s\Z_{(2)}$.} Finally, the cohomology algebra of $B=\Omega S^{2n+1}$ has a copy of $R$ in each degree which is a multiple of $2n$, and we showed above that $H^{2kn}(h_2)$ is an isomorphism for all $k$.
 
-As the maps $H^{2kn}(h_2)$ are isomorphisms, no differentials can ever hit the entries $E^{2kn,0}$ of the associated Serre spectral sequence.\footnote{To understand this, consider the edge homomorphism.} Thus, no differentials out of the entries $E^{0,k}$ for $k<3n-1$ can be nonzero. In particular, all of these groups are zero except for $E_2^{0,n}$, which is a copy of $\Z$.
+As the maps $H^{2kn}(h_2)$ are isomorphisms, no differentials can ever hit the entries $E^{2kn,0}$ of the associated Serre spectral sequence\footnote{To understand this, consider the edge homomorphism.}, and $E^{2kn,0}_\infty$ is identified isomorphically with $H^{2kn}(E)$.
+Thus, the only nonzero $E_\infty$ term with total degree $2kn$ is $E_\infty^{2kn,0}$.
 
-Now suppose $d^{2n}:E_{2k}^{0,3k-1}\to E_{2k}^{2k,k}$ is nonzero. This differential must be surjective, as otherwise torsion would survive in $E_\infty^{2k,k}$, and  $H^{3k}(E)\simeq\Z$ would have a torsion subgroup, which is absurd. 
-%(On the other hand, it would have to be injective, otherwise $E^{0,3k-1}_\infty\neq0$. -- who cares?)
-In particular, the entry $E_2^{0,3k}$ would have to be a copy of $\Z$, which for dimension reasons would survive to $E_\infty$.
+Now no differentials out of the entries $E^{0,j}$ for $j\leq n$ can possibly be nonzero, so that all of the $E_2^{0,j}$ for $j<n$ are zero, and $E_2^{0,n}\simeq R$. Then $E_\infty^{0,n}=E_\infty^{0,n}$ is identified isomorphically with $H^n(E)$.
 
-At this point we uncover an inconsistency. We know that if $a$ generates $H^n(E)$ and $b$ generates $H^{2n}(E)$, that $ab\neq0$. However, the elements on the $E_\infty$ page corresponding to these elements lie in $E_\infty^{0,n}$ and $E_\infty^{2n,0}$ respectively. Their product lies in $E_\infty^{2n,n}$. However, this group is zero, contradicting the compatibility between multiplication in $H^*(E)$ and on $E_\infty$. Thus, it must be that $E_2^{0,3k-1}=0$.
+Now that we have identified the places where the generators of $H^n(E)$ and $H^{2kn}(E)$ appear on the $E_{\infty}$ page, we know that the generator of $H^{(2k+1)n}(E)$ must appear in $E_{\infty}^{2kn,n}$. Moreover, the groups $E_\infty^{2kn+r,n-r}$ are zero for $1\leq r\leq n$, so that $E_{\infty}^{2kn,n}$ is identified with a subgroup of $H^{(2k+1)n}(E)$. Thus $E_\infty^{2kn,n}$ is identified isomorphically wtih $H^{(2k+1)n}(E)$ for each $k$.
 
-State why there's nothing in $E_2^{0,3k}$. State that the argument continues ad infinitum.
+To summarise, the groups $E_2^{2kn,0}$ and $E_2^{2kn,n}$ are all equal to $R$, these entries are never hit by any differentials, and never support nonzero differentials, and only these entries are nonzero at $E_\infty$. Thus, none of the $E_2^{0,j}$ can be nonzero except when $j=n$, for if $j$ is chosen minimally amoungst exceptions to this rule, then $E_\infty^{0,j}\neq0$, a contradiction.
+%This implies that no differentials out of the entries $E^{0,k}$ for $k<3n-1$ can be nonzero. In particular, all of these groups are zero except for $E_2^{0,n}$, which is a copy of $\Z$.
+%
+%Now suppose $d^{2n}:E_{2k}^{0,3k-1}\to E_{2k}^{2k,k}$ is nonzero. This differential must be surjective, as otherwise torsion would survive in $E_\infty^{2k,k}$, and  $H^{3k}(E)\simeq\Z$ would have a torsion subgroup, which is absurd. 
+%%(On the other hand, it would have to be injective, otherwise $E^{0,3k-1}_\infty\neq0$. -- who cares?)
+%In particular, the entry $E_2^{0,3k}$ would have to be a copy of $\Z$, which for dimension reasons would survive to $E_\infty$.
+%
+%At this point we uncover an inconsistency. We know that if $a$ generates $H^n(E)$ and $b$ generates $H^{2n}(E)$, that $ab\neq0$. However, the elements on the $E_\infty$ page corresponding to these elements lie in $E_\infty^{0,n}$ and $E_\infty^{2n,0}$ respectively. Their product lies in $E_\infty^{2n,n}$. However, this group is zero, contradicting the compatibility between multiplication in $H^*(E)$ and on $E_\infty$. Thus, it must be that $E_2^{0,3k-1}=0$.
+%
+%State why there's nothing in $E_2^{0,3k}$. State that the argument continues ad infinitum.
 \end{proof}
 
 Well now there's lots to do.  Each of these maps has its own personality, so we'll take each in term.  $e$ is most familiar, so we'll start with it. In fact, $e:\pi_i(S^n)\to\pi_{i+1}(S^{n+1})$ is simply the suspension homomorphism: from the above calculations of $h_2^*$, we see that $e$ is induced by $\alpha:S^n\to \Omega\Sigma S^n$.
