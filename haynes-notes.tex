@@ -20,7 +20,7 @@
 %\usepackage[debug]{sseq}
 
 
-\newcommand{\OutputEVERYTHING}{  everything  }
+%\newcommand{\OutputEVERYTHING}{  everything  }
 %\newcommand{\OutputFrontMatter}{}
 %\newcommand{\OutputForeword}{0}
 %\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{1}
@@ -2971,52 +2971,65 @@ Apply the previous lemma to the Hopf construction $j=H(\mu)$ where $\mu:S^{n-1}\
 \section{Whitehead products and the EHP spectral sequence} % <<<
 \label{WhiteheadProductsAndTheEHPSS}
 \ifx\OutputWhiteheadProductsAndTheEHPSS\undefined\else
-OK, so now we'll go back to the EHP sequence, and conclude this look at the map $h$ by seeing what we get from the existence of elements of Hopf invariant 1.  Last time we found an element of Hopf invariant one $\nu: S^7 \to S^4$ which came from the Hopf construction on quaternion multiplication $S^3 \times S^3 \to S^3$.  In the EHP sequence this appears as the $\pi_6$ level of $S^3 \to \Loops S^4 \stackrel{h}{\to} \Loops S^7$.  We can fit $\nu$ into this picture by
-\begin{diagram}[height=2em]
-S^3 & \rTo & \Loops S^4 \\
-& \ruTo(2,4)^{\Loops \nu} & \uTo & \rdTo(2,4)^h \\
-& & S^6 \\
-& \ldTo^\alpha & & \rdTo \\
-\Loops S^7 & & \rTo & & \Loops S^7,
-\end{diagram}
-where the maps $S^6 \to \Loops S^7$ and $\Loops S^7 \to \Loops S^7$ we claim are homotopic to $\pm 1$.  It suffices to show this in cohomology -- but we know, since Hopf-Hopf = James-Hopf, that $\Loops S^7 \stackrel{\Loops \nu} \Loops S^6 \stackrel{h}{\to} \Loops S^7$ is $\pm 1$ in $\pi_6$ and so in $H^6$ by the Hurewicz theorem.  And since in $\Loops S^7$ we have generators $u_i \in H^{6i}$ with $u_1^i = i! u_i$ we get $u_i \mapsto u_i$ (i.e., there is no torsion around).
+OK, so now we'll go back to the EHP sequence, and conclude this look at the map $h$ by seeing what we get from the existence of elements of Hopf invariant 1.  Last time we constructed maps $\tau: S^{2n+1} \to S^{n+1}$ of Hopf invariant one (for $n=0,1,3,7$)\footnote{These maps are often denoted $\eta$, $\nu$ and $\sigma$ respectively.}, by applying the Hopf construction to H-space multiplications $\mu:S^n \times S^n \to S^n$.  We'll consider this map when $n=1,3,7$. To see this phenomenon in the EHP sequence, we view $\tau$ as an element of $\pi_{2n}(\Omega S^{n+1})$, examining the $\pi_{2n}$ level of the long exact sequence of the fibration $S^{n} \to \Loops S^{n+1} \stackrel{h}{\to} \Loops S^{2n+1}$.  We can fit $\tau$ into this picture:
+\[\xymatrix{
+S^n\ar[r]&\Omega S^{n+1}\ar@{~>}[r]^h&\Omega S^{2n+1}\\
+\Omega S^{2n+1}\ar@{~>}[ur]^{\Omega\tau}&S^{2n}\ar[l]_{\ \ \ \alpha}\ar[u]_{\overline\tau}\ar@{..>}[ur]_q
+}\]
+We have decorated this diagram for readability only. The dotted map $q$ is defined to be the composite $h\overline\tau$. The wavy maps are highlighted, as their composite is a self map of $\Omega S^{2n+1}$ which we would like to show is a homotopy equivalence. The diagram commutes, as the left triangle simply expresses that $\overline\tau$ is adjoint to $\tau$.
 
-This is amazing: it means that $\Loops S^4$ splits; that is,
-\begin{diagram}[height=2em]
-S^3 & \rTo & \Loops S^4 & \pile{\lDashto \\ \rTo_h} & \Loops S^7,\hbox{ so} \\
-S^3 \times \Loops S^7 & \rTo^{e \times \Loops \nu} & \Loops S^4 \times \Loops S^4 & \rTo^\mu & \Loops S^4
-\end{diagram}
-is a homotopy equivalence!  Similarly $\eta \in \pi_3 S^2$, $\sigma \in \pi_{15} S^8$ with Hopf invariant 1 provide splittings $S^1 \times \Loops S^3 \stackrel{\simeq}{\to} \Loops S^2$ and $S^7 \times \Loops S^{15} \stackrel{\simeq}{\to} \Loops S^8$, and this \emph{never} happens again, as it is equivalent to the existence of elements of Hopf invariant one.
+Now because $\tau$ has Hopf invariant one, and $h$ detects the Hopf invariant, $q$ must be homotopic to $\pm\alpha$ (where $\alpha$ is the adjoint of $\textup{Id}_{\Sigma S^{2n}}$). Now $\pi_{2n}(\alpha)$ is an isomorphism, so by the Hurewicz theorem, so is $H_{2n}(\alpha)$, and by universal coefficients, so is $H^{2n}(\alpha)$. In particular, the wavy composite induces an automorphism $H^{2n}(\Omega S^{2n+1})$. As $H^*(\Omega S^{2n+1})$ is a divided polynomial algebra, it follows that the wavy composite is a cohomology isomorphism, and (by the Whitehead theorem) a homotopy self-equivalence
+%(WTF\footnote{By the Whitehead theorem, even when $n=0$, as the spaces involved are \emph{simple} --- $\pi_1$ acts trivially on $\pi_n$ for all $n$.}) 
+of $\Omega S^{2n+1}$.
 
-What does this map look like on homotopy groups?  Well, when there is an H-map $\mu: X \times X \to X$ and $X$ is connected, you get a homomorphism
+This is amazing: it means that $\Loops S^{n+1}$ splits, and so the long exact sequence for this fibration splits into split short exact sequences:
+\[\xymatrix{
+0\ar[r]&\pi_j(S^n)\ar[r]^{e\ \ \ }&\pi_{j}(\Omega S^{n+1})\ar@<.5ex>[r]^h&\pi_{j}(\Omega S^{2n+1})\ar[r]\ar@<.5ex>@{~>}[l]^{(\Omega\tau)_*}&0
+}\]
+Now addition on $\pi_j(\Omega S^{n+1})$ is induced\footnote{Note that from this fact, (i.e.\ that if $X$ is a connected H-space then addition on $\pi_*(X)$ is induced by the multiplication), it follows that the fundamental group of an H-space is abelian.} by the loop multiplication $\mu$ on $\Omega S^{n+1}$, so that the composite
+\[C:\xymatrix{S^n\times \Loops S^{2n+1} \ar[r]^{e \times \Loops \tau\ \ } & \Loops S^{n+1} \times \Loops S^{n+1} \ar[r]^{\qquad\mu} & \Loops S^{n+1}}\]
+induces the following composite on homotopy groups, which is an isomorphism:
+\[\xymatrix{
+\pi_j(S^n\times \Loops S^{2n+1})\ar@{=}[r]&
+\pi_j(S^n)\times\pi_j(\Omega S^{2n+1})\ar[r]^{e\times (\Omega\tau)_*}&\pi_j(\Omega S^{n+1})\times\pi_j(\Omega S^{n+1})\ar[r]^{\qquad\textup{\ \ \ \  add}}&\pi_j(\Omega S^{n+1})}\]
+Thus $C$ is a homotopy equivalence,\footnote{By the Whitehead theorem. Note that this agument applies when $n=1$, as both spaces involved are \emph{simple} spaces. A simple space is one in which the action of $\pi_1$ on $\pi_n$ is trivial for all $n$. Note that all H-spaces are simple, as all Whitehead products are zero in an H-space. See below.} and this \emph{never} happens for other $n$, as it is equivalent to the existence of an element of Hopf invariant one. To re-emphasise, on homotopy groups we have isomorphisms:
 \begin{diagram}[height=2em]
-\pi_* X \times \pi_* X & \rTo & \pi_* X \\
-(\alpha, 0) + (\beta, 0) & \rMapsto & \alpha + \beta
-\end{diagram}
-(note that it follows that $\pi_1$ is abelian!).  So the isomorphism for $S^3 \times \Loops S^7 \simeq \Loops S^4$ is
-\begin{diagram}[height=2em]
-\pi_n S^3 \times \pi_{n+1} S^7 & \rTo^{\cong} & \pi_{n+1} S^4 \\
-(\alpha, \beta) & \rMapsto & e \alpha + \nu \circ \beta.
+\pi_j( S^n) \times \pi_{j+1} (S^{2n+1} )& \rTo^{\cong} & \pi_{j+1} (S^{n+1}) \\
+(\alpha, \beta) & \rMapsto & e \alpha + \tau_*( \beta).
 \end{diagram}
 
 OK, now let's talk about the ``P'' part of the EHP sequence; ``P'' stands for product, I guess, so first let's take a step back and talk about Whitehead products.  I'm not going to prove everything; for more information, refer to George Whitehead's novel~\cite{Whitehead}.
 
-The Whitehead product is a map $\pi_p X \times \pi_q X \to \pi_{p+q-1} X$, and it is easiest to describe it in terms of its universal example, a map $W: S^{p+q-1} \to S^p \wsum S^q$; then for $\alpha \in \pi_p X$, $\beta \in \pi_q X$, we define the Whitehead product $[\alpha, \beta] \in \pi_{p+q-1} (X)$ by
+The Whitehead product is a map $\pi_p (X) \times \pi_q (X) \to \pi_{p+q-1} (X)$, which is easiest to describe in terms of its universal example, a map $W: S^{p+q-1} \to S^p \wsum S^q$. With $W$ understood, then for $\alpha \in \pi_p (X)$, $\beta \in \pi_q (X)$, we define the Whitehead product $[\alpha, \beta] \in \pi_{p+q-1} (X)$ to be the composite:
 \begin{diagram}[height=2em]
-S^{p+q-1} & \rTo^W & S^p \wsum S^q & \rTo^{\alpha \wsum \beta} & X \wsum X & \rTo^\Phi & X.
+S^{p+q-1} & \rTo^{W} & S^p \wsum S^q & \rTo^{\alpha \wsum \beta} & X \wsum X & \rTo^\Phi & X.
 \end{diagram}
 
-The map $W$ is constructed in this manner: $S^p \times S^q$ has three non-zero cells; the first two compromise the axes $S^p \wsum S^q$, and the third is a $(p+q)$-cell whose attaching map is the map $W: S^{p+q-1} \to S^p \wsum S^q$.
-\begin{figure}[h!]
-\centering\includegraphics[width=0.3\textwidth]{figures/22.pdf}
-\caption{\small The example $S^1 \times S^1$.}
-\end{figure}
-So the top dimensional cell is the mapping cone of $W$.  Another way to think about this is by this schematic picture: now $S^p = e^p / S^{p-1}$; let the projectioin $e^p \to S^p$ be denoted $\pi$.  Then $S^p \times S^q$ is a quotient:
-\begin{figure}[h!]
-\centering\includegraphics[width=0.5\textwidth]{figures/23.pdf}
-\caption{\small Building the Whitehead product.}
-\end{figure}
+The map $W$ is constructed as follows: $S^p \times S^q$ has three non-zero cells; the first two compromise the axes $S^p \wsum S^q$, and the third is a $(p+q)$-cell whose attaching map is the map $W: S^{p+q-1} \to S^p \wsum S^q$.
+\ConfusedBox{\textbf{I've removed a bunch of pictures that aren't looking too good. Maybe some of them will get replaced a little later.}
 
+\textbf{I don't really see the correctness/usefulness of the following statement:} So the top dimensional cell is the mapping cone of $W$.}
+%\begin{wrapfigure}{r}{0.3\textwidth}
+%\centering\includegraphics[width=0.3\textwidth]{figures/22.pdf}
+%\caption{\small The example $S^1 \times S^1$.}
+%\end{wrapfigure}
+%\begin{figure}[h!]
+%\centering\includegraphics[width=0.3\textwidth]{figures/22.pdf}
+%\caption{\small The example $S^1 \times S^1$.}
+%\end{figure}
+Another way to think about $W$ is as follows. $S^{p}\times S^{q}$ is a quotient of $e^p\times e^q$, under the product of the quotient maps $\pi:e^p\to S^p$ and $\pi':e^q\to S^q$ given by collapsing boundaries. In fact, this quotient map is part of a pushout diagram (drawn on the left):
+\[\xymatrix{
+e^p\times e^q\ar[r]^{\pi\times\pi'}&S^p\times S^q\\
+%\makebox[0cm][r]{$e^p\times S^{q-1}\cup S^{p-1}\times e^q=$\,}
+\partial(e^p\times e^q)\ar@{^{(}->}[u]\ar[r]^W&S^p\vee S^q\ar@{^{(}->}[u]
+}
+\raisebox{-.6cm}{\qquad where\qquad}
+\xymatrix{
+e^p\ar[r]^{\pi\ \ \ }&S^p\vee S^q&e^q\ar[l]_{\ \ \ \pi'}\\
+\ar[u]^{\textup{pr}_1}
+e^p\times S^{q-1}\ar@{^{(}->}[r]&\partial(e^p\times e^q)\ar[u]^W&\ar@{_{(}->}[l]S^{p-1}\times e^q\ar[u]_{\textup{pr}_2}
+}
+\]
 Facts about the Whitehead product: once again, for real proofs, see Whitehead's book.
 \begin{enumerate}
 \item In the case $p = q = 1$ it is a map $\pi_1 X \times \pi_1 X \to \pi_1 X$; from the universal case in the picture above, we see that $[\alpha, \beta] = \alpha \beta \alpha^{-1} \beta^{-1}$, which justifies the bracket notation.  In the case $p = 1$ and $q \ge 1$, this product gives the natural action of $\pi_1 X$ on $\pi_q X$.
