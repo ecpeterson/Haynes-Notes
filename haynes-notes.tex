@@ -15,6 +15,7 @@
 \usepackage{wrapfig}
 \usepackage[all]{xy}
 \usepackage{tikz}
+\usepackage{nicefrac}
 %\usetikzlibrary{snakes}
 %\usetikzlibrary{positioning}
 %\usepackage[debug]{sseq}
@@ -2552,7 +2553,7 @@ Let $R$ denote $\Z$ when $n$ is odd, and $\Z_{(2)}$ when $n$ is even. We always 
 \begin{itemize}
 \item The cohomology algebra $H^*(E)$ has a copy of $R$ in each degree which is a multiple of $n$.
 \item The cohomology algebra $H^*(B)$ has a copy of $R$ in each degree which is a multiple of $2n$, and the map $h_2^*:H^{2kn}(B)\to H^{2kn}(E)$ is an isomorphism (for all $k\in\N$).
-\item If $a\in H^{n}(E)$ and $b\in H^{2kn}(E)$ are generators (for any $k\in\N$), then $ab$ generates $H^{(2k+1)n}(E)$.\footnote{If $n$ is odd, $H^*(E)=\Lambda[u_1]\otimes \Gamma[u_2]$, and this is obvious. If $n$ is even, we are using coefficients in $\Z_{(2)}$, and $H^*(E)=\Gamma[u_1]$. We calculate $u_1u_{2k}=\binom{2k+1}{1}u_{2k+1}=(2k+1)u_{2k+1}$, and $2k+1$ is a unit in $s\Z_{(2)}$.}
+\item If $a\in H^{n}(E)$ and $b\in H^{2kn}(E)$ are generators (for any $k\in\N$), then $ab$ generates $H^{(2k+1)n}(E)$.\footnote{If $n$ is odd, $H^*(E)=\Lambda[u_1]\otimes \Gamma[u_2]$, and this is obvious. If $n$ is even, we are using coefficients in $\Z_{(2)}$, and $H^*(E)=\Gamma[u_1]$. We calculate $u_1u_{2k}=\binom{2k+1}{1}u_{2k+1}=(2k+1)u_{2k+1}$, and $2k+1$ is a unit in $\Z_{(2)}$.}
 \end{itemize}
 %Whether $n$ is even or odd, we know that the cohomology algebra of $E=\Omega S^{n+1}$ has a copy of $R$ in each degree which is a multiple of $n$. We also know that if $a\in H^{n}(E)$ and $b\in H^{2kn}(E)$ are generators (for $k\in\N$), then $ab$ generates $H^{(o+e)n}(E)$.\footnote{If $n$ is odd, $H^*(E)=\Lambda[u_1]\otimes \Gamma[u_2]$, and this is obvious. If $n$ is even, we are using coefficients in $\Z_{(2)}$, and $H^*(E)=\Gamma[u_1]$. We calculate $u_1u_{2k}=\binom{2k+1}{1}u_{2k+1}=(2k+1)u_{2k+1}$, and $2k+1$ is a unit in $s\Z_{(2)}$.} Finally, the cohomology algebra of $B=\Omega S^{2n+1}$ has a copy of $R$ in each degree which is a multiple of $2n$, and we showed above that $H^{2kn}(h_2)$ is an isomorphism for all $k$.
 
@@ -3018,9 +3019,9 @@ The map $W$ is constructed as follows: $S^p \times S^q$ has three non-zero cells
 %\caption{\small The example $S^1 \times S^1$.}
 %\end{figure}
 Another way to think about $W$ is as follows. $S^{p}\times S^{q}$ is a quotient of $e^p\times e^q$, under the product of the quotient maps $\pi:e^p\to S^p$ and $\pi':e^q\to S^q$ given by collapsing boundaries. In fact, this quotient map is part of a pushout diagram (drawn on the left):
-\[\xymatrix{
+\[\ \ \ \ \xymatrix{
 e^p\times e^q\ar[r]^{\pi\times\pi'}&S^p\times S^q\\
-%\makebox[0cm][r]{$e^p\times S^{q-1}\cup S^{p-1}\times e^q=$\,}
+\makebox[0cm][r]{$S^{p+q-1}=$\,}
 \partial(e^p\times e^q)\ar@{^{(}->}[u]\ar[r]^W&S^p\vee S^q\ar@{^{(}->}[u]
 }
 \raisebox{-.6cm}{\qquad where\qquad}
@@ -3030,16 +3031,17 @@ e^p\ar[r]^{\pi\ \ \ }&S^p\vee S^q&e^q\ar[l]_{\ \ \ \pi'}\\
 e^p\times S^{q-1}\ar@{^{(}->}[r]&\partial(e^p\times e^q)\ar[u]^W&\ar@{_{(}->}[l]S^{p-1}\times e^q\ar[u]_{\textup{pr}_2}
 }
 \]
+\ConfusedBox{I could probably put the diagram from my notes here.}
 Facts about the Whitehead product: once again, for real proofs, see Whitehead's book.
 \begin{enumerate}
-\item In the case $p = q = 1$ it is a map $\pi_1 X \times \pi_1 X \to \pi_1 X$; from the universal case in the picture above, we see that $[\alpha, \beta] = \alpha \beta \alpha^{-1} \beta^{-1}$, which justifies the bracket notation.  In the case $p = 1$ and $q \ge 1$, this product gives the natural action of $\pi_1 X$ on $\pi_q X$.
-\item $[\beta, \alpha] = (-1)^{|\alpha||\beta|}[\alpha, \beta]$.
-\item The Jacobi identity: $\alpha \in \pi_p X$, $\beta \in \pi_q X$, $\gamma \in \pi_r X$:
+\item In the case $p = q = 1$ it is a map $\pi_1 (X) \times \pi_1 (X) \to \pi_1 (X)$, given by $[\alpha, \beta] = \alpha \beta \alpha^{-1} \beta^{-1}$, as can be seen by considering the attaching map of the top cell of the torus. This justifies the bracket notation.  In the case $p = 1$ and $q \ge 1$, this product gives the natural action of $\pi_1 (X)$ on $\pi_q (X)$.
+\item Skew commutativity: $[\beta, \alpha] = (-1)^{|\alpha||\beta|}[\alpha, \beta]$.
+\item The Jacobi identity: for $\alpha \in \pi_p (X)$, $\beta \in \pi_q (X)$, $\gamma \in \pi_r (X)$:
 \[
 (-1)^{(r-1)p}[\alpha, [\beta, \gamma]] + (-1)^{(p-1)q}[\gamma, [\alpha, \beta]] + (-1)^{(q-1)r}[\beta, [\gamma, \alpha]] = 0
 .\]
-\item Interaction with the Hurewicz map.  One way to straighten out the degree shift is to write all the homotopy groups in terms of $\Loops X$; then the Whitehead product is a map $\pi_p \Loops X \times \pi_q \Loops X \to \pi_{p+q} \Loops X$.  On the other hand there is the Hurewicz map $h: \pi_* \Loops X \to H_* \Loops X$ (and $\Loops X$ is a noncommutative algebra with Pontryagin product), and $h([\alpha, \beta]) = h(\alpha)h(\beta) - h(\beta)h(\alpha)$, i.e., $h$ is a map of Lie algebras.
-\item The suspension $\Suspend [\alpha, \beta] = 0$.  We know this fact, that $X \wsum Y \to X \times Y$ splits after one suspension, so $\Suspend W \simeq \ptspace$.
+\item Interaction with the Hurewicz map.  One way to straighten out the degree shift is to write all the homotopy groups in terms of $\Loops X$; then the Whitehead product is a map $\pi_p (\Loops X) \times \pi_q (\Loops X) \to \pi_{p+q} (\Loops X)$.  On the other hand there is the Hurewicz map $h: \pi_* (\Loops X) \to H_* (\Loops X)$ (and $H_*(\Loops X)$ is a noncommutative algebra with Pontryagin product). Then $h([\alpha, \beta]) = h(\alpha)h(\beta) - h(\beta)h(\alpha)$, i.e., $h$ is a map of Lie algebras.
+\item The suspension $\Suspend [\alpha, \beta] = 0$.  We know this fact, that $X \wsum Y \to X \times Y$ splits after one suspension, so that $\Suspend W$ is nullhomotopic.
 \item If $X$ is an H-space, then $[\alpha, \beta] = 0$.  This follows from the commutative diagram
 \begin{diagram}[height=2em]
 S^{p+q-1} & \rTo^W & S^p \wsum S^q & \rTo^{\alpha \wsum \beta} & X \wsum X & \rTo^\Phi & X \\
@@ -3048,95 +3050,103 @@ S^{p+q-1} & \rTo^W & S^p \wsum S^q & \rTo^{\alpha \wsum \beta} & X \wsum X & \rT
 \end{diagram}
 \end{enumerate}
 
-Now consider the Whitehead product in the case $p = q = n$; here the most interesting case is the ``Whitehead square'' $[\alpha, \alpha]$.  It can be computed in terms of its universal example $[\iota_n, \iota_n] = W_n$, where $\iota_n$ is the fundamental class in $\pi_n S^n$.
-\begin{diagram}[height=2em]
-e_n \times e_n & \rTo & S^n \times S^n & \rTo & \frac{S^n \times S^n}{(\ptspace, x) \sim (x, \ptspace)} = J_2 S^n \\
-\uInto & & \uInto & & \uTo \\
-e^n \times S^{n-1} \wsum S^{n-1} \times e^n & \rTo & S^n \wsum S^n & \rTo^\Phi & S^n
-\end{diagram}
-But this all means that the mapping cone $C(W_n) = J_2 S^n$, the second filtration of the free monoid on $S^n$, $JS^N$, from the James construction.
+Now consider the Whitehead product in the case $p = q = n$; here the most interesting case is the ``Whitehead square'' $[\alpha, \alpha]$.  It can be computed in terms of its universal example $[\iota_n, \iota_n] = w_n$, where $\iota_n$ is the fundamental class in $\pi_n (S^n)$. That is, for $\alpha\in\pi_p(X)$, $[\alpha,\alpha]\in\pi_{2p-1}(X)$ is the composite $\alpha \circ w_n$:
+\[\xymatrix@R=.7cm@C=0cm
+{S^{2p-1}\ar[rr]^{w_n}\ar[dr]_{W}&&S^p\ar[rr]^\alpha&&X\\
+&S^p\vee S^p\ar[ur]_{\Phi}\ar@{..>}[rr]^\alpha&&X\vee X\ar@{..>}[ur]_{\Phi}
+}\]
+Now before, we saw that $W$ was part of a pushout square, drawn on the left below. We also have it that $\Phi$ is part of an adjoining pushout square, drawn at the right:
+\[\xymatrix{
+e^p\times e^p\ar[r]^{\pi\times\pi'}&S^p\times S^p\ar[r]&J_2(S^n)\\
+\makebox[0cm][r]{$S^{2p-1}=$\,}
+\partial(e^p\times e^p)\ar@{^{(}->}[u]\ar[r]^W&S^p\vee S^p\ar@{^{(}->}[u]\ar[r]^\Phi &S^n\ar[u]
+}\]
+Now the outer square is a pushout diagram, and the inclusion of $S^{2p-1}$ in the contractible space $e^p\times e^p$ is a cofibration, so that $J_2(S^n)$ is the mapping cone $C(w_n)$.
+%But this all means that the mapping cone $C(W_n) = J_2 S^n$, the second filtration of the free monoid on $S^n$, $JS^N$, from the James construction.
 
-Now $W_n \in \pi_{2n-1} S^n$ so we should compute its Hopf invariant, and we already have a good start since we know that $C W_n = J_2 S^n$.  Now from the James construction we know that $J_2 S^n \into \Loops S^{n+1}$, and moreover
+Now $w_n \in \pi_{2n-1} (S^n)$ so we should compute its Hopf invariant, and the inclusion $J_2(S^n)\hookrightarrow J(S^n)\simeq\Omega S^{n+1}$  induces an isomorphism on cohomology algebras up to degree $2n$.\footnote{Recall that after one suspension, $J_2(S^n)$ splits as $\Sigma J_2(S^n)=\bigvee_{\!k\leq2}S^{nk+1}$, compatibly with the splitting $\Sigma J_2(S^n)=\bigvee_{\!k}S^{nk+1}$. In particular, the inclusion $J_2(S^n)\to J(S^n)$ is an isomorphism on homology and cohomology up to degee $2n$.\label{Fottnoteofold}} Moreover, % and we already have a good start since we know that $C W_n = J_2 S^n$.  Now from the James construction we know that $J_2 S^n \into \Loops S^{n+1}$, and moreover
 \[
-H^* \Loops S^{n+1} \cong \begin{cases} \Gamma[x_1] & \hbox{$n$ even}, \\ E[x_1] \otimes \Gamma[x_2] & \hbox{$n$ odd}.\end{cases}
+H^* (\Loops S^{n+1} )\cong \begin{cases} \Gamma[x_1], & \hbox{$n$ even}, \\ E[x_1] \otimes \Gamma[x_2], & \hbox{$n$ odd},\end{cases}
+\raisebox{-.0cm}{\ \ \  which shows that\ \ \ }
+H (w_n)= \begin{cases}2, & \hbox{$n$ even}, \\ 0, & \hbox{$n$ odd}.\end{cases}
 \]
-\begin{wrapfigure}{r}{0.25\textwidth}
-\centering\includegraphics[width=0.25\textwidth]{figures/24.pdf}
-\caption{\small $W_n$ cell diagram.}
-\end{wrapfigure}
-So in the cell complex with $y$ in degree $2n$ attached to $x$ in degree $n$ by $W_n$, we have $HW_n$ is either $2$ when $n$ is even or $0$ when $n$ is odd.
-
 Well, this is pretty nice, in fact it's pretty amazing: what we've done is look at
 \[
-\pi_{2n-1} S^n \stackrel{h}{\to} \pi_{2n-1}S^{2n-1} = \Z
+\pi_{2n-1} (S^n) \stackrel{h}{\to} \pi_{2n-1}(S^{2n-1}) = \Z
 \]
-and show that the image contains $2\Z$ is $n$ is even.  So for $n$ even we get to split off $\pi_{2n-1} S^n = \Z \oplus ?$.  This and $\pi_n S^n = \Z$ are in fact the only free abelian summands in higher homotopy groups!  Now if you're away from $2$, $2$ is as good as one; in other words a corollary of the above and our calculation of $H^* \Loops S^{n+1}$ is
+and show that the image contains $2\Z$ is $n$ is even. Thus there is a short exact sequence
+\[0\to \ker (h)\to\pi_{2n-1}(S^n)\to\left(\im(h)\cong\Z\right)\to0.\]
+As $\Z$ is free, this sequence splits, and $\pi_{2n-1}(S^n)\simeq\ker(h)\oplus\Z$. This, and $\pi_n (S^n) = \Z$ are in fact the only free abelian summands in higher homotopy groups!  Now if you're away from $2$, $2$ is as good as one; in other words a corollary of the above and our calculation of $H^* (\Loops S^{n+1})$ is:
+\ConfusedBox{\textbf{Don't we also need to be away from all the other primes, so that the EHP sequence is a fiber sequence? I.e. Doesn't this need to be done rationally?} Wait, maybe not! `the above' may simply refer to what's a couple of lines above this box.}
 \begin{cor}
-For $n$ even, away from $2$, $\Loops S^n \simeq S^{n-1} \times \Loops S^{2n-1}$, i.e., $\pi_{*+1} S^n \otimes \Z[\frac{1}{2}] \cong (\pi_* S^{n-1} \oplus \pi_{*+1} S^{2n-1}) \otimes \Z[\frac{1}{2}]$.
+For $n$ even, away from $2$, $\Loops S^n \simeq S^{n-1} \times \Loops S^{2n-1}$, i.e.: 
+\[\pi_{*+1} (S^n) \otimes \Z[\nicefrac{1}{2}] \cong (\pi_* (S^{n-1}) \oplus \pi_{*+1} (S^{2n-1})) \otimes \Z[\nicefrac{1}{2}].\]
 \end{cor}
 Now remember the $h$ map appeared in the long exact sequence
-\begin{diagram}[height=2em]
-\cdots & \rTo & \pi_{k+n} S^n & \rTo^e & \pi_{k+n+1} S^{n+1} \\
-       &      &               &        & \dTo>h \\
-       &      &               &        & \pi_{k+n-1} S^{2n+1}
-\end{diagram}
-as the obstructioin to desuspending a class in $\pi_{k+n+1} S^{n+1}$, so we get
+\[\xymatrix{
+\pi_{k+n} (S^n) \ar[r]^{e\ \ \ } & \pi_{k+n+1} (S^{n+1})\ar[r]^h&\pi_{k+n+1} (S^{2n+1}) \\
+}\]
+as the obstruction to desuspending a class in $\pi_{k+n+1} (S^{n+1})$, so that:
 \begin{cor}
-For $n$ even, $W_n \in \pi_{2n-1} S^n$ doesn't desuspend, and for $n$ odd it desuspends at least once.
+For $n$ odd, $w_{n-1} \in \pi_{2n-3} (S^{n-1})$ doesn't desuspend, and for $n$ even it desuspends at least once.
 \end{cor}
-It might desuspend more times; you might ask where it was ``born'' in the sequence
-\[
-\cdots \stackrel{e}{\to} \pi_{k+n} S^n \stackrel{e}{\to} \pi_{k+n+1} S^{n+1} \stackrel{e}{\to} \pi_{k+n+2} S^{n+2} \stackrel{e}{\to} \cdots
-\]
+Now $w_{n-1}$ might desuspend more times; you might ask where  it was ``born'' in the sequence
+%\[
+%\cdots \stackrel{e}{\to} \pi_{k+n} S^n \stackrel{e}{\to} \pi_{k+n+1} S^{n+1} \stackrel{e}{\to} \pi_{k+n+2} S^{n+2} \stackrel{e}{\to} \cdots
+%\]
+\[\xymatrix{
+\cdots \ar[r]&\pi_{2n-6}(S^{n-4})\ar[r]^e&\pi_{2n-5}(S^{n-3})\ar[r]^e&\pi_{2n-4}(S^{n-2})\ar[r]^e&\pi_{2n-3}(S^{n-1})
+}\]
 And here we see the (as yet) mysterious rebirth of the vector field problem:
 \begin{thm}
-$W_{n-1} \in \pi_{2n-3} S^{n-1}$ desuspends to an element in $\pi_{2n-\rho(n)-2}S^{n-\rho(n)}$ and no further.  (Recall that $\rho(n)$ was the number from the vector field problem
-\[
+$w_{n-1} \in \pi_{2n-3} (S^{n-1})$ desuspends to an element in $\pi_{2n-\rho(n)-2}(S^{n-\rho(n)})$ and no further. That is, $w_{n-1}$ desuspends exactly $\rho(n)-1$ times.\footnote{Recall that $\rho(n)$ was the number from the vector field problem (see unit \ref{IntroductionToVectorFieldsOnSpheres}): 
+$
 \begin{array}{c|cccccccc}
 n & 1 & 2 & 4 & 8 & 16 & 32 & 64 & \cdots \\
 \hline
 \rho(n) & 1 & 2 & 4 & 8 & 9 & 10 & 12 & \cdots
 \end{array}
-\]
+$}
 \end{thm}
-Now in order to prove this theorem, we have to relate $W_n$ to the EHP sequence; here's one way:
-\begin{thm}
+Now in order to prove this theorem, we have to relate $w_n$ to the EHP sequence; here's one way:
+\begin{thm} The Whitehead square factors as:
 \begin{diagram}[height=2em]
 S^{2n-1} & \rTo^{e^2} & \Loops S^{2n+1} \\
-& \rdTo_{\pm W_n} & \dTo>p \\
-& & S^n,
+& \rdTo_{\pm w_n} & \dTo>p \\
+& & S^n
 \end{diagram}
-in particular in $\pi_k S^{2n+1} \to \pi_{l-2} S^n$ we have $\rho(e^2 \alpha) = \pm W_n \circ \alpha$.  This is why the $p$ map is called the ``Whitehead product,'' although its behavior on a class which is not a double suspension is more erratic.
+In particular, under $p:\pi_k (S^{2n+1}) \to \pi_{k-2} (S^n)$ we have $e^2 \alpha\longmapsto \pm w_n \circ \alpha$ \textup{(}for any $\alpha\in\pi_{k-2}(S^{2n-1})$\textup{)}.  This is why the $p$ map is called the ``Whitehead product''.\footnote{However, the behavior of $p$ on a class which is not a double suspension is more erratic.}
 \end{thm}
 \begin{proof}
-$e \circ W_n$ is null-homotopic so we get
-\begin{diagram}[height=2em]
-S^{2n-1} & \rTo^{W_n} & S^n & \rTo & CW_n \\
-& & \dEqualto & & \dTo \\
-& & S^n & \rTo^e & \Loops S^{n+1}
-\end{diagram}
-representing the null-homotopy.  On the other hand, the exactness of the EHP sequence gives a map for the dotted arrow
-\begin{diagram}[height=2em]
-S^{2n-1} & \rTo^{W_n} & S^n & \rTo & CW_n \\
-\dDashto & & \dEqualto & & \dTo \\
-\Loops^2 S^{2n+1} & \rTo^p & S^n & \rTo^e & \Loops S^{n+1}
-\end{diagram}
-and we need to show that this map is $\pm e^2$.  This follows from the diagram
-\begin{diagram}[height=2em]
-\widetilde H_{2n} C W_n & \rTo^{(1)}_{\cong} & \widetilde H_{2n} \Loops S^{n+1} \\
-\uTo>\cong & & \uTo<\cong>{(2)} \\
-H_{2n}(S^n, W_n S^{2n-1}) & \rTo & H_{2n}(S^n, \Loops^2 S^{2n+1}) \\
-\dTo<\cong>\partial & & \dTo<\cong>\partial \\
-H_{2n-1} S^{2n-1} & \rTo^? & H_{2n-1} \Loops^2 S^{2n+1}
-\end{diagram}
-if we verify the isomorphisms (1) and (2).  (1) is the fact we already showed, that $C W_n \to \Loops S^{n+1}$ is the $2n$-skeleton.  (2) follows from the spectral sequence of the fibration $\Loops^2 S^{2n+1} \to S^n \to \Loops S^{n+1}$ DRAW SPECTRAL SEQUENCE
+Starting with the undecorated arrows in the following diagram, we obtain the wavy arrow since $e\circ w_n$ is null, and the dotted arrow by exactness of  $\xymatrix{\pi_{2n+1}(S^{2n+1})\ar[r]^{\ \ p}&\pi_{2n-1}(S^n)\ar[r]^e&\pi_{2n}(S^{n+1})}$:
+\[\xymatrix{
+\ar@{..>}[d]S^{2n-1}  \ar[r]^{w_n} & S^n \ar[r]\ar@{=}[d] & C(w_n)\ar@{~>}[d] \\
+\Loops^2 S^{2n+1} \ar[r]^{\ \ \ p} & S^n \ar[r]^{e\ \ } & \Loops S^{n+1}
+}\]
+All we need to show is that the dotted map is $\pm e^2$. By the Hurewicz theorem, it is enough to show that it induces an epimorphism on $H_{2n-1}$. This follows from the diagram
+\[\xymatrix{
+\widetilde H_{2n} (C (w_n)) \ar[r]^{(1)}_\cong & \widetilde H_{2n} (\Loops S^{n+1}) \\
+H_{2n}(S^n, w_n (S^{2n-1})) \ar[r] 
+\ar[u]^{\cong}\ar[d]_\cong^\partial
+& H_{2n}(S^n, p(\Loops^2 S^{2n+1}) )
+\ar[u]^{\cong}_{(2)}\ar[d]_\cong^\partial
+\\
+H_{2n-1} (S^{2n-1}) \ar@{..>}[r] & H_{2n-1} (\Loops^2 S^{2n+1})
+}\]
+if we verify the isomorphisms (1) and (2).  (1) is the fact we already showed in a previous footnote.$^\text{\ref{Fottnoteofold}}$  (2) follows from the following argument involving the spectral sequence of the fibration $\Loops^2 S^{2n+1} \to S^n \to \Loops S^{n+1}$. For ease of reading, write $F\to E\to B$ for the three terms of this fibration. Then the transgression $E^{2n}_{2n,0}\to E^{2n}_{0,2n-1}$ must be an isomorphism, however, there can be no other nonzero differentials in or out of $E_{2n,0}$ and $E_{0,2n-1}$. Now the following diagram defines the transgression:
+\[\xymatrix{
+H_{2n-1}(F)&&&%\ar[r]& &&%H^n(\Omega B)\ar@{=}[r]&H^{n+1}(\Sigma\Omega B)&\ar[l] 
+H_{2n}(B)\ar[dl]\\
+&\ar[ul]H_{2n}(E,F)\ar[r]^{(2)}&H_{2n}(B,*)
+}\]
+If (2) were not and isomorphism, then the transgression could not be either.
 \end{proof}
 One consequence of this is
 \begin{cor}
-$\rho(\iota_{2n+1}) = \pm W_n$, i.e.,
+$\rho(\iota_{2n+1}) = \pm w_n$, i.e.,
 \begin{diagram}[height=2em]
 S^{2n-1} & \rTo^{\id} & S^{2n-1} & \rTo^{e^2} & \Loops^2 S^{2n+1} \\
-& & & \rdTo_{\pm W_n} & \dTo>p \\
+& & & \rdTo_{\pm w_n} & \dTo>p \\
 & & & & S^n,
 \end{diagram}
 and this corresponds to $\iota_{2n+1} \in [S^{2n-1}, \Loops^2 S^{2n+1}] = [S^{2n+1}, S^{2n+1}]$.
@@ -3144,7 +3154,7 @@ and this corresponds to $\iota_{2n+1} \in [S^{2n-1}, \Loops^2 S^{2n+1}] = [S^{2n
 And so we get
 \begin{thm}[G.\ Whitehead]
 \[
-\ker(\pi_{2n-1} S^n \stackrel{e}{\to} \pi_{2n} S^{2n+1}) = \begin{cases} 0 & \hbox{when $n = 1, 3, 7$} \\ \Z_2 \langle W_n \rangle & \hbox{$n$ odd otherwise} \\ \Z \langle W_n \rangle & \hbox{$n$ even}. \end{cases}
+\ker(\pi_{2n-1} S^n \stackrel{e}{\to} \pi_{2n} S^{2n+1}) = \begin{cases} 0 & \hbox{when $n = 1, 3, 7$} \\ \Z_2 \langle w_n \rangle & \hbox{$n$ odd otherwise} \\ \Z \langle w_n \rangle & \hbox{$n$ even}. \end{cases}
 \]
 \end{thm}
 
@@ -3186,9 +3196,9 @@ Well, that still doesn't sound very good, except that you can play all of these 
 \[
 d_1: \pi_2 \Loops^3 S^5 \stackrel{p}{\to} \pi_1 \Loops^2 S^2 \stackrel{h}{\to} \pi_1 \Loops^2 S^3
 .\]
-INKSCAPE Well, on the bottom row all we need to know is what happens to $\iota_{2s+1} \in \pi_s \Loops^{s+1} \S^{2s+1} = \pi_{2s+1} S^{2s+1} = \Z \langle \iota_{2s+1} \rangle$.  But we already computed that considering that $\iota_{2s+1} \in \pi_{2s-1} \Loops^2 S^{2s+1}$, we get $p(\iota_{2s-1}) = W_s$, $p: \pi_{2s-1} \Loops^2 S^{2s+1} \to \pi_{2s-1} S^s$.  $d_1(\iota_{2s+1})$ is thus $h(W_s) \in \pi_{2s-1} S^{2s-1}$, which is $\pm 2 \iota_{2s-1}$ when $s$ is even or $0$ when $s$ is odd.  So in fact we can write INKSCAPE
+INKSCAPE Well, on the bottom row all we need to know is what happens to $\iota_{2s+1} \in \pi_s \Loops^{s+1} \S^{2s+1} = \pi_{2s+1} S^{2s+1} = \Z \langle \iota_{2s+1} \rangle$.  But we already computed that considering that $\iota_{2s+1} \in \pi_{2s-1} \Loops^2 S^{2s+1}$, we get $p(\iota_{2s-1}) = w_s$, $p: \pi_{2s-1} \Loops^2 S^{2s+1} \to \pi_{2s-1} S^s$.  $d_1(\iota_{2s+1})$ is thus $h(w_s) \in \pi_{2s-1} (S^{2s-1})$, which is $\pm 2 \iota_{2s-1}$ when $s$ is even or $0$ when $s$ is odd.  So in fact we can write INKSCAPE
 
-But we cna get more otu of this information: notice that this is the \emph{only} differential \emph{into} the bottom row, and the only differential \emph{out} of the obttom row for columns $s \le 2$.  So we can truncate this spectral sequence and nothing more happens: INKSCAPE  This spectral sequence computes $\pi_* \Loops^3 S^3$, so we have found that $\pi_4 S^3 \cong \Z_2$.  But by the Freudenthal theorem, for stem degree $1$ $S^3$ is already in the stable range.  So in fact $\pi_{n+1} S^n = \Z_2$ for $n \ge 3$.  And this in turn lets us fill in a whole row of the original spectral sequence INKSCAPE.
+But we can get more out of this information: notice that this is the \emph{only} differential \emph{into} the bottom row, and the only differential \emph{out} of the obttom row for columns $s \le 2$.  So we can truncate this spectral sequence and nothing more happens: INKSCAPE  This spectral sequence computes $\pi_* \Loops^3 S^3$, so we have found that $\pi_4 S^3 \cong \Z_2$.  But by the Freudenthal theorem, for stem degree $1$ $S^3$ is already in the stable range.  So in fact $\pi_{n+1} S^n = \Z_2$ for $n \ge 3$.  And this in turn lets us fill in a whole row of the original spectral sequence INKSCAPE.
 
 
 % >>>
@@ -3197,7 +3207,7 @@ But we cna get more otu of this information: notice that this is the \emph{only}
 \section{The stable category} % <<<
 \label{TheStableCategory}
 \ifx\OutputTheStableCategory\undefined\else
-Last time we saw the introduction of the EHP spectral sequence.  Remember the $E^1$ term looked like this: INKSCAPE  In introducing it the claim was made that studying this spectral sequence would help to attack the theorem about desuspending $W_n$.  In order to see why this might be true, let's take a look at how to interpret the differentials in the spectral sequence.  Note that this discussion will apply in general to any spectral sequence arising from an exact couple.
+Last time we saw the introduction of the EHP spectral sequence.  Remember the $E^1$ term looked like this: INKSCAPE  In introducing it the claim was made that studying this spectral sequence would help to attack the theorem about desuspending $w_n$.  In order to see why this might be true, let's take a look at how to interpret the differentials in the spectral sequence.  Note that this discussion will apply in general to any spectral sequence arising from an exact couple.
 
 To start with, recall how the spectral sequence arises.  It came from the exact couple we got by applying homotopy to the fibrations
 \begin{diagram}[height=2em]
@@ -3224,7 +3234,7 @@ this is the filtration at which a given element appears.
 
 Now when you study this at the $E^1$ term, there is indeterminancy associated with the choice in desuspension, but this precisely corresponds to the various differentials coming into the target group from elsewhere: INKSCAPE  Now in this context, what do the differentials mean?  (And I want to advertise this as a great way to understand how various homotopy groups interact.)  Recall that $d_1 = \Loops^* p$, $d_2 = \Loops^* e^{-1} p$, $d_3 = \Loops^* e^{-1} e^{-1} p$, and so on.  So the significance of the differential is: take the class in $\pi_* \Loops^{s+1} S^{2s+1}$, apply $p$; then desuspend $r-1$ times and record the result in the agreed way, that is, take the James-Hopf invariant.  And the collection of $d_r$s together can be understood as the obstruction to lifting from $\Loops^{s+1} S^{2s+1}$ to $\Loops^{s+1} S^{s+1}$.
 
-Before we go on, note that this helps explain why this spectral sequence might be useful in studying how far we can desuspend $W_n: P(\iota_{2n+1}) = \pm W_n$, so studying how far you can desuspend $W_n$ is the same as looking for the first non-zero differential in the EHP spectral sequence on the fundamental class in $\pi_s \Loops^{s+1} S^{2s+1}$.
+Before we go on, note that this helps explain why this spectral sequence might be useful in studying how far we can desuspend $w_n: P(\iota_{2n+1}) = \pm w_n$, so studying how far you can desuspend $w_n$ is the same as looking for the first non-zero differential in the EHP spectral sequence on the fundamental class in $\pi_s \Loops^{s+1} S^{2s+1}$.
 
 Now usually when you attack a problem like desuspending a class, a standard approach is to convert the problem to a stable one and hope that things become more cohomological.  Now suspension gives homomorphisms
 \[
@@ -3242,19 +3252,19 @@ g_1 + g_2: \Suspend X \stackrel{pinch}{\to} \Suspend X \wsum \Suspend X \stackre
 \end{diagram}
 we have $f_*(g_1 + g_2) = f_* g_1 + f_* g_2$ in $[\Suspend X, Y]$.\footnote{Warning: $[\Suspend X, Z]$ is not natural in $\Suspend X$!}
 
-As an example, consider the map $S^{2n-1} \stackrel{W_n}{\to} S^n$, the Whitehead square.  Then $w_n^* = [S^n, S^n] \to [S^{2n-1}, S^n]$ is not a homomorphism for $n$ even.  To see this, recall that $W_n = [\iota_n, \iota_n] \in \pi_{2n-1} S^n$ is defined by
+As an example, consider the map $S^{2n-1} \stackrel{w_n}{\to} S^n$, the Whitehead square.  Then $w_n^* = [S^n, S^n] \to [S^{2n-1}, S^n]$ is not a homomorphism for $n$ even.  To see this, recall that $w_n = [\iota_n, \iota_n] \in \pi_{2n-1} S^n$ is defined by
 \begin{diagram}[height=2em]
-S^{2n-1} & \rTo^{W_n} & S^n \\
+S^{2n-1} & \rTo^{w_n} & S^n \\
 & \rdTo_{W} & \uTo>{\textup{fold}} \\
 & & S^n \wsum S^n,
 \end{diagram}
 where $W$ is the attaching map for $S^{2n-1} \stackrel{W}{\to} S^n \wsum S^n \to CW = S^n \times S^n$.  This diagram commutes, by definition of $2 \iota_n$:
 \begin{diagram}[height=2em]
-S^{2n-1} & \rTo^{W_n} & S^n & \rTo^{2 \iota_n} & S^n \\
+S^{2n-1} & \rTo^{w_n} & S^n & \rTo^{2 \iota_n} & S^n \\
 & \rdTo_W & \uTo>{fold} & & \uTo>{\textup{fold}} \\
 & & S^n \wsum S^n & \rTo_{2\iota_n \wsum 2\iota_n} & S^n \wsum S^n.
 \end{diagram}
-The top row represents $(\iota_n + \iota_n) \circ W_n = W_n^*(2 \iota_n)$.  THe lower composite represents $[2\iota_n, 2\iota_n] = 4[\iota_n, \iota_n]$ (by bilinearity of the Whitehead product), which is equal to $4 W_n$ or $4 W_n^*(\iota_n)$.  So $W_n^*$ cannot be a homomorphism unless $W_n = W_n^* \iota_n$ has finite order in $\pi_{2n-1}S^n$.  But for $n$ even, $h(W_n) = 2 \iota_n$, so the image of $W_n$ under the Hopf map is infinite cyclic!  So for example $\End(\Suspend^n X)$ is not a ring.
+The top row represents $(\iota_n + \iota_n) \circ w_n = w_n^*(2 \iota_n)$.  THe lower composite represents $[2\iota_n, 2\iota_n] = 4[\iota_n, \iota_n]$ (by bilinearity of the Whitehead product), which is equal to $4 w_n$ or $4 w_n^*(\iota_n)$.  So $w_n^*$ cannot be a homomorphism unless $w_n = w_n^* \iota_n$ has finite order in $\pi_{2n-1}S^n$.  But for $n$ even, $h(w_n) = 2 \iota_n$, so the image of $w_n$ under the Hopf map is infinite cyclic!  So for example $\End(\Suspend^n X)$ is not a ring.
 
 The way to get around this is by continuing to suspend.  In what follows we take $X$ and $Y$ to be finite complexes.  Then we define $\{X, Y\} = [\Suspend^n X, \Suspend^n Y]$ for $n$ much larger than 0, in particular for $n$ sufficiently large $[\Suspend^n X, \Suspend^n Y] \cong [\Suspend^{n+1} X, \Suspend^{n+1} Y]$ by the Freudenthal suspension theorem, and we define $\{X, Y\}$ to be this ``stable'' group, the ``stable homotopy classes of maps'' between $X$ and $Y$.  Now composition gives a product
 \[
