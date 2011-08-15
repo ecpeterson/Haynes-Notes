@@ -112,6 +112,7 @@
 \newcommand{\CP}{\C P}
 \newcommand{\A}{\mathbb{A}}
 \newcommand{\SA}{\mathcal{A}}
+\newcommand{\Gr}{\textup{Gr}}
 % common typefaced symbols
 \newcommand{\sheaf}[1]{\mathcal{#1}}
 \newcommand{\torsor}[1]{\mathscr{#1}}
@@ -394,7 +395,7 @@ So now the question is: for what spheres is there an element of $\pi_{2n-1} S^n$
 \begin{thm}[Adams] % hopf invariant was only defined for n > 1 :)
 If $\pi_{2n-1} (S^n)$ contains an element of Hopf invariant $1$, then $n = 1$, $2$, $4$, or $8$.
 \end{thm}
-For the time being, take a step back and recall the action $O(n) \times S^{n-1} \to S^{n-1}$.  Any $\alpha \in \pi_k (O(n))$ (not necessarily from a section) induces a map $S^k \times S^{n-1} \to O(n) \times S^{n-1} \to S^{n-1}$.  Doing the Hopf construction here induces a map $S^{k+n} \to S^n$, i.e., we get what turns out to be a homomorphism $J: \pi_k (O(n)) \to \pi_{n+k} (S^n)$ called the ``$J$-homomorphism.''  For $k < n$, $\pi_k (O(n))$ are known by Bott periodicity, hence there is much interest in the image of $J$.  Note that for $k < n$, $n + k > 2k$, and this is the so-called ``stable range'' where things often seem to work better; one then thinks of $J$ as a map $\pi_* (O) \to \pi_*^s$.  The Adams conjectures are concerned with the image of this $J$. % should stablility really be mentioned here?
+For the time being, take a step back and recall the action $O(n) \times S^{n-1} \to S^{n-1}$.  Any $\alpha \in \pi_k (O(n))$ (not necessarily from a section) induces a map $S^k \times S^{n-1} \to O(n) \times S^{n-1} \to S^{n-1}$.  Doing the Hopf construction here induces a map $S^{k+n} \to S^n$, i.e., we get what turns out to be a homomorphism $J: \pi_k (O(n)) \to \pi_{n+k} (S^n)$ called the ``$J$-homomorphism.''  For $k < n$, $\pi_k (O(n))$ are known by Bott periodicity, hence there is much interest in the image of $J$.  Note that for $k < n$, $n + k > 2k$, and this is the so-called ``stable range'' where things often seem to work better; one then thinks of $J$ as a map $\pi_* (O) \to \Pi_*$.  The Adams conjectures are concerned with the image of this $J$. % should stablility really be mentioned here?
 
 % >>>
 \fi
@@ -799,7 +800,7 @@ BO(n) & \rTo & BG_n \\
 \dTo & & \dTo \\
 BO & \rTo & BG.
 \end{diagram}
-We then make two claims: $\widetilde J(X)$ is the image of $[X, BO] \to [X, BG]$, and $[X, BG]$ is finite.  We prove this last part cell-by-cell, so what we really need to show is that $\pi_i(BG_n)$ is finite for $i$ much smaller than $n$.  Since $X$ is finite, $[X, BG] \simeq [X, BG_n]$ for some $n$ sufficiently larger than the top-dimensional cell of $X$, so this is enough.  There is a fibration $G_n \to EG_n \to BG_n$, and hence $\pi_i BG_n \cong \pi_{i-1} G_n$.  We are then left with showing that $\pi_i G_n$ is finite (again, for $i$ must smaller than $n$).  Now an element of $G_n$ is a map $S^{n-1} \to S^{n-1}$; by evaluating at the basepoint in $S^{n-1}$ we get a map $G_n \to S^{n-1}$.  This is a fibration whose fiber is homotopy equivalent to $\Loops^{n-1}_{\pm 1}S^{n-1} := \{f: (S^{n-1}, s_0) \to (S^{n-1}, s_0) : \deg f = \pm 1\} \subseteq \textup{Maps}(S^{n-1}, S^{n-1})$.  For $i$ much smaller than $n$, $\pi_i G_n \cong \pi_i(\Loops^{n-1}_\pm S^{n-1})$ and $\pi_i(\Loops^{n-1}_\pm S^{n-1}) \subset \pi_i(\Loops^{n-1} S^{n-1}) = \pi_{i+n-1} S^{n-1} = \pi_i^S$, which is known to be finite by a theorem of Serre.
+We then make two claims: $\widetilde J(X)$ is the image of $[X, BO] \to [X, BG]$, and $[X, BG]$ is finite.  We prove this last part cell-by-cell, so what we really need to show is that $\pi_i(BG_n)$ is finite for $i$ much smaller than $n$.  Since $X$ is finite, $[X, BG] \simeq [X, BG_n]$ for some $n$ sufficiently larger than the top-dimensional cell of $X$, so this is enough.  There is a fibration $G_n \to EG_n \to BG_n$, and hence $\pi_i BG_n \cong \pi_{i-1} G_n$.  We are then left with showing that $\pi_i G_n$ is finite (again, for $i$ must smaller than $n$).  Now an element of $G_n$ is a map $S^{n-1} \to S^{n-1}$; by evaluating at the basepoint in $S^{n-1}$ we get a map $G_n \to S^{n-1}$.  This is a fibration whose fiber is homotopy equivalent to $\Loops^{n-1}_{\pm 1}S^{n-1} := \{f: (S^{n-1}, s_0) \to (S^{n-1}, s_0) : \deg f = \pm 1\} \subseteq \textup{Maps}(S^{n-1}, S^{n-1})$.  For $i$ much smaller than $n$, $\pi_i G_n \cong \pi_i(\Loops^{n-1}_\pm S^{n-1})$ and $\pi_i(\Loops^{n-1}_\pm S^{n-1}) \subset \pi_i(\Loops^{n-1} S^{n-1}) = \pi_{i+n-1} S^{n-1} = \Pi_i$, which is known to be finite by a theorem of Serre.
 \end{proof}
 \fi
 % >>>
@@ -3135,30 +3136,34 @@ H_{2n-1} (S^{2n-1}) \ar@{..>}[r] & H_{2n-1} (\Loops^2 S^{2n+1})
 }\]
 if we verify the isomorphisms (1) and (2).  (1) is the fact we already showed in a previous footnote.$^\text{\ref{Fottnoteofold}}$  (2) follows from the following argument involving the spectral sequence of the fibration $\Loops^2 S^{2n+1} \to S^n \to \Loops S^{n+1}$. For ease of reading, write $F\to E\to B$ for the three terms of this fibration. Then the transgression $E^{2n}_{2n,0}\to E^{2n}_{0,2n-1}$ must be an isomorphism, however, there can be no other nonzero differentials in or out of $E_{2n,0}$ and $E_{0,2n-1}$. Now the following diagram defines the transgression:
 \[\xymatrix{
-H_{2n-1}(F)&&&%\ar[r]& &&%H^n(\Omega B)\ar@{=}[r]&H^{n+1}(\Sigma\Omega B)&\ar[l] 
-H_{2n}(B)\ar[dl]\\
-&\ar[ul]H_{2n}(E,F)\ar[r]^{(2)}&H_{2n}(B,*)
+H_{2n-1}(F)&\ar[l]H_{2n}(E,F)\ar[r]^{(2)}&H_{2n}(B,*)&%\ar[r]& &&%H^n(\Omega B)\ar@{=}[r]&H^{n+1}(\Sigma\Omega B)&\ar[l] 
+H_{2n}(B)\ar[l]
 }\]
 If (2) were not and isomorphism, then the transgression could not be either.
 \end{proof}
 One consequence of this is
 \begin{cor}
-$\rho(\iota_{2n+1}) = \pm w_n$, i.e.,
-\begin{diagram}[height=2em]
-S^{2n-1} & \rTo^{\id} & S^{2n-1} & \rTo^{e^2} & \Loops^2 S^{2n+1} \\
-& & & \rdTo_{\pm w_n} & \dTo>p \\
-& & & & S^n,
-\end{diagram}
-and this corresponds to $\iota_{2n+1} \in [S^{2n-1}, \Loops^2 S^{2n+1}] = [S^{2n+1}, S^{2n+1}]$.
+$\iota_{2n+1} \mapsto \pm w_n$ under $p:\pi_{2n+1}(S^{2n+1})\to\pi_{2n-1}(S^n)$.
 \end{cor}
 And so we get
 \begin{thm}[G.\ Whitehead]
+In the exact sequence 
+$\xymatrix{\pi_{2n+1}(S^{2n+1})\ar[r]^{\ p}&\pi_{2n-1}(S^n)\ar[r]^e&\pi_{2n}(S^{n+1})}$\!,
 \[
-\ker(\pi_{2n-1} S^n \stackrel{e}{\to} \pi_{2n} S^{2n+1}) = \begin{cases} 0 & \hbox{when $n = 1, 3, 7$} \\ \Z_2 \langle w_n \rangle & \hbox{$n$ odd otherwise} \\ \Z \langle w_n \rangle & \hbox{$n$ even}. \end{cases}
+\ker(e) = \begin{cases} 0 & \hbox{when $n = 1, 3, 7$} \\ \Z_2 \langle w_n \rangle & \hbox{$n$ odd, $n\neq1,3,7$} \\ \Z \langle w_n \rangle & \hbox{$n$ even}. \end{cases}
 \]
 \end{thm}
+\begin{proof}
+By exactness, $\ker(e)=\im(p)$ is the subgroup generated by $\pm p(\imath_{2n+1})=w_n$.
 
-OK, now in order to address the desuspension problem, and in order to do that we'll link up all the EHP sequences, I mean, here they are:
+When $n=1,3,7$, there is an element of Hopf invariant one in $\pi_{2n+1}(S^{n+1})$, so that $h:\pi_{2n+1}(S^{n+1})\to\pi_{2n+1}(S^{2n+1})$ is surjective, and $p=0$.
+
+When $n\neq1,3,7$ is odd, there is an element of Hopf invariant two in $\pi_{2n+1}(S^{n+1})$, but no element of Hopf invariant one, so that $\im(h)$ has index two in $\pi_{2n+1}(S^{2n+1})$.
+
+When $n$ is even, $w_n$ has hopf invariant two, and so has infinite order.
+\end{proof}
+
+OK, now we want to address the desuspension problem, and in order to do that we'll link up all the EHP sequences, I mean, here they are:
 \begin{diagram}[height=2em]
 S^n & \rTo^e & \Loops S^{n+1} & \rTo^h & \Loops S^{2n+1};
 \end{diagram}
@@ -3172,43 +3177,85 @@ Now these link together:
 & & \dTo>h & & \dTo>h & & \dTo>h \\
 & & \Loops S^1 & & \Loops^2 S^3 & & \Loops^3 S^5,
 \end{diagram}
-where $\pi_k Q S^0 = \pi_k \Loops^n S^n = \pi_k^S$ for $n$ large.  So we've filtered stable homotopy with unstable homotopy.  But each leg is a fibration, and the corners match, so if you apply homootpy something wonderful happens: you get a sequence of exact triangles whose ends match up.  This is an \emph{exact couple}, so you get a spectral sequence:
-\begin{diagram}[height=2em]
-* & \rTo & \pi_* \Loops S^1 & \rTo^e & \pi_* \Loops^2 S^2 & \rTo^e & \pi_* \Loops^3 S^3 & \rTo & \cdots \\
-& & \dTo & \luTo_p & \dTo>{\Loops h} & \luTo_p & \dTo>{\Loops^2 h} \\
-& & \pi_* \Loops S^1 & & \pi_* \Loops^2 S^3 & & \pi_* \Loops^3 S^5,
-\end{diagram}
-where the bottom forms the $E_1$ page of the spectral sequence, and it converges to $\pi_* Q S^0$.
-\[
-E^1_{s, t} = \pi_{s+t}(\Loops^{t+1} S^{2s+1}) = \pi_{2s+1+t} S^{2s+1}
-\]
-so the columns of the spectral sequence are homotopy groups of odd spheres.  So here it is: INKSCAPE  The differences are of degree $d_r: E^r_{s, t} \to E^r_{s-r, t-r+1}$, so they are like the differentials in the usual homology spectral sequence.  MORE INKSCAPE.
+Here, $e:\Omega^{n}S^{n}\to\Omega^{n+1} S^{n+1}$ can be viewed as the
+$n$-fold looping of the inclusion of the straight loops $S^{n}\to\Omega S^{n+1}$. In particular, each $e$ realises the suspension homomorphism on homotopy. Moreover, $QS^0$ is given the quotient (a.k.a.\ direct limit) topology, and as such (as $S^k$ is compact):
+\[\pi_k(QS^0)=[S^k,\varinjlim\Omega^n S^n]=\varinjlim[S^k,\Omega^n S^n]=\varinjlim\pi_{k+n}(S^n)=\Pi_k.\]
+We also note that the map $\pi_k(\Omega^n S^n)\to\Pi_k$ induced by mapping $\Omega^n S^n\to QS^0$ is the stabilisation map.
 
-Now an obvious questiions is this: if you think of a spectral sequence as a way of computing the $E^\infty$ term from the $E^1$ term, well, why isn't this game hopeless?  We have a spectral sequence converging to stable homotopy whose input is \emph{unstable} homotopy, which could very well be more difficult to compute.  But one really neat feature of this game is that in
+In particular, this sequence has filtered the stable homotopy groups of spheres by unstable homotopy groups.  But each leg is a fibration, and the corners match, so if you apply homotopy something wonderful happens: you get a sequence of exact triangles whose ends match up (the maps $p$ have degree $-1$ on $\pi_*$).
+
+
+\begin{diagram}[height=2em]
+\pi_*(\ptspace) & \rTo & \pi_* (\Loops S^1) & \rTo^e & \pi_* (\Loops^2 S^2) & \rTo^e & \pi_* (\Loops^3 S^3) & \rTo & \cdots&\rTo&\Pi_* \\
+& & \dTo & \luTo_p & \dTo>{h} & \luTo_p & \dTo>{h} \\
+& & \pi_* (\Loops S^1) & & \pi_* (\Loops^2 S^3) & & \pi_* (\Loops^3 S^5),
+\end{diagram}
+This is an \emph{exact couple}, so you get a spectral sequence converging to $\pi_* (Q S^0)=\Pi_*$, whose $E_1$ page consists of the bottom line of the above diagram:
+\[
+E^1_{s, t} = \pi_{s+t}(\Loops^{s+1} S^{2s+1}) = \pi_{2s+1+t} (S^{2s+1})
+\]
+so the columns of the spectral sequence are homotopy groups of odd spheres.  So here it is: 
+\[\textsc{Draw me, please.}\]
+The differentials $d_r: E^r_{s, t} \to E^r_{s-r, t+r-1}$, of total degree $-1$, are like the differentials in the usual homology spectral sequence. They are `defined' by the `formula' $d_r=he^{-(r-1)}p$, that is:
+\[\xymatrix{
+\pi_{s+t-1}(\Omega^{s-r+1}S^{s-r+1})\ar[rr]^{\qquad r-1}_{\qquad\text{desuspensions}}\ar[d]^h&&
+\pi_{s+t-1}(\Omega^s S^s)\\
+\makebox[0cm][r]{$E^1_{s-r,t+r-1}=$\,}\pi_{s+t-1}(\Omega^{s-r+1}S^{2s-2r+1})&&&\ar[ul]_p\makebox[0cm][r]{$E^1_{s,t}=$\,}
+\pi_{s+t}(\Omega^{s+1}S^{2s+1})
+}\]
+Of course, this `definition' does not make sense on the groups $E^1_{s,t}$. Instead, it makes sense on the subquotients $E^r_{s,t}$ of the $E^1_{s,t}$. In fact, we may define, for $0\leq r\leq\infty$:\footnote{One should check that this definition gives $E^1_{s,t}=\pi_{s+t}(\Omega^{s+1}S^{2s+1})$, and that can be made to make sense when $r=\infty$. By convention, we regard $\Omega^n S^n$ to be the one point space when $n<0$.}
+\begin{alignat*}{2}
+Z_{st}^r:=&\left\{x\in \pi_{s+t}(\Omega^{s+1}S^{2s+1})\ \middle|\ p(x)\in\im(e^{r})\right\}\\
+=&\left\{x\ \middle|\ \text{$p(x)\in\pi_{s+t-1}(\Omega^s S^s)$ desuspends to an element of $\pi_{s+t-1}(\Omega^{s-r} S^{s-r})$}\right\}.\\
+B_{st}^r:=&\left.h(\ker(e^r))\right.\\
+=&\left\{h(y)\ \middle|\ y\in \pi_{s+t}(\Omega^{s+1}S^{s+1}),\ e^r(y)=0\in \pi_{s+t}(\Omega^{s+r+1}S^{s+r+1})\right\}\\
+=&\left\{\text{James-Hopf invariants $h(y)$ of classes $y$ vanishing after $r$ suspensions}\right\}.\\
+E_{st}^{r+1}:=&\left.Z_{st}^r/B_{st}^r.\right.
+\end{alignat*}
+For each $s,t\geq0$, let $e_{st}:\pi_{s+t}(\Loops^{s+1} S^{s+1})\to \Pi_{s+t}$ be the stabilisation homomorphism. Then there is an increasing filtration on $\Pi_{s+t}$ defined by $F_{s}\Pi_{s+t}:=\im(e_{st})$. Let $\Gr_{st}$ be the subquotient $F_{s}\Pi_{s+t}/F_{s-1}\Pi_{s+t}$:
+%\[\Gr_{st}:=F_{s}h_{s+t}(E)/F_{s-1}h_{s+t}(E).\]
+%With this notation:
+\[
+\Gr_{st}:=\frac{\im\bigl(\pi_{s+t}(\Omega^{s+1} S^{s+1})\rightarrow \Pi_{s+t}\bigr)}{\im\bigl(\pi_{s+t}(\Omega^s S^{s})\rightarrow \Pi_{s+t}\bigr)}.\text{\ \ \ Note also:\ \ }
+Z_{st}^\infty=
+h(\pi_{s+t}(\Omega^{s+1}S^{s+1}));\text{\ and\ }
+B_{st}^\infty=h(\ker (e_{st})).
+\]
+The spectral sequence converges to $\Pi_{s+t}$, in that there are isomorphisms $E_{st}^\infty\to \Gr_{st}$ defined by:
+\[[h(y)]\longmapsto [e_{st}(y)]\text{ for $y\in \pi_{s+t}(\Omega^{s+1}S^{s+1})$}\]
+Now if $z\in F_s\Pi_{s+t}$, then there is some $\overline z\in \im\bigl(\pi_{s+t}(\Omega^{s+1} S^{s+1})\rightarrow \Pi_{s+t}\bigr)$ such that $e_{st}(\overline z)=z$. The inverse isomorphism $\Gr_{st}\to E_{st}^\infty$ is then given by:
+\[[z]\longmapsto [h(\overline z)].\]
+That is to say the following. Given an element $z\in\Pi_n$ in the stable $n$-stem, desuspend $z$ as far as possible to an element of $\overline z\in\pi_{n}(\Omega^{s+1}S^{s+1})$, then $h(\overline z)\in \pi_{n}(\Omega^{s+1}S^{2s+1})=:E^1_{s,n-s}$ is a permanent cycle detecting $z$. One could summarise by stating that $z$ is recorded by the James-Hopf invariant of a maximal desuspension.
+
+Now an obvious question is this: if you think of a spectral sequence as a way of computing the $E^\infty$ term from the $E^1$ term, well, why isn't this game hopeless?  We have a spectral sequence converging to stable homotopy whose input is \emph{unstable} homotopy, which could very well be more difficult to compute.  But one really neat feature of this game is that in
 \begin{diagram}[height=2em]
 \ptspace & \rTo & \Loops S^1 & \rTo & \Loops^2 S^2 & \rTo & \Loops^3 S^3 & \rEqualto & \Loops^3 S^3 & \rEqualto & \Loops^3 S^3 & \cdots \\
-& & & & \dTo & & \dTo & & \dTo & & \dTo \\
-& & & & \Loops^2 S^3 & & \Loops^3 S^5 & & 0 & & 0
+& & \dTo & & \dTo & & \dTo & & \dTo & & \dTo \\
+ & &\Loops^1 S^1& & \Loops^2 S^3 & & \Loops^3 S^5 & & 0 & & 0
 \end{diagram}
-we can just \emph{stop} the exact couple anywhere, and get an identical spectral sequence to the one we just saw except that we'll have zeroes in the columns beyond where we stop; otherwise, the picture is the same.  And the spectral sequence we get will converge to the homotopy of the sphere in the last column; in the case above, for example, $\pi_* \Loops^3 S^3$.  So actually we have a whole family of spectral sequences converging to the inputing of our original spectral sequence.
+we can just \emph{stop} the exact couple anywhere, and get an identical spectral sequence to the one we just saw except that we'll have zeroes in the columns beyond where we stop; otherwise, the picture is the same.  And the spectral sequence we get will converge to the homotopy of the sphere in the last column; in the case above, for example, $\pi_* (\Loops^3 S^3)$.  So actually we have a whole family of spectral sequences converging to the input of our original spectral sequence.
 
-Well, that still doesn't sound very good, except that you can play all of these facts off each other and often you can get pretty far.  For example, let's look at $d_1$.
-\[
-d_1: \pi_2 \Loops^3 S^5 \stackrel{p}{\to} \pi_1 \Loops^2 S^2 \stackrel{h}{\to} \pi_1 \Loops^2 S^3
-.\]
-INKSCAPE Well, on the bottom row all we need to know is what happens to $\iota_{2s+1} \in \pi_s \Loops^{s+1} \S^{2s+1} = \pi_{2s+1} S^{2s+1} = \Z \langle \iota_{2s+1} \rangle$.  But we already computed that considering that $\iota_{2s+1} \in \pi_{2s-1} \Loops^2 S^{2s+1}$, we get $p(\iota_{2s-1}) = w_s$, $p: \pi_{2s-1} \Loops^2 S^{2s+1} \to \pi_{2s-1} S^s$.  $d_1(\iota_{2s+1})$ is thus $h(w_s) \in \pi_{2s-1} (S^{2s-1})$, which is $\pm 2 \iota_{2s-1}$ when $s$ is even or $0$ when $s$ is odd.  So in fact we can write INKSCAPE
+Well, that still doesn't sound very good, except that you can play all of these facts off each other and often you can get pretty far.  For example, let's look at $d_1$, the composite:
+\[\xymatrix{
+\makebox[0cm][r]{$E^1_{s,t}=$\,}
+\pi_{s+t}(\Omega^{s+1}S^{2s+1})\ar[r]^{\ p}&\pi_{s+t-1}(\Omega^s S^s)\ar[r]^{h\ \ }&\pi_{s+t-1}(\Omega^{s}S^{2s-1})\makebox[0cm][l]{\,$=E^1_{s-1,t}$}
+}\]
+Well, on the bottom row (when $t=0$), $E^1_{s,t}$ and $E^1_{s-1,t}$ are both isomorphic to the integers. We only need to know what happens to the generator $\imath_{2s+1}$:
+\[\imath_{2s+1}=e^2\imath_{2s-1}\overset{p}{\longmapsto}\pm \imath_{2s-1}\circ w_{s}=w_s\overset{h}{\longmapsto} \pm h(w_s)=\begin{cases}2\imath_{2s-1},&\text{$s$ even,}\\0,&\text{$s$ odd.}\end{cases}\]
+Thus we have calculated the $d_1$ differential on the bottom row.
+% we only need to know what happens to $\iota_{2s+1} \in \pi_s \Loops^{s+1} S^{2s+1} = \pi_{2s+1} S^{2s+1} = \Z \langle \iota_{2s+1} \rangle$.  But we already computed that considering that $\iota_{2s+1} \in \pi_{2s-1} \Loops^2 S^{2s+1}$, we get $p(\iota_{2s-1}) = w_s$, $p: \pi_{2s-1} \Loops^2 S^{2s+1} \to \pi_{2s-1} S^s$.  $d_1(\iota_{2s+1})$ is thus $h(w_s) \in \pi_{2s-1} (S^{2s-1})$, which is $\pm 2 \iota_{2s-1}$ when $s$ is even or $0$ when $s$ is odd.  So in fact we can write INKSCAPE
 
-But we can get more out of this information: notice that this is the \emph{only} differential \emph{into} the bottom row, and the only differential \emph{out} of the obttom row for columns $s \le 2$.  So we can truncate this spectral sequence and nothing more happens: INKSCAPE  This spectral sequence computes $\pi_* \Loops^3 S^3$, so we have found that $\pi_4 S^3 \cong \Z_2$.  But by the Freudenthal theorem, for stem degree $1$ $S^3$ is already in the stable range.  So in fact $\pi_{n+1} S^n = \Z_2$ for $n \ge 3$.  And this in turn lets us fill in a whole row of the original spectral sequence INKSCAPE.
+But we can get more out of this information: notice that this is the \emph{only} differential \emph{into} the bottom row, and the only differential \emph{out} of the bottom row for columns $s \le 2$.  So we can truncate this spectral sequence and nothing more happens. This spectral sequence computes $\pi_* (\Loops^3 S^3)$, so we have found that $\pi_4 (S^3) \cong \Z_2$.  But by the Freudenthal theorem, for stem degree $1$, $S^3$ is already in the stable range.  So in fact $\pi_{n+1} (S^n) = \Z_2$ for $n \ge 3$.  And this in turn lets us fill in a whole row of the original spectral sequence.
+
+%\ConfusedBox{
+%\textbf{On Repeat:}
+
+%Last time we saw the introduction of the EHP spectral sequence.  Remember the $E^1$ term looked like this: INKSCAPE  
+Now earlier we claimed that introducing the EHP spectral sequence would help to attack the theorem about desuspending $w_n$.  In order to see why this might be true, let's take a look at how to interpret the differentials in the spectral sequence. Note that this discussion will apply in general to any spectral sequence arising from an exact couple.
 
 
-% >>>
-\fi
-\BoxedNote{}
-\section{The stable category} % <<<
-\label{TheStableCategory}
-\ifx\OutputTheStableCategory\undefined\else
-Last time we saw the introduction of the EHP spectral sequence.  Remember the $E^1$ term looked like this: INKSCAPE  In introducing it the claim was made that studying this spectral sequence would help to attack the theorem about desuspending $w_n$.  In order to see why this might be true, let's take a look at how to interpret the differentials in the spectral sequence.  Note that this discussion will apply in general to any spectral sequence arising from an exact couple.
-
+\ConfusedBox{
+\textbf{On Repeat:}
 To start with, recall how the spectral sequence arises.  It came from the exact couple we got by applying homotopy to the fibrations
 \begin{diagram}[height=2em]
 \ptspace & \rTo^e & \Loops S^1 & \rTo^e & \Loops^2 S^2 & \rTo^e & \Loops^3 S^3 & \rTo^e & \cdots & \rTo \bigcup \Loops^n S^n = QS^0 \\
@@ -3221,10 +3268,18 @@ getting the exact couple
 & & \dTo & \luTo_p & \dTo>{\Loops h} & \luTo_p & \dTo>{\Loops^2 h} \\
 & & \pi_* \Loops S^1 & & \pi_* \Loops^2 S^3 & & \pi_* \Loops^3 S^5,
 \end{diagram}
+}
 Two lessons of great importance in sorting everything out:
 \begin{enumerate}
-\item We can truncate the sequence of triangles anywhere we want, obtaining a spectral sequence, compatible in some sense with the first, that converges to the homotopy of a finite sphere.
-\item The second lesson concerns how an element of $\pi_* S^n$ is recorded in the truncated spectral sequence of (1) (and therefore in the big spectral sequence if you take $n$ large enough).  Since everything is recorded in terms of its (James) Hopf invariant, and this is the obstruction to desuspending an element of $\pi_* \Loops^n S^n$, the recipe is
+\item We can truncate the sequence of triangles anywhere we want, obtaining a spectral sequence, compatible in some sense with the first, that converges to the homotopy of a finite sphere. To be explicit, for any $M<\infty$, we have a diagram of fibrations:
+\[\xymatrix{
+\ptspace\ar[r]&\Omega S^1\ar[d]\ar[r]&\Omega^2 S^2\ar[d]\ar[r]&\Omega^3 S^3\ar[d]\ar@{.>}[rr]&&\Omega^{s+1}S^{s+1}\ar[d]\ar@{.>}[rr]&&\Omega^{M}S^{M}\ar[d]\\
+&\Omega S^1&\Omega^2 S^3& \Omega^3S^5&&\Omega^{s+1}S^{2s+1}&&\Omega^{M}S^{2M-1}
+}\]
+The corresponding spectral sequence has exactly $M$ nonzero columns ($0\leq p <M$), and converges to the stem $\pi_{s+t}(\Omega^{M}S^{M})$ of $S^{M}$. Now:
+\[E_{st}^1=\pi_{s+t}(\Omega^{s+1}S^{2s+1})=\pi_t(\Omega^{2s+1}S^{2s+1})\text{ which is in the stable range when $t< 2s$}.\]
+
+\item The second lesson concerns how an element of $\pi_* (S^M)$ is recorded in the truncated spectral sequence (and therefore in the big spectral sequence if you take $M$ large enough).  Since everything is recorded in terms of its (James) Hopf invariant, and this is the obstruction to desuspending an element of $\pi_* (\Loops^M S^M)$, the recipe is
 \begin{enumerate}
 \item Desuspend as far as possible, and then
 \item compute the (James) Hopf invariant $h$;
@@ -3232,7 +3287,7 @@ Two lessons of great importance in sorting everything out:
 this is the filtration at which a given element appears.
 \end{enumerate}
 
-Now when you study this at the $E^1$ term, there is indeterminancy associated with the choice in desuspension, but this precisely corresponds to the various differentials coming into the target group from elsewhere: INKSCAPE  Now in this context, what do the differentials mean?  (And I want to advertise this as a great way to understand how various homotopy groups interact.)  Recall that $d_1 = \Loops^* p$, $d_2 = \Loops^* e^{-1} p$, $d_3 = \Loops^* e^{-1} e^{-1} p$, and so on.  So the significance of the differential is: take the class in $\pi_* \Loops^{s+1} S^{2s+1}$, apply $p$; then desuspend $r-1$ times and record the result in the agreed way, that is, take the James-Hopf invariant.  And the collection of $d_r$s together can be understood as the obstruction to lifting from $\Loops^{s+1} S^{2s+1}$ to $\Loops^{s+1} S^{s+1}$.
+Now when you study this at the $E^1$ level, there is indeterminancy associated with the choice in desuspension. This indeterminacy is exactly , but this precisely corresponds to the various differentials coming into the target group from elsewhere: INKSCAPE  Now in this context, what do the differentials mean?  (And I want to advertise this as a great way to understand how various homotopy groups interact.)  Recall that $d_1 = \Loops^* p$, $d_2 = \Loops^* e^{-1} p$, $d_3 = \Loops^* e^{-1} e^{-1} p$, and so on.  So the significance of the differential is: take the class in $\pi_* \Loops^{s+1} S^{2s+1}$, apply $p$; then desuspend $r-1$ times and record the result in the agreed way, that is, take the James-Hopf invariant.  And the collection of $d_r$s together can be understood as the obstruction to lifting from $\Loops^{s+1} S^{2s+1}$ to $\Loops^{s+1} S^{s+1}$.
 
 Before we go on, note that this helps explain why this spectral sequence might be useful in studying how far we can desuspend $w_n: P(\iota_{2n+1}) = \pm w_n$, so studying how far you can desuspend $w_n$ is the same as looking for the first non-zero differential in the EHP spectral sequence on the fundamental class in $\pi_s \Loops^{s+1} S^{2s+1}$.
 
@@ -3242,6 +3297,13 @@ Now usually when you attack a problem like desuspending a class, a standard appr
 \]
 which provide a horizontal operation on the EHP spectral sequence which is an isomorphism up to $* = 2 \cdot (\hbox{dimension of the sphere})$.  So there is a line of slope $2$ on the $E^1$ term INKSCAPE beneath which the columns are the same and in fact represent stable homotopy.  So this grid maps to a grid whose columns are stable homotopy and the map is an isomorphism below the line of slope 2.  And the question is: is this the $E^1$ term of some spectral sequence which is compatible with the first?  Our next goal is to construct this spectral sequence and the map of spectral sequences.  Then we can play off the differentials on either side and learn about desuspending the Whitehead square.
 
+
+% >>>
+\fi
+\BoxedNote{}
+\section{The stable category} % <<<
+\label{TheStableCategory}
+\ifx\OutputTheStableCategory\undefined\else
 In order to set the spectral sequence up it's a good idea to talk about stable homotopy a bit; for more information, see Adams' blue book~\cite{Adams}.  The notation $[X, Y]$ will mean pointed homotopy classes of point maps.  There is a map $\Suspend: [X, Y] \to [\Suspend X, \Suspend Y]$, and the idea is to study this game in detail.  One nice thing about it is that when you suspend you get a group: $[\Suspend X, Z]$ is a group naturally in $Z$, and $[\Suspend^2 X, Z]$ is abelian.  The group structure comes from
 \[
 g_1 + g_2: \Suspend X \stackrel{pinch}{\to} \Suspend X \wsum \Suspend X \stackrel{g_1 \wsum g_2}{\to} Z \wsum Z \stackrel{\textup{fold}}{\to} Z
@@ -3342,7 +3404,7 @@ And ``Brown representability'' says: any cohomology theory is representable: the
 \item $E_0$ sends exact triangles to exact sequences, and
 \item Milnor's axiom holds: $\bigoplus_\alpha E_0 X_\alpha \stackrel{\cong}{\to} E_0(\bigvee_\alpha X_\alpha)$.
 \end{enumerate}
-Whitehead representability says any homology theory is representable: there is a spectrum $E$ so that $E_0 X \underset{naturally}{\cong} \{S^0, X \sprod E\} = \pi_0^S(X \sprod E)$.  If you look at Adams' blue book~\cite{Adams}, you'll see how to construct $\CatOf{S}$, with lots of technical details.  For now, we'll just see what an object, i.e., a spectrum, is.  One construction takes a spectrum to be a sequence $\ldots, E_{n-1}, E_n, E_{n+1}, \ldots$ of pointed spaces, with pointed maps $\Suspend E_n \to E_{n+1}$.  Two examples:
+Whitehead representability says any homology theory is representable: there is a spectrum $E$ so that $E_0 X \underset{naturally}{\cong} \{S^0, X \sprod E\} = \pi^S_0(X \sprod E)$.  If you look at Adams' blue book~\cite{Adams}, you'll see how to construct $\CatOf{S}$, with lots of technical details.  For now, we'll just see what an object, i.e., a spectrum, is.  One construction takes a spectrum to be a sequence $\ldots, E_{n-1}, E_n, E_{n+1}, \ldots$ of pointed spaces, with pointed maps $\Suspend E_n \to E_{n+1}$.  Two examples:
 \begin{enumerate}
 \item Take $X$ a pointed spaces, define a spectrum $(\SuspendS X)_n = \Suspend^n X$ for $n$ above 0 and $\ptspace$ for $n$ below.  This gives a name to the inclusion functor from the homotopy category of pointed spaces to $\CatOf{S}$, which has an adjoint function $\LoopsS$ that goes the other way.  in particular, there are maps
 \begin{diagram}[height=2em]
