@@ -36,7 +36,7 @@
 
 %\newcommand{\OutputEVERYTHING}{  everything  }
 %\newcommand{\OutputFrontMatter}{}
-\newcommand{\OutputForeword}{0}
+%\newcommand{\OutputForeword}{0}
 %\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{1}
 %\newcommand{\OutputCliffordAlgebras}{2}
 %\newcommand{\OutputBuildingThomSpaces}{3}
@@ -291,7 +291,7 @@
 \ifx\OutputForeword\undefined\else
 These are notes from a course taught by Haynes Miller at MIT in the fall of 1989 in honor of Frank Adams, after his passing.  They were originally taken by Matthew Ando, and were later transcribed into \LaTeX\ by Eric Peterson and Aaron Mazel-Gee, with figures provided by Yi-Wei Chan, Meng Guo, and Matt Mahowald. Finally, the notes were edited for correctness and clarity by Michael Donovan.
 
-Due to the variety of different authors, this document lacks the uniformity of style that the reader would normally expect. This may be corrected, some time in the near future.
+Due to the large number of different contributors, this document lacks the uniformity of style that the reader would normally expect. This may be corrected, some time in the near future.
 
 If anything in this document confuses you, the original notes are available for comparison at the following links: \href{http://www-math.mit.edu/~hrm/papers/vf1.pdf}{http://www-math.mit.edu/\string~hrm/papers/vf1.pdf}, \href{http://www-math.mit.edu/~hrm/papers/vf2.pdf}{http://www-math.mit.edu/\string~hrm/papers/vf2.pdf}.
 
@@ -3415,17 +3415,17 @@ As a final remark, note that now we can talk about the Thom space of a virtual b
 \section{Homotopical algebra and duality} % <<<
 \label{HomotopicalAlgebraAndDuality}
 \ifx\OutputHomotopicalAlgebraAndDuality\undefined\else
-Well, let's continue with the discussion of stable homotopy, and really enter the stratosphere at this point, at least for a short while.  So remember last time we ended with the notion of a category $\CatOf{C}$, the $S$-category of finite complexes.  In this category there is an important notion of ``exact triangles:'' $X \to Y \to Z \to \Suspend X$ is an exact triangle if it is homotopy equivalence to $X \stackrel{f}{\to} Y \to Cf \to \Suspend X$ on the level of spaces, perhaps after suspending a lot.  Two important facts about exact triangles are
+Well, let's continue with the discussion of stable homotopy, and really enter the stratosphere at this point, at least for a short while.  So remember last time we ended with the notion of a category $\CatOf{C}$, the $S$-category of finite complexes.  In this category there is an important notion of ``exact triangles'': $X \to Y \to Z \to \Suspend X$ is an exact triangle if it is homotopy equivalent to $X \stackrel{f}{\to} Y \to Cf \to \Suspend X$ on the level of spaces, perhaps after suspending a lot.  Two important facts about exact triangles are
 \begin{enumerate}
-\item A sequence $X \to Y \to Z \to \Suspend X$ is exact if and only if $\{W, -\}$ is exact for all $W \in \CatOf{C}$.
-\item $Y \stackrel{g}{\to} Z \to \Suspend X \stackrel{\Suspend f}{\to} \Suspend Y$ is an exact triangle if and only if $X \stackrel{f}{\to} Y \stackrel{g}{\to} Z \to \Suspend X$ is an exact triangle.
+\item A sequence $X \to Y \to Z \to \Suspend X$ is exact iff it remains exact after application of $\{W, -\}$ for all $W \in \CatOf{C}$.
+\item $Y \stackrel{g}{\to} Z \to \Suspend X \stackrel{\Suspend f}{\to} \Suspend Y$ is an exact triangle iff $X \stackrel{f}{\to} Y \stackrel{g}{\to} Z \to \Suspend X$ is an exact triangle.
 \end{enumerate}
-This sounds like (co)homology... to make that hint precise, consider a category (containing the category $\CatOf{C}$) $\CatOf{S}$, the ``stable category,'' such that, well, it has a bunch of properties:
+This is somehow reminiscent of (co)homology. To make that hint precise, consider a category (containing the category $\CatOf{C}$) $\CatOf{S}$, the ``stable category'', such that, well, it has a bunch of properties:
 \begin{itemize}
 \item $\CatOf{S}$ has exact triangles, and the inclusion of $\CatOf{C}$ into $\CatOf{S}$ takes exact triangles to exact triangles.
-\item $\CatOf{S}$ is additive: it has products $\prod$ and coproducts $\coprod$.
+\item $\CatOf{S}$ is additive: it has products $\prod$ and coproducts $\coprod$, and finite products and finite coproducts coincide.
 \item The equivalence $\Suspend$ on $\CatOf{C}$ extends to one on $\CatOf{S}$.
-\item $\CatOf{S}$ has smash products with nice properties, e.g., $W \sprod: \CatOf{S} \to \CatOf{S}$ preserves exact triangles and $S^0 \sprod$ is a unit.
+\item $\CatOf{S}$ has smash products with nice properties, e.g.: $W \sprod: \CatOf{S} \to \CatOf{S}$ preserves exact triangles; $S^0 \sprod$ is a unit.
 \item ``Brown representability'' holds.
 \item ``Whitehead representability'' holds.
 \end{itemize}
@@ -3433,60 +3433,80 @@ This sounds like (co)homology... to make that hint precise, consider a category 
 What do these last two mean?  They have to do with cohomology and homology, so we'd better know what those are: a function $E^0: \CatOf{S}^{op} \to \CatOf{Ab}$ is cohomological if
 \begin{enumerate}
 \item $E^0$ sends exact triangles to exact sequences.
-\item $\CatOf{S}$ is going to contain infinite complexes, so we'd better know what $E^0$ does to limits, i.e., to wedges: $E^0$ must satisfy the ``Milnor axiom''
+\item $\CatOf{S}$ is going to contain infinite complexes, so we'd better know what $E^0$ does to colimits, e.g.,\ wedges. $E^0$ must satisfy the ``Milnor axiom'', that the following natural map is an isomorphism:
 \[
-E^0(\bigvee_\alpha X_\alpha) \stackrel{\cong}{\to} \prod_\alpha E^0 X_\alpha
+E^0({\textstyle{\!\bigvee}_\alpha X_\alpha}) \stackrel{\cong}{\to} \prod_\alpha E^0 X_\alpha
 .\]
-(Note that in this setting we define $E^q X = E^0 \Suspend^{-q} X$.)
 \end{enumerate}
-And ``Brown representability'' says: any cohomology theory is representable: there is a spectrum $E$ (the objects of $\CatOf{S}$ are called ``spectra'') such that $E^0(X) \underset{naturally}{\cong} \{X, E\}$.\footnote{Note that in this context $E^0$ restricted to spaces always refers to \emph{reduced} $E$-cohomology, so usually the twiddle is left out.}  Analogously, $E_0: \CatOf{S} \to \CatOf{Ab}$ is homological if
+If $E^0$ is cohomological, we define $E^q (X) := E^0 (\Suspend^{-q} X)$. ``Brown representability'' states that any cohomological functor (a.k.a.\ cohomology theory) of $\CatOf{S}$ is representable: there is a spectrum $E$ (the objects of $\CatOf{S}$ are called ``spectra'') such that the functors $E^0$ and $\{\textup{---}, E\}$ are naturally isomorphic.\footnote{Note that in this context, the restriction of $E^0$ to spaces always refers to \emph{reduced} $E$-cohomology, so usually the twiddle is left out.}  Analogously, $E_0: \CatOf{S} \to \CatOf{Ab}$ is homological if
 \begin{enumerate}
 \item $E_0$ sends exact triangles to exact sequences, and
-\item Milnor's axiom holds: $\bigoplus_\alpha E_0 X_\alpha \stackrel{\cong}{\to} E_0(\bigvee_\alpha X_\alpha)$.
+\item The Milnor axiom holds: the natural map $\bigoplus_\alpha E_0 X_\alpha \stackrel{\cong}{\to} E_0(\bigvee_\alpha X_\alpha)$ is an isomorphism.
 \end{enumerate}
-Whitehead representability says any homology theory is representable: there is a spectrum $E$ so that $E_0 X \underset{naturally}{\cong} \{S^0, X \sprod E\} = \pi^S_0(X \sprod E)$.  If you look at Adams' blue book~\cite{Adams}, you'll see how to construct $\CatOf{S}$, with lots of technical details.  For now, we'll just see what an object, i.e., a spectrum, is.  One construction takes a spectrum to be a sequence $\ldots, E_{n-1}, E_n, E_{n+1}, \ldots$ of pointed spaces, with pointed maps $\Suspend E_n \to E_{n+1}$.  Two examples:
+Whitehead representability says any homology theory is representable: there is a spectrum $E$ so that $E_0$ is naturally isomorphic to the functor $\{S^0, \text{---} \sprod E\} \cong \pi^S_0(\text{---} \sprod E)$.  If you look at Adams' blue book~\cite{Adams}, you'll see how to construct $\CatOf{S}$, with lots of technical details.  For now, we'll just see what an object, i.e., a spectrum, is.  One construction takes a spectrum to be a sequence $\ldots, E_{n-1}, E_n, E_{n+1}, \ldots$ of pointed spaces, with pointed maps $\Suspend E_n \to E_{n+1}$.  Two examples:
 \begin{enumerate}
-\item Take $X$ a pointed spaces, define a spectrum $(\SuspendS X)_n = \Suspend^n X$ for $n$ above 0 and $\ptspace$ for $n$ below.  This gives a name to the inclusion functor from the homotopy category of pointed spaces to $\CatOf{S}$, which has an adjoint function $\LoopsS$ that goes the other way.  in particular, there are maps
+\item Take $X$ a pointed space, define a spectrum $\SuspendS X$ by \[(\SuspendS X)_n =\begin{cases} \Suspend^n X,&n\geq0\\\ptspace,&n<0.\end{cases}\]
+This gives a name to the inclusion functor from the homotopy category of pointed spaces to $\CatOf{S}$, which has an adjoint function $\LoopsS$ that goes the other way.  in particular, there are maps
 \begin{diagram}[height=2em]
-X & \rTo^\alpha & \LoopsS \SuspendS X, \\
-E & \lTo^\beta & \SuspendS \LoopsS E.
+X & \rTo^{\alpha\ \ \ } & \LoopsS \SuspendS X, \\
+E & \lTo^{\beta\ \ \ } & \SuspendS \LoopsS E.
 \end{diagram}
-\item Fix an abelian group $A$; define the spectral $HA$ by $(HA)_n = K(A, n)$ for $n$ above zero and as $\ptspace$ for $n$ below.  The map $\Suspend K(A, n) \to K(A, n+1)$ is given by the adjoint of the identity $K(A, n) \to \Loops K(A, n+1)$.
+\item Fix an abelian group $A$; define the spectrum $HA$
+\[(HA)_n =\begin{cases} K(A,n),&n\geq0\\\ptspace,&n<0.\end{cases}\]
+The map $\Suspend K(A, n) \to K(A, n+1)$ is given by the adjoint of the identity $K(A, n) \to \Loops K(A, n+1)$.
 \end{enumerate}
 
-Now let's talk about a notion of duality that makes sense in the context of spectra.  This is where we lift off a bit; Michael Artin says this is the hardest thing in the world to write down.  Namely, a duality is a map $\alpha: X \sprod Y \to S^0$ such that for all $W \in \CatOf{S}$, $\{W, Y\} \stackrel{X \sprod}{\to} \{X \sprod W, X \sprod Y\} \stackrel{\alpha_*}{\to} \{X \sprod W, S^0\}$ is an isomorphism.  The first thing to note is that dualities exist:
+Now let's talk about a notion of duality that makes sense in the context of spectra.  This is where we lift off a bit; Michael Artin says this is the hardest thing in the world to write down.  Namely, a duality is a map $\alpha: X \sprod Y \to S^0$ such that for all $W \in \CatOf{S}$, $\{W, Y\} \stackrel{X \sprod}{\to} \{X \sprod W, X \sprod Y\} \stackrel{\alpha_*}{\to} \{X \sprod W, S^0\}$ is an isomorphism. That is, given a map $W\to Y$, we can form the composite:
+\[X\wedge W\to X\wedge Y\to S^0,\]
+and we require that this assignment is an isomorphism.
+\ConfusedBox{Do we need another axiom here? I once saw:
+
+A map $u:S\to A\wedge A^\perp$ is called a duality if for all $E$, the maps
+%\[[A,E]\to[S,E\wedge A^\perp],\qquad (A\to E)\mapsto (S\to A\wedge A^\perp\to 
+\begin{alignat*}{2}
+u_E:[A,E]\to[S,E\wedge A^\perp],&\qquad &
+(A\to E)\mapsto (S\to A\wedge A^\perp\to E\wedge A^\perp)\\
+u^E:[A^\perp,E]\to[S,A\wedge E],&\qquad &
+(A^\perp\to E)\mapsto (S\to A\wedge A^\perp\to A\wedge E)
+\end{alignat*}
+are isomorphisms. Duality is symmetric, as smash product is homotopy
+commutative. Moreover, given two dualities, we have isomorphisms
+$[A,B]\longrightarrow[S,B\wedge A^\perp]\longleftarrow[B^\perp,A^\perp]$, so
+that we can define the adjoint $f^\perp:B^\perp\to A^\perp$ of a map $f:A\to B$.}
+The first thing to note is that dualities exist:
 \begin{thm}
 For all $X$ there is a $Y$ with a duality $X \sprod Y \to S^0$.
 \end{thm}
 \begin{proof}
-$W \mapsto \{X \sprod W, S^0\}$ is a cohomology theory, so it has a representing spectrum $Y$; hence there is a natural isomorphism $\{X \sprod W, S^0\} \cong \{W, Y\}$  The map $\alpha$ comes from taking for $W$ the spectrum $Y$ itself: $\{X \sprod Y, S^0\} \cong \{Y, Y\}$.  Let $\alpha$ be the element of $\{X \sprod Y, S^0\}$ corresponding to the identity.  The naturality of the representability gives us that the isomorphism comes in the manner described in the definition of duality: for any $W \in \CatOf{S}$, $\gamma \in \{W, Y\}$:
+$W \mapsto \{X \sprod W, S^0\}$ is a cohomology theory, so it has a representing spectrum $Y$; hence there is a natural isomorphism $\{X \sprod W, S^0\} \cong \{W, Y\}$.  The map $\alpha$ comes from taking for $W$ the spectrum $Y$ itself: $\{X \sprod Y, S^0\} \cong \{Y, Y\}$.  Let $\alpha$ be the element of $\{X \sprod Y, S^0\}$ corresponding to the identity.  The naturality of Brown representability gives us that the isomorphism comes in the manner described in the definition of duality: for any $W \in \CatOf{S}$, $\gamma \in \{W, Y\}$:
 \begin{diagram}[height=2em]
-\gamma & \rMapsto & & \id \sprod \gamma & \rMapsto^\alpha & ? & \rMapsto & & ? \\
+\gamma & \rMapsto & & \id \sprod \gamma & \rMapsto & ? & \rMapsto & & \gamma \\
 & \{W, Y\} & \rTo^{X \sprod} & \{X \sprod W, X \sprod Y\} & \rTo^{\alpha_*} & \{X \sprod W, S^0\} & \rTo^{BR}_\cong & \{W, Y\} \\
 \uMapsto & \uTo>{\gamma^*} & & \uTo>{\gamma^*} & & \uTo>{\gamma^*} & & \uTo>{\gamma^*} & \uMapsto \\
 & \{Y, Y\} & \rTo^{X \sprod} & \{X \sprod Y, X \sprod Y\} & \rTo^{\alpha_*} & \{X \sprod Y, S^0\} & \rTo^{BR}_\cong & \{Y, Y\} \\
 \id & & \rMapsto & \id & \rMapsto & \alpha & \rMapsto & & \id.
 \end{diagram}
-The first two squares obviously commute the third commutes by naturality of Brown representability.
+The first two squares obviously commute; the third commutes by naturality of Brown representability.
 \end{proof}
 
-In fact there's more to be had from this use of Brown representability: the correspodnence $X \leadsto Y = DX$ can be made contravariantly functorial in the sense that $X \sprod DX \stackrel{\alpha_*}{\to} S^0$ is a natural transformation.  For $f: X \to Y$,
+In fact there's more to be had from this use of Brown representability: the correspondence $X \leadsto Y = DX$ can be made contravariantly functorial in the sense that $X \sprod DX \stackrel{\alpha_X}{\to} S^0$ is a natural transformation.  That is, we can construct a functor $D:\CatOf{S}^\text{op}\to\CatOf{S}$ and a natural collection $\alpha_X:X\wedge D(X)\to S^0$ for $X\in\CatOf{S}$ of dualities. By ``natural'', we mean that for any map %\IncorrectFootnote{$\alpha$ is a natural transformation of functors $\CatOf{S}\times\CatOf{S}^\text{op}\to\CatOf{S}$, where $S^0$ is the functor whose image is the object $S^0$ and its identity morphism.} For 
+$f: X \to Y$, the following diagram commutes:
 \begin{diagram}[height=2em]
 X \sprod DY & \rTo^{1 \sprod Df} & X \sprod DX \\
-\dTo<{f \sprod 1} & & \dTo>{\alpha_*} \\
+\dTo<{f \sprod 1} & & \dTo>{\alpha_X} \\
 Y \sprod DY & \rTo_{\alpha_Y} & S^0
 \end{diagram}
-commutes.  To make the dualities this way, first use a massive axiom of choice to pick a $DX$ for any $X$; obtain the $\alpha_X$es in the manner described above.  Now for any map $f: X \to Y$ we get, for any $W \in \CatOf{S}$, a map $\gamma$ via
+To make the dualities this way, first use a massive axiom of choice to pick a dual $DX$ for any $X$; obtain the $\alpha_X$ in the manner described above.  Now for any map $f: X \to Y$ we get, for any $W \in \CatOf{S}$, a map $\gamma$ via
 \begin{diagram}[height=2em]
 \{W, DY\} & \rTo^\gamma & \{W, DX\} \\
 \dEqualto>{BR} & & \dEqualto>{BR} \\
-\{Y \sprod W, S^0\} & \rTo^{f \sprod 1^*} & \{X \sprod W, S^0\}.
+\{Y \sprod W, S^0\} & \rTo^{(f \sprod 1)^*} & \{X \sprod W, S^0\}.
 \end{diagram}
 Take $W = DY$, then define $Df: \{DY, DY\} \to \{DY, DX\}$ by $1 \mapsto Df$.  Then we have
 \begin{diagram}[height=2em]
-Df & \rMapsto & & 1 \sprod Df & \rMapsto & \alpha_X \circ (1 \sprod Df) & \rMapsto^{BR} & & Df \\
+Df & \rMapsto & & 1 \sprod Df & \rMapsto & \alpha_X \circ (1 \sprod Df) & \rMapsto & & Df \\
 & \{DY, DX\} & \rTo^{X \sprod} & \{X \sprod DY, X \sprod DY\} & \rTo^{\alpha_{X*}} & \{X \sprod DY, S^0\} & \rTo^\cong_{BR} & \{DY, DX\} \\
-& & & & & \uTo & \\
+& & & & & \uTo_{(f\wedge 1)^*} & &\uTo_\gamma&\uMapsto\\
 & \{DY, DY\} & \rTo^{Y \sprod} & \{Y \sprod DY, Y \sprod DY\} & \rTo^{\alpha_{Y*}} & \{Y \sprod DY, S^0\} & \rTo^\cong_{BR} & \{DY, DY\} \\
 \id & \rMapsto & & \id & \rMapsto & \alpha_Y & \rMapsto & & 1,
 \end{diagram}
