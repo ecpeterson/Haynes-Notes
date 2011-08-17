@@ -38,8 +38,8 @@
 %\newcommand{\OutputBuildingTheAdamsPowerOperations}{12}
 %\newcommand{\OutputProofOfHopfInvariantOne}{13}
 %\newcommand{\OutputTheJamesConstruction}{14}
-%\newcommand{\OutputTheMapsEandHinTheEHPLES}{15}
-\newcommand{\OutputWhiteheadProductsAndTheEHPSS}{16}
+\newcommand{\OutputTheMapsEandHinTheEHPLES}{15}
+%\newcommand{\OutputWhiteheadProductsAndTheEHPSS}{16}
 %\newcommand{\OutputTheStableCategory}{17}
 %\newcommand{\OutputHomotopicalAlgebraAndDuality}{18}
 %\newcommand{\OutputDualities}{19}
@@ -182,6 +182,8 @@
 \newtheorem{claim}[thm]{Claim}
 \newtheorem{ithm}{Theorem}[section]
 \newtheorem{ex}{Exercise}
+\theoremstyle{definition}
+\newtheorem{subtlety}[thm]{Subtlety}
 \newrefformat{sec}{\textsection\ref{#1}}
 \renewcommand{\cftsecpresnum}{Unit\;}
 \setlength{\cftsecnumwidth}{4em}
@@ -767,7 +769,7 @@ then $EO(n) \oplus \epsilon$ is an $(n+1)$-plane bundle, and there is a classify
 %\dTo & & \dTo \\
 \cdots & \rTo & BO(n) & \rTo & BO(n+1) & \rTo & \cdots
 \end{diagram}
-of classifying maps whose colimit $\bigcup_n BO(n)$ is called $BO$, and $\widetilde{KO}(X) = [X, BO]$.\footnote{
+of classifying maps whose colimit $\bigcup_n BO(n)$ is called $BO$, and $\widetilde{KO}(X) = [X, BO]$.\footnote{%
 This argument can be summarised as follows: $\widetilde{KO}(X)=\textup{colim}[X,BO(n)]$, which equals $[X,\textup{colim}BO(n)]$ as $X$ is compact.
 }
 Finally, $KO$ remembers dimension, so $KO(X) = [X, \Z \times BO]$. % where Z keeps track of the virtual dimension
@@ -2464,7 +2466,7 @@ Now the adjoint of the James-Hopf map factors:
 \Suspend \Loops S^{n+1} & \rTo^{\hat h_2} & S^{2n+1} \\
 & \rdTo(1,1)_{\Suspend h_2} \ruTo(1,1)_\beta \Suspend \Loops S^{2n+1},
 \end{diagram}
-which is just the expression of adjointness\footnote{
+which is just the expression of adjointness\footnote{%
 Here, suppose that $F:\mathscr{D}\longleftrightarrow\mathscr{C}:G$ is an adjunction, that $X\in \mathscr{D}$ and $Y\in\mathscr{C}$, and that $\hat h:X\to GY$ and $h:FX\to Y$ are adjoint. The commuting diagram on the left induces the other commuting diagram, by naturality of the Hom-set isomorphisms:
 \[\xymatrix@R=2em{
 \ar[d]_{\hat h}X\ar[r]_{\hat h}&GY\ar[d]^{G(\text{Id}_Y)}\\
@@ -2546,6 +2548,9 @@ Let $\alpha: X \to Y$ be a map of simply connected spaces.  If $\alpha_*: H_*(X;
 \end{thm}
 So for $n$ even, the $2$-local homotopy groups are the same; we have no idea about the unlocalised homotopy groups, but for present purposes we don't care: we get the same EHP sequences for $n$ even, but now localized at 2.
 \end{itemize}
+
+\pagebreak
+
 \begin{claim}\label{SerreSSEHPfiberArg}
 When $n$ is odd, the cohomology of the fiber $F$ of $h_2$ has the same cohomology algebra as $S^n$, and $F\to \Omega S^{n+1}$ is an isomorphism on $H^n$. When $n$ is even, the same holds after localising at $(2)$.
 \end{claim}
@@ -2561,9 +2566,16 @@ Let $R$ denote $\Z$ when $n$ is odd, and $\Z_{(2)}$ when $n$ is even. We always 
 As the maps $H^{2kn}(h_2)$ are isomorphisms, no differentials can ever hit the entries $E^{2kn,0}$ of the associated Serre spectral sequence\footnote{To understand this, consider the edge homomorphism.}, and $E^{2kn,0}_\infty$ is identified isomorphically with $H^{2kn}(E)$.
 Thus, the only nonzero $E_\infty$ term with total degree $2kn$ is $E_\infty^{2kn,0}$.
 
-Now no differentials out of the entries $E^{0,j}$ for $j\leq n$ can possibly be nonzero, so that all of the $E_2^{0,j}$ for $j<n$ are zero, and $E_2^{0,n}\simeq R$. Then $E_\infty^{0,n}=E_\infty^{0,n}$ is identified isomorphically with $H^n(E)$.
+Now no differentials out of the entries $E^{0,j}$ for $j\leq n$ can possibly be nonzero, so that all of the $E_2^{0,j}$ for $j<n$ are zero, and $E_2^{0,n}\simeq R$. Then $E_2^{0,n}=E_\infty^{0,n}$ is identified isomorphically with $H^n(E)$.
 
-Now that we have identified the places where the generators of $H^n(E)$ and $H^{2kn}(E)$ appear on the $E_{\infty}$ page, we know that the generator of $H^{(2k+1)n}(E)$ must appear in $E_{\infty}^{2kn,n}$. Moreover, the groups $E_\infty^{2kn+r,n-r}$ are zero for $1\leq r\leq n$, so that $E_{\infty}^{2kn,n}$ is identified with a subgroup of $H^{(2k+1)n}(E)$. Thus $E_\infty^{2kn,n}$ is identified isomorphically wtih $H^{(2k+1)n}(E)$ for each $k$.
+Now (for each $k$) we have identified the places where the generators $a\in H^n(E)$ and $b\in H^{2kn}(E)$ appear on the $E_{\infty}$ page --- at $E_\infty^{0,n}$ and $E_\infty^{2kn,0}$ respectively. Thus, the generator $ab\in H^{(2k+1)n}(E)$, must appear in $E_{\infty}^{2kn+i,n-i}$ for some $i\leq n$ (see Subtlety \ref{EinftyProductSubtlety}).
+These groups are zero for $i>0$, so that $ab$ appears in $E_{\infty}^{2kn,n}$, which is thus identified isomorphically with $H^{(2k+1)n}(E)$.
+
+Moreover, as $E_2^{2kn,n}\simeq R$ surjects onto $E_\infty^{2kn,n}=R$ as $R$-modules, this map is an isomorphism, so no differentials can ever hit position $E^{2kn,n}$.
+
+% Moreover, the groups $E_\infty^{2kn+r,n-r}$ are zero for $1\leq r\leq n$, so that $E_{\infty}^{2kn,n}$ is identified with a subgroup of $H^{(2k+1)n}(E)$. Thus $E_\infty^{2kn,n}$ is identified isomorphically with $H^{(2k+1)n}(E)$ for each $k$.
+%
+%OLD: Now that we have identified the places where the generators of $H^n(E)$ and $H^{2kn}(E)$ appear on the $E_{\infty}$ page, we know that the generator of $H^{(2k+1)n}(E)$ must appear in $E_{\infty}^{2kn,n}$. Moreover, the groups $E_\infty^{2kn+r,n-r}$ are zero for $1\leq r\leq n$, so that $E_{\infty}^{2kn,n}$ is identified with a subgroup of $H^{(2k+1)n}(E)$. Thus $E_\infty^{2kn,n}$ is identified isomorphically with $H^{(2k+1)n}(E)$ for each $k$.
 
 To summarise, the groups $E_2^{2kn,0}$ and $E_2^{2kn,n}$ are all equal to $R$, these entries are never hit by any differentials, and never support nonzero differentials, and only these entries are nonzero at $E_\infty$. Thus, none of the $E_2^{0,j}$ can be nonzero except when $j=n$, for if $j$ is chosen minimally amoungst exceptions to this rule, then $E_\infty^{0,j}\neq0$, a contradiction.
 %This implies that no differentials out of the entries $E^{0,k}$ for $k<3n-1$ can be nonzero. In particular, all of these groups are zero except for $E_2^{0,n}$, which is a copy of $\Z$.
@@ -2576,6 +2588,11 @@ To summarise, the groups $E_2^{2kn,0}$ and $E_2^{2kn,n}$ are all equal to $R$, t
 %
 %State why there's nothing in $E_2^{0,3k}$. State that the argument continues ad infinitum.
 \end{proof}
+\begin{subtlety}\label{EinftyProductSubtlety}
+In the Serre spectral sequence, suppose that $x\in E^{s,t}_\infty$ detects $u\in H^{s+t}(E)$ and $y\in E^{p,q}_\infty$ detects $v\in H^{p+q}(E)$. That is, writing $F_sH^{s+t}(E)$ for the $s^\text{th}$ subgroup in the associated decreasing filtration of $H^{s+t}(E)$:
+\[u\in F_sH^{s+t}(E)\setminus F_{s+1}H^{s+t}(E)\text{ and }v\in F_pH^{p+q}(E)\setminus F_{p+1}H^{p+q}(E).\]
+Then certainly $uv\in F_{s+p}H^{s+p+t+q}(E)$, but it is not necessarily the case that $uv\notin F_{s+p+1}H^{s+p+t+q}(E)$. In particular, $uv$ could be detected on the $E_\infty$ page at any of the positions $E_\infty^{s+p+r,t+q-r}$ for $r\geq0$.
+\end{subtlety}
 
 Well now there's lots to do.  Each of these maps has its own personality, so we'll take each in term.  $e$ is most familiar, so we'll start with it. In fact, $e:\pi_i(S^n)\to\pi_{i+1}(S^{n+1})$ is simply the suspension homomorphism: from the above calculations of $h_2^*$, we see that $e$ is induced by $\alpha:S^n\to \Omega\Sigma S^n$.
 
@@ -3256,24 +3273,7 @@ But we can get more out of this information: notice that this is the \emph{only}
 
 %Last time we saw the introduction of the EHP spectral sequence.  Remember the $E^1$ term looked like this: INKSCAPE  
 Now earlier we claimed that introducing the EHP spectral sequence would help to attack the theorem about desuspending $w_n$.  In order to see why this might be true, let's take a look at how to interpret the differentials in the spectral sequence. Note that this discussion will apply in general to any spectral sequence arising from an exact couple.
-
-
-\ConfusedBox{
-\textbf{On Repeat:}
-To start with, recall how the spectral sequence arises.  It came from the exact couple we got by applying homotopy to the fibrations
-\begin{diagram}[height=2em]
-\ptspace & \rTo^e & \Loops S^1 & \rTo^e & \Loops^2 S^2 & \rTo^e & \Loops^3 S^3 & \rTo^e & \cdots & \rTo \bigcup \Loops^n S^n = QS^0 \\
-& & \dTo>h & & \dTo>h & & \dTo>h \\
-& & \Loops S^1 & & \Loops^2 S^3 & & \Loops^3 S^5,
-\end{diagram}
-getting the exact couple
-\begin{diagram}[height=2em]
-* & \rTo & \pi_* \Loops S^1 & \rTo^e & \pi_* \Loops^2 S^2 & \rTo^e & \pi_* \Loops^3 S^3 & \rTo & \cdots \\
-& & \dTo & \luTo_p & \dTo>{\Loops h} & \luTo_p & \dTo>{\Loops^2 h} \\
-& & \pi_* \Loops S^1 & & \pi_* \Loops^2 S^3 & & \pi_* \Loops^3 S^5,
-\end{diagram}
-}
-Two lessons of great importance in sorting everything out:
+Two lessons are of great importance in sorting everything out:
 \begin{enumerate}
 \item We can truncate the sequence of triangles anywhere we want, obtaining a spectral sequence, compatible in some sense with the first, that converges to the homotopy of a finite sphere. To be explicit, for any $M<\infty$, we have a diagram of fibrations:
 \[\xymatrix{
@@ -3292,7 +3292,7 @@ this is the filtration at which a given element appears. In fact, if an element 
 
 Now the group $\pi_{s+t}(\Omega^{s+1}S^{2s+1})$ in which $h(\overline z)$ resides lies in the stable range when $t<2s$. So unless the element $z$ can be desuspended sufficiently many times that $t\geq2s$, $h(\overline z)$ is a stable homotopy class of sphere.
 
-Moreover, if $z$ desuspends so few times that $t=0$, (i.e.\ $z\in\pi_s(\Omega^M S^M)$ desuspends to $\pi_s(\Omega^{s+1} S^{s+1})$ and no further\footnote{It must desuspend at least this far, by the Freudenthal suspension theorem!}), then $h(\overline z)$ takes values in $\pi_{s}(\Omega^{s+1}S^{2s+1})=\Z$, and as we have seen, $h(\overline z)=\pm H(\overline z)$, where $H$ is the standard Hopf invariant.
+Moreover, if $z$ desuspends so few times that $t=0$, (i.e.\ $z\in\pi_s(\Omega^M S^M)$ desuspends to $\pi_s(\Omega^{s+1} S^{s+1})$ and no further\footnote{It must desuspend at least this far, by the Freudenthal suspension theorem! Alternatively, it must desuspend at least this far, as all the groups $E_{st}^1$ with $t<0$ are zero, by the same connectivity considerations which were used to prove the suspension theorem using the EHP long exact sequence.}), then $h(\overline z)$ takes values in $\pi_{s}(\Omega^{s+1}S^{2s+1})=\Z$ (with indeterminacy $B_{s0}^\infty$) As we have seen, $h(\overline z)=\pm H(\overline z)$, where $H$ is the standard Hopf invariant.
 %\item When $q$ is $0$, $h_*\sigma$ is an element of the stable $0$-stem, and thus a genuine integer, which happily equals the old-fashioned Hopf invariant. More generally, when $q\leq 2p-2$, $h_*\sigma$ lands in the stable $q$-stem, so terms on the $E^\infty$ page which lie below a line of slope two are recorded by a `Hopf invariant' which lies in a stable homotopy group of spheres.
 \end{enumerate}
 
@@ -3313,31 +3313,39 @@ which provide a horizontal operation on the EHP spectral sequence which is an is
 \section{The stable category} % <<<
 \label{TheStableCategory}
 \ifx\OutputTheStableCategory\undefined\else
-In order to set the spectral sequence up it's a good idea to talk about stable homotopy a bit; for more information, see Adams' blue book~\cite{Adams}.  The notation $[X, Y]$ will mean pointed homotopy classes of point maps.  There is a map $\Suspend: [X, Y] \to [\Suspend X, \Suspend Y]$, and the idea is to study this game in detail.  One nice thing about it is that when you suspend you get a group: $[\Suspend X, Z]$ is a group naturally in $Z$, and $[\Suspend^2 X, Z]$ is abelian.  The group structure comes from
+In order to set up the spectral sequence alluded to above, whose $E^1$ page conists of the stable homotopy groups of spheres in each column, it's a good idea to talk about stable homotopy a bit; for more information, see Adams' blue book~\cite{Adams}.  The notation $[X, Y]$ will mean pointed homotopy classes of point maps.  There is a map $\Suspend: [X, Y] \to [\Suspend X, \Suspend Y]$, and the idea is to study this game in detail.
+
+One nice thing about suspending is that when you suspend you get a group: $[\Suspend X, Z]$ is a group naturally in $X$ and $Z$, and $[\Suspend^2 X, Z]$ is abelian.  The group structure comes from
 \[
-g_1 + g_2: \Suspend X \stackrel{pinch}{\to} \Suspend X \wsum \Suspend X \stackrel{g_1 \wsum g_2}{\to} Z \wsum Z \stackrel{\textup{fold}}{\to} Z
+(g_1 + g_2): \Suspend X \stackrel{\textup{pinch}}{\to} \Suspend X \wsum \Suspend X \stackrel{g_1 \wsum g_2}{\to} Z \wsum Z \stackrel{\textup{fold}}{\to} Z
 .\]
-``Naturally in $Z$'' means that given $f: Z \to Y$, in
+``Naturally in $Z$'', for example, means that given $f: Z \to Y$, in
 \begin{diagram}[height=2em]
 \Suspend X & \pile{\rTo^{g_1} \\ \rTo_{g_2}} & Z & \rTo^f & Y
 \end{diagram}
-we have $f_*(g_1 + g_2) = f_* g_1 + f_* g_2$ in $[\Suspend X, Y]$.\footnote{Warning: $[\Suspend X, Z]$ is not natural in $\Suspend X$!}
+we have $f_*(g_1 + g_2) = f_* (g_1) + f_* (g_2)$ in $[\Suspend X, Y]$.
 
-As an example, consider the map $S^{2n-1} \stackrel{w_n}{\to} S^n$, the Whitehead square.  Then $w_n^* = [S^n, S^n] \to [S^{2n-1}, S^n]$ is not a homomorphism for $n$ even.  To see this, recall that $w_n = [\iota_n, \iota_n] \in \pi_{2n-1} S^n$ is defined by
+Note, however, that $[\Suspend X, Z]$ is not natural in $\Suspend X$.
+As an example, consider the map $S^{2n-1} \stackrel{w_n}{\to} S^n$, the Whitehead square.  Then $w_n^* = [S^n, S^n] \to [S^{2n-1}, S^n]$ is not a homomorphism for $n$ even.  To see this, recall that $w_n = [\iota_n, \iota_n] \in \pi_{2n-1} (S^n)$ is defined by
 \begin{diagram}[height=2em]
 S^{2n-1} & \rTo^{w_n} & S^n \\
 & \rdTo_{W} & \uTo>{\textup{fold}} \\
 & & S^n \wsum S^n,
 \end{diagram}
-where $W$ is the attaching map for $S^{2n-1} \stackrel{W}{\to} S^n \wsum S^n \to CW = S^n \times S^n$.  This diagram commutes, by definition of $2 \iota_n$:
+where $W$ is the attaching map for $S^{2n-1} \stackrel{W}{\to} S^n \wsum S^n \to S^n \times S^n=C(W)$. The following diagram commutes, by definition of $2 \iota_n$:
 \begin{diagram}[height=2em]
 S^{2n-1} & \rTo^{w_n} & S^n & \rTo^{2 \iota_n} & S^n \\
 & \rdTo_W & \uTo>{fold} & & \uTo>{\textup{fold}} \\
 & & S^n \wsum S^n & \rTo_{2\iota_n \wsum 2\iota_n} & S^n \wsum S^n.
 \end{diagram}
-The top row represents $(\iota_n + \iota_n) \circ w_n = w_n^*(2 \iota_n)$.  THe lower composite represents $[2\iota_n, 2\iota_n] = 4[\iota_n, \iota_n]$ (by bilinearity of the Whitehead product), which is equal to $4 w_n$ or $4 w_n^*(\iota_n)$.  So $w_n^*$ cannot be a homomorphism unless $w_n = w_n^* \iota_n$ has finite order in $\pi_{2n-1}S^n$.  But for $n$ even, $h(w_n) = 2 \iota_n$, so the image of $w_n$ under the Hopf map is infinite cyclic!  So for example $\End(\Suspend^n X)$ is not a ring.
+The top row represents $(\iota_n + \iota_n) \circ w_n = w_n^*(2 \iota_n)$.  The lower composite represents $[2\iota_n, 2\iota_n] = 4[\iota_n, \iota_n]$ (by bilinearity of the Whitehead product), which is equal to $4 w_n$ or $4 w_n^*(\iota_n)$.  So $w_n^*$ cannot be a homomorphism unless $w_n = w_n^* \iota_n$ has finite order in $\pi_{2n-1}(S^n)$.  But for $n$ even, $h(w_n) = 2 \iota_n$, so the image of $w_n$ under the Hopf map is infinite cyclic!  
+\ConfusedBox{\textbf{I'm just plain old confused about:} So for example $\End(\Suspend^n X)$ is not a ring.?}
 
-The way to get around this is by continuing to suspend.  In what follows we take $X$ and $Y$ to be finite complexes.  Then we define $\{X, Y\} = [\Suspend^n X, \Suspend^n Y]$ for $n$ much larger than 0, in particular for $n$ sufficiently large $[\Suspend^n X, \Suspend^n Y] \cong [\Suspend^{n+1} X, \Suspend^{n+1} Y]$ by the Freudenthal suspension theorem, and we define $\{X, Y\}$ to be this ``stable'' group, the ``stable homotopy classes of maps'' between $X$ and $Y$.  Now composition gives a product
+The way to get around this is by continuing to suspend.  In what follows we take $X$ and $Y$ to be finite complexes.  Then we define $\{X, Y\} = [\Suspend^n X, \Suspend^n Y]$ for $n$ much larger than 0, in particular for $n$ sufficiently large $[\Suspend^n X, \Suspend^n Y] \cong [\Suspend^{n+1} X, \Suspend^{n+1} Y]$ by the following theorem, and we define $\{X, Y\}$ to be this ``stable'' group, the ``stable homotopy classes of maps'' between $X$ and $Y$.
+\begin{thm}[Freudenthal suspension theorem]
+If $Y$ is an $(n-1)$-connected CW-complex, and $X$ is a finite dimensional CW-complex of dimension $d$, then $\Sigma:[X,Y]\to[\Sigma X,\Sigma Y]$ is surjective when $d\leq2n-1$ and an isomorphism when $d<2n-1$.
+\end{thm}
+Now composition gives a product
 \[
 \{X, Y\} \times \{Y, Z\} \to \{X, Z\}
 \]
@@ -3347,20 +3355,24 @@ So we get a category whose objects are finite complexes and whose morphisms are 
 \begin{enumerate}
 \item We've just seen that the category is pre-additive.
 \item It has coproducts: if $X$ and $Y$ are finite complexes, $X \wsum Y$ is the coproduct in this category: \[\{X \wsum Y, Z\} = \{X, Z\} \times \{Y, Z\}.\]  This is true because of the homotopy equivalence $\Suspend^n(X \wsum Y) \simeq \Suspend^n X \wsum \Suspend^n Y$.
-\item Well, these two facts together mean that now $X \wsum Y$ is the product on our category as well!  Using the projection maps out of $X \wsum Y$ to $X$ and $Y$, we have to show that $\{W, X \wsum Y\} \to \{W, X\} \times \{W, Y\}$ is an isomorphism.
+\item Well, these two facts together mean that now $X \wsum Y$ is the \emph{product} on our category as well!  Using the collapse maps out of $X \wsum Y$ to $X$ and $Y$, we have to show that $\{W, X \wsum Y\} \to \{W, X\} \times \{W, Y\}$ is an isomorphism.
 \begin{enumerate}
-\item Surjectivity.  If $f: \Suspend^n W \to \Suspend^n X$ and $g: \Suspend^n W \to \Suspend^n Y$ represent an element of $\{W, X\} \times \{W, Y\}$, then $\Suspend^n W \to \Suspend^n W \wsum \Suspend^n W \to \stackrel{f \wsum g}{\to} \Suspend^n X \wsum \Suspend^n Y$ pushes forward to $(f, g)$.
-\item Injectivity.  We have $[\Suspend^n W, \Suspend^n X] \times [\Suspend^n W, \Suspend^n Y] \cong [\Suspend^n W, \Suspend^n X \times \Suspend^n Y$.  So what we have to do is lift a null-homotopy
-\begin{diagram}[height=2em]
-\Suspend^n W & \rTo & \Suspend^n X \wsum \Suspend^n Y \\
-\dInto & \ruDashto & \dTo \\
-C \Suspend^n W & \rTo & \Suspend^n X \times \Suspend^n Y
-\end{diagram}
-by taking $n$ large enough.  The fiber of $\Suspend^n X \wsum \Suspend^n Y \to \Suspend^n X \times \Suspend^n Y$ is $(2n-1)$-connected, so taking $n > \dim W$ will do it.
+\item Surjectivity.  If $f: \Suspend^n W \to \Suspend^n X$ and $g: \Suspend^n W \to \Suspend^n Y$ represent an element of $\{W, X\} \times \{W, Y\}$, then $\Suspend^n W \to \Suspend^n W \wsum \Suspend^n W  \stackrel{f \wsum g}{\to} \Suspend^n X \wsum \Suspend^n Y$ pushes forward to $(f, g)$.
+\item Injectivity. Suppose that $f\in\{W,X\vee Y\}$ maps to zero under the above map. Then noting that $[\Suspend^n W, \Suspend^n X] \times [\Suspend^n W, \Suspend^n Y] \cong [\Suspend^n W, \Suspend^n X \times \Suspend^n Y$], the composite $kf$ is null:
+\[\xymatrix{
+\Suspend^n W\ar[r]^f&\Suspend^n X \wsum \Suspend^n Y\ar[r]^k&\Suspend^n X \times \Suspend^n Y
+}\]
+%\begin{diagram}[height=2em]
+%\Suspend^n W & \rTo_f & \Suspend^n X \wsum \Suspend^n Y \\
+%\dInto & \ruDashto & \dTo_k \\
+%C \Suspend^n W & \rTo^H & \Suspend^n X \times \Suspend^n Y
+%\end{diagram}
+%To show that $f$ is stably null, we have to lift $H$ to the dashed arrow, by taking $n$ large enough.  
+In particular, $f$ lifts to the fiber $F(k)$. Now the fiber is $(2n-1)$-connected, so when $n > \dim W$, the lifting must be null,\footnote{Recall that by CW-approximation, a $(2n-1)$-connected CW-comples is homotopic to a complex with no nonzero cells of dimension less than $2n$. By CW-approximation, all maps $C(\Sigma^n W)\to \Sigma^nX\vee\Sigma^n Y$ will be null when $n>\dim W$.} and we're done.
 \end{enumerate}
 \end{enumerate}
 
-So, surprise, the wedge is the product in this category.  Well, that's nice; now let's add ``formal desuspensions.'' Somehow the point is that now $\{\Suspend X, \Suspend Y\} \overset{\cong}{\underset{\Suspend}{\from}} \{X, Y\}$ we've really obliterated the difference between the morphism sets here; we've made $\Suspend$ a fully faithful functor.  Now the idea is to make it into an isomorphism.  To fix it up, we'll simply put in formal desuspensions.  The new category, the $S$-category, has as objects pairs $(X, n)$, where $X$ is a finite complex and $n$ is an integer, the ``formal $n$-fold suspension of $X$.''  And $\mathrm{morph}\{(X, m), (Y, n)\} = [\Suspend^{m+k} X, \Suspend^{n+k} Y]$ for $k$ much larger than 0, namely $k$ big enough that $k > m$, $k > n$, and larger still so that one is in the stable range, i.e., $\mathrm{morph}\{(X, m), (Y, n)\} = \{\Suspend^{m+k} X, \Suspend^{n+k} Y\}$ for $k$ much larger than 0, i.e., $k > m$ and $k > n$.
+So, surprise, the wedge is the product in this category.  Well, that's nice; now let's add ``formal desuspensions.'' Somehow the point is that now that $\Sigma:\{X, Y\}\to\{\Suspend X, \Suspend Y\}$ is an isomorphism, we've really obliterated the difference between the morphism sets here; we've made $\Suspend$ a fully faithful functor.  Now the idea is to make it into an isomorphism.  To fix it up, we'll simply put in formal desuspensions.  The new category, the $S$-category, has as objects pairs $(X, n)$, where $X$ is a finite complex and $n$ is an integer, the ``formal $n$-fold suspension of $X$.''  And $\mathrm{morph}\{(X, m), (Y, n)\} = [\Suspend^{m+k} X, \Suspend^{n+k} Y]$ for $k$ much larger than 0, namely $k$ big enough that $k > m$, $k > n$, and larger still so that one is in the stable range, i.e., $\mathrm{morph}\{(X, m), (Y, n)\} = \{\Suspend^{m+k} X, \Suspend^{n+k} Y\}$ for $k$ much larger than 0, i.e., $k > m$ and $k > n$.
 
 Note that $(X, 1) \stackrel{\cong}{\to} (\Suspend X, 0)$, i.e., the ``formal suspension'' is isomorphic to the informal suspension.  So we write $(X, n)$ and $\Suspend^n X$ and $\mathrm{morph}\{(X, m), (Y, n)\}$ as $\{\Suspend^m X, \Suspend^n Y\}$.  But now we have the object $(X, -1) = \Suspend^{-1} X$.  And so we talk about formerly pathological objects like $\{S^0, S^1\} = [S^k, S^{k-1}]$, for $k$ much larger than 0, which we know to be $\Z_2$.
 
