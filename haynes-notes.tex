@@ -54,8 +54,8 @@
 %\newcommand{\OutputTheMapsEandHinTheEHPLES}{15}
 %\newcommand{\OutputWhiteheadProductsAndTheEHPSS}{16}
 %\newcommand{\OutputTheStableCategory}{17}
-\newcommand{\OutputHomotopicalAlgebraAndDuality}{18}
-%\newcommand{\OutputDualities}{19}
+%\newcommand{\OutputHomotopicalAlgebraAndDuality}{18}
+\newcommand{\OutputDualities}{19}
 %\newcommand{\OutputTheStructureOfStuntedProjectiveSpace}{20}
 %\newcommand{\OutputMatchingTheEHPSStoAtiyahHirzebruck}{21}
 %\newcommand{\OutputTheSpaceOfLittleCubes}{22}
@@ -179,11 +179,14 @@
 \newcommand{\green}[1]{\textcolor{green}{#1}}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 \newcommand{\purple}[1]{\textcolor{purple}{#1}}
+
+\renewcommand{\to}{\longrightarrow}
+\renewcommand{\mapsto}{\longmapsto}
 % >>>
 
 % <<< definitions for various environments
 \makeatletter
-\def\@seccntformat#1{\csname the#1\endcsname.\quad}
+\def\@seccntformat#1{Lecture \csname the#1\endcsname.\quad}
 \makeatother
 %\newtheoremstyle{thmstyle}{\topsep}{\topsep}{}{}{\em}{:}{.5em}{}
 %\theoremstyle{thmstyle}
@@ -191,16 +194,16 @@
 \newtheorem{defn}[thm]{Definition}
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}[thm]{Lemma}
-\newtheorem{rem}[thm]{Remark}
 \newtheorem{fact}[thm]{Fact}
 \newtheorem{claim}[thm]{Claim}
-\newtheorem{ithm}{Theorem}[section]
 \newtheorem{ex}{Exercise}
 \theoremstyle{definition}
+\newtheorem{rem}[thm]{Remark}
 \newtheorem{subtlety}[thm]{Subtlety}
+
 \newrefformat{sec}{\textsection\ref{#1}}
-\renewcommand{\cftsecpresnum}{Unit\;}
-\setlength{\cftsecnumwidth}{4em}
+\renewcommand{\cftsecpresnum}{Lecture\;}
+\setlength{\cftsecnumwidth}{7em}
 \setlength{\cftbeforesecskip}{0em}
 \setcounter{section}{-1}
 
@@ -604,7 +607,7 @@ As a passing (but important) remark, the fibers of these two bundles over a base
 Next, we return to $nL$, the bundle over $\RP^{k-1}$, where $L$ is the tautological line bundle.  We claim that this bundle is the normal bundle $\nu$ of the inclusion $\RP^{k-1} \into \RP^{n+k-1}$ induced by the inclusion $\R^k \into \R^{n+k}$.  To wit, pick a point $l \in \RP^{n+k-1}$ parametrized as $l(t)$, a line in $\R^{n+k}$.  Let $\pi l \in \RP^{k-1}$ be the projection of this line to a line in $\R^k$.  We can recover the line $l$ in $\R^{k+n} \cong \R^k \times \R \times \cdots \times \R$ by $l(t) = (\pi l(t), \lambda_1(\pi l(t)), \ldots, \lambda_n(\pi l(t)))$ for some functions $\lambda_i$ dependent upon $l$.  Clearly $\lambda_i(rv) = r \lambda_i(v)$, so $\lambda_i \in L^*$.  Hence the normal bundle can be identified with $nL^*$.  Since $nL$ comes equipped with a metric, this gives an isomorphism of the normal bundle $\nu$ with $nL$.
 
 % what?
-But there's even more structure around.  \textit{ Remarking that $\RP^{n+k-1}$ forms a vector bundle of rank $n$ over $\RP^{k-1}$ and using the inclusion of the open unit ball in $\R^n$ to $\R^n$} \textsc{(what does this mean?)} , one can construct a map from $D(\nu)$ to $\RP^{n+k-1}$ such that $S(\nu)$ maps to $\RP^{n-1}$ and which is a relative homeomorphism $(D(\nu), S(\nu)) \to (\RP^{n+k-1}, \RP^{n-1})$.\footnote{One candidate for the map $D(\nu)\to\RP^{n+k-1}$ can be specified as follows. View $D(\nu)$ as $D(nL)$, where $nL\subset \RP^{k-1}\times (\R^k)^n$ inherits its metric from the standard Euclidean metric on $(\R^k)^n$. Then a point of $D(\nu)$ is an $n+1$-tuple $(\R\{z\},r_1z,r_2z,\ldots,r_nz)$, where $z\in R^k$ has length one, $\|r\|^2=\sum r_i^2\leq1$. The map sends this point to $(z,r_1,r_2,\ldots,r_n)$.}
+But there's even more structure around.  \ConfusedBox{ Remarking that $\RP^{n+k-1}$ forms a vector bundle of rank $n$ over $\RP^{k-1}$ and using the inclusion of the open unit ball in $\R^n$ to $\R^n$, \textsc{(what does this mean?)}} one can construct a map from $D(\nu)$ to $\RP^{n+k-1}$ such that $S(\nu)$ maps to $\RP^{n-1}$ and which is a relative homeomorphism $(D(\nu), S(\nu)) \to (\RP^{n+k-1}, \RP^{n-1})$.\footnote{One candidate for the map $D(\nu)\to\RP^{n+k-1}$ can be specified as follows. View $D(\nu)$ as $D(nL)$, where $nL\subset \RP^{k-1}\times (\R^k)^n$ inherits its metric from the standard Euclidean metric on $(\R^k)^n$. Then a point of $D(\nu)$ is an $n+1$-tuple $(\R\{z\},r_1z,r_2z,\ldots,r_nz)$, where $z\in R^k$ has length one, $\|r\|^2=\sum r_i^2\leq1$. The map sends this point to $(z,r_1,r_2,\ldots,r_n)$.}
 It follows that the Thom space of $nL$ is $T(nL)\simeq\RP^{n+k-1}/\RP^{n-1}$. In particular, if $nL$ is being fiber homotopy trivial, then $T(n\epsilon) \simeq T(nL) \cong \RP^{n+k-1}/\RP^{n-1}$.
 %
 % sends $([z], r_1z, \ldots, r_nz)\in D(\nu)\subseteq \R P^{k-1}\times (\R^k)^n$, where $[z]=\R z\in\RP^{k-1}$ for $z\in\R^k$ to }
@@ -3528,6 +3531,7 @@ A finite complex is built out of spheres using exact triangles, so we get
 \item $X$ can be taken for $DDX$.
 \end{itemize}
 \end{cor}
+\ConfusedBox{The whole function spectrum Spiel was omitted, and needs to be replaced.}
 
 % >>>
 \fi
@@ -3535,90 +3539,120 @@ A finite complex is built out of spheres using exact triangles, so we get
 \section{Dualities} % <<<
 \label{Dualities}
 \ifx\OutputDualities\undefined\else
-We were talking about duality; the last thing mentioned was the ``function spectrum'' $F(X, Y)$ satisfying $\{W, F(X, Y)\} \cong \{X \sprod W, Y\}$ for all $W \in \CatOf{S}$.  If $X$ is finite then $F(X, Y) = (DX) \sprod Y$.  Now call $Y = E$, take $W = S^n$, and assume $X$ is finite, then
-\begin{diagram}[height=2em]
-\pi_n DX \sprod E & \cong & \{X \sprod S^n, E\} \\
-\dEqualto & & \dEqualto \\
-E_n DX & \cong & E^{-n} X.
-\end{diagram}
-I want to apply this sort of duality, and relate it to other sorts of duality you're familiar with.  For example, how can we recognize a duality?  Suppose $X$ is finite and we have a map $\hat f: X \sprod Y \to S^0$; then $\hat f$ corresponds to a map $f: Y \to DX$; one could ask whether $f$ is an equivalence.
+We were talking about duality; the last thing mentioned was the ``function spectrum'' $F(X, Y)$ satisfying $\{W, F(X, Y)\} \cong \{X \sprod W, Y\}$ for all $W \in \CatOf{S}$.  If $X$ is finite then $F(X, Y) = (DX) \sprod Y$.  Now call $Y = E$, take $W = S^n$, and assume $X$ is finite. Then,
+\[\xymatrix{
+\ar@{=}[d]\pi_n(DX\wedge E)\ar@{=}[r]&\{S^n,DX\wedge E\}\ar[r]^{\ \cong}&\{\Sigma^nX,E\}\ar@{=}[d]\\
+E_n(DX)\ar[rr]^\cong_{\text{duality}}&&E^{-n}(X)
+}\]
+I want to apply this sort of duality, and relate it to other sorts of duality you're familiar with.  For example, how can we recognize a duality?  Suppose $X$ is finite and we have a map $\hat f: X \sprod Y \to S^0$; then $\hat f$ corresponds to a map $f: Y \to DX$ which makes the following triangle commute.
 \begin{diagram}[height=2em]
 & & X \sprod DX \\
 & \ruTo^{1 \sprod f} & \dTo>{\alpha_X} \\
 X \sprod Y & \rTo_{\hat f} & S^0.
 \end{diagram}
+ One could ask whether $f$ is an equivalence. Consider, for any spectrum $E$ (here being viewed as a homology theory):
+\[\xymatrix{
+\ar[dd]_{\hat f/}
+E_n(Y)\ar@{=}[r]&\{S^n,Y\wedge E\}\ar[rr]^{(f\wedge1_E)_*}\ar[d]&&
+\{S^n,DX\wedge E\}\ar@{=}[r]\ar[d]&E_n(DX)
+\ar[dd]^\cong\\
+&\{X\wedge S^n,X\wedge Y\wedge E\}\ar[rr]^{(1_X\wedge f\wedge1_E)_*}\ar[d]^{(\hat f\wedge1_E)_*}&&
+\{X\wedge S^n,X\wedge DX\wedge E\}\ar[d]^{(\alpha_X\wedge1_E)_*}\\
+E^{-n}(X)\ar@{=}[r]&\{X\wedge S^n,E\}\ar@{=}[rr]&&
+\{X\wedge S^n,E\}\ar@{=}[r]&E^{-n}(X)\\
+}\]
+In light of this diagram, if the obvious construction using $\hat f:X\wedge Y\to S^0$ actually produces an isomorphism $\hat f/$, then $f$ is an $E$-homology equivalence. That is, $f_*: E_n (Y) \to E_n (DX)$ is an isomorphism.
 
-Look at the diagram below:
-\begin{diagram}[height=2em]
-\{S^n, Y \sprod E\} & & & \rTo^{f_*} & & & \{S^n, DX \sprod E\} \\
-& \rdTo<{X \sprod} & & & & \ldTo_{X \sprod} \\
-\dTo<{\hat f/} & & \{X \sprod S^n, X \sprod Y \sprod E\} & \rTo^{f_*} & \{X \sprod S^n, X \sprod DX \sprod E\} & & \dTo>{\cong} \\
-& \ldTo<{\hat f_*} & & & & \rdTo>{\alpha_{X*}} \\
-\{X \sprod S^n, E\} & & & \rEqualto & & & \{X \sprod S^n, E\},
-\end{diagram}
-where the rightmost congruence is given by $F(X, E) = DX \sprod E$.  So if we can conclude that $\hat f/: E_n Y \to E^{-n} X$ is an isomorphism, then $f_*: E_n Y \to E_n DX$ is also, so at least $f$ is an equivalence as far as $E$-homology is concerned.
+Note that if $X$ and $Y$ are finite spectra, and $f: X \to Y$ is an isomorphism on $H_*(-; \Z)$, then $f$ is an equivalence (there's no $\pi_1$ problem here).  So taking $E = H(-; \Z)$ will be enough.  That's what the standard duality theorems give you.
 
-Note that if $X$ and $Y$ are finite spectra, and $f: X \to Y$ is an isomorphism on $H_*(-; \Z)$ then $f$ is an equivllence (there's no $\pi_1$ problem here).  So taking $E = H(-; \Z)$ will be enough.  That's what the standard duality theorems give you.
-
-\begin{wrapfigure}{r}{0.25\textwidth}
-\centering\includegraphics[width=0.2\textwidth]{figures/25.pdf}
-\caption{\small $X$ and $Y$ embedded in $S^n$.}
-\end{wrapfigure}
-Now let's talk about Alexander duality.  Let $X$ be a finite complex embedded in $S^n$; let $Y$ be another complex disjoint from $X$ in $S^k$.  Consider the map
-\begin{align*}
-X \times Y & \to S^{n-1} \\
-(x, y) & \mapsto \frac{x-y}{\|x-y\|}
-\end{align*}
+%\begin{wrapfigure}{r}{0.25\textwidth}
+%\centering\includegraphics[width=0.2\textwidth]{figures/25.pdf}
+%\caption{\small $X$ and $Y$ embedded in $S^n$.}
+%\end{wrapfigure}
+\subsection*{Alexander duality}
+Let $X$ be a finite complex embedded in $S^n$; let $Y$ be another complex disjoint from $X$ in $S^k$. Fix a point $p$ not in $X$ or $Y$, and consider the stereographic projection $\textup{St}_p:S^n\setminus\{p\}\to\R^n$.  Consider the map
+\[X \times Y  \to S^{n-1}\text{\qquad defined by\qquad}(x, y)  \mapsto \frac{\textup{St}_p(x)-\textup{St}_p(y)}{\|\textup{St}_p(x)-\textup{St}_p(y)\|}\]
+%\begin{align*}
+%X \times Y & \to S^{n-1} \\
+%(x, y) & \mapsto \frac{x-y}{\|x-y\|}
+%\end{align*}
 and apply the Hopf construction to get a map
 %\begin{diagram}[height=2em]
 %X \ast Y & \rTo & S^n \\
 %\dTo>\simeq \\
 %\Suspend(X \sprod Y)
 %\end{diagram}
-\[\xymatrix{
-X\ast Y\ar[r]\ar[d]^\simeq&S^n\\
-\Sigma(X\wedge Y)
-}\]
-So in the $\CatOf{S}$ category you get a map $\hat f: X \sprod \Suspend^{1-n} Y \to S^0$.  Alexander duality says
+\[\Sigma(X\wedge Y)\overset{\simeq}{\to}X\ast Y\to S^n.\]
+%\[\xymatrix{
+%X\ast Y\ar[r]\ar[d]^\simeq&S^n\\
+%\Sigma(X\wedge Y)
+%}\]
+In the $\CatOf{S}$ category we get a map $\hat f: X \sprod \Suspend^{1-n} Y \to S^0$.  Alexander duality says
 \begin{thm}
-If $Y \simeq S^n - X$ then $\hat f$ is a duality; $DX \simeq \Suspend^{1-n} Y$.  The proof consists of showing that $\hat f/: \widetilde H_i \Suspend^{1-n} Y \stackrel{\cong}{\to} H^i X$ is an isomorphism for $i \in \Z$.
+If $Y \simeq S^n - X$ then $\hat f$ is a duality; $DX \simeq \Suspend^{1-n} Y$.  
 \end{thm}
+\noindent The proof consists of showing that $\hat f/: \widetilde H_i (\Suspend^{1-n} Y) \stackrel{\cong}{\to} \widetilde H^i (X)$ is an isomorphism for $i \in \Z$.
 \begin{rem}
 If you think of $X$ and $Y$ as embedded in $\R^n$ instead of $S^n$ and $Y \simeq \R^n - X$, then $Y \simeq S^n - \pt{X}$, so $D(\pt{X}) \simeq \Suspend^{1-n} Y$.
 \end{rem}
 
-\begin{wrapfigure}{r}{0.3\textwidth}
-\centering\includegraphics[width=0.2\textwidth]{figures/26.pdf}
-\caption{\small Set-up for Milnor-Spanier duality.}
-\end{wrapfigure}
-Now Milnor-Spanier duality.  For example, take $X \subseteq \mathrm{int}(D^n) \cong \R^n$, and suppose $N \subseteq \mathrm{int}(D^n)$ is a regular neighborhood so that the inclusion $X \stackrel{\simeq}{\to} N$ is a homotopy equivalence.  Then $D(\pt{X}) \simeq \Suspend^{1-n}(D^n - N)$.
-
-The virtue of the regular neighborhood is that you can identify what the suspension of the complement is: all you need to find the suspension is an inclusion into a contractible space.  So in $D^n - N \to D^n \to D^n/(D^n - N) \simeq \Suspend(D^n - N)$.  Have $\Suspend^{1-n}(D^n - N) \simeq \Suspend^{-n}(D^n / (D^n-N)) \simeq \Suspend^{-n}(\bar N / \partial \bar N)$.  Well that's most useful when you can say something about $N$; if $X$ is a $d$-dimensional manifold without boundary, then the normal bundle $\nu$ of the inclusion $X \into D$ is $(n-d)$-dimensional.  $N$ is homotopy equivalent to the disk bundle of $\nu$, and $\bar N / \partial \bar N \simeq T \nu$, so $D(\pt{X}) \simeq \Suspend^{-n} T\nu \simeq T(\nu - n \varepsilon)$.  This is called ``Milnor-Spanier duality'' althought it's not called that very often.  In homology,
+\subsection*{Milnor-Spanier duality}
+%\begin{wrapfigure}{r}{0.3\textwidth}
+%\centering\includegraphics[width=0.2\textwidth]{figures/26.pdf}
+%\caption{\small Set-up for Milnor-Spanier duality.}
+%\end{wrapfigure}
+Take $X \subseteq \mathrm{int}(D^n) \cong \R^n$, and suppose $N \subseteq \mathrm{int}(D^n)$ is a regular neighborhood,\footnote{If you embed a finite complex into a Euclidean space, any sufficiently small 
+open neighborhood admits a deformation retraction back to the complex
+ --- this is a `regular neighborhood'. If the complex is a manifold, 
+you can identify the normal bundle of the embedding with a regular 
+neighborhood. } so that the inclusion $X \stackrel{\simeq}{\to} N$ is a homotopy equivalence.  Then $D(\pt{X}) \simeq \Suspend^{1-n}(D^n - N)$, by Alexander duality.
+The virtue of the regular neighborhood is that you can identify what the suspension of the complement is: all you need to find the suspension is an inclusion into a contractible space, which we have, giving a degenerate cofiber sequence:
+\[(D^n - N) \to D^n \to D^n/(D^n - N) \overset{\simeq}{\to} \Suspend(D^n - N)\to\Sigma D^n.\]
+Thus, as $D^n/(D^n-N)$ is homeomorphic to $\overline N/\partial\overline N$,
+\[D(X_+)\simeq\Suspend^{1-n}(D^n - N) \simeq \Suspend^{-n}(D^n / (D^n-N)) \simeq \Suspend^{-n}(\bar N / \partial \bar N).\]  Well that's most useful when you can say something about $N$; if $X$ is a $d$-dimensional manifold without boundary, then the normal bundle $\nu$ of the inclusion $X \into D$ is $(n-d)$-dimensional.  $N$ is homotopy equivalent to the disk bundle of $\nu$, and $\bar N / \partial \bar N \simeq T (\nu)$, so $D(\pt{X}) \simeq \Suspend^{-n} T(\nu) \simeq T(\nu - n \varepsilon)$.  This is called ``Milnor-Spanier duality'' althought it's not called that very often.  In (co)homology,
 \[
-E^{-i}(\pt{X}) = E_i D(\pt{X}) = E_{i+n} T \nu.
+E^{-i}(\pt{X}) = E_i (D(\pt{X})) = E_{i+n} (T (\nu)).
 \]
+Observe also that $\nu + \tau = n \varepsilon$ where $\tau$ is the tangent bundle, so $D(\pt{X}) = T(\nu - n \varepsilon) = T(-\tau)$, giving
+\[
+E^{-i}(\pt{X}) = E_i (D(\pt{X})) = E_{i} (T (-\tau)).
+\]
+\subsection*{Poincar\'e duality}
+If $\nu$ (or equivalenctly, $\tau$) is oriented for $E$ in the Milnor-Spanier setup, then the Thom isomorphism says $E_{i+n} (T (\nu)) \cong E_{i+d} (\pt{X})$. Thus:\footnote{More abstractly: the Thom isomorphism gives $E_{i-d}(T(-\tau))\cong E_i(X_+)$, and $E^{d-i}(X_+)\cong E_{i-d}(T(-\tau))$ by Milton-Spanier.}
+\[E^{-i} (\pt{X}) \cong E_{i+d} (\pt{X}).\]
+This gives standard Poincare duality, recalling that $E$ stands for the \emph{reduced} cohomology theory.
 
-Now, Poincar\'e duality.  If we make $\nu$ oriented for $E$, then the Thom isomorphism says $E_{i+n} T \nu \cong E_{i+d} \pt{X}$; converting to unreduced homology, $E^{-i} X \cong E_{i+d} X$.  Note that $\nu + \tau = n \varepsilon$ where $\tau$ is the tangent bundle, so $D(\pt{X}) = T(\nu - n \varepsilon) = T(-\tau)$.
+\subsection*{Atiyah duality}
+%\begin{wrapfigure}[13]{r}{0.3\textwidth}
+%\centering\includegraphics[width=0.3\textwidth]{figures/28.pdf}\vspace{-1cm}
+%\caption{\small Diagram of Atiyah duality.}
+%\end{wrapfigure}
+This is a little mystical, so perhaps we should look at it more closely in the context of what's called Atiyah duality (for this, readers should look at Atiyah's exposition~\cite{Atiyah}).  Here we take for a change $(X, \partial X)$ to be a manifold with boundary.  You have to be careful about interpreting the tangent bundle of a manifold with boundary; $\tau(X)$ is best defined to be $d$-dimensional everywhere, but with an identified $(d-1)$-dimensional subbundle on the boundary.  %Referencing the figure, this isn't quite what we had before. 
 
-\begin{wrapfigure}{r}{0.3\textwidth}
-\centering\includegraphics[width=0.3\textwidth]{figures/28.pdf}
-\caption{\small Diagram of Atiyah duality.}
-\end{wrapfigure}
-This is a little mystical, so perhaps we should look at it more closely in the context of what's called Atiyah duality (for this, readers should look at Atiyah's exposition~\cite{Atiyah}).  Here we take for a change $(X, \partial X)$ to be a manifold with boundary.  You have to be careful about interpreting the tangent bundle of a manifold with boundary; $\tau(X)$ is best defined to be $d$-dimensional everywhere, but with an identified $(d-1)$-dimensional subbundle on the boundary.  Referencing the figure, this isn't quite what we had before.  The nice idea is to take the cone of what we had before, as in the following figure:
+Now suppose that $X$ is embedded in $D^n$ such that $\partial X$ lies in $\partial D^n=S^{n-1}$, and moreover that $X$ is transverse to $S^{n-1}$ wherever they coincide. Suppose also that $N$ is an open neighbourhood of $X$ in $D^n$ such that $N\cap S^{n-1}$ is a regular open neighbourhood of $\partial X$ in $S^{n-1}$.
+The nice idea is to take the cone on this situation, as in figure \ref{AtiyahDuality}.
 \begin{figure}[h!]
-\centering\includegraphics[width=0.3\textwidth]{figures/figure29.pdf}
-\caption{\small Coned $X$.}
+\centering\includegraphics[width=0.4\textwidth]{figures/figure29.pdf}
+\caption{\small Atiyah duality.}\label{AtiyahDuality}
 \end{figure}
 
-So now $X / \partial X \simeq X \cup C \partial X$.  The new regular neighborhood of the whole model is $N \cup C(N \cap S^{n-1})$; its complement is $S^n - (N \cup C(N \cap S^{n-1}))$.  And now by projecting down onto $D^n$, this is $D^n - N$.  So,
+Now, $X / \partial X$ is homotopic to  $Y = X \cup C \partial X$, which is a subcomplex of $\partial(CD^n)\cong S^n$.  Moreover, $Y$ has $N \cup C(N \cap S^{n-1})$ as a regular neighborhood in $S^n$; its complement is $K=S^n - (N \cup C(N \cap S^{n-1}))$.  Now $K$ deformation retracts onto $(D^n-N)$, as the tip of the cone does not lie in $K$. And now by projecting down onto $D^n$, this is $D^n - N$.  So, applying Alexander duality to $Y\subseteq S^n$:
 \begin{align*}
-D(X / \partial X) & \simeq D(X \cup C \partial X) \\
-& \simeq \Suspend^{1-n}(S^n - N \cup C(N \cap S^{n-1})) \\
+D(X / \partial X) & \simeq D(Y) \\
+& \simeq \Suspend^{1-n}(K) \\
 & \simeq \Suspend^{1-n}(D^n - N) \\
 & \simeq \Suspend^{-n}(\bar N / \partial \bar N) \\
-& \simeq \Suspend^{-n} T \nu = T(-\tau),
+& \simeq \Suspend^{-n} T (\nu)\\
+& = T(-\tau),
 \end{align*}
-and this is Atiyah duality.  Now if $X$ is oriented, i.e., there is a Thom isomorphism, we get $E_i X \simeq E^{d-i}(X, \partial X)$, and this is called Lefschetz duality.
+and this is Atiyah duality.  
+
+
+\ConfusedBox{
+\scalebox{15.3}{resume}
+}
+
+Now if $X$ is oriented, i.e., there is a Thom isomorphism, we get $E_i X \simeq E^{d-i}(X, \partial X)$, and this is called Lefschetz duality.
 
 Now suppose $X$ is a compact closed manifold and $\xi \downarrow X$ is a smooth vector bundle; then $(D(\xi), S(\xi))$ is a compact manifold with boundary.  Atiyah duality says
 \begin{align*}
