@@ -11,7 +11,6 @@
 \usepackage{amssymb,mathrsfs,float,stmaryrd,yhmath,prettyref,amsthm}
 \usepackage{xcolor,graphicx,tocloft}
 \usepackage{diagrams}
-\usepackage[pdftex,pdfborder={0 0 .5 [1 1]}]{hyperref}
 \usepackage{wrapfig}
 \usepackage[all]{xy}
 \usepackage{tikz}
@@ -20,10 +19,24 @@
 %\usetikzlibrary{positioning}
 %\usepackage[debug]{sseq}
 
+%\usepackage[pdftex,pdfborder={0 0 .5 [1 1]}]{hyperref}
+%\usepackage[pdftex,pdfborder={0 0 0 [1 1]},bookmarks=false,colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage[pdftex,pdfborder={0 0 0 [1 1]},bookmarks=false]{hyperref}
+\hypersetup{  
+  pdftitle={Vector Fields on Spheres, etc.},
+  pdfauthor={Haynes Miller, et. al.},
+  pdfsubject={Some classical topics in homotopy theory},
+  pdfkeywords={Vector fields on spheres, Hopf Invariant one, K-theory, Adams operations, EHP spectral sequence, Adams conjecture},
+  pdfstartview={FitBH \hypercalcbp{\paperheight-\topmargin-1in  
+    -\headheight-\headsep}  }
+}
+
+
+
 
 %\newcommand{\OutputEVERYTHING}{  everything  }
 %\newcommand{\OutputFrontMatter}{}
-%\newcommand{\OutputForeword}{0}
+\newcommand{\OutputForeword}{0}
 %\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{1}
 %\newcommand{\OutputCliffordAlgebras}{2}
 %\newcommand{\OutputBuildingThomSpaces}{3}
@@ -38,10 +51,10 @@
 %\newcommand{\OutputBuildingTheAdamsPowerOperations}{12}
 %\newcommand{\OutputProofOfHopfInvariantOne}{13}
 %\newcommand{\OutputTheJamesConstruction}{14}
-\newcommand{\OutputTheMapsEandHinTheEHPLES}{15}
+%\newcommand{\OutputTheMapsEandHinTheEHPLES}{15}
 %\newcommand{\OutputWhiteheadProductsAndTheEHPSS}{16}
 %\newcommand{\OutputTheStableCategory}{17}
-%\newcommand{\OutputHomotopicalAlgebraAndDuality}{18}
+\newcommand{\OutputHomotopicalAlgebraAndDuality}{18}
 %\newcommand{\OutputDualities}{19}
 %\newcommand{\OutputTheStructureOfStuntedProjectiveSpace}{20}
 %\newcommand{\OutputMatchingTheEHPSStoAtiyahHirzebruck}{21}
@@ -79,6 +92,7 @@
 \providecommand{\OutputTheBeckerGottliebTransfer}{23}
 \providecommand{\OutputTheAdamsConjecture}{24}
 \providecommand{\OutputSomeSummandsOfStableHomotopyOfSpheres}{25}
+\newcommand{\OutputTheBibliography}{}
 \fi
 
 \newcommand{\BoxedNote}[1]{
@@ -275,11 +289,11 @@
 \section{Foreword} % <<<
 \label{Foreword}
 \ifx\OutputForeword\undefined\else
-These are notes from a course taught by Haynes Miller at MIT in the fall of 1989 in honor of Frank Adams, after his passing.  They were originally written by Matthew Ando, and were later transcribed and updated by Eric Peterson and Aaron Mazel-Gee, with figures provided by Yi-Wei Chan, Meng Guo, and Matt Mahowald.
+These are notes from a course taught by Haynes Miller at MIT in the fall of 1989 in honor of Frank Adams, after his passing.  They were originally taken by Matthew Ando, and were later transcribed into \LaTeX\ by Eric Peterson and Aaron Mazel-Gee, with figures provided by Yi-Wei Chan, Meng Guo, and Matt Mahowald. Finally, the notes were edited for correctness and clarity by Michael Donovan.
 
-At the moment, I'm just copying the notes straight down, omitting unnecessary pictures.  Eventually I hope to tidy it up into something more of a book form, but that half of the project is hard to start on until all the notes are in one place and edited for correctness.
+Due to the variety of different authors, this document lacks the uniformity of style that the reader would normally expect. This may be corrected, some time in the near future.
 
-If anything in this document confuses you, check out the original notes at the following links: \href{http://www-math.mit.edu/~hrm/papers/vf1.pdf}{http://www-math.mit.edu/~hrm/papers/vf1.pdf}, \href{http://www-math.mit.edu/~hrm/papers/vf2.pdf}{http://www-math.mit.edu/~hrm/papers/vf2.pdf}.  I'm sure lots of things have been miscopied from the originals!
+If anything in this document confuses you, the original notes are available for comparison at the following links: \href{http://www-math.mit.edu/~hrm/papers/vf1.pdf}{http://www-math.mit.edu/\string~hrm/papers/vf1.pdf}, \href{http://www-math.mit.edu/~hrm/papers/vf2.pdf}{http://www-math.mit.edu/\string~hrm/papers/vf2.pdf}.
 
 % >>>
 \fi
@@ -407,7 +421,7 @@ For the time being, take a step back and recall the action $O(n) \times S^{n-1} 
 
 \Bullet The Hopf construction takes a map $\mu:X\times Y\to Z$ to a map $H(\mu):X*Y\to\Sigma Z$.
 
-\Bullet If $S^{n-1}$ is parallelizable, it can be made into an H-space (essentially, apply the Hopf construction to a section $V_{n,n}\downarrow S^{n-1}$.) This happens when $n=1,2,4,8$ by the previous point.
+\Bullet If $S^{n-1}$ is parallelizable, it can be made into an H-space (essentially, apply the Hopf construction to a section $V_{n,n}\downarrow S^{n-1}$). This happens when $n=1,2,4,8$ by the previous point.
 
 \Bullet (It is claimed that) if $\mu$ is an $H$-space multiplication on $S^{n-1}$, $H(\mu)$ has Hopf invariant one. We'll see later that this  can only happen when $n=1,2,4,8$.
 
@@ -417,7 +431,7 @@ For the time being, take a step back and recall the action $O(n) \times S^{n-1} 
 \label{CliffordAlgebras}
 \ifx\OutputCliffordAlgebras\undefined\else
 
-In this lecture we will see how many vector fields on spheres we can construct using linear algebra; we will use Clifford algebras.  For more information, see for example the book by Strang~\cite{Strang}.
+In this lecture we will see how many vector fields on spheres we can construct using linear algebra; we will use Clifford algebras.  For more information, see for example the book by Strang.
 
 For $k \ge 0$, the Clifford algebra $C_k$ is the associative $\R$-algebra generated by $e_1, \ldots, e_k$, subject to relations
 \begin{align*}
@@ -1381,11 +1395,10 @@ Now that we've learned some facts about the squares, we're in a position to appl
 \begin{thm}[Adem\footnote{He realized as soon as he got the relations that this was a consequence.}]
 If there is an element of odd Hopf invariant on $S^n$, then $n$ is a power of two.
 \end{thm}
-
-\begin{wrapfigure}{r}{0.3\textwidth}
-\centering\includegraphics[width=0.3\textwidth]{figures/12.pdf}
-\caption{\small Diagram of $C(g)$.} % this figure should be some kind of staircase of suspensions to see what's going on
-\end{wrapfigure}
+%\begin{wrapfigure}{r}{0.3\textwidth}
+%\centering\includegraphics[width=0.3\textwidth]{figures/12.pdf}
+%\caption{\small Diagram of $C(g)$.} % this figure should be some kind of staircase of suspensions to see what's going on
+%\end{wrapfigure}
 Now if $g$ is any map $S^{2n+k-1} \stackrel{g}{\to} S^{n+k} \to C(g)$, then we no longer have a nontrivial cup-product, but we still have $\Sq^n$, so we can define a generalized Hopf invariant $\widetilde H(g)$ by $\Sq^n x = \widetilde H(g) y$, giving $\widetilde H: \pi_{2n+k-1}S^{n+k} \to \Z_2$.  The fact that $\Sq^n$ commutes with suspensions means
 \begin{diagram}[height=2em]
 f & & \pi_{2n-1} S^n & \rTo^H & \Z \\
@@ -1969,7 +1982,7 @@ The diagonal composite is given by:
 \mbox{$\begin{cases}{[2t,(x, *)]}&t\leq1/2\\{[2(1-t),(x, *)]}&t\geq1/2\end{cases}$}
 \ar@{|->}[r]&
 \mbox{$\begin{cases}{[2t,x]}&t\leq1/2\\{*}&t\geq1/2\end{cases}$}
-}\textup{ and }
+}\textup{ \ }
 \xymatrix@C=.4cm{
 (t, y) \ar@{|->}[r]&
 \mbox{$\begin{cases}{*}&t\leq1/2\\{[2(1-t),y]}&t\geq1/2\end{cases}$}
@@ -3372,21 +3385,27 @@ In particular, $f$ lifts to the fiber $F(k)$. Now the fiber is $(2n-1)$-connecte
 \end{enumerate}
 \end{enumerate}
 
-So, surprise, the wedge is the product in this category.  Well, that's nice; now let's add ``formal desuspensions.'' Somehow the point is that now that $\Sigma:\{X, Y\}\to\{\Suspend X, \Suspend Y\}$ is an isomorphism, we've really obliterated the difference between the morphism sets here; we've made $\Suspend$ a fully faithful functor.  Now the idea is to make it into an isomorphism.  To fix it up, we'll simply put in formal desuspensions.  The new category, the $S$-category, has as objects pairs $(X, n)$, where $X$ is a finite complex and $n$ is an integer, the ``formal $n$-fold suspension of $X$.''  And $\mathrm{morph}\{(X, m), (Y, n)\} = [\Suspend^{m+k} X, \Suspend^{n+k} Y]$ for $k$ much larger than 0, namely $k$ big enough that $k > m$, $k > n$, and larger still so that one is in the stable range, i.e., $\mathrm{morph}\{(X, m), (Y, n)\} = \{\Suspend^{m+k} X, \Suspend^{n+k} Y\}$ for $k$ much larger than 0, i.e., $k > m$ and $k > n$.
+So, surprise, the wedge is the product in this category.  Well, that's nice; now let's add ``formal desuspensions.'' Somehow the point is that now that $\Sigma:\{X, Y\}\to\{\Suspend X, \Suspend Y\}$ is an isomorphism, we've really obliterated the difference between the morphism sets here; we've made $\Suspend$ a fully faithful functor.  Now the idea is to make it into an isomorphism.  To fix it up, we'll simply put in formal desuspensions.
 
-Note that $(X, 1) \stackrel{\cong}{\to} (\Suspend X, 0)$, i.e., the ``formal suspension'' is isomorphic to the informal suspension.  So we write $(X, n)$ and $\Suspend^n X$ and $\mathrm{morph}\{(X, m), (Y, n)\}$ as $\{\Suspend^m X, \Suspend^n Y\}$.  But now we have the object $(X, -1) = \Suspend^{-1} X$.  And so we talk about formerly pathological objects like $\{S^0, S^1\} = [S^k, S^{k-1}]$, for $k$ much larger than 0, which we know to be $\Z_2$.
+The new category, the $S$-category, has as objects pairs $(X, n)$, where $X$ is a finite complex and $n$ is an integer, the ``formal $n$-fold suspension of $X$.''  And $\mathrm{morph}\{(X, m), (Y, n)\} = [\Suspend^{m+k} X, \Suspend^{n+k} Y]$ for $k$ much larger than 0, namely $k$ big enough that $ m+k\geq0$, $n+k\geq0$, and larger still so that one is in the stable range.
 
-As an example of how things work, remember earlier we studied the group $J(X)$ which had to do with stable fiber homotopy equivalence.  Let $V/X$ be an $(n-1)$-sphere bundle.  A long time ago we saw that $V/X$ being fiber homotopy trivial implied a splitting
+Note that $(X, 1) \stackrel{\cong}{\to} (\Suspend X, 0)$, i.e., the ``formal suspension'' is isomorphic to the informal suspension.  So we write $(X, n)$ and $\Suspend^n X$ and $\mathrm{morph}\{(X, m), (Y, n)\}$ as $\{\Suspend^m X, \Suspend^n Y\}$.  But now we have the object $(X, -1) = \Suspend^{-1} X$.  And so we talk about formerly pathological objects like $\{S^0, S^{-1}\}$ (i.e.\ $[S^k, S^{k-1}]$ for $k$ much larger than 0), which we know to be $\Z_2$.
+
+As an example of how things work, remember earlier we studied the group $J(X)$ which had to do with stable fiber homotopy equivalence.  Let $V\downarrow X$ be an $(n-1)$-sphere bundle.  In unit \ref{FactsAboutThomSpaces}, we saw that $V\downarrow X$ being fiber homotopy trivial implied a splitting
 \begin{diagram}[height=2em]
 T(V) & \rTo & S^n \\
 \uTo & \ruTo_\simeq \\
 S^n.
 \end{diagram}
-Also we found out that such a coreduction meant that $S^0 \ast_X V \to X$ is fiber-homotopy trivial.  And so now in our new category we find
+Also we found out that such a coreduction meant that $S^0 \ast_X V \to X$ is fiber-homotopy trivial.\footnote{$S^0 \ast_X V \to X$
+is the fiberwise suspension of $V$. If $V$ is the sphere bundle of a vector bundle, fiberwise suspension corresponds to adding a trivial bundle.
+}
+And so now in our new category we find
 \begin{lem}
-$V/X$ is stable fiber homotopy trivial if and only if $S^n \to T(V)$ has a stable retraction.
+$V\downarrow X$ is stable fiber homotopy trivial if and only if $S^n \to T(V)$ has a stable retraction.
 \end{lem}
-In other words, in the $S$-category, $T(V) \simeq \Suspend^n (\pt{X})$ implies that $T(V) \simeq S^n \wsum (\mathrm{something})$!  Now earlier we also sketched a proof of Atiyah that $\widetilde J(X)$ is finite over a finite complex; so for any $V/X$ there is an $n$ so $V^{\ast n}/X$ is stably fiber homotopy trivial.  So that says that in the $S$-category, $\{T(V^{\ast k})\}$ is periodic up to suspension.  This is ``James periodicity.''
+\ConfusedBox{\textbf{I don't really understand what's going on in the following sentence:} In other words, in the $S$-category, $T(V) \simeq \Suspend^n (\pt{X})$ implies that $T(V) \simeq S^n \wsum (\mathrm{something})$.\footnote{This holds because the $S$-category is additive.}}
+Now earlier we also sketched a proof of Atiyah that $\widetilde J(X)$ is finite over a finite complex; so for any $V\downarrow X$ there is an $n$ so $V^{\ast n}\downarrow X$ is stably fiber homotopy trivial.  So that says that in the $S$-category, $\{T(V^{\ast k})\}$ is periodic up to suspension.  This is ``James periodicity.''
 
 As a final remark, note that now we can talk about the Thom space of a virtual bundle; for example, $T(V - \varepsilon_n) = \Suspend^{-n} T(V)$.
 
@@ -3531,14 +3550,18 @@ X \times Y & \to S^{n-1} \\
 (x, y) & \mapsto \frac{x-y}{\|x-y\|}
 \end{align*}
 and apply the Hopf construction to get a map
-\begin{diagram}[height=2em]
-X \ast Y & \rTo & S^n \\
-\dTo>\simeq \\
-\Suspend(X \sprod Y)
-\end{diagram}
+%\begin{diagram}[height=2em]
+%X \ast Y & \rTo & S^n \\
+%\dTo>\simeq \\
+%\Suspend(X \sprod Y)
+%\end{diagram}
+\[\xymatrix{
+X\ast Y\ar[r]\ar[d]^\simeq&S^n\\
+\Sigma(X\wedge Y)
+}\]
 So in the $\CatOf{S}$ category you get a map $\hat f: X \sprod \Suspend^{1-n} Y \to S^0$.  Alexander duality says
 \begin{thm}
-/If $Y \simeq S^n - X$ then $\hat f$ is a duality; $DX \simeq \Suspend^{1-n} Y$.  The proof consists of showing that $\hat f/: \widetilde H_i \Suspend^{1-n} Y \stackrel{\cong}{\to} H^i X$ is an isomorphism for $i \in \Z$.
+If $Y \simeq S^n - X$ then $\hat f$ is a duality; $DX \simeq \Suspend^{1-n} Y$.  The proof consists of showing that $\hat f/: \widetilde H_i \Suspend^{1-n} Y \stackrel{\cong}{\to} H^i X$ is an isomorphism for $i \in \Z$.
 \end{thm}
 \begin{rem}
 If you think of $X$ and $Y$ as embedded in $\R^n$ instead of $S^n$ and $Y \simeq \R^n - X$, then $Y \simeq S^n - \pt{X}$, so $D(\pt{X}) \simeq \Suspend^{1-n} Y$.
@@ -4035,7 +4058,7 @@ F_2(\R^n) & \rTo^{\cong}_{\Sigma_2} & \R^n \times (\R^n \setminus \{0\}) \\
 and $B_2(\R^n) \cong \R^{n+1} \times  \RP^{n-1}$.  Now $\xi_2 = 1 + L$ over $\R^{n+1} \times \RP^{n-1}$, so $T \xi_2 = D_2(\R^2, S^q) = T(q(1+K) \downarrow \RP^{n-1}) = \Suspend^q \RP^{n+q-1}_q$.  Well that's a good sign; we got a stunted projective space.
 
 Here's another example: we claim that the inclusion $F_k(\R^{n-1}) \into F_k(\R^n)$ is null-homotopic.  A basepoint in $F_k(\R^n)$ consists of a choice of $k$ distinct points, and any $k$ points in $\R{n-1}$ can be smoothly moved to the fixed set of points in $\R^n$.
-\begin{figure}[h!]
+\begin{figure}[!ht]%used to be [!h]
 \centering\includegraphics[width=0.35\textwidth]{figures/figure37.pdf}
 \caption{\small Contractibility of $F_k \R^\infty$.}
 \end{figure}
@@ -4103,7 +4126,7 @@ T(n\varepsilon \downarrow B) & & & & \bar N / \partial N \\
 Lots of Thom spaces are going to appear for a while, so perhaps we should give in and follow Atiyah's convention of writing the bundle as an exponent: $T(\nu(i) \downarrow E) = E^{\nu(i)}$.  So we have a map $B^{n\varepsilon} \to E^{\nu(i)}$.
 
 In some sense what you're going is inverting $p$, constructing a sort of multivalued inverse.  It's instructive to think about the case that $p: E \to B$ is a finite cover.
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \centering\includegraphics[width=0.4\textwidth]{figures/figure38-1.pdf}
 \newline
 \centering\includegraphics[width=0.4\textwidth]{figures/figure38-2.pdf}
@@ -4588,7 +4611,8 @@ One game you can play now is to try to get out some information on unstable homo
 \end{array}
 \]
 
-The stuff coming from $Spin$ are essentially classes in the image of the $J$-homomorphism; we had names for these already ($j_i$, see ???).  Now there's more, elements which come from $\pi_* BO$, sort of ``honorary members of the image of $J$.''  Note that $\eta = j_1$ has been demoted to an honorary member because we used $Spin$ instead of $O$.  The elements $\alpha_i$ all have order $2$; in fact, we've given names to all the elements of order $2$ that didn't have names before.  All of these really live in $\pi_*^S$!  So what we can do now is study how they behave in the EHPSS: how far they desuspend, and what their Hopf invariants are.  Or at least Mark Mahowald can.  We're in Mahowald territory in a big way now; for more information, see one of Mahowald~\cite{Mahowald}, Cohen~\cite{CohenKervaire}, Barratt, Jones, and Mahowald~\cite{BJM}, Selick~\cite{Selick}, or Feder, Gitler, and Lan~\cite{FGL}.
+The stuff coming from $Spin$ are essentially classes in the image of the $J$-homomorphism; we had names for these already ($j_i$, see ???).  Now there's more, elements which come from $\pi_* BO$, sort of ``honorary members of the image of $J$.''  Note that $\eta = j_1$ has been demoted to an honorary member because we used $Spin$ instead of $O$.  The elements $\alpha_i$ all have order $2$; in fact, we've given names to all the elements of order $2$ that didn't have names before.  All of these really live in $\pi_*^S$!  So what we can do now is study how they behave in the EHPSS: how far they desuspend, and what their Hopf invariants are.  Or at least Mark Mahowald can.  We're in Mahowald territory in a big way now; for more information, see one of:
+\ConfusedBox{ Mahowald cite{Mahowald}, Cohen cite{CohenKervaire}, Barratt, Jones, and Mahowald cite{BJM}, Selick cite{Selick}, or Feder, Gitler, and Lan cite{FGL}.}
 
 Recall that there are ``Snaith maps'' $s_n$ that match up fibrations:
 \begin{diagram}[height=2em]
@@ -4720,7 +4744,7 @@ H(2^i \tau_k) & = j_{i+1}, & i \le \nu(k).
 \end{align*}
 Some patterns you will observe when you compare this with the picture:
 \begin{enumerate}
-\item Elements in the image of $J$ are born as early as possible, so they are concerntrated on the left of the table.
+\item Elements in the image of $J$ are born as early as possible, so they are concentrated on the left of the table.
 \item $\sigma_k$s are born as \emph{late} as possible, so they occur to the \emph{right} on their total degree lines.
 \item $\tau_k$s are born as late as possible, subject to the requirement that $2^i \tau_k$ are born as late as possible too.
 \end{enumerate}
@@ -4746,7 +4770,7 @@ The desuspension of $w_n$s brings us to the Kervaire Invariant classes.  Notice 
 \item no further division by $2$ is possible, because in $j_* \RP^\infty$ further divisors exist, but these are not in the image of $\pi_*^S$
 \item detected on the Adams $2$-line.
 \end{itemize}
-Other things have been done: you could investigate further how the classes that are in $\pi_*^S$ behave in the EHP sequence; for example, you could try to compute $p(j_k)$.  Mahowald's theorem tells good information about when these are nonzero.  Feder, Gittler, and Lan~\cite{FGL} have shown other classes for which $p(j_k) = 0$.  But the Kervaire Invariant classes represent a real missing case here, about which relatively little is known.
+Other things have been done: you could investigate further how the classes that are in $\pi_*^S$ behave in the EHP sequence; for example, you could try to compute $p(j_k)$.  Mahowald's theorem tells good information about when these are nonzero.  Feder, Gittler, and Lan (cite them) have shown other classes for which $p(j_k) = 0$.  But the Kervaire Invariant classes represent a real missing case here, about which relatively little is known.
 % >>>
 \fi
 \BoxedNote{}
