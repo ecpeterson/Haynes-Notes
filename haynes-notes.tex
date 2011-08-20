@@ -3844,57 +3844,33 @@ Now it's an easy matter to get back to the general case: consider $\RP^{n-1}_{-N
 &\pi\ar@{|->}[r]&\pi\\
 ?\ar@{|..>}[r]&\overline\pi\ar@{|->}[r]\ar@{|->}[u]&j_{\nu(n)}\ar@{|->}[u]
 }$\end{minipage}}}\]
-From what we had before, the attaching map $\pi:S^{n-2}\to\RP^{n-2}_{-N}$ pulls back stably to a map $\overline\pi:S^{n-2}\to\RP^{n-\rho(n)-1}_{-N}$, whose compression onto the top cell $S^{n-\rho(n)-1}$ is $j_{\nu(n)}\neq0$. Thus, applying $\pi_{n-2}^S$ to the above diagram, we have elements as in the box at the right. As $j_{\nu(n)}$ is nonzero, and the bottom row is exact ($\pi_*^S$ is a cohomology theory) there can be no element $?\in\pi_{n-2}^S(\RP^{n-\rho(n)-2}_{-N})$ mapping to $\overline \pi$.
-\ResumeHere
-\[\xymatrix{
-&\pi_{n-2}^S(\RP^{n-2}_{-N})\ar[r]&\pi_{n-2}^S(\RP^{n-2}_{n-\rho(n)-1})\\
-\pi_{n-2}^S(\RP^{n-\rho(n)-2}_{-N})\ar[r]&\pi_{n-2}^S(\RP^{n-\rho(n)-1}_{-N})\ar[r]\ar[u]&\pi_{n-2}^S(S^{n-\rho(n)-1})\ar[u]
-}\xymatrix{
-&\pi\ar@{|->}[r]&\pi\\
-?\ar@{|..>}[r]&\overline\pi\ar@{|->}[r]\ar@{|->}[u]&\pi\ar@{|->}[u]
-}\]
-\begin{diagram}[height=2em]
-& & \vdots & & \vdots \\
-& & \uTo & & \uTo \\
-& & \RP^{n-2}_{n - \rho(n)} & \rTo^{=} & \RP^{n-2}_{n - \rho(n)} \\
-& & \uTo & & \uTo \\
-S^{n-2} & \rTo^\pi & \RP^{n-2}_{-N} & \rTo^{\mathrm{collapse}} & \RP^{n-2}_{n - \rho(n) - 1} \\
-& \rdDashto_{\bar \pi} & \uInto & & \uTo>{\Suspend^{-1} \mathrm{pinch}} \\
-& & \RP^{n-\rho(n)-1}_{-N} & \rTo & S^{n - \rho(n) - 1} \\
-& & \uTo & & \uTo \\
-& & \vdots & & \vdots,
-\end{diagram}
-along with the map $j_{\nu(n)}: S^{n-2} \to S^{n - \rho(n) - 1}$.  Now taking $[S^{n-2}, -]$ on this diagram is exactly what we need to get a Mayer-Vietoris sequence; two long exact sequences with maps between them which are isomorphisms in every third position.  The two composites
-\begin{diagram}[height=2em]
-S^{n-2} & \pile{\rTo^{\mathrm{collapse} \circ \pi} \\ \rTo_{\Suspend^{-1} \mathrm{pinch} \circ j_{\nu(n)}}} & \RP^{n-2}_{n - \rho(n) - 1}
-\end{diagram}
-are equal; this is what we've just shown, and this gives us the map $\bar \pi$ above, and this is the best possible.  So we get
+From what we had before, the attaching map $\pi:S^{n-2}\to\RP^{n-2}_{-N}$ pulls back stably to a map $\overline\pi:S^{n-2}\to\RP^{n-\rho(n)-1}_{-N}$, whose compression onto the top cell $S^{n-\rho(n)-1}$ is $j_{\nu(n)}\neq0$. Thus, applying $\pi_{n-2}^S$ to the above diagram, we have elements as in the box at the right. As $j_{\nu(n)}$ is nonzero, and the bottom row is exact ($\pi_*^S$ is a homology theory) there can be no element of $\pi_{n-2}^S(\RP^{n-\rho(n)-2}_{-N})$ mapping to $\overline \pi$.
+Thus:
 \begin{thm}
-The relative attaching map for the $(n-1)$-cell of $\RP^{n-1}_{-N}$ can be taken to be $j_{\nu(n)}$; that is, a $\bar \pi$ so that
-\begin{diagram}[height=2em]
-S^{n-2} & \rTo^\pi & \RP^{n-2}_{-N} & \rTo & \RP^{n-1}_{-N} \\
-& \rdTo_{\bar \pi} \rdTo(2,4)_{j_{\nu(n)}} & \uInto \\
-& & \RP^{n-\rho(n)-1}_{-N} \\
-& & \dTo \\
-& & S^{n - \rho(n) - 1}.
-\end{diagram}
+The stable relative attaching map for the $(n-1)$-cell of $\RP^{n-1}_{-N}$ can be taken to be $j_{\nu(n)}$; that is, stably, there is some $\overline \pi$ so that
+\[\xymatrix@!0@C=3.5cm@R=1.4cm{
+\RP^{n-\rho(n)-2}_{-N}\ar@{^{(}->}[r]^\imath &\ar[d] \RP^{n-\rho(n)-2}_{-N}\ar|{\ \cdot\ \cdot\ \cdot\ }@{^{(}->}[r]& \RP^{n-2}_{-N} \ar@{^{(}->}[r] & \RP^{n-1}_{-N}\\
+&\makebox[0cm][r]{$C(\imath)=$\,}S^{n-\rho(n)-1}&\ar@{^{(}->}[r]\ar[ul]_{\overline\pi}\ar@{-->}[ull]^(.75){\text{\large$\nexists$}}S^{n-2}\ar@{^{(}->}[r]\ar[u]^\pi\ar[l]^{j_{\nu(n)}}&D^{n-1}\ar[u]
+}\]
 \end{thm}
 
-It's time to draw some pictures.  First, let's see where all these relative attaching maps go.  Here's $\RP^\infty_{-1}$; lines show where the top cell of $\RP^{n-1}_{-1}$ is attached.
+It's time to draw some pictures.  First, let's see where all these relative attaching maps go.  Here's $\RP^\infty_{-1}$; lines show where the top cell of $\RP^{n-1}_{-1}$ is attached. Here, the unlabeled maps for attaching the even dimensional cells are all $2\iota$ --- they do not descend to any lower skeleta stably.
 \begin{figure}[h!]
-\centering\includegraphics[width=0.8\textwidth]{figures/figure31.pdf}
-\caption{\small Diagram of $\RP^\infty_{-1}$.}
+\centering\includegraphics[width=0.8\textwidth]{figures/fig31fix.png}
+\caption{\small Stable relative attaching maps in $\RP^\infty_{-1}$.}
 \end{figure}
 
 For example, if $n$ is odd then $\rho(n) = 1$, $\nu(n) = 0$.  So the attaching map for $\RP^{2k}_{-N}$'s top dimension cell is $j_0 = 2\iota$.  For $n-1 = 1$, $3$, or $7$, the relative attaching map is to the $(-1)$-cell --- so if it weren't there, stably these cells wouldn't be attached; these splittings correspond to the Hopf-invariant $1$ elements.
 
-The second picture is a spectral sequence; it's the Atiyah-Hirzebruch spectral sequence for stably homotopy of $\RP^\infty_{-1}$.  The exact couple comes from
-\begin{diagram}[height=2em]
-\cdots & \lInto & \RP^{k-1}_{-1} & \lTo & \RP^k_{-1} & \lTo & \RP^{k+1}_{-1} & \lTo & \cdots \\
-& & \dTo & & \dTo & & \dTo \\
-& & S^{k-1} & & S^k & & S^{k+1}.
-\end{diagram}
-Apply $\pi_*^S$:
+The second picture is a spectral sequence; it's the Atiyah-Hirzebruch spectral sequence for stably homotopy of $\RP^\infty_{-1}$.  The exact couple comes from:
+\[\xymatrix{
+\cdots\ar@{^{(}->}[r]&\RP^{k-1}_{-1}\ar@{^{(}->}[r]\ar[d]&\RP^{k}_{-1}\ar@{^{(}->}[r]\ar[d]&\RP^{k+1}_{-1}\ar@{^{(}->}[r]\ar[d]&\cdots\\
+&S^{k-1}\ar@{~>}[ul]&S^k\ar@{~>}[ul]&S^{k+1}\ar@{~>}[ul]
+}\]
+Here the vertical arrows are the collapse maps,
+% onto the top cells of the $\RP^k_{-1}$, 
+and the wavy arrows, which are wavy to indicate that they are in fact maps $\Sigma^{-1}S^k\to\RP^{k-1}_{-1}$, are the attaching maps. We can apply $\pi_*^S$ to obtain an exact couple:
+\ResumeHere
 \begin{diagram}[height=2em]
 \cdots & \rTo & \pi_*^S \RP^{k-1}_{-1} & \rTo & \pi_*^S \RP^k_{-1} & \rTo & \pi_*^S \RP^{k+1}_{-1} & \rTo & \cdots \\
 & \luTo & \dTo & \luTo & \dTo & \luTo & \dTo \\
