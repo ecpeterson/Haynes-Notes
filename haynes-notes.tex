@@ -2566,9 +2566,6 @@ Let $\alpha: X \to Y$ be a map of simply connected spaces.  If $\alpha_*: H_*(X;
 \end{thm}
 So for $n$ even, the $2$-local homotopy groups are the same; we have no idea about the unlocalised homotopy groups, but for present purposes we don't care: we get the same EHP sequences for $n$ even, but now localized at 2.
 \end{itemize}
-
-\pagebreak
-
 \begin{claim}\label{SerreSSEHPfiberArg}
 When $n$ is odd, the cohomology of the fiber $F$ of $h_2$ has the same cohomology algebra as $S^n$, and $F\to \Omega S^{n+1}$ is an isomorphism on $H^n$. When $n$ is even, the same holds after localising at $(2)$.
 \end{claim}
@@ -3318,7 +3315,7 @@ Moreover, if $z$ desuspends so few times that $t=0$, (i.e.\ $z\in\pi_s(\Omega^M 
 
 Now in the $E^1$ context, what do the differentials mean?\footnote{I want to advertise this as a great way to understand how various homotopy groups interact.}  Recall that $d_1 = hp$, $d_2 = he^{-1} p$, $d_3 = he^{-1} e^{-1} p$, and so on.  So a description of the differential $d_r$ is this: take the class in $\pi_* (\Loops^{s+1} S^{2s+1})$, apply $p$; then desuspend $r-1$ times and record the result in the agreed way, that is, by taking the James-Hopf invariant. The collection of the $d_r$ together can be understood as the obstruction to lifting an element of $\pi_*(\Loops^{s+1} S^{2s+1})$ to an element of $\pi_*(\Loops^{s+1} S^{s+1})$ (using the map $h$).
 
-Before we go on, note that this helps explain why this spectral sequence might be useful in studying how far we can desuspend $w_n$. Explicitly, $p(\iota_{2n+1}) = \pm w_n$, so studying how far you can desuspend $w_n$ is the same as looking for the first non-zero differential in the EHP spectral sequence on the fundamental class in $\pi_s (\Loops^{s+1} S^{2s+1})$.
+Before we go on, note that this helps explain why this spectral sequence might be useful in studying how far we can desuspend $w_n$. Explicitly, $p(\iota_{2n+1}) = \pm w_n$, so studying how far you can desuspend $w_n$ is the same as looking for the first non-zero differential in the EHP spectral sequence on the fundamental class in $\pi_n (\Loops^{n+1} S^{2n+1})=E^1_{n,0}$.
 
 Now usually when you attack a problem like desuspending a class, a standard approach is to convert the problem to a stable one and hope that things become more cohomological.  Now suspension gives homomorphisms
 \[E_{st}^1=\pi_{s+t}(\Omega^{s+1}S^{2s+1})\overset{e^2}{\longrightarrow}\pi_{s+1+t}(\Omega^{s+2}S^{2s+3})=E_{s+1,t}^1\]
@@ -3716,12 +3713,18 @@ so one could ask how far down an attaching map factors, perhaps after suspending
 The inclusion $\imath$ of one skeleton in the next is a cofibration, and stably, the corresponding cofibration sequence (drawn with the wavy arrow $b$) is also a fibration sequence.
 Thus, $a$ being unable stably to factor through a lower skeleton means that the composite $ba$ defines a nonzero element of $\pi_{k+n}^S \left( \bigvee S^{k-j+n} \right) = \bigoplus \pi_j^S$.  Warning: there's indeterminacy in how you factor the attaching map, so the element you get may not be well-defined.
 
-In any case, we want to understanding the stable relative attaching maps for $\RP^\infty$ using the standard cell structure, with one cell in each dimension. For example, in the following diagram, we may ask for the largest value of $j$, stably, and may ask what the compression $ba$ of the stable attaching map onto the top cell is, as an element of $\pi^S_j$.
+In any case, we want to understanding the stable relative attaching maps for $\RP^\infty$ using the standard cell structure, with one cell in each dimension. We'll format the diagrams a little differently now, to come into line with what is to come. $\pi$ will be the attaching map for the single cell in a given dimension, and $c$ will be the collapse map onto the top cell in some lower dimension.
+
+In the following diagram, we may ask for the largest value of $j$, stably, and may ask what the compression $c\overline\pi$ of the stable attaching map onto the top cell is, as an element of $\pi^S_j$.
 \[\xymatrix@!0@C=3.5cm@R=1.4cm{
-&S^{k-j}\makebox[0cm][l]{\,$=C(\imath)$}\\
-\RP^{k-j-1}\ar@{^{(}->}[r]^\imath &\ar[u]^b \RP^{k-j}\ar|{\ \cdot\ \cdot\ \cdot\ }@{^{(}->}[r]& \RP^k \ar@{^{(}->}[r] & \RP^{k+1}\\
-&&\ar@{^{(}->}[r]\ar[ul]_{a}\ar@{-->}[ull]^{\text{\large$\nexists$}}S^{k}\ar@{^{(}->}[r]\ar[u]^\pi&D^{k+1}\ar[u]
+\RP^{k-j-1}\ar@{^{(}->}[r]^\imath &\ar[d]^(.6)c \RP^{k-j}\ar|{\ \cdot\ \cdot\ \cdot\ }@{^{(}->}[r]& \RP^k \ar@{^{(}->}[r] & \RP^{k+1}\\
+&S^{k-j}&&\ar[ull]_{\overline\pi}\ar@{-->}[ulll]^(.8){\text{\large$\nexists$}}S^{k}\ar[ul]_\pi\ar[ll]_(.8){c\overline\pi}
 }\]
+%\[\xymatrix@!0@C=3.5cm@R=1.4cm{
+%&S^{k-j}\makebox[0cm][l]{\,$=C(\imath)$}\\
+%\RP^{k-j-1}\ar@{^{(}->}[r]^\imath &\ar[u]^b \RP^{k-j}\ar|{\ \cdot\ \cdot\ \cdot\ }@{^{(}->}[r]& \RP^k \ar@{^{(}->}[r] & \RP^{k+1}\\
+%&&\ar@{^{(}->}[r]\ar[ul]_{a}\ar@{-->}[ull]^{\text{\large$\nexists$}}S^{k}\ar@{^{(}->}[r]\ar[u]^\pi&D^{k+1}\ar[u]
+%}\]
 The answer will come out in terms of the image of the $J$-homomorphism --- actually its stable version $j: \pi_{*-1}(O) \to \pi_{*-1}(QS^0) = \pi_{*-1}^S$.  Remember $\pi_{*-1}(O) = \pi_* (BO) = \widetilde{KO}\rule{0mm}{1.7ex}^{-*}$.  Here's a table, leaving out degrees where $\widetilde{KO}\rule{0mm}{1.7ex}^{-*} = 0$:
 \[
 \begin{array}{cc|ccl}
@@ -3832,9 +3835,6 @@ In other words, the attaching map for the top cell of $\RP^{n-1}_{n-\rho(n)-1}$ 
 \end{diagram}
 because the sequence is an exact triangle, a map going back as above.  Looking at what that means in terms of the dual, it means there is a stable splitting of the $0$-sphere $S^0 \stackrel{\from}{\to} \Suspend^n \RP^{\rho(n)-n}_{-n} = T(n(1-\bundle L) \downarrow \RP^{\rho(n)})$ which would mean that $n(1-\bundle L)$ is stably fiber-homotopy trivial, equivalently that $n\bundle L$ is stably fiber-homotopy trivial.  But by the vector field problem, it's not: $n(1-\bundle L) \ne 0$ in $\widetilde J \RP^{\rho(n)} = \Z_{2^{\nu(n)+1}} \langle \bundle L - 1 \rangle$.
 }
-
-\pagebreak
-
 Now it's an easy matter to get back to the general case: consider $\RP^{n-1}_{-N}$, where $-N \leq n - \rho(n) - 1$.\footnote{The quantity $n - \rho(n) - 1$ is $-1$ when $n=1,2,4,8$, and positive for other $n>0$.}   Then we have a diagram with the bottom row a cofiber sequence (drawn at left):
 \[\xymatrix{
 &\RP^{n-2}_{-N}\ar[r]^{\text{coll}}&\RP^{n-2}_{n-\rho(n)-1}\\
@@ -3846,45 +3846,55 @@ Now it's an easy matter to get back to the general case: consider $\RP^{n-1}_{-N
 }$\end{minipage}}}\]
 From what we had before, the attaching map $\pi:S^{n-2}\to\RP^{n-2}_{-N}$ pulls back stably to a map $\overline\pi:S^{n-2}\to\RP^{n-\rho(n)-1}_{-N}$, whose compression onto the top cell $S^{n-\rho(n)-1}$ is $j_{\nu(n)}\neq0$. Thus, applying $\pi_{n-2}^S$ to the above diagram, we have elements as in the box at the right. As $j_{\nu(n)}$ is nonzero, and the bottom row is exact ($\pi_*^S$ is a homology theory) there can be no element of $\pi_{n-2}^S(\RP^{n-\rho(n)-2}_{-N})$ mapping to $\overline \pi$.
 Thus:
-\begin{thm}
-The stable relative attaching map for the $(n-1)$-cell of $\RP^{n-1}_{-N}$ can be taken to be $j_{\nu(n)}$; that is, stably, there is some $\overline \pi$ so that
+\begin{thm}\label{RelAttachThm}
+The stable relative attaching map for the $(n-1)$-cell of $\RP^{n-1}_{-N}$ can be taken to be $j_{\nu(n)}$; that is, stably, there is some $\overline \pi$ which does not pull back any further stably, and so that $c\overline\pi=j_{\nu(n)}$:
 \[\xymatrix@!0@C=3.5cm@R=1.4cm{
-\RP^{n-\rho(n)-2}_{-N}\ar@{^{(}->}[r]^\imath &\ar[d] \RP^{n-\rho(n)-2}_{-N}\ar|{\ \cdot\ \cdot\ \cdot\ }@{^{(}->}[r]& \RP^{n-2}_{-N} \ar@{^{(}->}[r] & \RP^{n-1}_{-N}\\
-&\makebox[0cm][r]{$C(\imath)=$\,}S^{n-\rho(n)-1}&\ar@{^{(}->}[r]\ar[ul]_{\overline\pi}\ar@{-->}[ull]^(.75){\text{\large$\nexists$}}S^{n-2}\ar@{^{(}->}[r]\ar[u]^\pi\ar[l]^{j_{\nu(n)}}&D^{n-1}\ar[u]
+\RP^{n-\rho(n)-2}_{-N}\ar@{^{(}->}[r]^\imath &\ar[d]^(.6)c \RP^{n-\rho(n)-1}_{-N}\ar|{\ \cdot\ \cdot\ \cdot\ }@{^{(}->}[r]& \RP^{n-2}_{-N} \ar@{^{(}->}[r] & \RP^{n-1}_{-N}\\
+&S^{n-\rho(n)-1}&&\ar[ull]_{\overline\pi}\ar@{-->}[ulll]^(.8){\text{\large$\nexists$}}S^{n-2}\ar[ul]_\pi\ar[ll]_(.74){j_{\nu(n)}}
 }\]
+%\[\xymatrix@!0@C=3.5cm@R=1.4cm{
+%\RP^{n-\rho(n)-2}_{-N}\ar@{^{(}->}[r]^\imath &\ar[d] \RP^{n-\rho(n)-1}_{-N}\ar|{\ \cdot\ \cdot\ \cdot\ }@{^{(}->}[r]& \RP^{n-2}_{-N} \ar@{^{(}->}[r] & \RP^{n-1}_{-N}\\
+%&\makebox[0cm][r]{$C(\imath)=$\,}S^{n-\rho(n)-1}&\ar@{^{(}->}[r]\ar[ul]_{\overline\pi}\ar@{-->}[ull]^(.75){\text{\large$\nexists$}}S^{n-2}\ar@{^{(}->}[r]\ar[u]^\pi\ar[l]^{j_{\nu(n)}}&D^{n-1}\ar[u]
+%}\]
 \end{thm}
 
-It's time to draw some pictures.  First, let's see where all these relative attaching maps go.  Here's $\RP^\infty_{-1}$; lines show where the top cell of $\RP^{n-1}_{-1}$ is attached. Here, the unlabeled maps for attaching the even dimensional cells are all $2\iota$ --- they do not descend to any lower skeleta stably.
+It's time to draw some pictures.  First, let's see where all these relative attaching maps go.  Here's $\RP^\infty_{-1}$; lines show where the top cell of $\RP^{n-1}_{-1}$ is attached. Here, the unlabeled maps for attaching the even dimensional cells are all $2\iota$ --- they do not descend to any lower skeleta, even stably.
 \begin{figure}[h!]
 \centering\includegraphics[width=0.8\textwidth]{figures/fig31fix.png}
 \caption{\small Stable relative attaching maps in $\RP^\infty_{-1}$.}
 \end{figure}
 
-For example, if $n$ is odd then $\rho(n) = 1$, $\nu(n) = 0$.  So the attaching map for $\RP^{2k}_{-N}$'s top dimension cell is $j_0 = 2\iota$.  For $n-1 = 1$, $3$, or $7$, the relative attaching map is to the $(-1)$-cell --- so if it weren't there, stably these cells wouldn't be attached; these splittings correspond to the Hopf-invariant $1$ elements.
+For example, if $n$ is odd then $\rho(n) = 1$, $\nu(n) = 0$.  So the attaching map for the top cell of $\RP^{2k}_{-N}$ is $j_0 = 2\iota$.  For $n-1 = 1$, $3$, or $7$, the relative attaching map is to the $(-1)$-cell --- so if it weren't there, stably these cells wouldn't be attached; these splittings correspond to the Hopf-invariant $1$ elements.
 
-The second picture is a spectral sequence; it's the Atiyah-Hirzebruch spectral sequence for stably homotopy of $\RP^\infty_{-1}$.  The exact couple comes from:
+The second picture is a spectral sequence; it's the Atiyah-Hirzebruch spectral sequence for stable homotopy of $\RP^\infty_{-1}$.  The exact couple comes from:
 \[\xymatrix{
-\cdots\ar@{^{(}->}[r]&\RP^{k-1}_{-1}\ar@{^{(}->}[r]\ar[d]&\RP^{k}_{-1}\ar@{^{(}->}[r]\ar[d]&\RP^{k+1}_{-1}\ar@{^{(}->}[r]\ar[d]&\cdots\\
-&S^{k-1}\ar@{~>}[ul]&S^k\ar@{~>}[ul]&S^{k+1}\ar@{~>}[ul]
+\cdots\ar@{^{(}->}[r]&\RP^{k-1}_{-1}\ar@{^{(}->}[r]\ar[d]^{c}&\RP^{k}_{-1}\ar@{^{(}->}[r]\ar[d]^{c}&\RP^{k+1}_{-1}\ar@{^{(}->}[r]\ar[d]^{c}&\cdots\\
+&S^{k-1}\ar@{~>}[ul]_\pi&S^k\ar@{~>}[ul]_\pi&S^{k+1}\ar@{~>}[ul]_\pi
 }\]
-Here the vertical arrows are the collapse maps,
+Here the vertical arrows $c$ are the collapse maps,
 % onto the top cells of the $\RP^k_{-1}$, 
-and the wavy arrows, which are wavy to indicate that they are in fact maps $\Sigma^{-1}S^k\to\RP^{k-1}_{-1}$, are the attaching maps. We can apply $\pi_*^S$ to obtain an exact couple:
-\ResumeHere
-\begin{diagram}[height=2em]
-\cdots & \rTo & \pi_*^S \RP^{k-1}_{-1} & \rTo & \pi_*^S \RP^k_{-1} & \rTo & \pi_*^S \RP^{k+1}_{-1} & \rTo & \cdots \\
-& \luTo & \dTo & \luTo & \dTo & \luTo & \dTo \\
-& & \pi_*^S S^{k-1} & & \pi_*^S S^k & & \pi_*^S S^{k+1}.
-\end{diagram}
-(Warning: it isn't totally clear to what this spectral sequence converges!  However, the restriction principle applies so any finite piece will converge to $\pi_*^S \RP^N_{-1}$.)  As in the EHP sequence, the differentials record how far back you can pull a class.  So our stable relative attaching maps tell us about non-zero differentials in this spectral sequence.  The columns at $E_1$ are $\pi_*^S$.  A class is recorded in the usual way, that INKSCAPE is, you pull it back as far as possible, and then push it out to the top-dimensional cell; this is exactly the picture from our theorem.
-\begin{diagram}[height=2em]
-& & & & S^{n-2} \\
-& & & \ldTo(4,2) & \dTo \\
-\RP^{n - \rho(n) - 1} & \rTo & \cdots & \rTo & \RP^{n-2} \\
-\dTo \\
-S^{n - \rho(n) - 1}.
-\end{diagram}
+and the wavy arrows $\pi$ are the attaching maps, so drawn to indicate that they shift degree --- they are in fact map maps $\Sigma^{-1}S^k\to\RP^{k-1}_{-1}$. We can apply $\pi_*^S$ to obtain an exact couple (in which the wavy arrows lower the degree $*$ by one):
+\[\xymatrix{
+\cdots\ar@{^{(}->}[r]&\pi_*^S(\RP^{k-1}_{-1})\ar@{^{(}->}[r]\ar[d]^{c}&\pi_*^S(\RP^{k}_{-1})\ar@{^{(}->}[r]\ar[d]^{c}&\pi_*^S(\RP^{k+1}_{-1})\ar@{^{(}->}[r]\ar[d]^{c}&\cdots\\
+&\pi_*^S(S^{k-1})\ar@{~>}[ul]_\pi&\pi_*^S(S^k)\ar@{~>}[ul]_\pi&\pi_*^S(S^{k+1})\ar@{~>}[ul]_\pi
+}\]
+From this exact couple we obtain a spectral sequence as usual. It isn't totally clear to what this spectral sequence converges.  However, the restriction principle applies, so any finite piece will converge to $\pi_*^S (\RP^N_{-1})$. The columns at $E_1$ are $\pi_*^S$. That is:
+\[E^1_{pq}=\pi^S_{p+q}(S^p)=\pi^S_q.\]
+As in the EHP sequence, the differentials record how far back you can pull a class.  So our stable relative attaching maps tell us about non-zero differentials in this spectral sequence. 
 
+The differential $d_r$ is defined as usual, that is, if $[x]\in E_{pq}^r$ is a class with representative $x\in\pi^S_{p+q}(S^p)$, then $\pi(x)\in\pi^S_{p+q-1}(\RP^{p-1}_{-1})$ pulls back to an element $y\in \pi^S_{p+q-1}(\RP^{p-r}_{-1})$, and $cy\in \pi^S_{p+q-1}(S^{p-r})$ represents an element of $E_{p-r,q+r-1}^r$, which is our definition of $d_r([x])$.
+
+Consider the element $\iota\in E^1_{p-1,0}=\pi^S_{p-1}(S^{p-1})$, and its fate in the spectral sequence. Now $\pi(\iota)\in \pi^S_{p-2}(\RP^{p-2}_{-1})$ is simply the attaching map for the $(p-1)$-cell. Thus, theorem \ref{RelAttachThm} can be rephrased:
+\begin{thm}
+The differentials $d_r$ vanish on $[\iota]\in E_{n-1,0}^r$, for $r\leq\rho(n)-1$, and $d_{\rho(n)}[\iota]=[j_{\nu(n)}]$, a nonzero element of $E^{\rho(n)}_{n-\rho(n)-1,\rho(n)-1}$.
+\end{thm}
+\ConfusedBox{Insert nice picure of these differentials here.}
+We will soon prove that there is a map of spectral sequences from the EHP sequence to the Atiyah-Hirzebruch spectral sequence constructed here, and that on the $E^1$ page, the map is induced by stabilisation. That is, ${_\text{EHP}E}^1_{pq}=\pi_{2p+1+q}(S^{2p+1})$ and ${_\text{AH}E}^1_{pq}=\pi^S_q$, and the map ${_\text{EHP}E}^1_{pq}\to{_\text{AH}E}^1_{pq}$ is just the iterated suspension map, which is an isomorphism for $q<2p$.
+
+Now as $[\iota]\in {_\text{AH}E}^1_{n-1,0}$ survives to $E^{\rho(n)}$, at which point it supports a nonzero differenial, $[\iota]\in {_\text{EHP}E}^1_{n-1,0}$ must support a nonzero differential $d_r$ for some $r\leq\rho(n)$. This shows that $w_{n-1}=p\iota$ desuspendes at most $\rho(n)-1$ times.
+
+The converse holds, and could presumably be proven by constructing an explicit desuspension. That is, the first nonzero differential on $[\iota]\in {_\text{EHP}E}^1_{n-1,0}$ is exactly $d_{\rho(n)}$.
+\ConfusedBox{What can now be said about the image of $\iota$ under the crucial differential? Is it $j(\nu(n))$ or something? I haven't thought about it.}
 % >>>
 \fi
 \BoxedNote{}
