@@ -34,7 +34,7 @@
 
 
 
-%\newcommand{\OutputEVERYTHING}{  everything  }
+\newcommand{\OutputEVERYTHING}{  everything  }
 %\newcommand{\OutputFrontMatter}{}
 %\newcommand{\OutputForeword}{0}
 %\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{1}
@@ -1650,7 +1650,7 @@ We seek to prove the following properties of the Adams operations, and will do s
 
 \Bullet \textbf{False claim:} The Adams operations are characterised by three properties:\\\phantom{space}(i) they are ring homomorphisms; (ii) $\psi^k\psi^l=\psi^{kl}$; and (iii) $\psi^k(L)=L^{\otimes k}$.
 }
-\section{Building \texorpdfstring{$K$}{K}-theory operations from representation theory} % <<<
+\section{\texorpdfstring{$K$}{K}-theory operations via representation theory} % <<<
 \label{BuildingKtheoryOperatorsFromRepTheory}
 \ifx\OutputBuildingKtheoryOperatorsFromRepTheory\undefined\else
 Previously, we discussed the ring $KO^* = KO^* \ptspace$ and said it was
@@ -2441,7 +2441,7 @@ Let $X$ be a connected CW-complex, and $X\stackrel{\alpha}{\to} \Omega\Sigma X$ 
 $\Suspend \Loops \Suspend X \simeq \bigvee_{\!k \ge 1} \Suspend X^{(k)}$ which realises $\overline\alpha$.
 
 \Bullet The extension of $\alpha$ to $J(X)\stackrel{\tilde\alpha}{\to}\Omega\Sigma X$ is a homotopy equivalence. $\Sigma J(X)$ splits as $\bigvee_{\!k \ge 1} \Suspend X^{(k)}$. We define the $m^\text{th}$ James-Hopf invariant $h_m$ via:
-\[\widehat h_m:\left\{\Sigma\Omega\Sigma X\to{\textstyle\bigvee_{\!k \ge 0}} \Suspend X^{(k)}\to\Sigma X^{(m)}\right\}\text{ with adjoint }h_m:\Omega\Sigma X\to\Omega\Sigma X^{(m)}.\]
+\[\widehat h_m:\left\{\Sigma\Omega\Sigma X\to{\textstyle\bigvee_{\!k \ge 0}} \Suspend X^{(k)}\to\Sigma X^{(m)}\right\}\text{ with adjoint }h_m:\Omega\Sigma X\to\Omega\Sigma X^{(m)}\]
 
 \Bullet When $n$ is even, the Hopf algebra $H_*(\Omega S^{n+1})$ is the tensor algebra $\mathrm T[u_n]$, with comultiplication given by $\Delta u_n^k = {\displaystyle\sum_{i + j = k}} \binom{i+j}{i} u_n^i \otimes u_n^j$.
 
@@ -3858,11 +3858,31 @@ The stable relative attaching map for the $(n-1)$-cell of $\RP^{n-1}_{-N}$ can b
 %}\]
 \end{thm}
 
-It's time to draw some pictures.  First, let's see where all these relative attaching maps go.  Here's $\RP^\infty_{-1}$; lines show where the top cell of $\RP^{n-1}_{-1}$ is attached. Here, the unlabeled maps for attaching the even dimensional cells are all $2\iota$ --- they do not descend to any lower skeleta, even stably.
-\begin{figure}[h!]
-\centering\includegraphics[width=0.8\textwidth]{figures/fig31fix.png}
-\caption{\small Stable relative attaching maps in $\RP^\infty_{-1}$.}
-\end{figure}
+It's time to draw some pictures. First, here are the stable relative attaching maps in $\RP^\infty_{-1}$:
+\begin{center}
+\begin{tikzpicture}[scale=.95]
+    \foreach \x in {-1,...,9,11,13,...,31}
+        \path (.5*\x,-.3) node[below] {\x};
+    \foreach \x in {-1,...,31}
+        \path (.5*\x,0) node {$\Bullet$};
+    \foreach \x in {0,2,...,30}
+		\draw[->] (.5*\x,0) to[out=90,in=90] node[below] {\small$2\iota$}  (.5*\x-.5,0);
+    \foreach \x in {1,5,...,29}
+		\draw[->] (.5*\x,0) to[out=90,in=90] node[right] {\small$\,\ \eta$}  (.5*\x-1,0);
+    \foreach \x in {3,11,...,27}
+		\draw[->] (.5*\x,0) to[out=90,in=90] node[above] {\small$\nu$}  (.5*\x-2,0);
+    \foreach \x in {7,23}
+		\draw[->] (.5*\x,0) to[out=90,in=90] node[below] {\small$\sigma$}  (.5*\x-4,0);
+    \foreach \x in {15}
+		\draw[->] (.5*\x,0) to[out=90,in=90] node[below] {\small$\eta\sigma$}  (.5*\x-4.5,0);
+    \foreach \x in {31}
+		\draw[->] (.5*\x,0) to[out=90,in=90] node[below] {\small$\eta^2\sigma$}  (.5*\x-5,0);
+\end{tikzpicture}
+\end{center}
+%\begin{figure}[h!]
+%\centering\includegraphics[width=0.8\textwidth]{figures/fig31fix.png}
+%\caption{\small Stable relative attaching maps in $\RP^\infty_{-1}$.}
+%\end{figure}
 
 For example, if $n$ is odd then $\rho(n) = 1$, $\nu(n) = 0$.  So the attaching map for the top cell of $\RP^{2k}_{-N}$ is $j_0 = 2\iota$.  For $n-1 = 1$, $3$, or $7$, the relative attaching map is to the $(-1)$-cell --- so if it weren't there, stably these cells wouldn't be attached; these splittings correspond to the Hopf-invariant $1$ elements.
 
@@ -3888,10 +3908,34 @@ Consider the element $\iota\in E^1_{p-1,0}=\pi^S_{p-1}(S^{p-1})$, and its fate i
 \begin{thm}
 The differentials $d_r$ vanish on $[\iota]\in E_{n-1,0}^r$, for $r\leq\rho(n)-1$, and $d_{\rho(n)}[\iota]=[j_{\nu(n)}]$, a nonzero element of $E^{\rho(n)}_{n-\rho(n)-1,\rho(n)-1}$.
 \end{thm}
-\ConfusedBox{Insert nice picure of these differentials here.}
+We illustrate this theorem with the following picture of the nonzero differentials which occur on the fundamental classes on the bottom row of the spectral sequence:
+\begin{center}
+\begin{tikzpicture}[scale=.95]
+    \foreach \x in {-1,...,9,11,13,...,31}
+        \path (.5*\x,-.2) node[below] {\x};
+    \foreach \y in {0,...,9}
+        \path (-.7,.5*\y) node[left] {\y};
+    \foreach \x in {-1,...,31}
+    \foreach \y in {0,...,9}
+		\path (.5*\x,.5*\y) node {\tiny$\cdot$};
+    \foreach \x in {0,2,...,30}
+		\path[->] (.5*\x,0) edge node[above] {\small$2\iota$}  (.5*\x-.5,0);
+    \foreach \x in {1,5,...,29}
+		\path[->] (.5*\x,0) edge node[right] {\small$\eta$}  (.5*\x-1,.5);
+    \foreach \x in {3,11,...,27}
+		\path[->] (.5*\x,0) edge node[above] {\small$\nu$}  (.5*\x-2,1.5);
+    \foreach \x in {7,23}
+		\path[->] (.5*\x,0) edge node[above] {\small$\sigma$}  (.5*\x-4,3.5);
+    \foreach \x in {15}
+		\path[->] (.5*\x,0) edge node[above] {\small$\eta\sigma$}  (.5*\x-4.5,4);
+    \foreach \x in {31}
+		\path[->] (.5*\x,0) edge node[above] {\small$\eta^2\sigma$}  (.5*\x-5,4.5);
+\end{tikzpicture}
+\end{center}
+
 We will soon prove that there is a map of spectral sequences from the EHP sequence to the Atiyah-Hirzebruch spectral sequence constructed here, and that on the $E^1$ page, the map is induced by stabilisation. That is, ${_\text{EHP}E}^1_{pq}=\pi_{2p+1+q}(S^{2p+1})$ and ${_\text{AH}E}^1_{pq}=\pi^S_q$, and the map ${_\text{EHP}E}^1_{pq}\to{_\text{AH}E}^1_{pq}$ is just the iterated suspension map, which is an isomorphism for $q<2p$.
 
-Now as $[\iota]\in {_\text{AH}E}^1_{n-1,0}$ survives to $E^{\rho(n)}$, at which point it supports a nonzero differenial, $[\iota]\in {_\text{EHP}E}^1_{n-1,0}$ must support a nonzero differential $d_r$ for some $r\leq\rho(n)$. This shows that $w_{n-1}=p\iota$ desuspendes at most $\rho(n)-1$ times.
+Now as $[\iota]\in {_\text{AH}E}^1_{n-1,0}$ survives to $E^{\rho(n)}$, at which point it supports a nonzero differenial, $[\iota]\in {_\text{EHP}E}^1_{n-1,0}$ must support a nonzero differential $d_r$ for some $r\leq\rho(n)$. This shows that $w_{n-1}=p\iota$ desuspends at most $\rho(n)-1$ times.
 
 The converse holds, and could presumably be proven by constructing an explicit desuspension. That is, the first nonzero differential on $[\iota]\in {_\text{EHP}E}^1_{n-1,0}$ is exactly $d_{\rho(n)}$.
 \ConfusedBox{What can now be said about the image of $\iota$ under the crucial differential? Is it $j(\nu(n))$ or something? I haven't thought about it.}
@@ -3957,20 +4001,20 @@ Note first of all that this is what we want: $\varphi$ for us is the composite
 \[
 S^{\rho(n)-1} \times S^{N-1} \stackrel{g_{\nu(n)} \times 1}{\to} O(N) \times S^{N-1} \to S^{N-1}
 \]
-and we are showing that $T\varphi$ ($ = T(g_{\nu(n)})$ from last time) = $CJ\varphi$ (= $Cj_{\nu(n)}$ from last time) relative to $\Suspend S^{N-1} = S^N$.  In fact we were interested last time in the relation between $Tg_{\nu(n)}$ and $Cj_{\nu(n)}$ stably, and we can make the fiber $S^N$ as connected as we want.  So we get a stably equivalence $Tg_{\nu(n)} \simeq Cj_{\nu(n)}$.
+and we are showing that $T\varphi$ ($ = T(g_{\nu(n)})$ from last time) = $CJ\varphi$ (= $Cj_{\nu(n)}$ from last time) relative to $\Suspend S^{N-1} = S^N$.  In fact we were interested last time in the relation between $Tg_{\nu(n)}$ and $Cj_{\nu(n)}$ stably, and we can make the fiber $S^N$ as connected as we want.  So we get a stable equivalence $Tg_{\nu(n)} \simeq Cj_{\nu(n)}$.
 \begin{proof}
 The hard part was parameterizing things right; now it's just a matter of drawing pictures.  In these pictures, we draw $A$ as a point and $X$ as a point.  Then we can keep track of the suspension, join, and cone coordinates.
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \centering\includegraphics[width=0.3\textwidth]{figures/figure32.pdf}
 \caption{\small Diagram of $CJ\varphi$.}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \centering\includegraphics[width=0.3\textwidth]{figures/figure33.pdf}
 \caption{\small Diagram of $T\varphi$.}
 \end{figure}
 
 So both pictures really are the same; they both look like a triangle.
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \centering\includegraphics[width=0.2\textwidth]{figures/figure34.pdf}
 \caption{\small Triangle!}
 \end{figure}
@@ -4035,7 +4079,7 @@ Today we'll examine where the Snaith maps come from, but you're going to have to
 .\]
 And since constructing maps out of loop spaces is hard, we'd like a tractable model for $\Loops^n S^n$.  Fortunately, there are some hints as to how to proceed.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \centering\includegraphics[width=0.2\textwidth]{figures/figure35-1.pdf}\;\includegraphics[width=0.2\textwidth]{figures/figure35-2.pdf}\;\includegraphics[width=0.2\textwidth]{figures/figure35-3.pdf}\;\includegraphics[width=0.2\textwidth]{figures/figure35-4.pdf}
 \caption{\small $\Loops^2 X$ and the little cubes operad.}
 \end{figure}
@@ -4463,7 +4507,7 @@ where $L(\R^{2n})$ has $\chi = 1$ and $\zeta$ is two plane bundles.  The claim i
 
 Now suppose $B$ is a $2n$-dimensional inner product space over $\R$; let $F(V)$ be the space of sequence of $n$ mutually orthogonal $2$-planes in $V$.  $\Sigma_n$ acts freely on $F(V)$; let $L(V) = F(V) / \Sigma_n$.  I claim we've constructed this space before as $SO(2n)/NT$.  So $\chi(L(V)) = 1$.
 
-Now let $\Sigma_{n-1}$ act on $F(V)$ by fixing the last element; then there is an $n$-sheeted cover $\widetilde L(V) = F(V)/\Sigma_{n-1} \stackrel{q}{\to} L(V)$.  Moreover, there is a $2$-plane bundle $\zeta$ over $\widetilde L(V)$ defined fiberwise by $\zeta_{(\{v_1, \ldots, v_{n-1}\}, v_n)} = v_n$.  Now from the lemma at the beginning of this lecture, it suffices to check the Adams conjecture on $p^* \xi$.  But by the formula,
+Now let $\Sigma_{n-1}$ act on $F(V)$ by fixing the last element; then there is an $n$-sheeted cover $\widetilde L(V) = F(V)/\Sigma_{n-1} \stackrel{q}{\to} L(V)$.  Moreover, there is a $2$-plane bundle $\zeta$ over $\widetilde L(V)$ defined fiberwise by setting $\zeta_{(\{v_1, \ldots, v_{n-1}\}, v_n)} = v_n$.  Now from the lemma at the beginning of this lecture, it suffices to check the Adams conjecture on $p^* \xi$.  But by the formula,
 \begin{align*}
 \psi^k p^* \xi - p^* \xi & = \psi^k t(q)^* \zeta - t(q)^* \zeta \\
 & = \psi^k t(q)^* \zeta - t(q^* \psi^k \zeta + t(q)^* \psi^k \zeta - t(q)^* \zeta \\
