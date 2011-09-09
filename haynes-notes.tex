@@ -34,7 +34,7 @@
 
 
 
-%\newcommand{\OutputEVERYTHING}{  everything  }
+\newcommand{\OutputEVERYTHING}{  everything  }
 %\newcommand{\OutputFrontMatter}{}
 %\newcommand{\OutputForeword}{0}
 %\newcommand{\OutputIntroductionToVectorFieldsOnSpheres}{1}
@@ -835,38 +835,42 @@ We then make two claims: $\widetilde J(X)$ is the image of $[X, BO] \to [X, BG]$
 
 \Bullet Atiyah: $\widetilde J(X)$ is finite for $X$ a finite connected complex.
 }
-\pagebreak
+
 \section{Geometry and the Steenrod squares} % <<<
 \label{GeometryAndTheSteenrodSquares}
 \ifx\OutputGeometryAndTheSteenrodSquares\undefined\else
-Today begins a several days blitz on Steenrod operations, from a somewhat geometric point of view.  To begin, remember that reduced ordinary cohomology is representable:
-\[
-\widetilde H^q(X; \pi) = [X, K(\pi, q)].
-%.\]
-\qquad\textup{For example:}\qquad
+Today begins a several days blitz on Steenrod operations, from a somewhat geometric point of view.
+%  To begin, remember that reduced ordinary cohomology is representable:
 %\[
-\widetilde H^q (S^n;\pi) = \pi_n (K(\pi, q)) = \begin{cases}\pi & q = n, \\ 0 & q \ne n.\end{cases}
-\]
+%\widetilde H^q(X; \pi) = [X, K(\pi, q)].
+%.\]
+%\qquad\textup{For example:}\qquad
+%\[
+%\widetilde H^q (S^n;\pi) = \pi_n (K(\pi, q)) = \begin{cases}\pi & q = n, \\ 0 & q \ne n.\end{cases}
+%\]
 
-A basepoint $\ast$ is a space $X$ gives a lot more than you might think at first.  It induces, for example, a filtration of the $n$-fold product $X^n$, by defining:
+Fix from the beginning a subgroup $\pi$ of the symmetric group $\Sigma_n$ (we will mostly be concerned with the case $\pi = \Z_2=\Sigma_2$).
+Consider the space $E\pi$, a contractible CW-complex with a free $\pi$-action, and the orbit space $B\pi=E\pi/\pi$. Fix a choice of $E\pi$ and a point $e\in E\pi$, and let $b\in B\pi$ be its image.
+
+For example, if $\pi = \Z_2$, then $\pi$ acts antipodally on $S^{n-1}$.  $S^{n-1}$ is not contractible, but its image is contractible in $S^n$; that is, the inclusion $S^{n-1} \into S^n$ is null-homotopic.  So the direct limit of the inclusions $S^{n-1} \subset S^n \subset \cdots = \bigcup_n S^n = S^\infty$ is contractible and has a free $\pi$-action.  The orbit space $E\pi/\pi = B\pi$ is clearly seen to be $\RP^\infty$.
+
+
+A basepoint $\ast$ in a space $X$ gives a lot more than you might think at first.  It induces, for example, a filtration of the $n$-fold product $X^n$, by defining:
 \[
 F_k X^n = \{(x_1, \ldots, x_k)\in X^n \mid \hbox{at most $k$ of the $x_i$ differ from $*$}\}
 ,\text{ so that:}\]
 \begin{diagram}[height=1.3em]
 F_0 X^n & \subseteq & F_1 X^n & \subseteq & \cdots & \subseteq & F_{n-1} X^n & \subseteq & F_n X^n \\
 \uEqualto & & \uEqualto & & & & \uEqualto & & \uEqualto \\
-\ptspace & & \bigvee_{i=1}^n X & & & & \hbox{``Fat wedge''} & & X^n.
+\ptspace & & \bigvee_{i=1}^n X & & & & \hbox{``Fat wedge''} & & X^n
 \end{diagram}
+$\pi$ acts on $X^n$ by permuting the factors, and this action preserves the filtration.
 
-Suppose $\pi$ is a subgroup of the symmetric group $\Sigma_n$.  $\pi$ acts on $X^n$ by permuting the coordinates, and this action respects our filtration (in this discussion, we will be concerned mostly with the case $\pi = \Z_2$.)  Consider the space $E\pi$, a contractible CW-complex with a free $\pi$-action, and the orbit space $B\pi=E\pi/\pi$. Once and for all fix a choice of $E\pi$ and a point $e\in E\pi$, and let $b\in B\pi$ be its image.
-
-For example, if $\pi = \Z_2$, then $\pi$ acts antipodally on $S^{n-1}$.  $S^{n-1}$ is not contractible, but its image is contractible in $S^n$; that is, the inclusion $S^{n-1} \into S^n$ is null-homotopic.  So the direct limit of the inclusions $S^{n-1} \subset S^n \subset \cdots = \bigcup_n S^n = S^\infty$ is contractible and has a free $\pi$-action.  The orbit space $E\pi/\pi = B\pi$ is clearly seen to be $\RP^\infty$. % awkwardly phrased.  is it important to give an explicit construction of Epi?  we've always been using EG for various G....
-
-Okay, so here's the key construction: on the universal $\pi$-bundle $E\pi \to B\pi$, use the Borel construction to mix in $X^n$, where $\pi$ acts on $X^n$ by permuting the factors; we thus obtain a locally trivial bundle over $B\pi$ with fiber $X^n$:
+Okay, so here's the key construction: on the universal $\pi$-bundle $E\pi \to B\pi$, use the Borel construction to mix in $X^n$; we thus obtain a locally trivial bundle over $B\pi$ with fiber $X^n$:
 \begin{diagram}[height=1.7em]
 X^n & \rTo & E\pi \times_\pi X^n \\
 & & \dTo \\
-& & B\pi.
+& & B\pi
 \end{diagram}
 (Recall that $\pi$ acts diagonally on $E\pi \times X^n$, and $E\pi \times_\pi X^n$ is obtained as the quotient space of this action.)  This construction is called the ``$\pi$-extended power of $X$.''
 
@@ -874,7 +878,7 @@ Now the fact that the $\pi$-action on $X^n$ respects the filtration means that w
 \begin{diagram}[height=1.7em]
 E\pi \times_\pi F_{n-1}X^n & \subseteq & E\pi \times_\pi X^n \\
 \dTo & & \dTo \\
-B\pi & \rEqualto & B\pi.
+B\pi & \rEqualto & B\pi
 \end{diagram}
 We want to pinch this subbundle to a point.  First, as $X^n / F_{n-1} X^n\cong X^{(n)}:=X\sprod\cdots\sprod X$, the $n$-fold smash product of $X$ with itself, we have:
 \[
@@ -887,7 +891,7 @@ This is almost the smash product, but $E\pi$ doesn't have a basepoint. Instead:%
 where the symbol $\sprod_\pi$ means to take the orbit space of the diagonal action on $E\pi_+ \sprod X^{(n)},$ and $E\pi_+$ refers to $E_\pi$ with a disjoint basepoint added.  This is called the ``$\pi$-adic construction'' on $X$ (for lack, really, of a better name), and will be written $D_\pi(X)$.
 
 Now a map $f:X\to Y$ induces a map $D_\pi(X)\to D_\pi(Y)$, making $D_\pi$ into a functor.
-Moreover, there is a map $i_X:X^{(n)}\to D_\pi(X)$ defined simply by $x\mapsto (e,x)$. Note that we can also describe $i_X$ in terms of the map $X^n\to E\pi\times_\pi X^n$ defined by $x\mapsto(e,x)$. Note that $F_{n-1}X^n$ maps into $E\pi\times_\pi F_{n-1}X^n$, so that this map descends to a map 
+Moreover, there is a map $i_X:X^{(n)}\to D_\pi(X)$ defined simply by $x\mapsto (e,x)$. Note that we can also describe $i_X$ in terms of the map $\overline{i_X}:X^n\to E\pi\times_\pi X^n$ defined by $x\mapsto(e,x)$. As $F_{n-1}X^n$ is mapped into $E\pi\times_\pi F_{n-1}X^n$, the map $\overline{i_X}$ descends to the quotient, and gives $i_X$: 
 \[i_X:X^{(n)}=\frac{X^n}{F_{n-1}X^n}\to \frac{E\pi \times_\pi X^n}{E\pi \times_\pi F_{n-1}X^n} = E\pi_+ \sprod_\pi X^{(n)}.\]
 
 The maps $i_X$ constitute a natural transformation of functors $(\textup{---})^{(n)}\to D_\pi$, in the sense that for every $f:X\to Y$, there is a commuting diagram:
@@ -904,19 +908,19 @@ For clarity, we list a number of functors and natural transformations that will 
 \item $(\textup{---})^{(n)}:\mathsf{Top}_*\to\mathsf{Top}_*$, the $n$-fold smash product.
 \item $\widetilde H^*(\DASH):=\widetilde H^*(\textup{---};\F_p):\mathsf{Top}_*\to\mathsf{ComGrAlg}_{\F_p}$, ordinary reduced cohomology with coefficients in the field of $p$ elements, for some chosen prime $p$. This takes values in the category of (graded)-commutative graded $\F_p$-algebras.
 \item $i_\DASH:(\DASH)^{(n)}\to D_\pi(\DASH)$, the natural transformation described above.
-\item $(\DASH)^{\wedge n}:\widetilde H^r(\textup{---};\F)\to\widetilde H^{nr}((\DASH)^{(n)})$, the $n$-fold exterior power of a cohomology class.
+\item $(\DASH)^{\wedge n}:\widetilde H^r(\textup{---};\F)\to\widetilde H^{nr}((\DASH)^{(n)})$, the $n$-fold smash power of a cohomology class.
 \end{itemize}
 
  
 
 The space $D_\pi Z$ is of some concern; first we want to know its cohomology.
-\begin{lem}
-Suppose that $\widetilde H^i (Z) = 0$ for $i < q$, where coefficients are taken in a field, and that $\widetilde H^q (Z)$ is finite dimensional.  Then,
+\begin{lem}\label{lemaboutpiadic}
+Suppose that $\widetilde H^i (Z) = 0$ for $i < q$, where coefficients are taken in a field $\F$, and that $\widetilde H^q (Z)$ is a finite dimensional $\F$-vector space.  Then,
 \[\widetilde H^i(D_\pi Z)=
 \begin{cases}0;&\textup{if }i<nq;\\(\widetilde H^q(Z)^{\otimes n})^\pi;&\textup{if }i=nq.%;\\???;&\textup{if }i>nq
 \end{cases}
 \]
-Moreover, $i_Z^*:\widetilde H^{nq}(D_\pi Z)\to \widetilde H^{np}(Z^{(n)})$ is the inclusion of the $\pi$-invariants $(\widetilde H^q(Z)^{\otimes n})^\pi\subset\widetilde H^q(Z)^{\otimes n}$, where the repeated tensor product is over the field, and $\pi$ acts by interchanging terms in the tensor product.
+Moreover, $i_Z^*:\widetilde H^{nq}(D_\pi Z)\to \widetilde H^{np}(Z^{(n)})$ is the inclusion of the $\pi$-invariants $(\widetilde H^q(Z)^{\otimes n})^\pi\subset\widetilde H^q(Z)^{\otimes n}$. Here, the tensor power is taken over $\F$, and $\pi$ acts thereupon by permuting factors.
 \end{lem}
 \begin{proof}
 %One could produce a CW-complex for $D_\pi Z$ having no cells of dimension less than $nq$. No, one cannot! What if $Z$ is a $K(Z/3,d)$ and the field is $Z/2$? Then $H^*(Z;Z/2)=0$, but there's plenty of cells.
@@ -962,7 +966,7 @@ Thus, the map
 \[
 \widetilde H^{nq} (D_\pi K_q) \xrightarrow{\ i^*\,} \widetilde H^{nq} (K_q^{(n)}) % this breaks if the action of pi isn't transitive
 \]
-is an isomorphism.  Now $\widetilde H^{nq} (K_q^{(n)})$ contains an element $\iota_q^{\sprod n}$, the $n$-fold smash power of the fundamental class $\iota_q \in \widetilde H^q( K_q)$, and we have
+is an isomorphism.  Now $\widetilde H^{nq} (K_q^{(n)})$ contains an element $\iota_q^{\sprod n}$, the $n$-fold smash power of the fundamental class $\iota_q \in \widetilde H^q( K_q)$, and we have shown:
 \begin{cor}
 There is a unique class $P_\pi \iota_q \in \widetilde H^{nq} (D_\pi K_q)$ such that $i^* P_\pi \iota_q = \iota_q^{\sprod n}$. That is, there is a unique pointed map $P_\pi\imath_q$ up to homotopy making the following diagram commute up to homotopy:
 \[\xymatrix@R=6mm{
@@ -971,9 +975,10 @@ K_{nq}\\
 D_\pi K_q\ar@{.>}[ru]_{P_\pi\imath_q}
 }\]
 \end{cor}
-\noindent Here, we have abused notationally the correspondence
+\noindent Here, we have abused notationally the natural correspondence
 $\widetilde H^q( X)  \longleftrightarrow [X, K_q]_\ast$ given by % \\
-$f^* \iota_q  \longleftrightarrow [f]$ which holds for pointed spaces $X$. Will will continue to freely confuse these sets.
+$f^* \iota_q  \longleftrightarrow [f]$ which holds for pointed spaces $X$.\footnote{For example: $\widetilde H^q (S^n;\pi) = \pi_n (K(\pi, q)) = \begin{cases}\pi & q = n, \\ 0 & q \ne n.\end{cases}$} We will continue to freely confuse these sets.
+
 Now suppose that $X$ is any space (with no assumptions on its cohomology), and $u\in\widetilde H^q(X)$.
 Representing $u\in \widetilde H^q(X)$ as a (homotopy class of) map(s) $u: X \to K_q$, we have a diagram:%n induced map $X^{(n)} \stackrel{u^{\sprod n}}{\to} K_q^{(n)} \stackrel{\iota_q^{\sprod n}}{\to} K_{nq}$, and then the diagram
 \[\xymatrix@R=6mm{
@@ -992,8 +997,10 @@ D_\pi K_q\ar@{.>}[ru]_{P_\pi\imath_q}
 \widetilde H^{nq}D_\pi X\ar[u]_{i^*}&
 \widetilde H^{nq}D_\pi K_q\ar[l]_{(D_\pi u)^*}\ar[u]_{i^*}^\cong
 }\phantom{\,\ni\imath_{nq}}\]
+So we have a natural transformation $u\mapsto (D_\pi u)^* (P_\pi\imath_q)$ of functors $H^q(\textup{---};\F_p)\longrightarrow H^{nq}(D_\pi(\textup{---});\F_p)$.
+As any cohomology class $u\in\widetilde H^q(X)$ can be written as $u^*(\imath_q)$, this discussion proves:
 \begin{lem}
-There is a unique natural transformation\footnote{Recall $\widetilde H^r$ is shorthand for $\widetilde H^r(\textup{---};\Z_2)$.} $P_\pi:H^q(\textup{---})\longrightarrow H^{nq}(D_\pi(\textup{---}))$ such that $i_X^*P_\pi u=u^{\wedge n}$ for all $u\in H^q(X)$. $P_\pi u$ is called the \emph{``Steenrod power''} of $u$.
+There is a unique natural transformation $P_\pi:H^q(\textup{---};\F_p)\longrightarrow H^{nq}(D_\pi(\textup{---});\F_p)$ such that $i_X^*P_\pi u=u^{\wedge n}$ for all $u\in H^q(X)$. $P_\pi u$ is called the \emph{``Steenrod power''} of $u$.
 \end{lem}
 %\begin{diagram}
 %X^{(n)} & \rTo^{u^{\sprod n}} & K_q^{(n)} & \rTo^{\iota_q^{\sprod n}} & K_{nq}\\
@@ -1023,14 +1030,14 @@ The case we will develop in full is $\pi = \Z_2$, $n = 2$, and $p=2$, so we spci
 %\end{align*}
 \[j^* P u  = \sum_{i=-q}^q x^{q-i} \otimes \Sq^i u,
 \text{\qquad where }\Sq^iu\in \widetilde H^{q+i}(X).\]
-We take this to be the \emph{definition} of $\Sq^i u$. We can note immediately that $\Sq^i$ is a natural transformation $\widetilde H^q\to\widetilde H^{q+i}$. Moreover, it is immediate that $\Sq^i u$ is zero when $-q\leq i<0$, since this holds in the universal case $K(\Z_2,q)$. (We will still allow ourselves to write $\Sq^iu$ for $i>q$, and define it to be zero).
+We take this to be the \emph{definition} of $\Sq^i u$. We can note immediately that $\Sq^i$ is a natural transformation $\widetilde H^q\to\widetilde H^{q+i}$. Moreover, $\Sq^i u$ is zero when $-q\leq i<0$, since this holds in the universal case $K(\Z_2,q)$. (We will still allow ourselves to write $\Sq^iu$ for $i>q$, and define it to be zero).
 
 Note that the above can be to a large extent carried out in other cohomology theories, giving similar operations.  Mostly one needs to have computed $H^*(B \pi \sprod X)$.
 
-Now let's start finding properties of the squares.  First of all, we don't even know that they're not all zero yet. Choose $u\in \widetilde H^q(X)$. We have the following diagram
+Now let's start finding properties of the squares.  First of all, we don't even know that they're not all zero yet. Choose $u\in \widetilde H^q(X)$. There is a map $k:S^0\to B\pi_+$, where if $S^0=\{\pm1\}$, we set $k(1)=*$ and $k(-1)=b$. We have the following diagram
 \[\xymatrix@R=.6cm{
 B\pi_+ \sprod X \ar[r]^j & D_\pi X \\
-S^0 \sprod X  \ar[r]^\Delta\ar[u]^k & X^{(2)}\ar[u]^i
+S^0 \sprod X  \ar[r]^\Delta\ar[u]^{k\wedge 1} & X^{(2)}\ar[u]^i
 }
 \raisebox{-.5cm}{\textup{\qquad which induces:\qquad}}
 \xymatrix@R=.6cm{
@@ -1039,12 +1046,12 @@ S^0 \sprod X  \ar[r]^\Delta\ar[u]^k & X^{(2)}\ar[u]^i
 u\smile u & u^{\wedge2}\ar@{|->}[l]
 }\raisebox{-.5cm}{\textup{\qquad on $\widetilde H^{2q}(\DASH)$.\qquad}}
 \]
-Now $k^*: \Z_2[x]\otimes \widetilde H^* (X)\to\widetilde H^* (X)$ is the projection onto $\Z_2\otimes \widetilde H^* (X)$. Thus $\Sq^q u = u^2$.
+Now $(k\wedge 1)^*: \Z_2[x]\otimes \widetilde H^* (X)\to\widetilde H^* (X)$ is the projection onto $\Z_2\otimes \widetilde H^* (X)$. Thus $\Sq^q u = u^2$.
 
 Next, we derive the Cartan formula, using the following map $\delta:D_\pi(X\wedge Y)\to D_\pi(X)\wedge D_\pi(Y)$:
 \begin{align*}
 D_\pi(X \sprod Y) = E \pi_+ \sprod_\pi (X \sprod Y)^{(2)} & \stackrel{\delta}{\to} E \pi_+ \sprod_\pi X^{(2)} \sprod E \pi_+ \sprod_\pi Y^{(2)} = D_\pi X \sprod D_\pi Y, \\
-(e, (x_1, y_1), (x_2, y_2)) & \mapsto (e, (x_1, x_2), e, (y_1, y_2)).
+(z, (x_1, y_1), (x_2, y_2)) & \mapsto (z, (x_1, x_2), z, (y_1, y_2)).
 \end{align*}
 Note that the following diagram commutes:
 \begin{diagram}[height=1.8em]
@@ -1056,7 +1063,7 @@ X^{(2)} \sprod Y^{(2)} & \rTo^{i \sprod i} & D_\pi X \sprod D_\pi Y & \lTo^{j \s
 $\delta^*(Pu \sprod Pv) = P(u \sprod v)$.
 \end{lem}
 \begin{proof}
-We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$.  Then the lowest dimensional cohomology of $D_\pi(X \sprod Y)$ is $\Z_2$ in dimension $2(p + q)$. Thus $i:(X\wedge Y)^{(2)}\to D_\pi(X\wedge Y)$ induces a monomorphism on $H^{2(p+q)}$, by the first lemma. Now in the diagram:
+We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$.  Then the lowest dimensional cohomology of $X \sprod Y$ is $\Z_2$ in dimension $(p + q)$. Thus $i:(X\wedge Y)^{(2)}\to D_\pi(X\wedge Y)$ induces a monomorphism on $H^{2(p+q)}$, by lemma \ref{lemaboutpiadic}. Now in the diagram:
 \[\xymatrix@R=.6cm{
 H^{2(p+q)}((X\wedge Y)^{(2)})&H^{2(p+q)}(D_\pi(X\wedge Y))\ar@{_{(}->}[l]_{i^*}\\
 H^{2(p+q)}(X^{(2)}\wedge Y^{(2)})\ar[u]^{T^*}&H^{2(p+q)}(D_\pi X\wedge D_\pi Y)\ar[l]_{(i\wedge i)^*}\ar[u]^{\delta^*}
@@ -1088,7 +1095,7 @@ Taking $X = Y$ and using $\Delta: X \to X \times X$, we obtain:
 \end{cor}
 \noindent In particular, it will be convenient to define the total squaring operation $\Sq:\widetilde H^*(X)\to\widetilde H^*(X)$, defined by $ u\mapsto\sum_i \Sq^i u$. The Cartan formula states precisely that $\Sq$ is a ring homomorphism.
 \begin{ex}
-Show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 S^1 = \Z_2$.
+Show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 (S^1) = \Z_2$.
 \end{ex}
 
 % >>>
@@ -1150,26 +1157,28 @@ E\pi_+\wedge_\pi X^{(2)}\ar@{=}[u]
 %\end{itemize}
 %}
 
-In addition, it was an exercise to show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 S^1$.  This important fact has several consequences.
+In addition, it was an exercise to show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 (S^1)$.  This important fact has several consequences.
 \begin{cor}
-$\Sq^k$ commutes with the suspension homomorphism $\sigma: \widetilde H^q X \to \widetilde H^{q+1} \Sigma X$.  We say that $\Sq^k$ is a ``stable operation.''
+$\Sq^k$ commutes with the suspension homomorphism $\sigma: \widetilde H^q (X) \to \widetilde H^{q+1} (\Sigma X)$.  We say that $\Sq^k$ is a ``stable operation.''
 \end{cor}
 \begin{proof}
-The suspension homomorphism is the composite
-$\sigma:\widetilde H^q X=\widetilde H^q X\otimes\widetilde H^1S^1\xrightarrow{\ \wedge e\ }\widetilde H^{q+1} \Sigma X$, and we calculate: $\Sq^k(\sigma u) = \Sq^k(u \sprod e) = \Sq^k u \sprod \Sq^0 e = \sigma \Sq^k u$.
+The suspension homomorphism $\sigma$ is the composite
+$\widetilde H^q (X)=\widetilde H^q (X)\otimes\widetilde H^1(S^1)\xrightarrow{\ \wedge e\ }\widetilde H^{q+1} (\Sigma X)$, and we calculate: $\Sq^k(\sigma u) = \Sq^k(u \sprod e) = \Sq^k u \sprod \Sq^0 e = \sigma \Sq^k u$.
 
 \end{proof}
 \begin{cor}
-$\Sq^0: \widetilde H^q X \to \widetilde H^q X$ is the identity.
+$\Sq^0: \widetilde H^q (X) \to \widetilde H^q (X)$ is the identity.
 \end{cor}
 \begin{proof}
-It suffices to check this on the class $\iota_q \in \widetilde H^q(K_q)$, writing $K_q = K(\Z_2, q)$.  For $q = 1$, $\Sq^0 \iota_1 \ne 0$ because this is the universal case and the exercise showed that $\Sq^0\imath_1$ pulls back to the nontrivial class $e$ on $S^1$.  But $\widetilde H^1 K_1 = \Z_2$, so $\Sq^0$ is the identity on $\iota_1$.  Furthermore, $\Sq^0$ leaves $e^{\sprod q} \in \widetilde H^q S^q$ undisturbed, by an application of the Cartan formula and the fact that the squares commute with suspensions.  It follows that $\Sq^0 \iota_q = \iota_q$.
+It suffices to check this on the class $\iota_q \in \widetilde H^q(K_q)$, writing $K_q = K(\Z_2, q)$. Now $\Sq^0$ leaves the unique generator $e^{\sprod q} \in \widetilde H^q (S^q)$ fixed, by the Cartan formula. As the map $S^q\to K_q$ classifying $e^{\sprod q}$ induces an isomorphism $\widetilde H^q(K_q)\to \widetilde H^q(S^q)$, $\Sq^0$ fixes $\imath_q$.
+%
+% For $q = 1$, $\Sq^0 \iota_1 \ne 0$ because this is the universal case and the exercise showed that $\Sq^0\imath_1$ pulls back to the nontrivial class $e$ on $S^1$.  But $\widetilde H^1 K_1 = \Z_2$, so $\Sq^0$ is the identity on $\iota_1$.  Furthermore, $\Sq^0$ leaves $e^{\sprod q} \in \widetilde H^q S^q$ undisturbed, by an application of the Cartan formula and the fact that the squares commute with suspensions.  It follows that $\Sq^0 \iota_q = \iota_q$.
 \end{proof}
 
 \begin{fact}
-The map $\beta: \widetilde H^q X \to \widetilde H^{q+1} X$ given by
+The map $\beta: \widetilde H^q (X;\F_2) \to \widetilde H^{q+1} (X;\F_2)$ given by
 \begin{diagram}[height=2em]
-\widetilde H^q X & \rTo^\beta & \widetilde H^{q+1} X \\
+\widetilde H^q (X;\F_2) & \rTo^\beta & \widetilde H^{q+1} (X;\F_2) \\
 \dTo<\delta & \ruTo_{\mathrm{reduction}} \\
 \widetilde H^{q+1}(X; \Z),
 \end{diagram}
@@ -1182,7 +1191,7 @@ $\Sq^k$ is a group homomorphism.
 \begin{proof}
 This holds for any stable cohomology operation.
 %Using the correspondence $\widetilde H^nX=[X,K(n,\Z_2)]$, and applying
-Representing cohomology classes by maps into Eilenberg-MacLane spaces, and using the naturality of $\Sq^k$, for any $u\in \widetilde H^qX$, we have a homotopy commuting diagram:
+Representing cohomology classes by maps into Eilenberg-MacLane spaces, and using the naturality of $\Sq^k$, for any $u\in \widetilde H^q(X)$, we have a homotopy commuting diagram:
 \[\xymatrix@C=1.75cm@R=7mm{
 K_q\ar[r]^{\Sq^k\imath_q}&K_{q+k}\\
 X\ar[u]^u\ar[ru]_{\Sq^ku}
@@ -1219,7 +1228,7 @@ so $\Sq^k\imath_q$ is an $H$-space map (or an $H$-map).  The $H$-space structure
 
 The last basic fact about the squares is the Adem relations, for which we will take an approach using generating functions in the indeterminate $x$, following Bullett-MacDonald~\cite{BullettMacDonald}.  First, for $u \in \widetilde H^q X$ define $\Sq_x u = \sum x^{-k} \Sq^k u$, where $|x| = 1$ so that $\Sq_x$ is homogenous of degree 0.  For example, if $u \in \widetilde H^1(X)$, $\Sq_x u = u + x^{-1} u^2 = u^2(u^{-1} + x^{-1})$.  This $\Sq_x$ occurs naturally in the above as $j^* P u = x^q \Sq_x u.$  Also, $\Sq_x$ has the nice property that it is a ring homomorphism, as shown by the Cartan formula.
 
-Second, take $\Sigma_4$ to be the symmetric group acting on four letters, arrange the letters into a square, and let $\omega$ be the subgroup of permutations which preserves the rows or transposes them, along with intra-row permutations.\footnote{The group $\omega$ is sometimes called the ``wreath product'' $\pi \wr \pi$; it is in fact $D_8$, the $2$-Sylow subgroup of $\Sigma_4$.} That is, the subgroup generated by the three permutations, $\alpha,\beta,\gamma$: 
+Second, take $\Sigma_4$ to be the symmetric group acting on four letters, arrange the letters into a square, and let $\omega$ be the subgroup of permutations which preserves the rows or transposes them, along with permutations within each row.\footnote{The group $\omega$ is sometimes called the ``wreath product'' $\pi \wr \pi$; it is in fact $D_8$, the $2$-Sylow subgroup of $\Sigma_4$.} That is, the subgroup generated by the three permutations, $\alpha,\beta,\gamma$: 
 \[
 \newcommand{\DRAWPERM}[5]
 {\left(\begin{array}{cc}a&b\\c&d\end{array}\xrightarrow{\ #5\ }
@@ -1243,7 +1252,7 @@ H & & H&&&&
 %\circlearrowright & & \circlearrowright \\
 %\pi & & \pi,
 %\end{diagram}
-where the action of $\pi$ on $\pi^2\times X$ is the diagonal action.  An example of an $\omega$-space is $E \pi \times (E \pi)^2$. We view $E\pi$ as $S^\infty$ equipped with the antipodal map $a\mapsto-a$, so that the action of $\pi$ on $E_\pi$ can be written simply as $(\pm1,a)\mapsto\pm a$. The $\pi^2$ action is on the right-hand factor, with 
+where the action of $\pi$ on $\pi^2\times X$ (i.e.\ $H$ on $N$) is the diagonal action.  An example of an $\omega$-space is $E \pi \times (E \pi)^2$. We view $E\pi$ as $S^\infty$ equipped with the antipodal map $a\mapsto-a$, so that the action of $\pi$ on $E_\pi$ can be written simply as $(\pm1,a)\mapsto\pm a$. The $\pi^2$ action is on the right-hand factor, with 
 %\[(x, y) \cdot (a, b, c) = (a, x \cdot b, y \cdot c),\]
 \[((\pm1,\pm'1),(a,b,c))\mapsto(a, \pm b, \pm' c),\]
 % and $\pi$ acting on $E \pi \times (E \pi)^2)$, 
@@ -1259,20 +1268,25 @@ On one hand, giving a space $X$ a basepoint, we can do the $\omega$-adic constru
 \[
 D_\omega X = E \omega_+ \sprod_\omega X^{(4)} = \frac{E \omega \times_\omega X^4}{E \omega \times_\omega F_3 X^4}
 .\]
-But this mixing in of $X$ corresponds to mixing in $X$ in the above construction of $E \omega$: we have $E \omega \times_\omega X^4 = E \pi \times_\pi (E\pi \times_\pi X^2)^2$ and this is the iteration of the $\pi$-reduced power operation on $X$.  All this goes to show that $D_\omega X = E \omega_+ \sprod_\omega X^{(4)} = D_\pi(D_\pi X)$, so we have iterated the $\pi$-adic construction!  That ought to be a good thing, because the Adem relations concern iterated Steenrod operations.
+However, we calculate:
+\begin{align*}
+E\omega\times_\omega X^4&=E\pi\times(E\pi)^2\times X^4/\omega\\
+&=E\pi\times(E\pi\times_\pi X^2)^2/\pi\\
+&=E\pi\times_\pi(E\pi\times_\pi X^2)^2
+\end{align*}
+Thus, the $\omega$-reduced power operation on $X$ is the iteration of the $\pi$-reduced power operation on $X$.  All this goes to show that $D_\omega X = E \omega_+ \sprod_\omega X^{(4)} = D_\pi(D_\pi X)$, so we have iterated the $\pi$-adic construction!  That ought to be a good thing, because the Adem relations concern iterated Steenrod operations.
 
-Now we have a diagram commuting up to homotopy:
+Now we have a diagram commuting up to homotopy, where the map $\xi$ is induced by the inclusion $\pi^2\to\omega$:
 \[\xymatrix@R=7mm@C=.5cm{
 (X^{(2)})^{(2)} \ar[d]_i\ar@{=}[rr]&& X^{(4)} \ar[d]^i\\
 D_\pi(D_\pi X) \ar[rr]^\cong && D_\omega X \\
 D_\pi(B \pi_+ \sprod X) \ar[u]^{D_\pi j} 
-&B \pi_+ \sprod B \pi_+ \sprod X\ar[dr]_{T\sprod1}\\
+&B \pi_+ \sprod B \pi_+ \sprod X\ar[dr]_{\xi\sprod1}\\
 B \pi_+ \sprod B \pi_+ \sprod X \ar[u]^j\ar[rr]^{\xi\wedge1}
-\ar[ur]_{\xi\wedge1}&& B \omega_+ \sprod X\ar[uu]_j
+\ar[ur]_{T\wedge1}&& B \omega_+ \sprod X\ar[uu]_j
 %&B \pi_+ \sprod B \pi_+ \sprod X.\ar[ul]^{T\sprod1}\ar[ur]
 }\]
-Here, the map $\xi$ is induced by the inclusion $\pi^2\to\omega$.
-We claim that the bottom triangle commutes up to homotopy.  This is because the flip map $T$ in% the diagram of exact sequences
+The bottom triangle commutes up to homotopy because the flip map $T$ in% the diagram of exact sequences
 \[\xymatrix@R=1mm{
 \pi\times\pi\ar[dd]^T\ar[rd]\\
 &\omega\ar[r]&\pi\makebox[0cm][l]{$\,\ni t$}\\
@@ -1281,40 +1295,35 @@ We claim that the bottom triangle commutes up to homotopy.  This is because the 
 is induced by conjugation by the image of the nontrivial element $t$ of the right-hand $\pi$, and it is a basic fact about classifying spaces that a conjugation map $c_t: \omega \to \omega$ induces a map $B c_t: B \omega \to B \omega$ which is homotopic to the identity (essentially, $c_t$ moves the basepoint). % is this right?  i don't think this is homotopic to the identity
 So in some sense the whole point of $\omega$ was to convert the outer automorphism $T: \pi \times \pi \to \pi \times \pi$ to an inner automorphism.  It follows that the map $D_\pi j \circ j: B\pi_+ \sprod B\pi_+ \sprod X \to D_\pi(D_\pi X)$ is $\pi$-equivariant up to homotopy.
 
-Now if $u \in \widetilde H^q X$, we have
+Now if $u \in \widetilde H^q (X)$, we have
 \begin{diagram}[width=2em,height=1.4em]
 P_\omega u & \in & \widetilde H^{4q}(D_\omega X) \\
 \dEqualto & & \dEqualto \\
 P(Pu) & \in & \raisebox{0cm}[0cm][0cm]{\,$\widetilde H^{4q}$}(D_\pi D_\pi X).
 \end{diagram}
-Now $(D_\pi j \circ j)^* P(P u) \in \widetilde H^*(B\pi_+ \sprod B\pi_+ \sprod X) \cong \Z_2[x, y] \otimes \widetilde H^* X$, and the $\pi$-equivariance up to homotopy above means that this class is symmetric in $x$ and $y$.  So,
-\begin{align*}
-(D_\pi j \circ j)^* P(P u) & = j^* P(j^* P u) \\ % disambiguate those js
+Now $(D_\pi j \circ j)^* P(P u) \in \widetilde H^*(B\pi_+ \sprod B\pi_+ \sprod X) \cong \Z_2[x, y] \otimes \widetilde H^* (X)$, and the $\pi$-equivariance up to homotopy above means that this class is symmetric in $x$ and $y$.  So,
+\begin{alignat*}{2}
+(D_\pi j \circ j)^* P(P u) & = j^* P(j^* P u)&\qquad&\text{(naturality of $P$)} \\ % disambiguate those js
 & = j^* P(y^q \Sq_y u) \\
 & = x^{2q} \Sq_x(y^q \Sq_y u) \\
-& = x^{2q} \Sq_x(y^q) \Sq_x \Sq_y u \\
+& = x^{2q} \Sq_x(y^q) \Sq_x \Sq_y u &&\text{($\Sq_x$ is a ring hom)} \\
 & = x^{2q} y^{2q} (x^{-1} + y^{-1})^q \Sq_x \Sq_y u
-\end{align*}
+\end{alignat*}
 is symmetric in $x$ and $y$.  This is the shortest statement of the Adem relations.
 
-We have shown that $\Sq_x \Sq_y u = \Sq_y \Sq_x u$, where $\Sq_x = \sum_{i \ge 0} x^{-i} \Sq^i$, and $|x| = |y| = 1$, and $x$ and $y$ represent $1$-dimensional classes in $\widetilde H^* \RP^\infty$, and now should derive from this the more standard form of the Adem relations. To begin,
-\begin{align*}
-\Sq_x y & = y + x^{-1} y^2 = y^2(y^{-1} + x^{-1}) \\
-\Sq_y x & = x + y^{-1} x^2 = x^2(x^{-1} + y^{-1}).
-\end{align*}
-Recall that the Cartan formula implies that $\Sq_x$ is a ring homomorphism.  So,
+We have shown that $\Sq_x \Sq_y u = \Sq_y \Sq_x u$, where $\Sq_x = \sum_{i \ge 0} x^{-i} \Sq^i$, and $|x| = |y| = 1$, and $x$ and $y$ represent $1$-dimensional classes in $\widetilde H^* (\RP^\infty)$, and now should derive from this the more standard form of the Adem relations. To begin, as $\Sq_x$ is a ring homomorphism,
 \begin{align*}
 \Sq_x \Sq_y & = \Sq_x \left( \sum_{j \ge 0} y^{-j} \Sq^j \right) \\
 & = \sum_{j \ge 0}(\Sq_x y)^{-j} \Sq_x \Sq^j \\
 & = \sum_{j \ge 0} y^{-2j}(x^{-1} + y^{-1})^{-j} \Sq_x \Sq^j.
 \end{align*}
-Now this first piece is a mess, so, taking a lesson from calculus, we make a variable substitution $t = y^{-2}(y^{-1} + x^{-1})^{-1}$.  So $|t| = -1$, and now
+Now these coefficients are a mess, so, taking a lesson from calculus, we make a variable substitution, defining $t = y^{-2}(y^{-1} + x^{-1})^{-1}$.  So $|t| = -1$, and now
 \begin{align*}
 \Sq_x \Sq_y & = \sum_{j \ge 0} t^j \Sq_x \Sq^j \\
 & = \sum_{j \ge 0} t^j \sum_{i \ge 0} x^{-1} \Sq^i \Sq^j \\
 & = \sum_{i, j \ge 0} t^j x^{-i} \Sq^i \Sq^j.
 \end{align*}
-Again, letting $s = x^{-1}$, so $|s| = -1$, we have $\Sq_x \Sq_y = \sum_{i, j \ge 0} s^i t^j \Sq^i \Sq^j$, a generating function for products of squares.  On the other hand,
+Letting $s = x^{-1}$, so $|s| = -1$, we have $\Sq_x \Sq_y = \sum_{i, j \ge 0} s^i t^j \Sq^i \Sq^j$, a generating function for products of squares.  On the other hand,
 \begin{align*}
 \Sq_y \Sq_x & = \sum_{j \ge 0}(\Sq_y x)^{-j} \Sq_y \Sq^j \\
 & = \sum_{i, j \ge 0} x^{-2j} y^{2j} t^j y^{-i} \Sq^i \Sq^j \\
@@ -1323,40 +1332,42 @@ Again, letting $s = x^{-1}$, so $|s| = -1$, we have $\Sq_x \Sq_y = \sum_{i, j \g
 We thus need to know how to express $y$ in terms of $t$ and $s$.
 
 Now, $t^{-1} = y^2(x^{-1} + y^{-1}) = y + x^{-1} y^2 = y + s y^2$.  At this point we could pull out the quadratic formula, but that seems ill-advised over $\Z_2$.  Instead, we use the theory of residues: if $f(z)$ is a power series, then the coefficient of $z^m$ in $f(z)$ is the residue of $\frac{f(z)}{z^{m+1}}dz$.  (Normally there's a factor of $2 \pi i$ or something floating around, but once again this seems ill-advised in $\Z_2$.)  Now we are going to take advantage of the $dz$ to change variables and the claim is that this works for power series over any ring.\footnote{This is nearly true, nearly false.  It does work in this case.  See note at the end of this lecture \textbf{(what note?)}. % ... what note?
-}  So in our case, we take the coefficient of $(t^{-1})^k$ in $y^m$: \[\res \frac{y^m}{(t^{-1})^{k+1}} d(t^{-1}).\]  We calculate that $d(t^{-1}) = dy + sdy^2 = dy + 2sydy = dy$.  We then have \[\res \frac{y^m dy}{y^{k+1}(1 + sy)^{k+1}} = \res \frac{(1+sy)^{-k-1} dy}{y^{k-m+1}},\] which is equal to the coefficient of $y^{k-m}$ in $(1+sy)^{-k-1} = \binom{-k-1}{k-m}s^{k-m}$, where we simply agree that $(1 + z)^m = \sum \binom{m}{k} z^k$ for $m \in \Z$, and for $k < 0$, $\binom{m}{k} = 0$.
+}  So in our case, we take the coefficient of $(t^{-1})^k$ in $y^m$: \[\res \frac{y^m}{(t^{-1})^{k+1}} d(t^{-1}).\]  We calculate that $d(t^{-1}) = dy + sdy^2 = dy + 2sydy = dy$ (as we're working in $\Z_2$).  We then have 
+\[\res \frac{y^m dy}{y^{k+1}(1 + sy)^{k+1}} = \res \frac{(1+sy)^{-k-1} dy}{y^{k-m+1}},\] 
+which is equal to the coefficient of $y^{k-m}$ in $(1+sy)^{-k-1}$. That is $\binom{-k-1}{k-m}s^{k-m}$, where we simply agree that $(1 + z)^m = \sum \binom{m}{k} z^k$ for $m \in \Z$, and for $k < 0$, $\binom{m}{k} = 0$.
 
-So we know what $y$ is in terms of $s$ and $t$, provided we know what the binomial coefficients are.  To sum up,
+We now know what $y$ is in terms of $s$ and $t$, provided we know what the binomial coefficients are:
 \[
-y^m = \sum_{k \ge m} \binom{-k-1}{k-m} s^{k-m} t^{-k}
-,\]
-hence,
+y^m = \sum_{k \ge m} \binom{-k-1}{k-m} s^{k-m} t^{-k}\text{, \ so that}
+\]
 \[
-\Sq_y \Sq_x = \sum_{i, j \ge 0} s^{2j} t^j y^{2j-i} \Sq^i \Sq^j = \sum_{i, j \ge 0} \binom{-k-1}{k-2j+i} s^{k+i}t^{j-k}\Sq^i\Sq^j
+\Sq_y \Sq_x = \sum_{i, j \ge 0} s^{2j} t^j y^{2j-i} \Sq^i \Sq^j = \mathop{\sum_{i, j \ge 0}}_{k\geq2j-1} \binom{-k-1}{k-2j+i} s^{k+i}t^{j-k}\Sq^i\Sq^j
 .\]
-Now, in $\Sq_x \Sq_y$, the coefficient of $s^a t^b$ is $\Sq^a \Sq^b$.  In $\Sq_y \Sq_x$, set $k + i = a$, $j - k = b$ --- letting $j$ be the independent variable, we have $k = j - b$ and $i = a - k = a - j + b$.  So,
+Note that we could have specified that $ $ is the most recent sum, but if $k<2j-1$ then the binomial coefficient is zero anyway.
+Now, in $\Sq_x \Sq_y$, the coefficient of $s^a t^b$ is $\Sq^a \Sq^b$.  In the most recent expression for $\Sq_y \Sq_x$, this term occurs when $k + i = a$ and $j - k = b$ --- viewing $j$ as the independent variable, we have $k = j - b$ and $i = a - k = a - j + b$.  We finally obtain:
 \[
-\Sq^a \Sq^b = \sum_j \binom{b-j-1}{a-2j} \Sq^{a+b-j} \Sq^j
+\Sq^a \Sq^b = \sum_{j=0}^{\lfloor a/2\rfloor} \binom{b-j-1}{a-2j} \Sq^{a+b-j} \Sq^j
 ,\]
 and this last formula is called the ``Adem relation.''  One thing to notice is that if $a \le 2b$, then since $a \ge 2j$ we have $b \ge j$, so $a + b -j \ge 2j$.  So these relations let you express $\Sq^a \Sq^b$ for $a \le 2b$ as a sum of $\Sq^i \Sq^j$, where $i \ge 2j$.  Such $\Sq^i \Sq^j$ are called \emph{admissable}.
 
 So the tensor algebra on the squares $T(\Sq^1, \Sq^2, \ldots)$ modulo the Adem relations acts on $H^*(X; \Z_2)$.  This algebra $T(\Sq^1, \ldots) / \{\hbox{Adem relations}\}$ is called the ``Steenrod algebra.''  It is denoted $\SA$.
 \begin{lem}
-$\SA$ is generated by $\Sq^{2^i}$, and these are indecomposable.
+$\SA$ is generated by $\Sq^{2^i}$, and these are exactly the indecomposables amoungst the generators $\{\Sq^1,\Sq^2,\Sq^3,\ldots\}$.
 \end{lem}
 \begin{proof}
 We first show that the $\Sq^{2^i}$ are indecomposable and then show that all others are decomposable.
 
-After we took all the trouble to maintain homogeneity, we chop it: define $\Sq = \Sq^0 + \Sq^1 + \cdots$.  By the Cartan formula, $\Sq$ is a ring homomorphism.  In particular, it acts on $\widetilde H^* \RP^\infty = \Z_2[x]$, $|x| = 1$.  Now, $\Sq x = x + x^2$, so
+After we took all the trouble to maintain homogeneity, we chop it: define $\Sq = \Sq^0 + \Sq^1 + \cdots$.  By the Cartan formula, $\Sq$ is a ring homomorphism.  In particular, it acts on $\widetilde H^* (\RP^\infty) = \Z_2[x]$, $|x| = 1$.  Now, $\Sq x = x + x^2$, so
 \begin{align*}
 \Sq x^{2^i} & = (\Sq x)^{2^i} = (x + x^2)^{2^i} = x^{2^i} + x^{2^{i+1}} \\
 & = \Sq^0 x^{2^i} + \Sq^{2^i} x^{2^i}.
 \end{align*}
 All lower dimensional squares kill $x^{2^i}$, so $\Sq^{2^i}$ is indecomposable.
 
-We prove the rest by induction.  Suppose $\Sq^j$ is decomposable as a sum-product of $\Sq^{2^j}$s for $j < c$, suppose that $c \ne 2^i$ for any $i$, and let $k \in \Z$ be so that $2^k < c < 2^{k+1}$.  Then:
+We prove the rest by induction. For any $c$ which is not a power of two, let $k \in \Z$ be so that $2^k < c < 2^{k+1}$, and suppose by induction that whenever $j<c$, $\Sq^j$ is decomposable as a sum of products of the generators $\{\Sq^{2^i}|\ i\leq k\}$.  Then:
 \begin{align*}
 \Sq^{c-2^k} \Sq^{2^k} & = \sum_j \binom{2^k - j - 1}{c-2^k-2j} \Sq^{c-j}\Sq^j \\
-& = \binom{2^k - 1}{c-2^k} \Sq^c + \mathrm{decomposables}.
+& = \binom{2^k - 1}{c-2^k} \Sq^c + \mathrm{\ decomposables}.
 \end{align*}
 But,
 \begin{align*}
@@ -1366,10 +1377,10 @@ But,
 & = \hbox{coefficient of $z^{c-2^k}$ in}\ 1 + \cdots + z^{2^k - 1} \\
 & = 1.
 \end{align*}
-So, $\Sq^c = \Sq^{c-2^k} \Sq^{2^k} + \mathrm{decomposables}$, and $\Sq^{c - 2^k}$ is decomposable.
+So, $\Sq^c = \Sq^{c-2^k} \Sq^{2^k} + \mathrm{\ decomposables}$, and $\Sq^{c - 2^k}$ is decomposable.
 \end{proof}
 
-$\widetilde H^* X$ is an $\SA$-module, and $\Sq^i x = 0$ if $i > |x|$; such things are called ``unstable $\SA$-modules,'' even though this is bad terminology.  Moreover, $x^2 = \Sq^{|x|} x$, and $\Sq(xy) = \Sq(x) \Sq(y)$; such a thing is called an ``unstable $\SA$-algebra.''  %If $\CatOf{Unstable-\SA-Algebras}$ is the category of these, then 
+$\widetilde H^* (X)$ is an $\SA$-module, and $\Sq^i x = 0$ if $i > |x|$; such things are called ``unstable $\SA$-modules,'' even though this is bad terminology.  Moreover, $x^2 = \Sq^{|x|} x$, and $\Sq(xy) = \Sq(x) \Sq(y)$; such a thing is called an ``unstable $\SA$-algebra.''  %If $\CatOf{Unstable-\SA-Algebras}$ is the category of these, then 
 We have seen that the functor $\widetilde H^*$ from the category of topological spaces to the category of graded vector spaces factors through the category of unstable $\SA$-algebras, which is in fact
 %
 % : \CatOf{Spaces} \to \CatOf{GradedVectorSpaces}$ factors as
@@ -1404,7 +1415,7 @@ which tells you that
 
 \Bullet The only indecomposable $\Sq^i$ are those for which $i$ is a power of two.
 }
-\end{document}
+
 \section{Using the squares and Thom spaces} % <<<
 \label{UsingTheSquaresAndThomSpaces}
 \ifx\OutputUsingTheSquaresAndThomSpaces\undefined\else
