@@ -888,7 +888,7 @@ This is almost the smash product, but $E\pi$ doesn't have a basepoint. Instead:%
 \[
 \frac{E\pi \times_\pi X^n}{E\pi \times_\pi F_{n-1}X^n} = E\pi_+ \sprod_\pi X^{(n)}
 ,\]
-where the symbol $\sprod_\pi$ means to take the orbit space of the diagonal action on $E\pi_+ \sprod X^{(n)},$ and $E\pi_+$ refers to $E_\pi$ with a disjoint basepoint added.  This is called the ``$\pi$-adic construction'' on $X$ (for lack, really, of a better name), and will be written $D_\pi(X)$.
+where the symbol $\sprod_\pi$ means to take the orbit space of the diagonal action on $E\pi_+ \sprod X^{(n)},$ and $E\pi_+$ refers to $E\pi$ with a disjoint basepoint added.  This is called the ``$\pi$-adic construction'' on $X$ (for lack, really, of a better name), and will be written $D_\pi(X)$.
 
 Now a map $f:X\to Y$ induces a map $D_\pi(X)\to D_\pi(Y)$, making $D_\pi$ into a functor.
 Moreover, there is a map $i_X:X^{(n)}\to D_\pi(X)$ defined simply by $x\mapsto (e,x)$. Note that we can also describe $i_X$ in terms of the map $\overline{i_X}:X^n\to E\pi\times_\pi X^n$ defined by $x\mapsto(e,x)$. As $F_{n-1}X^n$ is mapped into $E\pi\times_\pi F_{n-1}X^n$, the map $\overline{i_X}$ descends to the quotient, and gives $i_X$: 
@@ -908,7 +908,7 @@ For clarity, we list a number of functors and natural transformations that will 
 \item $(\textup{---})^{(n)}:\mathsf{Top}_*\to\mathsf{Top}_*$, the $n$-fold smash product.
 \item $\widetilde H^*(\DASH):=\widetilde H^*(\textup{---};\F_p):\mathsf{Top}_*\to\mathsf{ComGrAlg}_{\F_p}$, ordinary reduced cohomology with coefficients in the field of $p$ elements, for some chosen prime $p$. This takes values in the category of (graded)-commutative graded $\F_p$-algebras.
 \item $i_\DASH:(\DASH)^{(n)}\to D_\pi(\DASH)$, the natural transformation described above.
-\item $(\DASH)^{\wedge n}:\widetilde H^r(\textup{---};\F)\to\widetilde H^{nr}((\DASH)^{(n)})$, the $n$-fold smash power of a cohomology class.
+\item $(\DASH)^{\wedge n}:\widetilde H^r(\textup{---};\F_p)\to\widetilde H^{nr}((\DASH)^{(n)};\F_p)$, the $n$-fold smash power of a cohomology class.
 \end{itemize}
 
  
@@ -970,7 +970,7 @@ is an isomorphism.  Now $\widetilde H^{nq} (K_q^{(n)})$ contains an element $\io
 \begin{cor}
 There is a unique class $P_\pi \iota_q \in \widetilde H^{nq} (D_\pi K_q)$ such that $i^* P_\pi \iota_q = \iota_q^{\sprod n}$. That is, there is a unique pointed map $P_\pi\imath_q$ up to homotopy making the following diagram commute up to homotopy:
 \[\xymatrix@R=6mm{
-K_q^{(n)}\ar[d]^i\ar[r]^{\imath_q^{(n)}}&
+K_q^{(n)}\ar[d]^i\ar[r]^{\imath_q^{\sprod n}}&
 K_{nq}\\
 D_\pi K_q\ar@{.>}[ru]_{P_\pi\imath_q}
 }\]
@@ -1022,7 +1022,7 @@ B \pi_+ \sprod X & \rTo_j & D_\pi X.
 \end{diagram}
 So, any $u \in \widetilde H^q (X)$ gives us a class $j^* P_\pi u \in \widetilde H^{nq}(B \pi_+ \sprod X)$.
 
-The case we will develop in full is $\pi = \Z_2$, $n = 2$, and $p=2$, so we spcialise to this case now, writing $P$ for $P_\pi$ (and $\widetilde H^*(\DASH)$ for $\widetilde H^*(\DASH;\F_2)$). In this case, $B\pi = \RP^\infty$, and $H^*( B\pi) = \widetilde H^* (B\pi_+) = \Z_2[x]$ with $|x| = 1$. By the K\"unneth theorem, $\widetilde H^*(B\pi_+ \sprod X) \cong H^*(B \pi) \otimes \widetilde H^* (X)$, so given $u\in\widetilde H^q(X)$, we can write
+The case we will develop in full is $\pi = \Z_2$, $n = 2$, and $p=2$, so we specialise to this case now, writing $P$ for $P_\pi$ (and $\widetilde H^*(\DASH)$ for $\widetilde H^*(\DASH;\F_2)$). In this case, $B\pi = \RP^\infty$, and $H^*( B\pi) = \widetilde H^* (B\pi_+) = \Z_2[x]$ with $|x| = 1$. By the K\"unneth theorem, $\widetilde H^*(B\pi_+ \sprod X) \cong H^*(B \pi) \otimes \widetilde H^* (X)$, so given $u\in\widetilde H^q(X)$, we can write
 %\begin{align*}
 %\widetilde H^*(B \pi_+ \sprod X) & \cong H^*(B \pi) \otimes \widetilde H^* X \\
 %j^* P u & = \sum_{i=-q}^q x^{q-i} \otimes \Sq^i u,
@@ -1032,7 +1032,7 @@ The case we will develop in full is $\pi = \Z_2$, $n = 2$, and $p=2$, so we spci
 \text{\qquad where }\Sq^iu\in \widetilde H^{q+i}(X).\]
 We take this to be the \emph{definition} of $\Sq^i u$. We can note immediately that $\Sq^i$ is a natural transformation $\widetilde H^q\to\widetilde H^{q+i}$. Moreover, $\Sq^i u$ is zero when $-q\leq i<0$, since this holds in the universal case $K(\Z_2,q)$. (We will still allow ourselves to write $\Sq^iu$ for $i>q$, and define it to be zero).
 
-Note that the above can be to a large extent carried out in other cohomology theories, giving similar operations.  Mostly one needs to have computed $H^*(B \pi \sprod X)$.
+Note that the above can be to a large extent carried out in other cohomology theories, giving similar operations.  Mostly one needs to have computed $\widetilde H^*(B \pi \sprod X)$.
 
 Now let's start finding properties of the squares.  First of all, we don't even know that they're not all zero yet. Choose $u\in \widetilde H^q(X)$. There is a map $k:S^0\to B\pi_+$, where if $S^0=\{\pm1\}$, we set $k(1)=*$ and $k(-1)=b$. We have the following diagram
 \[\xymatrix@R=.6cm{
@@ -1090,7 +1090,7 @@ In particular, as $i^*$ is a monomorphism, $\delta^*(P(\imath_p)\wedge P(\imath_
 \end{align*}
 \end{proof}
 \noindent
-Taking $X = Y$ and using $\Delta: X \to X \times X$, we obtain:
+Taking $X = Y$ and using $\Delta: X \to X \wedge X$, we obtain:
 \begin{cor}[Internal version]  $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$.
 \end{cor}
 \noindent In particular, it will be convenient to define the total squaring operation $\Sq:\widetilde H^*(X)\to\widetilde H^*(X)$, defined by $ u\mapsto\sum_i \Sq^i u$. The Cartan formula states precisely that $\Sq$ is a ring homomorphism.
@@ -1105,7 +1105,7 @@ Show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 (S^1) = \
 % The following diagrams summarise 
 the construction of $\Sq^iu\in \widetilde H^{q+i}(X)$ thus:
 \[\xymatrix@R=3mm@C=5mm{
-B\pi_+\wedge S\ar[r]_j&D_\pi(X)&**[l]{X^{\wedge2}}\ar[l]^{\ \ \ i}\\
+B\pi_+\wedge X\ar[r]_j&D_\pi(X)&**[l]{X^{\wedge2}}\ar[l]^{\ \ \ i}\\
 E\pi_+\wedge_\pi X\ar[r]^\Delta\ar@{=}[u]&
 E\pi_+\wedge_\pi X^{(2)}\ar@{=}[u]
 }
@@ -1157,7 +1157,7 @@ E\pi_+\wedge_\pi X^{(2)}\ar@{=}[u]
 %\end{itemize}
 %}
 
-In addition, it was an exercise to show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 (S^1)$.  This important fact has several consequences.
+It was an exercise to show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 (S^1)$.  This important fact has several consequences.
 \begin{cor}
 $\Sq^k$ commutes with the suspension homomorphism $\sigma: \widetilde H^q (X) \to \widetilde H^{q+1} (\Sigma X)$.  We say that $\Sq^k$ is a ``stable operation.''
 \end{cor}
