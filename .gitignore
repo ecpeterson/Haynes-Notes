@@ -1,0 +1,11 @@
+.gitignore
+diagrams.sty
+*.aux
+*.log
+*.out
+*.pdf
+*.synctex.gz
+*.toc
+.DS_Store
+*.fdb_latexmk
+*.fls
