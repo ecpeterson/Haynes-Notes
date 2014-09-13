@@ -54,7 +54,7 @@ This is almost the smash product, but $E\pi$ doesn't have a basepoint. Instead:%
 where the symbol $\sprod_\pi$ means to take the orbit space of the diagonal action on $E\pi_+ \sprod X^{(n)},$ and $E\pi_+$ refers to $E\pi$ with a disjoint basepoint added.  This is called the ``$\pi$-adic construction'' on $X$ (for lack, really, of a better name), and will be written $D_\pi(X)$.
 
 Now a map $f:X\to Y$ induces a map $D_\pi(X)\to D_\pi(Y)$, making $D_\pi$ into a functor.
-Moreover, there is a map $i_X:X^{(n)}\to D_\pi(X)$ defined simply by $x\mapsto (e,x)$. Note that we can also describe $i_X$ in terms of the map $\overline{i_X}:X^n\to E\pi\times_\pi X^n$ defined by $x\mapsto(e,x)$. As $F_{n-1}X^n$ is mapped into $E\pi\times_\pi F_{n-1}X^n$, the map $\overline{i_X}$ descends to the quotient, and gives $i_X$: 
+Moreover, there is a map $i_X:X^{(n)}\to D_\pi(X)$ defined simply by $x\mapsto (e,x)$. Note that we can also describe $i_X$ in terms of the map $\overline{i_X}:X^n\to E\pi\times_\pi X^n$ defined by $x\mapsto(e,x)$. As $F_{n-1}X^n$ is mapped into $E\pi\times_\pi F_{n-1}X^n$, the map $\overline{i_X}$ descends to the quotient, and gives $i_X$:
 \[i_X:X^{(n)}=\frac{X^n}{F_{n-1}X^n}\to \frac{E\pi \times_\pi X^n}{E\pi \times_\pi F_{n-1}X^n} = E\pi_+ \sprod_\pi X^{(n)}.\]
 
 The maps $i_X$ constitute a natural transformation of functors $(\textup{---})^{(n)}\to D_\pi$, in the sense that for every $f:X\to Y$, there is a commuting diagram:
@@ -74,7 +74,7 @@ For clarity, we list a number of functors and natural transformations that will 
 \item $(\DASH)^{\wedge n}:\widetilde H^r(\textup{---};\F_p)\to\widetilde H^{nr}((\DASH)^{(n)};\F_p)$, the $n$-fold smash power of a cohomology class.
 \end{itemize}
 
- 
+
 
 The space $D_\pi Z$ is of some concern; first we want to know its cohomology.
 \begin{lem}\label{lemaboutpiadic}
@@ -109,7 +109,7 @@ _RE_2^{s,t} = H^s(B\pi; \{H^t(Z^n, F_{n-1} Z^n)\}) \Rightarrow \widetilde H^{s+t
 Now $H^*(Z^n, F_{n-1} Z^n) \cong \widetilde H^* (Z^{(n)}) \cong \widetilde H^*(Z)^{\otimes n}$, and this last isomorphism is equivariant with respect to permutations, a fact that is not trivial (and likely to be false with other cohomology theories).  It follows that in both spectral sequences, everything is zero below the horizontal line at height $nq$ in the $E_2$ term. That is $E_2^{s,t}=0$ for $t<nq$.  So, % why?
 \[
 \widetilde H^{nq}(D_\pi Z) ={_RE_2^{0,nq}}= H^0(B\pi; \{\widetilde H^q(Z)^{\otimes n}\}) = (\widetilde H^q(Z)^{\otimes n})^\pi.\]
-Moreover, the map $i^*_Z:\widetilde H^{nq}(D_\pi Z)\to \widetilde H^{nq}(Z^{(n)})$ coincides with the induced map $_RE_2^{0,nq}\to{_LE_2^{0,nq}}$, i.e.: % on the $E_2$ page. This is the map 
+Moreover, the map $i^*_Z:\widetilde H^{nq}(D_\pi Z)\to \widetilde H^{nq}(Z^{(n)})$ coincides with the induced map $_RE_2^{0,nq}\to{_LE_2^{0,nq}}$, i.e.: % on the $E_2$ page. This is the map
 \[H^0(B\pi; \{\widetilde H^q(Z)^{\otimes n}\})\to H^0(*;\widetilde H^q(Z)^{\otimes n}),\]
 which is simply the inclusion of the $\pi$-invariants, as desired.
 \end{proof}
@@ -122,9 +122,9 @@ From here on, for all $r$, let $K_r$ denote $K(\Z_p,r)$ and $\widetilde H^r(\DAS
 %\widetilde H^i(K_q; \Z_2) & = 0, \hspace{5em} i < q \\
 %\widetilde H^q(K_q; \Z_2) & = \Z_2,
 %\end{align*}
-%by the Hurewicz theorem.  
+%by the Hurewicz theorem.
 So $\widetilde H^{nq}(D_\pi K_q)$ is the $\pi$-invariants in $H^{nq}(K_q^{(n)})=(\Z_p)^{\otimes n}$ under the action of $\pi$ given by interchanging terms in the tensor product. However, this action is trivial.\footnote{In fact, the standard isomorphism $(\Z_p)^{\otimes n}\to\Z_p$ is $\Sigma_n$-equivariant, where we give the target the trivial action.}
-% fa Moreover, as $\pi$ can only act trivially on $\widetilde H^{nq} (K_q^{(n)})=\Z_p$ \textbf{(is this true if $p\neq2$, or should we just set $p=2$ already?)}, 
+% fa Moreover, as $\pi$ can only act trivially on $\widetilde H^{nq} (K_q^{(n)})=\Z_p$ \textbf{(is this true if $p\neq2$, or should we just set $p=2$ already?)},
 Thus, the map
 \[
 \widetilde H^{nq} (D_\pi K_q) \xrightarrow{\ i^*\,} \widetilde H^{nq} (K_q^{(n)}) % this breaks if the action of pi isn't transitive
@@ -176,7 +176,7 @@ There is a unique natural transformation $P_\pi:H^q(\textup{---};\F_p)\longright
 %\uTo<{p^*}>\cong & & \uTo>{p^*}<\cong & \ldTo_{(P_\pi \iota_q)^*} \\
 %\widetilde H^{nq} D_\pi X & \lTo^{(D_\pi u^{\sprod n})^*} & \widetilde H^{nq} D_\pi K_q
 %\end{diagram}
-%which shows that there is a unique class $P_\pi u = P_\pi \iota_q \circ D_\pi u^{\sprod n} \in \widetilde H^{nq} D_\pi X$ such that $p^* P_\pi u = \iota_q^{\sprod n} \circ u^{\sprod n}$.  
+%which shows that there is a unique class $P_\pi u = P_\pi \iota_q \circ D_\pi u^{\sprod n} \in \widetilde H^{nq} D_\pi X$ such that $p^* P_\pi u = \iota_q^{\sprod n} \circ u^{\sprod n}$.
 Finally, the diagonal map $\Delta: X \to X^{(n)}$ is equivariant, where we let $\pi$ act trivially on the single factor $X$, and this induces
 \begin{diagram}[height=1.3em]
 E\pi_+ \sprod_\pi X & \rTo^\Delta & E \pi_+ \sprod X^{(n)} \\
@@ -189,7 +189,7 @@ The case we will develop in full is $\pi = \Z_2$, $n = 2$, and $p=2$, so we spec
 %\begin{align*}
 %\widetilde H^*(B \pi_+ \sprod X) & \cong H^*(B \pi) \otimes \widetilde H^* X \\
 %j^* P u & = \sum_{i=-q}^q x^{q-i} \otimes \Sq^i u,
-%\text{\qquad where $\Sq^iu\in 
+%\text{\qquad where $\Sq^iu\in
 %\end{align*}
 \[j^* P u  = \sum_{i=-q}^q x^{q-i} \otimes \Sq^i u,
 \text{\qquad where }\Sq^iu\in \widetilde H^{q+i}(X).\]
@@ -244,7 +244,7 @@ In particular, as $i^*$ is a monomorphism, $\delta^*(P(\imath_p)\wedge P(\imath_
 \begin{cor}[Cartan formula]  $\Sq^k(u \sprod v) = \sum_{i+j = k} \Sq^i u \sprod \Sq^j v$.
 \end{cor}
 \begin{proof} Almost immediate from the construction:
-\begin{align*} 
+\begin{align*}
 \sum_k x^{p+q-k} \otimes \Sq^k(u \sprod v) & = j^* P(u \sprod v) \\
 & = j^* \delta^*(Pu \sprod Pv) \\
 & = \Delta_{B \pi_+}^* (j \sprod j)^*(Pu \sprod Pv) \\
@@ -257,15 +257,20 @@ Taking $X = Y$ and using $\Delta: X \to X \wedge X$, we obtain:
 \begin{cor}[Internal version]  $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$.
 \end{cor}
 \noindent In particular, it will be convenient to define the total squaring operation $\Sq:\widetilde H^*(X)\to\widetilde H^*(X)$, defined by $ u\mapsto\sum_i \Sq^i u$. The Cartan formula states precisely that $\Sq$ is a ring homomorphism.
-\begin{ex}
-Show that $\Sq^0 e = e$, where $e$ is the generator of $\widetilde H^1 (S^1) = \Z_2$.
-\end{ex}
+
+\begin{lem}
+If $e$ is the generator of $\widetilde H^1 (S^1) = \Z_2$ then $\Sq^0 e = e$.
+\end{lem}
+
+\begin{proof}
+We know that $\Sq^i e = 0$ for $i>0$ since $H^{1+i}(S^1)=0$, so $j^*(P_{\pi}e)=x\Sq^0 e \in H^*(B\pi_+ \smash S^1)=\Z_2[x]\tensor H^*(S^1)$. Now $D_{\pi}S^1 = S^{\infty}_+\smash_{\pi} S^2$, where $\pi$ acts on $S^2$ by swapping the two factors. We can decompose $S^2$ as the smash product of the diagonal, which is a $\pi$-invariant $S^1_1$, and the antidiagonal $S^1_{-1}$ where $\pi$ acts by a reflection. Thus $D_{\pi}S^1=S^{\infty}_+\smash_\pi (S^1_1\smash S^1_{-1}) = (S^{\infty}_+\smash_{\pi}S^1_{-1})\smash S^1_1=\Sigma \RP^{\infty}$. Now $B\pi_+\smash S^1=\Sigma \RP^{\infty}$ too, and $j$ sends the $S^1$ factor into the diagonal $S^1_1$ by the identity map, so $j$ is the suspension of some map $\RP^{\infty}\to\RP^{\infty}$. This map comes from the map $S^{\infty}\to S^{\infty}\smash S^1$ including the $S^{\infty}$ into the $S^{\infty}$ factor by the identity map. Thus, it sends $[x_0,x_1,\ldots]\mapsto [0,x_0,x_1,\ldots]$. Since this map is homotopic to the identity, so is $j$ and hence $j^*$ is the identity map, and so since $P_\pi e\neq 0$, neither is $j^*P_{\pi}e$, which implies that $Sq^0e\neq 0$ so the only other option is that $\Sq^0 e = e$.
+\end{proof}
 
 % >>>
 \fi
 \BoxedNote{
-\Bullet Fix $u\in\widetilde H^q(X)$. We summarise 
-% The following diagrams summarise 
+\Bullet Fix $u\in\widetilde H^q(X)$. We summarise
+% The following diagrams summarise
 the construction of $\Sq^iu\in \widetilde H^{q+i}(X)$ thus:
 \[\xymatrix@R=3mm@C=5mm{
 B\pi_+\wedge X\ar[r]_j&D_\pi(X)&**[l]{X^{\wedge2}}\ar[l]^{\ \ \ i}\\
@@ -390,7 +395,7 @@ so $\Sq^k\imath_q$ is an $H$-space map (or an $H$-map).  The $H$-space structure
 
 The last basic fact about the squares is the Adem relations, for which we will take an approach using generating functions in the indeterminate $x$, following Bullett-MacDonald~\cite{BullettMacDonald}.  First, for $u \in \widetilde H^q X$ define $\Sq_x u = \sum x^{-k} \Sq^k u$, where $|x| = 1$ so that $\Sq_x$ is homogenous of degree 0.  For example, if $u \in \widetilde H^1(X)$, $\Sq_x u = u + x^{-1} u^2 = u^2(u^{-1} + x^{-1})$.  This $\Sq_x$ occurs naturally in the above as $j^* P u = x^q \Sq_x u.$  Also, $\Sq_x$ has the nice property that it is a ring homomorphism, as shown by the Cartan formula.
 
-Second, take $\Sigma_4$ to be the symmetric group acting on four letters, arrange the letters into a square, and let $\omega$ be the subgroup of permutations which preserves the rows or transposes them, along with permutations within each row.\footnote{The group $\omega$ is sometimes called the ``wreath product'' $\pi \wr \pi$; it is in fact $D_8$, the $2$-Sylow subgroup of $\Sigma_4$.} That is, the subgroup generated by the three permutations, $\alpha,\beta,\gamma$: 
+Second, take $\Sigma_4$ to be the symmetric group acting on four letters, arrange the letters into a square, and let $\omega$ be the subgroup of permutations which preserves the rows or transposes them, along with permutations within each row.\footnote{The group $\omega$ is sometimes called the ``wreath product'' $\pi \wr \pi$; it is in fact $D_8$, the $2$-Sylow subgroup of $\Sigma_4$.} That is, the subgroup generated by the three permutations, $\alpha,\beta,\gamma$:
 \[
 \newcommand{\DRAWPERM}[5]
 {\left(\begin{array}{cc}a&b\\c&d\end{array}\xrightarrow{\ #5\ }
@@ -414,10 +419,10 @@ H & & H&&&&
 %\circlearrowright & & \circlearrowright \\
 %\pi & & \pi,
 %\end{diagram}
-where the action of $\pi$ on $\pi^2\times X$ (i.e.\ $H$ on $N$) is the diagonal action.  An example of an $\omega$-space is $E \pi \times (E \pi)^2$. We view $E\pi$ as $S^\infty$ equipped with the antipodal map $a\mapsto-a$, so that the action of $\pi$ on $E_\pi$ can be written simply as $(\pm1,a)\mapsto\pm a$. The $\pi^2$ action is on the right-hand factor, with 
+where the action of $\pi$ on $\pi^2\times X$ (i.e.\ $H$ on $N$) is the diagonal action.  An example of an $\omega$-space is $E \pi \times (E \pi)^2$. We view $E\pi$ as $S^\infty$ equipped with the antipodal map $a\mapsto-a$, so that the action of $\pi$ on $E_\pi$ can be written simply as $(\pm1,a)\mapsto\pm a$. The $\pi^2$ action is on the right-hand factor, with
 %\[(x, y) \cdot (a, b, c) = (a, x \cdot b, y \cdot c),\]
 \[((\pm1,\pm'1),(a,b,c))\mapsto(a, \pm b, \pm' c),\]
-% and $\pi$ acting on $E \pi \times (E \pi)^2)$, 
+% and $\pi$ acting on $E \pi \times (E \pi)^2)$,
 and the $\pi$ action is diagonal, acting as usual on the first factor, and by interchanging factors in the second:
 \[(-1, (a, b, c)) = (-a, c, b).\]  The total space is contractible and its $\omega$-action is free; hence it is an $E \omega$, and we compute % should this section actually be (a, b, c) = (-a, -c, -b)?  Does it matter?  we already quotiented by the pi action on E pi...  plus, the original text reads "acting... by the antipodal map crossed with an exchange of factors in (E pi )^2."
 \begin{align*}
@@ -442,7 +447,7 @@ Now we have a diagram commuting up to homotopy, where the map $\xi$ is induced b
 \[\xymatrix@R=7mm@C=.5cm{
 (X^{(2)})^{(2)} \ar[d]_i\ar@{=}[rr]&& X^{(4)} \ar[d]^i\\
 D_\pi(D_\pi X) \ar[rr]^\cong && D_\omega X \\
-D_\pi(B \pi_+ \sprod X) \ar[u]^{D_\pi j} 
+D_\pi(B \pi_+ \sprod X) \ar[u]^{D_\pi j}
 &B \pi_+ \sprod B \pi_+ \sprod X\ar[dr]_{\xi\sprod1}\\
 B \pi_+ \sprod B \pi_+ \sprod X \ar[u]^j\ar[rr]^{\xi\wedge1}
 \ar[ur]_{T\wedge1}&& B \omega_+ \sprod X\ar[uu]_j
@@ -494,8 +499,8 @@ Letting $s = x^{-1}$, so $|s| = -1$, we have $\Sq_x \Sq_y = \sum_{i, j \ge 0} s^
 We thus need to know how to express $y$ in terms of $t$ and $s$.
 
 Now, $t^{-1} = y^2(x^{-1} + y^{-1}) = y + x^{-1} y^2 = y + s y^2$.  At this point we could pull out the quadratic formula, but that seems ill-advised over $\Z_2$.  Instead, we use the theory of residues: if $f(z)$ is a power series, then the coefficient of $z^m$ in $f(z)$ is the residue of $\frac{f(z)}{z^{m+1}}dz$.  (Normally there's a factor of $2 \pi i$ or something floating around, but once again this seems ill-advised in $\Z_2$.)  Now we are going to take advantage of the $dz$ to change variables and the claim is that this works for power series over any ring.\footnote{This is nearly true, nearly false.  It does work in this case.  See note at the end of this lecture \textbf{(what note?)}. % ... what note?
-}  So in our case, we take the coefficient of $(t^{-1})^k$ in $y^m$: \[\res \frac{y^m}{(t^{-1})^{k+1}} d(t^{-1}).\]  We calculate that $d(t^{-1}) = dy + sdy^2 = dy + 2sydy = dy$ (as we're working in $\Z_2$).  We then have 
-\[\res \frac{y^m dy}{y^{k+1}(1 + sy)^{k+1}} = \res \frac{(1+sy)^{-k-1} dy}{y^{k-m+1}},\] 
+}  So in our case, we take the coefficient of $(t^{-1})^k$ in $y^m$: \[\res \frac{y^m}{(t^{-1})^{k+1}} d(t^{-1}).\]  We calculate that $d(t^{-1}) = dy + sdy^2 = dy + 2sydy = dy$ (as we're working in $\Z_2$).  We then have
+\[\res \frac{y^m dy}{y^{k+1}(1 + sy)^{k+1}} = \res \frac{(1+sy)^{-k-1} dy}{y^{k-m+1}},\]
 which is equal to the coefficient of $y^{k-m}$ in $(1+sy)^{-k-1}$. That is $\binom{-k-1}{k-m}s^{k-m}$, where we simply agree that $(1 + z)^m = \sum \binom{m}{k} z^k$ for $m \in \Z$, and for $k < 0$, $\binom{m}{k} = 0$.
 
 We now know what $y$ is in terms of $s$ and $t$, provided we know what the binomial coefficients are:
@@ -542,7 +547,7 @@ But,
 So, $\Sq^c = \Sq^{c-2^k} \Sq^{2^k} + \mathrm{\ decomposables}$, and $\Sq^{c - 2^k}$ is decomposable.
 \end{proof}
 
-$\widetilde H^* (X)$ is an $\SA$-module, and $\Sq^i x = 0$ if $i > |x|$; such things are called ``unstable $\SA$-modules,'' even though this is bad terminology.  Moreover, $x^2 = \Sq^{|x|} x$, and $\Sq(xy) = \Sq(x) \Sq(y)$; such a thing is called an ``unstable $\SA$-algebra.''  %If $\CatOf{Unstable-\SA-Algebras}$ is the category of these, then 
+$\widetilde H^* (X)$ is an $\SA$-module, and $\Sq^i x = 0$ if $i > |x|$; such things are called ``unstable $\SA$-modules,'' even though this is bad terminology.  Moreover, $x^2 = \Sq^{|x|} x$, and $\Sq(xy) = \Sq(x) \Sq(y)$; such a thing is called an ``unstable $\SA$-algebra.''  %If $\CatOf{Unstable-\SA-Algebras}$ is the category of these, then
 We have seen that the functor $\widetilde H^*$ from the category of topological spaces to the category of graded vector spaces factors through the category of unstable $\SA$-algebras, which is in fact
 %
 % : \CatOf{Spaces} \to \CatOf{GradedVectorSpaces}$ factors as
@@ -551,7 +556,7 @@ We have seen that the functor $\widetilde H^*$ from the category of topological 
 %& \rdTo & \dTo \\
 %& & \CatOf{GradedVectorSpaces},
 %\end{diagram}
-%and $\CatOf{Unstable-\SA-Algebras}$ 
+%and $\CatOf{Unstable-\SA-Algebras}$
 the maximal algebraic category through which $\widetilde H^*$ factors. % what is an algebraic category and why is this the largest?
 
 Let's take another look at the formula $y^m = \sum_{k \ge m} \binom{-k-1}{k-m} s^{t-m} t^{-k}$.  Setting $m=1$ gives \[y = \sum_{k \ge 1} \binom{-k-1}{k-1} s^{k-1} t^{-k}.\]  On the other hand, we know $y = t^{-1} + sy^2$.  Since squaring is a homomorphism in $\Z_2$, we get
