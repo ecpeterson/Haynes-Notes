@@ -80,7 +80,7 @@ KO^{-n} (\ptspace) & \Z & \Z_2 & \Z_2 & 0 & \Z & 0 & 0 & 0 & \Z \\
 \]
 with relations $2\eta = 0$, $\eta^3 = 0$, $\eta q = 0$, $q^2 = 4p$, where $p$ is the periodicity element. For example, $KO^{-10}(\ptspace) = \langle p\eta^2 \rangle \cong \Z_2$ and $KO^{6}(\ptspace) = \langle p^{-1}\eta^2 \rangle \cong \Z_2$, so that $KO^*$ is the ring with generators $\eta,q,p^{\pm1}$ and the given relations.
 
-Unfortunately, we shall need more than just the ring structure; we'll need operations.  One way to get operations in $K$-theory is to look for operations on vector spaces, apply these fiber-wise to get operations on vector bundles, and then squeeze out operations on $K$-theory.  The most useful of these is $V \mapsto \Lambda^k(V)$, the $k$th exterior power.  By means of this method we get a $k^\textup{th}$ exterior power bundle $\Lambda^k E \downarrow B$ from a bundle $E\downarrow B$.  Unfortunately extending to $K$-theory is hard because $\Lambda^k$ is not additive. 
+Unfortunately, we shall need more than just the ring structure; we'll need operations.  One way to get operations in $K$-theory is to look for operations on vector spaces, apply these fiber-wise to get operations on vector bundles, and then squeeze out operations on $K$-theory.  The most useful of these is $V \mapsto \Lambda^k(V)$, the $k$th exterior power.  By means of this method we get a $k^\textup{th}$ exterior power bundle $\Lambda^k E \downarrow B$ from a bundle $E\downarrow B$.  Unfortunately extending to $K$-theory is hard because $\Lambda^k$ is not additive.
 
 There is, however, a natural isomorphism $\Lambda^k(V \oplus W) = \bigoplus_{i+j = k} \Lambda^i V \otimes \Lambda^j W$.  This (which looks like a Cartan formula) inspires the definition $\Lambda_t(V) = \sum_{i \ge 0} t^i \Lambda^i(V)$.  Now $\Lambda_t(V \oplus W) = \Lambda_t(V) \cdot \Lambda_t(W)$, so the operation still isn't additive, but it's exponential --- it takes sums to products.  That's good enough, as it turns out.  So $\Lambda_t$ induces a homomorphism of commutative monoids $\Lambda_t: \mathrm{Vect}(X) \to 1 + t\,KO(X)\llbracket t \rrbracket$, where the target is the group (under multiplication) of formal power series in $t$ with coefficients in $KO(X)$ and constant term one.
 
@@ -109,7 +109,7 @@ Replace $t$ with $-t$ to get $\frac{d}{dt} \log(1 - tL) = \frac{-L}{1 - tL}$.  A
 Of course, this construction could be carried out on $K(X)$ as opposed to $KO(X)$.
 
 We seek to prove the following properties of the Adams operations, and will do so by constructing them from another perspective in lecture \ref{BuildingKtheoryOperatorsFromRepTheory}:
-%\begin{thm}\textbf{False claim:} 
+%\begin{thm}\textbf{False claim:}
 %There exist unique operations $\psi^k: KO(X) \to KO(X)$ such that:
 \begin{itemize}
 \item $\psi^k$ is a ring homomorphism for each $k$,
@@ -167,10 +167,10 @@ Recall that the first construction of the Adams operations used an operation on 
 \end{diagram}
 Moreover, it is clear that this action gives $P(E) \downarrow X$ the structure of a principal $U(n)$-bundle, the ``associated principal bundle to $E$.''
 
-Now the construction of $P(E)$ involved the choice of a Hermitian metric $\langle - , - \rangle$ for $E \downarrow X$.  But if $\langle -, - \rangle'$ is another Hermitian metric for $E \downarrow X$, then so\footnote{A Hermitian inner product is required to satisfy $\langle x, x \rangle > 0$ for $x \ne 0$; this provides the non-degeneracy of $\langle - , - \rangle_t$.} is $t \langle -, - \rangle' + (1-t) \langle -, - \rangle = \langle - , - \rangle_t$ for $0 \le t \le 1$. Thus we obtain a metric for the bundle $E \times I \downarrow X \times I$.  
+Now the construction of $P(E)$ involved the choice of a Hermitian metric $\langle - , - \rangle$ for $E \downarrow X$.  But if $\langle -, - \rangle'$ is another Hermitian metric for $E \downarrow X$, then so\footnote{A Hermitian inner product is required to satisfy $\langle x, x \rangle > 0$ for $x \ne 0$; this provides the non-degeneracy of $\langle - , - \rangle_t$.} is $t \langle -, - \rangle' + (1-t) \langle -, - \rangle = \langle - , - \rangle_t$ for $0 \le t \le 1$. Thus we obtain a metric for the bundle $E \times I \downarrow X \times I$.
 Now the restriction of $P(E \times I) \downarrow X \times I$ to $X \times \{0\}$ is $P_{\langle-,-\rangle}(E)$, while the restriction to $X \times \{1\}$ is $P_{\langle-,-\rangle'}(E)$, so that $P_{\langle-,-\rangle}(E) \cong P_{\langle-,-\rangle'}(E)$ as $U(n)$-bundles.
 
-Now let $V$ be a representation of $U(n)$.  Then from a complex vector bundle $E \downarrow X$, we can form the bundle $\alpha_V(E) = (P(E) \times_{U(n)} V) \downarrow X$, yielding a new vector bundle with fiber $V$. 
+Now let $V$ be a representation of $U(n)$.  Then from a complex vector bundle $E \downarrow X$, we can form the bundle $\alpha_V(E) = (P(E) \times_{U(n)} V) \downarrow X$, yielding a new vector bundle with fiber $V$.
 
 Now fix an $n$-dimensional vector bundle $E$. Clearly $\alpha_{V \oplus W}(E) = \alpha_V(E) \oplus \alpha_W(E)$, so that $V \mapsto \alpha_V(E)$ defines an additive homomorphism $\mathrm{Rep} (U(n)) \to \mathrm{Vect}(X) \to K(X)$. By the universality property of the Grothendieck construction this extends to $R (U(n))$:
 \begin{diagram}[height=2em]
@@ -255,7 +255,7 @@ The first thing to notice is that $\psi^k_n(M)$ is symmetric in the eigenvalues 
 \[\prod_{j=1}^n (1+z_j x) = \sum_{j=0}^n \sigma_j x^j,\textup{ so that }
 \sigma_j = \sum_{ 1\leq i_1 < \cdots < i_j\leq n }z_{i_1}\cdots z_{i_j}\text{ is homogeneous of degree $j$.}\]
 Now we want to show that these $\sigma_i$ are real characters, i.e., that they come from genuine representations.  In fact, $\sigma_j = \chi_{\Lambda^j}$, where $\Lambda^j$ is the $j^\textup{th}$ exterior
-power of the canonical representation.  
+power of the canonical representation.
 For if a matrix $M$ has eigenvalues $\lambda_1, \ldots, \lambda_n$, then the above expression gives $\sigma_j(M) = \sum_{1 \le i_1 < \cdots < i_j \le k} \lambda_{i_1} \cdots \lambda_{i_j}$.  On a basis of corresponding eigenvectors, we then have that $\{v_{i_1} \wedge \cdots \wedge v_{i_j} \mid 1 \le i_1 < \cdots < i_j \le n\}$ are a basis of eigenvectors for the induced action of $M$ on the $j^\textup{th}$ exterior power of the representation, and these have eigenvalues $\lambda_{i_1} \cdots \lambda_{i_j}$.
 
 As $\psi^k_n(M)$ is a symmetric polynomial, there is a polynomial $s_k$ in $n$ variables\footnote{The $s_k$ are the so called ``Newton polynomials''. It's good entertainment to work out a few.} such that:
@@ -299,7 +299,7 @@ Now if $\varphi$ and $\theta$ are additive sequences they define operations $\ha
 %\[\rho_i^*:R(U(n_i))\to R(G),\text{ and we define }\varphi(\theta):=\rho_1^*(\varphi_{n_1})-\rho_2^*(\varphi_{n_2}).\]
 %
 Suppose that $\varphi$ is an additive sequence, and that $\theta\in \mathrm{Rep}(G)$ (and so corresponds to a genuine representation $\Theta:G\to U(n)$). Then there is an induced map:
-\[\rho^*:R(U(n))\to R(G),\text{ and we define }\varphi(\theta):=\Theta^*(\varphi_{n}).\]
+\[\Theta^*:R(U(n))\to R(G),\text{ and we define }\varphi(\theta):=\Theta^*(\varphi_{n}).\]
 
 %If we start with an additive sequence $\varphi = \varphi_n$ and a $\theta \in R(G)$, then where $\theta$ corresponds to a genuine representation $\rho: G \to U(n)$, there is an induced map $R(G) \stackrel{\rho^*}{\from} R(U(n))$.
 \begin{claim}
@@ -413,7 +413,7 @@ Okay, today we prove Hopf invariant 1.  First, note this fact about the Adams op
 For $p$ prime, $\psi^p(x) \equiv x^p \pmod{p}$ in $K(X)$ (so think of $\psi^p$ as an improvement of the Frobenius endomorphism of a characteristic $p$ commutative ring).
 \end{lem}
 \begin{proof}
-Suppose $x$ is a vector bundle $E$.  We saw last time $\psi^p(E) = s_p(\Lambda^1 (E), \ldots, \Lambda^p (E))$. We can write 
+Suppose $x$ is a vector bundle $E$.  We saw last time $\psi^p(E) = s_p(\Lambda^1 (E), \ldots, \Lambda^p (E))$. We can write
 \[s_p(\sigma_1, \ldots, \sigma_n) = \sum_{i=1}^n z_i^p = \sigma_1^p + p \cdot r(\sigma_1, \ldots, \sigma_n),\]
 for some polynomial $r$, as $\sum_{i=1}^n z_i^p - \sigma_1^p$ is symmetric and divisible by $p$.  Thus:
 \begin{align*}
@@ -447,7 +447,7 @@ The map $\alpha$ takes the dimension components in $K(X)$ and $K(Y)$ to their pr
 K(X) \otimes K(Y)\ar[r]^{\alpha\ \ \ }\ar[dd]^\times&\widetilde K(X) \oplus \widetilde K(Y) \oplus \Z\\
 &\widetilde K(X\vee Y)\oplus \Z\ar@{=}[d]\ar@{=}[u]\\
 K(X\times Y)\ar[r]&K(X\vee Y)
-}\ \ \ \raisebox{-1.1cm}{\text{ on elements: }}\ \ \ 
+}\ \ \ \raisebox{-1.1cm}{\text{ on elements: }}\ \ \
 \xymatrix@R=5mm{
 (\widetilde x+n) \otimes (\widetilde y+m)\ar@{|->}[r]^{\alpha\hspace{0cm}}\ar@{|->}[dd]^\times&
 (m\widetilde x,n\widetilde y,nm)\ar@{|->}[d]\\
@@ -460,14 +460,14 @@ As $\alpha$ is surjctive, the map on the bottom row of this square is surjective
 \Sigma(X\vee Y)\ar[u]\ar[urr]_\simeq
 }\]
 Here $s_1:X\times Y\to X\vee Y$ and $s_2:X\times Y\to X\vee Y$ are defined by $s_1(x,y)=x$ and $s_2(x,y)=y$, and
-$p$ is the pinch map given by 
+$p$ is the pinch map given by
 $[t,(x,y)]\mapsto\begin{cases}
 [2t,(x,y)]_1&t\leq1/2\\
 [2(1-t),(x,y)]_2&t\geq1/2
 \end{cases}$.
 The diagonal composite is given by:
 \[\xymatrix@C=.35cm{
-(t, x) \ar@{|->}[r]& [t, (x, *)]  \ar@{|->}[r]& 
+(t, x) \ar@{|->}[r]& [t, (x, *)]  \ar@{|->}[r]&
 \mbox{$\begin{cases}{[2t,(x, *)]}&t\leq1/2\\{[2(1-t),(x, *)]}&t\geq1/2\end{cases}$}
 \ar@{|->}[r]&
 \mbox{$\begin{cases}{[2t,x]}&t\leq1/2\\{*}&t\geq1/2\end{cases}$}
@@ -539,7 +539,7 @@ For all $n$, $K(S^{2n})=\Z[x_n]/x_n^2$, and $\psi^k(x_n)=k^nx_n.$
 \[\psi^k(x)  = \psi^k(\bundle{L} - 1) = \bundle{L}^k - 1=(1+x_1)^k-1=kx_1.\]
 By Bott, again, we have $\widetilde K(S^{2n}) \stackrel{\cong}{\from} \widetilde K(S^2)^{\otimes n}$, sending $x^{\otimes n}$ to $x_n=x_1^{\wedge n}$, so $K(S^{2n}) \cong \Z[x_n]/x_n^2$.
 
-By lemma \ref{smashprodcommadams}, 
+By lemma \ref{smashprodcommadams},
 $\psi^k(x_n) = \psi^k(x_1^{\wedge n}) = \psi^k(x_1)^{\wedge n} = (kx_1)^{\wedge n} = k^n x_n$.
 \end{proof}
 \noindent
@@ -559,7 +559,7 @@ Here, $k$ is obtained by collapsing $X=C(f)$ onto its $4n$-cell, i.e.\ by contin
 &x_n&\ar@{|->}[l]x\\
 &&y&\ar@{|->}[l]x_{2n}
 }\]
-%So there is an $x \in \widetilde K(X)$ such that it pulls back to $x_n$. 
+%So there is an $x \in \widetilde K(X)$ such that it pulls back to $x_n$.
 Now $y^2=j^*(x_{2n})^2=0$, $i^*(x^2)=x_n^2=0$ and $i^*(xy)=x_n\cdot0=0$. Thus, for some $a,b\in\Z$, we have
 \[K(X)=\Z\langle1,x,y\rangle\text{ with multiplication }y^2=0,\ x^2=ay,\ xy=by.\]
 %In addition, $\widetilde K(X) \stackrel{j^*}{\from} \widetilde K(S^{4n})$ is injective, so $y^2 = j^* x_{2n}^2 = 0$.  This $K(X)$ has three generators, $\langle 1, x, y \rangle$, and the relations $y^2 = 0$, $x^2 = ay$.  ($x^2 = ay + bx$, but $b = 0$ since $0 = x_n^2 = i^* x^2 = b x_n$.)
@@ -572,8 +572,8 @@ There are a variety of ways to justify this claim; for example, you could use th
 In particular, as every nonzero entry has even total dimension, there can be no differentials, and the spectral sequence collapses by $E_2$ page. In particular, we can identify the $E_2$ and $E_\infty$ pages.
 
 Let $1\in H^{0}(X;K^0(\ptspace))$, $u\in H^{2n}(X;K^0(\ptspace))$ and $v\in H^{4n}(X;K^0(\ptspace))$ be generators. Then, if $p\in K^{-2}(\ptspace)$ is the periodicity element, $E_2^{2n,-2n}=\Z\langle p^nu\rangle$ and $E_2^{4n,-4n}=\Z\langle p^{2n}v\rangle$.
-Now the total degree zero line computes $K(X)$, so that 
-\[K(X)= 
+Now the total degree zero line computes $K(X)$, so that
+\[K(X)=
 \Z\langle1\rangle\oplus
 \Z\langle p^nu\rangle\oplus
 \Z\langle p^{2n}v\rangle\]
