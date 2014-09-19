@@ -121,7 +121,7 @@ On the other hand, suspending once we get
 & & \uTo \\
 \Suspend X^n & \rTo & \Suspend J_n(X) & \rTo & \Suspend X^{(n)},
 \end{diagram}
-so after one suspension $J_n(X)$ splits as $\Suspend J_n(X) \simeq \bigvee_{k \le n} \Suspend X^{(k)}$. 
+so after one suspension $J_n(X)$ splits as $\Suspend J_n(X) \simeq \bigvee_{k \le n} \Suspend X^{(k)}$.
 
 \textbf{Everything above here would like to be rewritten, and re-understood by me.}
 
@@ -133,8 +133,8 @@ Finally, notice that we have a map $\widehat h_m$:
 \end{diagram}
 Its adjoint $h_m: \Loops \Suspend X \to \Loops \Suspend X^{(m)}$ is called the ``$m^\textup{th}$ (James-)Hopf invariant.''  If $X = S^n$ and $m = 2$:
 \[h_2:\Loops S^{n+1} \to \Loops \Suspend (S^n)^{(2)} = \Loops S^{2n+1}.\]
-%; then $h_2$ is a map $\Loops S^{n+1} \to \Loops \Suspend (S^n)^{(2)} = \Loops S^{2n+1}$.  
-This is a piece of the EHP sequence; the rest comes from taking the homotopy fiber and looking at the homotopy long exact sequence. Now to compute $H_n (\Loops S^{n+1})$, we use Bott-Samelson: 
+%; then $h_2$ is a map $\Loops S^{n+1} \to \Loops \Suspend (S^n)^{(2)} = \Loops S^{2n+1}$.
+This is a piece of the EHP sequence; the rest comes from taking the homotopy fiber and looking at the homotopy long exact sequence. Now to compute $H_n (\Loops S^{n+1})$, we use Bott-Samelson:
 \[H_* (\Loops S^{n+1}) = \mathrm T(\widetilde H_* (S^n)) = \mathrm T[u_n]\text{ \ where $|u_n| = n$. }\]
 So $h_2$ induces a map $\mathrm T[u_n] \to \mathrm T[u_{2n}]$ which preserves degrees, so it couldn't be an algebra map.  So we'd better try cohomology.
 
@@ -300,7 +300,7 @@ H_* (\Loops S^{2k}) & \cong H_*( S^{2k-1}) \otimes H_* (\Loops S^{2k-1})&&\text{
 \section{The maps \texorpdfstring{$e$ and $h$}{e and h} in the EHP long exact sequence} % <<<
 \label{TheMapsEandHinTheEHPLES}
 \ifx\OutputTheMapsEandHinTheEHPLES\undefined\else
-The march to the EHP sequence continues.  
+The march to the EHP sequence continues.
 \ConfusedBox{
 \textbf{Keep?} Recall for a connected CW complex $X$ the James construction gave a homotopy equivalence
 \[
@@ -339,7 +339,7 @@ GY\ar[r]^{\text{Id}}&GY
 \ar[d]_{F(\hat h)}FX\ar[r]_{h}&G\ar[d]^{\text{Id}}\\
 FGY\ar[r]^{\ \ \hat{\text{Id}}=\text{`$\beta$'}}&Y
 }\]
-} between $\Loops$ and $\Suspend$. 
+} between $\Loops$ and $\Suspend$.
  $\hat h_2$ came from a splitting, so it splits:
 \begin{diagram}[height=2em]
 S^{2n+1} & \rTo^{\simeq \hbox{\,Id\ \ \ }} & S^{2n+1} \\
@@ -361,9 +361,9 @@ To finish computing the map on cohomology induced by $h_2:\Omega S^{n+1}\to \Ome
 }
 %\xymatrix{u_2&x_1\ar@{|->}[l]}
 \]
-As $h_2^*$ is an algebra map, $k!x_k = x_1^k \mapsto u_2^k = k! u_{2k}$, hence $h_2^*: x_k \mapsto u_{2k}$.  %In this case $H^* \Loops S^{n+1} = \Lambda[u_1] \otimes \Gamma[u_2]$, so we should study the fate of $u_1$ in the 
+As $h_2^*$ is an algebra map, $k!x_k = x_1^k \mapsto u_2^k = k! u_{2k}$, hence $h_2^*: x_k \mapsto u_{2k}$.  %In this case $H^* \Loops S^{n+1} = \Lambda[u_1] \otimes \Gamma[u_2]$, so we should study the fate of $u_1$ in the
 A simple argument (see claim \ref{SerreSSEHPfiberArg}) using the Serre spectral sequence of the homotopy fibration $F \to \Loops S^{n+1} \to \Loops S^{2n+1}$
-%Moreover there can't be anything else in the fiber, because such a thing couldn't survive to $E_\infty$, but on the other hand isn't allowed to hit anything. 
+%Moreover there can't be anything else in the fiber, because such a thing couldn't survive to $E_\infty$, but on the other hand isn't allowed to hit anything.
 shows that $H^*(F; \Z) = \Lambda[u_1]$ with $|u_1| = n$. That is, $F$ has the same cohomology algebra as $S^n$. On the other other hand, we have a map $\alpha: S^n \to \Loops S^{n+1}$ (the map from the Bott-Samelson theorem).  We produce the diagram
 \[\xymatrix{
 &S^n\ar[dr]^{\text{null}}\ar@{-->}[ld]_\gamma\ar[d]^\alpha\\
@@ -439,7 +439,7 @@ Moreover, as $E_2^{2kn,n}\simeq R$ surjects onto $E_\infty^{2kn,n}=R$ as $R$-mod
 To summarise, the groups $E_2^{2kn,0}$ and $E_2^{2kn,n}$ are all equal to $R$, these entries are never hit by any differentials, and never support nonzero differentials, and only these entries are nonzero at $E_\infty$. Thus, none of the $E_2^{0,j}$ can be nonzero except when $j=n$, for if $j$ is chosen minimally amoungst exceptions to this rule, then $E_\infty^{0,j}\neq0$, a contradiction.
 %This implies that no differentials out of the entries $E^{0,k}$ for $k<3n-1$ can be nonzero. In particular, all of these groups are zero except for $E_2^{0,n}$, which is a copy of $\Z$.
 %
-%Now suppose $d^{2n}:E_{2k}^{0,3k-1}\to E_{2k}^{2k,k}$ is nonzero. This differential must be surjective, as otherwise torsion would survive in $E_\infty^{2k,k}$, and  $H^{3k}(E)\simeq\Z$ would have a torsion subgroup, which is absurd. 
+%Now suppose $d^{2n}:E_{2k}^{0,3k-1}\to E_{2k}^{2k,k}$ is nonzero. This differential must be surjective, as otherwise torsion would survive in $E_\infty^{2k,k}$, and  $H^{3k}(E)\simeq\Z$ would have a torsion subgroup, which is absurd.
 %%(On the other hand, it would have to be injective, otherwise $E^{0,3k-1}_\infty\neq0$. --- who cares?)
 %In particular, the entry $E_2^{0,3k}$ would have to be a copy of $\Z$, which for dimension reasons would survive to $E_\infty$.
 %
@@ -463,10 +463,10 @@ You could think of the rest of the maps as the obstruction to $e$ being an isomo
 \end{diagram}
 so $e: \pi_i (S^n) \to \pi_{i+1} (S^{n+1})$ is epic if $i = 2n-1$ and an isomorphism if $i < 2n-1$.  This is precisely the statement of the Freudenthal suspension theorem for $S^n$, so the homotopy groups $\pi_k (S^{2n+1})$ and the $h$ and $p$ maps are the obstructions to extending the Freudenthal suspension theorem to higher dimensions.
 
-By the way, earlier we studied the Hopf invariant 1 problem; there were two main results: using $\Sq^n$ we found that if there is an element of Hopf invariant 1 in $\pi_{2n-1} (S^n)$, then $n$ is a power of $2$. 
+By the way, earlier we studied the Hopf invariant 1 problem; there were two main results: using $\Sq^n$ we found that if there is an element of Hopf invariant 1 in $\pi_{2n-1} (S^n)$, then $n$ is a power of $2$.
 Similarly, we defined a stable version of the Hopf invariant, a homomorphism $\pi_{2n+i-1}(S^{n+i})\to\Z_2$, in which $\Sq^n$ takes the place of the cup square.
 
-Since $\Sq^n$ commutes with suspension, this is a stable result: if $K=S^{n+i}\cup_f e^{2n+i}$ for $f\in\pi_{2n+i-1}(S^{n+i})$, and if $H^{n+i}(K;\Z_2)=\Z_2\langle x\rangle$ and $H^{2n+i}(K;\Z_2)=\Z_2\langle y\rangle$, then $\Sq^n x = y$ implies that $n$ is a power of $2$.  Using $K$-theory we showed that if the (unstable) Hopf invariant is one, then $n$ must be 1, 2, 4, or 8.  This result is not obviously stable from $K$-theory because the Adams operations are not stable.  But now the EHP sequence gives this to us: 
+Since $\Sq^n$ commutes with suspension, this is a stable result: if $K=S^{n+i}\cup_f e^{2n+i}$ for $f\in\pi_{2n+i-1}(S^{n+i})$, and if $H^{n+i}(K;\Z_2)=\Z_2\langle x\rangle$ and $H^{2n+i}(K;\Z_2)=\Z_2\langle y\rangle$, then $\Sq^n x = y$ implies that $n$ is a power of $2$.  Using $K$-theory we showed that if the (unstable) Hopf invariant is one, then $n$ must be 1, 2, 4, or 8.  This result is not obviously stable from $K$-theory because the Adams operations are not stable.  But now the EHP sequence gives this to us:
 \[\pi_{2n-1}(S^n) \stackrel{e^i}{\onto} \pi_{2n-1+i} (S^{n+i})\text{ is surjective},\]
 so no new elements are born after suspending any number of times.  This is an example of the EHP sequence taking unstable information and giving back stable information.
 
@@ -500,7 +500,7 @@ $h(f)=\pm H(f)$ for all $f\in\pi_{2n+1} (S^{n+1})$, so that the names are well-c
 \begin{proof}
 We'll calculate $h(f)=\pm H(f)$ for $f\in\pi_{2n+1} (S^{n+1})$. Moreover, we'll write $H$ for $H(f)$ and $h$ for $h(f)$.
 
-First take the case $n$ is even.  Then $H$ is calculated by squaring an odd dimensional cohomology class, so that $H = 0$. 
+First take the case $n$ is even.  Then $H$ is calculated by squaring an odd dimensional cohomology class, so that $H = 0$.
 Now let $g$ generate $H_{2n}(S^{2n})$, and write $u_2$ as usual for the generator of $H_{2n}(\Omega S^{n+1})$. By the claim, $\hat f_*(g)=h\cdot u_2$ (up to sign). Now $f_*$ is a coalgebra map, and we have computed the Hopf algebra structure on $H_*(\Omega S^{n+1})=\mathrm{T}[u_n]$, so there is a compatibility:
 %\begin{diagram}
 %g & \rMapsto^{\hat f_*} & h u_{2n} \\
@@ -521,7 +521,7 @@ S^{2n+1} & \rTo^{\Suspend \hat f} & \Suspend \Loops S^{n+1} & \rTo & \Suspend C(
 %
 0 & \lTo^f & \Z & \lTo & \Z\langle x\rangle & \lTo & 0 \\
 \makebox[0cm][r]{$H^{n+1}$:\qquad}\dEqualto & & \dTo>{\beta^*}<\simeq & & \dTo & & \dEqualto \\
-0 & \lTo^{\Suspend \hat f} & \Z & \lTo & \Z\langle \overline x\rangle & \lTo & 0 &\\ 
+0 & \lTo^{\Suspend \hat f} & \Z & \lTo & \Z\langle \overline x\rangle & \lTo & 0 &\\
 %
  && 0 & \lTo & \Z\langle y\rangle & \lTo & \Z& \lTo & 0 \\
 \makebox[0cm][r]{$H^{2n+2}$:\qquad}& & \dTo>{\beta^*} & & \dTo & & \dEqualto &&\dTo\\
@@ -541,7 +541,7 @@ S^{2n}\ar[u]^\alpha\ar[ur]^{\hat f}
 }\]
 In particular, as the composite $S^{2n}\to \Omega C(f)$ is null, $h\mapsto 0$ under $\Z\onto\Z_H$, so that $H|h$.
 
-% First we want to show that $H_{2n} (\Loops C (f)) = \Z_H$.  
+% First we want to show that $H_{2n} (\Loops C (f)) = \Z_H$.
 In the rational cohomology spectral sequence for the fibration $\Loops C(f) \to PC(f) \to C(f)$, we compute a crucial differential (marked $(\star)$):
 \begin{center}
 \begin{tikzpicture}
@@ -566,7 +566,7 @@ In the rational cohomology spectral sequence for the fibration $\Loops C(f) \to 
     \path (4.5,2) node (v21) {$\Q$};
     %Arrow
     \draw [->] (v01) edge (v10);
-    \draw [->,font=\scriptsize] (v11) 
+    \draw [->,font=\scriptsize] (v11)
 		edge node[left]{$(\star)$} (v20);
     \path (v00) ++(.3,.3) coordinate (v00ur);
     \path (v10) ++(.3,.3) node (v10ur) {$x$};
@@ -646,7 +646,7 @@ Because there is no torsion in these two groups, the integral cohomology spectra
     %Arrow
     \draw [->] (w10) edge node[above]{$\simeq$} (w01);
 %    \draw [->] (w20) edge node[above right]{$\cdot H$} (w11);
-    \draw [->,font=\scriptsize] (w20) 
+    \draw [->,font=\scriptsize] (w20)
 		edge node[left]{$(\star)$} node[above]{$\cdot H$} (w11);
     \draw [->>,font=\scriptsize] (w11) edge node[above] {\ \ $\;d_{n+1}$} (w02);%node[above]{$\simeq$} (w02);
 %    \draw [->] (w21) edge node[above]{$a$} (w12);
@@ -655,7 +655,7 @@ Because there is no torsion in these two groups, the integral cohomology spectra
 	\draw[dashed,->,font=\scriptsize]  (v11) edge [bend right=10] node[above] {$\chi$}node[below] {$\simeq$} (w11);
 \end{tikzpicture}
 \end{center}
-As the right hand sequence converges to $H_*(\ptspace)$, we deduce that $H_{2n}(\Omega C(f))=\Z_H$, and the differential $d_{n+1}:E^{n+1}_{n+1,n}\to E^{n+1}_{0,2n}$ is the quotient map $\Z\to\Z_H$. 
+As the right hand sequence converges to $H_*(\ptspace)$, we deduce that $H_{2n}(\Omega C(f))=\Z_H$, and the differential $d_{n+1}:E^{n+1}_{n+1,n}\to E^{n+1}_{0,2n}$ is the quotient map $\Z\to\Z_H$.
 
 Now the map $k:S^{n+1}\to C(f)$ induces a morphism of spectral sequences,  from that of the fibration $\Loops S^{n+1} \to PS^{n+1} \to S^{n+1}$ to that of $\Loops C(f) \to PC(f) \to C(f)$, as drawn above. Moreover, the map of interest, $H_{2n}(\Omega k)$, is one of the two dashed arrows. The other dashed arrow, $\chi$, is an isomorphism, as it is induced by the isomorphisms $H_{n+1}(k):H_{n+1}(S^{n+1})\to H_{n+1}(C(f))$ and $H_{n}(\Omega k):H_n(\Omega S^{n+1})\to H_n(\Omega C(f))$. Consideration of the commuting square in the above diagram reveals that $H_{2n}(\Omega k)$ is surjective, and completes the proof.
 \end{proof}
@@ -723,19 +723,19 @@ In fact, $k$ is a relative homeomorphism $(C(X\ast Y),X\ast Y)\to (C(j),Z)$. It 
 \end{center}
 %
 %
-%; 
+%;
 %That is, we have a commutative diagram:
 %\[\xymatrix{
 %X \ast Y  \ar[d]\ar[r]^j & \Suspend Z\ar[d] \\
 %C(X \ast Y)  \ar[r]^{k} \ar[d]& C(j)\ar[d]\\
 %C(X\ast Y)/(X\ast Y)\ar[r]^{\ \ \ \ \ \cong}&C(j)/\Sigma Z
 %}\]
-Now we have the following commuting diagram of relative diagonal maps of pairs of spaces.\footnote{Recall that for any pair $(W,A\cup B)$, there is a relative diagonal map $(W,A\cup B)\to (W,A)\times (W,B):=(W\times W,A\times W\cup W\times B)$.} Here, we still draw the subspace $A$ in a pair $(W,A)$ in green, and still indicate gluing by drawing red arrows. 
+Now we have the following commuting diagram of relative diagonal maps of pairs of spaces.\footnote{Recall that for any pair $(W,A\cup B)$, there is a relative diagonal map $(W,A\cup B)\to (W,A)\times (W,B):=(W\times W,A\times W\cup W\times B)$.} Here, we still draw the subspace $A$ in a pair $(W,A)$ in green, and still indicate gluing by drawing red arrows.
 \begin{center}
 \begin{tikzpicture}
 \HopfDiagram{}{on}{}{1}{0}{cone} %bottom left
 \HopfDiagram{on}{}{}{2.5}{0}{cone}
-\path (2.25,-.75) 
+\path (2.25,-.75)
 node[above] {$(C_+X\times C_- Y,C_+X\times Y)$}
 node {$\times$}
 node[below] {$(C_+X\times C_- Y,X\times C_-Y)$};
@@ -822,8 +822,8 @@ H^n(x_0 \times C_-Y, x_0 \times Y) & \lTo & H^n(C_-Z, Z) \\
 \dTo<\cong>\partial & & \uTo<\cong>\partial \\
 H^{n-1}(x_0\times Y) & \lTo^{(\mu|_{x_0\times Y})^*}_{\cdot b} & H^{n-1} (Z).
 \end{diagram}
-In particular, $i^*(x)$ is $b$ times a generator (and we call this generator $x$ as well). 
-\item This relative diagonal \emph{defines} the smash product map. 
+In particular, $i^*(x)$ is $b$ times a generator (and we call this generator $x$ as well).
+\item This relative diagonal \emph{defines} the smash product map.
 \end{enumerate}
 Thus, $k^*(Hy)=ab\,x^{\sprod2}$, and as $k$ is a relative homeomorphism, this shows that $H=\pm ab$.
 \end{proof}
@@ -857,7 +857,7 @@ S^n\ar[r]&\Omega S^{n+1}\ar@{~>}[r]^h&\Omega S^{2n+1}\\
 We have decorated this diagram for readability only. The dotted map $q$ is defined to be the composite $h\overline\tau$. The wavy maps are highlighted, as their composite is a self map of $\Omega S^{2n+1}$ which we would like to show is a homotopy equivalence. The diagram commutes, as the left triangle simply expresses that $\overline\tau$ is adjoint to $\tau$.
 
 Now because $\tau$ has Hopf invariant one, and $h$ detects the Hopf invariant, $q$ must be homotopic to $\pm\alpha$ (where $\alpha$ is the adjoint of $\textup{Id}_{\Sigma S^{2n}}$). Now $\pi_{2n}(\alpha)$ is an isomorphism, so by the Hurewicz theorem, so is $H_{2n}(\alpha)$, and by universal coefficients, so is $H^{2n}(\alpha)$. In particular, the wavy composite induces an automorphism $H^{2n}(\Omega S^{2n+1})$. As $H^*(\Omega S^{2n+1})$ is a divided polynomial algebra, it follows that the wavy composite is a cohomology isomorphism, and (by the Whitehead theorem) a homotopy self-equivalence
-%(WTF\footnote{By the Whitehead theorem, even when $n=0$, as the spaces involved are \emph{simple} --- $\pi_1$ acts trivially on $\pi_n$ for all $n$.}) 
+%(WTF\footnote{By the Whitehead theorem, even when $n=0$, as the spaces involved are \emph{simple} --- $\pi_1$ acts trivially on $\pi_n$ for all $n$.})
 of $\Omega S^{2n+1}$.
 
 This is amazing: it means that $\Loops S^{n+1}$ splits, and so the long exact sequence for this fibration splits into split short exact sequences:
@@ -930,13 +930,13 @@ S^{p+q-1} & \rTo^W & S^p \wsum S^q & \rTo^{\alpha \wsum \beta} & X \wsum X & \rT
 Now consider the Whitehead product in the case $p = q = n$; here the most interesting case is the ``Whitehead square'' $[\alpha, \alpha]$.  It can be computed in terms of its universal example $[\iota_n, \iota_n] = w_n$, where $\iota_n$ is the fundamental class in $\pi_n (S^n)$. That is, for $\alpha\in\pi_p(X)$, $[\alpha,\alpha]\in\pi_{2p-1}(X)$ is the composite $\alpha \circ w_n$:
 \[\xymatrix@R=.7cm@C=0cm
 {S^{2p-1}\ar[rr]^{w_n}\ar[dr]_{W}&&S^p\ar[rr]^\alpha&&X\\
-&S^p\vee S^p\ar[ur]_{\Phi}\ar@{..>}[rr]^\alpha&&X\vee X\ar@{..>}[ur]_{\Phi}
+&S^p\vee S^p\ar[ur]_{\Phi}\ar@{..>}[rr]^{\alpha\vee\alpha}&&X\vee X\ar@{..>}[ur]_{\Phi}
 }\]
 Now before, we saw that $W$ was part of a pushout square, drawn on the left below. We also have it that $\Phi$ is part of an adjoining pushout square, drawn at the right:
 \[\xymatrix{
-e^p\times e^p\ar[r]^{\pi\times\pi'}&S^p\times S^p\ar[r]&J_2(S^n)\\
+e^p\times e^p\ar[r]^{\pi\times\pi'}&S^p\times S^p\ar[r]&J_2(S^p)\\
 \makebox[0cm][r]{$S^{2p-1}=$\,}
-\partial(e^p\times e^p)\ar@{^{(}->}[u]\ar[r]^W&S^p\vee S^p\ar@{^{(}->}[u]\ar[r]^\Phi &S^n\ar[u]
+\partial(e^p\times e^p)\ar@{^{(}->}[u]\ar[r]^W&S^p\vee S^p\ar@{^{(}->}[u]\ar[r]^\Phi &S^p\ar[u]
 }\]
 Now the outer square is a pushout diagram, and the inclusion of $S^{2p-1}$ in the contractible space $e^p\times e^p$ is a cofibration, so that $J_2(S^n)$ is the mapping cone $C(w_n)$.
 %But this all means that the mapping cone $C(W_n) = J_2 S^n$, the second filtration of the free monoid on $S^n$, $JS^N$, from the James construction.
@@ -956,7 +956,7 @@ and show that the image contains $2\Z$ is $n$ is even. Thus there is a short exa
 As $\Z$ is free, this sequence splits, and $\pi_{2n-1}(S^n)\simeq\ker(h)\oplus\Z$. This, and $\pi_n (S^n) = \Z$ are in fact the only free abelian summands in higher homotopy groups!  Now if you're away from $2$, $2$ is as good as one; in other words a corollary of the above and our calculation of $H^* (\Loops S^{n+1})$ is:
 \ConfusedBox{\textbf{Don't we also need to be away from all the other primes, so that the EHP sequence is a fiber sequence? I.e. Doesn't this need to be done rationally?} Wait, maybe not! `the above' may simply refer to what's a couple of lines above this box.}
 \begin{cor}
-For $n$ even, away from $2$, $\Loops S^n \simeq S^{n-1} \times \Loops S^{2n-1}$, i.e.: 
+For $n$ even, away from $2$, $\Loops S^n \simeq S^{n-1} \times \Loops S^{2n-1}$, i.e.:
 \[\pi_{*+1} (S^n) \otimes \Z[\nicefrac{1}{2}] \cong (\pi_* (S^{n-1}) \oplus \pi_{*+1} (S^{2n-1})) \otimes \Z[\nicefrac{1}{2}].\]
 \end{cor}
 Now remember the $h$ map appeared in the long exact sequence
@@ -976,7 +976,7 @@ Now $w_{n-1}$ might desuspend more times; you might ask where  it was ``born'' i
 }\]
 And here we see the (as yet) mysterious rebirth of the vector field problem:
 \begin{thm}
-$w_{n-1} \in \pi_{2n-3} (S^{n-1})$ desuspends to an element in $\pi_{2n-\rho(n)-2}(S^{n-\rho(n)})$ and no further. That is, $w_{n-1}$ desuspends exactly $\rho(n)-1$ times.\footnote{Recall that $\rho(n)$ was the number from the vector field problem (see lecture \ref{IntroductionToVectorFieldsOnSpheres}): 
+$w_{n-1} \in \pi_{2n-3} (S^{n-1})$ desuspends to an element in $\pi_{2n-\rho(n)-2}(S^{n-\rho(n)})$ and no further. That is, $w_{n-1}$ desuspends exactly $\rho(n)-1$ times.\footnote{Recall that $\rho(n)$ was the number from the vector field problem (see lecture \ref{IntroductionToVectorFieldsOnSpheres}):
 $
 \begin{array}{c|cccccccc}
 n & 1 & 2 & 4 & 8 & 16 & 32 & 64 & \cdots \\
@@ -1003,7 +1003,7 @@ Starting with the undecorated arrows in the following diagram, we obtain the wav
 All we need to show is that the dotted map is $\pm e^2$. By the Hurewicz theorem, it is enough to show that it induces an epimorphism on $H_{2n-1}$. This follows from the diagram
 \[\xymatrix{
 \widetilde H_{2n} (C (w_n)) \ar[r]^{(1)}_\cong & \widetilde H_{2n} (\Loops S^{n+1}) \\
-H_{2n}(S^n, w_n (S^{2n-1})) \ar[r] 
+H_{2n}(S^n, w_n (S^{2n-1})) \ar[r]
 \ar[u]^{\cong}\ar[d]_\cong^\partial
 & H_{2n}(S^n, p(\Loops^2 S^{2n+1}) )
 \ar[u]^{\cong}_{(2)}\ar[d]_\cong^\partial
@@ -1012,7 +1012,7 @@ H_{2n-1} (S^{2n-1}) \ar@{..>}[r] & H_{2n-1} (\Loops^2 S^{2n+1})
 }\]
 if we verify the isomorphisms (1) and (2).  (1) is the fact we already showed in a previous footnote.$^\text{\ref{Fottnoteofold}}$  (2) follows from the following argument involving the spectral sequence of the fibration $\Loops^2 S^{2n+1} \to S^n \to \Loops S^{n+1}$. For ease of reading, write $F\to E\to B$ for the three terms of this fibration. Then the transgression $E^{2n}_{2n,0}\to E^{2n}_{0,2n-1}$ must be an isomorphism, however, there can be no other nonzero differentials in or out of $E_{2n,0}$ and $E_{0,2n-1}$. Now the following diagram defines the transgression:
 \[\xymatrix{
-H_{2n-1}(F)&\ar[l]H_{2n}(E,F)\ar[r]^{(2)}&H_{2n}(B,*)&%\ar[r]& &&%H^n(\Omega B)\ar@{=}[r]&H^{n+1}(\Sigma\Omega B)&\ar[l] 
+H_{2n-1}(F)&\ar[l]H_{2n}(E,F)\ar[r]^{(2)}&H_{2n}(B,*)&%\ar[r]& &&%H^n(\Omega B)\ar@{=}[r]&H^{n+1}(\Sigma\Omega B)&\ar[l]
 H_{2n}(B)\ar[l]
 }\]
 If (2) were not an isomorphism, then the transgression could not be either.
@@ -1025,7 +1025,7 @@ And so we get
 \begin{thm}[G.\ Whitehead]
 The kernel of $\xymatrix{\pi_{2n-1}(S^n)\ar[r]^e&\pi_{2n}(S^{n+1})}$\!\! is
 %
-%In the exact sequence 
+%In the exact sequence
 %$\xymatrix{\pi_{2n+1}(S^{2n+1})\ar[r]^{\ p}&\pi_{2n-1}(S^n)\ar[r]^e&\pi_{2n}(S^{n+1})}$\!,
 \[
 \ker(e) = \begin{cases} 0 & \hbox{when $n = 1, 3, 7$} \\ \Z_2 \langle w_n \rangle & \hbox{$n$ odd, $n\neq1,3,7$} \\ \Z \langle w_n \rangle & \hbox{$n$ even}. \end{cases}
@@ -1072,7 +1072,7 @@ This is an \emph{exact couple}, so you get a spectral sequence converging to $\p
 \[
 E^1_{s, t} = \pi_{s+t}(\Loops^{s+1} S^{2s+1}) = \pi_{2s+1+t} (S^{2s+1})
 \]
-so the columns of the spectral sequence are homotopy groups of odd spheres.  So here it is: 
+so the columns of the spectral sequence are homotopy groups of odd spheres.  So here it is:
 \[\textsc{Draw me, please.}\]
 The differentials $d_r: E^r_{s, t} \to E^r_{s-r, t+r-1}$, of total degree $-1$, are like the differentials in the usual homology spectral sequence. They are `defined' by the `formula' $d_r=he^{-(r-1)}p$, that is:
 \[\xymatrix{
@@ -1130,7 +1130,7 @@ But we can get more out of this information: notice that this is the \emph{only}
 %\ConfusedBox{
 %\textbf{On Repeat:}
 
-%Last time we saw the introduction of the EHP spectral sequence.  Remember the $E^1$ term looked like this: INKSCAPE  
+%Last time we saw the introduction of the EHP spectral sequence.  Remember the $E^1$ term looked like this: INKSCAPE
 Now earlier we claimed that introducing the EHP spectral sequence would help to attack the theorem about desuspending $w_n$.  In order to see why this might be true, let's take a look at how to interpret the differentials in the spectral sequence. Note that this discussion will apply in general to any spectral sequence arising from an exact couple.
 Two lessons are of great importance in sorting everything out:
 \begin{enumerate}
