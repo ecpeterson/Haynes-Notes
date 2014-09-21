@@ -2,7 +2,7 @@
 \section{The stable category} % <<<
 \label{TheStableCategory}
 \ifx\OutputTheStableCategory\undefined\else
-In order to set up the spectral sequence alluded to above, whose $E^1$ page conists of the stable homotopy groups of spheres in each column, it's a good idea to talk about stable homotopy a bit; for more information, see Adams' blue book~\cite{Adams}.  The notation $[X, Y]$ will mean pointed homotopy classes of point maps.  There is a map $\Suspend: [X, Y] \to [\Suspend X, \Suspend Y]$, and the idea is to study this game in detail.
+In order to set up the spectral sequence alluded to above, whose $E^1$ page consists of the stable homotopy groups of spheres in each column, it's a good idea to talk about stable homotopy a bit; for more information, see Adams' blue book~\cite{Adams}.  The notation $[X, Y]$ will mean pointed homotopy classes of point maps.  There is a map $\Suspend: [X, Y] \to [\Suspend X, \Suspend Y]$, and the idea is to study this game in detail.
 
 One nice thing about suspending is that when you suspend you get a group: $[\Suspend X, Z]$ is a group naturally in $X$ and $Z$, and $[\Suspend^2 X, Z]$ is abelian.  The group structure comes from
 \[
@@ -27,7 +27,7 @@ S^{2n-1} & \rTo^{w_n} & S^n & \rTo^{2 \iota_n} & S^n \\
 & \rdTo_W & \uTo>{fold} & & \uTo>{\textup{fold}} \\
 & & S^n \wsum S^n & \rTo_{2\iota_n \wsum 2\iota_n} & S^n \wsum S^n.
 \end{diagram}
-The top row represents $(\iota_n + \iota_n) \circ w_n = w_n^*(2 \iota_n)$.  The lower composite represents $[2\iota_n, 2\iota_n] = 4[\iota_n, \iota_n]$ (by bilinearity of the Whitehead product), which is equal to $4 w_n$ or $4 w_n^*(\iota_n)$.  So $w_n^*$ cannot be a homomorphism unless $w_n = w_n^* \iota_n$ has finite order in $\pi_{2n-1}(S^n)$.  But for $n$ even, $h(w_n) = 2 \iota_n$, so the image of $w_n$ under the Hopf map is infinite cyclic!  
+The top row represents $(\iota_n + \iota_n) \circ w_n = w_n^*(2 \iota_n)$.  The lower composite represents $[2\iota_n, 2\iota_n] = 4[\iota_n, \iota_n]$ (by bilinearity of the Whitehead product), which is equal to $4 w_n$ or $4 w_n^*(\iota_n)$.  So $w_n^*$ cannot be a homomorphism unless $w_n = w_n^* \iota_n$ has finite order in $\pi_{2n-1}(S^n)$.  But for $n$ even, $h(w_n) = 2 \iota_n$, so the image of $w_n$ under the Hopf map is infinite cyclic!
 \ConfusedBox{\textbf{I'm just plain old confused about:} So for example $\End(\Suspend^n X)$ is not a ring.?}
 
 The way to get around this is by continuing to suspend.  In what follows we take $X$ and $Y$ to be finite complexes.  Then we define $\{X, Y\} = [\Suspend^n X, \Suspend^n Y]$ for $n$ much larger than 0, in particular for $n$ sufficiently large $[\Suspend^n X, \Suspend^n Y] \cong [\Suspend^{n+1} X, \Suspend^{n+1} Y]$ by the following theorem, and we define $\{X, Y\}$ to be this ``stable'' group, the ``stable homotopy classes of maps'' between $X$ and $Y$.
@@ -56,8 +56,8 @@ So we get a category whose objects are finite complexes and whose morphisms are 
 %\dInto & \ruDashto & \dTo_k \\
 %C \Suspend^n W & \rTo^H & \Suspend^n X \times \Suspend^n Y
 %\end{diagram}
-%To show that $f$ is stably null, we have to lift $H$ to the dashed arrow, by taking $n$ large enough.  
-In particular, $f$ lifts to the fiber $F(k)$. Now the fiber is $(2n-1)$-connected, so when $n > \dim W$, the lifting must be null,\footnote{Recall that by CW-approximation, a $(2n-1)$-connected CW-comples is homotopic to a complex with no nonzero cells of dimension less than $2n$. By CW-approximation, all maps $C(\Sigma^n W)\to \Sigma^nX\vee\Sigma^n Y$ will be null when $n>\dim W$.} and we're done.
+%To show that $f$ is stably null, we have to lift $H$ to the dashed arrow, by taking $n$ large enough.
+In particular, $f$ lifts to the fiber $F(k)$. Now the fiber is $(2n-1)$-connected, so when $n > \dim W$, the lifting must be null,\footnote{Recall that by CW-approximation, a $(2n-1)$-connected CW-complex is homotopic to a complex with no nonzero cells of dimension less than $2n$. By CW-approximation, all maps $C(\Sigma^n W)\to \Sigma^nX\vee\Sigma^n Y$ will be null when $n>\dim W$.} and we're done.
 \end{enumerate}
 \end{enumerate}
 
@@ -138,7 +138,7 @@ and we require that this assignment is an isomorphism.
 \ConfusedBox{Do we need another axiom here? I once saw:
 
 A map $u:S\to A\wedge A^\perp$ is called a duality if for all $E$, the maps
-%\[[A,E]\to[S,E\wedge A^\perp],\qquad (A\to E)\mapsto (S\to A\wedge A^\perp\to 
+%\[[A,E]\to[S,E\wedge A^\perp],\qquad (A\to E)\mapsto (S\to A\wedge A^\perp\to
 \begin{alignat*}{2}
 u_E:[A,E]\to[S,E\wedge A^\perp],&\qquad &
 (A\to E)\mapsto (S\to A\wedge A^\perp\to E\wedge A^\perp)\\
@@ -165,7 +165,7 @@ $W \mapsto \{X \sprod W, S^0\}$ is a cohomology theory, so it has a representing
 The first two squares obviously commute; the third commutes by naturality of Brown representability.
 \end{proof}
 
-In fact there's more to be had from this use of Brown representability: the correspondence $X \leadsto Y = DX$ can be made contravariantly functorial in the sense that $X \sprod DX \stackrel{\alpha_X}{\to} S^0$ is a natural transformation.  That is, we can construct a functor $D:\CatOf{S}^\text{op}\to\CatOf{S}$ and a natural collection $\alpha_X:X\wedge D(X)\to S^0$ for $X\in\CatOf{S}$ of dualities. By ``natural'', we mean that for any map %\IncorrectFootnote{$\alpha$ is a natural transformation of functors $\CatOf{S}\times\CatOf{S}^\text{op}\to\CatOf{S}$, where $S^0$ is the functor whose image is the object $S^0$ and its identity morphism.} For 
+In fact there's more to be had from this use of Brown representability: the correspondence $X \leadsto Y = DX$ can be made contravariantly functorial in the sense that $X \sprod DX \stackrel{\alpha_X}{\to} S^0$ is a natural transformation.  That is, we can construct a functor $D:\CatOf{S}^\text{op}\to\CatOf{S}$ and a natural collection $\alpha_X:X\wedge D(X)\to S^0$ for $X\in\CatOf{S}$ of dualities. By ``natural'', we mean that for any map %\IncorrectFootnote{$\alpha$ is a natural transformation of functors $\CatOf{S}\times\CatOf{S}^\text{op}\to\CatOf{S}$, where $S^0$ is the functor whose image is the object $S^0$ and its identity morphism.} For
 $f: X \to Y$, the following diagram commutes:
 \begin{diagram}[height=2em]
 X \sprod DY & \rTo^{1 \sprod Df} & X \sprod DX \\
@@ -272,7 +272,7 @@ and apply the Hopf construction to get a map
 %}\]
 In the $\CatOf{S}$ category we get a map $\hat f: X \sprod \Suspend^{1-n} Y \to S^0$.  Alexander duality says
 \begin{thm}
-If $Y \simeq S^n - X$ then $\hat f$ is a duality; $DX \simeq \Suspend^{1-n} Y$.  
+If $Y \simeq S^n - X$ then $\hat f$ is a duality; $DX \simeq \Suspend^{1-n} Y$.
 \end{thm}
 \noindent The proof consists of showing that $\hat f/: \widetilde H_i (\Suspend^{1-n} Y) \stackrel{\cong}{\to} \widetilde H^i (X)$ is an isomorphism for $i \in \Z$.
 \begin{rem}
@@ -284,15 +284,15 @@ If you think of $X$ and $Y$ as embedded in $\R^n$ instead of $S^n$ and $Y \simeq
 %\centering\includegraphics[width=0.2\textwidth]{figures/26.pdf}
 %\caption{\small Set-up for Milnor-Spanier duality.}
 %\end{wrapfigure}
-Take $X \subseteq \mathrm{int}(D^n) \cong \R^n$, and suppose $N \subseteq \mathrm{int}(D^n)$ is a regular neighborhood,\footnote{If you embed a finite complex into a Euclidean space, any sufficiently small 
+Take $X \subseteq \mathrm{int}(D^n) \cong \R^n$, and suppose $N \subseteq \mathrm{int}(D^n)$ is a regular neighborhood,\footnote{If you embed a finite complex into a Euclidean space, any sufficiently small
 open neighborhood admits a deformation retraction back to the complex
- --- this is a `regular neighborhood'. If the complex is a manifold, 
-you can identify the normal bundle of the embedding with a regular 
+ --- this is a `regular neighborhood'. If the complex is a manifold,
+you can identify the normal bundle of the embedding with a regular
 neighborhood. } so that the inclusion $X \stackrel{\simeq}{\to} N$ is a homotopy equivalence.  Then $D(\pt{X}) \simeq \Suspend^{1-n}(D^n - N)$, by Alexander duality.
 The virtue of the regular neighborhood is that you can identify what the suspension of the complement is: all you need to find the suspension is an inclusion into a contractible space, which we have, giving a degenerate cofiber sequence:
 \[(D^n - N) \to D^n \to D^n/(D^n - N) \overset{\simeq}{\to} \Suspend(D^n - N)\to\Sigma D^n.\]
 Thus, as $D^n/(D^n-N)$ is homeomorphic to $\overline N/\partial\overline N$,
-\[D(X_+)\simeq\Suspend^{1-n}(D^n - N) \simeq \Suspend^{-n}(D^n / (D^n-N)) \simeq \Suspend^{-n}(\bar N / \partial \bar N).\]  Well that's most useful when you can say something about $N$; if $X$ is a $d$-dimensional manifold without boundary, then the normal bundle $\nu$ of the inclusion $X \into D$ is $(n-d)$-dimensional.  $N$ is homotopy equivalent to the disk bundle of $\nu$, and $\bar N / \partial \bar N \simeq T (\nu)$, so $D(\pt{X}) \simeq \Suspend^{-n} T(\nu) \simeq T(\nu - n \varepsilon)$.  This is called ``Milnor-Spanier duality'' althought it's not called that very often.  In (co)homology,
+\[D(X_+)\simeq\Suspend^{1-n}(D^n - N) \simeq \Suspend^{-n}(D^n / (D^n-N)) \simeq \Suspend^{-n}(\bar N / \partial \bar N).\]  Well that's most useful when you can say something about $N$; if $X$ is a $d$-dimensional manifold without boundary, then the normal bundle $\nu$ of the inclusion $X \into D$ is $(n-d)$-dimensional.  $N$ is homotopy equivalent to the disk bundle of $\nu$, and $\bar N / \partial \bar N \simeq T (\nu)$, so $D(\pt{X}) \simeq \Suspend^{-n} T(\nu) \simeq T(\nu - n \varepsilon)$.  This is called ``Milnor-Spanier duality'' although it's not called that very often.  In (co)homology,
 \[
 E^{-i}(\pt{X}) = E_i (D(\pt{X})) = E_{i+n} (T (\nu)).
 \]
@@ -301,7 +301,7 @@ Observe also that $\nu + \tau = n \varepsilon$ where $\tau$ is the tangent bundl
 E^{-i}(\pt{X}) = E_i (D(\pt{X})) = E_{i} (T (-\tau)).
 \]
 \subsection*{Poincar\'e duality}
-If $\nu$ (or equivalenctly, $\tau$) is oriented for $E$ in the Milnor-Spanier setup, then the Thom isomorphism says $E_{i+n} (T (\nu)) \cong E_{i+d} (\pt{X})$. Thus:\footnote{More abstractly: the Thom isomorphism gives $E_{i-d}(T(-\tau))\cong E_i(X_+)$, and $E^{d-i}(X_+)\cong E_{i-d}(T(-\tau))$ by Milton-Spanier.}
+If $\nu$ (or equivalently, $\tau$) is oriented for $E$ in the Milnor-Spanier setup, then the Thom isomorphism says $E_{i+n} (T (\nu)) \cong E_{i+d} (\pt{X})$. Thus:\footnote{More abstractly: the Thom isomorphism gives $E_{i-d}(T(-\tau))\cong E_i(X_+)$, and $E^{d-i}(X_+)\cong E_{i-d}(T(-\tau))$ by Milton-Spanier.}
 \[E^{-i} (\pt{X}) \cong E_{i+d} (\pt{X}).\]
 This gives standard Poincare duality, recalling that $E$ stands for the \emph{reduced} cohomology theory.
 
@@ -310,9 +310,9 @@ This gives standard Poincare duality, recalling that $E$ stands for the \emph{re
 %\centering\includegraphics[width=0.3\textwidth]{figures/28.pdf}\vspace{-1cm}
 %\caption{\small Diagram of Atiyah duality.}
 %\end{wrapfigure}
-This is a little mystical, so perhaps we should look at it more closely in the context of what's called Atiyah duality (for this, readers should look at Atiyah's exposition~\cite{Atiyah}).  Here we take for a change $(X, \partial X)$ to be a manifold with boundary.  You have to be careful about interpreting the tangent bundle of a manifold with boundary; $\tau_X$ is best defined to be $d$-dimensional everywhere, but with an identified $(d-1)$-dimensional subbundle on the boundary.  %Referencing the figure, this isn't quite what we had before. 
+This is a little mystical, so perhaps we should look at it more closely in the context of what's called Atiyah duality (for this, readers should look at Atiyah's exposition~\cite{Atiyah}).  Here we take for a change $(X, \partial X)$ to be a manifold with boundary.  You have to be careful about interpreting the tangent bundle of a manifold with boundary; $\tau_X$ is best defined to be $d$-dimensional everywhere, but with an identified $(d-1)$-dimensional subbundle on the boundary.  %Referencing the figure, this isn't quite what we had before.
 
-Now suppose that $X$ is embedded in $D^n$ such that $\partial X$ lies in $\partial D^n=S^{n-1}$, and moreover that $X$ is transverse to $S^{n-1}$ wherever they coincide. Suppose also that $N$ is an open neighbourhood of $X$ in $D^n$ such that $N\cap S^{n-1}$ is a regular open neighbourhood of $\partial X$ in $S^{n-1}$.
+Now suppose that $X$ is embedded in $D^n$ such that $\partial X$ lies in $\partial D^n=S^{n-1}$, and moreover that $X$ is transverse to $S^{n-1}$ wherever they coincide. Suppose also that $N$ is an open neighborhood of $X$ in $D^n$ such that $N\cap S^{n-1}$ is a regular open neighborhood of $\partial X$ in $S^{n-1}$.
 The nice idea is to take the cone on this situation, as in figure \ref{AtiyahDuality}.
 \begin{figure}[ht!]
 \centering\includegraphics[width=0.4\textwidth]{figures/figure29.pdf}
@@ -332,7 +332,7 @@ and this is Atiyah duality.
 
 Now suppose $X$ is a compact closed manifold and $\xi \downarrow X$ is a smooth vector bundle; then $(D(\xi), S(\xi))$ is a compact manifold with boundary.  Atiyah duality says
 \begin{align*}
-D(T(\xi)) 
+D(T(\xi))
 & \simeq T(-\tau_{D(\xi)}) \\
 & \simeq T(-\pi^*(\tau_X \oplus \xi)) \\
 & = T(-\tau_X - \xi),
@@ -341,7 +341,7 @@ where $\pi$ is the projection $D(\xi) \to X$ (a homotopy equivalence).
 \subsection*{Lefschetz duality}
 Now suppose that $X$ is oriented for $E$, i.e., that there is a Thom isomorphism $E_i(X_+)\cong E_{i-d}(T(-\tau))$. Then from Atiyah duality we derive Lefschetz duality: $E_i (X_+) \simeq E^{d-i}(X, \partial X)$.
 \subsection*{Stunted projective space}
-Here's an example: $X = \RP^{k-1}$ and $\xi = n \bundle{L}$ % (we'll take $n \ge 0$ for the moment; we'll see it doesn't make any difference soon). 
+Here's an example: $X = \RP^{k-1}$ and $\xi = n \bundle{L}$ % (we'll take $n \ge 0$ for the moment; we'll see it doesn't make any difference soon).
 Then we saw in lecture \ref{BuildingThomSpaces} (at least for $n\geq0$) that $T(n \bundle{L}) = \RP^{n+k-1} / \RP^{n-1} =: \RP^{n+k-1}_n$.
 More generally, we can define, whenever $t+b\geq1$:
 \[\RP^{t-1}_{-b}:= T(-bL\downarrow\RP^{t+b-1}),\]
@@ -431,7 +431,7 @@ $\xymatrix{
 \RP^{\rho(n) - 1} \ar@{^{(}->}[r]^\imath& \RP^{\rho(n)} \ar[r]^b& S^{\rho(n)}
 }$.
 Noting that $\imath^*(\bundle L)=\bundle L$,
-%tautological bundle on $\RP^{\rho(n)}$ restricts to the same on $\RP^{\rho(n)-1}$, 
+%tautological bundle on $\RP^{\rho(n)}$ restricts to the same on $\RP^{\rho(n)-1}$,
 we examine the exact sequence
 \[\xymatrix@R=.2cm{
 \widetilde{KO} \left( \RP^{\rho(n) - 1} \right)&\ar[l]_{\imath^*}\widetilde{KO} \left( \RP^{\rho(n)} \right)&\ar[l]_{\ \ \ b^*}\widetilde{KO} (S^{\rho(n)})\\
@@ -492,8 +492,8 @@ S^{-1}\ar@{=}[r]\ar[u]&S^{-1}\ar[u]^{\Suspend^{-\rho(n)}j_{\nu(n)}}
 \RP^{n-2}_{n-\rho(n)-1} \ar[r];[]_{\ \ \ \ \Sigma^{n-1}Dc} & S^{n-\rho(n)-1}\\
 S^{n-2}\ar@{=}[r]\ar[u]^\pi&S^{n-2}\ar[u]^{\Suspend^{n-\rho(n)-1}j_{\nu(n)}}
 }\]
-Here, $\pi$ is the attaching map for $\RP^{n-2}_{n-\rho(n)-1} \to \RP^{n-1}_{n-\rho(n)-1}$; this follows because the columns are cofiber sequences. Moreover, as $\Sigma^{n-1} Dc$ is dual to the collapse map (up to sign), it is the inclusion of the bottom cell (up to sign). %  The map $j_{\nu(n)}$ might look funny, but it works out because we're dealing with spectra. 
-Well so we've done it: we've factored $\pi$ as $j_{\nu(n)}$ followed by inclusion of the bottom cell.  
+Here, $\pi$ is the attaching map for $\RP^{n-2}_{n-\rho(n)-1} \to \RP^{n-1}_{n-\rho(n)-1}$; this follows because the columns are cofiber sequences. Moreover, as $\Sigma^{n-1} Dc$ is dual to the collapse map (up to sign), it is the inclusion of the bottom cell (up to sign). %  The map $j_{\nu(n)}$ might look funny, but it works out because we're dealing with spectra.
+Well so we've done it: we've factored $\pi$ as $j_{\nu(n)}$ followed by inclusion of the bottom cell.
 \begin{diagram}[height=2em]
 S^{n-2} & \rTo^\pi & \RP^{n-2}_{n-\rho(n)-1} \\
 & \rdTo_{j_{\nu(n)}} & \uInto \\
@@ -566,7 +566,7 @@ The second picture is a spectral sequence; it's the Atiyah-Hirzebruch spectral s
 &S^{k-1}\ar@{~>}[ul]_\pi&S^k\ar@{~>}[ul]_\pi&S^{k+1}\ar@{~>}[ul]_\pi
 }\]
 Here the vertical arrows $c$ are the collapse maps,
-% onto the top cells of the $\RP^k_{-1}$, 
+% onto the top cells of the $\RP^k_{-1}$,
 and the wavy arrows $\pi$ are the attaching maps, so drawn to indicate that they shift degree --- they are in fact map maps $\Sigma^{-1}S^k\to\RP^{k-1}_{-1}$. We can apply $\pi_*^S$ to obtain an exact couple (in which the wavy arrows lower the degree $*$ by one):
 \[\xymatrix{
 \cdots\ar@{^{(}->}[r]&\pi_*^S(\RP^{k-1}_{-1})\ar@{^{(}->}[r]\ar[d]^{c}&\pi_*^S(\RP^{k}_{-1})\ar@{^{(}->}[r]\ar[d]^{c}&\pi_*^S(\RP^{k+1}_{-1})\ar@{^{(}->}[r]\ar[d]^{c}&\cdots\\
@@ -574,7 +574,7 @@ and the wavy arrows $\pi$ are the attaching maps, so drawn to indicate that they
 }\]
 From this exact couple we obtain a spectral sequence as usual. It isn't totally clear to what this spectral sequence converges.  However, the restriction principle applies, so any finite piece will converge to $\pi_*^S (\RP^N_{-1})$. The columns at $E_1$ are $\pi_*^S$. That is:
 \[E^1_{pq}=\pi^S_{p+q}(S^p)=\pi^S_q.\]
-As in the EHP sequence, the differentials record how far back you can pull a class.  So our stable relative attaching maps tell us about non-zero differentials in this spectral sequence. 
+As in the EHP sequence, the differentials record how far back you can pull a class.  So our stable relative attaching maps tell us about non-zero differentials in this spectral sequence.
 
 The differential $d_r$ is defined as usual, that is, if $[x]\in E_{pq}^r$ is a class with representative $x\in\pi^S_{p+q}(S^p)$, then $\pi(x)\in\pi^S_{p+q-1}(\RP^{p-1}_{-1})$ pulls back to an element $y\in \pi^S_{p+q-1}(\RP^{p-r}_{-1})$, and $cy\in \pi^S_{p+q-1}(S^{p-r})$ represents an element of $E_{p-r,q+r-1}^r$, which is our definition of $d_r([x])$.
 
@@ -609,7 +609,7 @@ We illustrate this theorem with the following picture of the nonzero differentia
 
 We will soon prove that there is a map of spectral sequences from the EHP sequence to the Atiyah-Hirzebruch spectral sequence constructed here, and that on the $E^1$ page, the map is induced by stabilisation. That is, ${_\text{EHP}E}^1_{pq}=\pi_{2p+1+q}(S^{2p+1})$ and ${_\text{AH}E}^1_{pq}=\pi^S_q$, and the map ${_\text{EHP}E}^1_{pq}\to{_\text{AH}E}^1_{pq}$ is just the iterated suspension map, which is an isomorphism for $q<2p$.
 
-Now as $[\iota]\in {_\text{AH}E}^1_{n-1,0}$ survives to $E^{\rho(n)}$, at which point it supports a nonzero differenial, $[\iota]\in {_\text{EHP}E}^1_{n-1,0}$ must support a nonzero differential $d_r$ for some $r\leq\rho(n)$. This shows that $w_{n-1}=p\iota$ desuspends at most $\rho(n)-1$ times.
+Now as $[\iota]\in {_\text{AH}E}^1_{n-1,0}$ survives to $E^{\rho(n)}$, at which point it supports a nonzero differential, $[\iota]\in {_\text{EHP}E}^1_{n-1,0}$ must support a nonzero differential $d_r$ for some $r\leq\rho(n)$. This shows that $w_{n-1}=p\iota$ desuspends at most $\rho(n)-1$ times.
 
 The converse holds, and could presumably be proven by constructing an explicit desuspension. That is, the first nonzero differential on $[\iota]\in {_\text{EHP}E}^1_{n-1,0}$ is exactly $d_{\rho(n)}$.
 \ConfusedBox{What can now be said about the image of $\iota$ under the crucial differential? Is it $j(\nu(n))$ or something? I haven't thought about it.}
@@ -640,7 +640,7 @@ CX & = \frac{[0, 1] \times X}{(0, x), (t, x_0)}, \\
 \end{align*}
 We'll study the problem in somewhat astonishing generality; our data will be a map $\varphi: A \times X \to X$ which we'll think of as a group action, although it doesn't have to be one.  $\varphi$ has an obvious extension $\hat \varphi: A \times CX \to CX$.  With this data we'll try to form a bundle, the first of two important constructions for today:
 \begin{enumerate}
-\item Associated ``bundle'' construction: This will be a ``bundle'' $p: E\varphi \to \Suspend A$ formed using $\varphi$ as the clutching map.  $E\varphi = CA \times X \coprod X / (1, a, x) \sim ax$.  The fiber is $p^{-1}(0, a) \cong X$.  Note that when $\varphi$ is a group action this construction in fact does determine an isomorphism bewteen the fibers over the clutched coordinates, so this is genuinely a fiber bundle.  Also we can apply this construction to $\hat \varphi$, getting $E \hat \varphi$, the ``fiberwise cone on $E \varphi$;'' we'll call it $\hat E \varphi$.  Then we get
+\item Associated ``bundle'' construction: This will be a ``bundle'' $p: E\varphi \to \Suspend A$ formed using $\varphi$ as the clutching map.  $E\varphi = CA \times X \coprod X / (1, a, x) \sim ax$.  The fiber is $p^{-1}(0, a) \cong X$.  Note that when $\varphi$ is a group action this construction in fact does determine an isomorphism between the fibers over the clutched coordinates, so this is genuinely a fiber bundle.  Also we can apply this construction to $\hat \varphi$, getting $E \hat \varphi$, the ``fiberwise cone on $E \varphi$;'' we'll call it $\hat E \varphi$.  Then we get
 \begin{diagram}[height=2em]
 E\varphi & \rInto & \hat E \varphi & \rTo & T\varphi \\
 \uTo & & \uTo & & \uTo \\
@@ -699,7 +699,7 @@ g(s, a, t, x) & = \left( s + t - st, a, \frac{t}{s + t - st}, x \right).
 \end{align*}
 \end{proof}
 
-Remember how we got here: we were studying the EHP spectral sequence.  This spectral sequence has as its columns the homotopy groups of odd spheres and converged to $\pi_* QS^0 = \pi_*^S S^p$; moreover we had arranged it so that beneath a line of slope $2$, the entries in each column were the stable homotopy of spheres: INKSCAPE  This feature suggested the queston: is there a spectral sequence whose columns are the stable homotopy of spheres and a map of spectral sequences from the EHPSS to this SS such that the map is an isomorphism below the celebrated line of slope 2?
+Remember how we got here: we were studying the EHP spectral sequence.  This spectral sequence has as its columns the homotopy groups of odd spheres and converged to $\pi_* QS^0 = \pi_*^S S^p$; moreover we had arranged it so that beneath a line of slope $2$, the entries in each column were the stable homotopy of spheres: INKSCAPE  This feature suggested the question: is there a spectral sequence whose columns are the stable homotopy of spheres and a map of spectral sequences from the EHPSS to this SS such that the map is an isomorphism below the celebrated line of slope 2?
 
 On Friday we constructed a candidate, an Atiyah-Hirzebruch spectral sequence for the attaching maps on $\RP^\infty$: $\widetilde H^*(\RP^\infty_+; \pi_*^S)$ which we hope converges to $\pi_*^S \RP^\infty_+$, whose $E^1$-term is INKSCAPE
 
@@ -730,7 +730,7 @@ we have
 where $\pi$ is the stable homotopy class of the attaching map for the top cell in $\RP^{n-1}$ as before.
 \end{cor}
 \begin{proof}
-The top row we've konwn for a while; the left leg is obvious.  The bottom row is almost as obvious; we'll have the Barratt-Puppe sequence
+The top row we've known for a while; the left leg is obvious.  The bottom row is almost as obvious; we'll have the Barratt-Puppe sequence
 \[
 S^{n-1} \to \RP^{n-2} \to \RP^{n-1} = C\pi \to S^{n-1} \stackrel{\Suspend \pi}{\to} \RP^{n-2}
 \]
@@ -763,7 +763,7 @@ C_k(n) = \{ \hbox{space of $k$ disjoint parallel $n$-rectangles in $I^n$} \}
 ,\]
 so what you're really describing is the space of embeddings $\coprod_k I^n \into I^n$.  This is called the space of ``little cubes.''  The point is, this space parameterizes the multiplication in $\Loops^n X$; namely for each $k$ we have a map $C_k(n) \times (\Loops^n X)^k \to \Loops^n X$; these piece together to give $\coprod_{k \ge 1} C_k(n) \times (\Loops^n X)^k \to \Loops^n X$.
 
-To model the multiplicative structure yo uhave to make some identifications:
+To model the multiplicative structure you have to make some identifications:
 \begin{enumerate}
 \item The constant loop obliterates a cube; e.g., \includegraphics[width=0.2\textwidth]{figures/figure36.pdf}
 \item The symmetric group $\Sigma_k$ acts diagonally on $C_k(n) \times (\Loops^n X)^k$, and the map is equivariant with respect to this action.
@@ -779,7 +779,7 @@ with the bottom $\sim$ meaning the identification in 1) above, which we won't ma
 \begin{thm}[May]
 If $A$ is path-connected, this composite is a weak equivalence.
 \end{thm}
-This is the basic theorem in the theory of iterated loop spaces.  Note that it bear ssome resemblance to James' theorem.
+This is the basic theorem in the theory of iterated loop spaces.  Note that it bear some resemblance to James' theorem.
 
 Now you can replace each cube with its center; obviously the size of the cube doesn't affect homotopy properties.  So we get a $\Sigma_k$-equivariant equivalence
 \begin{diagram}[height=2em]

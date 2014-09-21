@@ -10,3 +10,6 @@ diagrams.sty
 *.fdb_latexmk
 *.fls
 *.bak
+*.bbl
+*.blg
+*.dvi
