@@ -450,7 +450,7 @@ To summarise, the groups $E_2^{2kn,0}$ and $E_2^{2kn,n}$ are all equal to $R$, t
 \begin{subtlety}\label{EinftyProductSubtlety}
 In the Serre spectral sequence, suppose that $x\in E^{s,t}_\infty$ detects $u\in H^{s+t}(E)$ and $y\in E^{p,q}_\infty$ detects $v\in H^{p+q}(E)$. That is, writing $F_sH^{s+t}(E)$ for the $s^\text{th}$ subgroup in the associated decreasing filtration of $H^{s+t}(E)$:
 \[u\in F_sH^{s+t}(E)\setminus F_{s+1}H^{s+t}(E)\text{ and }v\in F_pH^{p+q}(E)\setminus F_{p+1}H^{p+q}(E).\]
-Then certainly $uv\in F_{s+p}H^{s+p+t+q}(E)$, but it is not necessarily the case that $uv\notin F_{s+p+1}H^{s+p+t+q}(E)$. In particular, $uv$ could be detected on the $E_\infty$ page at any of the positions $E_\infty^{s+p+r,t+q-r}$ for $r\geq0$.
+Then certainly $uv\in F_{s+p}H^{s+p+t+q}(E)$, but it is not necessarily the case that $uv\notin F_{s+p-1}H^{s+p+t+q}(E)$. In particular, $uv$ could be detected on the $E_\infty$ page at any of the positions $E_\infty^{s+p+r,t+q-r}$ for $r\geq0$.
 \end{subtlety}
 
 Well now there's lots to do.  Each of these maps has its own personality, so we'll take each in turn.  $e$ is most familiar, so we'll start with it. In fact, $e:\pi_i(S^n)\to\pi_{i+1}(S^{n+1})$ is simply the suspension homomorphism: from the above calculations of $h_2^*$, we see that $e$ is induced by $\alpha:S^n\to \Omega\Sigma S^n$.
@@ -1103,7 +1103,7 @@ B_{st}^\infty=h(\ker (e_{st})).
 \]
 The spectral sequence converges to $\Pi_{s+t}$, in that there are isomorphisms $E_{st}^\infty\to \Gr_{st}$ defined by:
 \[[h(y)]\longmapsto [e_{st}(y)]\text{ for $y\in \pi_{s+t}(\Omega^{s+1}S^{s+1})$}\]
-Now if $z\in F_s\Pi_{s+t}$, then there is some $\overline z\in \im\bigl(\pi_{s+t}(\Omega^{s+1} S^{s+1})\rightarrow \Pi_{s+t}\bigr)$ such that $e_{st}(\overline z)=z$. The inverse isomorphism $\Gr_{st}\to E_{st}^\infty$ is then given by:
+Now if $z\in F_s\Pi_{s+t}$, then there is some $\overline z\in \pi_{s+t}(\Omega^{s+1} S^{s+1})$ such that $e_{st}(\overline z)=z$. The inverse isomorphism $\Gr_{st}\to E_{st}^\infty$ is then given by:
 \[[z]\longmapsto [h(\overline z)].\]
 That is to say the following. Given an element $z\in\Pi_n$ in the stable $n$-stem, desuspend $z$ as far as possible to an element of $\overline z\in\pi_{n}(\Omega^{s+1}S^{s+1})$, then $h(\overline z)\in \pi_{n}(\Omega^{s+1}S^{2s+1})=:E^1_{s,n-s}$ is a permanent cycle detecting $z$. One could summarise by stating that $z$ is recorded by the James-Hopf invariant of a maximal desuspension.
 

@@ -48,15 +48,15 @@ Ultimately we will show the result of Adams that this implies that $k \le \rho(n
 \centering\includegraphics[width=0.2\textwidth]{figures/fig7.pdf}
 \caption{\small Diagram of the mapping cylinder of $f$.}
 \end{wrapfigure} % define the mapping cylinder, since we defined the mapping cone earlier.  in fact, this figure belongs to such a discussion, and should be treated separately.  why is this important that we can do it for "any" sphere bundle??
-Next we look at the consequences of the discussion so far in terms of Thom spaces.  Suppose $E \onto B$ is a vector bundle with a metric, so there's a nice sphere bundle $p$ defined as the composite $S(E) \into E \onto B$.  In order to understand the map $p$, we could look again at the mapping cone $Cp = B \cup_p C_{S(E)}$ of $p$.  
+Next we look at the consequences of the discussion so far in terms of Thom spaces.  Suppose $E \onto B$ is a vector bundle with a metric, so there's a nice sphere bundle $p$ defined as the composite $S(E) \into E \onto B$.  In order to understand the map $p$, we could look again at the mapping cone $Cp = B \cup_p C_{S(E)}$ of $p$.
 
 Given a map $f:X\to Y$, we can construct the cone $Cf$ in two stages, leaving pinching the cone for the ``second stage''. The intermediate space $Mf=X\times I\cup_f Y$ is called the ``mapping cylinder,'' and it is homotopy equivalent to $Y$.  Moreover there is a nice inclusion $X \into Mf$ which is a cofibration. Then $Cf$ is obtained by collapsing the image of $X$ in $Mf$.
 
 In fact, it doesn't matter how you replace the space $Y$ with a homotopy equivalent space: as long as the map $f$ is replaced by a cofibration, collapsing out its image we obtain a space homotopic to the mapping cone.
 %This is true, right?
 
-Now in the case of $p: S(E) \onto B$, the mapping cone is called the Thom space, $T(E)$. 
-One can think of the mapping cylinder $p:S(E)\to B$ as being the disk bundle $D(E)$ of vectors of length less than or equal to $1$; the Thom space is then the quotient space $D(E) / S(E)$. 
+Now in the case of $p: S(E) \onto B$, the mapping cone is called the Thom space, $T(E)$.
+One can think of the mapping cylinder $p:S(E)\to B$ as being the disk bundle $D(E)$ of vectors of length less than or equal to $1$; the Thom space is then the quotient space $D(E) / S(E)$.
 
 As a passing (but important) remark, the fibers of these two bundles over a basepoint $b \in B$ are $S^{n-1} \subset S(E)$ and $D^n \subset D(E)$, and pinching the former out of the latter gives an $S^n$ in $T(E)$.  So if $B$ is connected and $E$ is oriented, the Thom space comes with a unique, distinguished class in $\pi_n T(E)$.
 
@@ -194,7 +194,7 @@ This is a process of stabilization: the lesson of this discussion is that we hav
 \section{Building \texorpdfstring{$K$}{K}-theory and \texorpdfstring{$J$}{J}-theory} % <<<
 \label{BuildingKandJtheory}
 \ifx\OutputBuildingKandJtheory\undefined\else
-Now a few introductory words on $K$-theory: let $X$ be a pointed %finite complex (it is at least necessary that $X$ be a 
+Now a few introductory words on $K$-theory: let $X$ be a pointed %finite complex (it is at least necessary that $X$ be a
 compact Hausdorff space.  Let $\Vect(X)$ be the set of isomorphism classes of vector bundles over $X$.\footnote{Why is $\Vect(X)$ a set?}  The Whitney sum gives a monoid structure to $\Vect(X)$, with zero given by the $0$-dimensional vector bundle.  Now one applies the ``Grothendieck construction,'' which simply means to add formal inverses, making a group; explicitly, we form equivalence classes of pairs $(V,W)$ under the equivalence relation in which $(V, W) \sim (V', W')$ iff $E + V + W' \cong V' + W + E$ for some vector bundle $E$.  Here, $(V, W)$ is supposed to represent the formal difference ``$V - W$''.  This is an abelian group, called $KO(X)$.
 
 Now it may not seem that $KO(X)$ has topological significance, but in view of the last lecture, it quickly becomes apparent that it does.  For if $V \oplus n\epsilon \cong W \oplus n\epsilon$ for some $n$ ($V$ and $W$ are said to be ``stably isomorphic''), then the classes $[V]$ and $[W]$ are equal in $KO(X)$.  Moreover, as $X$ is a compact Hausdorff space, it goes both ways.  Suppose $[V] = [W]$, so $V + E \cong W + E$ for some $E$.  Over a compact Hausdorff space, any vector bundle $E$ is a subbundle of a sufficiently big trivial bundle
@@ -205,7 +205,7 @@ X,
 \end{diagram}
 as we shall soon see.  By choosing a metric on $\R^N$, we get an orthogonal complement $F \to X$ such that $E \oplus F$ is trivial.  Then $V \oplus E \oplus F \cong W \oplus E \oplus F$, so $V$ and $W$ are stably isomorphic!
 
-%Throughout, let $X$ be a pointed compact Hausdorff space.  Recall that $KO(X)$ was defined to be the abelian group given by the Grothendieck construction on the monoid $\Vect(X)$.  
+%Throughout, let $X$ be a pointed compact Hausdorff space.  Recall that $KO(X)$ was defined to be the abelian group given by the Grothendieck construction on the monoid $\Vect(X)$.
 If $f: X \to Y$ is a map and $E \to Y$ is a vector bundle, then $E$ pulls back by $f$ to a vector bundle $f^* E \to X$, so we have a map $f^*: KO(Y) \to KO(X)$.  Pullbacks by homotopic maps induce isomorphic bundles, so $f \simeq g$ implies $f^* = g^*$.  Hence $KO$ is a contravariant functor $ \mathit{ho}\mathsf{Top} \to \mathsf{AbGrp}$. % it would be smart to come up with a notation for vector bundles, like f^* E downarrow X
 
 Now the canonical maps $\ptspace \to X \to \ptspace$ induce maps $KO(\ptspace) \stackrel{\eta}{\to} KO(X) \stackrel{\epsilon} \to KO(\ptspace)$.  It is clear that $KO(\ptspace) = \Z$, that $\im \eta$ consists of trivial bundles, and that $\epsilon(V,W)=\dim_*(V)-\dim_*(W)$ takes the difference of the dimensions of the fibers over the basepoint.  Reduced $KO$-theory is defined in terms of these maps.  There are two equivalent definitions: % point out that this sequence is induced by the triangle pt --> X --> pt, with the composite a homotopy equivalence.
