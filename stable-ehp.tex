@@ -24,7 +24,7 @@ S^{2n-1} & \rTo^{w_n} & S^n \\
 where $W$ is the attaching map for $S^{2n-1} \stackrel{W}{\to} S^n \wsum S^n \to S^n \times S^n=C(W)$. The following diagram commutes, by definition of $2 \iota_n$:
 \begin{diagram}[height=2em]
 S^{2n-1} & \rTo^{w_n} & S^n & \rTo^{2 \iota_n} & S^n \\
-& \rdTo_W & \uTo>{fold} & & \uTo>{\textup{fold}} \\
+& \rdTo_W & \uTo>{\textup{fold}} & & \uTo>{\textup{fold}} \\
 & & S^n \wsum S^n & \rTo_{2\iota_n \wsum 2\iota_n} & S^n \wsum S^n.
 \end{diagram}
 The top row represents $(\iota_n + \iota_n) \circ w_n = w_n^*(2 \iota_n)$.  The lower composite represents $[2\iota_n, 2\iota_n] = 4[\iota_n, \iota_n]$ (by bilinearity of the Whitehead product), which is equal to $4 w_n$ or $4 w_n^*(\iota_n)$.  So $w_n^*$ cannot be a homomorphism unless $w_n = w_n^* \iota_n$ has finite order in $\pi_{2n-1}(S^n)$.  But for $n$ even, $h(w_n) = 2 \iota_n$, so the image of $w_n$ under the Hopf map is infinite cyclic!
@@ -703,7 +703,7 @@ Remember how we got here: we were studying the EHP spectral sequence.  This spec
 
 On Friday we constructed a candidate, an Atiyah-Hirzebruch spectral sequence for the attaching maps on $\RP^\infty$: $\widetilde H^*(\RP^\infty_+; \pi_*^S)$ which we hope converges to $\pi_*^S \RP^\infty_+$, whose $E^1$-term is INKSCAPE
 
-Sure enough, there is a spectral sequence map between these two spectral sequences which is an isomorphism below the line at $E^1$.  To see this, remember the EHP sequence: $\Loops^{n-1} S^{n-1} \to \Loops^n S^n \to \Loops^n S^{2n-1}$.  Here we looped it $(n-1)$ times as this is the forum in which it went into the EHPSS.  This is a fibration, strictly if $n$ is even or localized at $2$ if $n$ is odd.  Linking these together and applying $\pi_*$ gave us the EHPSS.  On the other hand, the AHSS from Friday came from taking the cofibration sequence $\RP^{n-2}_+ \to \RP^{n-1}_+ \to S^{n-1}_+$ and applying $\pi_*^@ = \pi_* Q$.  (Recall $QX = \bigcup_k \Loops^k \Suspend^k X$.)  The sequence $Q\RP^{n-2}_+ \to Q\RP^{n-1}_+ \to QS^{n-1}_+$ is a fibration, since $\pi_*^S$ is a homology theory and hence exact on $\RP^{n-2}_+ \to \RP^{n-1}_+ \to S^{n-1}_+$.  Next, note that we have $S^{n-1}_+ \stackrel{e^n}{\to} \Loops^n S^{2n-1}_+ \stackrel{e^{\infty-n}}{\to} QS^{n-1}_+$, and $e^{\infty-n}$ is an isomorphism on $\pi_*$ for $* < n$.
+Sure enough, there is a spectral sequence map between these two spectral sequences which is an isomorphism below the line at $E^1$.  To see this, remember the EHP sequence: $\Loops^{n-1} S^{n-1} \to \Loops^n S^n \to \Loops^n S^{2n-1}$.  Here we looped it $(n-1)$ times as this is the form in which it went into the EHPSS.  This is a fibration, strictly if $n$ is even or localized at $2$ if $n$ is odd.  Linking these together and applying $\pi_*$ gave us the EHPSS.  On the other hand, the AHSS from Friday came from taking the cofibration sequence $\RP^{n-2}_+ \to \RP^{n-1}_+ \to S^{n-1}_+$ and applying $\pi_*^@ = \pi_* Q$.  (Recall $QX = \bigcup_k \Loops^k \Suspend^k X$.)  The sequence $Q\RP^{n-2}_+ \to Q\RP^{n-1}_+ \to QS^{n-1}_+$ is a fibration, since $\pi_*^S$ is a homology theory and hence exact on $\RP^{n-2}_+ \to \RP^{n-1}_+ \to S^{n-1}_+$.  Next, note that we have $S^{n-1}_+ \stackrel{e^n}{\to} \Loops^n S^{2n-1}_+ \stackrel{e^{\infty-n}}{\to} QS^{n-1}_+$, and $e^{\infty-n}$ is an isomorphism on $\pi_*$ for $* < n$.
 
 \begin{thm}
 There are maps $s_n$ (``Snaith maps'' or ``Hopf-James'' maps\footnote{Oh dear.}) with
@@ -841,7 +841,7 @@ C(W, A) & \rTo^{\simeq}_{\mathrm{weak}} & \Loops^n \Suspend^n A & \rTo^{s_k} & C
 \end{diagram}
 Now when $A = S^1$ (you'd like to take $S^0$ but it's not connected), you get
 \[
-s_2: \Loops^n \S^{n+1} \to \Loops^N \Suspend^N(\Suspend \RP^n)
+s_2: \Loops^n S^{n+1} \to \Loops^N \Suspend^N(\Suspend \RP^n)
 .\]
 So, looping once,
 \begin{diagram}[height=2em]

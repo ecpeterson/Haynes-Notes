@@ -135,8 +135,8 @@ Its adjoint $h_m: \Loops \Suspend X \to \Loops \Suspend X^{(m)}$ is called the `
 \[h_2:\Loops S^{n+1} \to \Loops \Suspend (S^n)^{(2)} = \Loops S^{2n+1}.\]
 %; then $h_2$ is a map $\Loops S^{n+1} \to \Loops \Suspend (S^n)^{(2)} = \Loops S^{2n+1}$.
 This is a piece of the EHP sequence; the rest comes from taking the homotopy fiber and looking at the homotopy long exact sequence. Now to compute $H_n (\Loops S^{n+1})$, we use Bott-Samelson:
-\[H_* (\Loops S^{n+1}) = \mathrm T(\widetilde H_* (S^n)) = \mathrm T[u_n]\text{ \ where $|u_n| = n$. }\]
-So $h_2$ induces a map $\mathrm T[u_n] \to \mathrm T[u_{2n}]$ which preserves degrees, so it couldn't be an algebra map.  So we'd better try cohomology.
+\[H_* (\Loops S^{n+1}) = \mathrm T(\widetilde H_* (S^n)) = \mathrm T[u_1]\text{ \ where $|u_1| = n$. }\]
+So $h_2$ induces a map $\mathrm T[u_1] \to \mathrm T[u_2]$ which preserves degrees, so it couldn't be an algebra map.  So we'd better try cohomology.
 
 \ConfusedBox{
 The following has become some kind of aside:
@@ -233,23 +233,23 @@ It works out that $\tilde \Delta x$ is the obvious thing. For $x \in \widetilde 
 \[\Delta x = x \otimes 1 + \tilde \Delta x + 1 \otimes x\]
 
 
-Returning at last to theorem \ref{ThmAlgStrucLoopsSphere}, let's compute the coalgebra structure of $H_* (\Loops S^{n+1}) =\mathrm T[u_n]$:
+Returning at last to theorem \ref{ThmAlgStrucLoopsSphere}, let's compute the coalgebra structure of $H_* (\Loops S^{n+1}) =\mathrm T[u_1]$:
 \begin{alignat*}{2}
-\Delta u_n & = u_n \otimes 1 + 1 \otimes u_n,&\qquad&\textup{(as there is no room for middle terms)} \\
-\Delta u_n^k & = (u_n \otimes 1 + 1 \otimes u_n)^k,&&\textup{(as $\Delta$ is an algebra map)}
+\Delta u_1 & = u_1 \otimes 1 + 1 \otimes u_1,&\qquad&\textup{(as there is no room for middle terms)} \\
+\Delta u_1^k & = (u_1 \otimes 1 + 1 \otimes u_1)^k,&&\textup{(as $\Delta$ is an algebra map)}
 \end{alignat*}
-In particular, as the product in $\mathrm T[u_n]\otimes \mathrm T[u_n]$ is $(\mu\otimes\mu)\circ (1\otimes T\otimes1)$, where $T(a\otimes b)=(-1)^{|a||b|}(b\otimes a)$:
+In particular, as the product in $\mathrm T[u_1]\otimes \mathrm T[u_1]$ is $(\mu\otimes\mu)\circ (1\otimes T\otimes1)$, where $T(a\otimes b)=(-1)^{|a||b|}(b\otimes a)$:
 \begin{align*}
-\Delta u_n^2&=(-1)^{0\cdot n}u_n^2\otimes1+(-1)^{0\cdot0}u_n\otimes u_n+(-1)^{n\cdot n}u_n\otimes u_n+(-1)^{n\cdot 0}\otimes u_n^2\\
-&=u_n^2\otimes1+(1+(-1)^{n})(u_n\otimes u_n)+1\otimes u_n^2
+\Delta u_1^2&=(-1)^{0\cdot n}u_1^2\otimes1+(-1)^{0\cdot0}u_1\otimes u_1+(-1)^{n\cdot n}u_1\otimes u_1+(-1)^{n\cdot 0}\otimes u_1^2\\
+&=u_1^2\otimes1+(1+(-1)^{n})(u_1\otimes u_1)+1\otimes u_1^2
 \end{align*}
 \begin{itemize}
-\item When $n$ is even, we could go on to prove that $\Delta u_n^k = {\displaystyle\sum_{i + j = k}} \binom{i+j}{i} u_n^i \otimes u_n^j$.
-\item When $n$ is odd, we get that $u_n^2$ is primitive. As $u_n^2$ has even degree:
+\item When $n$ is even, we could go on to prove that $\Delta u_1^k = {\displaystyle\sum_{i + j = k}} \binom{i+j}{i} u_1^i \otimes u_1^j$.
+\item When $n$ is odd, we get that $u_1^2$ is primitive. As $u_1^2$ has even degree:
 \begin{align*}
-\Delta u_n^{2k} & = \sum_{i+j=k} {\textstyle\binom{i+j}{i}} u_n^{2i} \otimes u_n^{2j}, \text{ \ and}\\
-\Delta u_n^{2k+1} & = (\Delta u_n^{2k})(\Delta u_n) \\
-& = \sum_{i+j=k} {\textstyle\binom{i+j}{i}} (u_n^{2i+1} \otimes u_n^{2j} + u_n^{2i} \otimes u_n^{2j+1}).
+\Delta u_1^{2k} & = \sum_{i+j=k} {\textstyle\binom{i+j}{i}} u_1^{2i} \otimes u_1^{2j}, \text{ \ and}\\
+\Delta u_1^{2k+1} & = (\Delta u_1^{2k})(\Delta u_1) \\
+& = \sum_{i+j=k} {\textstyle\binom{i+j}{i}} (u_1^{2i+1} \otimes u_1^{2j} + u_1^{2i} \otimes u_1^{2j+1}).
 \end{align*}
 \end{itemize}
 So $H_* (\Loops S^{2k} )\cong H_*( S^{2k-1}) \otimes H_* (\Loops S^{4k-1})$ as coalgebras, though certainly not as algebras giving (\ref{ThirdIsoEqn}).
@@ -260,10 +260,10 @@ H^q(\Loops S^{n+1}; R) = \begin{cases} R \langle z_i \rangle & q=ni\textup{ \,(f
 \]
 Now with field coefficients, let's compute the ring structure.  We can use in this case the pairing of cohomology and homology, so picking $n$ to be even to start, we get
 \begin{alignat*}{2}
-\langle z_i z_j, u_n^{i+j} \rangle & = \langle \Delta^*(z_i \otimes z_j), u_n^{i+j} \rangle&\qquad& \\
-& = \langle z_i \otimes z_j, \Delta_* u_n^{i+j} \rangle \\
-& = \left\langle z_i \otimes z_j, \sum_{i'+j'=i+j} {\textstyle\binom{i'+j'}{i'}} u_n^{i'} \otimes u_n^{j'} \right\rangle&&\text{\ (as $n$ is even)} \\
-& = {\textstyle\binom{i+j}{i}} = \left\langle {\textstyle\binom{i+j}{i}} z_{i+j}, u_n^{i+j} \right\rangle,
+\langle z_i z_j, u_1^{i+j} \rangle & = \langle \Delta^*(z_i \otimes z_j), u_1^{i+j} \rangle&\qquad& \\
+& = \langle z_i \otimes z_j, \Delta_* u_1^{i+j} \rangle \\
+& = \left\langle z_i \otimes z_j, \sum_{i'+j'=i+j} {\textstyle\binom{i'+j'}{i'}} u_1^{i'} \otimes u_1^{j'} \right\rangle&&\text{\ (as $n$ is even)} \\
+& = {\textstyle\binom{i+j}{i}} = \left\langle {\textstyle\binom{i+j}{i}} z_{i+j}, u_1^{i+j} \right\rangle,
 \end{alignat*}
 In particular, $z_i z_j = \binom{i+j}{i} z_{i+j}$. This algebra is called the divided polynomial algebra on $z_1$, denoted $\Gamma[z_1]$, and we get $H^* (\Loops S^{2k+1}) \cong \Gamma[x_{2k}]$ as Hopf algebras, which is (\ref{FirstIsoEqn}).
 
@@ -287,7 +287,7 @@ $\Suspend \Loops \Suspend X \simeq \bigvee_{\!k \ge 1} \Suspend X^{(k)}$ which r
 \Bullet The extension of $\alpha$ to $J(X)\stackrel{\tilde\alpha}{\to}\Omega\Sigma X$ is a homotopy equivalence. $\Sigma J(X)$ splits as $\bigvee_{\!k \ge 1} \Suspend X^{(k)}$. We define the $m^\text{th}$ James-Hopf invariant $h_m$ via:
 \[\widehat h_m:\left\{\Sigma\Omega\Sigma X\to{\textstyle\bigvee_{\!k \ge 0}} \Suspend X^{(k)}\to\Sigma X^{(m)}\right\}\text{ with adjoint }h_m:\Omega\Sigma X\to\Omega\Sigma X^{(m)}\]
 
-\Bullet When $n$ is even, the Hopf algebra $H_*(\Omega S^{n+1})$ is the tensor algebra $\mathrm T[u_n]$, with comultiplication given by $\Delta u_n^k = {\displaystyle\sum_{i + j = k}} \binom{i+j}{i} u_n^i \otimes u_n^j$.
+\Bullet When $n$ is even, the Hopf algebra $H_*(\Omega S^{n+1})$ is the tensor algebra $\mathrm T[u_1]$, with comultiplication given by $\Delta u_1^k = {\displaystyle\sum_{i + j = k}} \binom{i+j}{i} u_1^i \otimes u_1 ^j$.
 
 \Bullet With PID coefficients, there are isomorphisms:
 \begin{alignat*}{2}
@@ -476,7 +476,7 @@ Now we move up one row and look at $h$:
 \end{diagram}
 We also have the Hopf invariant $H: \pi_{2n+1} (S^{n+1}) \to \Z$.  To keep them straight, $h$ is the ``James-Hopf invariant'' and $H$ is the ``Hopf Hopf invariant.'' We will show in lemma \ref{HopfisHopfLemma} that the two coincide.
 \begin{claim}
-If $f:S^{2n+1}\to S^{n+1}$ is an element of $\pi_{2n+1} (S^{n+1})$, then $h(f)=\deg\left\{\hat f:S^{2n}\to\Omega\Sigma S^n\right\}$, where $\hat f$ is the adjoint of $f$, and by $\deg\{\hat f\}$ we mean the degree of $H_{2n}(f):\Z\to\Z$, defined only up to sign.
+If $f:S^{2n+1}\to S^{n+1}$ is an element of $\pi_{2n+1} (S^{n+1})$, then $h(f)=\deg\left\{\hat f:S^{2n}\to\Omega\Sigma S^n\right\}$, where $\hat f$ is the adjoint of $f$, and by $\deg\{\hat f\}$ we mean the degree of $H_{2n}(\hat f):\Z\to\Z$, defined only up to sign.
 \end{claim}
 \begin{proof}
 $h(f)$ is the degree of $\hat q$, the adjoint of the composite
@@ -501,15 +501,15 @@ $h(f)=\pm H(f)$ for all $f\in\pi_{2n+1} (S^{n+1})$, so that the names are well-c
 We'll calculate $h(f)=\pm H(f)$ for $f\in\pi_{2n+1} (S^{n+1})$. Moreover, we'll write $H$ for $H(f)$ and $h$ for $h(f)$.
 
 First take the case $n$ is even.  Then $H$ is calculated by squaring an odd dimensional cohomology class, so that $H = 0$.
-Now let $g$ generate $H_{2n}(S^{2n})$, and write $u_2$ as usual for the generator of $H_{2n}(\Omega S^{n+1})$. By the claim, $\hat f_*(g)=h\cdot u_2$ (up to sign). Now $f_*$ is a coalgebra map, and we have computed the Hopf algebra structure on $H_*(\Omega S^{n+1})=\mathrm{T}[u_n]$, so there is a compatibility:
+Now let $g$ generate $H_{2n}(S^{2n})$, and write $u_2$ as usual for the generator of $H_{2n}(\Omega S^{n+1})$. By the claim, $\hat f_*(g)=h\cdot u_2$ (up to sign). Now $\hat f_*$ is a coalgebra map, and we have computed the Hopf algebra structure on $H_*(\Omega S^{n+1})=\mathrm{T}[u_1]$, so there is a compatibility:
 %\begin{diagram}
-%g & \rMapsto^{\hat f_*} & h u_{2n} \\
+%g & \rMapsto^{\hat f_*} & h u_1 \\
 %\dMapsto & &\rdMapsto>\Delta \\
 %g \otimes 1 + 1 \otimes g & \rMapsto & h(u_2 \otimes 1 + 1 \otimes u_2) & \lEqualto u_2 %\otimes 1 + 2 u_1 \otimes u_1 + 1 \otimes u_2.
 %\end{diagram}
 \[\xymatrix{
-g\ar@{|->}[r]_{\hat f_*}\ar@{|->}[d]_{\Delta}&h\cdot u_{2n}\ar@{|->}[dr]^{\Delta}\\
-g\otimes1+1\otimes g\ar@{|->}[r]^{\hat f_*\otimes\hat f_*\qquad}&\ar@{=}[r]h\cdot(u_{2n}\otimes1+1\otimes u_{2n})&h\cdot(u_{2n}\otimes1+2u_1\otimes u_1+1\otimes u_{2n})
+g\ar@{|->}[r]_{\hat f_*}\ar@{|->}[d]_{\Delta}&h\cdot u_2\ar@{|->}[dr]^{\Delta}\\
+g\otimes1+1\otimes g\ar@{|->}[r]^{\hat f_*\otimes\hat f_*\qquad}&\ar@{=}[r]h\cdot(u_2\otimes1+1\otimes u_2)&h\cdot(u_2\otimes1+2u_1\otimes u_1+1\otimes u_2)
 }\]
 But this equality can hold only if $h = 0$, so we are done when $n$ is even.
 
