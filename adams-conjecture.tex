@@ -4,7 +4,7 @@
 \ifx\OutputTheBeckerGottliebTransfer\undefined\else
 One of the advantages of a topics course is that you can change direction in midstream.  So now let's study the Adams conjecture for a while, starting with a tool by Becker and Gottlieb which enables us to get a slicker proof than the original ones of Quillen and Friedlander.  It's a construction that's of interest anyway: ``transfer.''  The basic construction is so simple that it's hard to concentrate on it long enough to appreciate how much information it contains.
 \begin{enumerate}
-\item Pontrjagin-Thom construction: If $X$ is a locally compact Hausdorff space and $U \subseteq X$ is an open subset, then you get a map $\pt{X} \to \pt{X} / (\pt{X} \setminus U) \simeq \pt{U}$ from the one-point compactification of $X$ to that of $U$, just by collapsing out the complement of $U$ in $\pt{X}$.  This is called the ``Pontrjagin-Thom collapse,'' and it gives a contravariance you may not have noticed before.  The construction is natural with respect to proper maps: if $f: X \to X'$ is proper, $U' \subseteq X$, and $U = f^{-1}(U')$, then you get
+\item Pontrjagin-Thom construction: If $X$ is a locally compact Hausdorff space and $U \subseteq X$ is an open subset, then you get a map $\pt{X} \to \pt{X} / (\pt{X} \setminus U) \simeq \pt{U}$ from the one-point compactification of $X$ to that of $U$, just by collapsing out the complement of $U$ in $\pt{X}$.  This is called the ``Pontrjagin-Thom collapse,'' and it gives a contravariance you may not have noticed before.  The construction is natural with respect to proper maps: if $f: X \to X'$ is proper, $U' \subseteq X'$, and $U = f^{-1}(U')$, then you get
 \begin{diagram}[height=2em]
 \pt{X} & \rTo^f & \pt{X'} \\
 \dTo & & \dTo \\
@@ -21,7 +21,7 @@ Well, $i$ still isn't an open inclusion, so now consider $\nu(i)$ the normal bun
 \begin{diagram}[height=2em]
 \pt{(B \times \R^n)} & \rTo & N_+ & \rEqualto & T(\nu(i) \downarrow E) \\
 \dEqualto & & & \rdEqualto & \dEqualto \\
-T(n\varepsilon \downarrow B) & & & & \bar N / \partial N \\
+T(n\varepsilon \downarrow B) & & & & \overline N / \partial N \\
 \dEqualto \\
 \Suspend^n \pt{B}.
 \end{diagram}
@@ -37,14 +37,14 @@ In some sense what you're going is inverting $p$, constructing a sort of multiva
 
 The next question is: what is $\nu(i)$?  Well, $\nu(i) + \tau_E = i^*(\tau_{B \times \R^n}) = p^* \tau_B + n\varepsilon_E$.  Now $\tau_E = p^* \tau_B + \tau(p)$, the ``vertical vectors'' or tangent vectors along the fiber.  So $\nu(i) + \tau(p) = n \varepsilon_E$; this is sort of a tangent bundle / normal bundle ``relative to $B$.''  So $\nu(i) = n \varepsilon - \tau(p)$, and so we get a stable map $B_+ \stackrel{p_!}{\stableto} E^{-\tau(p)}$, called the Gysin map, denoted $p_!$ for ``$p$ shriek'' or ``$p$ surprise.''  (We're also going to start writing $\stableto$ from here on out for stable maps.)
 
-\item The Becker-Gottlieb transfer: the inclusion $\nu(i) \into n \varepsilon_E$ induces a map of Thom spaces $E^{\nu(i)} \to E^{n \varepsilon} = \Suspend^n \pt{E}$, which , together wtih the Gysin map,
+\item The Becker-Gottlieb transfer: the inclusion $\nu(i) \into n \varepsilon_E$ induces a map of Thom spaces $E^{\nu(i)} \to E^{n \varepsilon} = \Suspend^n \pt{E}$, which, together with the Gysin map,
 \begin{diagram}[height=2em]
 \Suspend^n \pt{B} & \rEqualto & B^{n \varepsilon} & \rTo^{p_!} & E^{\nu(i)} & \rTo & E^{n \varepsilon} & \rEqualto & \Suspend^n \pt{E}
 \end{diagram}
 is the Becker-Gottlieb transfer $t(p): \pt{B} \stableto E_+$, which has the virtue that it doesn't shift dimensions.
-\item Euler characteristic: The Euler characteristic in this context will be defined as $\chi(p) \in \pi_S^0(B)$, an element in the stable cohomotopy of $B$.  Namely, start with the transfer $t(p): \pt{B} \stableto \pt{E}$.  Now there's a ridiculous map $\pt{E} \to S^0$ which takes the basepoint to the basepoint and pinches everything else (i.e., $E$) to the othe rpoint.  On the level of complexes, this isn't much of a map, but the claim is that stably there's a lot going on.  So the Euler characteristic is defined as $\chi(p): \pt{B} \stackrel{t(p)}{\stableto} \pt{E} \stackrel{\mathrm{pinch}}{\to} S^0 \in \pi_S^0(B)$ (i.e., unreduced stable cohomotopy).
+\item Euler characteristic: The Euler characteristic in this context will be defined as $\chi(p) \in \pi_S^0(B)$, an element in the stable cohomotopy of $B$.  Namely, start with the transfer $t(p): \pt{B} \stableto \pt{E}$.  Now there's a ridiculous map $\pt{E} \to S^0$ which takes the basepoint to the basepoint and pinches everything else (i.e., $E$) to the other point.  On the level of complexes, this isn't much of a map, but the claim is that stably there's a lot going on.  So the Euler characteristic is defined as $\chi(p): \pt{B} \stackrel{t(p)}{\stableto} \pt{E} \stackrel{\mathrm{pinch}}{\to} S^0 \in \pi_S^0(B)$ (i.e., unreduced stable cohomotopy).
 
-Naturality of $\chi(p)$ follows from the naturality of $p_!$ with respect to pullbacks: if $E = F^* E'$ in TERRIBLE DIAGRAM we get $f^* \nu(i') = \nu(i)$, and $N'$ is a tubular neighborhood for $E'$ in $B' \times \R^n$, we can use $f^{-1} N'$ for one of $E$ in $B \times \R^n$ (we may have to choose $N'$ well, but because $B$ and $B'$ and the fiber are compact, there is no real difficulty).  Then we get the following naturality:
+Naturality of $\chi(p)$ follows from the naturality of $p_!$ with respect to pullbacks: if $E = f^* E'$ in TERRIBLE DIAGRAM we get $f^* \nu(i') = \nu(i)$, and $N'$ is a tubular neighborhood for $E'$ in $B' \times \R^n$, we can use $f^{-1} N'$ for one of $E$ in $B \times \R^n$ (we may have to choose $N'$ well, but because $B$ and $B'$ and the fiber are compact, there is no real difficulty).  Then we get the following naturality:
 \begin{diagram}[height=2em]
 B^{n \varepsilon} & & & \rTo^f & & & (B')^{n \varepsilon} \\
 & \rdTo<{p_!} & & & & \ldTo>{p'_!} \\
@@ -66,9 +66,9 @@ The following diagram commutes:
 \pt{(B \times B)}.
 \end{diagram}
 \end{lem}
-Before we prove the lemma, note this corollary.  Any cohomology theory has an action of stable cohomotopy: if $\alpha \in \{X, h\}$ is a class in $h^*(X)$ and $\beta \in \pi^S(X) = \{X, S\}$, then we get $\beta \cup \alpha: \Suspend X \to \Suspend X \wsum \Suspend X \stackrel{\alpha \wsum \beta}{\to} \Suspend (h \wsum S) \to h$.
+Before we prove the lemma, note this corollary.  Any cohomology theory has an action of stable cohomotopy: if $\alpha \in \{X, h\}$ is a class in $h^*(X)$ and $\beta \in \pi^S(X) = \{X, S\}$, then we get $\beta \cup \alpha: \Suspend X \to \Suspend X \wsum \Suspend X \stackrel{\Suspend (\alpha \wsum \beta)}{\to} \Suspend (h \wsum S) \to \Suspend h$.
 \begin{cor}
-If $x \in h^*(B)$, then $t(p)^* p^* x = \chi(p) \cup x$.
+If $x \in h^*(B)$, then $t(p)^* (p^* x) = \chi(p) \cup x$.
 \end{cor}
 \begin{proof}[Proof of the Lemma]
 Consider AWFUL DIAGRAM.  Things on the left are the pullbacks of things on the right.  Then we get
@@ -165,7 +165,7 @@ $\chi(M) = \sum_{\substack{x \in M \\ v(x) = 0}} i_x$.
 \end{proof}
 For example, suppose $G$ is a compact Lie group; let $T \subset G$ be a maximal torus; let $N(T)$ be its normalizer.  Then the identity component of $N(T)$ is $T$ itself, and $N(T) / T$ is a finite discrete group, the ``Weyl group.''  The important claim is that $\chi(G / T) = |W|$ and $\chi(G / N(T)) = 1$ if $G$ is compact and connected.
 
-To prove this, we'll come up with a vector field and use Hopf's theorem.  There is an action of $G$ on $G/T$ which restricts to an action of $T$.  In $T_eT = L(T)$ the Lie algebra of $T$ there is a vector $x$ such that $\exp x = g$, and $\exp tx$ is a path in $T$ from $e$ to $g$; let $\gamma_t$ be the induced flow on $G/T$; then $\frac{d}{dt} \gamma_t |_{t = 0}$ is a vector field on $G/T$.  Now suppose $g \in T$ is such that $\{g^n \mid n \in \Z\}$ is dense in $T$ (i.e., $g$ is irrational on each component of the torus; $T$ is called ``topologically cyclic''); let $v$ be the vector field on $G/T$ corresponding to this element.  A zero of $v$ is a fixed point of the action of $g$ and therefore (by continuity) a fixed point for the action of $T$.  Such a point in $G/T$ is a coset $hT$ so that $thT = hT$ for all $t \in T$, equivalently $hth^{-1} T = T$ for all $t in T$, equivalently $h$ lies in the normalizer of $T$.  So zeroes correspond to elements of $N(T) / T = W$.  I claim all the zeroes are non-degenerate and have the same index, so $\chi(G/T) = |W|$.  Now the action of $g$ descends to $G/N(T)$ with only one fixed point, so $\chi(G/N(T)) = 1$.
+To prove this, we'll come up with a vector field and use Hopf's theorem.  There is an action of $G$ on $G/T$ which restricts to an action of $T$.  In $T_eT = L(T)$ the Lie algebra of $T$ there is a vector $x$ such that $\exp x = g$, and $\exp tx$ is a path in $T$ from $e$ to $g$; let $\gamma_t$ be the induced flow on $G/T$; then $\frac{d}{dt} \gamma_t |_{t = 0}$ is a vector field on $G/T$.  Now suppose $g \in T$ is such that $\{g^n \mid n \in \Z\}$ is dense in $T$ (i.e., $g$ is irrational on each component of the torus; $T$ is called ``topologically cyclic''); let $v$ be the vector field on $G/T$ corresponding to this element.  A zero of $v$ is a fixed point of the action of $g$ and therefore (by continuity) a fixed point for the action of $T$.  Such a point in $G/T$ is a coset $hT$ so that $thT = hT$ for all $t \in T$, equivalently $hth^{-1} T = T$ for all $t \in T$, equivalently $h$ lies in the normalizer of $T$.  So zeroes correspond to elements of $N(T) / T = W$.  I claim all the zeroes are non-degenerate and have the same index, so $\chi(G/T) = |W|$.  Now the action of $g$ descends to $G/N(T)$ with only one fixed point, so $\chi(G/N(T)) = 1$.
 
 Now let's talk about the transfer in $K$-theory.  Suppose $p: E \to B$ is a finite covering.  Then the transfer is a map $t(p): B^{n \varepsilon} \to E^{n \varepsilon}$ which induces a map in $KO$-theory $KO(E) \to KO(B)$.  There's an obvious thing to do here, but there's no obvious connection with the map $t(p)$: if $\xi$ over $E$ is a vector bundle, we can form a vector bundle over $B$ by taking as fiber over $b \in B$ the sum of the vector spaces over points in $E$ which cover $b$:
 \[
@@ -237,7 +237,7 @@ E & \rInto & B \times \R^n & \rInto^\zeta & n \varepsilon \oplus \xi \\
 \dTo<p & \ldTo>{\mathrm{pr}} \\
 B.
 \end{diagram}
-Now you emb ed one step farther: $\zeta: B \times \R^n \into n \varepsilon \oplus \xi$.  And we can do the collapse on the inclusion given by a tubular neighborhood for $p^* \xi$ in $n \varepsilon \oplus \xi$:
+Now you embed one step farther: $\zeta: B \times \R^n \into n \varepsilon \oplus \xi$.  And we can do the collapse on the inclusion given by a tubular neighborhood for $p^* \xi$ in $n \varepsilon \oplus \xi$:
 \[
 t(p): \Suspend^n B^\xi \stackrel{p_!}{\to} E^{\nu(i) \oplus p^* \xi} \into E^{n \varepsilon \oplus p^* \xi} = \Suspend^n E^{p^* \xi}
 .\]
@@ -292,7 +292,7 @@ S^1 & \rEqualto & SO(2) & \rInto & O(2) & \pile{\rTo \\ \lTo} & \Z_2,
 \end{diagram}
 where the splitting comes from choosing any reflection, say $r$ is the reflection through the $x$-axis.
 
-So what are the representations of $O(2)$?  Let $V = \R^2$ be the basic representaiton; then we can take exterior powers:
+So what are the representations of $O(2)$?  Let $V = \R^2$ be the basic representation; then we can take exterior powers:
 \begin{align*}
 \lambda^0(V) & = 1, \\
 \lambda^1(V) & = V, \\
@@ -377,7 +377,7 @@ Another way to ask this question is this: every spectrum has a space associated 
 \]
 Everything else on the table follows from periodicity.
 
-These operations suffer from a bad defect: they're not stable.  But we've arleady seen how to study this problem when we were studying transfer: namely,
+These operations suffer from a bad defect: they're not stable.  But we've already seen how to study this problem when we were studying transfer: namely,
 \begin{diagram}[height=2em]
 S^8 \sprod (\Z \times BO) & \rTo^{k^4 \sprod \psi^k} & S^8 \sprod (\Z \times BO) \\
 \dTo<{g_8 \sprod 1} & & \dTo \\

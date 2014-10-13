@@ -456,7 +456,7 @@ That's the starting point.  Now study the Thom spaces to get stunted projective 
 
 The first question is: ``what is $T(g_{\nu(n)})$?''.  Well, by the Thom isomorphism, $T(g_{\nu(n)})$ has a 0-cell and a $\rho(n)$-cell; the attaching map is an element of $\pi_{\rho(n)-1} (Q S^0)$.  The fact is
 \begin{thm}
-The attaching map for $Tg_{\nu(n)}$ is $j_{\nu(n)} = j(g_{\nu(n)}) \in \pi_{\rho(n)-1}(QS^0)$.
+The attaching map for $T(g_{\nu(n)})$ is $j_{\nu(n)} = j(g_{\nu(n)}) \in \pi_{\rho(n)-1}(QS^0)$.
 \end{thm}
 This has the status almost of a folk theorem; it's due to Toda and Adams.  We will prove it next time; for now, what else could it be?  Now we can line up two cofiber sequences vertically:
 \[\xymatrix{S^0\ar[d]\ar@{=}[r]&S^0\ar[d]\\
@@ -609,7 +609,7 @@ We illustrate this theorem with the following picture of the nonzero differentia
 
 We will soon prove that there is a map of spectral sequences from the EHP sequence to the Atiyah-Hirzebruch spectral sequence constructed here, and that on the $E^1$ page, the map is induced by stabilisation. That is, ${_\text{EHP}E}^1_{pq}=\pi_{2p+1+q}(S^{2p+1})$ and ${_\text{AH}E}^1_{pq}=\pi^S_q$, and the map ${_\text{EHP}E}^1_{pq}\to{_\text{AH}E}^1_{pq}$ is just the iterated suspension map, which is an isomorphism for $q<2p$.
 
-Now as $[\iota]\in {_\text{AH}E}^1_{n-1,0}$ survives to $E^{\rho(n)}$, at which point it supports a nonzero differential, $[\iota]\in {_\text{EHP}E}^1_{n-1,0}$ must support a nonzero differential $d_r$ for some $r\leq\rho(n)$. This shows that $w_{n-1}=p\iota$ desuspends at most $\rho(n)-1$ times.
+Since $[\iota]\in {_\text{AH}E}^1_{n-1,0}$ survives to $E^{\rho(n)}$, at which point it supports a nonzero differential, so we see that $[\iota]\in {_\text{EHP}E}^1_{n-1,0}$ must support a nonzero differential $d_r$ for some $r\leq\rho(n)$. This shows that $w_{n-1}=p\iota$ desuspends at most $\rho(n)-1$ times.
 
 The converse holds, and could presumably be proven by constructing an explicit desuspension. That is, the first nonzero differential on $[\iota]\in {_\text{EHP}E}^1_{n-1,0}$ is exactly $d_{\rho(n)}$.
 \ConfusedBox{What can now be said about the image of $\iota$ under the crucial differential? Is it $j(\nu(n))$ or something? I haven't thought about it.}
@@ -673,7 +673,7 @@ with the diagonal map a homomorphism relative to $\Suspend X$.
 \end{thm}
 Note first of all that this is what we want: $\varphi$ for us is the composite
 \[
-S^{\rho(n)-1} \times S^{N-1} \stackrel{g_{\nu(n)} \times 1}{\to} O(N) \times S^{N-1} \to S^{N-1}
+S^{\rho(n)-1} \times S^{N-1} \stackrel{g_{\nu(n)} \times 1}{\longrightarrow} O(N) \times S^{N-1} \to S^{N-1}
 \]
 and we are showing that $T\varphi$ ($ = T(g_{\nu(n)})$ from last time) = $CJ\varphi$ (= $Cj_{\nu(n)}$ from last time) relative to $\Suspend S^{N-1} = S^N$.  In fact we were interested last time in the relation between $Tg_{\nu(n)}$ and $Cj_{\nu(n)}$ stably, and we can make the fiber $S^N$ as connected as we want.  So we get a stable equivalence $Tg_{\nu(n)} \simeq Cj_{\nu(n)}$.
 \begin{proof}
@@ -703,7 +703,7 @@ Remember how we got here: we were studying the EHP spectral sequence.  This spec
 
 On Friday we constructed a candidate, an Atiyah-Hirzebruch spectral sequence for the attaching maps on $\RP^\infty$: $\widetilde H^*(\RP^\infty_+; \pi_*^S)$ which we hope converges to $\pi_*^S \RP^\infty_+$, whose $E^1$-term is INKSCAPE
 
-Sure enough, there is a spectral sequence map between these two spectral sequences which is an isomorphism below the line at $E^1$.  To see this, remember the EHP sequence: $\Loops^{n-1} S^{n-1} \to \Loops^n S^n \to \Loops^n S^{2n-1}$.  Here we looped it $(n-1)$ times as this is the form in which it went into the EHPSS.  This is a fibration, strictly if $n$ is even or localized at $2$ if $n$ is odd.  Linking these together and applying $\pi_*$ gave us the EHPSS.  On the other hand, the AHSS from Friday came from taking the cofibration sequence $\RP^{n-2}_+ \to \RP^{n-1}_+ \to S^{n-1}_+$ and applying $\pi_*^@ = \pi_* Q$.  (Recall $QX = \bigcup_k \Loops^k \Suspend^k X$.)  The sequence $Q\RP^{n-2}_+ \to Q\RP^{n-1}_+ \to QS^{n-1}_+$ is a fibration, since $\pi_*^S$ is a homology theory and hence exact on $\RP^{n-2}_+ \to \RP^{n-1}_+ \to S^{n-1}_+$.  Next, note that we have $S^{n-1}_+ \stackrel{e^n}{\to} \Loops^n S^{2n-1}_+ \stackrel{e^{\infty-n}}{\to} QS^{n-1}_+$, and $e^{\infty-n}$ is an isomorphism on $\pi_*$ for $* < n$.
+Sure enough, there is a spectral sequence map between these two spectral sequences which is an isomorphism below the line at $E^1$.  To see this, remember the EHP sequence: $\Loops^{n-1} S^{n-1} \to \Loops^n S^n \to \Loops^n S^{2n-1}$.  Here we looped it $(n-1)$ times as this is the form in which it went into the EHPSS.  This is a fibration, strictly if $n$ is even or localized at $2$ if $n$ is odd.  Linking these together and applying $\pi_*$ gave us the EHPSS.  On the other hand, the AHSS from Friday came from taking the cofibration sequence $\RP^{n-2}_+ \to \RP^{n-1}_+ \to S^{n-1}_+$ and applying $\pi_*^S = \pi_* Q$.  (Recall $QX = \bigcup_k \Loops^k \Suspend^k X$.)  The sequence $Q\RP^{n-2}_+ \to Q\RP^{n-1}_+ \to QS^{n-1}_+$ is a fibration, since $\pi_*^S$ is a homology theory and hence exact on $\RP^{n-2}_+ \to \RP^{n-1}_+ \to S^{n-1}_+$.  Next, note that we have $S^{n-1}_+ \stackrel{e^n}{\to} \Loops^n S^{2n-1}_+ \stackrel{e^{\infty-n}}{\to} QS^{n-1}_+$, and $e^{\infty-n}$ is an isomorphism on $\pi_*$ for $* < n$.
 
 \begin{thm}
 There are maps $s_n$ (``Snaith maps'' or ``Hopf-James'' maps\footnote{Oh dear.}) with
@@ -768,7 +768,8 @@ To model the multiplicative structure you have to make some identifications:
 \item The constant loop obliterates a cube; e.g., \includegraphics[width=0.2\textwidth]{figures/figure36.pdf}
 \item The symmetric group $\Sigma_k$ acts diagonally on $C_k(n) \times (\Loops^n X)^k$, and the map is equivariant with respect to this action.
 \end{enumerate}
-Now if $X = \Suspend^n A$ then we have the map $\alpha: A \to \Loops^n \Sigma^n A$, and get
+
+Now if $X = \Suspend^n A$ then we have the map $\alpha: A \to \Loops^n \Sigma^n A=\Loops^n X$, and get
 \begin{diagram}[height=2em]
 \coprod_{k \ge 1} C_k(n) \times_{\Sigma_k} (\Loops^n X)^k / \sim & \rTo & \Loops^n \Suspend^n A \\
 \uTo \\
