@@ -2,7 +2,7 @@
 \section{The stable category} % <<<
 \label{TheStableCategory}
 \ifx\OutputTheStableCategory\undefined\else
-In order to set up the spectral sequence alluded to above, whose $E^1$ page consists of the stable homotopy groups of spheres in each column, it's a good idea to talk about stable homotopy a bit; for more information, see Adams' blue book~\cite{Adams}.  The notation $[X, Y]$ will mean pointed homotopy classes of point maps.  There is a map $\Suspend: [X, Y] \to [\Suspend X, \Suspend Y]$, and the idea is to study this game in detail.
+In order to set up the spectral sequence alluded to above, whose $E^1$ page consists of the stable homotopy groups of spheres in each column, it's a good idea to talk about stable homotopy a bit; for more information, see Adams' blue book~\cite{Adams}.  The notation $[X, Y]$ will mean pointed homotopy classes of point maps.  There is a map $\Suspend: [X, Y] \to [\Suspend X, \Suspend Y]$, and the idea is to study this game in detail.\todo{``game''?}
 
 One nice thing about suspending is that when you suspend you get a group: $[\Suspend X, Z]$ is a group naturally in $X$ and $Z$, and $[\Suspend^2 X, Z]$ is abelian.  The group structure comes from
 \[
@@ -12,10 +12,10 @@ One nice thing about suspending is that when you suspend you get a group: $[\Sus
 \begin{diagram}[height=2em]
 \Suspend X & \pile{\rTo^{g_1} \\ \rTo_{g_2}} & Z & \rTo^f & Y
 \end{diagram}
-we have $f_*(g_1 + g_2) = f_* (g_1) + f_* (g_2)$ in $[\Suspend X, Y]$.
+we have $f_*(g_1 + g_2) = f_* (g_1) + f_* (g_2)$ in $[\Suspend X, Y]$.\todo{It would be easy to draw this rectangle.}
 
-Note, however, that $[\Suspend X, Z]$ is not natural in $\Suspend X$.
-As an example, consider the map $S^{2n-1} \stackrel{w_n}{\to} S^n$, the Whitehead square.  Then $w_n^* = [S^n, S^n] \to [S^{2n-1}, S^n]$ is not a homomorphism for $n$ even.  To see this, recall that $w_n = [\iota_n, \iota_n] \in \pi_{2n-1} (S^n)$ is defined by
+Note, however, that the group structure on $[\Suspend X, Z]$ is not natural in $\Suspend X$.
+As an example, consider the Whitehead square\footnote{Essentially, we are showing that the \emph{map} $w_n$ is not in the image of the suspension map $[S^{2n-2}, S^{n-1}] \to [S^{2n-1}, S^n].$} \[S^{2n-1} \stackrel{w_n}{\to} S^n.\]  The induced function $w_n^* = [S^n, S^n] \to [S^{2n-1}, S^n]$ is not a homomorphism for $n$ even.  To see this, recall that $w_n = [\iota_n, \iota_n] \in \pi_{2n-1} (S^n)$ is defined by
 \begin{diagram}[height=2em]
 S^{2n-1} & \rTo^{w_n} & S^n \\
 & \rdTo_{W} & \uTo>{\textup{fold}} \\
@@ -27,10 +27,9 @@ S^{2n-1} & \rTo^{w_n} & S^n & \rTo^{2 \iota_n} & S^n \\
 & \rdTo_W & \uTo>{\textup{fold}} & & \uTo>{\textup{fold}} \\
 & & S^n \wsum S^n & \rTo_{2\iota_n \wsum 2\iota_n} & S^n \wsum S^n.
 \end{diagram}
-The top row represents $(\iota_n + \iota_n) \circ w_n = w_n^*(2 \iota_n)$.  The lower composite represents $[2\iota_n, 2\iota_n] = 4[\iota_n, \iota_n]$ (by bilinearity of the Whitehead product), which is equal to $4 w_n$ or $4 w_n^*(\iota_n)$.  So $w_n^*$ cannot be a homomorphism unless $w_n = w_n^* \iota_n$ has finite order in $\pi_{2n-1}(S^n)$.  But for $n$ even, $h(w_n) = 2 \iota_n$, so the image of $w_n$ under the Hopf map is infinite cyclic!
-\ConfusedBox{\textbf{I'm just plain old confused about:} So for example $\End(\Suspend^n X)$ is not a ring.?}
+The top row represents $(\iota_n + \iota_n) \circ w_n = w_n^*(2 \iota_n)$, the lower composite represents $[2\iota_n, 2\iota_n] = 4[\iota_n, \iota_n]$ (by bilinearity of the Whitehead product), which is equal to $4 w_n$ or $4 w_n^*(\iota_n)$, and the diagram is a witness to \[w_n^*(2 \iota_n) = 4 w_n^* \iota_n.\]  So $w_n^*$ cannot be a homomorphism unless $w_n = w_n^* \iota_n$ has finite order in $\pi_{2n-1}(S^n)$.  But for $n$ even, $h(w_n) = 2 \iota_n$, so the image of $w_n$ under the Hopf map is infinite cyclic!
 
-The way to get around this is by continuing to suspend.  In what follows we take $X$ and $Y$ to be finite complexes.  Then we define $\{X, Y\} = [\Suspend^n X, \Suspend^n Y]$ for $n$ much larger than 0, in particular for $n$ sufficiently large $[\Suspend^n X, \Suspend^n Y] \cong [\Suspend^{n+1} X, \Suspend^{n+1} Y]$ by the following theorem, and we define $\{X, Y\}$ to be this ``stable'' group, the ``stable homotopy classes of maps'' between $X$ and $Y$.
+The way to get around the presence of non-homomorphic maps is by suspending more.  In what follows we take $X$ and $Y$ to be finite complexes.  Then we define $\{X, Y\} = [\Suspend^n X, \Suspend^n Y]$ for $n$ much larger than 0. In particular, the following theorem shows that for $n$ sufficiently large $[\Suspend^n X, \Suspend^n Y] \cong [\Suspend^{n+1} X, \Suspend^{n+1} Y]$, and we define $\{X, Y\}$ to be this ``stable'' group, the ``stable homotopy classes of maps'' between $X$ and $Y$.
 \begin{thm}[Freudenthal suspension theorem]
 If $Y$ is an $(n-1)$-connected CW-complex, and $X$ is a finite dimensional CW-complex of dimension $d$, then $\Sigma:[X,Y]\to[\Sigma X,\Sigma Y]$ is surjective when $d\leq2n-1$ and an isomorphism when $d<2n-1$.
 \end{thm}
@@ -38,7 +37,7 @@ Now composition gives a product
 \[
 \{X, Y\} \times \{Y, Z\} \to \{X, Z\}
 \]
-which is bilinear since we can assume all maps involved are suspensions.
+which is bilinear since we can assume all maps involved are in the image of $\Suspend$.
 
 So we get a category whose objects are finite complexes and whose morphisms are stable homotopy classes of pointed maps.  Some important properties of this category are:
 \begin{enumerate}
@@ -61,7 +60,7 @@ In particular, $f$ lifts to the fiber $F(k)$. Now the fiber is $(2n-1)$-connecte
 \end{enumerate}
 \end{enumerate}
 
-So, surprise, the wedge is the product in this category.  Well, that's nice; now let's add ``formal desuspensions.'' Somehow the point is that now that $\Sigma:\{X, Y\}\to\{\Suspend X, \Suspend Y\}$ is an isomorphism, we've really obliterated the difference between the morphism sets here; we've made $\Suspend$ a fully faithful functor.  Now the idea is to make it into an isomorphism.  To fix it up, we'll simply put in formal desuspensions.
+So, surprise!: the wedge is the product in this category.  Now let's add ``formal desuspensions.''  The point is that now that $\Sigma:\{X, Y\}\to\{\Suspend X, \Suspend Y\}$ is an isomorphism, we've really obliterated the difference between the morphism sets here, and $\Suspend$ has become a fully faithful functor.  Now we'll make it into an isomorphism.  To fix it up, we'll simply put in formal desuspensions.
 
 The new category, the $S$-category, has as objects pairs $(X, n)$, where $X$ is a finite complex and $n$ is an integer, the ``formal $n$-fold suspension of $X$.''  And $\mathrm{morph}\{(X, m), (Y, n)\} = [\Suspend^{m+k} X, \Suspend^{n+k} Y]$ for $k$ much larger than 0, namely $k$ big enough that $ m+k\geq0$, $n+k\geq0$, and larger still so that one is in the stable range.
 
@@ -80,10 +79,11 @@ And so now in our new category we find
 \begin{lem}
 $V\downarrow X$ is stable fiber homotopy trivial if and only if $S^n \to T(V)$ has a stable retraction.
 \end{lem}
-\ConfusedBox{\textbf{I don't really understand what's going on in the following sentence:} In other words, in the $S$-category, $T(V) \simeq \Suspend^n (\pt{X})$ implies that $T(V) \simeq S^n \wsum (\mathrm{something})$.\footnote{This holds because the $S$-category is additive.}}
+In the $S$-category, the left--hand condition is $T(V) \simeq \Suspend^n (\pt{X})$ and the right--hand condition is that $T(V) \simeq S^n \wsum (\mathrm{something})$, and these agree.
+
 Now earlier we also sketched a proof of Atiyah that $\widetilde J(X)$ is finite over a finite complex; so for any $V\downarrow X$ there is an $n$ so $V^{\ast n}\downarrow X$ is stably fiber homotopy trivial.  So that says that in the $S$-category, $\{T(V^{\ast k})\}$ is periodic up to suspension.  This is ``James periodicity.''
 
-As a final remark, note that now we can talk about the Thom space of a virtual bundle; for example, $T(V - \varepsilon_n) = \Suspend^{-n} T(V)$.
+As a final remark, note that now we can talk about the Thom space of certain virtual bundles: \[T(V - \varepsilon_n) = \Suspend^{-n} T(V).\]
 
 % >>>
 \fi
