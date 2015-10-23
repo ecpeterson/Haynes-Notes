@@ -88,16 +88,24 @@ As a final remark, note that now we can talk about the Thom space of certain vir
 % >>>
 \fi
 \BoxedNote{}
+
+
+
+
+
+
+
 \section{Homotopical algebra and duality} % <<<
 \label{HomotopicalAlgebraAndDuality}
 \ifx\OutputHomotopicalAlgebraAndDuality\undefined\else
 Well, let's continue with the discussion of stable homotopy, and really enter the stratosphere at this point, at least for a short while.  So remember last time we ended with the notion of a category $\CatOf{C}$, the $S$-category of finite complexes.  In this category there is an important notion of ``exact triangles'': $X \to Y \to Z \to \Suspend X$ is an exact triangle if it is homotopy equivalent to $X \stackrel{f}{\to} Y \to Cf \to \Suspend X$ on the level of spaces, perhaps after suspending a lot.  Two important facts about exact triangles are
 \begin{enumerate}
-\item A sequence $X \to Y \to Z \to \Suspend X$ is exact iff it remains exact after application of $\{W, -\}$ for all $W \in \CatOf{C}$.
+\item A sequence $X \to Y \to Z \to \Suspend X$ is exact iff it remains exact after application of $\{W, -\}$ for all $W \in \CatOf{C}$.\todo{We should be careful and distinguish function spaces from the set of stable homotopy classes.}
 \item $Y \stackrel{g}{\to} Z \to \Suspend X \stackrel{\Suspend f}{\to} \Suspend Y$ is an exact triangle iff $X \stackrel{f}{\to} Y \stackrel{g}{\to} Z \to \Suspend X$ is an exact triangle.
 \end{enumerate}
-This is somehow reminiscent of (co)homology. To make that hint precise, consider a category (containing the category $\CatOf{C}$) $\CatOf{S}$, the ``stable category'', such that, well, it has a bunch of properties:
+This is somehow reminiscent of (co)homology. To make that hint precise, consider a category $\CatOf{S}$, the ``stable category of spectra'', with the following properties:
 \begin{itemize}
+\item It contains the category $\CatOf C$.
 \item $\CatOf{S}$ has exact triangles, and the inclusion of $\CatOf{C}$ into $\CatOf{S}$ takes exact triangles to exact triangles.
 \item $\CatOf{S}$ is additive: it has products $\prod$ and coproducts $\coprod$, and finite products and finite coproducts coincide.
 \item The equivalence $\Suspend$ on $\CatOf{C}$ extends to one on $\CatOf{S}$.
@@ -109,12 +117,12 @@ This is somehow reminiscent of (co)homology. To make that hint precise, consider
 What do these last two mean?  They have to do with cohomology and homology, so we'd better know what those are: a function $E^0: \CatOf{S}^{op} \to \CatOf{Ab}$ is cohomological if
 \begin{enumerate}
 \item $E^0$ sends exact triangles to exact sequences.
-\item $\CatOf{S}$ is going to contain infinite complexes, so we'd better know what $E^0$ does to colimits, e.g.,\ wedges. $E^0$ must satisfy the ``Milnor axiom'', that the following natural map is an isomorphism:
+\item $\CatOf{S}$ is going to contain infinite complexes, so we'd better know what $E^0$ does to colimits, e.g.,\ wedges. It must satisfy the ``Milnor axiom'', that the following natural map is an isomorphism:
 \[
 E^0({\textstyle{\!\bigvee}_\alpha X_\alpha}) \stackrel{\cong}{\to} \prod_\alpha E^0 X_\alpha
 .\]
 \end{enumerate}
-If $E^0$ is cohomological, we define $E^q (X) := E^0 (\Suspend^{-q} X)$. ``Brown representability'' states that any cohomological functor (a.k.a.\ cohomology theory) of $\CatOf{S}$ is representable: there is a spectrum $E$ (the objects of $\CatOf{S}$ are called ``spectra'') such that the functors $E^0$ and $\{\textup{---}, E\}$ are naturally isomorphic.\footnote{Note that in this context, the restriction of $E^0$ to spaces always refers to \emph{reduced} $E$-cohomology, so usually the twiddle is left out.}  Analogously, $E_0: \CatOf{S} \to \CatOf{Ab}$ is homological if
+If $E^0$ is cohomological, we define $E^q (X) := E^0 (\Suspend^{-q} X)$. ``Brown representability'' states that any cohomological functor (a.k.a.\ cohomology theory) of $\CatOf{S}$ is representable: there is a spectrum $E$ such that the functors $E^0$ and $\{\textup{---}, E\}$ are naturally isomorphic.\footnote{Note that in this context, the restriction of $E^0$ to spaces always refers to \emph{reduced} $E$-cohomology, so usually the twiddle is left out.}  Analogously, $E_0: \CatOf{S} \to \CatOf{Ab}$ is homological if
 \begin{enumerate}
 \item $E_0$ sends exact triangles to exact sequences, and
 \item The Milnor axiom holds: the natural map $\bigoplus_\alpha E_0 X_\alpha \stackrel{\cong}{\to} E_0(\bigvee_\alpha X_\alpha)$ is an isomorphism.
@@ -132,9 +140,10 @@ E & \lTo^{\beta\ \ \ } & \SuspendS \LoopsS E.
 The map $\Suspend K(A, n) \to K(A, n+1)$ is given by the adjoint of the identity $K(A, n) \to \Loops K(A, n+1)$.
 \end{enumerate}
 
-Now let's talk about a notion of duality that makes sense in the context of spectra.  This is where we lift off a bit; Michael Artin says this is the hardest thing in the world to write down.  Namely, a duality is a map $\alpha: X \sprod Y \to S^0$ such that for all $W \in \CatOf{S}$, $\{W, Y\} \stackrel{X \sprod}{\to} \{X \sprod W, X \sprod Y\} \stackrel{\alpha_*}{\to} \{X \sprod W, S^0\}$ is an isomorphism. That is, given a map $W\to Y$, we can form the composite:
-\[X\wedge W\to X\wedge Y\to S^0,\]
-and we require that this assignment is an isomorphism.
+Now let's talk about a notion of duality that makes sense in the context of spectra.  This is where we lift off a bit; Michael Artin says this is the hardest thing in the world to write down.  A duality is a map $\alpha: X \sprod Y \to S^0$ such that for all $W \in \CatOf{S}$, the composite \[\{W, Y\} \stackrel{X \sprod}{\to} \{X \sprod W, X \sprod Y\} \stackrel{\alpha_*}{\to} \{X \sprod W, S^0\}\] is an isomorphism. In other words, given a map $f: W \to Y$, we can form the composite:
+\[X\wedge W \xrightarrow{1_X \wedge f} X\wedge Y\to S^0,\]
+and we require that this assignment on Hom-sets is an isomorphism.
+\todo{Address this ConfusedBox.}
 \ConfusedBox{Do we need another axiom here? I once saw:
 
 A map $u:S\to A\wedge A^\perp$ is called a duality if for all $E$, the maps
@@ -149,7 +158,8 @@ are isomorphisms. Duality is symmetric, as smash product is homotopy
 commutative. Moreover, given two dualities, we have isomorphisms
 $[A,B]\longrightarrow[S,B\wedge A^\perp]\longleftarrow[B^\perp,A^\perp]$, so
 that we can define the adjoint $f^\perp:B^\perp\to A^\perp$ of a map $f:A\to B$.}
-The first thing to note is that dualities exist:
+
+The first thing to note is that these dualities exist:
 \begin{thm}
 For all $X$ there is a $Y$ with a duality $X \sprod Y \to S^0$.
 \end{thm}
@@ -192,8 +202,8 @@ All right, enough, let's see what having $D$ does for us.
 \begin{lem}
 \begin{itemize}
 \item You can choose $DS^0 = S^0$.
+\item $D \Suspend X = \Suspend^{-1} D X$.
 \item $X \to Y \to Z \to \Suspend X$ an exact triangle means that $DX \from DY \from DZ \from \Suspend^{-1} DX$ is an exact triangle.
-\item $D \Suspend X = \Suspend^{-1} D X$ (um, well, so this explains the end of the previous point).
 \end{itemize}
 \end{lem}
 \begin{cor}
@@ -201,12 +211,12 @@ A finite complex is built out of spheres using exact triangles, so we get
 \begin{itemize}
 \item $D$ of a finite spectrum is finite.
 \item If $K$ is finite, then $D(K \sprod X) \simeq DK \sprod DX$ (but not if $K$ is infinite; in general $D$ isn't nice when there are limits around).
-\item $X$ can be taken for $DDX$.
+\item If $K$ is finite, then $K$ can be taken for $DDK$.
 \end{itemize}
 \end{cor}
 \ConfusedBox{The whole function spectrum Spiel had been omitted, I took the following remark from the end of the next chapter, where it had been misplaced.}
 \begin{rem}
-The defining property of $D$ was $\{W, DX\} \cong \{X \sprod W, S^0\}$.  Now there's nothing particularly special about $S^0$: if $Y$ is any spectrum, $W \mapsto \{X \sprod W, Y\}$ is a cohomology theory for $W$, so it's represented by a spectrum $F(X, Y)$.  If you think of $X \sprod W$ as a tensor product, $F(X, Y)$ is a like a hom-space.  So think of $F(X, Y)$ as a ``function spectrum,'' and $DX = F(X, S^0)$.  It's not a function space in any way; we get it out of Brown representability.
+The defining property of $D$ was $\{W, DX\} \cong \{X \sprod W, S^0\}$.  Now there's nothing particularly special about $S^0$: if $Y$ is any spectrum, $W \mapsto \{X \sprod W, Y\}$ is a cohomology theory for $W$, so it's represented by a spectrum $F(X, Y)$.  If you think of $X \sprod W$ as a tensor product, $F(X, Y)$ is a like a hom-space.  So think of $F(X, Y)$ as a ``function spectrum,'' and $DX = F(X, S^0)$.  It doesn't come to us the way that function spaces normally do; we get it out of Brown representability.
 
 Notice that there is a map $f: DX \sprod Y \to F(X, Y)$ defined by
 \begin{diagram}[height=1.5em]
@@ -219,6 +229,12 @@ Now we'd like $f$ to be an equivalence; this isn't always true, but if some reas
 % >>>
 \fi
 \BoxedNote{}
+
+
+
+
+
+
 \section{Dualities} % <<<
 \label{Dualities}
 \ifx\OutputDualities\undefined\else
