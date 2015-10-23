@@ -308,7 +308,8 @@ neighborhood. } so that the inclusion $X \stackrel{\simeq}{\to} N$ is a homotopy
 The virtue of the regular neighborhood is that you can identify what the suspension of the complement is: all you need to find the suspension is an inclusion into a contractible space, which we have, giving a degenerate cofiber sequence:
 \[(D^n - N) \to D^n \to D^n/(D^n - N) \overset{\simeq}{\to} \Suspend(D^n - N)\to\Sigma D^n.\]
 Thus, as $D^n/(D^n-N)$ is homeomorphic to $\overline N/\partial\overline N$,
-\[D(X_+)\simeq\Suspend^{1-n}(D^n - N) \simeq \Suspend^{-n}(D^n / (D^n-N)) \simeq \Suspend^{-n}(\bar N / \partial \bar N).\]  Well that's most useful when you can say something about $N$; if $X$ is a $d$-dimensional manifold without boundary, then the normal bundle $\nu$ of the inclusion $X \into D$ is $(n-d)$-dimensional.  $N$ is homotopy equivalent to the disk bundle of $\nu$, and $\bar N / \partial \bar N \simeq T (\nu)$, so $D(\pt{X}) \simeq \Suspend^{-n} T(\nu) \simeq T(\nu - n \varepsilon)$.  This is called ``Milnor-Spanier duality'' although it's not called that very often.  In (co)homology,
+\[D(X_+)\simeq\Suspend^{1-n}(D^n - N) \simeq \Suspend^{-n}(D^n / (D^n-N)) \simeq \Suspend^{-n}(\bar N / \partial \bar N).\]
+This is most useful when you can say something about $N$.  If $X$ is a $d$-dimensional manifold without boundary, then the normal bundle $\nu$ of the inclusion $X \into D$ is $(n-d)$-dimensional and $N$ is homotopy equivalent to the disk bundle of $\nu$.  It follows that $\bar N / \partial \bar N$ models the Thom complex $T (\nu)$, so $D(\pt{X}) \simeq \Suspend^{-n} T(\nu) \simeq T(\nu - n \varepsilon)$.  This is called ``Milnor-Spanier duality'' (although it's not called that very often).  In (co)homology,
 \[
 E^{-i}(\pt{X}) = E_i (D(\pt{X})) = E_{i+n} (T (\nu)).
 \]
@@ -328,14 +329,13 @@ This gives standard Poincare duality, recalling that $E$ stands for the \emph{re
 %\end{wrapfigure}
 This is a little mystical, so perhaps we should look at it more closely in the context of what's called Atiyah duality (for this, readers should look at Atiyah's exposition~\cite{Atiyah}).  Here we take for a change $(X, \partial X)$ to be a manifold with boundary.  You have to be careful about interpreting the tangent bundle of a manifold with boundary; $\tau_X$ is best defined to be $d$-dimensional everywhere, but with an identified $(d-1)$-dimensional subbundle on the boundary.  %Referencing the figure, this isn't quite what we had before.
 
-Now suppose that $X$ is embedded in $D^n$ such that $\partial X$ lies in $\partial D^n=S^{n-1}$, and moreover that $X$ is transverse to $S^{n-1}$ wherever they coincide. Suppose also that $N$ is an open neighborhood of $X$ in $D^n$ such that $N\cap S^{n-1}$ is a regular open neighborhood of $\partial X$ in $S^{n-1}$.
-The nice idea is to take the cone on this situation, as in figure \ref{AtiyahDuality}.
+Now suppose that $X$ is embedded in $D^n$ such that $\partial X$ lies in $\partial D^n=S^{n-1}$, and moreover that $X$ is transverse to $S^{n-1}$ wherever they coincide. Suppose also that $N$ is an open neighborhood of $X$ in $D^n$ such that $N\cap S^{n-1}$ is a regular open neighborhood of $\partial X$ in $S^{n-1}$. Then, we take the cone on this situation, as in figure \ref{AtiyahDuality}.
 \begin{figure}[ht!]
 \centering\includegraphics[width=0.4\textwidth]{figures/figure29.pdf}
 \caption{\small Atiyah duality.}\label{AtiyahDuality}
 \end{figure}
 
-Now, $X / \partial X$ is homotopic to  $Y = X \cup C \partial X$, which is a subcomplex of $\partial(CD^n)\cong S^n$.  Moreover, $Y$ has $N \cup C(N \cap S^{n-1})$ as a regular neighborhood in $S^n$; its complement is $K=S^n - (N \cup C(N \cap S^{n-1}))$.  Now $K$ deformation retracts onto $(D^n-N)$, as the tip of the cone does not lie in $K$. So, applying Alexander duality to $Y\subseteq S^n$:
+Now, $X / \partial X$ is homotopic to  $Y = X \cup C \partial X$, which is a subcomplex of $\partial(CD^n)\cong S^n$.  Moreover, $Y$ has $N \cup C(N \cap S^{n-1})$ as a regular neighborhood in $S^n$, and its complement is $K=S^n - (N \cup C(N \cap S^{n-1}))$.  Finally, $K$ deformation retracts onto $(D^n-N)$, as the tip of the cone does not lie in $K$. So, applying Alexander duality to $Y\subseteq S^n$:
 \begin{align*}
 D(X / \partial X) & \simeq D(Y) \\
 & \simeq \Suspend^{1-n}(K) \\
@@ -357,13 +357,13 @@ where $\pi$ is the projection $D(\xi) \to X$ (a homotopy equivalence).
 \subsection*{Lefschetz duality}
 Now suppose that $X$ is oriented for $E$, i.e., that there is a Thom isomorphism $E_i(X_+)\cong E_{i-d}(T(-\tau))$. Then from Atiyah duality we derive Lefschetz duality: $E_i (X_+) \simeq E^{d-i}(X, \partial X)$.
 \subsection*{Stunted projective space}
-Here's an example: $X = \RP^{k-1}$ and $\xi = n \bundle{L}$ % (we'll take $n \ge 0$ for the moment; we'll see it doesn't make any difference soon).
-Then we saw in lecture \ref{BuildingThomSpaces} (at least for $n\geq0$) that $T(n \bundle{L}) = \RP^{n+k-1} / \RP^{n-1} =: \RP^{n+k-1}_n$.
+Here's an example: take $X = \RP^{k-1}$ and $\xi = n \bundle{L}$. % (we'll take $n \ge 0$ for the moment; we'll see it doesn't make any difference soon).
+Then, we saw in lecture \ref{BuildingThomSpaces} (at least for $n\geq0$) that \[T(n \bundle{L}) = \RP^{n+k-1} / \RP^{n-1} =: \RP^{n+k-1}_n.\]
 More generally, we can define, whenever $t+b\geq1$:
 \[\RP^{t-1}_{-b}:= T(-bL\downarrow\RP^{t+b-1}),\]
-a spectrum with cells in every dimension from $-b$ to $t-1$ inclusive.
+a spectrum with cells in every dimension from $-b$ to $t-1$, inclusive.
 
-Moreover, it happens\footnote{To see this, one argues as follows. View $\bundle{L}$ as a subbundle of $\RP^{k-1}\times R^k$, where $\RP^{k-1}$ is viewed as the set of lines $\R\{x\}$ in $\R^k$, for nonzero $x\in\R^k$. Then we can produce a bundle isomorphism $\Hom(\bundle{L},\bundle{L}^\perp)\to\tau(\RP^{k-1})$ by sending $h:\R\{x\}\to \R\{x\}^\perp$ to the germ at $0$ of the path $t\mapsto \R\{x+t\cdot h(x)\}$ in $\RP^{k-1}$. Noting that $\Hom(\bundle L,\bundle L)$ is a line bundle with a nonvanishing section, it is trivial, so $\tau(\RP^{k-1})+\R=\Hom(\bundle L,\bundle L^\perp\oplus\bundle L)=\Hom(\bundle L,\R^k)=\Hom(\bundle L,\R)^k=\bundle L^k$.} that $\tau(\RP^{k-1}) + \varepsilon = k \bundle{L}$.
+Moreover, it happens\footnote{To see this, one argues as follows. View $\bundle{L}$ as a subbundle of $\RP^{k-1}\times \R^k$, where $\RP^{k-1}$ is viewed as the set of lines $\R\{x\}$ in $\R^k$, for nonzero $x\in\R^k$. Then we can produce a bundle isomorphism $\Hom(\bundle{L},\bundle{L}^\perp)\to\tau(\RP^{k-1})$ by sending $h:\R\{x\}\to \R\{x\}^\perp$ to the germ at $0$ of the path $t\mapsto \R\{x+t\cdot h(x)\}$ in $\RP^{k-1}$. Noting that $\Hom(\bundle L,\bundle L)$ is a line bundle with a nonvanishing section, it is trivial, so $\tau(\RP^{k-1})+\R=\Hom(\bundle L,\bundle L^\perp\oplus\bundle L)=\Hom(\bundle L,\R^k)=\Hom(\bundle L,\R)^k=\bundle L^k$.}\todo{I find this footnote very hard to read.} that $\tau(\RP^{k-1}) + \varepsilon = k \bundle{L}$.
 %\begin{enumerate}
 %\item $T(n \bundle{L}) = \RP^{n+k-1} / \RP^{n-1} \simeq \RP^{n+k-1}_n$, (see lecture); and
 %\item $\tau(\RP^{k-1}) + \varepsilon = k \bundle{L}$.\footnote{To see this, one argues as follows. View $\bundle{L}$ as a subbundle of $\RP^{k-1}\times R^k$, where $\RP^{k-1}$ is viewed as the set of lines $\R\{x\}$ in $\R^k$, for nonzero $x\in\R^k$. Then we can produce a bundle isomorphism $\Hom(\bundle{L},\bundle{L}^\perp)\to\tau(\RP^{k-1})$ by sending $h:\R\{x\}\to \R\{x\}^\perp$ to the germ at $0$ of the path $t\mapsto \R\{x+t\cdot h(x)\}$ in $\RP^{k-1}$. Noting that $\Hom(\bundle L,\bundle L)$ is a line bundle with a nonvanishing section, it is trivial, so $\tau(\RP^{k-1})+\R=\Hom(\bundle L,\bundle L^\perp\oplus\bundle L)=\Hom(\bundle L,\R^k)=\Hom(\bundle L,\R)^k=\bundle L^k$.}
@@ -379,6 +379,18 @@ By the way, if you don't like these somewhat ethereal spaces, you can use James 
 % >>>
 \fi
 \BoxedNote{}
+
+
+
+
+
+
+
+
+
+
+
+
 \section{The structure of stunted projective space} % <<<
 \label{TheStructureOfStuntedProjectiveSpace}
 \ifx\OutputTheStructureOfStuntedProjectiveSpace\undefined\else
