@@ -1,34 +1,55 @@
- % vim:foldmarker=<<<,>>>
+% vim:foldmarker=<<<,>>>
+
+\documentclass{article}
+\makeatletter
+
+%\include{hoodDebugTools}
+
 
 %% <<< header
 
-\documentclass{article}
-
 \usepackage{fullpage}
 \usepackage{ifthen}
-%\setlength{\textheight}{43pc}
-%\setlength{\textwidth}{28pc}
-\usepackage{amssymb,mathrsfs,float,stmaryrd,yhmath,prettyref,amsthm}
-\usepackage{xcolor,graphicx,tocloft}
+\usepackage{amssymb,amsthm}
+\usepackage{todonotes}
+
+% TODO: ALL DIAGRAMS TO TIKZ!!
 \usepackage{diagrams}
-\usepackage{wrapfig}
 \usepackage[all]{xy}
 \usepackage{tikz}
-\usepackage{nicefrac}
-%\usetikzlibrary{snakes}
-%\usetikzlibrary{positioning}
-%\usepackage[debug]{sseq}
-\usepackage{todonotes}
+
+
+\usepackage{yhmath} % \DeclareMathOperator, perhaps other things
+\usepackage{tocloft} % presumably table of contents
+
+
+\usepackage{wrapfig}  % Defines wrapfigure environment, used in 5 files a total of 10 times
+\usepackage{nicefrac} % Defines for \nicefrac, used twice in ehp-sseq
+\usepackage{mathrsfs} % Defines \mathscr, used 5 times in ehp-sseq
+\usepackage{stmaryrd} % Defines for \llbracket \rrbracket, used 4 times in adams-operations
+% TODO: define a command like \powerseriesring or something
+% Look through notes and find all places where power series show up (probably more than 4) make consistent
+
+
+
+%\usepackage{float} % Commenting this out causes no errors and seemingly no ill effect so I assume they are not needed.
+%\usepackage{graphicx}
+%\usepackage{xcolor} % Does the current document contain no colors, or does it use another package?
+
+%\usepackage{prettyref} % Not sure what this one is good for, works in concert with the following line
+%\newrefformat{sec}{\textsection\ref{#1}}
+
+
 
 %\usepackage[pdftex,pdfborder={0 0 .5 [1 1]}]{hyperref}
 %\usepackage[pdftex,pdfborder={0 0 0 [1 1]},bookmarks=false,colorlinks=true,linkcolor=blue]{hyperref}
 \usepackage[pdftex,pdfborder={0 0 0 [1 1]},bookmarks=false]{hyperref}
-\hypersetup{  
+\hypersetup{
   pdftitle={Vector Fields on Spheres, etc.},
   pdfauthor={Haynes Miller, et. al.},
   pdfsubject={Some classical topics in homotopy theory},
   pdfkeywords={Vector fields on spheres, Hopf Invariant one, K-theory, Adams operations, EHP spectral sequence, Adams conjecture},
-  pdfstartview={FitBH \hypercalcbp{\paperheight-\topmargin-1in  
+  pdfstartview={FitBH \hypercalcbp{\paperheight-\topmargin-1in
     -\headheight-\headsep}  }
 }
 
@@ -115,19 +136,16 @@
 
 % <<< preamble containing our shorthands
 % common sets
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\W}{\mathbb{W}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\G}{\mathbb{G}}
-\newcommand{\F}{\mathbb{F}}
-\newcommand{\R}{\mathbb{R}}
+\def\upperalphabet{\\A\\B\\C\\D\\E\\F\\G\\H\\I\\J\\K\\L\\M\\N\\O\\P\\Q\\R\\S\\T\\U\\V\\W\\X\\Y\\Z}
+\def\loweralphabet{\\a\\b\\c\\d\\e\\f\\g\\h\\i\\j\\k\\l\\m\\n\\o\\p\\q\\r\\s\\t\\u\\v\\w\\x\\y\\z}
+
+{\def\\#1{\@xp\gdef\csname#1\endcsname{\mathbb{#1}}} \upperalphabet}
+
 \newcommand{\RP}{\R P}
 \newcommand{\CP}{\C P}
-\newcommand{\A}{\mathbb{A}}
 \newcommand{\SA}{\mathcal{A}}
 \newcommand{\Gr}{\textup{Gr}}
+
 % common typefaced symbols
 \newcommand{\sheaf}[1]{\mathcal{#1}}
 \newcommand{\torsor}[1]{\mathscr{#1}}
@@ -146,6 +164,7 @@
 \newcommand{\SuspendS}{\Suspend^\infty}
 \newcommand{\Loops}{\Omega}
 \newcommand{\LoopsS}{\Loops^\infty}
+
 % arrow shorthands
 \newcommand{\into}{\hookrightarrow}
 \newcommand{\from}{\leftarrow}
@@ -153,6 +172,7 @@
 \newcommand{\stableto}{\nrightarrow}
 \newcommand{\isoto}{\stackrel{\cong}{\to}}
 \newcommand{\natto}{\stackrel{.}{\to}}
+
 \newarrow{Equalto}=====
 \newarrow{Stableto}--+->
 % missing 1-ary operators
@@ -188,9 +208,7 @@
 % >>>
 
 % <<< definitions for various environments
-\makeatletter
 \def\@seccntformat#1{Lecture \csname the#1\endcsname.\quad}
-\makeatother
 %\newtheoremstyle{thmstyle}{\topsep}{\topsep}{}{}{\em}{:}{.5em}{}
 %\theoremstyle{thmstyle}
 \newtheorem{thm}{Theorem}[section]
@@ -204,7 +222,8 @@
 \newtheorem{rem}[thm]{Remark}
 \newtheorem{subtlety}[thm]{Subtlety}
 
-\newrefformat{sec}{\textsection\ref{#1}}
+
+% Table of contents?
 \renewcommand{\cftsecpresnum}{Unit\;}
 \setlength{\cftsecnumwidth}{7em}
 \setlength{\cftbeforesecskip}{0em}
@@ -286,8 +305,7 @@
 %% >>> header
 
 
-
-
+\makeatother
 \begin{document}
 \SelectTips{cm}{11}
 
