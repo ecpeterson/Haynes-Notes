@@ -12,6 +12,7 @@
 \def\thetally#1{\@xp\the\csname #1@tally\endcsname}
 \def\advancetally#1{\@xp\global\@xp\advance\csname #1@tally\endcsname1\relax}
 
+
 \def\recordcommanduse{
     \def\next{\appendtolist\fileslist{\currentfile}\newtally{\currentfile}}
     \def\\##1{\def\temp{##1}\ifx\currentfile\temp\let\next\relax\fi}
@@ -25,4 +26,29 @@
 
 \AtEndDocument{\let\next\relax\message{^^J Command usage:}\def\\#1{\message{^^J#1: \thetally{#1}}\let\next\error}\the\fileslist\next}
 
-%% >>>
+
+%%
+\begin{comment}
+\newtoks\trackedcommands
+
+\def\recordcommandsuse#1{
+    \@xp\ifndef\csname #1@fileslist\endcsname
+        \@xp\newtoks\csname #1@fileslist\endcsname
+    \fi
+    
+    \def\next{\@xp\appendtolist\csname #1@fileslist\endcsname{\currentfile}\newtally{#1@\currentfile}}
+    \def\\##1{\def\temp{##1}\ifx\currentfile\temp\let\next\relax\fi}
+    \@xp\the\csname #1@fileslist\endcsname
+    \next
+    \advancetally{#1@\currentfile}
+}
+
+\def\atenditercommands#1{{\message{^^J #1 Command usage:}\def\\##1{\message{^^J #1: \thetally{#1@##1}}}\@xp\the\csname #1@fileslist\endcsname}}
+
+\def\commandname#1{\@xp\@gobble\string#1}
+
+\let\oldnewcommand\newcommand
+\def\newcommand#1{}
+
+\AtEndDocument{\let\\\atenditercommands \the\trackedcommands}
+\end{comment}

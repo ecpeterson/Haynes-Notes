@@ -1,3 +1,68 @@
+\newcommand{\HopfDiagram}[6]{
+%#1: left  bar color -> green
+%#2: right bar color -> green
+%#3: accepts: BlackBeard;
+%             WhiteBeard;   Any of these three will produce SZ,
+%             ArrowBeard;     with various colourings of the arrows
+%#4: x-offset
+%#5: y-offset
+%#6: accepts: cone;         Includes the cone on X*Y
+%             nojoin;       Does not display any X or Y
+%             BottomBar
+%             LeftBar
+\ifthenelse{\equal{#1}{on}}
+{\colorlet{LeftBar}{green}}
+{\colorlet{LeftBar}{black}}
+\ifthenelse{\equal{#2}{on}}
+{\colorlet{BottomBar}{green}}
+{\colorlet{BottomBar}{black}}
+\ifthenelse{\equal{#1}{on}\OR \equal{#2}{on}}
+{\colorlet{TheDot}{green}}
+{\colorlet{TheDot}{black}}
+\ifthenelse{\equal{#3}{BlackBeard}}
+{\colorlet{GlueColor}{black}}
+{\colorlet{GlueColor}{red}}
+\ifthenelse{\equal{#3}{WhiteBeard}}
+{\colorlet{GlueColor}{white}}
+{}
+
+\ifthenelse{\equal{#6}{cone}}
+{\foreach \i in {0,...,9}
+{\draw (#4+0,.1*\i+#5) -- (#4+1-.1*\i,1+#5);}
+\foreach \i in {1,...,9}
+{\draw (#4+.1*\i,0+#5) -- (#4+1,1-.1*\i+#5);}
+\draw (#4+1,0+#5) -- (#4+1,1+#5);
+\draw (#4+0,1+#5) -- (#4+1,1+#5);
+}{}
+
+\ifthenelse{\equal{#3}{WhiteBeard}}{}
+{
+\ifthenelse{\equal{#6}{nojoin}}{}
+{
+\ifthenelse{\equal{#6}{BottomBar}}{}
+{\draw[ultra thick,LeftBar] (#4+0,0+#5) -- (#4+0,1+#5);}
+\ifthenelse{\equal{#6}{LeftBar}}{}
+{\draw[ultra thick,BottomBar] (#4+0,0+#5) -- (#4+1,0+#5)};
+\fill[TheDot] (#4+0,0+#5) circle (3.42pt);
+}
+}
+
+\ifthenelse{\equal{#3}{ArrowBeard}\OR \equal{#3}{BlackBeard}\OR \equal{#3}{WhiteBeard}}
+{
+\ifthenelse{\equal{#6}{BottomBar}}{}
+{\draw[ultra thick,LeftBar] (#4+-.5,-.5+#5) -- (#4+-.5,1+#5);}
+\ifthenelse{\equal{#6}{LeftBar}}{}
+{\draw[ultra thick,BottomBar] (#4+-.5,-.5+#5) -- (#4+1,-.5+#5);}
+\fill[TheDot] (#4+-.5,-.5+#5) circle (3.4pt);
+\foreach \i in {0,2,4,6,8,10}
+{\draw[->,GlueColor] (#4+-.1+.11*\i,-.1+#5) -- (#4+-.4+.14*\i,-.4+#5);}
+\foreach \i in {2,4,6,8,10}
+{\draw[->,GlueColor] (#4+-.1,-.1+.11*\i+#5) -- (#4+-.4,-.4+.14*\i+#5);}
+}{}%end \foreach then end \ifthenelse
+}
+
+
+
 
 \section{The James construction} % <<<
 \label{TheJamesConstruction}

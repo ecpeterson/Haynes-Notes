@@ -5,6 +5,7 @@ diagrams.sty
 *.out
 *.pdf
 *.synctex.gz
+*.synctex
 *.toc
 .DS_Store
 *.fdb_latexmk
