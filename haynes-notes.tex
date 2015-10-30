@@ -17,7 +17,7 @@
 \usepackage{diagrams}
 \usepackage[all]{xy}
 \usepackage{tikz}
-
+\usetikzlibrary{cd,arrows}
 
 \usepackage{yhmath} % \DeclareMathOperator, perhaps other things
 \usepackage{tocloft} % presumably table of contents
@@ -129,6 +129,9 @@
 \end{minipage}}}
 \end{center}
 }
+
+\newenvironment{ctikzcd}{\begin{center}\tikzcd}{\endtikzcd\end{center}}
+
 \newcommand{\Bullet}{\ensuremath{\bullet} }
 \newcommand{\Vect}{\textup{Vect}}
 \newcommand{\DASH}{\textup{---}}
@@ -143,6 +146,8 @@
 
 \newcommand{\RP}{\R P}
 \newcommand{\CP}{\C P}
+\newcommand{\HP}{\H P}
+\newcommand{\OP}{\O P}
 \newcommand{\SA}{\mathcal{A}}
 \newcommand{\Gr}{\textup{Gr}}
 
@@ -218,6 +223,9 @@
 
 
 \makeatother
+
+
+
 \begin{document}
 \SelectTips{cm}{11} % This is connected to diagrams.sty I believe. What does it do?
 
