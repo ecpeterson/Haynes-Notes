@@ -1,4 +1,3 @@
-
 \section{Building Thom spaces} % <<<
 \label{BuildingThomSpaces}
 \ifx\OutputBuildingThomSpaces\undefined\else
@@ -9,26 +8,21 @@ Now we will find a consequence for the existence of such a section in the homoto
 On the other hand, we can recover $L$ as $S^{k-1} \times_{\Z_2} \R$; this is an example of the ``Borel construction.'' % define what a twisted product is.  it would a lso be useful to talk about why the Borel construction is useful; you can sort of always move to your favorite spot in the fiber.  this definition should also match use of the borel construction in lecture 6
 More generally, if $F$ is any space with a $\Z_2$ action, we get a bundle with fiber $F$ by taking $F \into S^{k-1} \times_{\Z_2} F \onto \RP^{k-1}$.  What follows from a section $s$ of $V_{n, k} \onto S^{n-1}$ is:
 \begin{lem}
-If there is a section $s$, then there is a bundle map $\hat s$ over $\RP^{k-1}$ of the form
-%\begin{diagram}[height=2em]
-%\hat{s}: S(n \epsilon) & \rTo & S(n L) \\
-%\uEqualto & & \uEqualto \\
-%\RP^{k-1} \times S^{n-1} & & S^{k-1} \times_{\Z_2} S^{n-1},
-%\end{diagram}
-\[\xymatrix@R=.6cm{
-\makebox[0cm][r]{$\RP^{k-1} \times S^{n-1}=$\ }S(n \epsilon)\ar[r]^{\hat s}\ar[d]&
-S(nL)\makebox[0cm][l]{\ $=S^{k-1} \times_{\Z_2} S^{n-1}$}\ar[d]\\
-\RP^{k-1}\ar@{=}[r]&\RP^{k-1}
-}\]
+If there is a section $s$, then there is a bundle map $\shat$ over $\RP^{k-1}$ of the form
+\begin{ctikzcd}
+\mathllap{\RP^{k-1}\times S^{n-1}={}}S(n\epsilon) \rar["\shat"]\dar & S(nL)\mathrlap{{}=S^{k-1}\times_{\Z/2}S^{n-1}}\dar\\
+ \RP^{k-1} \rar[equal]& \RP^{k-1}
+\end{ctikzcd}
+
 which acts as the identity on the fiber over the point $\pm e_1$, which we take as the basepoint in $\RP^{k-1}$.
 (Here $\epsilon$ is the trivial bundle of dimension $1$ and $\Z$ acts on bundles by direct sum.)
 \end{lem}
 \begin{proof}
-Define $\hat s: \R^k \times S^{n-1} \to \R^k \times S^{n-1}$ by $\hat s(x, v) = (x, s(v) x)$.  It is straightforward to see $|s(v) x| = 1$ if $|x| = 1$, so $\hat s$ maps $S^{k-1} \times S^{n-1} \to S^{k-1} \times S^{n-1}$.  Quotienting the target by $\Z_2$, we have \[\hat s(-x, v) = (-x, -s(v)x) = (x, s(v) x) = \hat{s}(x, v),\] so it descends to a quotient on the source: $\hat{s}: \RP^{k-1} \times S^{n-1} = S(n \epsilon) \to S^{k-1} \times_{\Z_2} S^{n-1} = S(nL)$.  Finally, $s(v)e_1 = v$ (as $s$ is a section), so $\hat{s}(e_1, v) = (e_1, v)$.
+Define $\shat: \R^k \times S^{n-1} \to \R^k \times S^{n-1}$ by $\shat(x, v) = (x, s(v) x)$.  It is straightforward to see $|s(v) x| = 1$ if $|x| = 1$, so $\shat$ maps $S^{k-1} \times S^{n-1} \to S^{k-1} \times S^{n-1}$.  Quotienting the target by $\Z_2$, we have \[\shat(-x, v) = (-x, -s(v)x) = (x, s(v) x) = \shat(x, v),\] so it descends to a quotient on the source: $\shat: \RP^{k-1} \times S^{n-1} = S(n \epsilon) \to S^{k-1} \times_{\Z_2} S^{n-1} = S(nL)$.  Finally, $s(v)e_1 = v$ (as $s$ is a section), so $\shat(e_1, v) = (e_1, v)$.
 \end{proof}
-One point worth mentioning here is that $\hat s$ could have been defined as a map $n \epsilon \to n L$, but it would not necessarily have been linear on each fiber (as $s(v)$ is not necessarily linear), so the map would not have been in a strict sense a map of vector bundles.  Previously, we constructed such sections $s$ using Clifford algebras, and in that case $s$ was in fact linear.  In some sense, then, the problem is to find out whether you can get more vector fields by modifying them in some clever way.
+One point worth mentioning here is that $\shat$ could have been defined as a map $n \epsilon \to n L$, but it would not necessarily have been linear on each fiber (as $s(v)$ is not necessarily linear), so the map would not have been in a strict sense a map of vector bundles.  Previously, we constructed such sections $s$ using Clifford algebras, and in that case $s$ was in fact linear.  In some sense, then, the problem is to find out whether you can get more vector fields by modifying them in some clever way.
 
-The fact that $\hat s$ induces the identity over $\pm e_1$ means that $\hat s$ induces a homotopy equivalence on each fiber.  Explicitly, for any open and connected $U \subseteq \RP^{k-1}$ such that $nL|_U$ is trivial and such that $\hat s_b$ is a homotopy equivalence for some $b \in U$, it follows that $\hat s$ induces a map $U \to \Hom(S^{n-1}, S^{n-1})$.  As $U$ is connected, it lands entirely in one path-connected component of $\Hom(S^{n-1}, S^{n-1})$, and hence the map on fibers is a homotopy equivalence.
+The fact that $\shat$ induces the identity over $\pm e_1$ means that $\shat$ induces a homotopy equivalence on each fiber.  Explicitly, for any open and connected $U \subseteq \RP^{k-1}$ such that $nL|_U$ is trivial and such that $\shat_b$ is a homotopy equivalence for some $b \in U$, it follows that $\shat$ induces a map $U \to \Hom(S^{n-1}, S^{n-1})$.  As $U$ is connected, it lands entirely in one path-connected component of $\Hom(S^{n-1}, S^{n-1})$, and hence the map on fibers is a homotopy equivalence.
 
 We have two bundles $E$ and $E'$ over a base $B$ and a bundle map $f: E \to E'$ which induces a homotopy equivalence on each fiber.  What we really want is a map $g$ going back so that $fg$ and $gf$ are homotopic through bundle maps to the respective identity maps;  $f$ is then called a ``fiber homotopy equivalence.''  Fortunately there is a very nice theorem due to Dold:
 \begin{thm}[Dold]\label{LemmaOfDold}
@@ -125,34 +119,31 @@ Here's an important fact: $T(E\, \widehat \ast\, E') = T(E) \sprod T(E')$, where
 In the special case that $E' \to B'$ is $\R^n \to \ptspace$, we get that $T(V \oplus n \epsilon) = T(V) \sprod S^n = \Suspend^n T(V)$.
 
 Note that if $V$, $W$ are vector bundles over $B$, it is \textbf{not} the case that $T(V\oplus W)=T(V)\wedge T(W)$. However, we have a pullback diagram (drawn on the left) which induces a map of Thom spaces (drawn on the right). This map commutes with the inclusion of the copies of $S^{n+m}$ (where $\dim_*V=n$ and $\dim_*W=m$):
-\[\xymatrix{
-V\oplus W\ar[d]\ar[r]&V\times W\ar[d]\\
-B\ar[r]^\Delta&B\times B
-}\qquad\qquad
-\xymatrix{
-T(V\oplus W\downarrow B)\ar[r]&T(V\times W\downarrow B\times B)
-\ar@{=}[r]&T(V\downarrow B)\wedge T(W\downarrow B)\\
-&S^{n+m}\ar[ul]\ar[u]\ar@{=}[r]&S^n\wedge S^{m}\ar[u]
-}\]
+%
+\begin{ctikzcd}
+V\oplus W \rar\dar & V\times W\dar  &   T((V\oplus W)\downarrow B) \rar& T((V\times W)\downarrow(B\times B) \rar[equal] & T((V\downarrow B)\wedge T(W\downarrow B))\\
+B \rar["\Delta"]   & B\times B      &                                  & S^{n+m}    \ular\uar               \rar[equal] & S^n\wedge S^m\uar
+\end{ctikzcd}
 
 The Thom space is useful for deciding whether a fiber bundle is trivial.  To this end, we observe that if $E$ and $E'$ are fiber homotopy equivalent $S^{n-1}$-bundles, then $T(E) \simeq T(E')$ relative to the copies of $S^n$ over the basepoint in $B$.
 \begin{lem}\label{LemOnFHTrivialisations}
 Suppose that $E \to B$ is an $S^{n-1}$-bundle. Then fiber homotopy equivalences $h:E\to B\times S^{n-1}$ are in bijection with maps $f:E\to S^{n-1}$ whose restriction to each fiber is a homotopy equivalence. Moreover, if any such maps exist (i.e.\ if $E\to B$ is fiber homotopy trivial), then each map $f$ induces a ``coreduction'':
-\[\xymatrix@R=.6cm{
-T(E)\ar[r]&S^n\\
-S^n\ar[u]\ar[ur]_\simeq
-}\]
+\begin{ctikzcd}
+T(E) \rar & S^n\\
+S^n\uar \urar["\simeq"']
+\end{ctikzcd}
 \end{lem}
 \begin{proof}
 Write $\pi_2:B\times S^{n-1}\to S^{n-1}$ for the second projection. Then (by the universal property of the product), fiber maps $h:E\to B\times S^{n-1}$ are in bijective correspondence with maps $f:E\to S^{n-1}$, via $h\mapsto \pi_2h$. Now we note that fiber homotopy equivalences $h$ correspond exactly to maps $f$ inducing a homotopy equivalence on each fiber. If such a map $f$ exists, it can be thought of as a bundle map
-\[\xymatrix@R=.4cm{
-E\ar[r]^f\ar[d]& S^{n-1}\ar[d]\\
-B\ar[r]&\ast
-}\raisebox{-.4cm}{\textup{\qquad which induces a map on Thom spaces:\qquad}}
-\xymatrix@R=.4cm{
-T(E)\ar[r]&S^n=\makebox[0cm][l]{$T(S^{n-1}\downarrow*)$}\\
-S^n\ar[u]\ar[ur]_\simeq
-}\qquad\qquad\]
+\begin{center}
+\begin{tikzcd}[row sep = -0.1em]
+E \rar["f"]\ar[dd] & S^{n-1}\ar[dd] & & T(E)\rar & S^n\mathrlap{{}=T(S^{n-1}\downarrow*)}\\
+&& \hskip-1.5em\textup{which induces a map on Thom spaces:}\hskip-1.5em\\
+B \rar & \ast & & S^n\ar[uu]\ar[uur,"\simeq"'] &
+\end{tikzcd}
+$\hskip-2em\phantom{S^n=T(S^{n-1}\downarrow*)}$
+% Because we used \mathrlap asymmetrically, in order to get the diagram to center correctly, we need to put back the missing horizontal space using \phantom.
+\end{center}
 and the homotopy equivalence of $f$ restricted to each fiber implies that the map $S^n\to S^n$ is a homotopy equivalence.
 \end{proof}
 \noindent Now the game is to find obstructions to the splitting off of this $n$-sphere, which is in fact the bottom-dimensional cell in $T(E)$.
@@ -165,11 +156,12 @@ Of course, what we really want is an obstruction to a fiber homotopy equivalence
 This exhibits $T(E)$ as the sphere bundle $S(E \oplus \epsilon)$ with the $1$-section of $\epsilon$, which is homeomorphic to $B$, smashed to a point, so $T(E) = S(E \oplus \epsilon) / B$, after identifying $B$ with that section. % the difference here is that you're adding a point at infinity to each fiber, then collecting all the points at infinity together.
 
 Now the fiber in $S(E \oplus \epsilon)$ is the same as the $S^n$ sitting in $T(E)$, so with this construction a coreduction for $T(E)$ gives
-\begin{diagram}[height=2em]
-S(E \oplus \varepsilon) & \rTo & T(E) & \rTo & S^n \\
-& \luTo & \uTo & \ruTo_\simeq \\
-& & S^n.
-\end{diagram} % in fact, in all of these diagrams, it would be nice if S^n weren't sitting in the base's position.
+\begin{ctikzcd}
+& S^n \dlar\dar\drar["\simeq"] &\\
+S(E\oplus\varepsilon) \rar & T(E)\rar & S^n
+\end{ctikzcd}
+
+
 If the base $B$ is connected, then from Dold's theorem (\ref{LemmaOfDold}) it follows that $E \oplus \epsilon$ is fiber homotopy trivial. % this sentence is completely vacuous when B is a CW-complex, so who cares about Dold's theorem
 So a coreduction of $T(E)$ implies that $S(E \oplus \epsilon)$ is fiber homotopy trivial.
 
@@ -198,11 +190,10 @@ Now a few introductory words on $K$-theory: let $X$ be a pointed %finite complex
 compact Hausdorff space.  Let $\Vect(X)$ be the set of isomorphism classes of vector bundles over $X$.\footnote{Why is $\Vect(X)$ a set?}  The Whitney sum gives a monoid structure to $\Vect(X)$, with zero given by the $0$-dimensional vector bundle.  Now one applies the ``Grothendieck construction,'' which simply means to add formal inverses, making a group; explicitly, we form equivalence classes of pairs $(V,W)$ under the equivalence relation in which $(V, W) \sim (V', W')$ iff $E + V + W' \cong V' + W + E$ for some vector bundle $E$.  Here, $(V, W)$ is supposed to represent the formal difference ``$V - W$''.  This is an abelian group, called $KO(X)$.
 
 Now it may not seem that $KO(X)$ has topological significance, but in view of the last lecture, it quickly becomes apparent that it does.  For if $V \oplus n\epsilon \cong W \oplus n\epsilon$ for some $n$ ($V$ and $W$ are said to be ``stably isomorphic''), then the classes $[V]$ and $[W]$ are equal in $KO(X)$.  Moreover, as $X$ is a compact Hausdorff space, it goes both ways.  Suppose $[V] = [W]$, so $V + E \cong W + E$ for some $E$.  Over a compact Hausdorff space, any vector bundle $E$ is a subbundle of a sufficiently big trivial bundle
-\begin{diagram}[height=2em]
-E & \rInto & X \times \R^N \\
-\dTo & \ldTo \\
-X,
-\end{diagram}
+\begin{ctikzcd}
+E \rar[hook]\dar & X\times \R^N\dlar\\
+X
+\end{ctikzcd}
 as we shall soon see.  By choosing a metric on $\R^N$, we get an orthogonal complement $F \to X$ such that $E \oplus F$ is trivial.  Then $V \oplus E \oplus F \cong W \oplus E \oplus F$, so $V$ and $W$ are stably isomorphic!
 
 %Throughout, let $X$ be a pointed compact Hausdorff space.  Recall that $KO(X)$ was defined to be the abelian group given by the Grothendieck construction on the monoid $\Vect(X)$.
@@ -222,11 +213,10 @@ Similarly, any equivalence class in $\ker\epsilon$ contains a pair of the form $
 
 
 Next we'll see, as advertised, how to embed a vector bundle into a high-dimensional trivial bundle.  Suppose $p: E \to X$ is a rank $n$ vector bundle.  Because $X$ is compact Hausdorff, it has a finite open cover $U_1, \ldots, U_k$ that trivializes $E$.  That is, there are homeomorphisms $f_i$ with
-\begin{diagram}[height=2em]
-E|_{U_i} & \rTo^{f_i} & U_i \times \R^n \\
-\dTo<p & \ldTo>{\pi} \\
-U_i,
-\end{diagram}
+\begin{ctikzcd}[column sep=small]
+E|_{U_i}\drar["p"']\ar[rr,"f_i"] && U_i\times \R^n \dlar["\pi"]\\
+&U_i&
+\end{ctikzcd}
 such that the triangle commutes and $f_i$ is linear on each fiber.  Let $\phi_1, \ldots, \phi_k$ be a partition of unity subordinate to the cover $\{U_i\}$, and define maps $g_1, \ldots, g_k: E \to \R^n$ by
 \[
 g_i =
@@ -241,11 +231,9 @@ This map in fact gives more: to each $x \in X$ we associate the $n$-dimensional 
 What happens when we descend to $KO(X)$?  First, the equivalence $V \sim V \oplus \epsilon$ gives us $\widetilde{KO}$, % is Grothendieck(Vect) / this relation the same as Vect / this relation? Yes - Now discussed above.
 so we get $\widetilde{KO}$ by identifying an element of $[X, BO(n)]$ with an element of $[X, BO(n+1)]$ when all it does is add a trivial bundle.  Now if $EO(n)$ is the tautological $n$-plane bundle over $BO(n)$, % should this be called the canonical O(n)-bundle?  should we warn the reader we're going to mix these things together using the Borel construction?
 then $EO(n) \oplus \epsilon$ is an $(n+1)$-plane bundle, and there is a classifying map $BO(n)\to BO(n+1)$ for this bundle. We obtain a sequence:
-\begin{diagram}[height=2em]
-%EO(n) \oplus \epsilon & & EO(n+1) \oplus \epsilon \\
-%\dTo & & \dTo \\
-\cdots & \rTo & BO(n) & \rTo & BO(n+1) & \rTo & \cdots
-\end{diagram}
+\begin{ctikzcd}
+\cdots \rar & BO(n) \rar & BO(n+1) \rar & \cdots
+\end{ctikzcd}
 of classifying maps whose colimit $\bigcup_n BO(n)$ is called $BO$, and $\widetilde{KO}(X) = [X, BO]$.\footnote{%
 This argument can be summarised as follows: $\widetilde{KO}(X)=\textup{colim}[X,BO(n)]$, which equals $[X,\textup{colim}BO(n)]$ as $X$ is compact.
 }
@@ -274,11 +262,10 @@ If $X$ is a finite connected complex, then $\widetilde J(X)$ is finite.
 \begin{proof}(Sketch, anyway.)
 A vector bundle over $X$ is classified by a map $X \to BO(n)$.  Similarly a sphere bundle should have a similar classifying procedure.  In general, the structure group would have to be taken to be $\textup{Homeo}(S^{n-1})$, % use the same formula as below, but without the basepoints
 but since we are only concerned with fiber homotopy equivalences we should be able to use the monoid $G_n$ of homotopy self-equivalences of $S^{n-1}$.  Such a classifying procedure exists; call the corresponding space $BG_n$.  Now there is a natural inclusion $O_n \into G_n$, and hence maps
-\begin{diagram}[width=2em,height=2em]
-BO(n) & \rTo & BG_n \\
-\dTo & & \dTo \\
-BO & \rTo & BG.
-\end{diagram}
+\begin{ctikzcd}
+BO(n)\rar \dar & BG_n\dar\\
+BO \rar & BG
+\end{ctikzcd}
 We then make two claims: $\widetilde J(X)$ is the image of $[X, BO] \to [X, BG]$, and $[X, BG]$ is finite.  We prove this last part cell-by-cell, so what we really need to show is that $\pi_i(BG_n)$ is finite for $i$ much smaller than $n$.  Since $X$ is finite, $[X, BG] \simeq [X, BG_n]$ for some $n$ sufficiently larger than the top-dimensional cell of $X$, so this is enough.  There is a fibration $G_n \to EG_n \to BG_n$, and hence $\pi_i BG_n \cong \pi_{i-1} G_n$.  We are then left with showing that $\pi_i G_n$ is finite (again, for $i$ must smaller than $n$).  Now an element of $G_n$ is a map $S^{n-1} \to S^{n-1}$; by evaluating at the basepoint in $S^{n-1}$ we get a map $G_n \to S^{n-1}$.  This is a fibration whose fiber is homotopy equivalent to $\Loops^{n-1}_{\pm 1}S^{n-1} := \{f: (S^{n-1}, s_0) \to (S^{n-1}, s_0) : \deg f = \pm 1\} \subseteq \textup{Maps}(S^{n-1}, S^{n-1})$.  For $i$ much smaller than $n$, $\pi_i G_n \cong \pi_i(\Loops^{n-1}_\pm S^{n-1})$ and $\pi_i(\Loops^{n-1}_\pm S^{n-1}) \subset \pi_i(\Loops^{n-1} S^{n-1}) = \pi_{i+n-1} S^{n-1} = \Pi_i$, which is known to be finite by a theorem of Serre.
 \end{proof}
 \fi

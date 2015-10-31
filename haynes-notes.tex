@@ -27,7 +27,7 @@
 \usepackage{nicefrac} % Defines for \nicefrac, used twice in ehp-sseq
 \usepackage{mathrsfs} % Defines \mathscr, used 5 times in ehp-sseq
 \usepackage{stmaryrd} % Defines for \llbracket \rrbracket, used 4 times in adams-operations
-% TODO: define a command like \powerseriesring or something
+% TODO: define a command like \powerseriesring or something?
 % Look through notes and find all places where power series show up (probably more than 4) make consistent
 
 
@@ -56,6 +56,10 @@
 
 
 
+% I don't really like this method of dealing with outputting sections. 
+% I'll probably replace it with something else eventually.
+% It's too bad section isn't an environment
+
 \newcommand{\OutputEVERYTHING}{  everything  }
 %\newcommand{\OutputFrontMatter}{}
 %\newcommand{\OutputForeword}{0}
@@ -63,7 +67,7 @@
 %\newcommand{\OutputCliffordAlgebras}{2}
 %\newcommand{\OutputBuildingThomSpaces}{3}
 %\newcommand{\OutputFactsAboutThomSpaces}{4}
-%\newcommand{\OutputBuildingKandJtheory}{5}
+\newcommand{\OutputBuildingKandJtheory}{5}
 \newcommand{\OutputGeometryAndTheSteenrodSquares}{6}
 \newcommand{\OutputPropertiesOfTheSquares}{7}
 \newcommand{\OutputTheAdemRelations}{8}
@@ -138,11 +142,36 @@
 
 
 % <<< preamble containing our shorthands
-% common sets
+
+% For fixing alignment of certain diagrams, code lifted from TUGBoat Volume 22 (2001), No. 4
+% https://www.tug.org/TUGboat/tb22-4/tb72perlS.pdf
+%
+% I (Hood) added them to use \mathllap and \mathrlap in the diagram in the statement of lemma 3.1 in Building Thom Spaces
+%
+\def\mathllap{\mathpalette\mathllapinternal}
+\def\mathrlap{\mathpalette\mathrlapinternal}
+\def\mathclap{\mathpalette\mathclapinternal}
+\def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
+\def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
+\def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
+
+
+% sets
 \def\upperalphabet{\\A\\B\\C\\D\\E\\F\\G\\H\\I\\J\\K\\L\\M\\N\\O\\P\\Q\\R\\S\\T\\U\\V\\W\\X\\Y\\Z}
 \def\loweralphabet{\\a\\b\\c\\d\\e\\f\\g\\h\\i\\j\\k\\l\\m\\n\\o\\p\\q\\r\\s\\t\\u\\v\\w\\x\\y\\z}
+\def\makesymbdefs#1#2#3{{\def\\##1{\@xp\gdef\csname##1#1\endcsname{#2{##1}}}#3}}
 
-{\def\\#1{\@xp\gdef\csname#1\endcsname{\mathbb{#1}}} \upperalphabet}
+\def\choicetilde#1{\mathchoice{\widetilde{#1}}{\widetilde{#1}}{\tilde{#1}}{\tilde{#1}}}
+\def\choicehat#1{\mathchoice{\widehat{#1}}{\widehat{#1}}{\hat{#1}}{\hat{#1}}}
+\def\choicebar#1{\mathchoice{\overline{#1}}{\overline{#1}}{\bar{#1}}{\bar{#1}}}
+
+\makesymbdefs{}{\mathbb}{\upperalphabet}                      % \A -> \mathbb{A}
+\makesymbdefs{cal}{\mathcal}{\upperalphabet}                  % \Acal -> \mathcal{A}
+\makesymbdefs{twee}{\choicetilde}{\upperalphabet\loweralphabet} % \Atwee -> \widetilde{A}
+\makesymbdefs{hat}{\choicehat}{\upperalphabet\loweralphabet}    % \Ahat -> \widehat{A}
+\makesymbdefs{bar}{\choicebar}{\upperalphabet\loweralphabet}   % \Abar -> \overline{A}
+\makesymbdefs{frak}{\mathfrak}{\loweralphabet}                % \afrak -> \mathfrak{a}
+
 
 \newcommand{\RP}{\R P}
 \newcommand{\CP}{\C P}
@@ -151,10 +180,10 @@
 \newcommand{\SA}{\mathcal{A}}
 \newcommand{\Gr}{\textup{Gr}}
 
-% common typefaced symbols
+% typefaced symbols
 \newcommand{\bundle}[1]{\mathbb{#1}}
 
-% common operators
+% operators
 \newcommand{\sprod}{\wedge}
 \newcommand{\wsum}{\vee}
 \newcommand{\CatOf}[1]{\mathsf{#1}}
@@ -224,7 +253,7 @@
 
 \makeatother
 
-
+\includeonly{thom-spaces}
 
 \begin{document}
 \SelectTips{cm}{11} % This is connected to diagrams.sty I believe. What does it do?
@@ -232,7 +261,7 @@
 
 \include{front-matter}
 
-\todo[inline]{This document could benefit from being very slightly more theorem-proof-y. For instance, in the Stable Category lecture, we prove that $w_n^*$ is not a homomorphism, and the beginning and ending of that proof would benefit from being set off from the body of the text.}
+%\todo[inline]{This document could benefit from being very slightly more theorem-proof-y. For instance, in the Stable Category lecture, we prove that $w_n^*$ is not a homomorphism, and the beginning and ending of that proof would benefit from being set off from the body of the text.}
 
 \include{introduction}
 
