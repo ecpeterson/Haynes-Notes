@@ -17,11 +17,14 @@
 \usepackage{diagrams}
 \usepackage[all]{xy}
 \usepackage{tikz}
+\usepackage{join-tikz-cd}
 \usetikzlibrary{cd,arrows}
 
 \usepackage{yhmath} % \DeclareMathOperator, perhaps other things
 \usepackage{tocloft} % presumably table of contents
 
+
+\usepackage{framed}
 
 \usepackage{wrapfig}  % Defines wrapfigure environment, used in 5 files a total of 10 times
 \usepackage{nicefrac} % Defines for \nicefrac, used twice in ehp-sseq
@@ -56,7 +59,7 @@
 
 
 
-% I don't really like this method of dealing with outputting sections. 
+% I don't really like this method of dealing with outputting sections.
 % I'll probably replace it with something else eventually.
 % It's too bad section isn't an environment
 
@@ -71,7 +74,7 @@
 \newcommand{\OutputGeometryAndTheSteenrodSquares}{6}
 \newcommand{\OutputPropertiesOfTheSquares}{7}
 \newcommand{\OutputTheAdemRelations}{8}
-%\newcommand{\OutputUsingTheSquaresAndThomSpaces}{9}
+\newcommand{\OutputUsingTheSquaresAndThomSpaces}{9}
 %\newcommand{\OutputStructureOnKtheory}{10}
 %\newcommand{\OutputBuildingKtheoryOperatorsFromRepTheory}{11}
 %\newcommand{\OutputBuildingTheAdamsPowerOperations}{12}
@@ -121,12 +124,16 @@
 \newcommand{\OutputTheBibliography}{}
 \fi
 
+
+\newenvironment{SummaryNote}{\begin{center}\begin{minipage}{0.75\textwidth}\begin{framed}}{\end{framed}\end{minipage}\end{center}}
+
 \newcommand{\BoxedNote}[1]{
 \begin{center}\fbox{\begin{minipage}{.75\textwidth}
 #1
 \end{minipage}}
 \end{center}
 }
+
 \newcommand{\ConfusedBox}[1]{
 \begin{center}\scalebox{.5}{\fbox{\begin{minipage}{\textwidth}
 #1
@@ -134,7 +141,7 @@
 \end{center}
 }
 
-\newenvironment{ctikzcd}{\begin{center}\tikzcd}{\endtikzcd\end{center}}
+
 
 \newcommand{\Bullet}{\ensuremath{\bullet} }
 \newcommand{\Vect}{\textup{Vect}}
@@ -146,14 +153,24 @@
 % For fixing alignment of certain diagrams, code lifted from TUGBoat Volume 22 (2001), No. 4
 % https://www.tug.org/TUGboat/tb22-4/tb72perlS.pdf
 %
-% I (Hood) added them to use \mathllap and \mathrlap in the diagram in the statement of lemma 3.1 in Building Thom Spaces
-%
+% I (Hood) added them to use \mathllap and \mathrlap in the diagram in the statement of lemma 3.1 in Building Thom Spaces.
+% They end up being helpful in a bunch of diagrams
+
+\def\clap#1{\hbox to 0pt{\hss#1\hss}}
 \def\mathllap{\mathpalette\mathllapinternal}
 \def\mathrlap{\mathpalette\mathrlapinternal}
 \def\mathclap{\mathpalette\mathclapinternal}
 \def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
 \def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
 \def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
+
+% These are my addition
+\newbox\tempbox
+\def\clapph#1#2{\sbox\tempbox{#1}\hbox to \wd\tempbox{\hss#2\hss}}
+\def\mathclapph#1#2{\mathpalette\mathclapph@{{#1}{#2}}}
+\def\mathclapph@#1#2{\clapph{$\mathsurround=0pt#1{\@firstoftwo#2}$}{$\mathsurround=0pt#1{\@secondoftwo#2}$}}
+
+\def\tikzintertext#1{|[inner sep=0pt]|\hskip-1em\smash{\textup{#1}}\hskip-1em}
 
 
 % sets
@@ -252,6 +269,7 @@
 
 
 \makeatother
+
 
 \begin{document}
 \SelectTips{cm}{11} % This is connected to diagrams.sty I believe. What does it do?

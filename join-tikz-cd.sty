@@ -1,0 +1,77 @@
+%%
+%% Join-tikz-cd
+%%
+%% A package to horizontally concatenate tikz-cd diagrams.
+%% Hopefully should make diagram maitenence easier.
+%% If vertical joins seem like they will be useful, I may at some point add them.
+%%
+%% It might be nice at some point to hand code the environ functionality I need, to reduce the dependencies
+%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{join-tikz-cd}
+\RequirePackage{tikz-cd}
+\RequirePackage{environ}
+
+\def\tikzintertext#1{|[inner sep=0pt]|\hskip-1em\smash{\textup{#1}}\hskip-1em}
+
+\newenvironment{ctikzcd}{\begin{center}\tikzcd}{\endtikzcd\end{center}}
+
+%%
+%%
+
+
+\bgroup
+\catcode`&=\active
+
+\newcount\ampersandcount
+\gdef\tallyamps#1{\ampersandcount=0\tallyamps@#1&\@nil}
+\gdef\tallyamps@#1&{\@ifnextchar\@nil{\@gobble}{\advance\ampersandcount1\tallyamps@}}
+
+\newcount\maxampersandcount
+\gdef\maxamps#1{\maxampersandcount=0\maxamps@#1\\\@nil}
+\gdef\maxamps@#1\\{%
+    \tallyamps{#1}\ifnum\ampersandcount>\maxampersandcount \maxampersandcount=\ampersandcount\fi%
+    \@ifnextchar\@nil{\@gobble}{\maxamps@}%
+}
+
+\newtoks\paddedexp
+\gdef\padamps#1{\paddedexp{#1}\tallyamps{#1}\loop \ifnum\ampersandcount<\maxampersandcount \@xp\paddedexp\@xp{\the\paddedexp&}\advance\ampersandcount1\repeat }
+
+\global\let\@xp\expandafter
+\global\let\@nx\noexpand
+
+\newtoks\savedstuff
+
+\gdef\catdiags#1#2{\savedstuff{}\maxamps{#1}\catdiags@#1\\\@trend#2\\\@trend}
+\gdef\catdiags@#1\\#2\@trend#3\\#4\@trend{%
+    \padamps{#1}%
+    \@xp\paddedexp\@xp{\the\paddedexp&#3}%
+    \edef\temp{\@nx\savedstuff{\the\savedstuff\the\paddedexp}}\temp%
+    \ifx\@nil#2\@nil\else%
+        \@xp\savedstuff\@xp{\the\savedstuff\\}%
+        \catdiags@#2\@trend#4\@trend %
+    \fi %
+}
+
+\gdef\cattikzcd@#1\diagram#2\diagram{%
+    \catdiags{#1}{#2} %
+    \@ifnextchar\@nil{\@gobble}{\@xp\cattikzcd@\the\savedstuff\diagram}%
+}
+\gdef\protecttheamp{\def&{\@nx&}}
+\egroup
+
+\NewEnviron{jointikzcd}[1][]{%
+    \protecttheamp%
+    \@xp\@xp\@xp\cattikzcd@\@xp\@gobble\BODY\diagram\@nil %
+    \begin{tikzcd}[#1]\the\savedstuff\end{tikzcd}%
+}
+
+\NewEnviron{cjointikzcd}[1][]{%
+    \protecttheamp%
+    \@xp\@xp\@xp\cattikzcd@\@xp\@gobble\BODY\diagram\@nil %
+    \begin{center}\begin{tikzcd}[#1]\the\savedstuff\end{tikzcd}\end{center}%
+}
+
+\def\jointikzcd{\catcode`&=\active \Collect@Body \env@jointikzcd@parse}
+\def\cjointikzcd{\catcode`&=\active \Collect@Body \env@cjointikzcd@parse}

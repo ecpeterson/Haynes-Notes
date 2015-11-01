@@ -136,14 +136,16 @@ S^n\uar \urar["\simeq"']
 \begin{proof}
 Write $\pi_2:B\times S^{n-1}\to S^{n-1}$ for the second projection. Then (by the universal property of the product), fiber maps $h:E\to B\times S^{n-1}$ are in bijective correspondence with maps $f:E\to S^{n-1}$, via $h\mapsto \pi_2h$. Now we note that fiber homotopy equivalences $h$ correspond exactly to maps $f$ inducing a homotopy equivalence on each fiber. If such a map $f$ exists, it can be thought of as a bundle map
 \begin{center}
-\begin{tikzcd}[row sep = -0.1em]
-E \rar["f"]\ar[dd] & S^{n-1}\ar[dd] & & T(E)\rar & S^n\mathrlap{{}=T(S^{n-1}\downarrow*)}\\
-&& \hskip-1.5em\textup{which induces a map on Thom spaces:}\hskip-1.5em\\
+\begin{tikzcd}[row sep = tiny]
+E \rar["f"]\ar[dd] & S^{n-1}\ar[dd] & & T(E)\rar & S^n\mathrlap{{}=T(S^{n-1}\downarrow*)}\hskip-1ex\\
+&& \smash{\hskip-1.5em\textup{which induces a map on Thom spaces:}\hskip-1.5em}\\
 B \rar & \ast & & S^n\ar[uu]\ar[uur,"\simeq"'] &
-\end{tikzcd}
-$\hskip-2em\phantom{S^n=T(S^{n-1}\downarrow*)}$
+\end{tikzcd}%
+$\phantom{{}=T(S^{n-1}\downarrow*)}$
 % Because we used \mathrlap asymmetrically, in order to get the diagram to center correctly, we need to put back the missing horizontal space using \phantom.
 \end{center}
+
+
 and the homotopy equivalence of $f$ restricted to each fiber implies that the map $S^n\to S^n$ is a homotopy equivalence.
 \end{proof}
 \noindent Now the game is to find obstructions to the splitting off of this $n$-sphere, which is in fact the bottom-dimensional cell in $T(E)$.
