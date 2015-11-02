@@ -10,10 +10,9 @@ More generally, if $F$ is any space with a $\Z_2$ action, we get a bundle with f
 \begin{lem}
 If there is a section $s$, then there is a bundle map $\shat$ over $\RP^{k-1}$ of the form
 \begin{ctikzcd}
-\mathllap{\RP^{k-1}\times S^{n-1}={}}S(n\epsilon) \rar["\shat"]\dar & S(nL)\mathrlap{{}=S^{k-1}\times_{\Z/2}S^{n-1}}\dar\\
+\edgellap{\RP^{k-1}\times S^{n-1}=}S(n\epsilon) \rar["\shat"]\dar & S(nL) \edgerlap{{}=S^{k-1}\times_{\Z/2}S^{n-1}}\dar\\
  \RP^{k-1} \rar[equal]& \RP^{k-1}
 \end{ctikzcd}
-
 which acts as the identity on the fiber over the point $\pm e_1$, which we take as the basepoint in $\RP^{k-1}$.
 (Here $\epsilon$ is the trivial bundle of dimension $1$ and $\Z$ acts on bundles by direct sum.)
 \end{lem}
@@ -120,32 +119,42 @@ In the special case that $E' \to B'$ is $\R^n \to \ptspace$, we get that $T(V \o
 
 Note that if $V$, $W$ are vector bundles over $B$, it is \textbf{not} the case that $T(V\oplus W)=T(V)\wedge T(W)$. However, we have a pullback diagram (drawn on the left) which induces a map of Thom spaces (drawn on the right). This map commutes with the inclusion of the copies of $S^{n+m}$ (where $\dim_*V=n$ and $\dim_*W=m$):
 %
-\begin{ctikzcd}
-V\oplus W \rar\dar & V\times W\dar  &   T((V\oplus W)\downarrow B) \rar& T((V\times W)\downarrow(B\times B) \rar[equal] & T((V\downarrow B)\wedge T(W\downarrow B))\\
-B \rar["\Delta"]   & B\times B      &                                  & S^{n+m}    \ular\uar               \rar[equal] & S^n\wedge S^m\uar
-\end{ctikzcd}
+\begin{cjointikzcd}
+\diagram
+    V\oplus W \rar\dar & V\times W\dar  \\
+    B \rar["\Delta"]   & B\times B                                      
+%
+\diagram
+ T((V\oplus W)\downarrow B) \rar& T((V\times W)\downarrow(B\times B) \rar[equal] & T((V\downarrow B)\wedge T(W\downarrow B))\\
+                                & S^{n+m}    \ular\uar               \rar[equal] & S^n\wedge S^m\uar
+\end{cjointikzcd}
 
 The Thom space is useful for deciding whether a fiber bundle is trivial.  To this end, we observe that if $E$ and $E'$ are fiber homotopy equivalent $S^{n-1}$-bundles, then $T(E) \simeq T(E')$ relative to the copies of $S^n$ over the basepoint in $B$.
 \begin{lem}\label{LemOnFHTrivialisations}
 Suppose that $E \to B$ is an $S^{n-1}$-bundle. Then fiber homotopy equivalences $h:E\to B\times S^{n-1}$ are in bijection with maps $f:E\to S^{n-1}$ whose restriction to each fiber is a homotopy equivalence. Moreover, if any such maps exist (i.e.\ if $E\to B$ is fiber homotopy trivial), then each map $f$ induces a ``coreduction'':
+%
 \begin{ctikzcd}
 T(E) \rar & S^n\\
 S^n\uar \urar["\simeq"']
 \end{ctikzcd}
 \end{lem}
+%
+%
 \begin{proof}
 Write $\pi_2:B\times S^{n-1}\to S^{n-1}$ for the second projection. Then (by the universal property of the product), fiber maps $h:E\to B\times S^{n-1}$ are in bijective correspondence with maps $f:E\to S^{n-1}$, via $h\mapsto \pi_2h$. Now we note that fiber homotopy equivalences $h$ correspond exactly to maps $f$ inducing a homotopy equivalence on each fiber. If such a map $f$ exists, it can be thought of as a bundle map
-\begin{center}
-\begin{tikzcd}[row sep = tiny]
-E \rar["f"]\ar[dd] & S^{n-1}\ar[dd] & & T(E)\rar & S^n\mathrlap{{}=T(S^{n-1}\downarrow*)}\hskip-1ex\\
-&& \smash{\hskip-1.5em\textup{which induces a map on Thom spaces:}\hskip-1.5em}\\
-B \rar & \ast & & S^n\ar[uu]\ar[uur,"\simeq"'] &
-\end{tikzcd}%
-$\phantom{{}=T(S^{n-1}\downarrow*)}$
-% Because we used \mathrlap asymmetrically, in order to get the diagram to center correctly, we need to put back the missing horizontal space using \phantom.
-\end{center}
-
-
+%
+\begin{cjointikzcd}[row sep = tiny]
+\diagram
+    E \rar["f"]\ar[dd] & S^{n-1}\ar[dd] \\\\
+    B \rar & \ast 
+%
+\diagram \\\tikzintertext{which induces a map on Thom spaces:}\\
+%
+\diagram
+    T(E)\rar & S^n\edgerlap{=T(S^{n-1}\downarrow*)}\\\\
+    S^n\ar[uu]\ar[uur,"\simeq"']
+\end{cjointikzcd}
+%
 and the homotopy equivalence of $f$ restricted to each fiber implies that the map $S^n\to S^n$ is a homotopy equivalence.
 \end{proof}
 \noindent Now the game is to find obstructions to the splitting off of this $n$-sphere, which is in fact the bottom-dimensional cell in $T(E)$.

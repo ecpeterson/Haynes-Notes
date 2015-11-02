@@ -13,64 +13,107 @@
 \RequirePackage{tikz-cd}
 \RequirePackage{environ}
 
+\def\macroname{\@xp\@gobble\string}
 \def\tikzintertext#1{|[inner sep=0pt]|\hskip-1em\smash{\textup{#1}}\hskip-1em}
 
-\newenvironment{ctikzcd}{\begin{center}\tikzcd}{\endtikzcd\end{center}}
+
+%% From TUGBoat Volume 22 (2001), No. 4
+%% https://www.tug.org/TUGboat/tb22-4/tb72perlS.pdf
+%%
+
+\def\clap#1{\hbox to 0pt{\hss#1\hss}}
+\def\mathllap{\mathpalette\mathllapinternal}
+\def\mathrlap{\mathpalette\mathrlapinternal}
+\def\mathclap{\mathpalette\mathclapinternal}
+\def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
+\def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
+\def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
 
 %%
 %%
 
 
-\bgroup
-\catcode`&=\active
+\newbox\tempbox
+\newtoks\ctikzcdphantomleft
+\newtoks\ctikzcdphantomright
+\def\edgellap#1{\mathllap{#1{}}\global\ctikzcdphantomleft={\sbox\tempbox{$#1{}$}\wd\tempbox=-\wd\tempbox\hbox to \wd\tempbox{}}}%\hskip\wd\tempbox}}
+\def\edgerlap#1{\mathrlap{{}#1}\hskip-1ex\global\ctikzcdphantomright={\phantom{${}#1$}}}
 
-\newcount\ampersandcount
-\gdef\tallyamps#1{\ampersandcount=0\tallyamps@#1&\@nil}
-\gdef\tallyamps@#1&{\@ifnextchar\@nil{\@gobble}{\advance\ampersandcount1\tallyamps@}}
+\newenvironment{ctikzcd}{\begin{center}\tikzcd}{\endtikzcd\the\ctikzcdphantomleft\the\ctikzcdphantomright\global\ctikzcdphantomleft={}\global\ctikzcdphantomright={}\end{center}}
 
-\newcount\maxampersandcount
-\gdef\maxamps#1{\maxampersandcount=0\maxamps@#1\\\@nil}
-\gdef\maxamps@#1\\{%
-    \tallyamps{#1}\ifnum\ampersandcount>\maxampersandcount \maxampersandcount=\ampersandcount\fi%
-    \@ifnextchar\@nil{\@gobble}{\maxamps@}%
+
+\bgroup\lccode`~=`&\lowercase{\egroup
+    \newcount\ampersandcount
+    \def\tallyamps#1{\ampersandcount=0\tallyamps@#1~\@nil}
+    \def\tallyamps@#1~{\@ifnextchar\@nil{\@gobble}{\advance\ampersandcount1\tallyamps@}}
+
+    \newcount\slashcount % This whole series of slash related commands is just to get it to work when there is only one \diagram
+    \newtoks\slashcountslashes
+    \def\tallyslashs#1{\slashcount=0\slashcountslashes{}\@xp\tallyslashs@\@gobblediagram#1\\\@nil} % \@gobblediagram
+    \def\tallyslashs@#1\\{\@ifnextchar\@nil{\@gobble}{\istherediagram#1\diagram\@nil}}
+    \def\istherediagram#1\diagram#2\@nil{%
+        \ifx\@nil#2\@nil%
+            \advance\slashcount1\@xp\slashcountslashes\@xp{\the\slashcountslashes\\}%
+            \@xp\tallyslashs@%
+        \else%
+            \@xp\@gobbleto@nil%
+        \fi%
+    }
+    \def\@gobbleto@nil#1\@nil{}
+
+    \newcount\maxampersandcount
+    \def\maxamps#1{\maxampersandcount=0\maxamps@#1\\\@nil}
+    \def\maxamps@#1\\{%
+        \tallyamps{#1}\ifnum\ampersandcount>\maxampersandcount \maxampersandcount=\ampersandcount\fi%
+        \@ifnextchar\@nil{\@gobble}{\maxamps@}%
+    }
+
+    \newtoks\paddedexp
+    \def\padamps#1{\paddedexp{#1}\tallyamps{#1}\loop \ifnum\ampersandcount<\maxampersandcount \@xp\paddedexp\@xp{\the\paddedexp~}\advance\ampersandcount1\repeat }
+
+    \global\let\@xp\expandafter
+    \global\let\@nx\noexpand
+
+    \newtoks\savedstuff
+
+    \def\catdiags#1#2{\savedstuff{}\maxamps{#1}\catdiags@#1\\\@trend#2\\\@trend}
+    \def\catdiags@#1\\#2\@trend#3\\#4\@trend{%
+        \padamps{#1}%
+        \@xp\paddedexp\@xp{\the\paddedexp~#3}%
+        \edef\temp{\@nx\savedstuff{\the\savedstuff\the\paddedexp}}\temp%
+        \ifx\@nil#2\@nil\else%
+            \@xp\savedstuff\@xp{\the\savedstuff\\}%
+            \catdiags@#2\@trend#4\@trend %
+        \fi %
+    }
+
+    \def\cattikzcd@#1\diagram#2\diagram{%
+        \catdiags{#1}{#2} %
+        \@ifnextchar\@nil{\@gobble}{\@xp\cattikzcd@\the\savedstuff\diagram}%
+    }
+    \def\protecttheamp{\def~{\@nx~}}
 }
 
-\newtoks\paddedexp
-\gdef\padamps#1{\paddedexp{#1}\tallyamps{#1}\loop \ifnum\ampersandcount<\maxampersandcount \@xp\paddedexp\@xp{\the\paddedexp&}\advance\ampersandcount1\repeat }
-
-\global\let\@xp\expandafter
-\global\let\@nx\noexpand
-
-\newtoks\savedstuff
-
-\gdef\catdiags#1#2{\savedstuff{}\maxamps{#1}\catdiags@#1\\\@trend#2\\\@trend}
-\gdef\catdiags@#1\\#2\@trend#3\\#4\@trend{%
-    \padamps{#1}%
-    \@xp\paddedexp\@xp{\the\paddedexp&#3}%
-    \edef\temp{\@nx\savedstuff{\the\savedstuff\the\paddedexp}}\temp%
-    \ifx\@nil#2\@nil\else%
-        \@xp\savedstuff\@xp{\the\savedstuff\\}%
-        \catdiags@#2\@trend#4\@trend %
-    \fi %
-}
-
-\gdef\cattikzcd@#1\diagram#2\diagram{%
-    \catdiags{#1}{#2} %
-    \@ifnextchar\@nil{\@gobble}{\@xp\cattikzcd@\the\savedstuff\diagram}%
-}
-\gdef\protecttheamp{\def&{\@nx&}}
-\egroup
+\newtoks\temptoks
+\edef\theworddiagram{\macroname\diagram}
+\def\@gobblediagram#1{\edef\test{\macroname#1}\ifx\test\theworddiagram\else \PackageError{join-tikz-cd}{The body of jointikzcd environment must start with a \protect\diagram}{}\fi}
 
 \NewEnviron{jointikzcd}[1][]{%
     \protecttheamp%
-    \@xp\@xp\@xp\cattikzcd@\@xp\@gobble\BODY\diagram\@nil %
+    \@xp\tallyslashs\@xp{\BODY} %
+    \@xp\temptoks\@xp{\BODY} %
+    \edef\BODY{\the\slashcountslashes\the\temptoks} %
+    \@xp\cattikzcd@\BODY\diagram\@nil %
     \begin{tikzcd}[#1]\the\savedstuff\end{tikzcd}%
 }
 
 \NewEnviron{cjointikzcd}[1][]{%
     \protecttheamp%
-    \@xp\@xp\@xp\cattikzcd@\@xp\@gobble\BODY\diagram\@nil %
-    \begin{center}\begin{tikzcd}[#1]\the\savedstuff\end{tikzcd}\end{center}%
+    \@xp\tallyslashs\@xp{\BODY} %
+    \@xp\temptoks\@xp{\BODY} %
+    \edef\BODY{\the\slashcountslashes\the\temptoks} %
+    \@xp\cattikzcd@\BODY\diagram\@nil %
+    \begin{center}\begin{tikzcd}[#1]\the\savedstuff\end{tikzcd}\the\ctikzcdphantomleft\the\ctikzcdphantomright\global\ctikzcdphantomleft={}\global\ctikzcdphantomright={}\end{center}%
 }
 
 \def\jointikzcd{\catcode`&=\active \Collect@Body \env@jointikzcd@parse}

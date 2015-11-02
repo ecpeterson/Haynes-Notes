@@ -143,8 +143,8 @@ $f^* \iota_q  \longleftrightarrow [f]$, where these are functors of pointed spac
 Now let $X$ be any space with no assumptions on its cohomology, and pick $u\in\Htwee^q(X)$.%
 Representing $u\in \Htwee^q(X)$ by a map $u: X \to K_q$, we have a diagram:
 %n induced map $X^{(n)} \stackrel{u^{\sprod n}}{\to} K_q^{(n)} \stackrel{\iota_q^{\sprod n}}{\to} K_{nq}$, and then the diagram
-\begin{center}
-\begin{jointikzcd}[row sep = small]
+
+\begin{cjointikzcd}[row sep = small]
 \diagram
     X^{(n)}\rar["u^{\sprod n}"]\ar[dd,"i"] & K_q^{(n)}\ar[dd,"i"]\rar["\imath_q^{\sprod n}"] & K_{nq}\\\\
     D_\pi X\rar["D_\pi u"]& D_\pi K_q\ar[uur,dashed,"P_\pi\imath_q"']
@@ -154,12 +154,11 @@ Representing $u\in \Htwee^q(X)$ by a map $u: X \to K_q$, we have a diagram:
 %
 \diagram
     \Htwee^{nq}X^{(n)} & \Htwee^{nq}K_q^{(n)}\lar["(u^{\sprod n})^*"'] &
-    \Htwee^{nq}K_{nq}\mathrlap{{}\ni\imath_{nq}}\hskip-1ex \ar[ddl,dashed,"(P_\pi\imath_q)^*"]\lar["(\imath_q^{\sprod n})^*"']\\\\
+    \Htwee^{nq}K_{nq}\edgerlap{\ni\imath_{nq}} 
+    \ar[ddl,dashed,"(P_\pi\imath_q)^*"]\lar["(\imath_q^{\sprod n})^*"']\\\\
     %
     \Htwee^{nq}D_\pi X\ar[uu,"i^*"] & \Htwee^{nq}D_\pi K_q\lar["(D_\pi u)^*"']\ar[uu,"i^*"',"\cong"]
-\end{jointikzcd}%
-$\phantom{{}\ni\imath_{nq}}$
-\end{center}
+\end{cjointikzcd}%
 %
 So we have a natural transformation $u\mapsto (D_\pi u)^* (P_\pi\imath_q)$ of functors $H^q(\textup{---};\F_p)\longrightarrow H^{nq}(D_\pi(\textup{---});\F_p)$.
 As any cohomology class $u\in\Htwee^q(X)$ can be written as $u^*(\imath_q)$, this discussion proves:
