@@ -122,7 +122,7 @@ Note that if $V$, $W$ are vector bundles over $B$, it is \textbf{not} the case t
 \begin{cjointikzcd}
 \diagram
     V\oplus W \rar\dar & V\times W\dar  \\
-    B \rar["\Delta"]   & B\times B                                      
+    B \rar["\Delta"]   & B\times B
 %
 \diagram
  T((V\oplus W)\downarrow B) \rar& T((V\times W)\downarrow(B\times B) \rar[equal] & T((V\downarrow B)\wedge T(W\downarrow B))\\
@@ -143,16 +143,16 @@ S^n\uar \urar["\simeq"']
 \begin{proof}
 Write $\pi_2:B\times S^{n-1}\to S^{n-1}$ for the second projection. Then (by the universal property of the product), fiber maps $h:E\to B\times S^{n-1}$ are in bijective correspondence with maps $f:E\to S^{n-1}$, via $h\mapsto \pi_2h$. Now we note that fiber homotopy equivalences $h$ correspond exactly to maps $f$ inducing a homotopy equivalence on each fiber. If such a map $f$ exists, it can be thought of as a bundle map
 %
-\begin{cjointikzcd}[row sep = tiny]
+\begin{cjointikzcd}[intertext,row sep = tiny]
 \diagram
-    E \rar["f"]\ar[dd] & S^{n-1}\ar[dd] \\\\
-    B \rar & \ast 
+    E \rar["f"]\dar & S^{n-1}\dar \\\\
+    B \rar & \ast
 %
-\diagram \\\tikzintertext{which induces a map on Thom spaces:}\\
+\diagram \\\intertext{which induces a map on Thom spaces:}\\
 %
 \diagram
     T(E)\rar & S^n\edgerlap{=T(S^{n-1}\downarrow*)}\\\\
-    S^n\ar[uu]\ar[uur,"\simeq"']
+    S^n\ar[u]\ar[ur,"\simeq"']
 \end{cjointikzcd}
 %
 and the homotopy equivalence of $f$ restricted to each fiber implies that the map $S^n\to S^n$ is a homotopy equivalence.

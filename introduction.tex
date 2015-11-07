@@ -138,9 +138,9 @@ For example,
 \begin{align*}
 C_0 & = \R, \\
 C_1 & \cong \C, \hbox{ note: you can identify $e_1$ with $i$ or $-i$, so the iso.\ is not canonical} \\
-C_2 & \cong \mathbb{H}, \hbox{ with, say, $e_1 \mapsto i$, $e_2 \mapsto j$, $e_1 e_2 \mapsto k$}
+C_2 & \cong \H, \hbox{ with, say, $e_1 \mapsto i$, $e_2 \mapsto j$, $e_1 e_2 \mapsto k$}
 \end{align*}
-Note that the relations specify that we can give a basis for $C_k$ as the set of words $\{e_{i_1} \cdots e_{i_m} \mid m \ge 0, i_1 < \cdots < i_m\}$ made up of ordered nonrepeating sequences of the generators.  So $\dim C_k = 2^k$.  Note also that the collection $G_k = \{ \pm e_{i_1} \cdots e_{i_m} \mid m \ge 0, i_1 < \cdots < i_m\}$ is a multiplicative subgroup of $C_k$.  Also, $C_k$ comes equipped with an antiautomorphism $C_k \to C_k$, defined on generators by $\bar e_i = -e_i$, and extended to $C_k$ as an antiautomorphism.  It is an anti-involution in the sense that $\overline{xy} = \bar y \bar x$.
+Note that the relations specify that we can give a basis for $C_k$ as the set of words $\{e_{i_1} \cdots e_{i_m} \mid m \ge 0, i_1 < \cdots < i_m\}$ made up of ordered nonrepeating sequences of the generators.  So $\dim C_k = 2^k$.  Note also that the collection $G_k = \{ \pm e_{i_1} \cdots e_{i_m} \mid m \ge 0, i_1 < \cdots < i_m\}$ is a multiplicative subgroup of $C_k$.  Also, $C_k$ comes equipped with an antiautomorphism $C_k \to C_k$, defined on generators by $\bar e_i = -e_i$, and extended to $C_k$ as an antiautomorphism.  It is an anti-involution in the sense that $\overline{xy} = \ybar\xbar$.
 
 Before describing the $C_k$ further, let's look at how they can be used to construct vector fields on spheres.  One gets there by finding representations of $C_k$. Suppose $V$ is an $n$-dimensional vector space with a $C_k$-module structure $C_k \otimes_\R V \to V$.  $V$ is then a representation of $C_k$.  Next choose any inner product on $V$.  By averaging over the action of $G_k$ we can construct a $G_k$-invariant inner product $(-, -)$.  Let $S(V)$ denote the unit sphere of $V$, and note that points of $S(V)$ are invariant under action by the $e_i$.  We claim
 \begin{thm}
@@ -152,17 +152,17 @@ First, $(x, e_i x) = (e_i x, e_i e_i x) = -(e_i x, x) = -(x, e_i x)$, so $(x, e_
 In particular, one way to find an orthonormal $k$-frame on $S^{n-1}$ is to find an $n$-dimensional $C_k$-module. To find as may orthonormal vector fields as possible of $S^{n-1}$ we should find the largest $k$ such that $C_k$ admits an $n$-dimensional module.
 Thus we will search for low-dimensional representations of $C_k$.
 
-From now on, write $C^+_k$ for $C_k$. As we identify more of the algebras $C^+_k$, we build up the following table. The column $C^+_k$ identifies the isomorphism type of $C^+_k$ in terms of better known $\R$-algebras. Here, if $A$ is an $\R$-algebra, $A(r)$ is used as a shorthand for the algebra of $r\times r$ matrices with entries in $A$. For each $k$, we write $a_k$ for the minimal dimension of a nonzero $C^+_k$-module (see lemma \ref{MinRepsOfAlgs}). Note that $\mathbb{H}^2$ acts on $\mathbb{H}\cong\R^4$ via $(a,b)c=ac\overline{b}$, and similarly, $\R(8)^2$ acts on $\R^8$ via $(M,N)v=MvN^\textup{tr}$. The last column will be identified later.
+From now on, write $C^+_k$ for $C_k$. As we identify more of the algebras $C^+_k$, we build up the following table. The column $C^+_k$ identifies the isomorphism type of $C^+_k$ in terms of better known $\R$-algebras. Here, if $A$ is an $\R$-algebra, $A(r)$ is used as a shorthand for the algebra of $r\times r$ matrices with entries in $A$. For each $k$, we write $a_k$ for the minimal dimension of a nonzero $C^+_k$-module (see lemma \ref{MinRepsOfAlgs}). Note that $\H^2$ acts on $\H\cong\R^4$ via $(a,b)c=ac\overline{b}$, and similarly, $\R(8)^2$ acts on $\R^8$ via $(M,N)v=MvN^\textup{tr}$. The last column will be identified later.
 %Michael: Should say here `of a minimal C_k-module, as shown in lemma \ref{}....' or something
 \[\begin{array}{c|ccccc} % this table might go better after the calculations.  most the definition of phi over to the right as a log of a_k.  use less ridiculous notation for matrix rings.  why are these the minimum dimensions of the representations??
 k& C^+_k& a_k & \varphi_k = \log_2 a_k &C^-_k \\\hline
 0 & \R & 1 & 0 & \R \\
 1 & \C & 2 & 1 & \R^2 \\
-2 & \mathbb{H} & 4 & 2 & \R(2) \\
-3 & \mathbb{H}^2 & 4 & 2 & \C(2) \\
-4 & \mathbb{H}(2) & 8 & 3 & \mathbb{H}(2) \\
-5 & \C(4) & 8 & 3 & \mathbb{H}(2)^2 \\
-6 & \R(8) & 8 & 3 & \mathbb{H}(4) \\
+2 & \H & 4 & 2 & \R(2) \\
+3 & \H^2 & 4 & 2 & \C(2) \\
+4 & \H(2) & 8 & 3 & \H(2) \\
+5 & \C(4) & 8 & 3 & \H(2)^2 \\
+6 & \R(8) & 8 & 3 & \H(4) \\
 7 & \R(8)^2 & 8 & 3 & \C(8) \\
 8 & \R(16) & 16 & 4 & \R(16).
 \end{array}\] % the multiplication in the product of two algebras is component-wise -- wouldn't hurt to mention this
@@ -190,9 +190,9 @@ The remaining $C_k^\pm$ in the table can be computed in succession using this le
 \begin{align*}
 (\R \times \R) \otimes A & \cong A \times A \\
 \R(n) \otimes A & \cong A(n) \\
-\mathbb{H} \otimes \C & \cong \C(2) \\
+\H \otimes \C & \cong \C(2) \\
 \R(m) \otimes \R(n) & \cong \R(mn) \\
-\mathbb{H} \otimes \mathbb{H} & \cong \R(4).
+\H \otimes \H & \cong \R(4).
 \end{align*}
 From the table we can also quickly compute $C_k$ for $k > 8$ if we note the isomorphisms obtained by repeatedly applying the lemma:
 \begin{align*}
@@ -210,7 +210,7 @@ We compute the following dimensions of minimal representations of algebras:
 \begin{enumerate}
 \item When $A$ is a skew field, $A$ acting on itself is a minimal representation, so the minimal dimension is $1$.
 \item When $A$ is a skew field and $A(n)$ is the space of $n \times n$-matrices over $A$, then $A(n)$ acting on $A^n$ is a minimal representation, so the minimal dimension is $n$.
-\item When $A$ and $B$ are two algebras, then the dimension of a minimal representation for $A \otimes B$ is the minimum of the dimensions for minimal representations of $A$ and $B$ individually.
+\item When $A$ and $B$ are two algebras, then the dimension of a minimal representation for $A \otimes B$ is the product of the dimensions for minimal representations of $A$ and $B$ individually.
 \end{enumerate}
 \end{lem}
 %Michael: Does this cover k=3,7

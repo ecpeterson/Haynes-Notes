@@ -144,20 +144,20 @@ Now let $X$ be any space with no assumptions on its cohomology, and pick $u\in\H
 Representing $u\in \Htwee^q(X)$ by a map $u: X \to K_q$, we have a diagram:
 %n induced map $X^{(n)} \stackrel{u^{\sprod n}}{\to} K_q^{(n)} \stackrel{\iota_q^{\sprod n}}{\to} K_{nq}$, and then the diagram
 
-\begin{cjointikzcd}[row sep = small]
+\begin{cjointikzcd}[intertext,row sep = small]
 \diagram
-    X^{(n)}\rar["u^{\sprod n}"]\ar[dd,"i"] & K_q^{(n)}\ar[dd,"i"]\rar["\imath_q^{\sprod n}"] & K_{nq}\\\\
-    D_\pi X\rar["D_\pi u"]& D_\pi K_q\ar[uur,dashed,"P_\pi\imath_q"']
+    X^{(n)}\rar["u^{\sprod n}"]\dar["i"] & K_q^{(n)}\dar["i"]\rar["\imath_q^{\sprod n}"] & K_{nq}\\\\
+    D_\pi X\rar["D_\pi u"]& D_\pi K_q\ar[ur,dashed,"P_\pi\imath_q"']
 %
 \diagram
-    \\\tikzintertext{which induces:}\\
+    \\\intertext{which induces:}\\
 %
 \diagram
     \Htwee^{nq}X^{(n)} & \Htwee^{nq}K_q^{(n)}\lar["(u^{\sprod n})^*"'] &
-    \Htwee^{nq}K_{nq}\edgerlap{\ni\imath_{nq}} 
-    \ar[ddl,dashed,"(P_\pi\imath_q)^*"]\lar["(\imath_q^{\sprod n})^*"']\\\\
+    \Htwee^{nq}K_{nq}\edgerlap{\ni\imath_{nq}}
+    \ar[dl,dashed,"(P_\pi\imath_q)^*"]\lar["(\imath_q^{\sprod n})^*"']\\\\
     %
-    \Htwee^{nq}D_\pi X\ar[uu,"i^*"] & \Htwee^{nq}D_\pi K_q\lar["(D_\pi u)^*"']\ar[uu,"i^*"',"\cong"]
+    \Htwee^{nq}D_\pi X\ar[u,"i^*"] & \Htwee^{nq}D_\pi K_q\lar["(D_\pi u)^*"']\ar[u,"i^*"',"\cong"]
 \end{cjointikzcd}%
 %
 So we have a natural transformation $u\mapsto (D_\pi u)^* (P_\pi\imath_q)$ of functors $H^q(\textup{---};\F_p)\longrightarrow H^{nq}(D_\pi(\textup{---});\F_p)$.
@@ -197,19 +197,19 @@ We take this to be the definition of $\Sq^i u$. We can see immediately that $\Sq
 Note that the process above can be carried out in other cohomology theories, giving similar operations.  Mostly one needs to have computed $\Htwee^*(B \pi \sprod X)$.
 
 Now let's start finding properties of the squares.  First of all, we don't even know that they're not all zero yet. Choose $u\in \Htwee^q(X)$. There is a map $k:S^0\to B\pi_+$, where if $S^0=\{\pm1\}$, we set $k(1)=*$ and $k(-1)=b$. We have the following diagram:
-\begin{cjointikzcd}[row sep=small]
+\begin{cjointikzcd}[intertext,row sep=small]
 \diagram
     B\pi_+ \sprod X \rar["j"] & D_\pi X\\\\
-    S^0 \sprod X  \rar["\Delta"]\ar[uu,"k\sprod 1"] & X^{(2)}\ar[uu,"i"]
+    S^0 \sprod X  \rar["\Delta"]\ar[u,"k\sprod 1"] & X^{(2)}\ar[u,"i"]
 %
-\diagram \\\tikzintertext{which induces}\\
+\diagram \\\intertext{which induces}\\
 %
 \diagram
-    \sum_{i=0}^q x^{q-i} \otimes \Sq^i u  \ar[dd,mapsto] & Pu \ar[dd,mapsto]\lar[mapsto] \\\\
+    \sum_{i=0}^q x^{q-i} \otimes \Sq^i u  \ar[d,mapsto] & Pu \ar[d,mapsto]\lar[mapsto] \\\\
      u\smile u & u^{\sprod2}\lar[mapsto]
 %
 \diagram
-    \\\tikzintertext{on $\Htwee^{2q}(\DASH)$.}\\
+    \\\intertext{on $\Htwee^{2q}(\DASH)$.}\\
 \end{cjointikzcd}
 Now $(k\sprod 1)^*: \Z_2[x]\otimes \Htwee^* (X)\to\Htwee^* (X)$ is the projection onto $\Z_2\otimes \Htwee^* (X)$. Thus $\Sq^q u = u^2$.
 
@@ -228,28 +228,28 @@ $\delta^*(Pu \sprod Pv) = P(u \sprod v)$.
 \end{lem}
 \begin{proof}
 We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$.  Then the lowest dimensional cohomology of $X \sprod Y$ is $\Z_2$ in dimension $(p + q)$. Thus $i:(X\sprod Y)^{(2)}\to D_\pi(X\sprod Y)$ induces a monomorphism on $H^{2(p+q)}$, by lemma \ref{lemaboutpiadic}. Now in the diagram:
-\begin{cjointikzcd}[row sep = small]
+\begin{cjointikzcd}[intertext,row sep = small]
 \diagram
     H^{2(p+q)}((X\sprod Y)^{(2)}) & H^{2(p+q)}(D_\pi(X\sprod Y))\lar[hook,"i^*"'] \\\\
-    H^{2(p+q)}(X^{(2)}\sprod Y^{(2)})\ar[uu,"T^*"'] & H^{2(p+q)}(D_\pi X\sprod D_\pi Y)\lar["(i\sprod i)^*"']\ar[uu,"\delta^*"']
+    H^{2(p+q)}(X^{(2)}\sprod Y^{(2)})\ar[u,"T^*"'] & H^{2(p+q)}(D_\pi X\sprod D_\pi Y)\lar["(i\sprod i)^*"']\ar[u,"\delta^*"']
 %
 \diagram
-    \\\tikzintertext{we know:}\\
+    \\\intertext{we know:}\\
 %
 \diagram
     (\imath_p\sprod \imath_q)^{(2)} & \lar[mapsto]  P(\imath_p\sprod\imath_q)\\\\
-    \imath_p^{(2)}\sprod \imath_q^{(2)} \ar[uu,mapsto]& \lar[mapsto]\ar[uu,mapsto] P(\imath_p)\sprod P(\imath_q)
+    \imath_p^{(2)}\sprod \imath_q^{(2)} \ar[u,mapsto]& \lar[mapsto]\ar[u,mapsto] P(\imath_p)\sprod P(\imath_q)
 \end{cjointikzcd}
 %
 In particular, because $i^*$ is a monomorphism, $\delta^*(P(\imath_p)\sprod P(\imath_q))$ must equal $P(\imath_p\sprod\imath_q)$.
 %  But $(\delta i)^*(P\iota_p \sprod P\iota_q) = ((i \sprod i)T)^* (\iota_p \sprod \iota_q)$ equals $(\iota_p \sprod \iota_q)^{\sprod 2}$, and $P(\iota_p \sprod \iota_q)$ is defined to be the unique class in $H^{2(p+q)} D_\pi(X \sprod Y)$ for which this holds. % we have two nonzero things living in the same dimension, where there's only one nonzero element.
 \end{proof}
 
-\begin{cor}[Cartan formula]  
+\begin{cor}[Cartan formula]
 $\Sq^k(u \sprod v) = \sum_{i+j = k} \Sq^i u \sprod \Sq^j v$.
 \end{cor}
 %
-\begin{proof} 
+\begin{proof}
 Almost immediate from the construction:
 \begin{align*}
 \sum_k x^{p+q-k} \otimes \Sq^k(u \sprod v) & = j^* P(u \sprod v) \\
@@ -261,7 +261,7 @@ Almost immediate from the construction:
 \end{proof}
 \noindent
 Taking $X = Y$ and using $\Delta: X \to X \sprod X$, we obtain:
-\begin{cor}[Internal version]  
+\begin{cor}[Internal version]
 $\Sq^k(uv) = \sum_{i+j=k} \Sq^i u \Sq^j v$.
 \end{cor}
 \noindent It will be convenient to define the total squaring operation $\Sq:\Htwee^*(X)\to\Htwee^*(X)$ by $ u\mapsto\sum_i \Sq^i u$. The Cartan formula states that $\Sq$ is a ring homomorphism.
@@ -357,7 +357,7 @@ The map $\beta: \Htwee^q (X;\F_2) \to \Htwee^{q+1} (X;\F_2)$ given by
 \begin{ctikzcd}
 \Htwee^q (X;\F_2) \rar["\beta"]\dar["\delta"] & \Htwee^{q+1} (X;\F_2) \\
 \Htwee^{q+1}(X; \Z)\urar["\textup{reduction}"'{anchor=center, yshift=-0.5em},sloped]
-\end{ctikzcd}   
+\end{ctikzcd}
 %
 where $\delta$ is the zigzag map of the coefficient sequence $0 \to \Z \stackrel{\cdot 2}{\to} \Z \to \Z_2 \to 0$ is called the Bockstein homomorphism.  It is $\Sq^1$.
 \end{fact}
@@ -615,10 +615,10 @@ If there is an element of odd Hopf invariant on $S^n$, then $n$ is a power of tw
 Now if $g$ is any map $S^{2n+k-1} \stackrel{g}{\to} S^{n+k} \to C(g)$, then we no longer have a nontrivial cup-product, but we still have $\Sq^n$, so we can define a generalized Hopf invariant $\Htwee(g)$ by $\Sq^n x = \Htwee(g) y$, giving $\Htwee: \pi_{2n+k-1}S^{n+k} \to \Z_2$.  The fact that $\Sq^n$ commutes with suspensions means
 \begin{cjointikzcd}
 \diagram
-   f\dar[mapsto] \\ 
+   f\dar[mapsto] \\
    \Sigma^kf
 %
-\diagram 
+\diagram
     \pi_{2n-1}S^n\rar["H"]\dar & \Z\dar\\
     \pi_{2n+k-1}S^{n+k}\rar["\Htwee"] &\Z/2
 \end{cjointikzcd}
@@ -699,7 +699,7 @@ This follows by naturality of the Thom isomorphism for oriented maps of oriented
     \mathllap{S^n={}}T(\mathcal{E})\ar[r]&T(E)\\
     S^n\uar[equal]\ar[ur]
 %
-\diagram 
+\diagram
     u_\mathcal{E}\dar[equal] &\lar[mapsto]u_E\dlar[mapsto]\\
     \mathit{o}
 \end{cjointikzcd}
