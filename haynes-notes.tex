@@ -3,7 +3,6 @@
 \documentclass{article}
 \makeatletter
 
-
 %% <<< header
 
 \usepackage{fullpage}
@@ -17,6 +16,11 @@
 \usepackage{tikz}
 \usepackage{join-tikz-cd}
 \usetikzlibrary{cd,arrows}
+
+\newarrow{Equalto}=====
+\newarrow{Stableto}--+->
+\SelectTips{cm}{11} % This is connected to diagrams.sty I believe. What does it do?
+
 
 \usepackage{yhmath} % \DeclareMathOperator, perhaps other things
 \usepackage{tocloft} % presumably table of contents
@@ -125,6 +129,7 @@
 
 
 \newenvironment{SummaryNote}{\begin{center}\begin{minipage}{0.75\textwidth}\begin{framed}}{\end{framed}\end{minipage}\end{center}}
+\newenvironment{ConfusedNote}{\begin{center}\begin{minipage}{0.5\textwidth}\begin{framed}}{\end{framed}\end{minipage}\end{center}}
 
 \newcommand{\BoxedNote}[1]{
 \begin{center}\fbox{\begin{minipage}{.75\textwidth}
@@ -216,8 +221,6 @@
 \newcommand{\onto}{\twoheadrightarrow}
 \newcommand{\stableto}{\nrightarrow}
 
-\newarrow{Equalto}=====
-\newarrow{Stableto}--+->
 
 % missing 1-ary operators
 \DeclareMathOperator{\res}{res}
@@ -271,10 +274,10 @@
 
 
 \makeatother
-%\includeonly{adams-operations}
+%\includeonly{thom-spaces}
 
 \begin{document}
-\SelectTips{cm}{11} % This is connected to diagrams.sty I believe. What does it do?
+
 
 
 \include{front-matter}

@@ -146,16 +146,16 @@ Representing $u\in \Htwee^q(X)$ by a map $u: X \to K_q$, we have a diagram:
 
 \begin{cjointikzcd}[intertext,row sep = small]
 \diagram
-    X^{(n)}\rar["u^{\sprod n}"]\dar["i"] & K_q^{(n)}\dar["i"]\rar["\imath_q^{\sprod n}"] & K_{nq}\\\\
+    X^{(n)}\rar["u^{\sprod n}"]\dar["i"] & K_q^{(n)}\dar["i"]\rar["\imath_q^{\sprod n}"] & K_{nq}\\
     D_\pi X\rar["D_\pi u"]& D_\pi K_q\ar[ur,dashed,"P_\pi\imath_q"']
 %
 \diagram
-    \\\intertext{which induces:}\\
+    \intertext{which induces:}
 %
 \diagram
     \Htwee^{nq}X^{(n)} & \Htwee^{nq}K_q^{(n)}\lar["(u^{\sprod n})^*"'] &
     \Htwee^{nq}K_{nq}\edgerlap{\ni\imath_{nq}}
-    \ar[dl,dashed,"(P_\pi\imath_q)^*"]\lar["(\imath_q^{\sprod n})^*"']\\\\
+    \ar[dl,dashed,"(P_\pi\imath_q)^*"]\lar["(\imath_q^{\sprod n})^*"']\\
     %
     \Htwee^{nq}D_\pi X\ar[u,"i^*"] & \Htwee^{nq}D_\pi K_q\lar["(D_\pi u)^*"']\ar[u,"i^*"',"\cong"]
 \end{cjointikzcd}%
@@ -199,17 +199,16 @@ Note that the process above can be carried out in other cohomology theories, giv
 Now let's start finding properties of the squares.  First of all, we don't even know that they're not all zero yet. Choose $u\in \Htwee^q(X)$. There is a map $k:S^0\to B\pi_+$, where if $S^0=\{\pm1\}$, we set $k(1)=*$ and $k(-1)=b$. We have the following diagram:
 \begin{cjointikzcd}[intertext,row sep=small]
 \diagram
-    B\pi_+ \sprod X \rar["j"] & D_\pi X\\\\
+    B\pi_+ \sprod X \rar["j"] & D_\pi X\\
     S^0 \sprod X  \rar["\Delta"]\ar[u,"k\sprod 1"] & X^{(2)}\ar[u,"i"]
 %
-\diagram \\\intertext{which induces}\\
+\diagram \intertext{which induces}
 %
 \diagram
-    \sum_{i=0}^q x^{q-i} \otimes \Sq^i u  \ar[d,mapsto] & Pu \ar[d,mapsto]\lar[mapsto] \\\\
+    \sum_{i=0}^q x^{q-i} \otimes \Sq^i u  \ar[d,mapsto] & Pu \ar[d,mapsto]\lar[mapsto] \\
      u\smile u & u^{\sprod2}\lar[mapsto]
 %
-\diagram
-    \\\intertext{on $\Htwee^{2q}(\DASH)$.}\\
+\diagram \intertext{on $\Htwee^{2q}(\DASH)$.}
 \end{cjointikzcd}
 Now $(k\sprod 1)^*: \Z_2[x]\otimes \Htwee^* (X)\to\Htwee^* (X)$ is the projection onto $\Z_2\otimes \Htwee^* (X)$. Thus $\Sq^q u = u^2$.
 
@@ -230,14 +229,13 @@ $\delta^*(Pu \sprod Pv) = P(u \sprod v)$.
 We can assume $X = K(\pi, p)$, $Y = K(\pi, q)$, $u = \iota_p$, and $v = \iota_q$.  Then the lowest dimensional cohomology of $X \sprod Y$ is $\Z_2$ in dimension $(p + q)$. Thus $i:(X\sprod Y)^{(2)}\to D_\pi(X\sprod Y)$ induces a monomorphism on $H^{2(p+q)}$, by lemma \ref{lemaboutpiadic}. Now in the diagram:
 \begin{cjointikzcd}[intertext,row sep = small]
 \diagram
-    H^{2(p+q)}((X\sprod Y)^{(2)}) & H^{2(p+q)}(D_\pi(X\sprod Y))\lar[hook,"i^*"'] \\\\
+    H^{2(p+q)}((X\sprod Y)^{(2)}) & H^{2(p+q)}(D_\pi(X\sprod Y))\lar[hook,"i^*"'] \\
     H^{2(p+q)}(X^{(2)}\sprod Y^{(2)})\ar[u,"T^*"'] & H^{2(p+q)}(D_\pi X\sprod D_\pi Y)\lar["(i\sprod i)^*"']\ar[u,"\delta^*"']
 %
-\diagram
-    \\\intertext{we know:}\\
+\diagram \intertext{we know:}
 %
 \diagram
-    (\imath_p\sprod \imath_q)^{(2)} & \lar[mapsto]  P(\imath_p\sprod\imath_q)\\\\
+    (\imath_p\sprod \imath_q)^{(2)} & \lar[mapsto]  P(\imath_p\sprod\imath_q)\\
     \imath_p^{(2)}\sprod \imath_q^{(2)} \ar[u,mapsto]& \lar[mapsto]\ar[u,mapsto] P(\imath_p)\sprod P(\imath_q)
 \end{cjointikzcd}
 %
@@ -421,16 +419,16 @@ Second, take $\Sigma_4$ to be the symmetric group acting on four letters, arrang
 Now let $N=\langle\alpha,\beta\rangle$ be the subgroup of permutations preserving the rows, and let $H=\langle \gamma\rangle$ be the subgroup whose only nontrivial element swaps the two rows. Then $\omega$ is the semidirect product $N \rtimes H$. Note that $H$ acts from the left on $N$ via $h\cdot n=hnh^{-1}$. Let $\pi$ be the group $\{\pm1\}$ under multiplication. Then $N=\pi^2$ and $H=\pi$, and the action of $\pi$ on $\pi^2$ is by interchanging factors.
 
 As $\omega=N \rtimes H$, an $\omega$-space is just an $H$-space with an $H$-equivariant $N$-action:
-\begin{cjointikzcd}[row sep = 0.2em]
+\begin{cjointikzcd}[intertext,row sep = 0.2em]
 \diagram
-    N \times X \rar & X\\\\
-    H\ar[uu,phantom,"\circlearrowright"] & H\ar[uu,phantom,"\circlearrowright"]
+    N \times X \rar & X\\
+    H\ar[u,phantom,"\circlearrowright"] & H\ar[u,phantom,"\circlearrowright"]
 %
-\diagram \\\tikzintertext{\quad i.e.,\quad}\\
+\diagram \intertext{\quad i.e.,\quad}
 %
 \diagram
-    \pi^2 \times X \rar &  X \\\\
-    \pi\ar[uu,phantom,"\circlearrowright"] & \pi\ar[uu,phantom,"\circlearrowright"]
+    \pi^2 \times X \rar &  X \\
+    \pi\ar[u,phantom,"\circlearrowright"] & \pi\ar[u,phantom,"\circlearrowright"]
 \end{cjointikzcd}
 %
 where the action of $\pi$ on $\pi^2\times X$ (i.e.\ $H$ on $N$) is the diagonal action.  An example of an $\omega$-space is $E \pi \times (E \pi)^2$. We view $E\pi$ as $S^\infty$ equipped with the antipodal map $a\mapsto-a$, so that the action of $\pi$ on $E_\pi$ can be written simply as $(\pm1,a)\mapsto\pm a$. The $\pi^2$ action is on the right-hand factor, with
@@ -691,10 +689,9 @@ Suppose that $E\downarrow B$ is an $S^{n-1}$-bundle over a connected base, and t
 \begin{proof}
 This follows by naturality of the Thom isomorphism for oriented maps of oriented $S^{n-1}$-bundles, once it has been checked for the trivial $S^{n-1}$-bundle $\mathcal{E}=S^{n-1}\downarrow*$ (a simple task). Consider the map of oriented $S^{n-1}$-bundles (shown at left):
 \begin{cjointikzcd}
-\diagram
+\diagram[2]
     \mathcal{E}\ar[r]\ar[d]&E\ar[d]\\
     \ast\ar[r]&B
-&
 \diagram
     \mathllap{S^n={}}T(\mathcal{E})\ar[r]&T(E)\\
     S^n\uar[equal]\ar[ur]

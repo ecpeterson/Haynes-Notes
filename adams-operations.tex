@@ -448,7 +448,7 @@ The map $\alpha$ takes the dimension components in $K(X)$ and $K(Y)$ to their pr
     & \Ktwee(X\vee Y)\oplus \Z\dar[equal]\\
     K(X\times Y)\rar & K(X\vee Y)
 %
-\diagram \\\intertext{on elements:}
+\diagram \\\intertext{on elements:}\\
 %
 \diagram
     (\xtwee + n) \otimes (\ytwee + m) \rar[mapsto]\ar[dd,mapsto] & (m\xtwee,n\ytwee,nm)\dar[mapsto]\\
@@ -456,10 +456,10 @@ The map $\alpha$ takes the dimension components in $K(X)$ and $K(Y)$ to their pr
     (\xtwee+n)\times(\ytwee+m)\rar[mapsto] & m\xtwee\vee n\ytwee+mn
 \end{cjointikzcd}
 Because $\alpha$ is surjective, the map on the bottom row of this square is also surjective. We would like to determine its kernel. Now we claim that the map $X\vee Y\to X\times Y$ splits after one suspension. That is, there is a commuting diagram:
-\begin{cjointikzcd}
+\begin{ctikzcd}
 \Sigma(X\times Y)\rar["p"]&\Sigma(X\times Y)\vee \Sigma(X\times Y)\rar["\Sigma s_1\vee\Sigma s_2"]&[1.8em]|[inner ysep=0pt]|\Sigma (X\vee Y)\\
 \Sigma(X\vee Y)\ar[u]\ar[urr,end anchor={south west},"\simeq"']
-\end{cjointikzcd}
+\end{ctikzcd}
 Here $s_1:X\times Y\to X\vee Y$ and $s_2:X\times Y\to X\vee Y$ are defined by $s_1(x,y)=x$ and $s_2(x,y)=y$, and
 $p$ is the pinch map given by
 \def\pathjoin#1#2{\begin{cases}\mathrlap{#1}\hphantom{[2(1-t),(x,*)]}&t\leq1/2\\{#2}&t\geq1/2\end{cases}}
@@ -482,7 +482,7 @@ This implies that $\Ktwee(X \times Y) \to \Ktwee(X \wsum Y)$ splits, giving a sp
 \begin{ctikzcd}
 0 \rar & \Ktwee(X \sprod Y) \rar & K(X \times Y) \rar & K(X \wsum Y) \rar & 0.
 \end{ctikzcd}
-We now have all of the solid maps in the following commuting diagram, in which the rows are exact. 
+We now have all of the solid maps in the following commuting diagram, in which the rows are exact.
 \begin{ctikzcd}
 0\ar[r] & \Ktwee(X) \otimes \Ktwee(Y)\rar[r] \dar[dashed,"\wedge"]& K(X) \otimes K(Y)\rar["\alpha"]\dar["\times"]&\Ktwee(X) \oplus \Ktwee(Y) \oplus \Z\dar[equal]\rar&0\\
 0\ar[r]&\Ktwee(X \sprod Y)\rar["c^*"]&K(X\times Y)\ar[r]&K(X\vee Y)\ar[r]&0
