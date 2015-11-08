@@ -21,6 +21,7 @@
 \usepackage{yhmath} % \DeclareMathOperator, perhaps other things
 \usepackage{tocloft} % presumably table of contents
 
+\usepackage{enumerate}
 
 \usepackage{framed}
 
@@ -142,7 +143,6 @@
 
 
 \newcommand{\Bullet}{\ensuremath{\bullet} }
-\newcommand{\Vect}{\textup{Vect}}
 \newcommand{\DASH}{\textup{---}}
 
 
@@ -187,6 +187,7 @@
 \makesymbdefs{bar}{\choicebar}{\upperalphabet\loweralphabet}   % \Abar -> \overline{A}
 \makesymbdefs{frak}{\mathfrak}{\loweralphabet}                % \afrak -> \mathfrak{a}
 
+\newcommand{\KOtwee}{\smash{\widetilde{KO}}\vphantom{KO}}
 
 \newcommand{\RP}{\R P}
 \newcommand{\CP}{\C P}
@@ -227,6 +228,9 @@
 \DeclareMathOperator*{\id}{id}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\Rep}{Rep}
+\newcommand\eqdef{\mathrel{:=}}
 
 
 \renewcommand{\to}{\longrightarrow}
@@ -267,6 +271,7 @@
 
 
 \makeatother
+%\includeonly{adams-operations}
 
 \begin{document}
 \SelectTips{cm}{11} % This is connected to diagrams.sty I believe. What does it do?
