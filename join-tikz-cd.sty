@@ -14,16 +14,24 @@
 \RequirePackage{environ}
 \RequirePackage{etoolbox}
 
-
 \let\@xp\expandafter
 \let\@nx\noexpand
+\let\@ag\aftergroup
 
 \newcount\jtcd@rowskip
 \jtcd@rowskip=1
-\tikzcdset{intertext/.code={\jtcd@rowskip=2\def\pgfmatrixendrow{\jtcdsl\jtcdsl}\let\\\pgfmatrixendrow\let\intertext\jtcd@intertextslsl}}
-
-% TODO: diagram sep
-% Also allow individual setting of diagram separation
+\tikzcdset{
+    intertext/.code={ %
+        \pgfmathsetmacro{\pgfmatrixrowsep}{\pgfmatrixrowsep/2}%
+        \jtcd@rowskip=2 %
+        \global\let\jtcd@cursl\pgfmatrixendrow %
+        \def\pgfmatrixendrow{\jtcd@cursl\jtcd@cursl}%
+        \let\intertext\jtcd@intertextslsl%
+    }
+}
+\newdimen\jtcd@dim
+\def\jtcd@intertext#1{|[inner sep=0pt]|\jtcd@dim=\pgfmatrixcolumnsep\divide\jtcd@dim2\hskip-\jtcd@dim\smash{\textup{#1}}\hskip-\jtcd@dim\relax}
+\def\jtcd@intertextslsl#1{\jtcd@cursl |[inner sep=0pt]| \jtcd@dim=\pgfmatrixcolumnsep\divide\jtcd@dim2\hskip-\jtcd@dim\smash{\textup{#1}}\hskip-\jtcd@dim\jtcd@cursl}
 
 
 %
@@ -38,8 +46,28 @@
        \else\let\tikzcd@temp\pgfutil@gobble@until@relax\fi\fi\fi\fi\fi%
   \tikzcd@temp}
 
-\def\jtcd@intertext#1{|[inner sep=0pt]|\hskip-1em\smash{\textup{#1}}\hskip-1em}
-\def\jtcd@intertextslsl#1{\jtcdsl|[inner sep=0pt]|\hskip-1em\smash{\textup{#1}}\hskip-1em\jtcdsl}
+
+
+% diagram sep
+
+\tikzcdset{
+    diagram sep/.code={\tikzcd@sep{diagram}{#1}\global\let\diagramsep\diagramsep},
+    diagrams={/tikz/commutative diagrams/diagram sep=normal},
+    diagram sep/huge/.initial=column sep/huge/,
+    diagram sep/large/.initial=+3.6em,
+    diagram sep/normal/.initial=+2.4em,
+    diagram sep/scriptsize/.initial=+1.8em,
+    diagram sep/small/.initial=+1.2em,
+    diagram sep/tiny/.initial=+0.6em
+}
+
+\tikzset{
+    /tikz/diagram sep/.store in=\diagramsep,
+    wavy/.style={decorate,decoration={snake,amplitude=.3mm,segment length=2.3mm,post length=0.5mm}}
+}
+
+
+% TODO: improve individual setting of diagram separation
 
 
 %% From TUGBoat Volume 22 (2001), No. 4
@@ -53,6 +81,12 @@
 \def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
 \def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
 \def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
+
+
+\newbox\tempbox
+\def\clapph#1#2{\sbox\tempbox{#1}\hbox to \wd\tempbox{\hss#2\hss}}
+\def\mathclapph#1#2{\mathpalette\mathclapph@{{#1}{#2}}}
+\def\mathclapph@#1#2{\clapph{$\mathsurround=0pt#1{\@firstoftwo#2}$}{$\mathsurround=0pt#1{\@secondoftwo#2}$}}
 
 %%
 %%
@@ -74,11 +108,11 @@
 
 \def\macroname{\@xp\@gobble\string}
 \edef\theworddiagram{\macroname\diagram}
-\def\@gobblediagram#1{\edef\test{\macroname#1}\ifx\test\theworddiagram\else \PackageError{join-tikz-cd}{The body of the jointikzcd environment must start with a \protect\diagram}{}\fi}
 
 \newcount\jtcd@currow
 \newcount\jtcd@maxamps
 \newcount\jtcd@amps
+\newtoks\jtcd@savedtoks
 \newtoks\temptoks
 
 % \@nil needs to have distinct expansion text so that \@ifnextchar can tell it apart from other macros
@@ -91,9 +125,9 @@
         \ifnum\jtcd@amps>\jtcd@maxamps %
             \ifnum\jtcd@maxamps=-1%
                 \global\jtcd@maxamps=\jtcd@amps  %
-            \else
-                \PackageError{join-tikz-cd}{Either the top row must have the most columns or you must explicitly indicate how many columns are present in a subdiagram by saying \protect\diagram[n]}{}
-            \fi
+            \else %
+                \PackageError{join-tikz-cd}{Either the top row must have the most columns or you must explicitly indicate how many columns are present in a subdiagram by saying \protect\diagram[n]}{}%
+            \fi %
         \else %
             \loop\ifnum\jtcd@amps<\jtcd@maxamps%
                 \@xp\savedamps\@xp{\the\savedamps ~}%
@@ -104,40 +138,56 @@
         \global\jtcd@amps=0%
     }
 
-    \def\jtcdsl#1\diagram{\@ifnextchar\@nil{\jtcdsl@nil{#1}}{\@ifnextchar[{\jtcdsl@diagram{#1}}{\jtcdsl@diagram{#1}[-1]}}} %}
-    \def\jtcdsl@nil#1{ %
-        \edef\temp{\@nx\temptoks{\the\temptoks[\the\jtcd@maxamps]}}\temp %
-        \@xp\global\@xp\temptoks\@xp{\the\temptoks#1\diagram}%
-        \jtcdsaved@pgfmatrixendrow %
-        \global\jtcd@amps=0
-        \@xp\global\@xp\temptoks\@xp{\@xp}%
-        \the\temptoks %
+    \def\jtcd@prepnextrow{\@xp\jtcd@prepnextrow@\the\jtcd@savedtoks\@nil}
+    \def\jtcd@prepnextrow@[#1]{\@ifnextchar|{\jtcd@prepnextrow@opts[#1]}{\jtcd@prepnextrow@noopts[#1]}}
+    \def\jtcd@prepnextrow@opts#1|#2|#3\@nil{\jtcd@savedtoks{|#2|\jtcd@startrow#1#3}}
+    \def\jtcd@prepnextrow@noopts#1\@nil{\jtcd@savedtoks{\jtcd@startrow#1}}
+
+    \def\jtcdsl#1\diagram{\@ifnextchar\@nil{\jtcdsl@newrow{#1}}{\@ifnextchar[{\jtcdsl@continuerow{#1}}{\jtcdsl@continuerow{#1}[-1]}}} %}
+    \def\jtcdsl@newrow#1{ %
+        \edef\temp{\@nx\jtcd@savedtoks{\the\jtcd@savedtoks[\the\jtcd@maxamps]}}\temp %
+        \@xp\global\@xp\jtcd@savedtoks\@xp{\the\jtcd@savedtoks#1\diagram}%
+        \global\jtcd@amps=0 %
+        \jtcd@prepnextrow %
+        \@xp\global\@xp\jtcd@savedtoks\@xp{\@xp}%
+        \@xp\jtcdsaved@pgfmatrixendrow %
+        \the\jtcd@savedtoks %
     }
-    \def\jtcdsl@diagram#1[#2]{%
-        \padamps
-        \edef\temp{\@nx\temptoks{\the\temptoks[\the\jtcd@maxamps]}}\temp %
-        \@xp\global\@xp\temptoks\@xp{\the\temptoks#1\diagram}%
+    \def\jtcdsl@continuerow#1[#2]{%
+        \padamps %
+        \edef\temp{\@nx\jtcd@savedtoks{\the\jtcd@savedtoks[\the\jtcd@maxamps]}}\temp %
+        \@xp\global\@xp\jtcd@savedtoks\@xp{\the\jtcd@savedtoks#1\diagram}%
         \global\jtcd@maxamps=#2%
-        ~%
+        \@ifnextchar[{~}{~[-\pgfmatrixcolumnsep+\diagramsep]}%
     }
 
     \def\jtcd@diagram{\@ifnextchar\@nil{\global\jtcd@amps=0\let\pgfmatrixendrow\jtcdsaved@pgfmatrixendrow\let\\\pgfmatrixendrow\@gobble}{\@ifnextchar[{\jtcd@diagram@}{\jtcd@diagram@[-1]}}} %}
-    \def\jtcd@diagram@[#1]{\padamps\global\jtcd@maxamps=#1~}
-    \def\jtcd@startdiagram{\@ifnextchar[{\jtcd@startdiagram@}{\jtcd@startdiagram@[-1]}} %}
-    \def\jtcd@startdiagram@[#1]{\global\jtcd@maxamps=#1 \global\temptoks{\jtcd@startdiagram@}}
+    \def\jtcd@diagram@[#1]{\padamps\global\jtcd@maxamps=#1\@ifnextchar[{~}{~[-\pgfmatrixcolumnsep+\diagramsep]}}
+    \def\jtcd@startrow{\@ifnextchar[{\jtcd@startrow@}{\jtcd@startrow@[-1]}} %}
+    \def\jtcd@startrow@[#1]{\global\jtcd@maxamps=#1\global\jtcd@savedtoks{}}
+
+    \def\jtcd@prepBODY{\@xp\jtcd@prepBODY@\BODY\@nil}
+    \def\jtcd@prepBODY@#1{% removes the first token, checks that it actually is \diagram, and replaces it with \jtcd@startrow
+        \edef\test{\macroname#1}%
+        \ifx\test\theworddiagram\else \PackageError{join-tikz-cd}{The body of the jointikzcd environment must start with a \protect\diagram}{}\fi%
+        \@ifnextchar|{\jtcd@prepBODY@opts}{\jtcd@prepBODY@noopts}%
+    }
+    \def\jtcd@prepBODY@opts|#1|#2\@nil{\def\BODY{|#1|\jtcd@startrow#2}}
+    \def\jtcd@prepBODY@noopts#1\@nil{\def\BODY{\jtcd@startrow#1}}
 
     \NewEnviron{cjointikzcd}[1][]{%
         \let\jtcdsaved@pgfmatrixendrow\pgfmatrixendrow\let\pgfmatrixendrow\jtcdsl %
-        \let\intertext\jtcd@intertext
-        \let\@nil\jtcd@nil
-        \let\diagram\jtcd@diagram
+        \let\intertext\jtcd@intertext %
+        \let\@nil\jtcd@nil %
+        \let\diagram\jtcd@diagram %
+        \pretocmd{\pgfmatrixnextcell}{\global\advance\jtcd@amps1}{}{} %
+        \global\let~\pgfmatrixnextcell%
+        \jtcd@prepBODY %
         \begin{center}
         \begin{tikzcd}[#1] %
-            \pretocmd{\pgfmatrixnextcell}{\global\advance\jtcd@amps1}{}{} %
-            \global\let~\pgfmatrixnextcell%
-            \@xp\@xp\@xp\jtcd@startdiagram\@xp\@gobblediagram\BODY\diagram\@nil %
+            \BODY\diagram\@nil %
         \end{tikzcd} %
-        \end{center}
+        \end{center} %
     }
 }
 
