@@ -18,12 +18,12 @@
 \let\@nx\noexpand
 \let\@ag\aftergroup
 
-\newcount\jtcd@rowskip
-\jtcd@rowskip=1
+\newcount\jtcd@rowsperslash
+\jtcd@rowsperslash=1
 \tikzcdset{
     intertext/.code={ %
         \pgfmathsetmacro{\pgfmatrixrowsep}{\pgfmatrixrowsep/2}%
-        \jtcd@rowskip=2 %
+        \jtcd@rowsperslash=2 %
         \global\let\jtcd@cursl\pgfmatrixendrow %
         \def\pgfmatrixendrow{\jtcd@cursl\jtcd@cursl}%
         \let\intertext\jtcd@intertextslsl%
@@ -39,9 +39,9 @@
 %
 \def\tikzcd@parse#1{% parser for arrow direction argument
   \ifx#1r\advance\c@pgf@countb by1\else%
-   \ifx#1d\advance\c@pgf@counta by\jtcd@rowskip\else%
+   \ifx#1d\advance\c@pgf@counta by\jtcd@rowsperslash\else%
     \ifx#1l\advance\c@pgf@countb by-1\else%
-     \ifx#1u\advance\c@pgf@counta by-\jtcd@rowskip\else%
+     \ifx#1u\advance\c@pgf@counta by-\jtcd@rowsperslash\else%
       \ifx#1\relax\let\tikzcd@temp\pgfutil@empty%
        \else\let\tikzcd@temp\pgfutil@gobble@until@relax\fi\fi\fi\fi\fi%
   \tikzcd@temp}
@@ -91,8 +91,6 @@
 %%
 %%
 
-
-\newbox\tempbox
 \newtoks\ctikzcdphantomleft
 \newtoks\ctikzcdphantomright
 \def\edgellap#1{\mathllap{#1{}}\global\ctikzcdphantomleft={\sbox\tempbox{$#1{}$}\wd\tempbox=-\wd\tempbox\hbox to \wd\tempbox{}}}%\hskip\wd\tempbox}}
@@ -109,83 +107,114 @@
 \def\macroname{\@xp\@gobble\string}
 \edef\theworddiagram{\macroname\diagram}
 
-\newcount\jtcd@currow
 \newcount\jtcd@maxamps
 \newcount\jtcd@amps
 \newtoks\jtcd@savedtoks
-\newtoks\temptoks
+\newtoks\jtcd@columnskip
+\newtoks\jtcd@rowskip
+
+% Probably should replace this with a check using pgfmath to allow more general math in options, but this is such a neat little macro!
+\newdimen\tempdimen
+\def\isdimen#1{\afterassignment\isdimen@\tempdimen=#1em \@nil}
+\def\isdimen@#1\@nil#2#3{\if!#1!\relax #3\else #2\fi}
+
 
 % \@nil needs to have distinct expansion text so that \@ifnextchar can tell it apart from other macros
-% Also, the only way that \@nil seems to get expanded is if the environment is empty. Hence:
+% Also, \@nil gets expanded if the environment is empty. Hence:
 \def\jtcd@nil{\PackageError{join-tikz-cd}{There is probably an empty jointikzcd environment}{}}
 
 \bgroup\lccode`~=`&\lowercase{
-    \newtoks\savedamps
+
     \def\padamps{%
-        \ifnum\jtcd@amps>\jtcd@maxamps %
-            \ifnum\jtcd@maxamps=-1%
-                \global\jtcd@maxamps=\jtcd@amps  %
-            \else %
+        \ifnum\jtcd@amps>\jtcd@maxamps % If there are more amps than maxamps
+            \ifnum\jtcd@maxamps=-1     % If maxamps is -1,
+                \global\jtcd@maxamps=\jtcd@amps  % we should use this row to decide how many amps should be in each row
+            \else % Otherwise, the number of amps in this row should be less than or equal to maxamps!
                 \PackageError{join-tikz-cd}{Either the top row must have the most columns or you must explicitly indicate how many columns are present in a subdiagram by saying \protect\diagram[n]}{}%
             \fi %
-        \else %
-            \loop\ifnum\jtcd@amps<\jtcd@maxamps%
-                \@xp\savedamps\@xp{\the\savedamps ~}%
-                \advance\jtcd@amps1%
-            \repeat %
-            \the\savedamps %
+        \else % Pad the row with amps until there are maxamps of them.
+            {
+                \loop\ifnum\jtcd@amps<\jtcd@maxamps%
+                    \@ag~ % For some reason, this throws an error without aftergroup. Probably because each ~ causes a ton of random stuff to happen.
+                    \advance\jtcd@amps1%
+                \repeat %
+            } % all the aftergrouped ~'s show up here!
         \fi %
         \global\jtcd@amps=0%
     }
 
-    \def\jtcd@prepnextrow{\@xp\jtcd@prepnextrow@\the\jtcd@savedtoks\@nil}
-    \def\jtcd@prepnextrow@[#1]{\@ifnextchar|{\jtcd@prepnextrow@opts[#1]}{\jtcd@prepnextrow@noopts[#1]}}
-    \def\jtcd@prepnextrow@opts#1|#2|#3\@nil{\jtcd@savedtoks{|#2|\jtcd@startrow#1#3}}
-    \def\jtcd@prepnextrow@noopts#1\@nil{\jtcd@savedtoks{\jtcd@startrow#1}}
-
-    \def\jtcdsl#1\diagram{\@ifnextchar\@nil{\jtcdsl@newrow{#1}}{\@ifnextchar[{\jtcdsl@continuerow{#1}}{\jtcdsl@continuerow{#1}[-1]}}} %}
-    \def\jtcdsl@newrow#1{ %
+    \def\jtcdsl{\@ifnextchar[{\jtcdsl@}{\jtcdsl@@}} %} Handle optional space specifications e.g., \\[10em]
+    \def\jtcdsl@[#1]{\global\jtcd@rowskip{[#1]}\jtcdsl@@}  % Perhaps I should give a warning if later \\'s override earlier ones?
+    \def\jtcdsl@@#1\diagram{ %
+        \padamps % This causes an error if I put it after the next two rows, but I have no idea why.
         \edef\temp{\@nx\jtcd@savedtoks{\the\jtcd@savedtoks[\the\jtcd@maxamps]}}\temp %
-        \@xp\global\@xp\jtcd@savedtoks\@xp{\the\jtcd@savedtoks#1\diagram}%
-        \global\jtcd@amps=0 %
+        \@xp\global\@xp\jtcd@savedtoks\@xp{\the\jtcd@savedtoks#1\diagram} %
+        \@ifnextchar\@nil%
+            {\jtcdsl@endrow} %
+            {\@ifnextchar[{\jtcdsl@continuerow}{\jtcdsl@continuerow[-1]}} %}
+    }
+
+    \def\jtcd@diagram@lastrow{ % On the last row, there is no \\, so the diagram itself gets evaluated.
+        \padamps %
+        \@ifnextchar\@nil % Was that just the last diagram?
+            {\jtcd@cleanup} % If so, we're done
+            {\@ifnextchar[{\jtcdsl@continuerow}{\jtcdsl@continuerow[-1]}} %}
+    }
+
+    % The first diagram command always gets expanded, so to avoid confusing this with the last row, we replace it with \jtcd@startrow
+    %
+    % Hopefully the user doesn't provide a dimen option to the first \diagram command? Why would they do that?
+    \def\jtcd@startrow{\@ifnextchar[{\jtcd@startrow@}{\jtcd@startrow@[-1]}} %}
+    \def\jtcd@startrow@[#1]{\global\jtcd@amps=0\global\jtcd@maxamps=#1\global\jtcd@savedtoks{}} % Clean out the last row's saved tokens and set maxamps
+
+    \def\jtcdsl@continuerow#1[#2]{%
+        \jtcd@parsediagramopts{#2}%
+        \@xp~\@xp[\the\jtcd@columnskip]%   \jtcd@columnskip set in \jtcd@parsediagramopts
+    }
+
+    \def\jtcdsl@endrow{ %
         \jtcd@prepnextrow %
-        \@xp\global\@xp\jtcd@savedtoks\@xp{\@xp}%
         \@xp\jtcdsaved@pgfmatrixendrow %
         \the\jtcd@savedtoks %
     }
-    \def\jtcdsl@continuerow#1[#2]{%
-        \padamps %
-        \edef\temp{\@nx\jtcd@savedtoks{\the\jtcd@savedtoks[\the\jtcd@maxamps]}}\temp %
-        \@xp\global\@xp\jtcd@savedtoks\@xp{\the\jtcd@savedtoks#1\diagram}%
-        \global\jtcd@maxamps=#2%
-        \@ifnextchar[{~}{~[-\pgfmatrixcolumnsep+\diagramsep]}%
-    }
 
-    \def\jtcd@diagram{\@ifnextchar\@nil{\global\jtcd@amps=0\let\pgfmatrixendrow\jtcdsaved@pgfmatrixendrow\let\\\pgfmatrixendrow\@gobble}{\@ifnextchar[{\jtcd@diagram@}{\jtcd@diagram@[-1]}}} %}
-    \def\jtcd@diagram@[#1]{\padamps\global\jtcd@maxamps=#1\@ifnextchar[{~}{~[-\pgfmatrixcolumnsep+\diagramsep]}}
-    \def\jtcd@startrow{\@ifnextchar[{\jtcd@startrow@}{\jtcd@startrow@[-1]}} %}
-    \def\jtcd@startrow@[#1]{\global\jtcd@maxamps=#1\global\jtcd@savedtoks{}}
+    \def\jtcd@cleanup{\global\jtcd@amps=0\let\pgfmatrixendrow\jtcdsaved@pgfmatrixendrow\let\\\pgfmatrixendrow\@gobble}
+
+    % Auxillary for \jtcdsl@continuerow
+    \def\jtcd@parsediagramopts#1{ %
+        \jtcd@columnskip{-\pgfmatrixcolumnsep+\diagramsep} % Default value of columnskip.
+        \jtcd@parsediagramopts@#1,\@nil %
+    }
+    \def\jtcd@parsediagramopts@#1,{\isdimen{#1}{\jtcd@columnskip{#1}}{\global\jtcd@maxamps=#1}\@ifnextchar\@nil{\@gobble}{\jtcd@parsediagramopts@}}
+
+    % Auxillary for \jtcdsl@endrow and \prepBODY
+    % There always will be a [num] except for when called from \prepBODY. \@ifnextchar[{}{} etc check is just so this works for \prepBODY too.  %}
+    \def\jtcd@prepnextrow{\@xp\jtcd@prepnextrow@\the\jtcd@savedtoks\@nil}
+    \def\jtcd@prepnextrow@{\@ifnextchar[{\jtcd@prepnextrow@@}{\jtcd@prepnextrow@@@{}}} %}
+    \def\jtcd@prepnextrow@@[#1]{\jtcd@prepnextrow@@@{[#1]}}
+    \def\jtcd@prepnextrow@@@#1{\@ifnextchar|{\jtcd@prepnextrow@opts#1}{\jtcd@prepnextrow@noopts#1}}
+    \def\jtcd@prepnextrow@opts#1|#2|#3\@nil{\@xp\jtcd@savedtoks\@xp{\the\jtcd@rowskip|#2|\jtcd@startrow#1#3}\global\jtcd@rowskip{}}
+    \def\jtcd@prepnextrow@noopts#1\@nil{\@xp\jtcd@savedtoks\@xp{\the\jtcd@rowskip\jtcd@startrow#1}\global\jtcd@rowskip{}}
 
     \def\jtcd@prepBODY{\@xp\jtcd@prepBODY@\BODY\@nil}
-    \def\jtcd@prepBODY@#1{% removes the first token, checks that it actually is \diagram, and replaces it with \jtcd@startrow
+    \def\jtcd@prepBODY@#1#2\@nil{% removes the first token, checks that it actually is \diagram, and replaces it with \jtcd@startrow
         \edef\test{\macroname#1}%
         \ifx\test\theworddiagram\else \PackageError{join-tikz-cd}{The body of the jointikzcd environment must start with a \protect\diagram}{}\fi%
-        \@ifnextchar|{\jtcd@prepBODY@opts}{\jtcd@prepBODY@noopts}%
+        %
+        \jtcd@savedtoks{#2}\jtcd@prepnextrow
     }
-    \def\jtcd@prepBODY@opts|#1|#2\@nil{\def\BODY{|#1|\jtcd@startrow#2}}
-    \def\jtcd@prepBODY@noopts#1\@nil{\def\BODY{\jtcd@startrow#1}}
 
     \NewEnviron{cjointikzcd}[1][]{%
         \let\jtcdsaved@pgfmatrixendrow\pgfmatrixendrow\let\pgfmatrixendrow\jtcdsl %
         \let\intertext\jtcd@intertext %
         \let\@nil\jtcd@nil %
-        \let\diagram\jtcd@diagram %
+        \let\diagram\jtcd@diagram@lastrow %
         \pretocmd{\pgfmatrixnextcell}{\global\advance\jtcd@amps1}{}{} %
         \global\let~\pgfmatrixnextcell%
-        \jtcd@prepBODY %
+        \jtcd@prepBODY
         \begin{center}
         \begin{tikzcd}[#1] %
-            \BODY\diagram\@nil %
+            \the\jtcd@savedtoks\diagram\@nil %
         \end{tikzcd} %
         \end{center} %
     }
