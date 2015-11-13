@@ -58,10 +58,7 @@
     diagram sep/normal/.initial=+2.4em,
     diagram sep/scriptsize/.initial=+1.8em,
     diagram sep/small/.initial=+1.2em,
-    diagram sep/tiny/.initial=+0.6em
-}
-
-\tikzset{
+    diagram sep/tiny/.initial=+0.6em,
     /tikz/diagram sep/.store in=\diagramsep,
     wavy/.style={decorate,decoration={snake,amplitude=.3mm,segment length=2.3mm,post length=0.5mm}}
 }
@@ -109,9 +106,12 @@
 
 \newcount\jtcd@maxamps
 \newcount\jtcd@amps
+
 \newtoks\jtcd@savedtoks
 \newtoks\jtcd@columnskip
 \newtoks\jtcd@rowskip
+
+\newif\ifjtcd@newrow
 
 % Probably should replace this with a check using pgfmath to allow more general math in options, but this is such a neat little macro!
 \newdimen\tempdimen
@@ -140,25 +140,21 @@
                 \repeat %
             } % all the aftergrouped ~'s show up here!
         \fi %
-        \global\jtcd@amps=0%
+        \global\jtcd@amps=-1 % -1 so that after the extra ampersand is inserted separating this diagram from the next, \jtcd@amps=0.
     }
 
     \def\jtcdsl{\@ifnextchar[{\jtcdsl@}{\jtcdsl@@}} %} Handle optional space specifications e.g., \\[10em]
     \def\jtcdsl@[#1]{\global\jtcd@rowskip{[#1]}\jtcdsl@@}  % Perhaps I should give a warning if later \\'s override earlier ones?
-    \def\jtcdsl@@#1\diagram{ %
-        \padamps % This causes an error if I put it after the next two rows, but I have no idea why.
+    \def\jtcdsl@@#1\diagram{\global\jtcd@newrowtrue\jtcd@diagram@next{#1}}
+
+    \def\jtcd@diagram@lastrow{\jtcd@diagram@next{}}% On the last row, there is no \\, so \diagram itself gets evaluated.
+    \def\jtcd@diagram@next#1{
+        \padamps %
         \edef\temp{\@nx\jtcd@savedtoks{\the\jtcd@savedtoks[\the\jtcd@maxamps]}}\temp %
         \@xp\global\@xp\jtcd@savedtoks\@xp{\the\jtcd@savedtoks#1\diagram} %
-        \@ifnextchar\@nil%
-            {\jtcdsl@endrow} %
-            {\@ifnextchar[{\jtcdsl@continuerow}{\jtcdsl@continuerow[-1]}} %}
-    }
-
-    \def\jtcd@diagram@lastrow{ % On the last row, there is no \\, so the diagram itself gets evaluated.
-        \padamps %
         \@ifnextchar\@nil % Was that just the last diagram?
-            {\jtcd@cleanup} % If so, we're done
-            {\@ifnextchar[{\jtcdsl@continuerow}{\jtcdsl@continuerow[-1]}} %}
+            {\ifjtcd@newrow\global\jtcd@newrowfalse\@xp\jtcd@endrow\else\@xp\jtcd@cleanup\fi} % If so, we're done
+            {\@ifnextchar[{\jtcd@continuerow}{\jtcd@continuerow[-1]}} %}
     }
 
     % The first diagram command always gets expanded, so to avoid confusing this with the last row, we replace it with \jtcd@startrow
@@ -167,27 +163,33 @@
     \def\jtcd@startrow{\@ifnextchar[{\jtcd@startrow@}{\jtcd@startrow@[-1]}} %}
     \def\jtcd@startrow@[#1]{\global\jtcd@amps=0\global\jtcd@maxamps=#1\global\jtcd@savedtoks{}} % Clean out the last row's saved tokens and set maxamps
 
-    \def\jtcdsl@continuerow#1[#2]{%
+    \def\jtcd@continuerow#1[#2]{%
         \jtcd@parsediagramopts{#2}%
+        %\@xp\pgfmathparse\@xp{\the\jtcd@columnskip}\show\pgfmathresult
         \@xp~\@xp[\the\jtcd@columnskip]%   \jtcd@columnskip set in \jtcd@parsediagramopts
     }
 
-    \def\jtcdsl@endrow{ %
+    \def\jtcd@endrow{ %
         \jtcd@prepnextrow %
+        %\showthe\jtcd@savedtoks
         \@xp\jtcdsaved@pgfmatrixendrow %
         \the\jtcd@savedtoks %
     }
 
-    \def\jtcd@cleanup{\global\jtcd@amps=0\let\pgfmatrixendrow\jtcdsaved@pgfmatrixendrow\let\\\pgfmatrixendrow\@gobble}
+    \def\jtcd@cleanup{\global\jtcd@savedtoks{}\global\jtcd@amps=0\let\pgfmatrixendrow\jtcdsaved@pgfmatrixendrow\let\\\pgfmatrixendrow\@gobble}
 
-    % Auxillary for \jtcdsl@continuerow
+    % Auxillary for \jtcd@continuerow
     \def\jtcd@parsediagramopts#1{ %
         \jtcd@columnskip{-\pgfmatrixcolumnsep+\diagramsep} % Default value of columnskip.
         \jtcd@parsediagramopts@#1,\@nil %
     }
-    \def\jtcd@parsediagramopts@#1,{\isdimen{#1}{\jtcd@columnskip{#1}}{\global\jtcd@maxamps=#1}\@ifnextchar\@nil{\@gobble}{\jtcd@parsediagramopts@}}
+    \def\jtcd@parsediagramopts@#1,{
+        \pgfmathparse{#1}
+        \ifpgfmathunitsdeclared \jtcd@columnskip{#1}\else \global\jtcd@maxamps=#1\fi %
+        \@ifnextchar\@nil{\@gobble}{\jtcd@parsediagramopts@}%
+    }
 
-    % Auxillary for \jtcdsl@endrow and \prepBODY
+    % Auxillary for \jtcd@endrow and \prepBODY
     % There always will be a [num] except for when called from \prepBODY. \@ifnextchar[{}{} etc check is just so this works for \prepBODY too.  %}
     \def\jtcd@prepnextrow{\@xp\jtcd@prepnextrow@\the\jtcd@savedtoks\@nil}
     \def\jtcd@prepnextrow@{\@ifnextchar[{\jtcd@prepnextrow@@}{\jtcd@prepnextrow@@@{}}} %}
@@ -211,7 +213,7 @@
         \let\diagram\jtcd@diagram@lastrow %
         \pretocmd{\pgfmatrixnextcell}{\global\advance\jtcd@amps1}{}{} %
         \global\let~\pgfmatrixnextcell%
-        \jtcd@prepBODY
+        \jtcd@prepBODY % since this uses \jtcd@prepnextrow, it sticks the result in jtcd@savedtoks.
         \begin{center}
         \begin{tikzcd}[#1] %
             \the\jtcd@savedtoks\diagram\@nil %

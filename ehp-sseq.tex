@@ -159,14 +159,14 @@ H_*(X)\ar[rd,"\Delta_*"']\ar[rr,"\Delta"] &&H_*(X)\otimes H_*(X)\ar[ld,"\cong"]\
 The coproduct map $\Delta$, along with the obvious map $H_* (X) \to R= H_* (\ptspace)$ gives $H_* (X)$ the structure of a coalgebra.
 
 What is a coalgebra?  Well, you reverse the diagrams for an algebra; i.e., you have maps $\Delta: C \to C \otimes_R C$ and $\epsilon: C \to R$ satisfying coassociativity, counitality, and cocommutativity, corresponding to the following three diagrams:
-\begin{cjointikzcd}[diagram sep=1.5em]
+\begin{cjointikzcd}
 \diagram
     C \rar["\Delta"] \dar["\Delta"'] & C \otimes_R C \dar["\Delta \otimes 1"]\\
     C \otimes_R C \rar["1 \otimes \Delta"] & C \otimes_R C \otimes_R C
-\diagram[3]
+\diagram[2]
     & C\dlar["\cong"']\drar["\cong"]\dar["\Delta"'] \\
     R \otimes_R C & \lar["\epsilon \otimes 1"'] C \otimes_R C \rar["1 \otimes \epsilon"] & C \otimes_R R
-\diagram[5em]
+\diagram
     &[-2em]C\dlar["\Delta"']\drar["\Delta"] &[-2em] \\
     C\otimes_R C \ar[rr,"T"]&& C\otimes_R C
 \end{cjointikzcd}
