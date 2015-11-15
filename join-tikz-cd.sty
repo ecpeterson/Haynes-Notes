@@ -18,55 +18,6 @@
 \let\@nx\noexpand
 \let\@ag\aftergroup
 
-\newcount\jtcd@rowsperslash
-\jtcd@rowsperslash=1
-\tikzcdset{
-    intertext/.code={ %
-        \pgfmathsetmacro{\pgfmatrixrowsep}{\pgfmatrixrowsep/2}%
-        \jtcd@rowsperslash=2 %
-        \global\let\jtcd@cursl\pgfmatrixendrow %
-        \def\pgfmatrixendrow{\jtcd@cursl\jtcd@cursl}%
-        \let\intertext\jtcd@intertextslsl%
-    }
-}
-\newdimen\jtcd@dim
-\def\jtcd@intertext#1{|[inner sep=0pt]|\jtcd@dim=\pgfmatrixcolumnsep\divide\jtcd@dim2\hskip-\jtcd@dim\smash{\textup{#1}}\hskip-\jtcd@dim\relax}
-\def\jtcd@intertextslsl#1{\jtcd@cursl |[inner sep=0pt]| \jtcd@dim=\pgfmatrixcolumnsep\divide\jtcd@dim2\hskip-\jtcd@dim\smash{\textup{#1}}\hskip-\jtcd@dim\jtcd@cursl}
-
-
-%
-% Redefine a command from tikzcd so I can change the effect of u and d to go up or down two rows.
-%
-\def\tikzcd@parse#1{% parser for arrow direction argument
-  \ifx#1r\advance\c@pgf@countb by1\else%
-   \ifx#1d\advance\c@pgf@counta by\jtcd@rowsperslash\else%
-    \ifx#1l\advance\c@pgf@countb by-1\else%
-     \ifx#1u\advance\c@pgf@counta by-\jtcd@rowsperslash\else%
-      \ifx#1\relax\let\tikzcd@temp\pgfutil@empty%
-       \else\let\tikzcd@temp\pgfutil@gobble@until@relax\fi\fi\fi\fi\fi%
-  \tikzcd@temp}
-
-
-
-% diagram sep
-
-\tikzcdset{
-    diagram sep/.code={\tikzcd@sep{diagram}{#1}\global\let\diagramsep\diagramsep},
-    diagrams={/tikz/commutative diagrams/diagram sep=normal},
-    diagram sep/huge/.initial=column sep/huge/,
-    diagram sep/large/.initial=+3.6em,
-    diagram sep/normal/.initial=+2.4em,
-    diagram sep/scriptsize/.initial=+1.8em,
-    diagram sep/small/.initial=+1.2em,
-    diagram sep/tiny/.initial=+0.6em,
-    /tikz/diagram sep/.store in=\diagramsep,
-    wavy/.style={decorate,decoration={snake,amplitude=.3mm,segment length=2.3mm,post length=0.5mm}}
-}
-
-
-% TODO: improve individual setting of diagram separation
-
-
 %% From TUGBoat Volume 22 (2001), No. 4
 %% https://www.tug.org/TUGboat/tb22-4/tb72perlS.pdf
 %%
@@ -95,14 +46,99 @@
 
 \newenvironment{ctikzcd}{\begin{center}\tikzcd}{\endtikzcd\the\ctikzcdphantomleft\the\ctikzcdphantomright\global\ctikzcdphantomleft={}\global\ctikzcdphantomright={}\end{center}}
 
+% I replaced this with a check using pgfmath to allow more general math in options, so this doesn't actually do anything right now.
+% But this is such a neat little macro!
+% Also a reminder for the future that \afterassignment is the "\@xp of assignment."
+\newdimen\tempdimen
+\def\isdimen#1{\afterassignment\isdimen@\tempdimen=#1em \@nil}
+\def\isdimen@#1\@nil#2#3{\if!#1!\relax #3\else #2\fi}
+
+
+%
+%
+%
+
+
+% Intertext handling
+
+% Redefine the arrow target parser from tikzcd so I can change the effect of u and d to go up or down two rows.
+\newcount\jtcd@rowsperslash
+\jtcd@rowsperslash=1
+
+\def\tikzcd@parse#1{% parser for arrow direction argument
+  \ifx#1r\advance\c@pgf@countb by1\else%
+   \ifx#1d\advance\c@pgf@counta by\jtcd@rowsperslash\else%
+    \ifx#1l\advance\c@pgf@countb by-1\else%
+     \ifx#1u\advance\c@pgf@counta by-\jtcd@rowsperslash\else%
+      \ifx#1\relax\let\tikzcd@temp\pgfutil@empty%
+       \else\let\tikzcd@temp\pgfutil@gobble@until@relax\fi\fi\fi\fi\fi%
+  \tikzcd@temp}
+
+
+\newcount\jtcd@matrixnum
+\newcount\jtcd@diagramnum
+\patchcmd\tikzcd@{\matrix}{\global\advance\jtcd@matrixnum1\matrix(tikz@f@\jtcd@matrixname)}{}{}
+\def\jtcd@matrixname{\the\jtcd@matrixnum}
+
+\newdimen\jtcd@dim
+\def\jtcd@intertext#1{|[inner sep=0pt]|\jtcd@dim=\pgfmatrixcolumnsep\divide\jtcd@dim2\hskip-\jtcd@dim\smash{\textup{#1}}\hskip-\jtcd@dim\relax}
+% This is slightly horrible, but avoids any code duplication. There's probably a better way.
+\@xp\def\@xp\jtcd@intertextslsl\@xp#\@xp1\@xp{\@xp\jtcd@cursl\jtcd@intertext{#1}\jtcd@cursl}
+
+
+\tikzcdset{
+    intertext/.code={ %
+        \pgfmathsetmacro{\pgfmatrixrowsep}{\pgfmatrixrowsep/2}%
+        \jtcd@rowsperslash=2 %
+        \global\let\jtcd@cursl\pgfmatrixendrow %
+        \def\pgfmatrixendrow{\jtcd@cursl\jtcd@cursl}%
+        \let\intertext\jtcd@intertextslsl%
+    }
+}
+
+
+
+
+
+
+
+
+% diagram sep
+
+\tikzcdset{
+    diagram sep/.code={\tikzcd@sep{diagram}{#1}\global\let\diagramsep\diagramsep},
+    diagrams={/tikz/commutative diagrams/diagram sep=normal},
+    diagram sep/huge/.initial=column sep/huge/,
+    diagram sep/large/.initial=+3.6em,
+    diagram sep/normal/.initial=+2.4em,
+    diagram sep/scriptsize/.initial=+1.8em,
+    diagram sep/small/.initial=+1.2em,
+    diagram sep/tiny/.initial=+0.6em,
+    /tikz/diagram sep/.store in=\diagramsep,
+    display math/.style={nodes={execute at begin node=\everymath{\displaystyle}}},
+    onto/.style={two heads},
+    into/.style={hook},
+    into'/.style={hook'},
+    wavy/.style={/tikz/decorate,/tikz/decoration={
+        snake,
+        segment length=16\pgflinewidth,
+        amplitude=2.3\pgflinewidth,
+        post=lineto, post length=6\pgflinewidth,
+        pre=lineto, pre length=6\pgflinewidth
+    }},
+    lrar/.code={yshift=#1,\ar[l,yshift=-#1]},
+    lrar/.default=0.2em
+}
+
+
+
+
 %%%
 %
 %
 %
 %%%
 
-\def\macroname{\@xp\@gobble\string}
-\edef\theworddiagram{\macroname\diagram}
 
 \newcount\jtcd@maxamps
 \newcount\jtcd@amps
@@ -112,11 +148,6 @@
 \newtoks\jtcd@rowskip
 
 \newif\ifjtcd@newrow
-
-% Probably should replace this with a check using pgfmath to allow more general math in options, but this is such a neat little macro!
-\newdimen\tempdimen
-\def\isdimen#1{\afterassignment\isdimen@\tempdimen=#1em \@nil}
-\def\isdimen@#1\@nil#2#3{\if!#1!\relax #3\else #2\fi}
 
 
 % \@nil needs to have distinct expansion text so that \@ifnextchar can tell it apart from other macros
@@ -158,12 +189,12 @@
     }
 
     % The first diagram command always gets expanded, so to avoid confusing this with the last row, we replace it with \jtcd@startrow
-    %
-    % Hopefully the user doesn't provide a dimen option to the first \diagram command? Why would they do that?
+    % Hopefully the user doesn't try to provide a dimen option to the first \diagram command? Why would they do that?
     \def\jtcd@startrow{\@ifnextchar[{\jtcd@startrow@}{\jtcd@startrow@[-1]}} %}
     \def\jtcd@startrow@[#1]{\global\jtcd@amps=0\global\jtcd@maxamps=#1\global\jtcd@savedtoks{}} % Clean out the last row's saved tokens and set maxamps
 
     \def\jtcd@continuerow#1[#2]{%
+        \global\advance\jtcd@diagramnum1%
         \jtcd@parsediagramopts{#2}%
         %\@xp\pgfmathparse\@xp{\the\jtcd@columnskip}\show\pgfmathresult
         \@xp~\@xp[\the\jtcd@columnskip]%   \jtcd@columnskip set in \jtcd@parsediagramopts
@@ -171,7 +202,6 @@
 
     \def\jtcd@endrow{ %
         \jtcd@prepnextrow %
-        %\showthe\jtcd@savedtoks
         \@xp\jtcdsaved@pgfmatrixendrow %
         \the\jtcd@savedtoks %
     }
@@ -200,8 +230,9 @@
 
     \def\jtcd@prepBODY{\@xp\jtcd@prepBODY@\BODY\@nil}
     \def\jtcd@prepBODY@#1#2\@nil{% removes the first token, checks that it actually is \diagram, and replaces it with \jtcd@startrow
-        \edef\test{\macroname#1}%
-        \ifx\test\theworddiagram\else \PackageError{join-tikz-cd}{The body of the jointikzcd environment must start with a \protect\diagram}{}\fi%
+        \edef\tempa{\string#1}%
+        \edef\tempb{\string\diagram}%
+        \ifx\tempa\tempb\else \PackageError{join-tikz-cd}{The body of the jointikzcd environment must start with a \protect\diagram}{}\fi%
         %
         \jtcd@savedtoks{#2}\jtcd@prepnextrow
     }

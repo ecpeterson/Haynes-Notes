@@ -18,7 +18,14 @@
 \usepackage{tikz}
 \usepackage{join-tikz-cd}
 \usetikzlibrary{arrows}
-\usetikzlibrary{decorations.pathmorphing} % For se
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathmorphing} % 
+
+\tikzset{stable/.style={postaction={decorate},decoration={markings,mark=at position 0.5 with {\arrow[yscale=1]{|}}}}} % Stable arrows
+% yscale changes length of crossbar. I'm not sure I'm currently happy with these
+% it's annoying that it gets in the way of the label, which also likes to go in the middle. Maybe move the stable slash to the side a bit or something?
+\pgfkeys{cm left hook/.tip={Hooks[width=+0pt 16.8,length=+0pt 4.6,harpoon,line cap=round]}} % make hooks more prominent.
+
 
 \newarrow{Equalto}=====
 \newarrow{Stableto}--+->
@@ -198,7 +205,17 @@
 
 \def\Id{\mathrm{Id}}
 
-\newcommand{\KOtwee}{\smash{\widetilde{KO}}\vphantom{KO}}
+\renewcommand{\K}{K}
+\renewcommand{\Ktwee}{\widetilde{\K}\vphantom{\K}}
+\renewcommand{\J}{J}
+\renewcommand{\Jtwee}{\widetilde{\J}\vphantom{\J}}
+\newcommand{\KO}{KO}
+\newcommand{\KOtwee}{\widetilde{\KO}\vphantom{\KO}}
+\newcommand{\Sph}{Sph}
+\newcommand{\Sphtwee}{\widetilde{\Sph}\vphantom{\Sph}} % Just used in adams-conjecture
+
+\newcommand{\pr}{\mathrm{pr}}
+
 
 \newcommand{\RP}{\R P}
 \newcommand{\CP}{\C P}
@@ -280,7 +297,7 @@
 
 
 \makeatother
-\includeonly{ehp-sseq}
+%\includeonly{adams-conjecture}
 
 \begin{document}
 
