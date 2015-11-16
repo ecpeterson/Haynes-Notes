@@ -118,16 +118,7 @@
     display math/.style={nodes={execute at begin node=\everymath{\displaystyle}}},
     onto/.style={two heads},
     into/.style={hook},
-    into'/.style={hook'},
-    wavy/.style={/tikz/decorate,/tikz/decoration={
-        snake,
-        segment length=16\pgflinewidth,
-        amplitude=2.3\pgflinewidth,
-        post=lineto, post length=6\pgflinewidth,
-        pre=lineto, pre length=6\pgflinewidth
-    }},
-    lrar/.code={yshift=#1,\ar[l,yshift=-#1]},
-    lrar/.default=0.2em
+    into'/.style={hook'}
 }
 
 

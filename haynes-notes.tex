@@ -19,12 +19,25 @@
 \usepackage{join-tikz-cd}
 \usetikzlibrary{arrows}
 \usetikzlibrary{decorations.markings}
-\usetikzlibrary{decorations.pathmorphing} % 
+\usetikzlibrary{decorations.pathmorphing} %
 
 \tikzset{stable/.style={postaction={decorate},decoration={markings,mark=at position 0.5 with {\arrow[yscale=1]{|}}}}} % Stable arrows
 % yscale changes length of crossbar. I'm not sure I'm currently happy with these
 % it's annoying that it gets in the way of the label, which also likes to go in the middle. Maybe move the stable slash to the side a bit or something?
+\tikzset{    
+    wavy/.style={/tikz/decorate,/tikz/decoration={
+        snake,
+        segment length=16\pgflinewidth,
+        amplitude=2.3\pgflinewidth,
+        post=lineto, post length=2\pgflinewidth,
+        pre=lineto, pre length=2\pgflinewidth
+    }}
+}
+%\tikzset{/tikz/cdots/.style={edge node={\node[every label,/tikz/commutative diagrams/.cd]{$\cdot\,\cdot\,\cdot$}}}}
+
 \pgfkeys{cm left hook/.tip={Hooks[width=+0pt 16.8,length=+0pt 4.6,harpoon,line cap=round]}} % make hooks more prominent.
+
+
 
 
 \newarrow{Equalto}=====
@@ -195,19 +208,21 @@
 \def\choicehat#1{\mathchoice{\widehat{#1}}{\widehat{#1}}{\hat{#1}}{\hat{#1}}}
 \def\choicebar#1{\mathchoice{\overline{#1}}{\overline{#1}}{\bar{#1}}{\bar{#1}}}
 
-\makesymbdefs{}{\mathbb}{\upperalphabet}                      % \A -> \mathbb{A}
+\makesymbdefs{bb}{\mathbb}{\upperalphabet}                      % \A -> \mathbb{A}
 \makesymbdefs{cal}{\mathcal}{\upperalphabet}                  % \Acal -> \mathcal{A}
+\makesymbdefs{cat}{\mathsf}{\upperalphabet}                  % \Acal -> \mathsf{A}
 \makesymbdefs{frak}{\mathfrak}{\loweralphabet}                % \afrak -> \mathfrak{a}
 \makesymbdefs{rm}{\mathrm}{\upperalphabet\loweralphabet}                % \afrak -> \mathfrak{a}
 \makesymbdefs{bar}{\choicebar}{\upperalphabet\loweralphabet}   % \Abar -> \overline{A}
 \makesymbdefs{hat}{\choicehat}{\upperalphabet\loweralphabet}    % \Ahat -> \widehat{A}
 \makesymbdefs{twee}{\choicetilde}{\upperalphabet\loweralphabet} % \Atwee -> \widetilde{A}
+\makesymbdefs{pt}{\pt}{\upperalphabet}                  % \Acal -> A_+
 
 \def\Id{\mathrm{Id}}
 
-\renewcommand{\K}{K}
+\newcommand{\K}{K}
 \renewcommand{\Ktwee}{\widetilde{\K}\vphantom{\K}}
-\renewcommand{\J}{J}
+\newcommand{\J}{J}
 \renewcommand{\Jtwee}{\widetilde{\J}\vphantom{\J}}
 \newcommand{\KO}{KO}
 \newcommand{\KOtwee}{\widetilde{\KO}\vphantom{\KO}}
@@ -215,12 +230,13 @@
 \newcommand{\Sphtwee}{\widetilde{\Sph}\vphantom{\Sph}} % Just used in adams-conjecture
 
 \newcommand{\pr}{\mathrm{pr}}
+\newcommand{\Sk}{\mathop{\mathrm{Sk}}}
 
 
-\newcommand{\RP}{\R P}
-\newcommand{\CP}{\C P}
-\newcommand{\HP}{\H P}
-\newcommand{\OP}{\O P}
+\newcommand{\RP}{\Rbb P}
+\newcommand{\CP}{\Cbb P}
+\newcommand{\HP}{\Hbb P}
+\newcommand{\OP}{\Obb P}
 \newcommand{\SA}{\mathcal{A}}
 \newcommand{\Gr}{\textup{Gr}}
 
@@ -297,7 +313,7 @@
 
 
 \makeatother
-%\includeonly{adams-conjecture}
+\includeonly{stable-ehp}
 
 \begin{document}
 

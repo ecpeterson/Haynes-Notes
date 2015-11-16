@@ -12,14 +12,14 @@ One of the advantages of a topics course is that you can change direction in mid
 \end{ctikzcd}
 
 
-\item The Gysin map: Next we apply the Pontrjagin-Thom construction to the case of a smooth fibration of compact manifolds $F \to E \stackrel{p}{\to} B$.  We'd like to convert $p$ to an open embedding.  By the Whitney embedding theorem you can embed $E$ in $\R^n$ for $n$ sufficiently large, and an embedding $E \into \R^n$ induces an inclusion
+\item The Gysin map: Next we apply the Pontrjagin-Thom construction to the case of a smooth fibration of compact manifolds $F \to E \stackrel{p}{\to} B$.  We'd like to convert $p$ to an open embedding.  By the Whitney embedding theorem you can embed $E$ in $\Rbb^n$ for $n$ sufficiently large, and an embedding $E \into \Rbb^n$ induces an inclusion
 \begin{ctikzcd}
-E \dar["p"']\rar["i"] & B \times \R^n \dlar\\
+E \dar["p"']\rar["i"] & B \times \Rbb^n \dlar\\
 B
 \end{ctikzcd}
-Well, $i$ still isn't an open inclusion, so now consider $\nu(i)$ the normal bundle of the inclusion and get a tubular neighborhood $N$ of $E$ in $B \times \R^n$.  Now the Pontrjagin-Thom collapse gives a map
+Well, $i$ still isn't an open inclusion, so now consider $\nu(i)$ the normal bundle of the inclusion and get a tubular neighborhood $N$ of $E$ in $B \times \Rbb^n$.  Now the Pontrjagin-Thom collapse gives a map
 \begin{ctikzcd}
-\pt{(B \times \R^n)} \dar[equal]\rar & N_+ \drar[equal]\rar[equal] & T(\nu(i) \downarrow E) \dar[equal]\\
+\pt{(B \times \Rbb^n)} \dar[equal]\rar & N_+ \drar[equal]\rar[equal] & T(\nu(i) \downarrow E) \dar[equal]\\
 T(n\varepsilon \downarrow B)\dar[equal] & & \Nbar / \partial N \\
 \Suspend^n \pt{B}.
 \end{ctikzcd}
@@ -34,7 +34,7 @@ In some sense what you're going is inverting $p$, constructing a sort of multiva
 \caption{\small Constructing the Gysin map.}
 \end{figure}
 
-The next question is: what is $\nu(i)$?  Well, $\nu(i) + \tau_E = i^*(\tau_{B \times \R^n}) = p^* \tau_B + n\varepsilon_E$.  Now $\tau_E = p^* \tau_B + \tau(p)$, the ``vertical vectors'' or tangent vectors along the fiber.  So $\nu(i) + \tau(p) = n \varepsilon_E$; this is sort of a tangent bundle / normal bundle ``relative to $B$.''  So $\nu(i) = n \varepsilon - \tau(p)$, and so we get a stable map $B_+ \stackrel{p_!}{\stableto} E^{-\tau(p)}$, called the Gysin map, denoted $p_!$ for ``$p$ shriek'' or ``$p$ surprise.''  (We're also going to start writing $\stableto$ from here on out for stable maps.)
+The next question is: what is $\nu(i)$?  Well, $\nu(i) + \tau_E = i^*(\tau_{B \times \Rbb^n}) = p^* \tau_B + n\varepsilon_E$.  Now $\tau_E = p^* \tau_B + \tau(p)$, the ``vertical vectors'' or tangent vectors along the fiber.  So $\nu(i) + \tau(p) = n \varepsilon_E$; this is sort of a tangent bundle / normal bundle ``relative to $B$.''  So $\nu(i) = n \varepsilon - \tau(p)$, and so we get a stable map $B_+ \stackrel{p_!}{\stableto} E^{-\tau(p)}$, called the Gysin map, denoted $p_!$ for ``$p$ shriek'' or ``$p$ surprise.''  (We're also going to start writing $\stableto$ from here on out for stable maps.)
 
 \item The Becker-Gottlieb transfer: the inclusion $\nu(i) \into n \varepsilon_E$ induces a map of Thom spaces $E^{\nu(i)} \to E^{n \varepsilon} = \Suspend^n \pt{E}$, which, together with the Gysin map,
 \begin{ctikzcd}
@@ -43,7 +43,7 @@ The next question is: what is $\nu(i)$?  Well, $\nu(i) + \tau_E = i^*(\tau_{B \t
 is the Becker-Gottlieb transfer $t(p): \pt{B} \stableto E_+$, which has the virtue that it doesn't shift dimensions.
 \item Euler characteristic: The Euler characteristic in this context will be defined as $\chi(p) \in \pi_S^0(B)$, an element in the stable cohomotopy of $B$.  Namely, start with the transfer $t(p): \pt{B} \stableto \pt{E}$.  Now there's a ridiculous map $\pt{E} \to S^0$ which takes the basepoint to the basepoint and pinches everything else (i.e., $E$) to the other point.  On the level of complexes, this isn't much of a map, but the claim is that stably there's a lot going on.  So the Euler characteristic is defined as $\chi(p): \pt{B} \stackrel{t(p)}{\stableto} \pt{E} \stackrel{\mathrm{pinch}}{\to} S^0 \in \pi_S^0(B)$ (i.e., unreduced stable cohomotopy).
 
-Naturality of $\chi(p)$ follows from the naturality of $p_!$ with respect to pullbacks: if $E = f^* E'$ in TERRIBLE DIAGRAM we get $f^* \nu(i') = \nu(i)$, and $N'$ is a tubular neighborhood for $E'$ in $B' \times \R^n$, we can use $f^{-1} N'$ for one of $E$ in $B \times \R^n$ (we may have to choose $N'$ well, but because $B$ and $B'$ and the fiber are compact, there is no real difficulty).  Then we get the following naturality:
+Naturality of $\chi(p)$ follows from the naturality of $p_!$ with respect to pullbacks: if $E = f^* E'$ in TERRIBLE DIAGRAM we get $f^* \nu(i') = \nu(i)$, and $N'$ is a tubular neighborhood for $E'$ in $B' \times \Rbb^n$, we can use $f^{-1} N'$ for one of $E$ in $B \times \Rbb^n$ (we may have to choose $N'$ well, but because $B$ and $B'$ and the fiber are compact, there is no real difficulty).  Then we get the following naturality:
 \begin{ctikzcd}
 B^{n\epsilon} \ar[dd,"t(p)"']\drar["p_!"]\ar[rrr,"f"] & & & (B')^{n\epsilon}\ar[dd,"t(p')"]\dlar["p'_!"']\\
 & E^{\nu(i)}\dlar\ar[r,"f"] & (E')^{\nu(i')}\drar\\
@@ -91,9 +91,9 @@ F\dar["p_F"']\rar & E\dar["p"]\\
 \end{ctikzcd}
 is a pullback, so $j^* \chi(p) = \chi(p_F)$.  So we can assume $B = \ptspace$.  The only space left is $F$.  Given an embedding $i: F \into S^n$, the Euler characteristic $\chi(p)$ is defined by $S^n \stackrel{p_!}{\to} F^{\nu(i)} \to F^{\nu(i) \oplus t(F)} \stackrel{\mathrm{pinch}}{\to} S^n$, and we must show this composite has degree $\chi(F)$.
 
-Let $N \subset \R^n$ be a tubular neighborhood for the embedded image of $F$; then $S(\nu) = \partial N$, and $\partial N$ is a codimension - 1 submanifold with an outward-pointing normal direction.  The map $F^\nu \to S^n$ is the Thom-space level of a map
+Let $N \subset \Rbb^n$ be a tubular neighborhood for the embedded image of $F$; then $S(\nu) = \partial N$, and $\partial N$ is a codimension - 1 submanifold with an outward-pointing normal direction.  The map $F^\nu \to S^n$ is the Thom-space level of a map
 \begin{ctikzcd}
-\nu\dar\rar & \nu\oplus\tau \dar\rar & \R^n\dar\\
+\nu\dar\rar & \nu\oplus\tau \dar\rar & \Rbb^n\dar\\
 F \rar & F \rar & \ptspace
 \end{ctikzcd}
 which on the level of sphere-bundles is a map $\gamma: \partial N \to S^{n-1}$, the Gauss map!  The degree of $\gamma$ is a standard definition of the Euler characteristic $\chi(F)$; see Milnor~\cite{Milnor} for further information.  But that's it:
@@ -125,9 +125,9 @@ Then in the above square, the Thom classes go
 e_\tau \cup U_\nu & \lar[mapsto] e_\tau \sprod U_\nu \\
 U_{n \varepsilon} \uar[mapsto,"\zeta"]& \lar[mapsto] U_\tau \sprod U_\nu \uar[mapsto]
 \end{ctikzcd}
-Let $\sigma \in \Htwee^n S^n$ be a generator; think of it as the Thom class of $\R^n$ over $\ptspace$.  The diagram
+Let $\sigma \in \Htwee^n S^n$ be a generator; think of it as the Thom class of $\Rbb^n$ over $\ptspace$.  The diagram
 \begin{ctikzcd}
-\nu\dar\rar & \nu\oplus\tau \dar\rar & \R^n\dar\\
+\nu\dar\rar & \nu\oplus\tau \dar\rar & \Rbb^n\dar\\
 F \rar & F \rar{\text{pinch}} & \ptspace
 \end{ctikzcd}
 gives maps of Thom spaces under which $\sigma$ pulls back as
@@ -150,7 +150,7 @@ $\chi(M) = \sum_{\substack{x \in M \\ v(x) = 0}} i_x$.
 \end{proof}
 For example, suppose $G$ is a compact Lie group; let $T \subset G$ be a maximal torus; let $N(T)$ be its normalizer.  Then the identity component of $N(T)$ is $T$ itself, and $N(T) / T$ is a finite discrete group, the ``Weyl group.''  The important claim is that $\chi(G / T) = |W|$ and $\chi(G / N(T)) = 1$ if $G$ is compact and connected.
 
-To prove this, we'll come up with a vector field and use Hopf's theorem.  There is an action of $G$ on $G/T$ which restricts to an action of $T$.  In $T_eT = L(T)$ the Lie algebra of $T$ there is a vector $x$ such that $\exp x = g$, and $\exp tx$ is a path in $T$ from $e$ to $g$; let $\gamma_t$ be the induced flow on $G/T$; then $\frac{d}{dt} \gamma_t |_{t = 0}$ is a vector field on $G/T$.  Now suppose $g \in T$ is such that $\{g^n \mid n \in \Z\}$ is dense in $T$ (i.e., $g$ is irrational on each component of the torus; $T$ is called ``topologically cyclic''); let $v$ be the vector field on $G/T$ corresponding to this element.  A zero of $v$ is a fixed point of the action of $g$ and therefore (by continuity) a fixed point for the action of $T$.  Such a point in $G/T$ is a coset $hT$ so that $thT = hT$ for all $t \in T$, equivalently $hth^{-1} T = T$ for all $t \in T$, equivalently $h$ lies in the normalizer of $T$.  So zeroes correspond to elements of $N(T) / T = W$.  I claim all the zeroes are non-degenerate and have the same index, so $\chi(G/T) = |W|$.  Now the action of $g$ descends to $G/N(T)$ with only one fixed point, so $\chi(G/N(T)) = 1$.
+To prove this, we'll come up with a vector field and use Hopf's theorem.  There is an action of $G$ on $G/T$ which restricts to an action of $T$.  In $T_eT = L(T)$ the Lie algebra of $T$ there is a vector $x$ such that $\exp x = g$, and $\exp tx$ is a path in $T$ from $e$ to $g$; let $\gamma_t$ be the induced flow on $G/T$; then $\frac{d}{dt} \gamma_t |_{t = 0}$ is a vector field on $G/T$.  Now suppose $g \in T$ is such that $\{g^n \mid n \in \Zbb\}$ is dense in $T$ (i.e., $g$ is irrational on each component of the torus; $T$ is called ``topologically cyclic''); let $v$ be the vector field on $G/T$ corresponding to this element.  A zero of $v$ is a fixed point of the action of $g$ and therefore (by continuity) a fixed point for the action of $T$.  Such a point in $G/T$ is a coset $hT$ so that $thT = hT$ for all $t \in T$, equivalently $hth^{-1} T = T$ for all $t \in T$, equivalently $h$ lies in the normalizer of $T$.  So zeroes correspond to elements of $N(T) / T = W$.  I claim all the zeroes are non-degenerate and have the same index, so $\chi(G/T) = |W|$.  Now the action of $g$ descends to $G/N(T)$ with only one fixed point, so $\chi(G/N(T)) = 1$.
 
 Now let's talk about the transfer in $\K$-theory.  Suppose $p: E \to B$ is a finite covering.  Then the transfer is a map $t(p): B^{n \varepsilon} \to E^{n \varepsilon}$ which induces a map in $\KO$-theory $\KO(E) \to \KO(B)$.  There's an obvious thing to do here, but there's no obvious connection with the map $t(p)$: if $\xi$ over $E$ is a vector bundle, we can form a vector bundle over $B$ by taking as fiber over $b \in B$ the sum of the vector spaces over points in $E$ which cover $b$:
 \begin{ctikzcd}[display math]
@@ -192,7 +192,7 @@ To study the problem, you have to distinguish between the stable map $f$ and an 
     \KOtwee(\pt{X}) \dar{\cong}& \lar["f^*"'] \KOtwee(\pt{Y})\dar{\gamma^{\otimes n}} \\
     \KOtwee(\pt{X}\sprod S^{8n}) &  \lar["f^*"'] \KOtwee(\pt{Y}\sprod S^{8n})
 \end{cjointikzcd}\todo[noline]{Check that this diagram is right.}
-with $\gamma$ a generator of $\KOtwee(S^8) \cong \Z$.  Choosing this, you find
+with $\gamma$ a generator of $\KOtwee(S^8) \cong \Zbb$.  Choosing this, you find
 \begin{align*}
 \psi^k(f^*(x) \otimes \gamma^n) & = \psi^k(f^*(x \otimes \gamma^n)) \\
 k^{4n} \psi^k f^*(x) \otimes \gamma^n & = f^* \psi^k(x \otimes \gamma^n) \\
@@ -215,12 +215,12 @@ To make greatest use of most constructions in algebraic topology, it is generall
 p^* \xi \dar\rar & \xi\dar \\
 E \rar["p"] & B.
 \end{ctikzcd}
-As before, we pick an embedding $E \into \R^n$ and get
+As before, we pick an embedding $E \into \Rbb^n$ and get
 \begin{ctikzcd}
-E \dar["p"']\rar[into] & B \times \R^n \dlar["\pr"]\rar[into]{\zeta} & n \varepsilon \oplus \xi \\
+E \dar["p"']\rar[into] & B \times \Rbb^n \dlar["\pr"]\rar[into]{\zeta} & n \varepsilon \oplus \xi \\
 B.
 \end{ctikzcd}
-Now embed one step farther: $\zeta: B \times \R^n \into n \varepsilon \oplus \xi$.  And we can do the collapse on the inclusion given by a tubular neighborhood for $p^* \xi$ in $n \varepsilon \oplus \xi$:
+Now embed one step farther: $\zeta: B \times \Rbb^n \into n \varepsilon \oplus \xi$.  And we can do the collapse on the inclusion given by a tubular neighborhood for $p^* \xi$ in $n \varepsilon \oplus \xi$:
 \begin{ctikzcd}
 \Suspend^n B^\xi \ar[rrr,bend right=10,yshift=-0.2em, "t(p)"']\rar["p_!"] &  E^{\nu(i) \oplus p^* \xi} \rar[into] & E^{n \varepsilon \oplus p^* \xi} \rar[equal]& \Suspend^n E^{p^* \xi}
 \end{ctikzcd}
@@ -242,7 +242,7 @@ and we'd like to show the degree of this right-hand composite is $\pm 1$.  Well,
 \begin{ctikzcd}
 d\varepsilon \ar[dd]\ar[dr]\ar[rr] & & p^*\xi\ar[dd]\ar[dr]\\
 & F\ar[rr]\ar[dd] && E\ar[dd]\\
-\R^d \ar[rr]\ar[dr] && \xi\ar[dr]\\
+\Rbb^d \ar[rr]\ar[dr] && \xi\ar[dr]\\
 & \ptspace \ar[rr,into] && B
 \end{ctikzcd}
 and from this you get
@@ -267,19 +267,19 @@ Admittedly, this is an obscure statement, but take it from me that it's importan
 B \rar["f"] & \RP^N,
 \end{ctikzcd}
 so $1 - \xi = f^*(1 - L)$, and $\KOtwee(\RP^N)$ is a finite 2-group generated by $(1-L)$.
-\item The next case is that $\xi$ is a $2$-dimensional bundle.  Let $P$ be the associated principal bundle so that $\xi  = P \times_{O(2)} \R^2$.  We described the Adams operations $\psi^k$ in terms of representations, so now we have to think a little about the representation theory of $O(2)$: what is $O(2)$?  Well, there are two parts:
+\item The next case is that $\xi$ is a $2$-dimensional bundle.  Let $P$ be the associated principal bundle so that $\xi  = P \times_{O(2)} \Rbb^2$.  We described the Adams operations $\psi^k$ in terms of representations, so now we have to think a little about the representation theory of $O(2)$: what is $O(2)$?  Well, there are two parts:
 \begin{ctikzcd}
-S^1 \rar & SO(2) \rar[into] & O(2) \rar[yshift=0.2em] & \lar[yshift=-0.2em] \Z_2,
+S^1 \rar & SO(2) \rar[into] & O(2) \rar[yshift=0.2em] & \lar[yshift=-0.2em] \Zbb_2,
 \end{ctikzcd}
 where the splitting comes from choosing any reflection, say $r$ is the reflection through the $x$-axis.
 
-So what are the representations of $O(2)$?  Let $V = \R^2$ be the basic representation; then we can take exterior powers:
+So what are the representations of $O(2)$?  Let $V = \Rbb^2$ be the basic representation; then we can take exterior powers:
 \begin{align*}
 \lambda^0(V) & = 1, \\
 \lambda^1(V) & = V, \\
 \lambda^2(V) & = \det.
 \end{align*}
-More interestingly, we have representations $\mu_k$ given by $S^1$ acting on $\C^{\otimes_\C k}$ by, for $z \in S^1$, $z \cdot (w_1 \otimes \cdots \otimes w_k) = zw_1 \otimes \cdots \otimes zw_k = z^k(w_1 \otimes \cdots \otimes w_k)$, and we can extend to $O(2)$ by letting $r$ act by complex conjugation.  Note that $\mu_1 = V$.
+More interestingly, we have representations $\mu_k$ given by $S^1$ acting on $\Cbb^{\otimes_\Cbb k}$ by, for $z \in S^1$, $z \cdot (w_1 \otimes \cdots \otimes w_k) = zw_1 \otimes \cdots \otimes zw_k = z^k(w_1 \otimes \cdots \otimes w_k)$, and we can extend to $O(2)$ by letting $r$ act by complex conjugation.  Note that $\mu_1 = V$.
 
 Next we want to express the $\psi^k$s in terms of $\lambda^j$s and $\mu_k$s, so that we have some chance of being able to compute.  In order to do that, we should write down the character table for $O(2)$:
 WHAT A MESS\todo{It seems like in a lot of these all caps places, we're missing things...} $\mu_k$ is the natural candidate for $\psi^k$, but it's wrong: the formula for $\psi^k$ is
@@ -297,17 +297,17 @@ Let $B$ be a finite complex and let $\xi, \xi'$ be vector bundles over $B$.  Sup
 
 This is as far as Adams got; he decided it was unreasonable of others to expect him to do more.  Now you need a trick to be able to finish in a finite amount of time.
 
-To do the general case we'll make a few reductions, namely to oriented $2n$-dimensional bundles.  A vector bundle $\xi$ over $B$ has a Stiefel-Whitney class $w_1(\xi) \in H^1(B; \Z_2)$ which is the obstruction to the orientability of $\xi$.  Now elements of $H^1(B; \Z_2)$ are in one-to-one correspondence via $w_1$ with line bundles.
+To do the general case we'll make a few reductions, namely to oriented $2n$-dimensional bundles.  A vector bundle $\xi$ over $B$ has a Stiefel-Whitney class $w_1(\xi) \in H^1(B; \Zbb_2)$ which is the obstruction to the orientability of $\xi$.  Now elements of $H^1(B; \Zbb_2)$ are in one-to-one correspondence via $w_1$ with line bundles.
 
 Now perform the $L$ and $\Ltwee$ constructions fiberwise on the bundle $\xi$ over $B$ and you get a fiber bundle
 \begin{ctikzcd}
                & \Ltwee(\xi) \dar["q"']&\lar \zeta\\
-L(\R^{2n})\rar & L(\xi)\dar["p"'] & \lar p^*\xi\\
+L(\Rbb^{2n})\rar & L(\xi)\dar["p"'] & \lar p^*\xi\\
                & B                &\lar\xi
 \end{ctikzcd}
-where $L(\R^{2n})$ has $\chi = 1$ and $\zeta$ is two plane bundles.  The claim is that this wonderful formula is geometrically clear: $t(q)^* \zeta = q_* \zeta = p^* \xi$ over $B$, so in particular there is a line bundle $\lambda$ over $B$ so that $w_1(\xi \oplus \lambda) = 0$, i.e., $\xi \oplus \lambda$ is orientable.  The additivity of the Adams conjecture (plus the fact that we've already proved it for line bundles) implies that we can assume $\xi$ is an oriented, $2n$-dimensional vector bundle over $B$; moreover $B$ is compact so we can give $\xi$ a metric.
+where $L(\Rbb^{2n})$ has $\chi = 1$ and $\zeta$ is two plane bundles.  The claim is that this wonderful formula is geometrically clear: $t(q)^* \zeta = q_* \zeta = p^* \xi$ over $B$, so in particular there is a line bundle $\lambda$ over $B$ so that $w_1(\xi \oplus \lambda) = 0$, i.e., $\xi \oplus \lambda$ is orientable.  The additivity of the Adams conjecture (plus the fact that we've already proved it for line bundles) implies that we can assume $\xi$ is an oriented, $2n$-dimensional vector bundle over $B$; moreover $B$ is compact so we can give $\xi$ a metric.
 
-Now suppose $B$ is a $2n$-dimensional inner product space over $\R$; let $F(V)$ be the space of sequence of $n$ mutually orthogonal $2$-planes in $V$.  $\Sigma_n$ acts freely on $F(V)$; let $L(V) = F(V) / \Sigma_n$.  I claim we've constructed this space before as $SO(2n)/NT$.  So $\chi(L(V)) = 1$.
+Now suppose $B$ is a $2n$-dimensional inner product space over $\Rbb$; let $F(V)$ be the space of sequence of $n$ mutually orthogonal $2$-planes in $V$.  $\Sigma_n$ acts freely on $F(V)$; let $L(V) = F(V) / \Sigma_n$.  I claim we've constructed this space before as $SO(2n)/NT$.  So $\chi(L(V)) = 1$.
 
 Now let $\Sigma_{n-1}$ act on $F(V)$ by fixing the last element; then there is an $n$-sheeted cover $\Ltwee(V) = F(V)/\Sigma_{n-1} \stackrel{q}{\to} L(V)$.  Moreover, there is a $2$-plane bundle $\zeta$ over $\Ltwee(V)$ defined fiberwise by setting $\zeta_{(\{v_1, \ldots, v_{n-1}\}, v_n)} = v_n$.  Now from the lemma at the beginning of this lecture, it suffices to check the Adams conjecture on $p^* \xi$.  But by the formula,
 \begin{align*}
@@ -326,41 +326,41 @@ The left summand is killed by $k^e$ and the right summand is killed by $k^f$ for
 \ifx\OutputSomeSummandsOfStableHomotopyOfSpheres\undefined\else
 All right, today we'll study the meaning of the Adams conjecture; in particular I'm going to tell you about the space $J$.  We've talked about the $\KO$ spectrum, representing real $\K$-theory: $\KO^*(X) = \{X, \KO\}$.  It is a sequence of spaces $\{\KO_n\}$ with maps $\alpha_n: \Suspend \KO_n \to \KO_{n+1}$, with
 \begin{align*}
-\KO_{8n} & = \Z \times BO \\
-\KO_{8n-i} & = \Loops^i (\Z \times BO) \\
+\KO_{8n} & = \Zbb \times BO \\
+\KO_{8n-i} & = \Loops^i (\Zbb \times BO) \\
 \Suspend^8 \KO_{8n} & \to \KO_{8n+8} \hbox{ is given by}
 \end{align*}
 \begin{ctikzcd}
-S^8 \sprod (\Z \times BO) \dar\rar & \Z \times BO \\
-(\Z \times BO) \sprod (\Z \times BO)\urar["\mu"].
+S^8 \sprod (\Zbb \times BO) \dar\rar & \Zbb \times BO \\
+(\Zbb \times BO) \sprod (\Zbb \times BO)\urar["\mu"].
 \end{ctikzcd}
-Bott periodicity says $\Z \times BO \stackrel{\simeq}{\to} \Loops^8(\Z \times BO)$.
+Bott periodicity says $\Zbb \times BO \stackrel{\simeq}{\to} \Loops^8(\Zbb \times BO)$.
 
-Now $\KO(X)$ is a ring with unit; $\KOtwee^0(S^0) \cong \Z \ni 1$.  So there is a map of spectra $\Suspend^\infty S^0 = S \to \KO$ representing $1 \in \KOtwee(S^0)$.  One question is, how big is the image of the induced map $\pi_*^S \to \KO_*$?
+Now $\KO(X)$ is a ring with unit; $\KOtwee^0(S^0) \cong \Zbb \ni 1$.  So there is a map of spectra $\Suspend^\infty S^0 = S \to \KO$ representing $1 \in \KOtwee(S^0)$.  One question is, how big is the image of the induced map $\pi_*^S \to \KO_*$?
 
-Another way to ask this question is this: every spectrum has a space associated with it; in this case, we get a map $QS^0 = \Loops^\infty \Suspend^\infty S^0 \to \Z \times BO$ whose effect in unstable homotopy is the stable homotopy of the map above.  Viewed in this light, the answer depends on self-maps of $\Z \times BO$.  We have the $\psi^k$s, so we should use them.  The operation $\psi^k: \KO \to \KO$ corresponds to a map $\psi^k: \Z \times BO \to \Z \times BO$.  We know the effect of $\psi^k$ on $\pi_*$:
+Another way to ask this question is this: every spectrum has a space associated with it; in this case, we get a map $QS^0 = \Loops^\infty \Suspend^\infty S^0 \to \Zbb \times BO$ whose effect in unstable homotopy is the stable homotopy of the map above.  Viewed in this light, the answer depends on self-maps of $\Zbb \times BO$.  We have the $\psi^k$s, so we should use them.  The operation $\psi^k: \KO \to \KO$ corresponds to a map $\psi^k: \Zbb \times BO \to \Zbb \times BO$.  We know the effect of $\psi^k$ on $\pi_*$:
 \[
 \begin{array}{c|cc}
-* & \pi_*(\Z \times BO) & \psi^k \\
+* & \pi_*(\Zbb \times BO) & \psi^k \\
 \hline
-0 & \Z \\
-1 & \Z_2 \langle \eta \rangle & \eta \mapsto k \eta \\
-2 & \Z_2 \langle \eta^2 \rangle & \eta \mapsto k^2 \eta \\
+0 & \Zbb \\
+1 & \Zbb_2 \langle \eta \rangle & \eta \mapsto k \eta \\
+2 & \Zbb_2 \langle \eta^2 \rangle & \eta \mapsto k^2 \eta \\
 3 & 0 \\
-4 & \Z \langle g_4 \rangle & g_4 \mapsto k^{2k} g_4 \\
+4 & \Zbb \langle g_4 \rangle & g_4 \mapsto k^{2k} g_4 \\
 5 & 0 \\
 6 & 0 \\
 7 & 0 \\
-8 & \Z \langle g_8 \rangle & g_8 \mapsto k^4 g_8.
+8 & \Zbb \langle g_8 \rangle & g_8 \mapsto k^4 g_8.
 \end{array}
 \]
 Everything else on the table follows from periodicity.
 
 These operations suffer from a bad defect: they're not stable.  But we've already seen how to study this problem when we were studying transfer: namely,
 \begin{ctikzcd}[column sep=large]
-S^8 \sprod (\Z \times BO) \dar["g_8\sprod 1"']\rar["k^4 \sprod \psi^k"] & S^8 \sprod (\Z \times BO)\dar \\
-(\Z \times BO) \sprod (\Z \times BO) \dar["\mu"']\rar["\psi^k \sprod \psi^k"] & (\Z \times BO) \sprod (\Z \times BO)\dar \\
-\Z\times BO\rar["\psi^k"] & \Z\times BO
+S^8 \sprod (\Zbb \times BO) \dar["g_8\sprod 1"']\rar["k^4 \sprod \psi^k"] & S^8 \sprod (\Zbb \times BO)\dar \\
+(\Zbb \times BO) \sprod (\Zbb \times BO) \dar["\mu"']\rar["\psi^k \sprod \psi^k"] & (\Zbb \times BO) \sprod (\Zbb \times BO)\dar \\
+\Zbb\times BO\rar["\psi^k"] & \Zbb\times BO
 \end{ctikzcd}
 By adjunction, we get
 \begin{ctikzcd}
@@ -369,60 +369,60 @@ By adjunction, we get
 \end{ctikzcd}
 The diagram measures how far $\psi^k$ is from being stable.  The fix we shall use here is to localize so that $k$ becomes a unit.
 
-The point is, $\KO^*$ is a nice ring, so localization is easy to do: $R \subseteq \Q$ is flat over $\Z$, so we can take $\KO^*(X; R)$ to be defined as $\KO^*(X) \otimes_{\Z} R$; e.g., $R = \Z[\frac{1}{k}]$.  Then the diagram becomes
+The point is, $\KO^*$ is a nice ring, so localization is easy to do: $R \subseteq \Qbb$ is flat over $\Zbb$, so we can take $\KO^*(X; R)$ to be defined as $\KO^*(X) \otimes_{\Zbb} R$; e.g., $R = \Zbb[\frac{1}{k}]$.  Then the diagram becomes
 \begin{ctikzcd}[column sep=large]
 \KO_0 \dar\rar{\psi^k} & \KO_0 \dar\\
 \Loops^8 \KO_8 \rar["k^{-4} \Loops^8 \psi^k"{yshift=0.1em}] & \Loops^8 \KO_8 \left[ \frac{1}{k} \right],
 \end{ctikzcd}
 i.e., we can define a new operation $\Psi^k: \KO \to \KO[\frac{1}{k}]$ so that
 \[
-\Psi^k_{8n} = k^{-4n}\psi^k : \Z \times BO \to \Z \times BO \left[ \frac{1}{k} \right]
+\Psi^k_{8n} = k^{-4n}\psi^k : \Zbb \times BO \to \Zbb \times BO \left[ \frac{1}{k} \right]
 .\]
-Now $\Z[\frac{1}{k}] \into \Z_{(2)}$, assuming $2 \nmid k$, so you get
+Now $\Zbb[\frac{1}{k}] \into \Zbb_{(2)}$, assuming $2 \nmid k$, so you get
 \begin{ctikzcd}
 \KO^* \dar\rar{\Psi^k} & \KO^* \left[ \frac{1}{k} \right]\dar \\
 \KO^*_{(2)} \rar{\Psi^k} & \KO^*_{(2)},
 \end{ctikzcd}
 for $k$ odd.  Take the case $k = 3$ for the rest of this lecture.  But we're still not done massaging the Adams operations; we need the notion of a ``connective cover:'' if $X$ is a space, then its $n^\textup{th}$ connective cover is the space $X \langle n, \ldots, \infty \rangle \to X$, where this map is an isomorphism on $\pi_i$ for $i \ge n$ and $\pi_i X \langle n, \ldots, \infty \rangle = 0$ for $i < n$.  For example, you have
 \begin{ctikzcd}
-\cdots \rar & BSpin \rar & BSO \rar & BO \rar & \Z \times BO
+\cdots \rar & BSpin \rar & BSO \rar & BO \rar & \Zbb \times BO
 \end{ctikzcd}
 as a sequence of connective covers.  You can do this for spectra, in which case it's interesting to take away negative homotopy groups: $E \langle 0, \infty \rangle_n = E_n \langle n, \infty \rangle$ has no negative homotopy groups.  For example, $\KO$ has negative homotopy groups; its $0$-connective cover localized at $2$ is $\KO \langle 0,\infty \rangle_{(2)} = bo$, called ``connective real $\K$-theory.''  So
 \[
 \begin{array}{c|ccccccccc}
 * & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & (8) \\
 \hline
-\pi_* bo & \Z_{(2)} & \Z_2 & \Z_2 & 0 & \Z_{(2)} & 0 & 0 & 0
+\pi_* bo & \Zbb_{(2)} & \Zbb_2 & \Zbb_2 & 0 & \Zbb_{(2)} & 0 & 0 & 0
 \end{array}
 \]
 but now we restrict to $* > 0$.  The construction of $\Psi^k$ gives an operation on connective real $\K$-theory $\Psi^k: bo \to bo$ and we know its effect on homotopy groups ($k = 3$ in what's to follow):
 \begin{ctikzcd}[column sep=0.6em]
 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 \\[-1.8em]
-\Z_{(2)}\dar["\cong"] & \Z_2\dar["\cong"] & \Z_2\dar["\cong"] & 0 & \Z_{(2)}\dar{\cdot9} & 0 & 0 & 0 & \Z_{(2)}\dar{\cdot81} & \Z_2 & \Z_2 & 0 & \Z_{(2)} \dar{\cdot729}& 0 & 0 & 0 & \Z_{(2)} \dar{\cdot9^4}\\
-\Z_{(2)} & \Z_2 & \Z_2 & & \Z_2 & & & & \Z_{(2)} & \Z_2 & \Z_2 & & \Z_{(2)} & & & & \Z_{(2)}.
+\Zbb_{(2)}\dar["\cong"] & \Zbb_2\dar["\cong"] & \Zbb_2\dar["\cong"] & 0 & \Zbb_{(2)}\dar{\cdot9} & 0 & 0 & 0 & \Zbb_{(2)}\dar{\cdot81} & \Zbb_2 & \Zbb_2 & 0 & \Zbb_{(2)} \dar{\cdot729}& 0 & 0 & 0 & \Zbb_{(2)} \dar{\cdot9^4}\\
+\Zbb_{(2)} & \Zbb_2 & \Zbb_2 & & \Zbb_2 & & & & \Zbb_{(2)} & \Zbb_2 & \Zbb_2 & & \Zbb_{(2)} & & & & \Zbb_{(2)}.
 \end{ctikzcd}
-Notice that $\Psi^3$ induces the identity in dimensions below $4$.  So consider the map $\Psi^3 - 1: bo \to bo$; now the map acts as $0, 0, 0, \ldots, \cdot 9 - 1, \ldots, \cdot 81 -1, \ldots$ in homotopy.  You could just take the fiber of this map, but because $\Psi^3 - 1$ induces zero in homotopy in dimensions one and two you would get copies of $\Z_2$ from both ends, and these are in fact unnecessary: the map $\Psi^3 - 1$ lifts to the $4$-connective cover\footnote{Why? I need to check the obstruction theory here.}
+Notice that $\Psi^3$ induces the identity in dimensions below $4$.  So consider the map $\Psi^3 - 1: bo \to bo$; now the map acts as $0, 0, 0, \ldots, \cdot 9 - 1, \ldots, \cdot 81 -1, \ldots$ in homotopy.  You could just take the fiber of this map, but because $\Psi^3 - 1$ induces zero in homotopy in dimensions one and two you would get copies of $\Zbb_2$ from both ends, and these are in fact unnecessary: the map $\Psi^3 - 1$ lifts to the $4$-connective cover\footnote{Why? I need to check the obstruction theory here.}
 \begin{ctikzcd}
 & bo \langle 4, \infty \rangle\dar \\
 bo \urar[dashed]{\exists \varphi} \rar["\Psi^3 - 1"'] & bo
 \end{ctikzcd}
 and that brings us to the space $J$ --- or at least the spectral $j$.  Set $j$ to be the fiber of $\varphi: bo \to bo \langle 4, \infty \rangle$.  The space $J$ comes from the $0$-space:
 \begin{ctikzcd}
-\Z \times J \rar & \Z \times BO \rar["\varphi"] & BSpin \\
+\Zbb \times J \rar & \Zbb \times BO \rar["\varphi"] & BSpin \\
 J \rar & BO\uar[into]\rar & BSpin.
 \end{ctikzcd}
 
-OK, we can figure out the homotopy of $J$ because we know about all the things that go into it.  Recall that $\nu(9^k - 1) = \nu(k) + 3$, so $9^k - 1$ is an odd multiple of $2^{\nu(k) + 3}$, or equivalently an odd multiple of $8k$.  Hence $\Psi^3 - 1$ acts either as $0$ or as multiplication by $8k$ and by a unit in $\Z_{(2)}$.  So we get
+OK, we can figure out the homotopy of $J$ because we know about all the things that go into it.  Recall that $\nu(9^k - 1) = \nu(k) + 3$, so $9^k - 1$ is an odd multiple of $2^{\nu(k) + 3}$, or equivalently an odd multiple of $8k$.  Hence $\Psi^3 - 1$ acts either as $0$ or as multiplication by $8k$ and by a unit in $\Zbb_{(2)}$.  So we get
 \begin{ctikzcd}
 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-\pi_* J & \Z_{(2)}\dar & \Z_2\dar & \Z_2\dar & \Z_8\dar & 0\dar & 0 & 0 & \Z_{16} \\
-\pi_* bo & \Z_{(2)}\dar["0"] & \Z_2\dar["0"] & \Z_2\dar["0"] & 0 & \Z_{(2)}\dar["\cdot9-1"] & 0 & 0 & 0 \\
-\pi_* bo \langle 4, \infty \rangle & 0 & 0 & 0 & 0 & \Z_{(2)} & 0 & 0 & 0\\[3em]
+\pi_* J & \Zbb_{(2)}\dar & \Zbb_2\dar & \Zbb_2\dar & \Zbb_8\dar & 0\dar & 0 & 0 & \Zbb_{16} \\
+\pi_* bo & \Zbb_{(2)}\dar["0"] & \Zbb_2\dar["0"] & \Zbb_2\dar["0"] & 0 & \Zbb_{(2)}\dar["\cdot9-1"] & 0 & 0 & 0 \\
+\pi_* bo \langle 4, \infty \rangle & 0 & 0 & 0 & 0 & \Zbb_{(2)} & 0 & 0 & 0\\[3em]
 %
 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 \\
-\pi_* J & \Z_2\dar["0"] & \Z_2^2\dar & \Z_2 & \Z_8 & 0 & 0 & 0 & \Z_{32} & \Z_2 \\
-\pi_* bo & \Z_{(2)}\dar["\cdot 81-1"] & \Z_2\dar["0"] & \Z_2\dar["0"] & 0 & \Z_{(2)}\dar["\cdot 9^3-1"] & 0 & 0 & 0 & \Z\dar["\cdot 9^4-1"] \\
-\pi_* bo \langle 4, \infty \rangle & \Z_{(2)} & \Z_2 & \Z_2 & 0 & \Z_{(2)} & 0 & 0 & 0 & \Z.
+\pi_* J & \Zbb_2\dar["0"] & \Zbb_2^2\dar & \Zbb_2 & \Zbb_8 & 0 & 0 & 0 & \Zbb_{32} & \Zbb_2 \\
+\pi_* bo & \Zbb_{(2)}\dar["\cdot 81-1"] & \Zbb_2\dar["0"] & \Zbb_2\dar["0"] & 0 & \Zbb_{(2)}\dar["\cdot 9^3-1"] & 0 & 0 & 0 & \Zbb\dar["\cdot 9^4-1"] \\
+\pi_* bo \langle 4, \infty \rangle & \Zbb_{(2)} & \Zbb_2 & \Zbb_2 & 0 & \Zbb_{(2)} & 0 & 0 & 0 & \Zbb.
 \end{ctikzcd}
 
 What's the point?  The point is, this has to do with homotopy groups of spheres.  You have
@@ -448,7 +448,7 @@ Now in fact $\alpha$ factors through the $+1$ component of $G$, $SG = Q_1 S^0$:
 SG \drar\\
    & G \rar & EG \rar & BG_{(2)}.
 \end{ctikzcd}
-Well, this looks good, in fact it looks very good: the map $S^0 \to j$ is, after you apply $\Loops^\infty$ to it, a map $u: QS^0 \to \Loops^\infty j = \Z \times J$.  And in fact
+Well, this looks good, in fact it looks very good: the map $S^0 \to j$ is, after you apply $\Loops^\infty$ to it, a map $u: QS^0 \to \Loops^\infty j = \Zbb \times J$.  And in fact
 \begin{ctikzcd}
 J \ar[drr,"!!\simeq!!"']\rar["\alpha"] & SG \rar[into] & QS^0\dar["u"] \\
 && J
@@ -459,21 +459,21 @@ One game you can play now is to try to get out some information on unstable homo
 \[
 \begin{array}{cccccc}
 & \pi_* Spin & \pi_* J & \pi_* BO & \hbox{New names} & \hbox{Traditional names} \\
-1 & 0 & \Z_2 \langle \alpha_1 \rangle & \Z_2 & \alpha_1 & \eta \\
-2 & 0 & \Z_2 \langle \alpha_2 \rangle & \Z_2 & \alpha_2 & \eta^2 \\
-3 & \Z & \Z_8 \langle j_2  \rangle & 0 & \alpha_3 = 4 j_2 & j_2 = \nu \\
-4 & 0 & 0 & \Z \\
+1 & 0 & \Zbb_2 \langle \alpha_1 \rangle & \Zbb_2 & \alpha_1 & \eta \\
+2 & 0 & \Zbb_2 \langle \alpha_2 \rangle & \Zbb_2 & \alpha_2 & \eta^2 \\
+3 & \Zbb & \Zbb_8 \langle j_2  \rangle & 0 & \alpha_3 = 4 j_2 & j_2 = \nu \\
+4 & 0 & 0 & \Zbb \\
 5 & 0 & 0 & 0 \\
 6 & 0 & 0 & 0 \\
-7 & \Z & \Z_{16} \langle j_3 \rangle & 0 & \alpha_4 = 8j_3 & j_3 = \sigma \\
-8 & \Z_2 & \Z_2 \langle j_4 \rangle & \Z & & j_4 = \eta \sigma \\
-9 & \Z_2 & \Z_2 \langle j_6 \rangle \oplus \Z_2 \langle \alpha_5 \rangle & \Z_2 & & \mu_9, j_5 = \eta^2 \sigma \\
-10 & 0 & \Z_2 \langle \alpha_6 \rangle & \Z_2 & \alpha_6 & \eta \mu_9 \\
-11 & \Z & \Z_8 \langle j_6 \rangle & 0 & \alpha_7 = 4 j_6 = \eta^2 \mu_9 & j_6, \eta^2 \mu_9 \\
-12 & 0 & 0 & \Z \\
+7 & \Zbb & \Zbb_{16} \langle j_3 \rangle & 0 & \alpha_4 = 8j_3 & j_3 = \sigma \\
+8 & \Zbb_2 & \Zbb_2 \langle j_4 \rangle & \Zbb & & j_4 = \eta \sigma \\
+9 & \Zbb_2 & \Zbb_2 \langle j_6 \rangle \oplus \Zbb_2 \langle \alpha_5 \rangle & \Zbb_2 & & \mu_9, j_5 = \eta^2 \sigma \\
+10 & 0 & \Zbb_2 \langle \alpha_6 \rangle & \Zbb_2 & \alpha_6 & \eta \mu_9 \\
+11 & \Zbb & \Zbb_8 \langle j_6 \rangle & 0 & \alpha_7 = 4 j_6 = \eta^2 \mu_9 & j_6, \eta^2 \mu_9 \\
+12 & 0 & 0 & \Zbb \\
 13 & 0 & & 0 \\
 14 & 0 & & 0 \\
-15 & \Z & \Z_{32} \langle j_7 \rangle & 0 & \alpha_8 = 16j_7 & j_7.
+15 & \Zbb & \Zbb_{32} \langle j_7 \rangle & 0 & \alpha_8 = 16j_7 & j_7.
 \end{array}
 \]
 
@@ -490,7 +490,7 @@ You apply $\pi_*$ to get a map of exact couples (and so of spectral sequences):
 \pi_* \Loops^n S^n \dar\rar & \pi_* \Loops^{n+1} S^{n+1} \dar\rar & \pi_* \Loops^{n+1} S^{2n+1}\dar \\
 \pi_*^S \RP^{n-1} \rar & \pi_*^S \RP^n \rar & \pi_*^S S^n.
 \end{ctikzcd}
-$\pi_*^S$ is formidable, so now we could try to use something else to detect things; an obvious choice given the above is the spectrum $j:$ $j_n(X) = \pi_*(j \sprod X)$, so $j_* S^0 = \pi_* j = \pi_*(J \times \Z)$, which we know, so we might hope to be able to compute other things as well.  So by smashing with $j$, we get a map
+$\pi_*^S$ is formidable, so now we could try to use something else to detect things; an obvious choice given the above is the spectrum $j:$ $j_n(X) = \pi_*(j \sprod X)$, so $j_* S^0 = \pi_* j = \pi_*(J \times \Zbb)$, which we know, so we might hope to be able to compute other things as well.  So by smashing with $j$, we get a map
 \begin{ctikzcd}
 \pi_*^S \RP^{n-1} \dar\rar & \pi_*^S \RP^n \dar\rar & \pi_*^S S^n \dar\\
 j_* \RP^{n-1} \rar & j_* \RP^n \rar & j_* S^n,
@@ -512,11 +512,11 @@ where $R$ is the cofiber of $\lambda$.
 \end{wrapfigure}
 The map \begin{tikzcd}[column sep=small]\RP^\infty \rar[stable]& \pt{\RP^\infty}\end{tikzcd} is interesting because it doesn't exist unstably; constructing it involves the same game as the shifting of components we played when constructing the $J$-homomorphism.  The cohomology of $R$ has a class $x_0$ in dimension zero coming from $S^0$ and then a class $x_k$ in dimension $k \ge 2$ coming from $H^* \Suspend \RP^\infty$, and $\Sq^k x_0 = x_k$ for all $k$!  The reason for studying $R$ is that $bo_* R$ is very simple; in fact, $bo \sprod R$ is a bouquet of Eilenberg-Maclane spectra:
 \[
-bo \sprod R \simeq \bigvee_{k \ge 0} \Suspend^{4k} H\Z_{(2)},
+bo \sprod R \simeq \bigvee_{k \ge 0} \Suspend^{4k} H\Zbb_{(2)},
 \]
 and
 \[
-bo \langle 4, \infty \rangle \sprod R \simeq \bigvee_{k \ge 1} \Suspend^{4k} H \Z_{(2)} \vee \bigvee_{k \ge 1} \Suspend^{4k+2} H\Z_2
+bo \langle 4, \infty \rangle \sprod R \simeq \bigvee_{k \ge 1} \Suspend^{4k} H \Zbb_{(2)} \vee \bigvee_{k \ge 1} \Suspend^{4k+2} H\Zbb_2
 .\]
 And so we computed $j \sprod R$ from the sequence
 \begin{ctikzcd}
@@ -527,59 +527,59 @@ It's a rational calculation; there's just not that much to do.  The result is st
 \[
 \begin{array}{ccccc}
 & j \sprod R & bo \sprod R & & bo \langle 4, \infty \rangle \sprod R \\
-0 & \Z_{(2)} & \Z_{(2)} \\
+0 & \Zbb_{(2)} & \Zbb_{(2)} \\
 1 \\
 2 \\
 3 \\
-4 & & \Z_{(2)} & \stackrel{=}{\to} & \Z_{(2)} \\
-5 & \Z_2 \langle \sigma_1 \rangle \\
-6 & & & & \Z_2 \\
-7 & \Z_2 \langle \tau_1 \rangle \\
-8 & & \Z_{(2)} & \stackrel{\cdot 2}{\to} & \Z_{(2)} \\
-9 & \Z_2 \langle \sigma_2 \rangle \\
-10 & & & & \Z_2 \\
+4 & & \Zbb_{(2)} & \stackrel{=}{\to} & \Zbb_{(2)} \\
+5 & \Zbb_2 \langle \sigma_1 \rangle \\
+6 & & & & \Zbb_2 \\
+7 & \Zbb_2 \langle \tau_1 \rangle \\
+8 & & \Zbb_{(2)} & \stackrel{\cdot 2}{\to} & \Zbb_{(2)} \\
+9 & \Zbb_2 \langle \sigma_2 \rangle \\
+10 & & & & \Zbb_2 \\
 11 \\
-12 & & \Z_{(2)} & \stackrel{=}{\to} & \Z_{(2)} \\
-13 & \Z_2 \langle \sigma_3 \rangle \\
-14 & & & & \Z_2 \\
-15 & \Z_4 \langle \tau_2 \rangle \\
-16 & & \Z_{(2)} & \stackrel{\cdot 4}{\to} & \Z_{(2)} \\
-17 & \Z_2 \langle \sigma_4 \rangle.
+12 & & \Zbb_{(2)} & \stackrel{=}{\to} & \Zbb_{(2)} \\
+13 & \Zbb_2 \langle \sigma_3 \rangle \\
+14 & & & & \Zbb_2 \\
+15 & \Zbb_4 \langle \tau_2 \rangle \\
+16 & & \Zbb_{(2)} & \stackrel{\cdot 4}{\to} & \Zbb_{(2)} \\
+17 & \Zbb_2 \langle \sigma_4 \rangle.
 \end{array}
 \]
 That's it!
 \begin{align*}
-j_{8k-1}(R) & = \Z_{2^{\nu(k)+1}} \langle \tau_k \rangle & k \ge 1, \\
-j_{4k+1}(R) & = \Z_2 \langle \sigma_k \rangle & k \ge 1.
+j_{8k-1}(R) & = \Zbb_{2^{\nu(k)+1}} \langle \tau_k \rangle & k \ge 1, \\
+j_{4k+1}(R) & = \Zbb_2 \langle \sigma_k \rangle & k \ge 1.
 \end{align*}
 Now we're really interested in $\RP^\infty$.
 \[
 \begin{array}{cccc}
 & j \sprod \RP^\infty & j \sprod S^0 & j \sprod R \\
-0 & \Z & \Z & \Z_{(2)} \\
-1 & \Z_2 & \Z_2 \langle \alpha_1 \rangle \\
-2 & \Z_2 & \Z_2 \langle \alpha_2 \rangle \\
-3 & \Z_8 & \Z_8 \langle j_2 \rangle \\
-4 & \Z_2 \langle \sigma_1 \rangle \\
-5 & 0 & & \Z_2 \langle \sigma_1 \rangle \\
-6 & \Z_2 \langle \tau_1 \rangle \\
-7 & \Z_{16} & \Z_{16} \langle j_3 \rangle & \Z_2 \langle \tau_1 \rangle \\
-8 & \Z_2 \oplus (\Z_2 \langle \sigma_2 \rangle) & \Z_2 \langle j_4 \rangle \\
-9 & \Z_2 \oplus \Z_2 & \Z_2 \oplus \Z_2 & \Z_2 \langle \sigma_2 \rangle \\
-10 & \Z_2 & \Z_2 \\
-11 & \Z_8 & \Z_8 \langle j_6 \rangle \\
-12 & \Z_2 \langle \sigma_3 \rangle & 0 \\
-13 & 0 & 0 & \Z_2 \langle \sigma_3 \rangle \\
-14 & \Z_2 \langle \tau_2 \rangle  & 0 \\
-15 & \Z_{32} & \Z_{32} \langle j_7 \rangle & \Z_4 \langle \tau_2 \rangle \\
-16 & \Z_2 \oplus \Z_2 \langle \sigma_4 \rangle & \Z_2 \langle j_8 \rangle.
+0 & \Zbb & \Zbb & \Zbb_{(2)} \\
+1 & \Zbb_2 & \Zbb_2 \langle \alpha_1 \rangle \\
+2 & \Zbb_2 & \Zbb_2 \langle \alpha_2 \rangle \\
+3 & \Zbb_8 & \Zbb_8 \langle j_2 \rangle \\
+4 & \Zbb_2 \langle \sigma_1 \rangle \\
+5 & 0 & & \Zbb_2 \langle \sigma_1 \rangle \\
+6 & \Zbb_2 \langle \tau_1 \rangle \\
+7 & \Zbb_{16} & \Zbb_{16} \langle j_3 \rangle & \Zbb_2 \langle \tau_1 \rangle \\
+8 & \Zbb_2 \oplus (\Zbb_2 \langle \sigma_2 \rangle) & \Zbb_2 \langle j_4 \rangle \\
+9 & \Zbb_2 \oplus \Zbb_2 & \Zbb_2 \oplus \Zbb_2 & \Zbb_2 \langle \sigma_2 \rangle \\
+10 & \Zbb_2 & \Zbb_2 \\
+11 & \Zbb_8 & \Zbb_8 \langle j_6 \rangle \\
+12 & \Zbb_2 \langle \sigma_3 \rangle & 0 \\
+13 & 0 & 0 & \Zbb_2 \langle \sigma_3 \rangle \\
+14 & \Zbb_2 \langle \tau_2 \rangle  & 0 \\
+15 & \Zbb_{32} & \Zbb_{32} \langle j_7 \rangle & \Zbb_4 \langle \tau_2 \rangle \\
+16 & \Zbb_2 \oplus \Zbb_2 \langle \sigma_4 \rangle & \Zbb_2 \langle j_8 \rangle.
 \end{array}
 \]
 AND AN UNREADABLE ROW.  Various things could happen, but in fact nothing else does:
 \[
 j_* \RP^\infty \cong j_* \oplus \langle t_k, \sigma_k \rangle.
 \]
-So now we've computed the $E^2$-term and the ``abutment'' of the Atiyah-Hirzebruch spectral sequence $H^*(\RP^\infty; j_*) \Rightarrow j_* \RP^\infty$.  A picture is attached of what the filtration looks like; we've really reached the outer limits of human comprehension here.  Note that each of the dots is a $\Z_2$, so a non-zero differential connecting two dots is death to both of them.  So you get to $E^\infty$ from $E^2$ pretty quickly, and you can see a good deal of $E^\infty$ in this picture.
+So now we've computed the $E^2$-term and the ``abutment'' of the Atiyah-Hirzebruch spectral sequence $H^*(\RP^\infty; j_*) \Rightarrow j_* \RP^\infty$.  A picture is attached of what the filtration looks like; we've really reached the outer limits of human comprehension here.  Note that each of the dots is a $\Zbb_2$, so a non-zero differential connecting two dots is death to both of them.  So you get to $E^\infty$ from $E^2$ pretty quickly, and you can see a good deal of $E^\infty$ in this picture.
 
 Remember what we had: there were three exact couples
 \begin{ctikzcd}
@@ -590,7 +590,7 @@ j_* \RP^{n-1} \rar & j_* \RP^n \rar & j_* S^n,
 and the last spectral sequence can be written out completely; it's the chart.  Today we'll talk about two problems: first, given a class $v \in j_* \RP^\infty$, where can be find a representative, which we will denote $H(v)$, in $j_*$? and secondly, how do classes in $j_* \RP^\infty$ pull back to $\pi_*^S \RP^\infty$, or even better, to the EHP sequence?
 \begin{ctikzcd}
 S^k \ar[ddr,end anchor=north west]\drar[end anchor=north west]\rar & j \sprod \RP^\infty \\
-& |[inner xsep=0pt]|j \sprod \RP^3\uar\dar \\ 
+& |[inner xsep=0pt]|j \sprod \RP^3\uar\dar \\
 & |[inner xsep=0pt]|j \sprod S^3.
 \end{ctikzcd}
 Recall $j_* \RP^\infty = j_* \oplus \langle \tau_k, \sigma_k$, and $j_*$ contained elements $\alpha_k$ of order $2$ and elements $j_k$.  Recall also that $\alpha_k$ were often not generators; for example, $\alpha_3 = 4j_2$.  So we introduce the notation that $\alpha_{k/i}$ is an element such that $2^{i-1} \alpha_{k/i} = \alpha_k$.  For example, $\alpha_4 = 8 \sigma$, so $\alpha_{4/2} = 4 \sigma$, $\alpha_{4/3} = 2\sigma$, $\alpha_{4/4} = \sigma$, and $\alpha_{4/1} = \alpha_4$.  With this notation we can get all the classes in the image of $J$ except $j_{4k}, j_{4k+1} \in \pi_{8k} J, \pi_{8k+1} J$.  Then the representatives of $j^* \RP^\infty$ in this spectral sequence are found as follows:
@@ -614,7 +614,7 @@ What does this tell us about our picture?  For elements in the image of $J$, the
 \begin{ctikzcd}
 \pi_*^S S^0 \rar & \pi_*^S \RP^\infty \rar & j_* \RP^\infty \rar & j_*  \RP^\infty_n
 \end{ctikzcd}
-with $n$ odd, then $\pi_*^S S^0 \to j_* \RP^\infty_n = \Z_2$ is the Hopf invariant.  So you have an element of Hopf invariant 1 if you have a survivor in the bottom row.
+with $n$ odd, then $\pi_*^S S^0 \to j_* \RP^\infty_n = \Zbb_2$ is the Hopf invariant.  So you have an element of Hopf invariant 1 if you have a survivor in the bottom row.
 
 The issue of the desuspension of $w_n$ (and so of vector fields on spheres) became a picture of differentials off classes in the bottom row of the Atiyah-Hirzebruch spectral sequence for $\pi_*^S \RP^\infty$; the desuspension of $w_n$ is represented by the end of the differential.
 

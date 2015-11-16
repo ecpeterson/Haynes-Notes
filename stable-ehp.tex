@@ -9,24 +9,27 @@ One nice thing about suspending is that when you suspend you get a group: $[\Sus
 (g_1 + g_2): \Suspend X \stackrel{\textup{pinch}}{\to} \Suspend X \wsum \Suspend X \stackrel{g_1 \wsum g_2}{\to} Z \wsum Z \stackrel{\textup{fold}}{\to} Z
 .\]
 ``Naturally in $Z$'', for example, means that given $f: Z \to Y$, in
-\begin{diagram}[height=2em]
-\Suspend X & \pile{\rTo^{g_1} \\ \rTo_{g_2}} & Z & \rTo^f & Y
-\end{diagram}
+\begin{ctikzcd}
+\Suspend X \rar["g_1",yshift=0.3em] \rar["g_2"',yshift=-0.3em] & Z \rar{f} & Y
+\end{ctikzcd}
 we have $f_*(g_1 + g_2) = f_* (g_1) + f_* (g_2)$ in $[\Suspend X, Y]$.\todo{It would be easy to draw this rectangle.}
 
 Note, however, that the group structure on $[\Suspend X, Z]$ is not natural in $\Suspend X$.
-As an example, consider the Whitehead square\footnote{Essentially, we are showing that the \emph{map} $w_n$ is not in the image of the suspension map $[S^{2n-2}, S^{n-1}] \to [S^{2n-1}, S^n].$} \[S^{2n-1} \stackrel{w_n}{\to} S^n.\]  The induced function $w_n^* = [S^n, S^n] \to [S^{2n-1}, S^n]$ is not a homomorphism for $n$ even.  To see this, recall that $w_n = [\iota_n, \iota_n] \in \pi_{2n-1} (S^n)$ is defined by
-\begin{diagram}[height=2em]
-S^{2n-1} & \rTo^{w_n} & S^n \\
-& \rdTo_{W} & \uTo>{\textup{fold}} \\
-& & S^n \wsum S^n,
-\end{diagram}
+As an example, consider the Whitehead square\footnote{Essentially, we are showing that the \emph{map} $w_n$ is not in the image of the suspension map $[S^{2n-2}, S^{n-1}] \to [S^{2n-1}, S^n].$}
+\begin{ctikzcd}
+S^{2n-1} \rar{w_n}& S^n.
+\end{ctikzcd}
+The induced function $w_n^* = [S^n, S^n] \to [S^{2n-1}, S^n]$ is not a homomorphism for $n$ even.  To see this, recall that $w_n = [\iota_n, \iota_n] \in \pi_{2n-1} (S^n)$ is defined by
+\begin{ctikzcd}
+S^{2n-1} \drar["W"']\rar{w_n} & S^n \\
+& S^n \wsum S^n\uar["\textup{fold}"'],
+\end{ctikzcd}
 where $W$ is the attaching map for $S^{2n-1} \stackrel{W}{\to} S^n \wsum S^n \to S^n \times S^n=C(W)$. The following diagram commutes, by definition of $2 \iota_n$:
-\begin{diagram}[height=2em]
-S^{2n-1} & \rTo^{w_n} & S^n & \rTo^{2 \iota_n} & S^n \\
-& \rdTo_W & \uTo>{\textup{fold}} & & \uTo>{\textup{fold}} \\
-& & S^n \wsum S^n & \rTo_{2\iota_n \wsum 2\iota_n} & S^n \wsum S^n.
-\end{diagram}
+\begin{ctikzcd}[column sep=large]
+S^{2n-1} \drar["W"']\rar{w_n} & S^n  \rar["2\iota_n"]& S^n \\
+& S^n \wsum S^n\uar["\textup{fold}"']\rar["2\iota_n\wsum2\iota_n"]& S^n \wsum S^n\uar["\textup{fold}"'],
+\end{ctikzcd}
+
 The top row represents $(\iota_n + \iota_n) \circ w_n = w_n^*(2 \iota_n)$, the lower composite represents $[2\iota_n, 2\iota_n] = 4[\iota_n, \iota_n]$ (by bilinearity of the Whitehead product), which is equal to $4 w_n$ or $4 w_n^*(\iota_n)$, and the diagram is a witness to \[w_n^*(2 \iota_n) = 4 w_n^* \iota_n.\]  So $w_n^*$ cannot be a homomorphism unless $w_n = w_n^* \iota_n$ has finite order in $\pi_{2n-1}(S^n)$.  But for $n$ even, $h(w_n) = 2 \iota_n$, so the image of $w_n$ under the Hopf map is infinite cyclic!
 
 The way to get around the presence of non-homomorphic maps is by suspending more.  In what follows we take $X$ and $Y$ to be finite complexes.  Then we define $\{X, Y\} = [\Suspend^n X, \Suspend^n Y]$ for $n$ much larger than 0. In particular, the following theorem shows that for $n$ sufficiently large $[\Suspend^n X, \Suspend^n Y] \cong [\Suspend^{n+1} X, \Suspend^{n+1} Y]$, and we define $\{X, Y\}$ to be this ``stable'' group, the ``stable homotopy classes of maps'' between $X$ and $Y$.
@@ -34,9 +37,9 @@ The way to get around the presence of non-homomorphic maps is by suspending more
 If $Y$ is an $(n-1)$-connected CW-complex, and $X$ is a finite dimensional CW-complex of dimension $d$, then $\Sigma:[X,Y]\to[\Sigma X,\Sigma Y]$ is surjective when $d\leq2n-1$ and an isomorphism when $d<2n-1$.
 \end{thm}
 Now composition gives a product
-\[
-\{X, Y\} \times \{Y, Z\} \to \{X, Z\}
-\]
+\begin{ctikzcd}
+\{X, Y\} \times \{Y, Z\} \rar & \{X, Z\}
+\end{ctikzcd}
 which is bilinear since we can assume all maps involved are in the image of $\Suspend$.
 
 So we get a category whose objects are finite complexes and whose morphisms are stable homotopy classes of pointed maps.  Some important properties of this category are:
@@ -47,9 +50,9 @@ So we get a category whose objects are finite complexes and whose morphisms are 
 \begin{enumerate}
 \item Surjectivity.  If $f: \Suspend^n W \to \Suspend^n X$ and $g: \Suspend^n W \to \Suspend^n Y$ represent an element of $\{W, X\} \times \{W, Y\}$, then $\Suspend^n W \to \Suspend^n W \wsum \Suspend^n W  \stackrel{f \wsum g}{\to} \Suspend^n X \wsum \Suspend^n Y$ pushes forward to $(f, g)$.
 \item Injectivity. Suppose that $f\in\{W,X\vee Y\}$ maps to zero under the above map. Then noting that $[\Suspend^n W, \Suspend^n X] \times [\Suspend^n W, \Suspend^n Y] \cong [\Suspend^n W, \Suspend^n X \times \Suspend^n Y$], the composite $kf$ is null:
-\[\xymatrix{
-\Suspend^n W\ar[r]^f&\Suspend^n X \wsum \Suspend^n Y\ar[r]^k&\Suspend^n X \times \Suspend^n Y
-}\]
+\begin{ctikzcd}
+\Suspend^n W\ar[r]{f} & \Suspend^n X \wsum \Suspend^n Y\ar[r]{k} & \Suspend^n X \times \Suspend^n Y
+\end{ctikzcd}
 %\begin{diagram}[height=2em]
 %\Suspend^n W & \rTo_f & \Suspend^n X \wsum \Suspend^n Y \\
 %\dInto & \ruDashto & \dTo_k \\
@@ -60,18 +63,17 @@ In particular, $f$ lifts to the fiber $F(k)$. Now the fiber is $(2n-1)$-connecte
 \end{enumerate}
 \end{enumerate}
 
-So, surprise!: the wedge is the product in this category.  Now let's add ``formal desuspensions.''  The point is that now that $\Sigma:\{X, Y\}\to\{\Suspend X, \Suspend Y\}$ is an isomorphism, we've really obliterated the difference between the morphism sets here, and $\Suspend$ has become a fully faithful functor.  Now we'll make it into an isomorphism.  To fix it up, we'll simply put in formal desuspensions.
+So the wedge is the product in this category.  Now let's add ``formal desuspensions.''  The point is that now that $\Sigma:\{X, Y\}\to\{\Suspend X, \Suspend Y\}$ is an isomorphism, we've really obliterated the difference between the morphism sets here, and $\Suspend$ has become a fully faithful functor.  Now we'll make it into an isomorphism.  To fix it up, we'll simply put in formal desuspensions.
 
-The new category, the $S$-category, has as objects pairs $(X, n)$, where $X$ is a finite complex and $n$ is an integer, the ``formal $n$-fold suspension of $X$.''  And $\mathrm{morph}\{(X, m), (Y, n)\} = [\Suspend^{m+k} X, \Suspend^{n+k} Y]$ for $k$ much larger than 0, namely $k$ big enough that $ m+k\geq0$, $n+k\geq0$, and larger still so that one is in the stable range.
+The new category, the $S$-category, has as objects pairs $(X, n)$, where $X$ is a finite complex and $n$ is an integer, the ``formal $n$-fold suspension of $X$.''  And $\Hom\{(X, m), (Y, n)\} = [\Suspend^{m+k} X, \Suspend^{n+k} Y]$ for $k$ much larger than 0, namely $k$ big enough that $ m+k\geq0$, $n+k\geq0$, and larger still so that one is in the stable range.
 
-Note that $(X, 1) \stackrel{\cong}{\to} (\Suspend X, 0)$, i.e., the ``formal suspension'' is isomorphic to the informal suspension.  So we write $(X, n)$ and $\Suspend^n X$ and $\mathrm{morph}\{(X, m), (Y, n)\}$ as $\{\Suspend^m X, \Suspend^n Y\}$.  But now we have the object $(X, -1) = \Suspend^{-1} X$.  And so we talk about formerly pathological objects like $\{S^0, S^{-1}\}$ (i.e.\ $[S^k, S^{k-1}]$ for $k$ much larger than 0), which we know to be $\Z_2$.
+Note that $(X, 1) \stackrel{\cong}{\to} (\Suspend X, 0)$, i.e., the ``formal suspension'' is isomorphic to the informal suspension.  So we write $(X, n)$ and $\Suspend^n X$ and $\Hom\{(X, m), (Y, n)\}$ as $\{\Suspend^m X, \Suspend^n Y\}$.  But now we have the object $(X, -1) = \Suspend^{-1} X$.  And so we talk about objects like $\{S^0, S^{-1}\}=[S^k, S^{k-1}]$ for $k$ sufficiently large, which we know to be $\Zbb_2$.
 
-As an example of how things work, remember earlier we studied the group $J(X)$ which had to do with stable fiber homotopy equivalence.  Let $V\downarrow X$ be an $(n-1)$-sphere bundle.  In lecture \ref{FactsAboutThomSpaces}, we saw that $V\downarrow X$ being fiber homotopy trivial implied a splitting
-\begin{diagram}[height=2em]
-T(V) & \rTo & S^n \\
-\uTo & \ruTo_\simeq \\
-S^n.
-\end{diagram}
+As an example of how things work, remember earlier we studied the group $J(X)$ which had to do with stable fiber homotopy equivalence.  Let $V\downarrow X$ be an $(n-1)$-sphere bundle.  In lecture \ref{FactsAboutThomSpaces}, we saw that if $V\downarrow X$ is fiber homotopy trivial, there is a splitting
+\begin{ctikzcd}
+T(V) \rar & S^n \\
+S^n\uar\urar["\simeq"].
+\end{ctikzcd}
 Also we found out that such a coreduction meant that $S^0 \ast_X V \to X$ is fiber-homotopy trivial.\footnote{$S^0 \ast_X V \to X$
 is the fiberwise suspension of $V$. If $V$ is the sphere bundle of a vector bundle, fiberwise suspension corresponds to adding a trivial bundle.
 }
@@ -79,7 +81,7 @@ And so now in our new category we find
 \begin{lem}
 $V\downarrow X$ is stable fiber homotopy trivial if and only if $S^n \to T(V)$ has a stable retraction.
 \end{lem}
-In the $S$-category, the left--hand condition is $T(V) \simeq \Suspend^n (\pt{X})$ and the right--hand condition is that $T(V) \simeq S^n \wsum (\mathrm{something})$, and these agree.
+In the $S$-category, the left--hand condition is $T(V) \simeq \Suspend^n (\Xpt)$ and the right--hand condition is that $T(V) \simeq S^n \wsum (\mathrm{something})$, and these agree.
 
 Now earlier we also sketched a proof of Atiyah that $\widetilde J(X)$ is finite over a finite complex; so for any $V\downarrow X$ there is an $n$ so $V^{\ast n}\downarrow X$ is stably fiber homotopy trivial.  So that says that in the $S$-category, $\{T(V^{\ast k})\}$ is periodic up to suspension.  This is ``James periodicity.''
 
@@ -103,44 +105,44 @@ Well, let's continue with the discussion of stable homotopy, and really enter th
 \item A sequence $X \to Y \to Z \to \Suspend X$ is exact iff it remains exact after application of $\{W, -\}$ for all $W \in \CatOf{C}$.\todo{We should be careful and distinguish function spaces from the set of stable homotopy classes.}
 \item $Y \stackrel{g}{\to} Z \to \Suspend X \stackrel{\Suspend f}{\to} \Suspend Y$ is an exact triangle iff $X \stackrel{f}{\to} Y \stackrel{g}{\to} Z \to \Suspend X$ is an exact triangle.
 \end{enumerate}
-This is somehow reminiscent of (co)homology. To make that hint precise, consider a category $\CatOf{S}$, the ``stable category of spectra'', with the following properties:
+This is somehow reminiscent of (co)homology. To make that hint precise, consider a category $\Scat$, the ``stable category of spectra'', with the following properties:
 \begin{itemize}
 \item It contains the category $\CatOf C$.
-\item $\CatOf{S}$ has exact triangles, and the inclusion of $\CatOf{C}$ into $\CatOf{S}$ takes exact triangles to exact triangles.
-\item $\CatOf{S}$ is additive: it has products $\prod$ and coproducts $\coprod$, and finite products and finite coproducts coincide.
-\item The equivalence $\Suspend$ on $\CatOf{C}$ extends to one on $\CatOf{S}$.
-\item $\CatOf{S}$ has smash products with nice properties, e.g.: $W \sprod: \CatOf{S} \to \CatOf{S}$ preserves exact triangles; $S^0 \sprod$ is a unit.
+\item $\Scat$ has exact triangles, and the inclusion of $\CatOf{C}$ into $\Scat$ takes exact triangles to exact triangles.
+\item $\Scat$ is additive: it has products $\prod$ and coproducts $\coprod$, and finite products and finite coproducts coincide.
+\item The equivalence $\Suspend$ on $\CatOf{C}$ extends to one on $\Scat$.
+\item $\Scat$ has smash products with nice properties, e.g.: $W \sprod: \Scat \to \Scat$ preserves exact triangles; $S^0 \sprod$ is a unit.
 \item ``Brown representability'' holds.
 \item ``Whitehead representability'' holds.
 \end{itemize}
 
-What do these last two mean?  They have to do with cohomology and homology, so we'd better know what those are: a function $E^0: \CatOf{S}^{op} \to \CatOf{Ab}$ is cohomological if
+What do these last two mean?  They have to do with cohomology and homology, so we'd better know what those are: a function $E^0: \Scat^{op} \to \CatOf{Ab}$ is cohomological if
 \begin{enumerate}
 \item $E^0$ sends exact triangles to exact sequences.
-\item $\CatOf{S}$ is going to contain infinite complexes, so we'd better know what $E^0$ does to colimits, e.g.,\ wedges. It must satisfy the ``Milnor axiom'', that the following natural map is an isomorphism:
+\item $\Scat$ is going to contain infinite complexes, so we'd better know what $E^0$ does to colimits, e.g.,\ wedges. It must satisfy the ``Milnor axiom'', that the following natural map is an isomorphism:
 \[
 E^0({\textstyle{\!\bigvee}_\alpha X_\alpha}) \stackrel{\cong}{\to} \prod_\alpha E^0 X_\alpha
 .\]
 \end{enumerate}
-If $E^0$ is cohomological, we define $E^q (X) := E^0 (\Suspend^{-q} X)$. ``Brown representability'' states that any cohomological functor (a.k.a.\ cohomology theory) of $\CatOf{S}$ is representable: there is a spectrum $E$ such that the functors $E^0$ and $\{\textup{---}, E\}$ are naturally isomorphic.\footnote{Note that in this context, the restriction of $E^0$ to spaces always refers to \emph{reduced} $E$-cohomology, so usually the twiddle is left out.}  Analogously, $E_0: \CatOf{S} \to \CatOf{Ab}$ is homological if
+If $E^0$ is cohomological, we define $E^q (X) := E^0 (\Suspend^{-q} X)$. ``Brown representability'' states that any cohomological functor (a.k.a.\ cohomology theory) of $\Scat$ is representable: there is a spectrum $E$ such that the functors $E^0$ and $\{\textup{---}, E\}$ are naturally isomorphic.\footnote{Note that in this context, the restriction of $E^0$ to spaces always refers to \emph{reduced} $E$-cohomology, so usually the twiddle is left out.}  Analogously, $E_0: \Scat \to \CatOf{Ab}$ is homological if
 \begin{enumerate}
 \item $E_0$ sends exact triangles to exact sequences, and
 \item The Milnor axiom holds: the natural map $\bigoplus_\alpha E_0 X_\alpha \stackrel{\cong}{\to} E_0(\bigvee_\alpha X_\alpha)$ is an isomorphism.
 \end{enumerate}
-Whitehead representability says any homology theory is representable: there is a spectrum $E$ so that $E_0$ is naturally isomorphic to the functor $\{S^0, \text{---} \sprod E\} \cong \pi^S_0(\text{---} \sprod E)$.  If you look at Adams' blue book~\cite{Adams}, you'll see how to construct $\CatOf{S}$, with lots of technical details.  For now, we'll just see what an object, i.e., a spectrum, is.  One construction takes a spectrum to be a sequence $\ldots, E_{n-1}, E_n, E_{n+1}, \ldots$ of pointed spaces, with pointed maps $\Suspend E_n \to E_{n+1}$.  Two examples:
+Whitehead representability says any homology theory is representable: there is a spectrum $E$ so that $E_0$ is naturally isomorphic to the functor $\{S^0, \text{---} \sprod E\} \cong \pi^S_0(\text{---} \sprod E)$.  If you look at Adams' blue book~\cite{Adams}, you'll see how to construct $\Scat$, with lots of technical details.  For now, we'll just see what an object, i.e., a spectrum, is.  One construction takes a spectrum to be a sequence $\ldots, E_{n-1}, E_n, E_{n+1}, \ldots$ of pointed spaces, with pointed maps $\Suspend E_n \to E_{n+1}$.  Two examples:
 \begin{enumerate}
 \item Take $X$ a pointed space, define a spectrum $\SuspendS X$ by \[(\SuspendS X)_n =\begin{cases} \Suspend^n X,&n\geq0\\\ptspace,&n<0.\end{cases}\]
-This gives a name to the inclusion functor from the homotopy category of pointed spaces to $\CatOf{S}$, which has an adjoint function $\LoopsS$ that goes the other way.  in particular, there are maps
-\begin{diagram}[height=2em]
-X & \rTo^{\alpha\ \ \ } & \LoopsS \SuspendS X, \\
-E & \lTo^{\beta\ \ \ } & \SuspendS \LoopsS E.
-\end{diagram}
+This gives a name to the inclusion functor from the homotopy category of pointed spaces to $\Scat$, which has an adjoint function $\LoopsS$ that goes the other way.  in particular, there are maps
+\begin{ctikzcd}
+X \rar{\alpha} & \LoopsS \SuspendS X, \\
+E & \lar["\beta"'] \SuspendS \LoopsS E.
+\end{ctikzcd}
 \item Fix an abelian group $A$; define the spectrum $HA$
 \[(HA)_n =\begin{cases} K(A,n),&n\geq0\\\ptspace,&n<0.\end{cases}\]
 The map $\Suspend K(A, n) \to K(A, n+1)$ is given by the adjoint of the identity $K(A, n) \to \Loops K(A, n+1)$.
 \end{enumerate}
 
-Now let's talk about a notion of duality that makes sense in the context of spectra.  This is where we lift off a bit; Michael Artin says this is the hardest thing in the world to write down.  A duality is a map $\alpha: X \sprod Y \to S^0$ such that for all $W \in \CatOf{S}$, the composite \[\{W, Y\} \stackrel{X \sprod}{\to} \{X \sprod W, X \sprod Y\} \stackrel{\alpha_*}{\to} \{X \sprod W, S^0\}\] is an isomorphism. In other words, given a map $f: W \to Y$, we can form the composite:
+Now let's talk about a notion of duality that makes sense in the context of spectra.  This is where we lift off a bit; Michael Artin says this is the hardest thing in the world to write down.  A duality is a map $\alpha: X \sprod Y \to S^0$ such that for all $W \in \Scat$, the composite \[\{W, Y\} \stackrel{X \sprod}{\to} \{X \sprod W, X \sprod Y\} \stackrel{\alpha_*}{\to} \{X \sprod W, S^0\}\] is an isomorphism. In other words, given a map $f: W \to Y$, we can form the composite:
 \[X\wedge W \xrightarrow{1_X \wedge f} X\wedge Y\to S^0,\]
 and we require that this assignment on Hom-sets is an isomorphism.
 \todo{Address this ConfusedBox.}
@@ -164,44 +166,46 @@ The first thing to note is that these dualities exist:
 For all $X$ there is a $Y$ with a duality $X \sprod Y \to S^0$.
 \end{thm}
 \begin{proof}
-$W \mapsto \{X \sprod W, S^0\}$ is a cohomology theory, so it has a representing spectrum $Y$; hence there is a natural isomorphism $\{X \sprod W, S^0\} \cong \{W, Y\}$.  The map $\alpha$ comes from taking for $W$ the spectrum $Y$ itself: $\{X \sprod Y, S^0\} \cong \{Y, Y\}$.  Let $\alpha$ be the element of $\{X \sprod Y, S^0\}$ corresponding to the identity.  The naturality of Brown representability gives us that the isomorphism comes in the manner described in the definition of duality: for any $W \in \CatOf{S}$, $\gamma \in \{W, Y\}$:
-\begin{diagram}[height=2em]
-\gamma & \rMapsto & & \id \sprod \gamma & \rMapsto & ? & \rMapsto & & \gamma \\
-& \{W, Y\} & \rTo^{X \sprod} & \{X \sprod W, X \sprod Y\} & \rTo^{\alpha_*} & \{X \sprod W, S^0\} & \rTo^{BR}_\cong & \{W, Y\} \\
-\uMapsto & \uTo>{\gamma^*} & & \uTo>{\gamma^*} & & \uTo>{\gamma^*} & & \uTo>{\gamma^*} & \uMapsto \\
-& \{Y, Y\} & \rTo^{X \sprod} & \{X \sprod Y, X \sprod Y\} & \rTo^{\alpha_*} & \{X \sprod Y, S^0\} & \rTo^{BR}_\cong & \{Y, Y\} \\
-\id & & \rMapsto & \id & \rMapsto & \alpha & \rMapsto & & \id.
-\end{diagram}
+$W \mapsto \{X \sprod W, S^0\}$ is a cohomology theory, so it has a representing spectrum $Y$; hence there is a natural isomorphism $\{X \sprod W, S^0\} \cong \{W, Y\}$.  The map $\alpha$ comes from taking for $W$ the spectrum $Y$ itself: $\{X \sprod Y, S^0\} \cong \{Y, Y\}$.  Let $\alpha$ be the element of $\{X \sprod Y, S^0\}$ corresponding to the identity.  The naturality of Brown representability gives us that the isomorphism comes in the manner described in the definition of duality: for any $W \in \Scat$, $\gamma \in \{W, Y\}$:
+\begin{ctikzcd}
+|[xshift=-2em]|\gamma \ar[r,mapsto] & \id\sprod \gamma \rar[mapsto] & ? \ar[r,mapsto] &|[xshift=2em]| \gamma\\[-1em]
+%%
+ \{W, Y\} \rar{X \sprod} & \{X \sprod W, X \sprod Y\} \rar{\alpha_*} & \{X \sprod W, S^0\} \rar["BR", "\cong"'] & \{W, Y\} \\
+ \{Y, Y\} \rar{X \sprod}\uar["\gamma^*"'] & \{X \sprod Y, X \sprod Y\} \rar{\alpha_*} \uar["\gamma^*"'] & \{X \sprod Y, S^0\} \uar["\gamma^*"']\rar["BR", "\cong"'] & \{Y, Y\} \uar["\gamma^*"'] \\[-1em]
+%%
+|[xshift=-2em]|\id\ar[uuu,mapsto,bend left=15]\ar[mapsto,r] & \id\rar[mapsto]& \alpha\ar[r,mapsto] &|[xshift=2em]| \id\ar[uuu,mapsto,bend right=15]
+\end{ctikzcd}
+
+
 The first two squares obviously commute; the third commutes by naturality of Brown representability.
 \end{proof}
 
-In fact there's more to be had from this use of Brown representability: the correspondence $X \leadsto Y = DX$ can be made contravariantly functorial in the sense that $X \sprod DX \stackrel{\alpha_X}{\to} S^0$ is a natural transformation.  That is, we can construct a functor $D:\CatOf{S}^\text{op}\to\CatOf{S}$ and a natural collection $\alpha_X:X\wedge D(X)\to S^0$ for $X\in\CatOf{S}$ of dualities. By ``natural'', we mean that for any map %\IncorrectFootnote{$\alpha$ is a natural transformation of functors $\CatOf{S}\times\CatOf{S}^\text{op}\to\CatOf{S}$, where $S^0$ is the functor whose image is the object $S^0$ and its identity morphism.} For
+In fact there's more to be had from this use of Brown representability: the correspondence $X \leadsto Y = DX$ can be made into a contravariant functor in such a way that $X \sprod DX \stackrel{\alpha_X}{\to} S^0$ is a natural transformation.  That is, we can construct a functor $D:\Scat^\text{op}\to\Scat$ and a natural collection $\alpha_X:X\wedge D(X)\to S^0$ for $X\in\Scat$ of dualities. By ``natural'', we mean that for any map\todo{Put a footnote explaining this dinaturality or whatever it's called.} %\IncorrectFootnote{$\alpha$ is a natural transformation of functors $\Scat\times\Scat^\text{op}\to\Scat$, where $S^0$ is the functor whose image is the object $S^0$ and its identity morphism.} For
 $f: X \to Y$, the following diagram commutes:
-\begin{diagram}[height=2em]
-X \sprod DY & \rTo^{1 \sprod Df} & X \sprod DX \\
-\dTo<{f \sprod 1} & & \dTo>{\alpha_X} \\
-Y \sprod DY & \rTo_{\alpha_Y} & S^0
-\end{diagram}
-To make the dualities this way, first use a massive axiom of choice to pick a dual $DX$ for any $X$; obtain the $\alpha_X$ in the manner described above.  Now for any map $f: X \to Y$ we get, for any $W \in \CatOf{S}$, a map $\gamma$ via
-\begin{diagram}[height=2em]
-\{W, DY\} & \rTo^\gamma & \{W, DX\} \\
-\dEqualto>{BR} & & \dEqualto>{BR} \\
-\{Y \sprod W, S^0\} & \rTo^{(f \sprod 1)^*} & \{X \sprod W, S^0\}.
-\end{diagram}
+\begin{ctikzcd}
+X \sprod DY\dar["f\sprod 1"'] \rar{1 \sprod Df} & X \sprod DX\dar["\alpha_X"] \\
+Y \sprod DY \rar{\alpha_Y} & S^0
+\end{ctikzcd}
+To make the dualities this way, we first use the axiom of choice to pick a dual $DX$ for each object $X$, and we obtain maps $\alpha_X$ in the manner described above.  Now for any map $f: X \to Y$ we get, for any $W \in \Scat$, a map $\gamma$ via
+\begin{ctikzcd}
+\{W, DY\}\dar[equal,"BR"] \rar{\gamma} & \{W, DX\}\dar[equal,"BR"] \\
+\{Y \sprod W, S^0\} \rar{(f \sprod 1)^*} & \{X \sprod W, S^0\}.
+\end{ctikzcd}
 Take $W = DY$, then define $Df: \{DY, DY\} \to \{DY, DX\}$ by $1 \mapsto Df$.  Then we have
-\begin{diagram}[height=2em]
-Df & \rMapsto & & 1 \sprod Df & \rMapsto & \alpha_X \circ (1 \sprod Df) & \rMapsto & & Df \\
-& \{DY, DX\} & \rTo^{X \sprod} & \{X \sprod DY, X \sprod DY\} & \rTo^{\alpha_{X*}} & \{X \sprod DY, S^0\} & \rTo^\cong_{BR} & \{DY, DX\} \\
-& & & & & \uTo_{(f\wedge 1)^*} & &\uTo_\gamma&\uMapsto\\
-& \{DY, DY\} & \rTo^{Y \sprod} & \{Y \sprod DY, Y \sprod DY\} & \rTo^{\alpha_{Y*}} & \{Y \sprod DY, S^0\} & \rTo^\cong_{BR} & \{DY, DY\} \\
-\id & \rMapsto & & \id & \rMapsto & \alpha_Y & \rMapsto & & 1,
-\end{diagram}
+\begin{ctikzcd}
+Df \rar[mapsto] & 1 \sprod Df \rar[mapsto] & \alpha_X \circ (1 \sprod Df) \rar[mapsto]  & |[xshift=2.5em]|Df \\[-1em]
+%%
+\{DY, DX\} \rar{X \sprod} & \{X \sprod DY, X \sprod DY\} \rar{\alpha_{X*}} & \{X \sprod DY, S^0\} \rar["BR", "\cong"'] & \{DY, DX\} \\
+\{DY, DY\} \rar{Y \sprod} & \{Y \sprod DY, Y \sprod DY\} \rar{\alpha_{Y*}} & \{Y \sprod DY, S^0\} \uar["(f\sprod1)^*"']\rar["BR", "\cong"'] & \{DY, DY\} \uar["\gamma"']\\[-1em]
+%%
+\id \rar[mapsto] & \id \rar[mapsto] & \alpha_Y \rar[mapsto] & |[xshift=2.5em]| 1\ar[uuu,mapsto,bend right=15],
+\end{ctikzcd}
 where the vertical map sends $\alpha_Y$ to $\alpha_Y \circ (f \sprod 1)$.  The maps in the rows are determined by the construction of the dualities involved; the last square commutes by definition of $Df$, and the two composites at $\{X \sprod DY, S^0\}$, which are equal, are the two ways of going around the square that we wanted to show commutes.
 
 All right, enough, let's see what having $D$ does for us.
 \begin{lem}
 \begin{itemize}
-\item You can choose $DS^0 = S^0$.
+\item We can choose $DS^0 = S^0$.
 \item $D \Suspend X = \Suspend^{-1} D X$.
 \item $X \to Y \to Z \to \Suspend X$ an exact triangle means that $DX \from DY \from DZ \from \Suspend^{-1} DX$ is an exact triangle.
 \end{itemize}
@@ -214,17 +218,17 @@ A finite complex is built out of spheres using exact triangles, so we get
 \item If $K$ is finite, then $K$ can be taken for $DDK$.
 \end{itemize}
 \end{cor}
-\ConfusedBox{The whole function spectrum Spiel had been omitted, I took the following remark from the end of the next chapter, where it had been misplaced.}
+\ConfusedBox{The whole function spectrum spiel had been omitted, I took the following remark from the end of the next chapter, where it had been misplaced.}
 \begin{rem}
 The defining property of $D$ was $\{W, DX\} \cong \{X \sprod W, S^0\}$.  Now there's nothing particularly special about $S^0$: if $Y$ is any spectrum, $W \mapsto \{X \sprod W, Y\}$ is a cohomology theory for $W$, so it's represented by a spectrum $F(X, Y)$.  If you think of $X \sprod W$ as a tensor product, $F(X, Y)$ is a like a hom-space.  So think of $F(X, Y)$ as a ``function spectrum,'' and $DX = F(X, S^0)$.  It doesn't come to us the way that function spaces normally do; we get it out of Brown representability.
 
 Notice that there is a map $f: DX \sprod Y \to F(X, Y)$ defined by
-\begin{diagram}[height=1.5em]
-\{X \sprod (DX \sprod Y), Y\} & \ni & (X \sprod DX \sprod Y \stackrel{\alpha_* \sprod 1}{\to} S^0 \sprod Y \stackrel{\id}{\to} Y) \\
-\dEqualto & & \dMapsto \\
-\{DX \sprod Y, F(X, Y)\} & & f.
-\end{diagram}
-Now we'd like $f$ to be an equivalence; this isn't always true, but if some reasonable nice condition, say $X$ or $Y$ a finite complex, then it is.
+\begin{ctikzcd}[column sep=tiny]
+\{X \sprod (DX \sprod Y), Y\} \dar[equal]\ni &[-\pgfmatrixcolumnsep-0.6em] (X \sprod DX \sprod Y \ar[rr,"\alpha_*\sprod1"]&\dar[mapsto]& S^0 \sprod Y \ar[r,"\id"]&[1em] Y) \\
+\{DX \sprod Y, F(X, Y)\} & &f.
+\end{ctikzcd}
+\todo[noline]{Can we make this diagram suck less?}
+Now we'd like $f$ to be an equivalence; this isn't always true, but given some reasonable condition, say $X$ or $Y$ a finite complex, then it is.
 \end{rem}
 % >>>
 \fi
@@ -238,61 +242,55 @@ Now we'd like $f$ to be an equivalence; this isn't always true, but if some reas
 \section{Dualities} % <<<
 \label{Dualities}
 \ifx\OutputDualities\undefined\else
-We were talking about duality; the last thing mentioned was the ``function spectrum'' $F(X, Y)$ satisfying $\{W, F(X, Y)\} \cong \{X \sprod W, Y\}$ for all $W \in \CatOf{S}$.  If $X$ is finite then $F(X, Y) = (DX) \sprod Y$.  Now call $Y = E$, take $W = S^n$, and assume $X$ is finite. Then,
-\[\xymatrix{
-\ar@{=}[d]\pi_n(DX\wedge E)\ar@{=}[r]&\{S^n,DX\wedge E\}\ar[r]^{\ \cong}&\{\Sigma^nX,E\}\ar@{=}[d]\\
-E_n(DX)\ar[rr]^\cong_{\text{duality}}&&E^{-n}(X)
-}\]
-I want to apply this sort of duality, and relate it to other sorts of duality you're familiar with.  For example, how can we recognize a duality?  Suppose $X$ is finite and we have a map $\hat f: X \sprod Y \to S^0$; then $\hat f$ corresponds to a map $f: Y \to DX$ which makes the following triangle commute.
-\begin{diagram}[height=2em]
-& & X \sprod DX \\
-& \ruTo^{1 \sprod f} & \dTo>{\alpha_X} \\
-X \sprod Y & \rTo_{\hat f} & S^0.
-\end{diagram}
- One could ask whether $f$ is an equivalence. Consider, for any spectrum $E$, (here being viewed as a homology theory), the commuting diagram:
-\[\xymatrix@C=-1.3em{
-\ar[dd]_{\hat f/}
-E_n(Y)\ar@{=}[r]&\{S^n,Y\wedge E\}\ar[rr]^{(f\wedge1_E)_*}\ar[d]&&
-\{S^n,DX\wedge E\}\ar@{=}[r]\ar[d]&E_n(DX)
-\ar[dd]^\cong\\
-&\{X\wedge S^n,X\wedge Y\wedge E\}\ar[rr]^{(1_X\wedge f\wedge1_E)_*}\ar[d]^{(\hat f\wedge1_E)_*}&\qquad\qquad\qquad\qquad&
-\{X\wedge S^n,X\wedge DX\wedge E\}\ar[d]^{(\alpha_X\wedge1_E)_*}\\
-E^{-n}(X)\ar@{=}[r]&\{X\wedge S^n,E\}\ar@{=}[rr]&&
-\{X\wedge S^n,E\}\ar@{=}[r]&E^{-n}(X)\\
-}\]
-In light of this diagram, if the obvious construction using $\hat f:X\wedge Y\to S^0$ actually produces an isomorphism $\hat f/$, then $f$ is an $E$-homology equivalence. That is, $f_*: E_n (Y) \to E_n (DX)$ is an isomorphism.
+We were talking about duality; the last thing mentioned was the ``function spectrum'' $F(X, Y)$ satisfying $\{W, F(X, Y)\} \cong \{X \sprod W, Y\}$ for all $W \in \Scat$.  If $X$ is finite then $F(X, Y) = (DX) \sprod Y$.  Now call $Y = E$, take $W = S^n$, and assume $X$ is finite. Then,
+\begin{ctikzcd}
+\pi_n(DX\wedge E)\dar[equal]\rar[equal]&\{S^n,DX\wedge E\}\rar{\cong}&\{\Sigma^nX,E\}\dar[equal]\\
+E_n(DX)\ar[rr,"\cong"',"\text{duality}"]&&E^{-n}(X)
+\end{ctikzcd}
+We want to relate this duality to other familiar dualities.  For example, how can we recognize a duality?  Suppose $X$ is finite and we have a map $\fhat: X \sprod Y \to S^0$; then $\fhat$ corresponds to a map $f: Y \to DX$ which makes the following triangle commute.
+\begin{ctikzcd}
+& X \sprod DX\dar["\alpha_X"] \\
+X \sprod Y\urar["1\sprod f"]  \rar["\fhat"'] & S^0.
+\end{ctikzcd}
+ One could ask whether $f$ is an equivalence. Given a spectrum $E$ consider the following diagram:
+\begin{ctikzcd}[column sep=-1.3em]
+\mathclapph{E^{-n}(X)}{E_n(Y)} \ar[dd,"\fhat/"']\rar[equal] & \{S^n, Y\wedge E\} \dar\rar["(f\sprod 1_E)_*"] &[-\pgfmatrixcolumnsep+5.5em] \{S^n,DX\sprod E\} \dar\rar[equal] & E_n(DX)\ar[dd,"\cong"]\\
+& \{X\sprod S^n,X\sprod Y\sprod E\}\dar["(\fhat\sprod 1_E)_*"] \rar["(1_X\sprod f\sprod 1_E)_*"] & \{X\sprod S^n,X\sprod DX\sprod E\}\dar["(\alpha_X\sprod 1_E)_*"]\\
+E^{-n}(X)\rar[equal] & \{X\sprod S^n,E\} \rar[equal] & \mathclapph{\{S^n,DX\sprod E\}}{\{X\sprod S^n,E\}}\rar[equal]& E^{-n}(X)
+\end{ctikzcd}
 
-Note that if $X$ and $Y$ are finite spectra, and $f: X \to Y$ is an isomorphism on $H_*(-; \Z)$, then $f$ is an equivalence (there's no $\pi_1$ problem here).  So taking $E = H(-; \Z)$ will be enough.  That's what the standard duality theorems give you.
+In light of this diagram, if the obvious construction using $\fhat:X\wedge Y\to S^0$ actually produces an isomorphism $\fhat/$, then $f$ is an $E$-homology equivalence. That is, $f_*: E_n (Y) \to E_n (DX)$ is an isomorphism.
+
+Note that if $X$ and $Y$ are finite spectra, and $f: X \to Y$ is an isomorphism on $H_*(-; \Zbb)$, then $f$ is an equivalence (there's no $\pi_1$ problem here).  So taking $E = H(-; \Zbb)$ will be enough.  That's what the standard duality theorems give you.
 
 %\begin{wrapfigure}{r}{0.25\textwidth}
 %\centering\includegraphics[width=0.2\textwidth]{figures/25.pdf}
 %\caption{\small $X$ and $Y$ embedded in $S^n$.}
 %\end{wrapfigure}
 \subsection*{Alexander duality}
-Let $X$ be a finite complex embedded in $S^n$; let $Y$ be another complex disjoint from $X$ in $S^k$. Fix a point $p$ not in $X$ or $Y$, and consider the stereographic projection $\textup{St}_p:S^n\setminus\{p\}\to\R^n$.  Consider the map
-\[X \times Y  \to S^{n-1}\text{\qquad defined by\qquad}(x, y)  \mapsto \frac{\textup{St}_p(x)-\textup{St}_p(y)}{\|\textup{St}_p(x)-\textup{St}_p(y)\|}\]
+Let $X$ be a finite complex embedded in $S^n$; let $Y$ be another complex disjoint from $X$ in $S^k$. Fix a point $p$ not in $X$ or $Y$, and consider the stereographic projection $\textup{St}_p:S^n\setminus\{p\}\to\Rbb^n$.  Consider the map
+\begin{cjointikzcd}
+\diagram  X \times Y  \rar & S^{n-1}
+%
+\diagram \intertext{defined by}
+%
+\diagram (x, y)  \rar[mapsto] & \frac{\textup{St}_p(x)-\textup{St}_p(y)}{\|\textup{St}_p(x)-\textup{St}_p(y)\|}
+\end{cjointikzcd}
 %\begin{align*}
 %X \times Y & \to S^{n-1} \\
 %(x, y) & \mapsto \frac{x-y}{\|x-y\|}
 %\end{align*}
 and apply the Hopf construction to get a map
-%\begin{diagram}[height=2em]
-%X \ast Y & \rTo & S^n \\
-%\dTo>\simeq \\
-%\Suspend(X \sprod Y)
-%\end{diagram}
-\[\Sigma(X\wedge Y)\overset{\simeq}{\to}X\ast Y\to S^n.\]
-%\[\xymatrix{
-%X\ast Y\ar[r]\ar[d]^\simeq&S^n\\
-%\Sigma(X\wedge Y)
-%}\]
-In the $\CatOf{S}$ category we get a map $\hat f: X \sprod \Suspend^{1-n} Y \to S^0$.  Alexander duality says
+\begin{ctikzcd}
+\Sigma(X\wedge Y)\rar["\simeq"] & X\ast Y \rar & S^n.
+\end{ctikzcd}
+In the category $\Scat$ we get a map $\fhat: X \sprod \Suspend^{1-n} Y \to S^0$.  Alexander duality says
 \begin{thm}
-If $Y \simeq S^n - X$ then $\hat f$ is a duality; $DX \simeq \Suspend^{1-n} Y$.
+If $Y \simeq S^n - X$ then $\fhat$ is a duality; $DX \simeq \Suspend^{1-n} Y$.
 \end{thm}
-\noindent The proof consists of showing that $\hat f/: \widetilde H_i (\Suspend^{1-n} Y) \stackrel{\cong}{\to} \widetilde H^i (X)$ is an isomorphism for $i \in \Z$.
+\noindent The proof consists of showing that $\fhat/: \widetilde H_i (\Suspend^{1-n} Y) \stackrel{\cong}{\to} \widetilde H^i (X)$ is an isomorphism for $i \in \Zbb$.
 \begin{rem}
-If you think of $X$ and $Y$ as embedded in $\R^n$ instead of $S^n$ and $Y \simeq \R^n - X$, then $Y \simeq S^n - \pt{X}$, so $D(\pt{X}) \simeq \Suspend^{1-n} Y$.
+If you think of $X$ and $Y$ as embedded in $\Rbb^n$ instead of $S^n$ and $Y \simeq \Rbb^n - X$, then $Y \simeq S^n - \Xpt$, so $D(\Xpt) \simeq \Suspend^{1-n} Y$.
 \end{rem}
 
 \subsection*{Milnor-Spanier duality}
@@ -300,26 +298,28 @@ If you think of $X$ and $Y$ as embedded in $\R^n$ instead of $S^n$ and $Y \simeq
 %\centering\includegraphics[width=0.2\textwidth]{figures/26.pdf}
 %\caption{\small Set-up for Milnor-Spanier duality.}
 %\end{wrapfigure}
-Take $X \subseteq \mathrm{int}(D^n) \cong \R^n$, and suppose $N \subseteq \mathrm{int}(D^n)$ is a regular neighborhood,\footnote{If you embed a finite complex into a Euclidean space, any sufficiently small
+Take $X \subseteq \mathrm{int}(D^n) \cong \Rbb^n$, and suppose $N \subseteq \mathrm{int}(D^n)$ is a regular neighborhood,\footnote{If you embed a finite complex into a Euclidean space, any sufficiently small
 open neighborhood admits a deformation retraction back to the complex
  --- this is a `regular neighborhood'. If the complex is a manifold,
 you can identify the normal bundle of the embedding with a regular
-neighborhood. } so that the inclusion $X \stackrel{\simeq}{\to} N$ is a homotopy equivalence.  Then $D(\pt{X}) \simeq \Suspend^{1-n}(D^n - N)$, by Alexander duality.
+neighborhood. } so that the inclusion $X \stackrel{\simeq}{\to} N$ is a homotopy equivalence.  Then $D(\Xpt) \simeq \Suspend^{1-n}(D^n - N)$, by Alexander duality.
 The virtue of the regular neighborhood is that you can identify what the suspension of the complement is: all you need to find the suspension is an inclusion into a contractible space, which we have, giving a degenerate cofiber sequence:
-\[(D^n - N) \to D^n \to D^n/(D^n - N) \overset{\simeq}{\to} \Suspend(D^n - N)\to\Sigma D^n.\]
+\begin{ctikzcd}
+(D^n - N) \rar & D^n \rar &  D^n/(D^n - N) \rar["\simeq"] & \Suspend(D^n - N)\rar & \Sigma D^n
+\end{ctikzcd}
 Thus, as $D^n/(D^n-N)$ is homeomorphic to $\overline N/\partial\overline N$,
 \[D(X_+)\simeq\Suspend^{1-n}(D^n - N) \simeq \Suspend^{-n}(D^n / (D^n-N)) \simeq \Suspend^{-n}(\bar N / \partial \bar N).\]
-This is most useful when you can say something about $N$.  If $X$ is a $d$-dimensional manifold without boundary, then the normal bundle $\nu$ of the inclusion $X \into D$ is $(n-d)$-dimensional and $N$ is homotopy equivalent to the disk bundle of $\nu$.  It follows that $\bar N / \partial \bar N$ models the Thom complex $T (\nu)$, so $D(\pt{X}) \simeq \Suspend^{-n} T(\nu) \simeq T(\nu - n \varepsilon)$.  This is called ``Milnor-Spanier duality'' (although it's not called that very often).  In (co)homology,
+This is most useful when you can say something about $N$.  If $X$ is a $d$-dimensional manifold without boundary, then the normal bundle $\nu$ of the inclusion $X \into D$ is $(n-d)$-dimensional and $N$ is homotopy equivalent to the disk bundle of $\nu$.  It follows that $\bar N / \partial \bar N$ models the Thom complex $T (\nu)$, so $D(\Xpt) \simeq \Suspend^{-n} T(\nu) \simeq T(\nu - n \varepsilon)$.  This is called ``Milnor-Spanier duality'' (although it's not called that very often).  In (co)homology,
 \[
-E^{-i}(\pt{X}) = E_i (D(\pt{X})) = E_{i+n} (T (\nu)).
+E^{-i}(\Xpt) = E_i (D(\Xpt)) = E_{i+n} (T (\nu)).
 \]
-Observe also that $\nu + \tau = n \varepsilon$ where $\tau$ is the tangent bundle, so $D(\pt{X}) = T(\nu - n \varepsilon) = T(-\tau)$, giving
+Observe also that $\nu + \tau = n \varepsilon$ where $\tau$ is the tangent bundle, so $D(\Xpt) = T(\nu - n \varepsilon) = T(-\tau)$, giving
 \[
-E^{-i}(\pt{X}) = E_i (D(\pt{X})) = E_{i} (T (-\tau)).
+E^{-i}(\Xpt) = E_i (D(\Xpt)) = E_{i} (T (-\tau)).
 \]
 \subsection*{Poincar\'e duality}
-If $\nu$ (or equivalently, $\tau$) is oriented for $E$ in the Milnor-Spanier setup, then the Thom isomorphism says $E_{i+n} (T (\nu)) \cong E_{i+d} (\pt{X})$. Thus:\footnote{More abstractly: the Thom isomorphism gives $E_{i-d}(T(-\tau))\cong E_i(X_+)$, and $E^{d-i}(X_+)\cong E_{i-d}(T(-\tau))$ by Milton-Spanier.}
-\[E^{-i} (\pt{X}) \cong E_{i+d} (\pt{X}).\]
+If $\nu$ (or equivalently, $\tau$) is oriented for $E$ in the Milnor-Spanier setup, then the Thom isomorphism says $E_{i+n} (T (\nu)) \cong E_{i+d} (\Xpt)$. Thus:\footnote{More abstractly: the Thom isomorphism gives $E_{i-d}(T(-\tau))\cong E_i(X_+)$, and $E^{d-i}(X_+)\cong E_{i-d}(T(-\tau))$ by Milton-Spanier.}
+\[E^{-i} (\Xpt) \cong E_{i+d} (\Xpt).\]
 This gives standard Poincare duality, recalling that $E$ stands for the \emph{reduced} cohomology theory.
 
 \subsection*{Atiyah duality}
@@ -335,7 +335,7 @@ Now suppose that $X$ is embedded in $D^n$ such that $\partial X$ lies in $\parti
 \caption{\small Atiyah duality.}\label{AtiyahDuality}
 \end{figure}
 
-Now, $X / \partial X$ is homotopic to  $Y = X \cup C \partial X$, which is a subcomplex of $\partial(CD^n)\cong S^n$.  Moreover, $Y$ has $N \cup C(N \cap S^{n-1})$ as a regular neighborhood in $S^n$, and its complement is $K=S^n - (N \cup C(N \cap S^{n-1}))$.  Finally, $K$ deformation retracts onto $(D^n-N)$, as the tip of the cone does not lie in $K$. So, applying Alexander duality to $Y\subseteq S^n$:
+Now, $X / \partial X$ is homotopic to  $Y = X \cup C \partial X$, which is a subcomplex of $\partial(CD^n)\cong S^n$.  Moreover, $Y$ has $N \cup C(N \cap S^{n-1})$ as a regular neighborhood in $S^n$, and its complement is $K=S^n - (N \cup C(N \cap S^{n-1}))$.  Finally, $K$ deformation retracts onto $(D^n-N)$, as the tip of the cone does not lie in $K$. So, applying Alexander duality to $Y\subseteq S^n$ gives
 \begin{align*}
 D(X / \partial X) & \simeq D(Y) \\
 & \simeq \Suspend^{1-n}(K) \\
@@ -363,16 +363,16 @@ More generally, we can define, whenever $t+b\geq1$:
 \[\RP^{t-1}_{-b}:= T(-bL\downarrow\RP^{t+b-1}),\]
 a spectrum with cells in every dimension from $-b$ to $t-1$, inclusive.
 
-Moreover, it happens\footnote{To see this, one argues as follows. View $\bundle{L}$ as a subbundle of $\RP^{k-1}\times \R^k$, where $\RP^{k-1}$ is viewed as the set of lines $\R\{x\}$ in $\R^k$, for nonzero $x\in\R^k$. Then we can produce a bundle isomorphism $\Hom(\bundle{L},\bundle{L}^\perp)\to\tau(\RP^{k-1})$ by sending $h:\R\{x\}\to \R\{x\}^\perp$ to the germ at $0$ of the path $t\mapsto \R\{x+t\cdot h(x)\}$ in $\RP^{k-1}$. Noting that $\Hom(\bundle L,\bundle L)$ is a line bundle with a nonvanishing section, it is trivial, so $\tau(\RP^{k-1})+\R=\Hom(\bundle L,\bundle L^\perp\oplus\bundle L)=\Hom(\bundle L,\R^k)=\Hom(\bundle L,\R)^k=\bundle L^k$.}\todo{I find this footnote very hard to read.} that $\tau(\RP^{k-1}) + \varepsilon = k \bundle{L}$.
+Moreover, it happens\footnote{To see this, one argues as follows. View $\bundle{L}$ as a subbundle of $\RP^{k-1}\times \Rbb^k$, where $\RP^{k-1}$ is viewed as the set of lines $\Rbb\{x\}$ in $\Rbb^k$, for nonzero $x\in\Rbb^k$. Then we can produce a bundle isomorphism $\Hom(\bundle{L},\bundle{L}^\perp)\to\tau(\RP^{k-1})$ by sending $h:\Rbb\{x\}\to \Rbb\{x\}^\perp$ to the germ at $0$ of the path $t\mapsto \Rbb\{x+t\cdot h(x)\}$ in $\RP^{k-1}$. Noting that $\Hom(\bundle L,\bundle L)$ is a line bundle with a nonvanishing section, it is trivial, so $\tau(\RP^{k-1})+\Rbb=\Hom(\bundle L,\bundle L^\perp\oplus\bundle L)=\Hom(\bundle L,\Rbb^k)=\Hom(\bundle L,\Rbb)^k=\bundle L^k$.}\todo{I find this footnote very hard to read.} that $\tau(\RP^{k-1}) + \varepsilon = k \bundle{L}$.
 %\begin{enumerate}
 %\item $T(n \bundle{L}) = \RP^{n+k-1} / \RP^{n-1} \simeq \RP^{n+k-1}_n$, (see lecture); and
-%\item $\tau(\RP^{k-1}) + \varepsilon = k \bundle{L}$.\footnote{To see this, one argues as follows. View $\bundle{L}$ as a subbundle of $\RP^{k-1}\times R^k$, where $\RP^{k-1}$ is viewed as the set of lines $\R\{x\}$ in $\R^k$, for nonzero $x\in\R^k$. Then we can produce a bundle isomorphism $\Hom(\bundle{L},\bundle{L}^\perp)\to\tau(\RP^{k-1})$ by sending $h:\R\{x\}\to \R\{x\}^\perp$ to the germ at $0$ of the path $t\mapsto \R\{x+t\cdot h(x)\}$ in $\RP^{k-1}$. Noting that $\Hom(\bundle L,\bundle L)$ is a line bundle with a nonvanishing section, it is trivial, so $\tau(\RP^{k-1})+\R=\Hom(\bundle L,\bundle L^\perp\oplus\bundle L)=\Hom(\bundle L,\R^k)=\Hom(\bundle L,\R)^k=\bundle L^k$.}
+%\item $\tau(\RP^{k-1}) + \varepsilon = k \bundle{L}$.\footnote{To see this, one argues as follows. View $\bundle{L}$ as a subbundle of $\RP^{k-1}\times R^k$, where $\RP^{k-1}$ is viewed as the set of lines $\Rbb\{x\}$ in $\Rbb^k$, for nonzero $x\in\Rbb^k$. Then we can produce a bundle isomorphism $\Hom(\bundle{L},\bundle{L}^\perp)\to\tau(\RP^{k-1})$ by sending $h:\Rbb\{x\}\to \Rbb\{x\}^\perp$ to the germ at $0$ of the path $t\mapsto \Rbb\{x+t\cdot h(x)\}$ in $\RP^{k-1}$. Noting that $\Hom(\bundle L,\bundle L)$ is a line bundle with a nonvanishing section, it is trivial, so $\tau(\RP^{k-1})+\Rbb=\Hom(\bundle L,\bundle L^\perp\oplus\bundle L)=\Hom(\bundle L,\Rbb^k)=\Hom(\bundle L,\Rbb)^k=\bundle L^k$.}
 %\end{enumerate}
 By Atiyah duality, $D(T(n\bundle{L})) \simeq T(-n \bundle{L} - \tau)$, so that
 \[D(\RP^{n+k-1}_n) = D(T(n\bundle{L})) \simeq T(-n \bundle{L} - \tau) = T(-n \bundle{L} + \varepsilon -k \bundle{L}) = \Suspend T(-(n+k)\bundle{L}) =: \Suspend \RP^{-n-1}_{-n-k}.\]
 Summarizing:
 \[D(\RP^{t-1}_{-b}) \simeq \Suspend (\RP^{b-1}_{-t})\text{ for }t+b\geq1.\]
-% $D(\RP^{t-1}_{-b}) \simeq \Suspend \RP^{b-1}_{-t}$, for $b, t \in \Z$, $t-1 \ge -b$ (and taking $b = -n$, $t = n+k$ in the above.  The condition $t-1 \ge -b$ requires that $\RP^{t-1}_{-b}$ has a cell.) or $\RP^{t-1}_b = T(-b \bundle{L} \downarrow \RP^{t+b-1})$.
+% $D(\RP^{t-1}_{-b}) \simeq \Suspend \RP^{b-1}_{-t}$, for $b, t \in \Zbb$, $t-1 \ge -b$ (and taking $b = -n$, $t = n+k$ in the above.  The condition $t-1 \ge -b$ requires that $\RP^{t-1}_{-b}$ has a cell.) or $\RP^{t-1}_b = T(-b \bundle{L} \downarrow \RP^{t+b-1})$.
 
 By the way, if you don't like these somewhat ethereal spaces, you can use James Periodicity: let $a$ be the periodicity of $\bundle{L}$ in $\widetilde J(\RP^{t+b-1})$.  Then $T((ja-b)\bundle{L}) \simeq \Suspend^{ja} T(-b \bundle{L})$; for $j$ big enough, $T((ja-b)\bundle{L})$ is an actual stunted projective space!
 
@@ -394,65 +394,80 @@ By the way, if you don't like these somewhat ethereal spaces, you can use James 
 \section{The structure of stunted projective space} % <<<
 \label{TheStructureOfStuntedProjectiveSpace}
 \ifx\OutputTheStructureOfStuntedProjectiveSpace\undefined\else
-Today we look at the attaching maps for stunted projective spaces.  In fact, the attaching maps we're going to look at are the ``stable relative attaching maps,'' so perhaps we should begin by saying what that means.  Suppose $X$ is a CW complex; then it has a skeletal filtration $\mathrm{Sk}_* (X)$.  The $(k+1)$-skeleton is obtained from the $k$-skeleton by attaching $(k+1)$-cells as in the following pushout square:
-\begin{diagram}[height=2em]
-\mathrm{Sk}_k (X) & \rInto & \mathrm{Sk}_{k+1} (X) \\
-\uTo & & \uTo \\
-\bigvee S^k & \rInto & \bigvee D^{k+1}.
-\end{diagram}
-Although the attaching maps $S^k \to \mathrm{Sk}_k (X)$ are to the $k$-skeleton, it's certainly possible that an attaching map pulls back to a lower skeleton.  A ``relative attaching map'' for a $(k+1)$-cell (attached via $r$) is a factorization of this kind through the lowest possible skeleton; that is, the map $a'$ below:
-\[\xymatrix@!0@C=3.5cm@R=1.4cm{
-\mathrm{Sk}_{k-j-1} (X) \ar@{^{(}->}[r] & \mathrm{Sk}_{k-j} (X) \ar|{\ \cdot\ \cdot\ \cdot\ }@{^{(}->}[r] & \mathrm{Sk}_k (X) \ar@{^{(}->}[r] & \mathrm{Sk}_{k+1} (X)\\
-&S^k\ar@{^{(}->}[r]\ar[u]^{a'}\ar@<.6ex>[ur]_r\ar@{-->}[ul]^{\text{\large$\nexists$}}&\bigvee S^k\ar@{^{(}->}[r]\ar[u]&\bigvee D^{k+1}\ar[u]
-}\]
+Today we look at the attaching maps for stunted projective spaces.  In fact, the attaching maps we're going to look at are the ``stable relative attaching maps,'' so perhaps we should begin by saying what that means.  Suppose $X$ is a CW complex; then it has a skeletal filtration $\Sk_* (X)$.  The $(k+1)$-skeleton is obtained from the $k$-skeleton by attaching $(k+1)$-cells as in the following pushout square:
+\begin{ctikzcd}
+\Sk_k (X) \rar[hook] & \Sk_{k+1} (X) \\
+\bigvee S^k \uar\rar[hook] & \bigvee D^{k+1}\uar.
+\end{ctikzcd}
+Although the attaching maps $S^k \to \Sk_k (X)$ are to the $k$-skeleton, it's certainly possible that an attaching map pulls back to a lower skeleton.  A ``relative attaching map'' for a $(k+1)$-cell (attached via $r$) is a factorization of this kind through the lowest possible skeleton; that is, the map $a'$ below:
+\begin{ctikzcd}[column sep=large]
+\Sk_{k-j-1} (X) \rar[into] & \Sk_{k-j} (X)  \rar[hook,"\cdot\,\cdot\,\cdot" description] & \Sk_k (X) \rar[into] & \Sk_{k+1} (X)\\
+&S^k\ular[dashed,"\nexists" scale=1.5]\uar["a'"]\urar[yshift=0.2em,"r"]\rar[into]&\bigvee S^k\uar\rar[into]&\bigvee D^{k+1}\ar[u]
+\end{ctikzcd}
 A ``stable relative attaching map'' is a stable one of these.  That is, the cells of the $(k+2)$-skeleton of $\Suspend X$ are the suspension of the cells of the $(k+1)$-skeleton of $X$,
-so one could ask how far down an attaching map factors, perhaps after suspending very often (ignoring momentarily the wavy arrow):
-\[\xymatrix@!0@C=3.5cm@R=1.4cm{
-&\bigvee S^{k-j+n}\makebox[0cm][l]{\,$=C(\imath)$}\\
-\mathrm{Sk}_{k-j+n-1} (\Sigma^nX) \ar@{^{(}->}[r]^\imath &\ar@{~>}[u]^b \mathrm{Sk}_{k-j+n} (\Sigma^nX) \ar|{\ \cdot\ \cdot\ \cdot\ }@{^{(}->}[r] & \mathrm{Sk}_{k+n} (\Sigma^nX) \ar@{^{(}->}[r] & \mathrm{Sk}_{k+n+1} (\Sigma^nX)\\
-&S^{k+n}\ar@{^{(}->}[r]\ar[u]^{a}\ar@<.6ex>[ur]_{\Sigma^nr}\ar@{-->}[ul]^{\text{\large$\nexists$}}&\bigvee S^{k+n}\ar@{^{(}->}[r]\ar[u]&\bigvee D^{k+n+1}\ar[u]
-}\]
+so one could ask how far down an attaching map factors, perhaps after suspending very often (ignoring the wavy arrow for the moment):
+\begin{ctikzcd}[column sep=large, decoration={markings, mark connection node=dots, mark=at position .5 with {\node (dots) {$\cdots$};}}]
+&\bigvee S^{k-j+n}\mathrlap{=C(\imath)}\\
+\Sk_{k-j+n-1} (X) \rar[into] & \Sk_{k-j+n} (X) \uar[wavy,"b"'] \rar[hook,"\cdot\,\cdot\,\cdot" description] & \Sk_{k+n} (X) \rar[into] & \Sk_{k+n+1} (X)\\
+&S^{k+n}\ular[dashed,"\nexists" scale=1.5]\ar[u,"a'"]\urar[yshift=0.1em,"r"]\rar[into]&\bigvee S^{k+n}\uar\rar[into]&\bigvee D^{k+n+1}\ar[u]
+\end{ctikzcd}
 The inclusion $\imath$ of one skeleton in the next is a cofibration, and stably, the corresponding cofibration sequence (drawn with the wavy arrow $b$) is also a fibration sequence.
-Thus, $a$ being unable stably to factor through a lower skeleton means that the composite $ba$ defines a nonzero element of $\pi_{k+n}^S \left( \bigvee S^{k-j+n} \right) = \bigoplus \pi_j^S$.\footnote{Warning: there's indeterminacy in how you factor the attaching map, so the element you get may not be well-defined.}
+Thus, if $a$ does not factor stably through a lower skeleton the composite $ba$ defines a nonzero element of $\pi_{k+n}^S \left( \bigvee S^{k-j+n} \right) = \bigoplus \pi_j^S$.\footnote{Warning: there's indeterminacy in how you factor the attaching map, so the element you get may not be well-defined.}
 
-In any case, we want to understanding the stable relative attaching maps for $\RP^\infty$ using the standard cell structure, with one cell in each dimension. We'll format the diagrams a little differently now, to come into line with what is to come. $\pi$ will be the attaching map for the single cell in a given dimension, and $c$ will be the collapse map onto the top cell in some lower dimension.
+In any case, we want to understanding the stable relative attaching maps for $\RP^\infty$ using the standard cell structure, with one cell in each dimension. We'll format the diagrams a little differently now. Let $\pi$ be the attaching map for a particular cell in dimension $k$  and let $c$ be the collapse map from $\RP^{k-j}$ onto its top cell.
 
-In the following diagram, we may ask for the largest value of $j$, stably, and may ask what the compression $c\overline\pi$ of the stable attaching map onto the top cell is, as an element of $\pi^S_j$.
-\[\xymatrix@!0@C=3.5cm@R=1.4cm{
-\RP^{k-j-1}\ar@{^{(}->}[r]^\imath &\ar[d]^(.6)c \RP^{k-j}\ar|{\ \cdot\ \cdot\ \cdot\ }@{^{(}->}[r]& \RP^k \ar@{^{(}->}[r] & \RP^{k+1}\\
-&S^{k-j}&&\ar[ull]_{\overline\pi}\ar@{-->}[ulll]^(.8){\text{\large$\nexists$}}S^{k}\ar[ul]_\pi\ar[ll]_(.8){c\overline\pi}
-}\]
-%\[\xymatrix@!0@C=3.5cm@R=1.4cm{
-%&S^{k-j}\makebox[0cm][l]{\,$=C(\imath)$}\\
-%\RP^{k-j-1}\ar@{^{(}->}[r]^\imath &\ar[u]^b \RP^{k-j}\ar|{\ \cdot\ \cdot\ \cdot\ }@{^{(}->}[r]& \RP^k \ar@{^{(}->}[r] & \RP^{k+1}\\
-%&&\ar@{^{(}->}[r]\ar[ul]_{a}\ar@{-->}[ull]^{\text{\large$\nexists$}}S^{k}\ar@{^{(}->}[r]\ar[u]^\pi&D^{k+1}\ar[u]
-%}\]
-The answer will come out in terms of the image of the $J$-homomorphism --- actually its stable version $j: \pi_{*-1}(O) \to \pi_{*-1}(QS^0) = \pi_{*-1}^S$.  Remember $\pi_{*-1}(O) = \pi_* (BO) = \widetilde{KO}\rule{0mm}{1.7ex}^{-*}$.  Here's a table, leaving out degrees where $\widetilde{KO}\rule{0mm}{1.7ex}^{-*} = 0$:
+In the following diagram we ask for the largest value of $j$ such that the stable attaching map factors, and also what the compression $c\overline\pi$ of the stable attaching map onto the top cell is as an element of $\pi^S_j$.
+\begin{ctikzcd}[column sep = 4.5em,row sep=2.3em]
+\RP^{k-j-1}\ar[from=drrr,dashed,"\nexists" {very near end, scale=1.5}]\rar[hook,"\imath"] & \RP^{k-j}\dar[crossing over, "c"' pos=0.6]\rar[hook,"\cdot\,\cdot\,\cdot" description] & \RP^k \rar[hook] & \RP^{k+1}\\
+&S^{k-j}&&\ar[ull,"\overline\pi"' pos=0.53]S^{k}\ar[ul,"\pi"']\ar[ll,"c\overline\pi"]
+\end{ctikzcd}
+
+%\begin{ctikzcd}[row sep=large, column sep = 4em]
+%\RP^{k-j-1}\ar[from=drr,dashed,"\nexists" {near end, scale=1.5}]\rar[hook,"\imath"] & \RP^{k-j}\dar[crossing over,"c" pos=0.4]\rar[hook,] & \RP^k \rar[hook] & \RP^{k+1}\\
+%&S^{k-j}&\ar[ul,"\overline\pi"']S^{k}\ar[u,"\pi"']\ar[l,"c\overline\pi"]
+%\end{ctikzcd}
+
+The answer will come out in terms of the image of the $J$-homomorphism --- actually its stable version $j: \pi_{*-1}(O) \to \pi_{*-1}(QS^0) = \pi_{*-1}^S$.  Remember $\pi_{*-1}(O) = \pi_* (BO) = \KOtwee\rule{0mm}{1.7ex}^{-*}$.  Here's a table, leaving out degrees where $\KOtwee\rule{0mm}{1.7ex}^{-*} = 0$:
 \[
 \begin{array}{cc|ccl}
-i=\nu(2^i) & *=\rho(2^i) & \widetilde{KO}\rule{0mm}{1.7ex}^{-*}=\pi_{*-1}(O) &&j_i:=j(g_i)\in\pi_{*-1}^S \\
+i=\nu(2^i) & *=\rho(2^i) & \KOtwee\rule{0mm}{1.7ex}^{-*}=\pi_{*-1}(O) &&j_i:=j(g_i)\in\pi_{*-1}^S \\
 \hline
-0 & 1 & \makebox[1.05cm][r]{$\Z_2 \langle g_0\rangle$} && \makebox[1.4cm][l]{$j_0=-2 \iota$} \\
-1 & 2 & \makebox[1.05cm][r]{$\Z_2 \langle g_1\rangle$} && \makebox[1.4cm][l]{$j_1=\eta $}\\
-2 & 4 & \makebox[1.05cm][r]{$\Z \langle g_2\rangle$} && \makebox[1.4cm][l]{$j_2=\nu\ \makebox[0cm][l]{\raisebox{-.5mm}[0cm][0cm]{$\Biggr\}\raisebox{-1ex}{\text{\shortstack{\small Hopf invariant\\\small\small one elements}}}$}} $}\\
-3 & 8 & \makebox[1.05cm][r]{$\Z \langle  g_3\rangle$} && \makebox[1.4cm][l]{$j_3=\sigma$} \\
-4 & 9 & \makebox[1.05cm][r]{$\Z_2 \langle  g_4\rangle$} && \makebox[1.4cm][l]{$j_4=\eta \sigma$} \\
-5 & 10 & \makebox[1.05cm][r]{$\Z_2 \langle  g_5\rangle$} && \makebox[1.4cm][l]{$j_5=\eta^2 \sigma$}
+0 & 1 & \makebox[1.05cm][r]{$\Zbb_2 \langle g_0\rangle$} && \makebox[1.4cm][l]{$j_0=-2 \iota$} \\
+1 & 2 & \makebox[1.05cm][r]{$\Zbb_2 \langle g_1\rangle$} && \makebox[1.4cm][l]{$j_1=\eta $}\\
+2 & 4 & \makebox[1.05cm][r]{$\Zbb \langle g_2\rangle$} && \makebox[1.4cm][l]{$j_2=\nu\ \makebox[0cm][l]{\raisebox{-.5mm}[0cm][0cm]{$\Biggr\}\raisebox{-1ex}{\text{\shortstack{\small Hopf invariant\\\small\small one elements}}}$}} $}\\
+3 & 8 & \makebox[1.05cm][r]{$\Zbb \langle  g_3\rangle$} && \makebox[1.4cm][l]{$j_3=\sigma$} \\
+4 & 9 & \makebox[1.05cm][r]{$\Zbb_2 \langle  g_4\rangle$} && \makebox[1.4cm][l]{$j_4=\eta \sigma$} \\
+5 & 10 & \makebox[1.05cm][r]{$\Zbb_2 \langle  g_5\rangle$} && \makebox[1.4cm][l]{$j_5=\eta^2 \sigma$}
 \end{array}
 \]
-Implicit in the organisation of this table is the observation that the coefficient groups $\widetilde{KO}\rule{0mm}{1.7ex}^{-*}$ are all cyclic, and nonzero only when $*=\rho(2^e)$. Thus we write $g_i$ for a generator of the $(i+1)^\text{st}$ nonzero coefficient group, and $j_i$ for its image $j(g_i)$ under the stable $J$-homomorphism.
+\[
+\begin{array}{cc|ccl}
+i=\nu(2^i) & *=\rho(2^i) & \KOtwee\rule{0mm}{1.7ex}^{-*}=\pi_{*-1}(O) &&j_i:=j(g_i)\in\pi_{*-1}^S \\
+\hline
+0 & 1 & {\Zbb_2 \langle g_0\rangle} && j_0=-2 \iota \\
+1 & 2 & {\Zbb_2 \langle g_1\rangle} && j_1=\eta \\
+2 & 4 & {\phantom{_2}\Zbb \langle g_2\rangle} && j_2=\nu\ %\{ 
+\smash{\Biggr \}
+\raisebox{-1.1ex}{\small\shortstack{Hopf invariant\\one elements}}}\\
+3 & 8 & {\phantom{_2}\Zbb \langle  g_3\rangle} && j_3=\sigma \\
+4 & 9 & {\Zbb_2 \langle  g_4\rangle} && j_4=\eta \sigma \\
+5 & 10 & {\Zbb_2 \langle  g_5\rangle} && j_5=\eta^2 \sigma
+\end{array}
+\]
+
+Implicit in the organisation of this table is the observation that the coefficient groups $\KOtwee\rule{0mm}{1.7ex}^{-*}$ are all cyclic, and nonzero only when $*=\rho(2^e)$. Thus we write $g_i$ for a generator of the $(i+1)^\text{st}$ nonzero coefficient group, and $j_i$ for its image $j(g_i)$ under the stable $J$-homomorphism.
 
 Note that $g_0$ has order two, but $j_0:=j(g_0)$ has infinite order, so that $j:\pi_0(O)\to\pi^S_0$ cannot be a homomorphism. However, it is a homomorphism in higher degrees.\todo{This remark will go away when we replace $QS^0$ with $BGL_1 \S^0$.}
 
 Our discussion of the attaching maps will begin where the answer is, which may seem like a funny place at first, so have patience.  Recall the following facts:
-\[\widetilde{KO}(\RP^k)=\Z_{a_k}\langle \bundle L-1\rangle,\text{ defining }\begin{array}{c|cccccccc}
+\[\KOtwee(\RP^k)=\Zbb_{a_k}\langle \bundle L-1\rangle,\text{ defining }\begin{array}{c|cccccccc}
 k&0&1&2&3&4&5&6&7\\\hline
 a_k&1&2&4&4&8&8&8&8
 \end{array}\text{ and }a_{k+8}=16a_k,\]
 so that, $a_k|n$ exactly when $k\leq\rho(n)-1$. Thus when $k = \rho(n) - 1$ we have $a_k=2^{\nu(n)}$ and $a_{k+1}=2^{\nu(n)+1}$. Just to reiterate the above, this gives
 \begin{align*}
-\widetilde{KO} \left( \RP^{\rho(n) - 1} \right) & = \Z_{2^{\nu(n)}} \langle \bundle L - 1 \rangle \\
-\widetilde{KO} \left( \RP^{\rho(n)} \right) & = \Z_{2^{\nu(n) + 1}} \langle \bundle L - 1 \rangle.
+\KOtwee \left( \RP^{\rho(n) - 1} \right) & = \Zbb_{2^{\nu(n)}} \langle \bundle L - 1 \rangle \\
+\KOtwee \left( \RP^{\rho(n)} \right) & = \Zbb_{2^{\nu(n) + 1}} \langle \bundle L - 1 \rangle.
 \end{align*}
 Now note that $\imath^*(\bundle L)=\bundle L$, where $i$ is the inclusion in the cofiber sequence
 $\xymatrix{
@@ -460,10 +475,10 @@ $\xymatrix{
 }$.
 We then examine the exact sequence
 \[\xymatrix@R=.2cm{
-\widetilde{KO} \left( \RP^{\rho(n) - 1} \right)&\ar[l]_{\imath^*}\widetilde{KO} \left( \RP^{\rho(n)} \right)&\ar[l]_{\ \ \ b^*}\widetilde{KO} (S^{\rho(n)})\\
-\Z_{2^{\nu(n)}} \langle \bundle L - 1 \rangle\ar@{=}[u]&\ar@{->>}[l]_{\imath^*}\Z_{2^{\nu(n) + 1}} \langle \bundle L - 1 \rangle\ar@{=}[u]&\ar[l]_{\qquad b^*}\langle g_{\nu(n)}\rangle\ar@{=}[u].
+\KOtwee \left( \RP^{\rho(n) - 1} \right)&\ar[l]_{\imath^*}\KOtwee \left( \RP^{\rho(n)} \right)&\ar[l]_{\ \ \ b^*}\KOtwee (S^{\rho(n)})\\
+\Zbb_{2^{\nu(n)}} \langle \bundle L - 1 \rangle\ar@{=}[u]&\ar@{->>}[l]_{\imath^*}\Zbb_{2^{\nu(n) + 1}} \langle \bundle L - 1 \rangle\ar@{=}[u]&\ar[l]_{\qquad b^*}\langle g_{\nu(n)}\rangle\ar@{=}[u].
 }\]
-By exactness, $b^*(g_{\nu(n)})=2^{\nu(n)}(\bundle L - 1)=n(1-\bundle L)$, the nonzero element\footnote{Notice that in $\Z_{2^{\nu(n) + 1}} \langle \bundle L - 1\rangle$, $2^{\nu(n)}(\bundle L - 1)$ is congruent to any of its odd multiplies, and $-n$ is an odd multiple of $2^{\nu(n)}$.} of $\ker(\imath^*)\simeq\Z_2$.
+By exactness, $b^*(g_{\nu(n)})=2^{\nu(n)}(\bundle L - 1)=n(1-\bundle L)$, the nonzero element\footnote{Notice that in $\Zbb_{2^{\nu(n) + 1}} \langle \bundle L - 1\rangle$, $2^{\nu(n)}(\bundle L - 1)$ is congruent to any of its odd multiplies, and $-n$ is an odd multiple of $2^{\nu(n)}$.} of $\ker(\imath^*)\simeq\Zbb_2$.
 %That is $b^*(g_{\nu(n)})=n(\bundle L-1)$.
 
   In terms of bundles, this means that $n(1-\bundle L)$ over $\RP^{\rho(n)}$ is classified by a map into $BO$ that factors as $b$ followed by $g_{\nu(n)}$:
@@ -473,9 +488,9 @@ By exactness, $b^*(g_{\nu(n)})=2^{\nu(n)}(\bundle L - 1)=n(1-\bundle L)$, the no
 }\qquad\fbox{\raisebox{-.65cm}{\begin{minipage}{5cm}
 \Bullet $E(g_{\nu(n)})$ is the virtual bundle classified by $g_{\nu(n)}$
 
-\Bullet $H^{\rho(n)}(b;\Z_2)$ is an isomorphism
+\Bullet $H^{\rho(n)}(b;\Zbb_2)$ is an isomorphism
 \end{minipage}}}\]
-That's the starting point.  Now study the Thom spaces to get stunted projective spaces.  In the $\CatOf{S}$-category, we have a map on Thom spaces (relative to $S^0$):
+That's the starting point.  Now study the Thom spaces to get stunted projective spaces.  In the $\Scat$-category, we have a map on Thom spaces (relative to $S^0$):
 \[\xymatrix{S^0\ar[d]\ar@{=}[r]&S^0\ar[d]\\
 \Suspend^n(\RP^{\rho(n)-n}_{-n}) \ar[r]^{\ \ \ \widetilde b}& T(g_{\nu(n)})
 }\]
@@ -489,7 +504,7 @@ This has the status almost of a folk theorem; it's due to Toda and Adams.  We wi
 \ar[d]\Suspend^n(\RP^{\rho(n)-n}_{-n}) \ar[r]^{\ \ \ \widetilde b}& T(g_{\nu(n)})\ar[d]\\
 \Suspend^n (\RP^{\rho(n)-n}_{-n+1}) \ar[r]^{\ \ \ \ c} & S^{\rho(n)}
 }\]
-Now $\Suspend^n (\RP^{\rho(n)-n}_{-n+1})$ has a cell in each dimension from 1 to $\rho(n)$ inclusive. Now $H^{\rho(n)}(\widetilde b;\Z_2)$ is an isomorphism in dimension $\rho(n)$, by naturality of the Thom isomorphism,  so by the 5-lemma, $H^{\rho(n)}(c;\Z_2)$ is an isomorphism, and $c$ is the collapse map (up to sign).
+Now $\Suspend^n (\RP^{\rho(n)-n}_{-n+1})$ has a cell in each dimension from 1 to $\rho(n)$ inclusive. Now $H^{\rho(n)}(\widetilde b;\Zbb_2)$ is an isomorphism in dimension $\rho(n)$, by naturality of the Thom isomorphism,  so by the 5-lemma, $H^{\rho(n)}(c;\Zbb_2)$ is an isomorphism, and $c$ is the collapse map (up to sign).
 \ConfusedBox{Must we localise at two to assert this about $c$?}
 In other words, $\Suspend^n \RP^{\rho(n)-n}_{-n}$ has cells between dimensions $0$ and $\rho(n)$, and the map to $T(g_{\nu(n)})$ strips away the cells in between.
 \begin{figure}[h!]
@@ -525,7 +540,7 @@ S^{n-2} & \rTo^\pi & \RP^{n-2}_{n-\rho(n)-1} \\
 & \rdTo_{j_{\nu(n)}} & \uInto \\
 & & S^{n-\rho(n)-1},
 \end{diagram}
-In other words, the attaching map for the top cell of $\RP^{n-1}_{n-\rho(n)-1}$ pulls all the way back to the $(n-\rho(n)-1)$-skeleton.  It goes no further: that would mean that $\pi \simeq \ptspace$, but if $\pi$ were stably nullhomotopic, then the top cell of $\RP^{n-1}_{n-\rho(n)-1}$ would stably split off. Dualising, the bottom cell $S^0$ of $\Suspend^n \RP^{\rho(n)-n}_{-n} = T(n(1-\bundle L) \downarrow \RP^{\rho(n)})$ would split off, which would then imply that $n(1-\bundle L)$ would be stably fiber homotopy trivial. This is of course not the case, by the solution to the vector fields problem --- $\widetilde J (\RP^{\rho(n)}) = \Z_{2^{\nu(n)+1}} \langle \bundle L - 1 \rangle$.
+In other words, the attaching map for the top cell of $\RP^{n-1}_{n-\rho(n)-1}$ pulls all the way back to the $(n-\rho(n)-1)$-skeleton.  It goes no further: that would mean that $\pi \simeq \ptspace$, but if $\pi$ were stably nullhomotopic, then the top cell of $\RP^{n-1}_{n-\rho(n)-1}$ would stably split off. Dualising, the bottom cell $S^0$ of $\Suspend^n \RP^{\rho(n)-n}_{-n} = T(n(1-\bundle L) \downarrow \RP^{\rho(n)})$ would split off, which would then imply that $n(1-\bundle L)$ would be stably fiber homotopy trivial. This is of course not the case, by the solution to the vector fields problem --- $\widetilde J (\RP^{\rho(n)}) = \Zbb_{2^{\nu(n)+1}} \langle \bundle L - 1 \rangle$.
 
 \ConfusedBox{\textbf{For some reason I find this a bit confusing. I've put in an alternative.} It goes no further: that would mean that $\pi \simeq \ptspace$, but if $\pi$ is stably nullhomotopic then we'd get
 \begin{diagram}[height=2em]
@@ -533,7 +548,7 @@ In other words, the attaching map for the top cell of $\RP^{n-1}_{n-\rho(n)-1}$ 
 & & & \ldDashto^\exists & \dTo>{\mathrm{id}} \\
 \Suspend^{-n+1} \RP^{n-2}_{n - \rho(n) - 1} & \rTo & \Suspend^{-n+1} \RP^{n-1}_{n-\rho(n)-1} & \rTo & S^0 & \rTo^\pi & \Suspend^{-n+2} \RP^{n-2}_{n-\rho(n)-1},
 \end{diagram}
-because the sequence is an exact triangle, a map going back as above.  Looking at what that means in terms of the dual, it means there is a stable splitting of the $0$-sphere $S^0 \stackrel{\from}{\to} \Suspend^n \RP^{\rho(n)-n}_{-n} = T(n(1-\bundle L) \downarrow \RP^{\rho(n)})$ which would mean that $n(1-\bundle L)$ is stably fiber-homotopy trivial, equivalently that $n\bundle L$ is stably fiber-homotopy trivial.  But by the vector field problem, it's not: $n(1-\bundle L) \ne 0$ in $\widetilde J \RP^{\rho(n)} = \Z_{2^{\nu(n)+1}} \langle \bundle L - 1 \rangle$.
+because the sequence is an exact triangle, a map going back as above.  Looking at what that means in terms of the dual, it means there is a stable splitting of the $0$-sphere $S^0 \stackrel{\from}{\to} \Suspend^n \RP^{\rho(n)-n}_{-n} = T(n(1-\bundle L) \downarrow \RP^{\rho(n)})$ which would mean that $n(1-\bundle L)$ is stably fiber-homotopy trivial, equivalently that $n\bundle L$ is stably fiber-homotopy trivial.  But by the vector field problem, it's not: $n(1-\bundle L) \ne 0$ in $\widetilde J \RP^{\rho(n)} = \Zbb_{2^{\nu(n)+1}} \langle \bundle L - 1 \rangle$.
 }
 Now it's an easy matter to get back to the general case: consider $\RP^{n-1}_{-N}$, where $-N \leq n - \rho(n) - 1$.\footnote{The quantity $n - \rho(n) - 1$ is $-1$ when $n=1,2,4,8$, and positive for other $n>0$.}   Then we have a diagram with the bottom row a cofiber sequence (drawn at left):
 \[\xymatrix{
@@ -657,7 +672,7 @@ S^{\rho(n) - 1} \stackrel{j_{\nu(n)}}{\to} S^0 \to Cj_{\nu(n)}
 ,\]
 where $j_{\nu(n)}$ is the image of $g_{\nu(n)}$ under the stable version of $J$.
 
-This is a good time to remember how $J$ is defined.  The action of $O(n)$ on $\R^n$ restricts to a map $O(n) \times S^{n-1} \to S^{n-1}$.  If $\alpha$ represents a class in $\pi_k (O(n))$, we get
+This is a good time to remember how $J$ is defined.  The action of $O(n)$ on $\Rbb^n$ restricts to a map $O(n) \times S^{n-1} \to S^{n-1}$.  If $\alpha$ represents a class in $\pi_k (O(n))$, we get
 \begin{diagram}[height=2em]
 S^k \times S^{n-1} & \rTo^{\alpha \times \id} & O(n) \times S^{n-1} & \rTo & S^{n-1}.
 \end{diagram}
@@ -684,7 +699,7 @@ S^{\rho(n)-1} \times S^{N-1} & \rTo^{g_{\nu(n)} \times 1} & O(N) \times S^{N-1} 
 & \rdTo_\varphi & \dTo>{\mathrm{action}} \\
 & & S^{N-1}
 \end{diagram}
-whose fiber is $S^{N-1}$.  This is the sphere bundle of the $\R^N$-bundle classified by $S^{\rho(n)} \stackrel{g_{\nu(n)}}{\to} BO(N)$, so the Thom space we were studying last time arises from the constructions above applied to this composite, i.e., taking $A = S^{\rho(n) - 1}$ and $X = S^{N-1}$.
+whose fiber is $S^{N-1}$.  This is the sphere bundle of the $\Rbb^N$-bundle classified by $S^{\rho(n)} \stackrel{g_{\nu(n)}}{\to} BO(N)$, so the Thom space we were studying last time arises from the constructions above applied to this composite, i.e., taking $A = S^{\rho(n) - 1}$ and $X = S^{N-1}$.
 
 This looks very good; it looks a lot like the definition of $J$.  In order to state things correctly, we need a careful definition of the Hopf construction that matches our definition of $CX$ and $\Suspend X$:
 \item The Hopf Construction on $\varphi$ is the quotient
@@ -816,45 +831,45 @@ This is the basic theorem in the theory of iterated loop spaces.  Note that it b
 
 Now you can replace each cube with its center; obviously the size of the cube doesn't affect homotopy properties.  So we get a $\Sigma_k$-equivariant equivalence
 \begin{diagram}[height=2em]
-C_k(n) & \rTo^\simeq_{\Sigma_k} & F_k \R^n,
+C_k(n) & \rTo^\simeq_{\Sigma_k} & F_k \Rbb^n,
 \end{diagram}
 where $F_k(W)$ is defined to be the space of $k$-tuples in $W$ with no repeated elements.  So we have
 \begin{diagram}[height=2em]
-\coprod_{k \ge 1} F_k \R^n \times_{\Sigma_k} A^k / \sim & \lTo^\simeq & \coprod_{k \ge 1} C_k(n) \times_{\Sigma_k} A^k / \sim & \rTo & \Loops^n \Suspend^n A.
+\coprod_{k \ge 1} F_k \Rbb^n \times_{\Sigma_k} A^k / \sim & \lTo^\simeq & \coprod_{k \ge 1} C_k(n) \times_{\Sigma_k} A^k / \sim & \rTo & \Loops^n \Suspend^n A.
 \end{diagram}
-What's going on?  We're choosing a bunch of points, $k$ of them, and not ordering them, but labelling them with a point of $A$; sort of a charge; if the charge is zero, the basepoint, we're ignoring it.  So call this space $C(\R^n, A)$ (this is Fred Cohen's notation).
+What's going on?  We're choosing a bunch of points, $k$ of them, and not ordering them, but labelling them with a point of $A$; sort of a charge; if the charge is zero, the basepoint, we're ignoring it.  So call this space $C(\Rbb^n, A)$ (this is Fred Cohen's notation).
 
-Well, this is a pretty simple model, and we ought to be able to understand it.  For one thing, let's relate it to the James construction: so let $n = 1$.  Then, $F_k(\R^1)$ is equivalent $\Sigma_k$-equivariantly to $\{t_1 < \cdots < t_k\} \times \Sigma_k$.  In this case the God-given ordering on $\R^1$ tells us the unique permutation to bring a collection of poiints into standard order.  So
+Well, this is a pretty simple model, and we ought to be able to understand it.  For one thing, let's relate it to the James construction: so let $n = 1$.  Then, $F_k(\Rbb^1)$ is equivalent $\Sigma_k$-equivariantly to $\{t_1 < \cdots < t_k\} \times \Sigma_k$.  In this case the God-given ordering on $\Rbb^1$ tells us the unique permutation to bring a collection of poiints into standard order.  So
 \begin{diagram}[height=2em]
-C(\R, A) & \rEqualto & \coprod_k \{t_1 < \cdots < t_k\} \times A_k / \sim \\
+C(\Rbb, A) & \rEqualto & \coprod_k \{t_1 < \cdots < t_k\} \times A_k / \sim \\
 & \rdTo_\simeq & \dTo>\simeq \\
 & & \coprod A^k / \sim,
 \end{diagram}
-where $\coprod A^k / \sim$ is the James construction $J(A)$, the ``free monoid'' on $A$.  So $C(\R^n, A)$ really is a generalization of the James construction.
+where $\coprod A^k / \sim$ is the James construction $J(A)$, the ``free monoid'' on $A$.  So $C(\Rbb^n, A)$ really is a generalization of the James construction.
 
-In order to study $C(\R^n, A)$, look at the obviously filtration $F(W, A)_k = \coprod_{j \le k} F_j(W) \times_{\Sigma_j} A / \sim$.  The associated quotient is
+In order to study $C(\Rbb^n, A)$, look at the obviously filtration $F(W, A)_k = \coprod_{j \le k} F_j(W) \times_{\Sigma_j} A / \sim$.  The associated quotient is
 \begin{align*}
 D_k(W, A) & = F_k / F_{k-1} \\
 & = F_k(W) \times_{\Sigma_k} A^k / F_k(W) \times_{\Sigma_k} \{\hbox{fat wedge of} A\} \\
 & = F_k(W) \times_{\Sigma_k} A^{\sprod k} / F_k(W) \times_{\Sigma_k} \ptspace.
 \end{align*}
-Now consider the case $A = S^q$.  $(S^q)^{\sprod k} =_{\Sigma_k} (\R^k)^q_+$, the $1$-point compactification.  So if $\xi_k$ is the vector bundle $\xi_k = F_k(W) \times_{\Sigma_k} \R^k$ over $B_k(W) = F_k(W) / \Sigma_k$, then $F_k / F_{k-1} = D_k(W, S^q) = T(q\xi_k \downarrow B_k(W))$.  So you're filtering $C(W, A)$ by something whose successive quotients are Thom spaces.  Take the example $W = \R^n$, $k = 2$.  Then
+Now consider the case $A = S^q$.  $(S^q)^{\sprod k} =_{\Sigma_k} (\Rbb^k)^q_+$, the $1$-point compactification.  So if $\xi_k$ is the vector bundle $\xi_k = F_k(W) \times_{\Sigma_k} \Rbb^k$ over $B_k(W) = F_k(W) / \Sigma_k$, then $F_k / F_{k-1} = D_k(W, S^q) = T(q\xi_k \downarrow B_k(W))$.  So you're filtering $C(W, A)$ by something whose successive quotients are Thom spaces.  Take the example $W = \Rbb^n$, $k = 2$.  Then
 \begin{diagram}[height=2em]
-F_2(\R^n) & \rTo^{\cong}_{\Sigma_2} & \R^n \times (\R^n \setminus \{0\}) \\
+F_2(\Rbb^n) & \rTo^{\cong}_{\Sigma_2} & \Rbb^n \times (\Rbb^n \setminus \{0\}) \\
 (x, y) & \rMapsto & \left( \frac{x + y}{2}, \frac{x - y}{2} \right),
 \end{diagram}
-and $B_2(\R^n) \cong \R^{n+1} \times  \RP^{n-1}$.  Now $\xi_2 = 1 + L$ over $\R^{n+1} \times \RP^{n-1}$, so $T \xi_2 = D_2(\R^2, S^q) = T(q(1+K) \downarrow \RP^{n-1}) = \Suspend^q \RP^{n+q-1}_q$.  Well that's a good sign; we got a stunted projective space.
+and $B_2(\Rbb^n) \cong \Rbb^{n+1} \times  \RP^{n-1}$.  Now $\xi_2 = 1 + L$ over $\Rbb^{n+1} \times \RP^{n-1}$, so $T \xi_2 = D_2(\Rbb^2, S^q) = T(q(1+K) \downarrow \RP^{n-1}) = \Suspend^q \RP^{n+q-1}_q$.  Well that's a good sign; we got a stunted projective space.
 
-Here's another example: we claim that the inclusion $F_k(\R^{n-1}) \into F_k(\R^n)$ is null-homotopic.  A basepoint in $F_k(\R^n)$ consists of a choice of $k$ distinct points, and any $k$ points in $\R{n-1}$ can be smoothly moved to the fixed set of points in $\R^n$.
+Here's another example: we claim that the inclusion $F_k(\Rbb^{n-1}) \into F_k(\Rbb^n)$ is null-homotopic.  A basepoint in $F_k(\Rbb^n)$ consists of a choice of $k$ distinct points, and any $k$ points in $\Rbb{n-1}$ can be smoothly moved to the fixed set of points in $\Rbb^n$.
 \begin{figure}[!ht]%used to be [!h]
 \centering\includegraphics[width=0.35\textwidth]{figures/figure37.pdf}
-\caption{\small Contractibility of $F_k \R^\infty$.}
+\caption{\small Contractibility of $F_k \Rbb^\infty$.}
 \end{figure}
 
-This means that $F_k(\R^\infty) = \bigcup_n F_k(\R^n)$ is a contractible space with a free $\Sigma_k$-action, so it's an $E_{\Sigma_k}$ and $F_k(\R^\infty) \downarrow B_k(\R^\infty)$ is a universal $\Sigma_k$-bundle, and
+This means that $F_k(\Rbb^\infty) = \bigcup_n F_k(\Rbb^n)$ is a contractible space with a free $\Sigma_k$-action, so it's an $E_{\Sigma_k}$ and $F_k(\Rbb^\infty) \downarrow B_k(\Rbb^\infty)$ is a universal $\Sigma_k$-bundle, and
 \begin{align*}
 Q(A) & = \bigcup_n \Loops^n \Suspend^n A \\
-& = \bigcup_n \coprod_{k \ge 1} F_k(\R^n) \times_{\Sigma_k} A^k \\
+& = \bigcup_n \coprod_{k \ge 1} F_k(\Rbb^n) \times_{\Sigma_k} A^k \\
 & = \coprod_{k \ge 1} E_{\Sigma_k} \times_{\Sigma_k} A^k / \sim.
 \end{align*}
 
@@ -864,13 +879,13 @@ s_k: C(W, A) \to C(B_k(W), D_k(W, A))
 \]
 so a point of $C(W, A)$ is a finite subset $S \subset W$ and an assignment $f: S \to A$.  We have to take this to a finite subset $s_k S$ of points of $B_k(W)$.  The points of $B_k(W)$ are $k$-tuples in $W$, so we take for $s_k S$ the set $\{T \subseteq S : |T| = k\}$.  In addition to $s_k S$ we need an assignment $s_k f$ of points in $s_k S$ to charges in $D_k(W, A)$.  But a charge in $D_k(W, A)$ is an assignment of charges in $A$ to a $k$-element subset of $W$.  So for $T \in s_k S$, we define $s_kf(T) = f|_T$!
 
-Now take the case $W = \R^n$ and $A$ path-connected.  Then
+Now take the case $W = \Rbb^n$ and $A$ path-connected.  Then
 \begin{diagram}[height=2em]
-C(W, A) & \rTo^{\simeq}_{\mathrm{weak}} & \Loops^n \Suspend^n A & \rTo^{s_k} & C(B_k(\R^n), D_k(\R^n, A)) \\
+C(W, A) & \rTo^{\simeq}_{\mathrm{weak}} & \Loops^n \Suspend^n A & \rTo^{s_k} & C(B_k(\Rbb^n), D_k(\Rbb^n, A)) \\
 & & \dInto \\
-& & C(\R^N, D_k(\R^n, A)) \\
+& & C(\Rbb^N, D_k(\Rbb^n, A)) \\
 & & \dInto \\
-& & \Loops^N \Suspend^N D_k(\R^n, A).
+& & \Loops^N \Suspend^N D_k(\Rbb^n, A).
 \end{diagram}
 Now when $A = S^1$ (you'd like to take $S^0$ but it's not connected), you get
 \[
