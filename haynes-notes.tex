@@ -12,26 +12,32 @@
 
 \usepackage{environ} % until we get rid of the confused notes
 
-% TODO: ALL DIAGRAMS TO TIKZ!!
-\usepackage{diagrams}
-\usepackage[all]{xy}
+
 \usepackage{tikz}
 \usepackage{join-tikz-cd}
 \usetikzlibrary{arrows}
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{decorations.pathmorphing} %
 
+\def\columnsep{\pgfmatrixcolumnsep}
 \tikzset{stable/.style={postaction={decorate},decoration={markings,mark=at position 0.5 with {\arrow[yscale=1]{|}}}}} % Stable arrows
 % yscale changes length of crossbar. I'm not sure I'm currently happy with these
 % it's annoying that it gets in the way of the label, which also likes to go in the middle. Maybe move the stable slash to the side a bit or something?
-\tikzset{    
+
+\tikzset{
     wavy/.style={/tikz/decorate,/tikz/decoration={
         snake,
         segment length=16\pgflinewidth,
         amplitude=2.3\pgflinewidth,
-        post=lineto, post length=2\pgflinewidth,
-        pre=lineto, pre length=2\pgflinewidth
-    }}
+        post=lineto, post length=4\pgflinewidth,
+        pre=lineto, pre length=4\pgflinewidth
+    }},
+    %
+    % This is a function from tikzcd. Just copying it into the /tikz/ namespace. it isn't used anywhere right now though.
+    description/.style={
+        /tikz/anchor=center,
+        /tikz/fill=\pgfkeysvalueof{/tikz/commutative diagrams/background color}
+    }
 }
 %\tikzset{/tikz/cdots/.style={edge node={\node[every label,/tikz/commutative diagrams/.cd]{$\cdot\,\cdot\,\cdot$}}}}
 
@@ -39,10 +45,11 @@
 
 
 
-
-\newarrow{Equalto}=====
-\newarrow{Stableto}--+->
-\SelectTips{cm}{11} % This is connected to diagrams.sty I believe. What does it do?
+%\usepackage{diagrams}
+%\usepackage[all]{xy}
+%\newarrow{Equalto}=====
+%\newarrow{Stableto}--+->
+%\SelectTips{cm}{11} % This is connected to diagrams.sty I believe. What does it do?
 
 
 \usepackage{yhmath} % \DeclareMathOperator, perhaps other things
@@ -220,14 +227,18 @@
 
 \def\Id{\mathrm{Id}}
 
-\newcommand{\K}{K}
-\renewcommand{\Ktwee}{\widetilde{\K}\vphantom{\K}}
-\newcommand{\J}{J}
-\renewcommand{\Jtwee}{\widetilde{\J}\vphantom{\J}}
-\newcommand{\KO}{KO}
-\newcommand{\KOtwee}{\widetilde{\KO}\vphantom{\KO}}
-\newcommand{\Sph}{Sph}
-\newcommand{\Sphtwee}{\widetilde{\Sph}\vphantom{\Sph}} % Just used in adams-conjecture
+\def\newcohomologytheory#1#2{%
+    \@xp\def\csname#1\endcsname{#2}%
+    \@xp\def\csname#1twee\endcsname{\widetilde{\csname#1\endcsname}\vphantom{#2}}%
+}
+
+\newcohomologytheory{H}{H}
+\newcohomologytheory{K}{K}
+\newcohomologytheory{J}{J}
+\newcohomologytheory{KO}{KO}
+\newcohomologytheory{Sph}{Sph}
+
+\def\Ab{\CatOf{Ab}}
 
 \newcommand{\pr}{\mathrm{pr}}
 \newcommand{\Sk}{\mathop{\mathrm{Sk}}}
@@ -253,6 +264,7 @@
 \newcommand{\SuspendS}{\Suspend^\infty}
 \newcommand{\Loops}{\Omega}
 \newcommand{\LoopsS}{\Loops^\infty}
+\newcommand{\anglebrace}[1]{\langle #1\rangle}
 
 % arrow shorthands
 \newcommand{\into}{\hookrightarrow}
@@ -313,7 +325,7 @@
 
 
 \makeatother
-\includeonly{stable-ehp}
+%\includeonly{ehp-sseq}
 
 \begin{document}
 

@@ -7,12 +7,15 @@
 %%
 %% It might be nice at some point to hand code the environ functionality I need, to reduce the dependencies
 %%
+%% Currently there is a possible glitch involving diagram sep.
+%%
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{join-tikz-cd}
-\RequirePackage{tikz-cd}
+\RequirePackage{tikz}
 \RequirePackage{environ}
 \RequirePackage{etoolbox}
+\usetikzlibrary{cd}
 
 \let\@xp\expandafter
 \let\@nx\noexpand
@@ -206,7 +209,7 @@
     }
     \def\jtcd@parsediagramopts@#1,{
         \pgfmathparse{#1}
-        \ifpgfmathunitsdeclared \jtcd@columnskip{#1}\else \global\jtcd@maxamps=#1\fi %
+        \ifpgfmathunitsdeclared \jtcd@columnskip{-\pgfmatrixcolumnsep+\diagramsep+#1}\else \global\jtcd@maxamps=#1\fi %
         \@ifnextchar\@nil{\@gobble}{\jtcd@parsediagramopts@}%
     }
 

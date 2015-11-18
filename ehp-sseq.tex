@@ -298,11 +298,10 @@ The march to the EHP sequence continues.
     \bigvee_{k \ge 0} \Suspend X^{(k)} \to \Suspend X^{(m)}
     \]
     given by smashing everything else to a point gives a composite
-    \begin{diagram}
-    \bigvee_{k \ge 0} \Suspend X^{(k)} & \pile{\lTo^\simeq \\ \rTo_{\hbox{Bott-Samelson-James}}} & \Suspend \Loops \Suspend X \\
-    \dTo & \ldTo_{\hhat_m} \\
+    \begin{ctikzcd}[ampersand replacement=\&]
+    \bigvee_{k \ge 0} \Suspend X^{(k)} \dar \rar["\hbox{Bott-Samelson-James}",yshift=0.2em] \& \lar["\simeq",yshift=-0.2em]  \dlar["\hhat_m"] \Suspend \Loops \Suspend X \\
     \Suspend X^{(m)}
-    \end{diagram}
+    \end{ctikzcd}
     whose adjoint $h_m: \Loops \Suspend X \to \Loops \Suspend X^{(m)}$ is the $m^\textup{th}$ James-Hopf invariant.
 }
 Applying the James-Hopf invariant construction when $X = S^n$ and $m = 2$ gives a map $h_2: \Loops S^{n+1} \to \Loops S^{2n+1}$.  The EHP sequence comes from the long exact sequence of the homotopy we get from taking the homotopy fiber of this map.  To start finding out the fiber, we computed the cohomology algebra of $\Loops S^{n+1}$:
@@ -318,24 +317,15 @@ Now the adjoint of the James-Hopf map factors:
 \end{ctikzcd}
 which is just the expression of adjointness\footnote{%
     Here, suppose that $F:\mathscr{D}\longleftrightarrow\mathscr{C}:G$ is an adjunction, that $X\in \mathscr{D}$ and $Y\in\mathscr{C}$, and that $\hhat:X\to GY$ and $h:FX\to Y$ are adjoint. The commuting diagram on the left induces the other commuting diagram, by naturality of the Hom-set isomorphisms:
-    \[\xymatrix@R=2em{
-    \ar[d]_{\hhat}X\ar[r]_{\hhat}&GY\ar[d]^{G(\text{Id}_Y)}\\
-    GY\ar[r]^{\text{Id}}&GY
-    }
-    \raisebox{-1.7em}{\textup{\qquad induces\qquad}}
-    \xymatrix@R=2em{
-    \ar[d]_{F(\hhat)}FX\ar[r]_{h}&G\ar[d]^{\text{Id}}\\
-    FGY\ar[r]^{\ \ \hat{\text{Id}}=\text{`$\beta$'}}&Y
-    }\]
-    %\begin{cjointikzcd}[intertext,diagram sep=3em, row sep=tiny]
-    %\diagram
-    %    X\dar["\hhat"']\rar["\hhat"] & GY\dar["G(\Id_Y)"]\\
-    %    GY \rar["\Id"] & GY
-    %\diagram \intertext{induces}
-    %\diagram
-    %    FX \dar["F(\hhat)"']\rar["F(\hhat)"] & GY \dar["\Id"]\\
-    %    FGY \rar["\widehat{\Id}=\beta"] & Y
-    %\end{cjointikzcd}
+    \begin{cjointikzcd}[intertext, diagram sep=5em, row sep=tiny, ampersand replacement=\&]
+    \diagram
+        X\dar["\hhat"']\rar["\hhat"] \& GY\dar["G(\Id_Y)"]\\
+        GY \rar["\Id"] \& GY
+    \diagram \intertext{induces}
+    \diagram
+        FX \dar["F(\hhat)"']\rar["F(\hhat)"] \& GY \dar["\Id"]\\
+        FGY \rar["\widehat{\Id}=\beta"] \& Y
+    \end{cjointikzcd}
 }
  between $\Loops$ and $\Suspend$. $\hhat_2$ came from a splitting, so it splits:
 \begin{ctikzcd}
