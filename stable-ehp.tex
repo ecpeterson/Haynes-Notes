@@ -875,11 +875,11 @@ Because constructing maps out of loop spaces is hard, we'd like a tractable mode
 \centering\includegraphics[width=0.2\textwidth]{figures/figure35-1.pdf}\;\includegraphics[width=0.2\textwidth]{figures/figure35-2.pdf}\;\includegraphics[width=0.2\textwidth]{figures/figure35-3.pdf}\;\includegraphics[width=0.2\textwidth]{figures/figure35-4.pdf}
 \caption{\small $\Loops^2 X$ and the little cubes operad.}
 \end{figure}
-First, we do have the map $\Loops^2 X \times \Loops^2 X \to \Loops^2 X$ giving the $H$-space structure; if we represent $f \in \Loops^2 X$ and $g \in \Loops^2 X$ by the leftmost pair of boxes where the edges go to the basepoint, then their product could be represented by the second leftmost diagram, for example.  Of course, the usual representative is the second rightmost, but you have to fiddle with this any way, for example to show the product is associative or commutative up to homotopy.  So we'll study spaces of rectangles.  For example, the rightmost diagram is a point in $C_2(2)$ (two rectanges in $I^2$); in general, the space $C_k(n)$ will be
+First, we do have the map $\Loops^2 X \times \Loops^2 X \to \Loops^2 X$ giving the $H$-space structure; if we represent $f \in \Loops^2 X$ and $g \in \Loops^2 X$ by the leftmost pair of boxes where the edges go to the basepoint, then their product could be represented by the second leftmost diagram, for example.  Of course, the usual representative is the second rightmost, but you have to fiddle with this any way, for example to show the product is associative or commutative up to homotopy.\todo{These figures could use repair.}  This motivates us to study spaces of rectangles.  For example, the rightmost diagram is a point in $C_2(2)$ (two rectanges in $I^2$); in general, the space $C_k(n)$ will be
 \[
 C_k(n) = \{ \hbox{space of $k$ disjoint parallel $n$-rectangles in $I^n$} \}
 ,\]
-so what you're really describing is the space of embeddings $\coprod_k I^n \into I^n$.  This is called the space of ``little cubes.''  The point is, this space parameterizes the multiplication in $\Loops^n X$; namely for each $k$ we have a map $C_k(n) \times (\Loops^n X)^k \to \Loops^n X$; these piece together to give $\coprod_{k \ge 1} C_k(n) \times (\Loops^n X)^k \to \Loops^n X$.
+so what you're really describing is the space of embeddings $\coprod_k I^n \into I^n$.  This is called the space of ``little cubes.''  This space parameterizes the multiplication in $\Loops^n X$; namely for each $k$ we have a map $C_k(n) \times (\Loops^n X)^k \to \Loops^n X$. These piece together to give $\coprod_{k \ge 1} C_k(n) \times (\Loops^n X)^k \to \Loops^n X$.
 
 To model the multiplicative structure you have to make some identifications:
 \begin{enumerate}
@@ -900,7 +900,7 @@ with the bottom $\sim$ meaning the identification in 1) above, which we won't ma
 \begin{thm}[May]
 If $A$ is path-connected, this composite is a weak equivalence.
 \end{thm}
-This is the basic theorem in the theory of iterated loop spaces.  Note that it bear some resemblance to James' theorem.
+This is the basic theorem in the theory of iterated loop spaces.  Note that it bears some resemblance to James' theorem.
 
 Now you can replace each cube with its center; obviously the size of the cube doesn't affect homotopy properties.  So we get a $\Sigma_k$-equivariant equivalence
 \begin{ctikzcd}
@@ -910,35 +910,34 @@ where $F_k(W)$ is defined to be the space of $k$-tuples in $W$ with no repeated 
 \begin{ctikzcd}
 \coprod_{k \ge 1} F_k \Rbb^n \times_{\Sigma_k} A^k / \sim & \lar["\simeq"'] \coprod_{k \ge 1} C_k(n) \times_{\Sigma_k} A^k / \sim \rar & \Loops^n \Suspend^n A.
 \end{ctikzcd}
-What's going on?  We're choosing a bunch of points, $k$ of them, and not ordering them, but labelling them with a point of $A$; sort of a charge; if the charge is zero, the basepoint, we're ignoring it.  So call this space $C(\Rbb^n, A)$ (this is Fred Cohen's notation).
+What's going on?  We're choosing $k$ many points, and rather than ordering we're labeling them with a point of $A$.  It can be constructive to think of the label as a sort of ``charge''; if the charge is zero (i.e., the point is labeled by the basepoint), we're ignoring it.  Call this space $C(\Rbb^n, A)$, following Fred Cohen's notation.
 
-Well, this is a pretty simple model, and we ought to be able to understand it.  For one thing, let's relate it to the James construction: so let $n = 1$.  Then, $F_k(\Rbb^1)$ is equivalent $\Sigma_k$-equivariantly to $\{t_1 < \cdots < t_k\} \times \Sigma_k$.  In this case the God-given ordering on $\Rbb^1$ tells us the unique permutation to bring a collection of poiints into standard order.  So
+This is a pretty simple model, and we ought to be able to understand it.  Let's relate it to the James construction: so let $n = 1$.  In this case, $F_k(\Rbb^1)$ is equivalent $\Sigma_k$-equivariantly to $\{t_1 < \cdots < t_k\} \times \Sigma_k$.  In this case the God-given ordering on $\Rbb^1$ tells us the unique permutation to bring a collection of poiints into standard order.  So
 \begin{ctikzcd}
 C(\Rbb, A) \drar["\simeq"']\rar[equal] & \coprod_k \{t_1 < \cdots < t_k\} \times A_k / \sim \dar["\simeq"]\\
  & \coprod A^k / \sim,
 \end{ctikzcd}
 where $\coprod A^k / \sim$ is the James construction $J(A)$, the ``free monoid'' on $A$.  So $C(\Rbb^n, A)$ really is a generalization of the James construction.
 
-In order to study $C(\Rbb^n, A)$, look at the obviously filtration $F(W, A)_k = \coprod_{j \le k} F_j(W) \times_{\Sigma_j} A / \sim$.  The associated quotient is
+In order to study $C(\Rbb^n, A)$, look at the obvious filtration $F(W, A)_k = \coprod_{j \le k} F_j(W) \times_{\Sigma_j} A / \sim$.  The associated quotient is
 \begin{align*}
 D_k(W, A) & = F_k / F_{k-1} \\
 & = F_k(W) \times_{\Sigma_k} A^k / F_k(W) \times_{\Sigma_k} \{\hbox{fat wedge of} A\} \\
 & = F_k(W) \times_{\Sigma_k} A^{\sprod k} / F_k(W) \times_{\Sigma_k} \ptspace.
 \end{align*}
-Now consider the case $A = S^q$.  $(S^q)^{\sprod k} =_{\Sigma_k} (\Rbb^k)^q_+$, the $1$-point compactification.  So if $\xi_k$ is the vector bundle $\xi_k = F_k(W) \times_{\Sigma_k} \Rbb^k$ over $B_k(W) = F_k(W) / \Sigma_k$, then $F_k / F_{k-1} = D_k(W, S^q) = T(q\xi_k \downarrow B_k(W))$.  So you're filtering $C(W, A)$ by something whose successive quotients are Thom spaces.  Take the example $W = \Rbb^n$, $k = 2$.  Then
+Now consider the case $A = S^q$, so that $(S^q)^{\sprod k} =_{\Sigma_k} (\Rbb^k)^q_+$, where the ``${}_+$'' denotes the $1$-point compactification.  Writing $\xi_k$ for the vector bundle $\xi_k = F_k(W) \times_{\Sigma_k} \Rbb^k$ over $B_k(W) = F_k(W) / \Sigma_k$, then $F_k / F_{k-1} = D_k(W, S^q) = T(q\xi_k \downarrow B_k(W))$.  It follows that $C(W, A)$ has a filtration whose successive quotients are Thom spaces.  In the example $W = \Rbb^n$ and $k = 2$, we have
 \begin{ctikzcd}[row sep=0pt]
 F_2(\Rbb^n) \rar["\cong"',"\Sigma_2"] & \Rbb^n \times (\Rbb^n \setminus \{0\}) \\
 (x, y) \rar[mapsto] & \left( \frac{x + y}{2}, \frac{x - y}{2} \right),
 \end{ctikzcd}
-and $B_2(\Rbb^n) \cong \Rbb^{n+1} \times  \RP^{n-1}$.  Now $\xi_2 = 1 + L$ over $\Rbb^{n+1} \times \RP^{n-1}$, so $T \xi_2 = D_2(\Rbb^2, S^q) = T(q(1+K) \downarrow \RP^{n-1}) = \Suspend^q \RP^{n+q-1}_q$.  Well that's a good sign; we got a stunted projective space.
+and $B_2(\Rbb^n) \cong \Rbb^{n+1} \times  \RP^{n-1}$.  We can compute $\xi_2 = 1 + L$ over $\Rbb^{n+1} \times \RP^{n-1}$, and hence \[T \xi_2 = D_2(\Rbb^2, S^q) = T(q(1+K) \downarrow \RP^{n-1}) = \Suspend^q \RP^{n+q-1}_q.\]  This is a good sign: we got a stunted projective space.
 
-Here's another example: we claim that the inclusion $F_k(\Rbb^{n-1}) \into F_k(\Rbb^n)$ is null-homotopic.  A basepoint in $F_k(\Rbb^n)$ consists of a choice of $k$ distinct points, and any $k$ points in $\Rbb{n-1}$ can be smoothly moved to the fixed set of points in $\Rbb^n$.
-\begin{figure}[!ht]%used to be [!h]
+Here's another useful example: we claim that the inclusion $F_k(\Rbb^{n-1}) \into F_k(\Rbb^n)$ is null-homotopic.  A basepoint in $F_k(\Rbb^n)$ consists of a choice of $k$ distinct points, and any $k$ points in $\Rbb{n-1}$ can be smoothly moved to the fixed set of points in $\Rbb^n$ (cf., Figure \ref{ContractibilityOfFkRinfty}).
+\begin{figure}%used to be [!ht]
 \centering\includegraphics[width=0.35\textwidth]{figures/figure37.pdf}
-\caption{\small Contractibility of $F_k \Rbb^\infty$.}
+\caption{\small Contractibility of $F_k \Rbb^\infty$.}\label{ContractibilityOfFkRinfty}
 \end{figure}
-
-This means that $F_k(\Rbb^\infty) = \bigcup_n F_k(\Rbb^n)$ is a contractible space with a free $\Sigma_k$-action, so it's an $E_{\Sigma_k}$ and $F_k(\Rbb^\infty) \downarrow B_k(\Rbb^\infty)$ is a universal $\Sigma_k$-bundle, and
+\noindent This means that $F_k(\Rbb^\infty) = \bigcup_n F_k(\Rbb^n)$ is a contractible space with a free $\Sigma_k$-action, so it's an $E_{\Sigma_k}$ and $F_k(\Rbb^\infty) \downarrow B_k(\Rbb^\infty)$ is a universal $\Sigma_k$-bundle, and
 \begin{align*}
 Q(A) & = \bigcup_n \Loops^n \Suspend^n A \\
 & = \bigcup_n \coprod_{k \ge 1} F_k(\Rbb^n) \times_{\Sigma_k} A^k \\
@@ -949,7 +948,7 @@ Let's see now how to use this to produce maps.  We're going to do this in blindi
 \[
 s_k: C(W, A) \to C(B_k(W), D_k(W, A))
 \]
-so a point of $C(W, A)$ is a finite subset $S \subset W$ and an assignment $f: S \to A$.  We have to take this to a finite subset $s_k S$ of points of $B_k(W)$.  The points of $B_k(W)$ are $k$-tuples in $W$, so we take for $s_k S$ the set $\{T \subseteq S : |T| = k\}$.  In addition to $s_k S$ we need an assignment $s_k f$ of points in $s_k S$ to charges in $D_k(W, A)$.  But a charge in $D_k(W, A)$ is an assignment of charges in $A$ to a $k$-element subset of $W$.  So for $T \in s_k S$, we define $s_kf(T) = f|_T$!
+so a point of $C(W, A)$ is a finite subset $S \subset W$ and an assignment $f: S \to A$.  We have to take this to a finite subset $s_k S$ of points of $B_k(W)$.  The points of $B_k(W)$ are $k$-tuples in $W$, so we take for $s_k S$ the set $\{T \subseteq S : |T| = k\}$.  In addition to $s_k S$ we need an assignment $s_k f$ of points in $s_k S$ to charges in $D_k(W, A)$.  But a charge in $D_k(W, A)$ is an assignment of charges in $A$ to a $k$-element subset of $W$.  So for $T \in s_k S$, we define $s_kf(T) = f|_T$.
 
 Now take the case $W = \Rbb^n$ and $A$ path-connected.  Then
 \begin{ctikzcd}
