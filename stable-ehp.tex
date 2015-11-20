@@ -755,22 +755,21 @@ which represents a class in $\pi_{n+k}S^n$.  In proving the theorem it pays to s
 CX & = \frac{[0, 1] \times X}{(0, x), (t, x_0)}, \\
 \Suspend X & = C(X) / X.
 \end{align*}
-We'll study the problem in somewhat astonishing generality; our data will be a map $\varphi: A \times X \to X$ which we'll think of as a group action, although it doesn't have to be one.  $\varphi$ has an obvious extension $\hat \varphi: A \times CX \to CX$.  With this data we'll try to form a bundle, the first of two important constructions for today:
+We'll study the problem in somewhat astonishing generality; our data will be a map $\varphi: A \times X \to X$ which we'll think of as a group action, although it doesn't have to be one.  The map $\varphi$ has an obvious extension $\hat \varphi: A \times CX \to CX$.  With this data we'll try to form a bundle, the first of two important constructions for today:
 \begin{enumerate}
 \item Associated ``bundle'' construction: This will be a ``bundle'' $p: E\varphi \to \Suspend A$ formed using $\varphi$ as the clutching map.  $E\varphi = CA \times X \coprod X / (1, a, x) \sim ax$.  The fiber is $p^{-1}(0, a) \cong X$.  Note that when $\varphi$ is a group action this construction in fact does determine an isomorphism between the fibers over the clutched coordinates, so this is genuinely a fiber bundle.  Also we can apply this construction to $\hat \varphi$, getting $E \hat \varphi$, the ``fiberwise cone on $E \varphi$;'' we'll call it $\hat E \varphi$.  Then we get
 \begin{ctikzcd}
 E\varphi \rar[into] & \hat E \varphi \rar & T\varphi \\
 X \uar \rar[into] & CX \uar \rar & \Suspend X \uar.
 \end{ctikzcd}
-In our case, we had a class $g_{\nu(n)} \in \pi_{\rho(n)} BO$.  Remember though that we think of $g_{\nu(n)}$ as a class in $\pi_{\rho(n)-1}O$.  It can be thought of as a map $S^{\rho(n)-1} \stackrel{g_{\nu(n)}}{\to} O(N)$.  Now $O(N)$ acts on $S^{N-1}$, so we can use this to clutch a bundle $E(g_{\nu(n)})$ over $S^{\rho(n)}$ by
+In our case, we had a class $g_{\nu(n)} \in \pi_{\rho(n)} BO$.  Remember though that we think of $g_{\nu(n)}$ as a class in $\pi_{\rho(n)-1}O$.  It can be thought of as a map \[S^{\rho(n)-1} \xrightarrow{g_{\nu(n)}} O(N).\]  Now $O(N)$ acts on $S^{N-1}$, so we can use this to clutch a bundle $E(g_{\nu(n)})$ over $S^{\rho(n)}$ by
 \begin{ctikzcd}[column sep=0pt]
 S^{\rho(n)-1} \times S^{N-1}\drar["\varphi"'] \rar{g_{\nu(n)} \times 1} &[width("$g_{\nu(n)}\times1$")+0.5em] O(N) \times S^{N-1}\dar["\mathrm{action}"] \\
  & S^{N-1}
 \end{ctikzcd}
-whose fiber is $S^{N-1}$.  This is the sphere bundle of the $\Rbb^N$-bundle classified by $S^{\rho(n)} \stackrel{g_{\nu(n)}}{\to} BO(N)$, so the Thom space we were studying last time arises from the constructions above applied to this composite, i.e., taking $A = S^{\rho(n) - 1}$ and $X = S^{N-1}$.
+whose fiber is $S^{N-1}$.  This is the sphere bundle of the $\Rbb^N$-bundle classified by $S^{\rho(n)} \xrightarrow{g_{\nu(n)}} BO(N)$, so the Thom space we were studying last time arises from the constructions above applied to this composite, i.e., taking $A = S^{\rho(n) - 1}$ and $X = S^{N-1}$.
 
-This looks very good; it looks a lot like the definition of $J$.  In order to state things correctly, we need a careful definition of the Hopf construction that matches our definition of $CX$ and $\Suspend X$:
-\item The Hopf Construction on $\varphi$ is the quotient
+\item This looks very good; it looks a lot like the definition of $J$.  In order to state things correctly, we need a careful definition of the Hopf construction that matches our definition of $CX$ and $\Suspend X$.  Namely, the Hopf Construction on $\varphi$ is the quotient
 \begin{ctikzcd}
 A \times CX \rar{\widehat \varphi} \dar & CX \dar  \\
 A \ast X \rar{J \varphi} & \Suspend X.
@@ -778,7 +777,7 @@ A \ast X \rar{J \varphi} & \Suspend X.
 \end{enumerate}
 The theorem, then, is
 \begin{thm}
-There exists a homomorphism $CJ\varphi\to T\varphi$ relative to $\Suspend X$ making the following diagram commute: % What does that mean?
+There exists a homomorphism $CJ\varphi\to T\varphi$ under $\Suspend X$ making the following diagram commute:
 \begin{ctikzcd}
 A \ast X \rar{J \varphi} & \Suspend X \dar[into]\rar & C J \varphi \dlar["\exists"]\\
 & T \varphi.
@@ -790,7 +789,7 @@ S^{\rho(n)-1} \times S^{N-1} \rar["g_{\nu(n)} \times 1"] &[-\columnsep+width("$g
 \end{ctikzcd}
 and we are showing that $T\varphi$ ($ = T(g_{\nu(n)})$ from last time) = $CJ\varphi$ (= $Cj_{\nu(n)}$ from last time) relative to $\Suspend S^{N-1} = S^N$.  In fact we were interested last time in the relation between $Tg_{\nu(n)}$ and $Cj_{\nu(n)}$ stably, and we can make the fiber $S^N$ as connected as we want.  So we get a stable equivalence $Tg_{\nu(n)} \simeq Cj_{\nu(n)}$.
 \begin{proof}
-The hard part was parameterizing things right; now it's just a matter of drawing pictures.  In these pictures, we draw $A$ as a point and $X$ as a point.  Then we can keep track of the suspension, join, and cone coordinates.
+The hard part was parameterizing things right; now it's just a matter of drawing pictures.  In these pictures, we draw $A$ as a point and $X$ as a point.  Then we can keep track of the suspension, join, and cone coordinates.\todo{These figures need replacement.}
 \begin{figure}[ht!]
 \centering\includegraphics[width=0.3\textwidth]{figures/figure32.pdf}
 \caption{\small Diagram of $CJ\varphi$.}
@@ -812,11 +811,11 @@ g(s, a, t, x) & = \left( s + t - st, a, \frac{t}{s + t - st}, x \right).
 \end{align*}
 \end{proof}
 
-Remember how we got here: we were studying the EHP spectral sequence.  This spectral sequence has as its columns the homotopy groups of odd spheres and converged to $\pi_* QS^0 = \pi_*^S S^p$; moreover we had arranged it so that beneath a line of slope $2$, the entries in each column were the stable homotopy of spheres: INKSCAPE  This feature suggested the question: is there a spectral sequence whose columns are the stable homotopy of spheres and a map of spectral sequences from the EHPSS to this SS such that the map is an isomorphism below the celebrated line of slope 2?
+Remember how we got here: we were studying the EHP spectral sequence.  This spectral sequence has as its columns the homotopy groups of odd spheres and converged to $\pi_* QS^0 = \pi_*^S S^p$; moreover we had arranged it so that beneath a line of slope $2$, the entries in each column were the stable homotopy of spheres: \todo{INKSCAPE}  This feature suggested the question: is there a spectral sequence whose columns are the stable homotopy of spheres and a map of spectral sequences from the EHPSS to this SS such that the map is an isomorphism below the celebrated line of slope 2?
 
-On Friday we constructed a candidate, an Atiyah-Hirzebruch spectral sequence for the attaching maps on $\RP^\infty$: $\widetilde H^*(\RP^\infty_+; \pi_*^S)$ which we hope converges to $\pi_*^S \RP^\infty_+$, whose $E^1$-term is INKSCAPE
+On Friday we constructed a candidate, an Atiyah-Hirzebruch spectral sequence for the attaching maps on $\RP^\infty$: $\widetilde H^*(\RP^\infty_+; \pi_*^S)$ which we hope converges to $\pi_*^S \RP^\infty_+$, whose $E^1$-term is \todo{INKSCAPE}
 
-Sure enough, there is a spectral sequence map between these two spectral sequences which is an isomorphism below the line at $E^1$.  To see this, remember the EHP sequence: $\Loops^{n-1} S^{n-1} \to \Loops^n S^n \to \Loops^n S^{2n-1}$.  Here we looped it $(n-1)$ times as this is the form in which it went into the EHPSS.  This is a fibration, strictly if $n$ is even or localized at $2$ if $n$ is odd.  Linking these together and applying $\pi_*$ gave us the EHPSS.  On the other hand, the AHSS from Friday came from taking the cofibration sequence $\RP^{n-2}_+ \to \RP^{n-1}_+ \to S^{n-1}_+$ and applying $\pi_*^S = \pi_* Q$.  (Recall $QX = \bigcup_k \Loops^k \Suspend^k X$.)  The sequence $Q\RP^{n-2}_+ \to Q\RP^{n-1}_+ \to QS^{n-1}_+$ is a fibration, since $\pi_*^S$ is a homology theory and hence exact on $\RP^{n-2}_+ \to \RP^{n-1}_+ \to S^{n-1}_+$.  Next, note that we have $S^{n-1}_+ \stackrel{e^n}{\to} \Loops^n S^{2n-1}_+ \stackrel{e^{\infty-n}}{\to} QS^{n-1}_+$, and $e^{\infty-n}$ is an isomorphism on $\pi_*$ for $* < n$.
+Sure enough, there is a spectral sequence map between these two spectral sequences which is an isomorphism below the line at $E^1$.  To see this, remember the EHP sequence: $\Loops^{n-1} S^{n-1} \to \Loops^n S^n \to \Loops^n S^{2n-1}$.  Here we looped it $(n-1)$ times as this is the form in which it went into the EHPSS.  This is a fibration, strictly if $n$ is even or localized at $2$ if $n$ is odd.  Linking these together and applying $\pi_*$ gave us the EHPSS.  On the other hand, the AHSS from Friday came from taking the cofibration sequence \[\RP^{n-2}_+ \to \RP^{n-1}_+ \to S^{n-1}_+\] and applying $\pi_*^S = \pi_* Q$.  (Recall $QX = \bigcup_k \Loops^k \Suspend^k X$.)  The sequence \[Q\RP^{n-2}_+ \to Q\RP^{n-1}_+ \to QS^{n-1}_+\] is a fibration, since $\pi_*^S$ is a homology theory and hence exact on \[\RP^{n-2}_+ \to \RP^{n-1}_+ \to S^{n-1}_+.\]  Next, note that we have \[S^{n-1}_+ \xrightarrow{e^n} \Loops^n S^{2n-1}_+ \xrightarrow{e^{\infty-n}} QS^{n-1}_+,\] and $e^{\infty-n}$ is an isomorphism on $\pi_*$ for $* < n$.
 
 \begin{thm}
 There are maps $s_n$ (``Snaith maps'' or ``Hopf-James'' maps\footnote{Oh dear.}) with
@@ -848,7 +847,7 @@ S^{n-1} \rar & \RP^{n-2} \rar &  \RP^{n-1} = C\pi \rar &  S^{n-1} \rar["\Suspend
 \end{ctikzcd}
 in which the middle two maps are the cofibration on which the maps above were defined.
 \end{proof}
-Well, we found out on Friday what happens to $\pi$ in the AHSS: the differentials on the various $\pi$ hit elements in the image of the $J$-homomorphism.
+Well, we have already deduced what happens to $\pi$ in the AHSS: the differentials on the various $\pi$ hit elements in the image of the $J$-homomorphism.
 \begin{thm}
 So $w_{n-1}$ desuspends to an element in $\pi_{2n-\rho(n)-2} S^{n-\rho(n)}$ and no further.
 \end{thm}
@@ -856,6 +855,13 @@ So $w_{n-1}$ desuspends to an element in $\pi_{2n-\rho(n)-2} S^{n-\rho(n)}$ and 
 % >>>
 \fi
 \BoxedNote{}
+
+
+
+
+
+
+
 \section{The space of little cubes} % <<<
 \label{TheSpaceOfLittleCubes}
 \ifx\OutputTheSpaceOfLittleCubes\undefined\else
