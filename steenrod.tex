@@ -143,7 +143,7 @@ $f^* \iota_q  \longleftrightarrow [f]$, where these are functors of pointed spac
 
 Now let $X$ be any space with no assumptions on its cohomology, and pick $u\in\Htwee^q(X)$.%
 Representing $u\in \Htwee^q(X)$ by a map $u: X \to K_q$, we have a diagram:
-%n induced map $X^{(n)} \stackrel{u^{\sprod n}}{\to} K_q^{(n)} \stackrel{\iota_q^{\sprod n}}{\to} K_{nq}$, and then the diagram
+%n induced map $X^{(n)} \xrightarrow{u^{\sprod n}} K_q^{(n)} \xrightarrow{\iota_q^{\sprod n}} K_{nq}$, and then the diagram
 
 \begin{cjointikzcd}[intertext,row sep = small]
 \diagram
@@ -215,7 +215,7 @@ Now $(k\sprod 1)^*: \Zbb_2[x]\otimes \Htwee^* (X)\to\Htwee^* (X)$ is the project
 
 Next, we derive the Cartan formula, using the following map $\delta:D_\pi(X\sprod Y)\to D_\pi(X)\sprod D_\pi(Y)$:
 \begin{align*}
-D_\pi(X \sprod Y) = E \pi_+ \sprod_\pi (X \sprod Y)^{(2)} & \stackrel{\delta}{\to} E \pi_+ \sprod_\pi X^{(2)} \sprod E \pi_+ \sprod_\pi Y^{(2)} = D_\pi X \sprod D_\pi Y, \\
+D_\pi(X \sprod Y) = E \pi_+ \sprod_\pi (X \sprod Y)^{(2)} & \xrightarrow{\delta} E \pi_+ \sprod_\pi X^{(2)} \sprod E \pi_+ \sprod_\pi Y^{(2)} = D_\pi X \sprod D_\pi Y, \\
 (z, (x_1, y_1), (x_2, y_2)) & \mapsto (z, (x_1, x_2), z, (y_1, y_2)).
 \end{align*}
 Note that the following diagram commutes:
@@ -358,7 +358,7 @@ The map $\beta: \Htwee^q (X;\Fbb_2) \to \Htwee^{q+1} (X;\Fbb_2)$ given by
 \Htwee^{q+1}(X; \Zbb)\urar["\textup{reduction}"'{anchor=center, yshift=-0.5em},sloped]
 \end{ctikzcd}
 %
-where $\delta$ is the zigzag map of the coefficient sequence $0 \to \Zbb \stackrel{\cdot 2}{\to} \Zbb \to \Zbb_2 \to 0$ is called the Bockstein homomorphism.  It is $\Sq^1$.
+where $\delta$ is the zigzag map of the coefficient sequence $0 \to \Zbb \xrightarrow{\cdot 2} \Zbb \to \Zbb_2 \to 0$ is called the Bockstein homomorphism.  It is $\Sq^1$.
 \end{fact}
 
 \begin{lem}
@@ -603,7 +603,7 @@ which tells you that
 \centering\includegraphics[width=0.3\textwidth]{figures/11.pdf}
 \caption{\small Cell diagram of $C(f)$.}
 \end{wrapfigure}
-Now that we've learned some facts about the squares, we're in a position to apply them to some of the problems that came up earlier.  First, recall that the Hopf invariant $H: \pi_{2n-1} S^n \to \Zbb$ is defined as follows. $H(f)$ is to be the unique integer (up to sign) for which $x^2=H(f)y$, where $x$ and $y$ are the generators of $H^n(C(f))$ and $H^{2n}(C(f))$ repectively.\footnote{Note that $C(f)$, the cofiber of $S^{2n-1} \stackrel{f}{\to} S^n$ has three cells, one in dimension $0$, $n$ and $2n$.} In particular, $x^2 = H(f) \cdot y \equiv \Sq^n x$ (mod two), so that $H(f)$ is odd iff $\Sq^nx\neq0$.  However, if $n \ne 2^i$, then $\Sq^n$ is decomposable in terms of lower squares, and $\Sq^n x = 0$ since there's no cohomology between $x$ and $y$.  Therefore, we get
+Now that we've learned some facts about the squares, we're in a position to apply them to some of the problems that came up earlier.  First, recall that the Hopf invariant $H: \pi_{2n-1} S^n \to \Zbb$ is defined as follows. $H(f)$ is to be the unique integer (up to sign) for which $x^2=H(f)y$, where $x$ and $y$ are the generators of $H^n(C(f))$ and $H^{2n}(C(f))$ repectively.\footnote{Note that $C(f)$, the cofiber of $S^{2n-1} \xrightarrow{f} S^n$ has three cells, one in dimension $0$, $n$ and $2n$.} In particular, $x^2 = H(f) \cdot y \equiv \Sq^n x$ (mod two), so that $H(f)$ is odd iff $\Sq^nx\neq0$.  However, if $n \ne 2^i$, then $\Sq^n$ is decomposable in terms of lower squares, and $\Sq^n x = 0$ since there's no cohomology between $x$ and $y$.  Therefore, we get
 \begin{thm}[Adem\footnote{He realized as soon as he got the relations that this was a consequence.}]
 If there is an element of odd Hopf invariant on $S^n$, then $n$ is a power of two.
 \end{thm}
@@ -611,7 +611,7 @@ If there is an element of odd Hopf invariant on $S^n$, then $n$ is a power of tw
 %\centering\includegraphics[width=0.3\textwidth]{figures/12.pdf}
 %\caption{\small Diagram of $C(g)$.} % this figure should be some kind of staircase of suspensions to see what's going on
 %\end{wrapfigure}
-Now if $g$ is any map $S^{2n+k-1} \stackrel{g}{\to} S^{n+k} \to C(g)$, then we no longer have a nontrivial cup-product, but we still have $\Sq^n$, so we can define a generalized Hopf invariant $\Htwee(g)$ by $\Sq^n x = \Htwee(g) y$, giving $\Htwee: \pi_{2n+k-1}S^{n+k} \to \Zbb_2$.  The fact that $\Sq^n$ commutes with suspensions means
+Now if $g$ is any map $S^{2n+k-1} \xrightarrow{g} S^{n+k} \to C(g)$, then we no longer have a nontrivial cup-product, but we still have $\Sq^n$, so we can define a generalized Hopf invariant $\Htwee(g)$ by $\Sq^n x = \Htwee(g) y$, giving $\Htwee: \pi_{2n+k-1}S^{n+k} \to \Zbb_2$.  The fact that $\Sq^n$ commutes with suspensions means
 \begin{cjointikzcd}
 \diagram
    f\dar[mapsto] \\

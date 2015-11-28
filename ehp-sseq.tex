@@ -35,7 +35,7 @@ The loop structure makes $H_* (\Loops \Suspend X)$ into an algebra, so $\alpha_*
 \end{ctikzcd}
 %
 \begin{thm}
-If $X$ is connected, $R$ is a principal ideal domain, and $H_*(X; R)$ is torsion-free, then $\Tbb(\Htwee_*(X; R)) \stackrel{\overline \alpha}{\to} H_*(\Loops \Suspend X; R)$ is an isomorphism.
+If $X$ is connected, $R$ is a principal ideal domain, and $H_*(X; R)$ is torsion-free, then $\Tbb(\Htwee_*(X; R)) \xrightarrow{\overline \alpha} H_*(\Loops \Suspend X; R)$ is an isomorphism.
 \end{thm}
 Now since $H_*(X; R)$ is torsion-free:
 \[\bigoplus_{k \ge 0} \Htwee_*(X;R)^{\otimes k} \cong \bigoplus_{j \ge 0} \Htwee_* (X^{(k)};R) \cong \Htwee_*{\left(\textstyle\bigvee_{k \ge 0} X^{(k)};R\right)},\]
@@ -66,7 +66,7 @@ On the other hand the sequence $\Suspend(X \wsum Y) \to \Suspend(X \times Y) \to
 \Suspend(X \wsum Y)\dar["\simeq"'] \rar & \Suspend(X \times Y)\dar \rar & \Suspend(X \sprod Y)\dar["\simeq"'] \\
 \Suspend X \wsum \Suspend Y \rar & \Suspend(X \sprod Y) \wsum \Suspend X \wsum \Suspend Y \rar & \Suspend(X \sprod Y)
 \end{ctikzcd}
-The two horizontal lines give exact sequences in homotopy, so by the five lemma and assuming $X$ and $Y$ are CW-complexes, we get a map going back, $\Suspend(X \sprod Y) \wsum \Suspend X \wsum \Suspend Y \to \Suspend (X \times Y)$.  Now the composite $\Suspend(X \sprod Y) \to \Suspend(X \sprod Y) \wsum \Suspend X \wsum \Suspend Y \stackrel{\simeq}{\to} \Suspend(X \times Y)$ gives the first map $\Suspend X^{(k)} \to \Suspend X^k$ in the overall diagram; from its construction we see that it splits the homology of $\Suspend X^k$ as a sum $H_* \Suspend X^{(k)} \oplus H_* ((\Suspend X)^{\wsum k})$ \textbf{incorrect expression}.
+The two horizontal lines give exact sequences in homotopy, so by the five lemma and assuming $X$ and $Y$ are CW-complexes, we get a map going back, $\Suspend(X \sprod Y) \wsum \Suspend X \wsum \Suspend Y \to \Suspend (X \times Y)$.  Now the composite $\Suspend(X \sprod Y) \to \Suspend(X \sprod Y) \wsum \Suspend X \wsum \Suspend Y \xrightarrow{\simeq} \Suspend(X \times Y)$ gives the first map $\Suspend X^{(k)} \to \Suspend X^k$ in the overall diagram; from its construction we see that it splits the homology of $\Suspend X^k$ as a sum $H_* \Suspend X^{(k)} \oplus H_* ((\Suspend X)^{\wsum k})$ \textbf{incorrect expression}.
 \item The second map in the overall diagram is the suspension of the ``straight loops'' embedding that spawned this whole discussion, repeated $k$ times.
 \item The third map in the overall diagram is the suspension of the loop multiplication map.  Note that loop multiplication is not strictly associative due to parameterization problems, but it is associative up to homotopy.
 \end{enumerate}
@@ -75,7 +75,7 @@ Now the Bott-Samelson theorem says that the product of these composities as $k$ 
 
 Now note that the Bott-Samelson theorem required that $H^*(X; R)$ be torsion-free and $R$ a principal ideal domain.  However, the claim is that this theorem of James holds for arbitrary coefficients, in particular with $\Zbb$-coefficients; in fact, we have a general proposition:
 \begin{lem}
-If $X \to Y$ induces an isomorphism on homology $H_*(X; F) \stackrel{\cong}{\to} H_*(Y; F)$ for $F$ either $\Zbb/(p)$ or $\Qbb$, then $H_*(X; \Zbb) \stackrel{\cong}{\to} H_*(Y; \Zbb)$.
+If $X \to Y$ induces an isomorphism on homology $H_*(X; F) \xrightarrow{\cong} H_*(Y; F)$ for $F$ either $\Zbb/(p)$ or $\Qbb$, then $H_*(X; \Zbb) \xrightarrow{\cong} H_*(Y; \Zbb)$.
 \end{lem}
 \begin{proof}
 Use the universal coefficient theorem many times.  First, for any $p$, $f$ induces a map of long exact sequences induced by the short exact sequence
@@ -266,14 +266,14 @@ but now since the homology isomorphism was only one of coalgebras, this is only 
 % >>>
 \fi
 \begin{SummaryNote}
-Let $X$ be a connected CW-complex, and $X\stackrel{\alpha}{\to} \Omega\Sigma X$ be the inclusion of $X$ as the straight loops of length one in the space of Moore loops on $X$.
+Let $X$ be a connected CW-complex, and $X\xrightarrow{\alpha} \Omega\Sigma X$ be the inclusion of $X$ as the straight loops of length one in the space of Moore loops on $X$.
 
-\Bullet If $R$ is a PID, and $H_*(X; R)$ is torsion-free, then $\alpha$ induces an isomorphism $\Trm (\Htwee_*(X; R)) \stackrel{\overline \alpha}{\to} H_*(\Loops \Suspend X; R)$.
+\Bullet If $R$ is a PID, and $H_*(X; R)$ is torsion-free, then $\alpha$ induces an isomorphism $\Trm (\Htwee_*(X; R)) \xrightarrow{\overline \alpha} H_*(\Loops \Suspend X; R)$.
 
 \Bullet There is an equivalence
 $\Suspend \Loops \Suspend X \simeq \bigvee_{\!k \ge 1} \Suspend X^{(k)}$ which realises $\overline\alpha$.
 
-\Bullet The extension of $\alpha$ to $J(X)\stackrel{\tilde\alpha}{\to}\Omega\Sigma X$ is a homotopy equivalence. $\Sigma J(X)$ splits as $\bigvee_{\!k \ge 1} \Suspend X^{(k)}$. We define the $m^\text{th}$ James-Hopf invariant $h_m$ via:
+\Bullet The extension of $\alpha$ to $J(X)\xrightarrow{\tilde\alpha}\Omega\Sigma X$ is a homotopy equivalence. $\Sigma J(X)$ splits as $\bigvee_{\!k \ge 1} \Suspend X^{(k)}$. We define the $m^\text{th}$ James-Hopf invariant $h_m$ via:
 \[\hhat_m:\left\{\Sigma\Omega\Sigma X\to{\textstyle\bigvee_{\!k \ge 0}} \Suspend X^{(k)}\to\Sigma X^{(m)}\right\}\text{ with adjoint }h_m:\Omega\Sigma X\to\Omega\Sigma X^{(m)}\]
 
 \Bullet When $n$ is even, the Hopf algebra $H_*(\Omega S^{n+1})$ is the tensor algebra $\Trm[u_1]$, with comultiplication given by $\Delta u_1^k = {\displaystyle\sum_{i + j = k}} \binom{i+j}{i} u_1^i \otimes u_1 ^j$.
@@ -293,7 +293,7 @@ The march to the EHP sequence continues.
 \ConfusedBox{
     \textbf{Keep?} Recall for a connected CW complex $X$ the James construction gave a homotopy equivalence
     \[
-    \bigvee_{k \ge 0} \Suspend X^{(k)} \stackrel{\simeq}{\to} \Suspend \Loops \Suspend X
+    \bigvee_{k \ge 0} \Suspend X^{(k)} \xrightarrow{\simeq} \Suspend \Loops \Suspend X
     ,\]
     so in particular we have a map going back.  The map
     \[
@@ -367,7 +367,7 @@ F \rar["\gamma"] & S^1
 \end{ctikzcd}
 which \emph{are} homotopic by the Whitehead theorem; since $\tilde \gamma$ is equivariant with respect to deck transformations, $\gamma: F \to S^1$ is a homotopy equivalence (\textbf{I do not understand this}).  So now for n odd we have the homotopy fibration $S^n \to \Loops S^{n+1} \to \Loops S^{2n+1}$ whose long exact sequence is the EHP sequence
 \[
-\cdots \to \pi_i (S^n) \stackrel{e}{\to} \pi_{i+1} (S^{n+1}) \stackrel{h}{\to} \pi_{i+1} (S^{2n+1}) \stackrel{p}{\to} \pi_{i-1} (S^n) \stackrel{e}{\to} \pi_i (S^{n+1}) \to \cdots
+\cdots \to \pi_i (S^n) \xrightarrow{e} \pi_{i+1} (S^{n+1}) \xrightarrow{h} \pi_{i+1} (S^{2n+1}) \xrightarrow{p} \pi_{i-1} (S^n) \xrightarrow{e} \pi_i (S^{n+1}) \to \cdots
 \]
 \item The case when $n$ is even is even more interesting. Then $x_1\mapsto u_2$ under $h_2^*$:
 \begin{cjointikzcd}[intertext,row sep=-0.1em]
@@ -387,7 +387,7 @@ This is a pretty awful number, but at the prime $2$ it's not so bad:
 ,\]
 so over $\Zbb_{(2)}$ this is $k!$ times a unit.  So working over $\Zbb_{(2)}$, $h_2^* : x_k \mapsto (\textup{unit})\cdot u_{2k}$.  So the Serre spectral sequence over $\Zbb_{(2)}$ looks the same as it did in the odd case, and $H_*(\alpha; \Zbb_{(2)})$ is an isomorphism.  So $\gamma: S^n \to F$ isn't a homotopy equivalence, but it is an isomorphism on $\pi_*$ localized at 2, by Serre's mod-$\mathscr{C}$ theory.
 \begin{thm}
-Let $\alpha: X \to Y$ be a map of simply connected spaces.  If $\alpha_*: H_*(X; \Zbb_{(p)}) \to H_*(Y; \Zbb_{(p)})$ is an isomorphism, then $\alpha_*: \pi_* (X) \otimes \Zbb_{(p)} \stackrel{\cong}{\to} \pi_* (Y) \otimes \Zbb_{(p)}$ is too.
+Let $\alpha: X \to Y$ be a map of simply connected spaces.  If $\alpha_*: H_*(X; \Zbb_{(p)}) \to H_*(Y; \Zbb_{(p)})$ is an isomorphism, then $\alpha_*: \pi_* (X) \otimes \Zbb_{(p)} \xrightarrow{\cong} \pi_* (Y) \otimes \Zbb_{(p)}$ is too.
 \end{thm}
 So for $n$ even, the $2$-local homotopy groups are the same; we have no idea about the unlocalised homotopy groups, but for present purposes we don't care: we get the same EHP sequences for $n$ even, but now localized at 2.
 \end{itemize}
@@ -401,7 +401,7 @@ Let $R$ denote $\Zbb$ when $n$ is odd, and $\Zbb_{(2)}$ when $n$ is even. We alw
 \item The cohomology algebra $H^*(B)$ has a copy of $R$ in each degree which is a multiple of $2n$, and the map $h_2^*:H^{2kn}(B)\to H^{2kn}(E)$ is an isomorphism (for all $k\in\Nbb$).
 \item If $a\in H^{n}(E)$ and $b\in H^{2kn}(E)$ are generators (for any $k\in\Nbb$), then $ab$ generates $H^{(2k+1)n}(E)$.\footnote{If $n$ is odd, $H^*(E)=\Lambda[u_1]\otimes \Gamma[u_2]$, and this is obvious. If $n$ is even, we are using coefficients in $\Zbb_{(2)}$, and $H^*(E)=\Gamma[u_1]$. We calculate $u_1u_{2k}=\binom{2k+1}{1}u_{2k+1}=(2k+1)u_{2k+1}$, and $2k+1$ is a unit in $\Zbb_{(2)}$.}
 \end{itemize}
-%Whether $n$ is even or odd, we know that the cohomology algebra of $E=\Omega S^{n+1}$ has a copy of $R$ in each degree which is a multiple of $n$. We also know that if $a\in H^{n}(E)$ and $b\in H^{2kn}(E)$ are generators (for $k\in\Nbb$), then $ab$ generates $H^{(o+e)n}(E)$.\footnote{If $n$ is odd, $H^*(E)=\Lambda[u_1]\otimes \Gamma[u_2]$, and this is obvious. If $n$ is even, we are using coefficients in $\Zbb_{(2)}$, and $H^*(E)=\Gamma[u_1]$. We calculate $u_1u_{2k}=\binom{2k+1}{1}u_{2k+1}=(2k+1)u_{2k+1}$, and $2k+1$ is a unit in $s\Zbb_{(2)}$.} Finally, the cohomology algebra of $B=\Omega S^{2n+1}$ has a copy of $R$ in each degree which is a multiple of $2n$, and we showed above that $H^{2kn}(h_2)$ is an isomorphism for all $k$.
+%Whether $n$ is even or odd, we know that the cohomology algebra of $E=\Omega S^{n+1}$ has a copy of $R$ in each degree which is a multiple of $n$. We also know that if $a\in H^{n}(E)$ and $b\in H^{2kn}(E)$ are generators (for $k\in\Nbb$), then $ab$ generates $H^{(o+e)n}(E)$.\footnote{If $n$ is odd, $H^*(E)=\Lambda[u_1]\otimes \Gamma[u_2]$, and this is obvious. If $n$ is even, we are using coefficients in $\Zbb_{(2)}$, and $H^*(E)=\Gamma[u_1]$. We calculatexf $u_1u_{2k}=\binom{2k+1}{1}u_{2k+1}=(2k+1)u_{2k+1}$, and $2k+1$ is a unit in $s\Zbb_{(2)}$.} Finally, the cohomology algebra of $B=\Omega S^{2n+1}$ has a copy of $R$ in each degree which is a multiple of $2n$, and we showed above that $H^{2kn}(h_2)$ is an isomorphism for all $k$.
 
 As the maps $H^{2kn}(h_2)$ are isomorphisms, no differentials can ever hit the entries $E^{2kn,0}$ of the associated Serre spectral sequence\footnote{To understand this, consider the edge homomorphism.}, and $E^{2kn,0}_\infty$ is identified isomorphically with $H^{2kn}(E)$.
 Thus, the only nonzero $E_\infty$ term with total degree $2kn$ is $E_\infty^{2kn,0}$.
@@ -834,7 +834,7 @@ Apply the previous lemma to the Hopf construction $j=H(\mu)$ where $\mu:S^{n-1}\
 \section{Whitehead products and the EHP spectral sequence} % <<<
 \label{WhiteheadProductsAndTheEHPSS}
 \ifx\OutputWhiteheadProductsAndTheEHPSS\undefined\else
-OK, so now we'll go back to the EHP sequence, and conclude this look at the map $h$ by seeing what we get from the existence of elements of Hopf invariant 1.  Last time we constructed maps $\tau: S^{2n+1} \to S^{n+1}$ of Hopf invariant one (for $n=0,1,3,7$)\footnote{These maps are often denoted $\eta$, $\nu$ and $\sigma$ respectively.}, by applying the Hopf construction to H-space multiplications $\mu:S^n \times S^n \to S^n$.  We'll consider this map when $n=1,3,7$. To see this phenomenon in the EHP sequence, we view $\tau$ as an element of $\pi_{2n}(\Omega S^{n+1})$, examining the $\pi_{2n}$ level of the long exact sequence of the fibration $S^{n} \to \Loops S^{n+1} \stackrel{h}{\to} \Loops S^{2n+1}$.  We can fit $\tau$ into this picture:
+OK, so now we'll go back to the EHP sequence, and conclude this look at the map $h$ by seeing what we get from the existence of elements of Hopf invariant 1.  Last time we constructed maps $\tau: S^{2n+1} \to S^{n+1}$ of Hopf invariant one (for $n=0,1,3,7$)\footnote{These maps are often denoted $\eta$, $\nu$ and $\sigma$ respectively.}, by applying the Hopf construction to H-space multiplications $\mu:S^n \times S^n \to S^n$.  We'll consider this map when $n=1,3,7$. To see this phenomenon in the EHP sequence, we view $\tau$ as an element of $\pi_{2n}(\Omega S^{n+1})$, examining the $\pi_{2n}$ level of the long exact sequence of the fibration $S^{n} \to \Loops S^{n+1} \xrightarrow{h} \Loops S^{2n+1}$.  We can fit $\tau$ into this picture:
 \begin{ctikzcd}
 S^n\rar & \Omega S^{n+1} \rar[wavy,"h"] & \Omega S^{2n+1}\\
 \Omega S^{2n+1} \urar[wavy,"\Omega \tau"] & S^{2n} \lar["\alpha"']\uar["\overline\tau"']\urar[dashed,"q"']
@@ -934,7 +934,7 @@ H (w_n)= \begin{cases}2 & \hbox{$n$ even} \\ 0 & \hbox{$n$ odd}\end{cases}
 \]
 Well, this is pretty nice, in fact it's pretty amazing: what we've done is look at
 \[
-\pi_{2n-1} (S^n) \stackrel{h}{\to} \pi_{2n-1}(S^{2n-1}) = \Zbb
+\pi_{2n-1} (S^n) \xrightarrow{h} \pi_{2n-1}(S^{2n-1}) = \Zbb
 \]
 and show that the image contains $2\Zbb$ is $n$ is even. Thus there is a short exact sequence
 \[0\to \ker (h)\to\pi_{2n-1}(S^n)\to\left(\im(h)\cong\Zbb\right)\to0.\]
@@ -954,7 +954,7 @@ For $n$ odd, $w_{n-1} \in \pi_{2n-3} (S^{n-1})$ doesn't desuspend, and for $n$ e
 \end{cor}
 Now $w_{n-1}$ might desuspend more times; you might ask where  it was ``born'' in the sequence
 %\[
-%\cdots \stackrel{e}{\to} \pi_{k+n} S^n \stackrel{e}{\to} \pi_{k+n+1} S^{n+1} \stackrel{e}{\to} \pi_{k+n+2} S^{n+2} \stackrel{e}{\to} \cdots
+%\cdots \xrightarrow{e} \pi_{k+n} S^n \xrightarrow{e} \pi_{k+n+1} S^{n+1} \xrightarrow{e} \pi_{k+n+2} S^{n+2} \xrightarrow{e} \cdots
 %\]
 \begin{ctikzcd}
 \cdots \rar &\pi_{2n-6}(S^{n-4}) \rar["e"] & \pi_{2n-5}(S^{n-3}) \rar["e"] & \pi_{2n-4}(S^{n-2}) \rar["e"] &\pi_{2n-3}(S^{n-1})

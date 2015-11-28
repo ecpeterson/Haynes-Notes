@@ -212,9 +212,9 @@ as we shall soon see.  By choosing a metric on $\Rbb^N$, we get an orthogonal co
 %Throughout, let $X$ be a pointed compact Hausdorff space.  Recall that $KO(X)$ was defined to be the abelian group given by the Grothendieck construction on the monoid $\Vect(X)$.
 If $f: X \to Y$ is a map and $E \to Y$ is a vector bundle, then $E$ pulls back by $f$ to a vector bundle $f^* E \to X$, so we have a map $f^*: KO(Y) \to KO(X)$.  Pullbacks by homotopic maps induce isomorphic bundles, so $f \simeq g$ implies $f^* = g^*$.  Hence $KO$ is a contravariant functor $ \mathit{ho}\mathsf{Top} \to \mathsf{AbGrp}$. % it would be smart to come up with a notation for vector bundles, like f^* E downarrow X
 
-Now the canonical maps $\ptspace \to X \to \ptspace$ induce maps $KO(\ptspace) \stackrel{\eta}{\to} KO(X) \stackrel{\epsilon} \to KO(\ptspace)$.  It is clear that $KO(\ptspace) = \Zbb$, that $\im \eta$ consists of trivial bundles, and that $\epsilon(V,W)=\dim_*(V)-\dim_*(W)$ takes the difference of the dimensions of the fibers over the basepoint.  Reduced $KO$-theory is defined in terms of these maps.  There are two equivalent definitions: % point out that this sequence is induced by the triangle pt --> X --> pt, with the composite a homotopy equivalence.
+Now the canonical maps $\ptspace \to X \to \ptspace$ induce maps $KO(\ptspace) \xrightarrow{\eta} KO(X) \xrightarrow{\epsilon} KO(\ptspace)$.  It is clear that $KO(\ptspace) = \Zbb$, that $\im \eta$ consists of trivial bundles, and that $\epsilon(V,W)=\dim_*(V)-\dim_*(W)$ takes the difference of the dimensions of the fibers over the basepoint.  Reduced $KO$-theory is defined in terms of these maps.  There are two equivalent definitions: % point out that this sequence is induced by the triangle pt --> X --> pt, with the composite a homotopy equivalence.
 \[ % this isn't defined piecewise, so we are we using this bracket notation?
-\widetilde{KO}(X) = \begin{cases}
+\KOtwee(X) = \begin{cases}
 \ker \epsilon & \hbox{: virtual vector bundles, i.e., formal differences $V - W$ with the same rank, or} \\
 \coker \eta & \hbox{: i.e.,\ $\Vect(X)/\approx$, where $V\approx W$ iff $V \oplus m \epsilon \cong W \oplus n \epsilon$ for some $m,n\geq0$}.
 %\coker \eta & \hbox{: $[V] = [W]$ if and only if $V \oplus m \epsilon \cong W \oplus n \epsilon$}. % aaron finds this line confusing, so we should change it
@@ -234,41 +234,41 @@ such that the triangle commutes and $f_i$ is linear on each fiber.  Let $\phi_1,
 \[
 g_i =
 \begin{cases}
-E|_{U_i} \stackrel{f_i}{\to} U \times \Rbb^n \stackrel{(x, v) \mapsto \phi_i(x) \cdot v}{\longrightarrow} \Rbb^n, \\
+E|_{U_i} \xrightarrow{f_i} U \times \Rbb^n \xrightarrow{(x, v) \mapsto \phi_i(x) \cdot v} \Rbb^n, \\
 \hbox{$0$ on $E$ away from $U_i$}.
 \end{cases}\]
 The $g_i$ give a linear embedding $f: E \to X \times (\Rbb^n)^k$ defined by $f(e) = (p(e), g_1(e), \ldots, g_k(e))$.
 
-This map in fact gives more: to each $x \in X$ we associate the $n$-dimensional subspace $f(E_x)$ of $\Rbb^N$ with $N = nk$.  This induces a classifying map $h$ from $X$ to the Grassmannian of $n$-planes in $\Rbb^N$.  Over $G_{N, n}$ is the tautological $n$-plane bundle $E_{N, n}$, \[E_{N, n} = \{(v, p) \mid p \in G_{N, n}, \hbox{$v$ a member of the subspace associated to $p$}\}\] and we have in fact expressed $E \to X$ as the pullback of the tautological bundle along $h$.  From this point of view it is clear that the choice of $N$ is somewhat arbitrary; there are obvious inclusions $G_{N, n} \subseteq G_{N+1, n} \subseteq G_{N+2, n} \subseteq \cdots$, and $E$ can be induced from the tautological bundle over $G_{N, n}$ for any sufficiently large $N$.  Thus we have a classifying space $BO(n) = \bigcup_N G_{N, n}$, and it represents rank $n$ vector bundles over $X$ via $\Vect_n(X) \stackrel{\cong}{\to} [X, BO(n)]$.
+This map in fact gives more: to each $x \in X$ we associate the $n$-dimensional subspace $f(E_x)$ of $\Rbb^N$ with $N = nk$.  This induces a classifying map $h$ from $X$ to the Grassmannian of $n$-planes in $\Rbb^N$.  Over $G_{N, n}$ is the tautological $n$-plane bundle $E_{N, n}$, \[E_{N, n} = \{(v, p) \mid p \in G_{N, n}, \hbox{$v$ a member of the subspace associated to $p$}\}\] and we have in fact expressed $E \to X$ as the pullback of the tautological bundle along $h$.  From this point of view it is clear that the choice of $N$ is somewhat arbitrary; there are obvious inclusions $G_{N, n} \subseteq G_{N+1, n} \subseteq G_{N+2, n} \subseteq \cdots$, and $E$ can be induced from the tautological bundle over $G_{N, n}$ for any sufficiently large $N$.  Thus we have a classifying space $BO(n) = \bigcup_N G_{N, n}$, and it represents rank $n$ vector bundles over $X$ via $\Vect_n(X) \xrightarrow{\cong} [X, BO(n)]$.
 
-What happens when we descend to $KO(X)$?  First, the equivalence $V \sim V \oplus \epsilon$ gives us $\widetilde{KO}$, % is Grothendieck(Vect) / this relation the same as Vect / this relation? Yes - Now discussed above.
-so we get $\widetilde{KO}$ by identifying an element of $[X, BO(n)]$ with an element of $[X, BO(n+1)]$ when all it does is add a trivial bundle.  Now if $EO(n)$ is the tautological $n$-plane bundle over $BO(n)$, % should this be called the canonical O(n)-bundle?  should we warn the reader we're going to mix these things together using the Borel construction?
+What happens when we descend to $KO(X)$?  First, the equivalence $V \sim V \oplus \epsilon$ gives us $\KOtwee$, % is Grothendieck(Vect) / this relation the same as Vect / this relation? Yes - Now discussed above.
+so we get $\KOtwee$ by identifying an element of $[X, BO(n)]$ with an element of $[X, BO(n+1)]$ when all it does is add a trivial bundle.  Now if $EO(n)$ is the tautological $n$-plane bundle over $BO(n)$, % should this be called the canonical O(n)-bundle?  should we warn the reader we're going to mix these things together using the Borel construction?
 then $EO(n) \oplus \epsilon$ is an $(n+1)$-plane bundle, and there is a classifying map $BO(n)\to BO(n+1)$ for this bundle. We obtain a sequence:
 \begin{ctikzcd}
 \cdots \rar & BO(n) \rar & BO(n+1) \rar & \cdots
 \end{ctikzcd}
-of classifying maps whose colimit $\bigcup_n BO(n)$ is called $BO$, and $\widetilde{KO}(X) = [X, BO]$.\footnote{%
-This argument can be summarised as follows: $\widetilde{KO}(X)=\textup{colim}[X,BO(n)]$, which equals $[X,\textup{colim}BO(n)]$ as $X$ is compact.
+of classifying maps whose colimit $\bigcup_n BO(n)$ is called $BO$, and $\KOtwee(X) = [X, BO]$.\footnote{%
+This argument can be summarised as follows: $\KOtwee(X)=\textup{colim}[X,BO(n)]$, which equals $[X,\textup{colim}BO(n)]$ as $X$ is compact.
 }
 Finally, $KO$ remembers dimension, so $KO(X) = [X, \Zbb \times BO]$. % where Z keeps track of the virtual dimension
 
-Now let's talk about $J$-theory.  If $V$ and $W$ are vector bundles over $X$, then we write $V \sim_J W$ if $S(V \oplus n \epsilon)$ and $S(W \oplus n \epsilon)$ are fiber homotopy equivalent for some $n\geq0$. This idea is analogous to $K$ on the level of sphere bundles, and defines an additive equivalence relation on $KO(X)$. $J(X)$ is defined to be the quotient of $KO(X)$ given by this relation, and $\widetilde J(X)$ the image of $\widetilde{KO}(X)$. % there should be an equation attached to this last sentence
+Now let's talk about $J$-theory.  If $V$ and $W$ are vector bundles over $X$, then we write $V \sim_J W$ if $S(V \oplus n \epsilon)$ and $S(W \oplus n \epsilon)$ are fiber homotopy equivalent for some $n\geq0$. This idea is analogous to $K$ on the level of sphere bundles, and defines an additive equivalence relation on $KO(X)$. $J(X)$ is defined to be the quotient of $KO(X)$ given by this relation, and $\widetilde J(X)$ the image of $\KOtwee(X)$. % there should be an equation attached to this last sentence
 Now from the Clifford algebra story we know that over $\RP^k$ the tautological line bundle $L$ has $a_k L \cong a_k \epsilon$. % this a_k was defined in day 2, remind the reader
-Considering the class $[L] - 1 \in \widetilde{KO}(\RP^k)$, this means $a_k([L] - 1) = 0$. In fact: % say early on that we're going to identify n eps with n.
+Considering the class $[L] - 1 \in \KOtwee(\RP^k)$, this means $a_k([L] - 1) = 0$. In fact: % say early on that we're going to identify n eps with n.
 \begin{thm}[Adams]\label{AdamsKORPn}
-$\widetilde{KO}(\RP^k)=\Zbb/a_k\Zbb$ generated by $[L]-1$.
-$\widetilde{KO}(\RP^k) \stackrel{\cong}{\onto} \widetilde J(\RP^k)$ is an isomorphism.
+$\KOtwee(\RP^k)=\Zbb/a_k\Zbb$ generated by $[L]-1$.
+$\KOtwee(\RP^k) \xtwoheadrightarrow{\cong} \widetilde J(\RP^k)$ is an isomorphism.
 \end{thm}
 In other words, there are no other trivializations, and so % remind the reader that we were talking about coreductions earlier
 \begin{cor}
 If $S(nL) \to \RP^k$ is fiber homotopy trivial, then $a_k$ divides $n$. In particular, there are at most $\rho(n) - 1$ vector fields on $S^{n-1}$. % this should have a proof attached, reminding the reader of the chain of implications
 \end{cor}
 \begin{proof}
-Suppose that $S(nL)$ is fiber homotopy trivial. Then $n[L]$ equals $n[\epsilon]$ in $\widetilde J(\Rbb P^k)$, and so $n([L]-1)=0$ in $\widetilde{KO}(\RP^k)$, implying that $a_k|n$. This demonstrates the first claim.
+Suppose that $S(nL)$ is fiber homotopy trivial. Then $n[L]$ equals $n[\epsilon]$ in $\widetilde J(\Rbb P^k)$, and so $n([L]-1)=0$ in $\KOtwee(\RP^k)$, implying that $a_k|n$. This demonstrates the first claim.
 
 Now we saw in lecture \ref{CliffordAlgebras} that $a_k|n$ iff $k\leq \rho(n)-1$. We saw in lecture \ref{BuildingThomSpaces} that if $V_{n, k+1} \onto S^{n-1}$ sections, then $S(nL)\onto \Rbb P^{k}$ is fiber homotopy trivial. Thus, if $V_{n, k+1} \onto S^{n-1}$ sections, we must have $k\leq\rho(n)-1$.
 \end{proof}
-One of the things we get out of this theorem is that $\widetilde{KO}(\RP^k)$ is finite. In general: % really i think this and the previous immediate theorems should be moved down below Atiyah's theorem
+One of the things we get out of this theorem is that $\KOtwee(\RP^k)$ is finite. In general: % really i think this and the previous immediate theorems should be moved down below Atiyah's theorem
 \begin{thm}[Atiyah]
 If $X$ is a finite connected complex, then $\widetilde J(X)$ is finite.
 \end{thm}
@@ -288,7 +288,7 @@ We then make two claims: $\widetilde J(X)$ is the image of $[X, BO] \to [X, BG]$
 
 \Bullet$\widetilde {KO}(X)$ can be viewed as (i) $\Vect(X)/\approx$, where $\approx$ is generated by $V\approx X\oplus\epsilon$, or (ii) as equivalence classes of virtual vector bundles $V-W$, where $\dim V=\dim W$.
 
-\Bullet Adams: $\widetilde{KO}(\RP^k)=\Zbb/a_k\Zbb$ generated by $[L]-1$, and the canonical epimorphism $\widetilde{KO}(\RP^k)\to\widetilde{J}(\RP^k)$ is an isomorphism, solving the vector field problem.
+\Bullet Adams: $\KOtwee(\RP^k)=\Zbb/a_k\Zbb$ generated by $[L]-1$, and the canonical epimorphism $\KOtwee(\RP^k)\to\widetilde{J}(\RP^k)$ is an isomorphism, solving the vector field problem.
 
 \Bullet Atiyah: $\widetilde J(X)$ is finite for $X$ a finite connected complex.
 }

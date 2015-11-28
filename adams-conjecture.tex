@@ -1,4 +1,4 @@
-% -*- root: haynes-notes.tex -*-
+
 
 \section{The Becker-Gottlieb transfer} % <<<
 \label{TheBeckerGottliebTransfer}
@@ -12,7 +12,7 @@ One of the advantages of a topics course is that you can change direction in mid
 \end{ctikzcd}
 
 
-\item The Gysin map: Next we apply the Pontrjagin-Thom construction to the case of a smooth fibration of compact manifolds $F \to E \stackrel{p}{\to} B$.  We'd like to convert $p$ to an open embedding.  By the Whitney embedding theorem you can embed $E$ in $\Rbb^n$ for $n$ sufficiently large, and an embedding $E \into \Rbb^n$ induces an inclusion
+\item The Gysin map: Next we apply the Pontrjagin-Thom construction to the case of a smooth fibration of compact manifolds $F \to E \xrightarrow{p} B$.  We'd like to convert $p$ to an open embedding.  By the Whitney embedding theorem you can embed $E$ in $\Rbb^n$ for $n$ sufficiently large, and an embedding $E \into \Rbb^n$ induces an inclusion
 \begin{ctikzcd}
 E \dar["p"']\rar["i"] & B \times \Rbb^n \dlar\\
 B
@@ -34,14 +34,14 @@ In some sense what you're going is inverting $p$, constructing a sort of multiva
 \caption{\small Constructing the Gysin map.}
 \end{figure}
 
-The next question is: what is $\nu(i)$?  Well, $\nu(i) + \tau_E = i^*(\tau_{B \times \Rbb^n}) = p^* \tau_B + n\varepsilon_E$.  Now $\tau_E = p^* \tau_B + \tau(p)$, the ``vertical vectors'' or tangent vectors along the fiber.  So $\nu(i) + \tau(p) = n \varepsilon_E$; this is sort of a tangent bundle / normal bundle ``relative to $B$.''  So $\nu(i) = n \varepsilon - \tau(p)$, and so we get a stable map $B_+ \stackrel{p_!}{\stableto} E^{-\tau(p)}$, called the Gysin map, denoted $p_!$ for ``$p$ shriek'' or ``$p$ surprise.''  (We're also going to start writing $\stableto$ from here on out for stable maps.)
+The next question is: what is $\nu(i)$?  Well, $\nu(i) + \tau_E = i^*(\tau_{B \times \Rbb^n}) = p^* \tau_B + n\varepsilon_E$.  Now $\tau_E = p^* \tau_B + \tau(p)$, the ``vertical vectors'' or tangent vectors along the fiber.  So $\nu(i) + \tau(p) = n \varepsilon_E$; this is sort of a tangent bundle / normal bundle ``relative to $B$.''  So $\nu(i) = n \varepsilon - \tau(p)$, and so we get a stable map $B_+ \xslashedrightarrow{p_!} E^{-\tau(p)}$, called the Gysin map, denoted $p_!$ for ``$p$ shriek'' or ``$p$ surprise.''  (We're also going to start writing $\stableto$ from here on out for stable maps.)
 
 \item The Becker-Gottlieb transfer: the inclusion $\nu(i) \into n \varepsilon_E$ induces a map of Thom spaces $E^{\nu(i)} \to E^{n \varepsilon} = \Suspend^n \pt{E}$, which, together with the Gysin map,
 \begin{ctikzcd}
 \Suspend^n \pt{B} \rar[equal] & B^{n \varepsilon} \rar["p_!"] & E^{\nu(i)} \rar & E^{n \varepsilon} \rar[equal] & \Suspend^n \pt{E}
 \end{ctikzcd}
 is the Becker-Gottlieb transfer $t(p): \pt{B} \stableto E_+$, which has the virtue that it doesn't shift dimensions.
-\item Euler characteristic: The Euler characteristic in this context will be defined as $\chi(p) \in \pi_S^0(B)$, an element in the stable cohomotopy of $B$.  Namely, start with the transfer $t(p): \pt{B} \stableto \pt{E}$.  Now there's a ridiculous map $\pt{E} \to S^0$ which takes the basepoint to the basepoint and pinches everything else (i.e., $E$) to the other point.  On the level of complexes, this isn't much of a map, but the claim is that stably there's a lot going on.  So the Euler characteristic is defined as $\chi(p): \pt{B} \stackrel{t(p)}{\stableto} \pt{E} \stackrel{\mathrm{pinch}}{\to} S^0 \in \pi_S^0(B)$ (i.e., unreduced stable cohomotopy).
+\item Euler characteristic: The Euler characteristic in this context will be defined as $\chi(p) \in \pi_S^0(B)$, an element in the stable cohomotopy of $B$.  Namely, start with the transfer $t(p): \pt{B} \stableto \pt{E}$.  Now there's a ridiculous map $\pt{E} \to S^0$ which takes the basepoint to the basepoint and pinches everything else (i.e., $E$) to the other point.  On the level of complexes, this isn't much of a map, but the claim is that stably there's a lot going on.  So the Euler characteristic is defined as $\chi(p): \pt{B} \xslashedrightarrow{t(p)} \pt{E} \xrightarrow{\mathrm{pinch}} S^0 \in \pi_S^0(B)$ (i.e., unreduced stable cohomotopy).
 
 Naturality of $\chi(p)$ follows from the naturality of $p_!$ with respect to pullbacks: if $E = f^* E'$ in TERRIBLE DIAGRAM we get $f^* \nu(i') = \nu(i)$, and $N'$ is a tubular neighborhood for $E'$ in $B' \times \Rbb^n$, we can use $f^{-1} N'$ for one of $E$ in $B \times \Rbb^n$ (we may have to choose $N'$ well, but because $B$ and $B'$ and the fiber are compact, there is no real difficulty).  Then we get the following naturality:
 \begin{ctikzcd}
@@ -61,7 +61,7 @@ The following diagram commutes:
 \pt{(B \times B)}
 \end{ctikzcd}
 \end{lem}
-Before we prove the lemma, note this corollary.  Any cohomology theory has an action of stable cohomotopy: if $\alpha \in \{X, h\}$ is a class in $h^*(X)$ and $\beta \in \pi^S(X) = \{X, S\}$, then we get $\beta \cup \alpha: \Suspend X \to \Suspend X \wsum \Suspend X \stackrel{\Suspend (\alpha \wsum \beta)}{\to} \Suspend (h \wsum S) \to \Suspend h$.
+Before we prove the lemma, note this corollary.  Any cohomology theory has an action of stable cohomotopy: if $\alpha \in \{X, h\}$ is a class in $h^*(X)$ and $\beta \in \pi^S(X) = \{X, S\}$, then we get $\beta \cup \alpha: \Suspend X \to \Suspend X \wsum \Suspend X \xrightarrow{\Suspend (\alpha \wsum \beta)} \Suspend (h \wsum S) \to \Suspend h$.
 \begin{cor}
 If $x \in h^*(B)$, then $t(p)^* (p^* x) = \chi(p) \cup x$.
 \end{cor}
@@ -78,18 +78,18 @@ E^{n\epsilon} \ar[drr,"\Suspend^n p"']\ar[rrrr,"\Delta"] &&&& E^{n\epsilon}\spro
 
 Now focus on $\chi(p)$ as a cohomotopy class.  We have
 \begin{lem}
-In $F \to E \stackrel{p}{\to} B$ the Hurewicz map $\pi^0_S B \to H^0 B$ sends $\chi(p)$ to $\chi(F)$, the usual Euler characteristic of $F$.
+In $F \to E \xrightarrow{p} B$ the Hurewicz map $\pi^0_S B \to H^0 B$ sends $\chi(p)$ to $\chi(F)$, the usual Euler characteristic of $F$.
 \end{lem}
 \begin{rem}
 Of course it's easier to prove the lemma if you take the right definition of $\chi(F)$.  Notice also that $\chi(p)$ in stable cohomotopy has a lot more information; when you project to cohomology you forget about $p$.
 \end{rem}
 \begin{proof}
-Suppose $B$ is connected; pick a point $\ptspace$ in $B$.  Then $H^0(B) \stackrel{j^*}{\to} H^0 (\ptspace)$ is an isomorphism, and
+Suppose $B$ is connected; pick a point $\ptspace$ in $B$.  Then $H^0(B) \xrightarrow{j^*} H^0 (\ptspace)$ is an isomorphism, and
 \begin{ctikzcd}
 F\dar["p_F"']\rar & E\dar["p"]\\
 \ptspace\rar["j"] & B
 \end{ctikzcd}
-is a pullback, so $j^* \chi(p) = \chi(p_F)$.  So we can assume $B = \ptspace$.  The only space left is $F$.  Given an embedding $i: F \into S^n$, the Euler characteristic $\chi(p)$ is defined by $S^n \stackrel{p_!}{\to} F^{\nu(i)} \to F^{\nu(i) \oplus t(F)} \stackrel{\mathrm{pinch}}{\to} S^n$, and we must show this composite has degree $\chi(F)$.
+is a pullback, so $j^* \chi(p) = \chi(p_F)$.  So we can assume $B = \ptspace$.  The only space left is $F$.  Given an embedding $i: F \into S^n$, the Euler characteristic $\chi(p)$ is defined by $S^n \xrightarrow{p_!} F^{\nu(i)} \to F^{\nu(i) \oplus t(F)} \xrightarrow{\mathrm{pinch}} S^n$, and we must show this composite has degree $\chi(F)$.
 
 Let $N \subset \Rbb^n$ be a tubular neighborhood for the embedded image of $F$; then $S(\nu) = \partial N$, and $\partial N$ is a codimension - 1 submanifold with an outward-pointing normal direction.  The map $F^\nu \to S^n$ is the Thom-space level of a map
 \begin{ctikzcd}
@@ -210,7 +210,7 @@ So $k^{4n}(\psi^k f^* - f^* \psi^k) = 0$, and $n$ depended only on $f$.
 \section{The Adams conjecture} % <<<
 \label{TheAdamsConjecture}
 \ifx\OutputTheAdamsConjecture\undefined\else
-To make greatest use of most constructions in algebraic topology, it is generally helpful to have a relative version.  This time, we'll use a relative version of the transfer map.  So, as before, let $F \to E \stackrel{p}{\to} B$ be a smooth fiber bundle with $F$ and $B$ compact; let $\xi$ over $B$ be a vector bundle, and consider
+To make greatest use of most constructions in algebraic topology, it is generally helpful to have a relative version.  This time, we'll use a relative version of the transfer map.  So, as before, let $F \to E \xrightarrow{p} B$ be a smooth fiber bundle with $F$ and $B$ compact; let $\xi$ over $B$ be a vector bundle, and consider
 \begin{ctikzcd}
 p^* \xi \dar\rar & \xi\dar \\
 E \rar["p"] & B.
@@ -250,7 +250,7 @@ and from this you get
 F^{d\varepsilon} \rar & E^{p^* \xi}  \rar[stable]& S^d \\
 S^d \uar[stable] \rar & B^\xi\uar[stable].
 \end{ctikzcd}
-But $S^d \stableto F^{d \varepsilon}$ isn't just the inclusion of the bottom cell; in fact, we found that it was $\chi(F)$ times the inclusion of the bottom cell!  So if $\chi(F) = \pm 1$, $S^d \to B^\xi \stackrel{t(p)}{\to} E^{p^* \xi} \stableto S^d$ has degree one.
+But $S^d \stableto F^{d \varepsilon}$ isn't just the inclusion of the bottom cell; in fact, we found that it was $\chi(F)$ times the inclusion of the bottom cell!  So if $\chi(F) = \pm 1$, $S^d \to B^\xi \xrightarrow{t(p)} E^{p^* \xi} \stableto S^d$ has degree one.
 
 But \begin{tikzcd}S^d \rar[stable]& F^{d \varepsilon}\end{tikzcd} isn't just the inclusion of the bottom cell; in fact, we found that it was $\chi(F)$ times the inclusion of the bottom cell!  So if $\chi(F) = \pm 1$, the composition
 \begin{ctikzcd}S^d \rar & B^\xi \rar["t(p)"] & E^{p^* \xi} \rar[stable]& S^d\end{ctikzcd}
@@ -309,7 +309,7 @@ where $L(\Rbb^{2n})$ has $\chi = 1$ and $\zeta$ is two plane bundles.  The claim
 
 Now suppose $B$ is a $2n$-dimensional inner product space over $\Rbb$; let $F(V)$ be the space of sequence of $n$ mutually orthogonal $2$-planes in $V$.  $\Sigma_n$ acts freely on $F(V)$; let $L(V) = F(V) / \Sigma_n$.  I claim we've constructed this space before as $SO(2n)/NT$.  So $\chi(L(V)) = 1$.
 
-Now let $\Sigma_{n-1}$ act on $F(V)$ by fixing the last element; then there is an $n$-sheeted cover $\Ltwee(V) = F(V)/\Sigma_{n-1} \stackrel{q}{\to} L(V)$.  Moreover, there is a $2$-plane bundle $\zeta$ over $\Ltwee(V)$ defined fiberwise by setting $\zeta_{(\{v_1, \ldots, v_{n-1}\}, v_n)} = v_n$.  Now from the lemma at the beginning of this lecture, it suffices to check the Adams conjecture on $p^* \xi$.  But by the formula,
+Now let $\Sigma_{n-1}$ act on $F(V)$ by fixing the last element; then there is an $n$-sheeted cover $\Ltwee(V) = F(V)/\Sigma_{n-1} \xrightarrow{q} L(V)$.  Moreover, there is a $2$-plane bundle $\zeta$ over $\Ltwee(V)$ defined fiberwise by setting $\zeta_{(\{v_1, \ldots, v_{n-1}\}, v_n)} = v_n$.  Now from the lemma at the beginning of this lecture, it suffices to check the Adams conjecture on $p^* \xi$.  But by the formula,
 \begin{align*}
 \psi^k p^* \xi - p^* \xi & = \psi^k t(q)^* \zeta - t(q)^* \zeta \\
 & = \psi^k t(q)^* \zeta - t(q^* \psi^k \zeta + t(q)^* \psi^k \zeta - t(q)^* \zeta \\
@@ -334,7 +334,7 @@ All right, today we'll study the meaning of the Adams conjecture; in particular 
 S^8 \sprod (\Zbb \times BO) \dar\rar & \Zbb \times BO \\
 (\Zbb \times BO) \sprod (\Zbb \times BO)\urar["\mu"].
 \end{ctikzcd}
-Bott periodicity says $\Zbb \times BO \stackrel{\simeq}{\to} \Loops^8(\Zbb \times BO)$.
+Bott periodicity says $\Zbb \times BO \xrightarrow{\simeq} \Loops^8(\Zbb \times BO)$.
 
 Now $\KO(X)$ is a ring with unit; $\KOtwee^0(S^0) \cong \Zbb \ni 1$.  So there is a map of spectra $\Suspend^\infty S^0 = S \to \KO$ representing $1 \in \KOtwee(S^0)$.  One question is, how big is the image of the induced map $\pi_*^S \to \KO_*$?
 
@@ -455,7 +455,7 @@ J \ar[drr,"!!\simeq!!"']\rar["\alpha"] & SG \rar[into] & QS^0\dar["u"] \\
 \end{ctikzcd}
 So if $C$ is the fiber of $u$, then there is a homotopy equivalence $QS^0 = SG \simeq J \times C$.  Thus all of the homotopy of $J$ listed above appears as a direct summand in $\pi_* SG$, and in particular in the iamge of $S^0 \to j$.
 
-One game you can play now is to try to get out some information on unstable homotopy.  First we'll need some names: pulling back the sequence $J \to BO \to BSpin$ once, you get $Spin \stackrel{J}{\to} J \to BO$ (where $J$ is essentially the $J$-homomorphism, in the sense that it restricts from $\alpha$).  It's time for another table:
+One game you can play now is to try to get out some information on unstable homotopy.  First we'll need some names: pulling back the sequence $J \to BO \to BSpin$ once, you get $Spin \xrightarrow{J} J \to BO$ (where $J$ is essentially the $J$-homomorphism, in the sense that it restricts from $\alpha$).  It's time for another table:
 \[
 \begin{array}{cccccc}
 & \pi_* Spin & \pi_* J & \pi_* BO & \hbox{New names} & \hbox{Traditional names} \\
@@ -531,19 +531,19 @@ It's a rational calculation; there's just not that much to do.  The result is st
 1 \\
 2 \\
 3 \\
-4 & & \Zbb_{(2)} & \stackrel{=}{\to} & \Zbb_{(2)} \\
+4 & & \Zbb_{(2)} & \xrightarrow{=} & \Zbb_{(2)} \\
 5 & \Zbb_2 \langle \sigma_1 \rangle \\
 6 & & & & \Zbb_2 \\
 7 & \Zbb_2 \langle \tau_1 \rangle \\
-8 & & \Zbb_{(2)} & \stackrel{\cdot 2}{\to} & \Zbb_{(2)} \\
+8 & & \Zbb_{(2)} & \xrightarrow{\cdot 2} & \Zbb_{(2)} \\
 9 & \Zbb_2 \langle \sigma_2 \rangle \\
 10 & & & & \Zbb_2 \\
 11 \\
-12 & & \Zbb_{(2)} & \stackrel{=}{\to} & \Zbb_{(2)} \\
+12 & & \Zbb_{(2)} & \xrightarrow{=} & \Zbb_{(2)} \\
 13 & \Zbb_2 \langle \sigma_3 \rangle \\
 14 & & & & \Zbb_2 \\
 15 & \Zbb_4 \langle \tau_2 \rangle \\
-16 & & \Zbb_{(2)} & \stackrel{\cdot 4}{\to} & \Zbb_{(2)} \\
+16 & & \Zbb_{(2)} & \xrightarrow{\cdot 4} & \Zbb_{(2)} \\
 17 & \Zbb_2 \langle \sigma_4 \rangle.
 \end{array}
 \]
