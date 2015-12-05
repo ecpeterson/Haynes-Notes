@@ -1,43 +1,30 @@
 % -*- root: haynes-notes.tex -*-
 
-\begin{center}
-\begin{tikzpicture}[scale=.95]
-    \foreach \x in {-1,...,9,11,13,...,31}
-        \path (.5*\x,-.2) node[below] {\x};
-    \foreach \y in {0,...,9}
-        \path (-.7,.5*\y) node[left] {\y};
-    \foreach \x in {-1,...,31}
-    \foreach \y in {0,...,9}
-		\path (.5*\x,.5*\y) node {\tiny$\cdot$};
-    \foreach \x in {0,2,...,30}
-		\path[->] (.5*\x,0) edge node[above] {\small$2\iota$}  (.5*\x-.5,0);
-    \foreach \x in {1,5,...,29}
-		\path[->] (.5*\x,0) edge node[right] {\small$\eta$}  (.5*\x-1,.5);
-    \foreach \x in {3,11,...,27}
-		\path[->] (.5*\x,0) edge node[above] {\small$\nu$}  (.5*\x-2,1.5);
-    \foreach \x in {7,23}
-		\path[->] (.5*\x,0) edge node[above] {\small$\sigma$}  (.5*\x-4,3.5);
-    \foreach \x in {15}
-		\path[->] (.5*\x,0) edge node[above] {\small$\eta\sigma$}  (.5*\x-4.5,4);
-    \foreach \x in {31}
-		\path[->] (.5*\x,0) edge node[above] {\small$\eta^2\sigma$}  (.5*\x-5,4.5);
-\end{tikzpicture}
-\end{center}
-
 \section{The stable category} % <<<
 \label{TheStableCategory}
 \ifx\OutputTheStableCategory\undefined\else
 In order to set up the spectral sequence alluded to above, whose $E^1$ page consists of the stable homotopy groups of spheres in each column, it's a good idea to talk about stable homotopy a bit; for more information, see Adams' blue book~\cite{Adams}.  The notation $[X, Y]$ will mean pointed homotopy classes of point maps.  There is a map $\Suspend: [X, Y] \to [\Suspend X, \Suspend Y]$, and the idea is to study this game in detail.\todo{``game''?}
 
 One nice thing about suspending is that when you suspend you get a group: $[\Suspend X, Z]$ is a group naturally in $X$ and $Z$, and $[\Suspend^2 X, Z]$ is abelian.  The group structure comes from
-\[
-(g_1 + g_2): \Suspend X \xrightarrow{\textup{pinch}} \Suspend X \wsum \Suspend X \xrightarrow{g_1 \wsum g_2} Z \wsum Z \xrightarrow{\textup{fold}} Z
-.\]
+\begin{ctikzcd}[column sep = 2.7em]
+(g_1 + g_2): \Suspend X \rar["\textup{pinch}"] &  \Suspend X \wsum \Suspend X \rar["g_1 \wsum g_2"] &  Z \wsum Z \rar["\textup{fold}"] & Z
+\end{ctikzcd}
 ``Naturally in $Z$'', for example, means that given $f: Z \to Y$, in
 \begin{ctikzcd}
 \Suspend X \rar["g_1",yshift=0.3em] \rar["g_2"',yshift=-0.3em] & Z \rar{f} & Y
 \end{ctikzcd}
-we have $f_*(g_1 + g_2) = f_* (g_1) + f_* (g_2)$ in $[\Suspend X, Y]$.\todo{It would be easy to draw this rectangle.}
+we have $f_*(g_1 + g_2) = f_* (g_1) + f_* (g_2)$ in $[\Suspend X, Y]$. This holds because the fold map is a natural transformation from $X\mapsto X\vee X$ to the identity functor, and so the following diagram commutes:
+\begin{ctikzcd}[column sep = 2.7em]
+&&&[-1/2\pgfmatrixcolumnsep]Y\vee Y\drar["\textup{fold}"anchor=south, sloped]&[-1/2\pgfmatrixcolumnsep]\\
+%
+\Suspend X \rar["\textup{pinch}"]\ar[drrr,"g_1+g_2"'anchor=north, sloped, yshift=-0.1em ] & 
+\Suspend X\vee \Suspend X \rar["g_1\vee g_2"]\ar[urr,start anchor={[yshift=0.1em]north east},end anchor= west,"(fg_1)\vee (fg_2)"anchor=south,sloped]  & 
+Z\vee Z \urar["f\vee f"{anchor=south,xshift=-0.4em}, sloped]\drar["\textup{fold}"anchor=south, sloped] 
+&& Y\\
+%
+&&&Z\urar["f"]
+\end{ctikzcd}
+The top path is the map $f_*(g_1)+f_*(g_2)$ and the bottom, the map $f_*(g_1+g_2)$.
 
 Note, however, that the group structure on $[\Suspend X, Z]$ is not natural in $\Suspend X$.
 As an example, consider the Whitehead square\footnote{Essentially, we are showing that the \emph{map} $w_n$ is not in the image of the suspension map $[S^{2n-2}, S^{n-1}] \to [S^{2n-1}, S^n].$}
