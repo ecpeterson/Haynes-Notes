@@ -1,0 +1,179 @@
+
+\def\columnsep{\pgfmatrixcolumnsep} %\pgfmatrixcolumnsep is a mouthful.
+
+\tikzset{stable/.style={postaction={decorate},decoration={markings,mark=at position 0.5 with {\arrow[yscale=1]{|}}}}} % Stable arrows
+% yscale changes length of crossbar. I'm not sure I'm currently happy with these
+% it's annoying that it gets in the way of the label, which also likes to go in the middle. Maybe move the stable slash to the side a bit or something?
+
+\tikzset{
+    wavy/.style={/tikz/decorate,/tikz/decoration={
+        snake,
+        segment length=16\pgflinewidth,
+        amplitude=2.3\pgflinewidth,
+        post=lineto, post length=4\pgflinewidth,
+        pre=lineto, pre length=4\pgflinewidth
+    }},
+    %
+    % This is a function from tikzcd. Just copying it into the /tikz/ namespace. it isn't used anywhere right now though.
+    description/.style={
+        /tikz/anchor=center,
+        /tikz/fill=\pgfkeysvalueof{/tikz/commutative diagrams/background color}
+    }
+}
+
+\pgfkeys{cm left hook/.tip={Hooks[width=+0pt 16.8,length=+0pt 4.6,harpoon,line cap=round]}} % make hooks more prominent.
+
+
+
+% Makes the \xslashedrightarrow for a labeled \stableto
+
+\pgfdeclareshape{slash underlined}
+{
+  \inheritsavedanchors[from=rectangle] % this is nearly a circle
+  \inheritanchorborder[from=rectangle]
+  \inheritanchor[from=rectangle]{north}
+  \inheritanchor[from=rectangle]{north west}
+  \inheritanchor[from=rectangle]{north east}
+  \inheritanchor[from=rectangle]{center}
+  \inheritanchor[from=rectangle]{west}
+  \inheritanchor[from=rectangle]{east}
+  \inheritanchor[from=rectangle]{mid}
+  \inheritanchor[from=rectangle]{mid west}
+  \inheritanchor[from=rectangle]{mid east}
+  \inheritanchor[from=rectangle]{base}
+  \inheritanchor[from=rectangle]{base west}
+  \inheritanchor[from=rectangle]{base east}
+  \inheritanchor[from=rectangle]{south}
+  \inheritanchor[from=rectangle]{south west}
+  \inheritanchor[from=rectangle]{south east}
+  \inheritanchorborder[from=rectangle]
+  \foregroundpath{
+% store lower right in xa/ya and upper right in xb/yb
+    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+    \pgf@xc=\pgf@xa
+    \advance\pgf@xc by .5\pgf@xb
+    \pgf@yc=\pgf@ya
+    \advance\pgf@xc by -1.3pt
+    \advance\pgf@yc by -1.8pt
+    \pgfpathmoveto{\pgfqpoint{\pgf@xc}{\pgf@yc}}
+    \advance\pgf@xc by  2.6pt
+    \advance\pgf@yc by  3.6pt
+    \pgfpathlineto{\pgfqpoint{\pgf@xc}{\pgf@yc}}
+    \pgfpathmoveto{\pgfqpoint{\pgf@xa}{\pgf@ya}}
+    \pgfpathlineto{\pgfqpoint{\pgf@xb}{\pgf@ya}}
+ }
+}
+\tikzset{nomorepostaction/.code=\let\tikz@postactions\pgfutil@empty}
+
+\newcommand\xslashedrightarrow[2][]{%
+  \mathrel{\tikz[baseline=-.7ex] \path node[slash underlined,draw,->,anchor=south] {\(\scriptstyle #2\)} node[anchor=north] {\(\scriptstyle #1\)};}}
+
+
+
+
+
+% These four macros taken from Tomas M. Trzeciak's http://www.texample.net/tikz/examples/map-projections/
+% (with some improvements)
+% Used for drawing the spheres with tangent vectors
+\makeatletter
+
+\newcommand\pgfmathsinandcos[2]{%
+  \@xp\pgfmathsetmacro\csname sin#1\endcsname{sin(#2)}%
+  \@xp\pgfmathsetmacro\csname cos#1\endcsname{cos(#2)}%
+}
+
+\newcommand\LongitudePlane[3][current plane]{%
+  \pgfmathsinandcos{El}{#2} % elevation
+  \pgfmathsinandcos{t}{#3} % azimuth
+  \tikzset{#1/.style={cm={\cost,\sint*\sinEl,0,\cosEl,(0,0)}}}
+}
+\newcommand\LatitudePlane[3][current plane]{%
+  \pgfmathsinandcos{El}{#2} % elevation
+  \pgfmathsinandcos{t}{#3} % latitude
+  \tikzset{#1/.style={cm={\cost,0,0,\cost*\sinEl,(0,\cosEl*\sint)}}} %
+}
+\newcommand\DrawLongitudeCircle[2][1]{
+  \LongitudePlane{\angEl}{#2}
+  \tikzset{current plane/.prefix style={scale=#1}}
+   % angle of "visibility"
+  \pgfmathsetmacro\angVis{atan(sin(#2)*cos(\angEl)/sin(\angEl))} %
+  \draw[current plane, name path=long] (\angVis:1) arc (\angVis:\angVis+180:1);
+  \draw[current plane,dashed] (\angVis-180:1) arc (\angVis-180:\angVis:1);
+}
+
+\newcommand\DrawLatitudeCircle[2][1]{
+  \LatitudePlane{\angEl}{#2}
+  \tikzset{current plane/.prefix style={scale=#1}}
+  \pgfmathsetmacro\sinVis{sin(#2)/cos(#2)*sin(\angEl)/cos(\angEl)}
+  % angle of "visibility"
+  \pgfmathsetmacro\angVis{asin(min(1,max(\sinVis,-1)))}
+  \draw[current plane,black, name path=lat] (\angVis:1) arc (\angVis:-\angVis-180:1);
+  \draw[current plane,dashed] (180-\angVis:1) arc (180-\angVis:\angVis:1);
+}
+
+
+% Hopf diagram
+
+\newcommand{\HopfDiagram}[6]{
+    %#1: left  bar color -> green
+    %#2: right bar color -> green
+    %#3: accepts: BlackBeard;
+    %             WhiteBeard;   Any of these three will produce SZ,
+    %             ArrowBeard;     with various colourings of the arrows
+    %#4: x-offset
+    %#5: y-offset
+    %#6: accepts: cone;         Includes the cone on X*Y
+    %             nojoin;       Does not display any X or Y
+    %             BottomBar
+    %             LeftBar
+    \ifthenelse{\equal{#1}{on}}
+    {\colorlet{LeftBar}{green}}
+    {\colorlet{LeftBar}{black}}
+    \ifthenelse{\equal{#2}{on}}
+    {\colorlet{BottomBar}{green}}
+    {\colorlet{BottomBar}{black}}
+    \ifthenelse{\equal{#1}{on}\OR \equal{#2}{on}}
+    {\colorlet{TheDot}{green}}
+    {\colorlet{TheDot}{black}}
+    \ifthenelse{\equal{#3}{BlackBeard}}
+    {\colorlet{GlueColor}{black}}
+    {\colorlet{GlueColor}{red}}
+    \ifthenelse{\equal{#3}{WhiteBeard}}
+    {\colorlet{GlueColor}{white}}
+    {}
+
+    \ifthenelse{\equal{#6}{cone}}
+    {\foreach \i in {0,...,9}
+    {\draw (#4+0,.1*\i+#5) -- (#4+1-.1*\i,1+#5);}
+    \foreach \i in {1,...,9}
+    {\draw (#4+.1*\i,0+#5) -- (#4+1,1-.1*\i+#5);}
+    \draw (#4+1,0+#5) -- (#4+1,1+#5);
+    \draw (#4+0,1+#5) -- (#4+1,1+#5);
+    }{}
+
+    \ifthenelse{\equal{#3}{WhiteBeard}}{}
+    {
+    \ifthenelse{\equal{#6}{nojoin}}{}
+    {
+    \ifthenelse{\equal{#6}{BottomBar}}{}
+    {\draw[ultra thick,LeftBar] (#4+0,0+#5) -- (#4+0,1+#5);}
+    \ifthenelse{\equal{#6}{LeftBar}}{}
+    {\draw[ultra thick,BottomBar] (#4+0,0+#5) -- (#4+1,0+#5)};
+    \fill[TheDot] (#4+0,0+#5) circle (3.42pt);
+    }
+    }
+
+    \ifthenelse{\equal{#3}{ArrowBeard}\OR \equal{#3}{BlackBeard}\OR \equal{#3}{WhiteBeard}}
+    {
+    \ifthenelse{\equal{#6}{BottomBar}}{}
+    {\draw[ultra thick,LeftBar] (#4+-.5,-.5+#5) -- (#4+-.5,1+#5);}
+    \ifthenelse{\equal{#6}{LeftBar}}{}
+    {\draw[ultra thick,BottomBar] (#4+-.5,-.5+#5) -- (#4+1,-.5+#5);}
+    \fill[TheDot] (#4+-.5,-.5+#5) circle (3.4pt);
+    \foreach \i in {0,2,4,6,8,10}
+    {\draw[->,GlueColor] (#4+-.1+.11*\i,-.1+#5) -- (#4+-.4+.14*\i,-.4+#5);}
+    \foreach \i in {2,4,6,8,10}
+    {\draw[->,GlueColor] (#4+-.1,-.1+.11*\i+#5) -- (#4+-.4,-.4+.14*\i+#5);}
+    }{}%end \foreach then end \ifthenelse
+} 

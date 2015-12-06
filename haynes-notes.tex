@@ -18,30 +18,9 @@
 \usetikzlibrary{arrows}
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{decorations.pathmorphing} %
+\usetikzlibrary{intersections}
 
-\def\columnsep{\pgfmatrixcolumnsep}
-\tikzset{stable/.style={postaction={decorate},decoration={markings,mark=at position 0.5 with {\arrow[yscale=1]{|}}}}} % Stable arrows
-% yscale changes length of crossbar. I'm not sure I'm currently happy with these
-% it's annoying that it gets in the way of the label, which also likes to go in the middle. Maybe move the stable slash to the side a bit or something?
-
-\tikzset{
-    wavy/.style={/tikz/decorate,/tikz/decoration={
-        snake,
-        segment length=16\pgflinewidth,
-        amplitude=2.3\pgflinewidth,
-        post=lineto, post length=4\pgflinewidth,
-        pre=lineto, pre length=4\pgflinewidth
-    }},
-    %
-    % This is a function from tikzcd. Just copying it into the /tikz/ namespace. it isn't used anywhere right now though.
-    description/.style={
-        /tikz/anchor=center,
-        /tikz/fill=\pgfkeysvalueof{/tikz/commutative diagrams/background color}
-    }
-}
-%\tikzset{/tikz/cdots/.style={edge node={\node[every label,/tikz/commutative diagrams/.cd]{$\cdot\,\cdot\,\cdot$}}}}
-
-\pgfkeys{cm left hook/.tip={Hooks[width=+0pt 16.8,length=+0pt 4.6,harpoon,line cap=round]}} % make hooks more prominent.
+\include{tikzmacros}
 
 
 
@@ -63,7 +42,6 @@
 \usepackage{nicefrac} % Defines for \nicefrac, used twice in ehp-sseq
 \usepackage{mathrsfs} % Defines \mathscr, used 5 times in ehp-sseq
 \usepackage{stmaryrd} % Defines for \llbracket \rrbracket, used 4 times in adams-operations
-% TODO: define a command like \powerseriesring or something?
 % Look through notes and find all places where power series show up (probably more than 4) make consistent
 
 
@@ -272,48 +250,6 @@
 \newcommand{\onto}{\twoheadrightarrow}
 \newcommand{\stableto}{\nrightarrow}
 
-\pgfdeclareshape{slash underlined}
-{
-  \inheritsavedanchors[from=rectangle] % this is nearly a circle
-  \inheritanchorborder[from=rectangle]
-  \inheritanchor[from=rectangle]{north}
-  \inheritanchor[from=rectangle]{north west}
-  \inheritanchor[from=rectangle]{north east}
-  \inheritanchor[from=rectangle]{center}
-  \inheritanchor[from=rectangle]{west}
-  \inheritanchor[from=rectangle]{east}
-  \inheritanchor[from=rectangle]{mid}
-  \inheritanchor[from=rectangle]{mid west}
-  \inheritanchor[from=rectangle]{mid east}
-  \inheritanchor[from=rectangle]{base}
-  \inheritanchor[from=rectangle]{base west}
-  \inheritanchor[from=rectangle]{base east}
-  \inheritanchor[from=rectangle]{south}
-  \inheritanchor[from=rectangle]{south west}
-  \inheritanchor[from=rectangle]{south east}
-  \inheritanchorborder[from=rectangle]
-  \foregroundpath{
-% store lower right in xa/ya and upper right in xb/yb
-    \southwest \pgf@xa=\pgf@x \pgf@ya=\pgf@y
-    \northeast \pgf@xb=\pgf@x \pgf@yb=\pgf@y
-    \pgf@xc=\pgf@xa
-    \advance\pgf@xc by .5\pgf@xb
-    \pgf@yc=\pgf@ya
-    \advance\pgf@xc by -1.3pt
-    \advance\pgf@yc by -1.8pt
-    \pgfpathmoveto{\pgfqpoint{\pgf@xc}{\pgf@yc}}
-    \advance\pgf@xc by  2.6pt
-    \advance\pgf@yc by  3.6pt
-    \pgfpathlineto{\pgfqpoint{\pgf@xc}{\pgf@yc}}
-    \pgfpathmoveto{\pgfqpoint{\pgf@xa}{\pgf@ya}}
-    \pgfpathlineto{\pgfqpoint{\pgf@xb}{\pgf@ya}}
- }
-}
-\tikzset{nomorepostaction/.code=\let\tikz@postactions\pgfutil@empty}
-
-\newcommand\xslashedrightarrow[2][]{%
-  \mathrel{\tikz[baseline=-.7ex] \path node[slash underlined,draw,->,anchor=south] {\(\scriptstyle #2\)} node[anchor=north] {\(\scriptstyle #1\)};}}
-
 
 
 \providecommand*{\twoheadrightarrowfill@}{%
@@ -338,6 +274,8 @@
 \DeclareMathOperator{\Vect}{Vect}
 \DeclareMathOperator{\Rep}{Rep}
 \def\otimeshat{\mathop{\widehat{\otimes}}}
+\def\asthat{\mathop{\hskip0.11em\widehat{\ast}\hskip0.11em}}
+
 \newcommand\eqdef{\mathrel{:=}}
 
 
@@ -379,8 +317,7 @@
 
 
 \makeatother
-%\includeonly{stable-ehp}
-
+\includeonly{thom-spaces}
 \begin{document}
 
 

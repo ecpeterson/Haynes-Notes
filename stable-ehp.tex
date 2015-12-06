@@ -17,9 +17,9 @@ we have $f_*(g_1 + g_2) = f_* (g_1) + f_* (g_2)$ in $[\Suspend X, Y]$. This hold
 \begin{ctikzcd}[column sep = 2.7em]
 &&&[-1/2\pgfmatrixcolumnsep]Y\vee Y\drar["\textup{fold}"anchor=south, sloped]&[-1/2\pgfmatrixcolumnsep]\\
 %
-\Suspend X \rar["\textup{pinch}"]\ar[drrr,"g_1+g_2"'anchor=north, sloped, yshift=-0.1em ] & 
-\Suspend X\vee \Suspend X \rar["g_1\vee g_2"]\ar[urr,start anchor={[yshift=0.1em]north east},end anchor= west,"(fg_1)\vee (fg_2)"anchor=south,sloped]  & 
-Z\vee Z \urar["f\vee f"{anchor=south,xshift=-0.4em}, sloped]\drar["\textup{fold}"anchor=south, sloped] 
+\Suspend X \rar["\textup{pinch}"]\ar[drrr,"g_1+g_2"'anchor=north, sloped, yshift=-0.1em ] &
+\Suspend X\vee \Suspend X \rar["g_1\vee g_2"]\ar[urr,start anchor={[yshift=0.1em]north east},end anchor= west,"(fg_1)\vee (fg_2)"anchor=south,sloped]  &
+Z\vee Z \urar["f\vee f"{anchor=south,xshift=-0.4em}, sloped]\drar["\textup{fold}"anchor=south, sloped]
 && Y\\
 %
 &&&Z\urar["f"]
@@ -131,9 +131,9 @@ This is somehow reminiscent of (co)homology. To make that hint precise, consider
 What do these last two mean?  They have to do with cohomology and homology, so we'd better know what those are: a function $E^0: \Scat^{op} \to \Ab$ is cohomological if
 \begin{enumerate}
 \item $E^0$ sends exact triangles to exact sequences.
-\item $\Scat$ is going to contain infinite complexes, so we'd better know what $E^0$ does to colimits, e.g.,\ wedges. It must satisfy the ``Milnor axiom'', that the following natural map is an isomorphism:
+\item $\Scat$ is going to contain infinite complexes, so we'd better know what $E^0$ does to colimits, e.g., wedges. It must satisfy the ``Milnor axiom'', that the following natural map is an isomorphism:
 \[
-E^0({\textstyle{\!\bigvee}_\alpha X_\alpha}) \xrightarrow{\cong} \prod_\alpha E^0 X_\alpha
+E^0\left({\bigvee}_\alpha X_\alpha\right) \xrightarrow{\cong} \prod_\alpha E^0 X_\alpha
 .\]
 \end{enumerate}
 If $E^0$ is cohomological, we define $E^q (X) := E^0 (\Suspend^{-q} X)$. ``Brown representability'' states that any cohomological functor (a.k.a.\ cohomology theory) of $\Scat$ is representable: there is a spectrum $E$ such that the functors $E^0$ and $\{\textup{---}, E\}$ are naturally isomorphic.\footnote{Note that in this context, the restriction of $E^0$ to spaces always refers to \emph{reduced} $E$-cohomology, so usually the twiddle is left out.}  Analogously, $E_0: \Scat \to \Ab$ is homological if

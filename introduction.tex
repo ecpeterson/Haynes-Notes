@@ -6,19 +6,23 @@
 
 We shall discuss some classical topics in homotopy theory.  A great deal of what we will cover owes much to the work of Frank Adams.  Today we look at a few of the problems (which turn out to have deep general significance), and begin with vector fields on spheres.  We define $S^{n-1} = \{x \in \Rbb^n \mid \|x\| = 1\}$.  The idea is to assign to each point $x \in S^{n-1}$ a vector $v(x)$ tangent to $x$ in a smooth way, i.e., to find a map $v: S^{n-1} \to \Rbb^n$ such that $v(x) \perp x$ for all $x \in S^{n-1}$.
 
-\begin{wrapfigure}{r}{0.3\textwidth}
-\centering\includegraphics[width=0.2\textwidth]{figures/fig1.pdf}
-\caption{\small Single point of a vector field. $x - 0$ is dashed, $v(x)$ is solid.}
+\begin{wrapfigure}{r}{0.38\textwidth}
+\vskip-10pt
+
+\centering\input{figures/sphere_tangent_vector}
+\caption{\small A tangent vector to a sphere.}
+
+\vskip20pt
+
+\centering\input{figures/sphere_tangent_2-frame}
+\caption{\small An orthonormal $2$-frame at $x$.}
+\vskip-10pt
 \end{wrapfigure}
 
 Now of course there's always the zero vector, which isn't very interesting, so in particular we'll look for nowhere-zero vector fields, which means we can normalize $\|v(x)\|$ to be 1 for all $x$, thereby giving a map $v: S^{n-1} \to S^{n-1}$ such that $v(x) \perp x$ for all $x \in S^{n-1}$. % everything is transverse to zero
 
 Suppose that $n$ is even, so $n = 2k$ for some $k$.  Then $S^{n-1}$ can be thought of as $\{x \in \Cbb^k \mid \|x\| = 1\}$, and $v(x) = ix$ works, so we have a nonvanishing vector field on all odd spheres.  However, when $n$ is odd, then there are none.  Such a $v(x)$ would give a homotopy between the identity and the antipodal map $\alpha(x) = -x$: \[h_t(x) = x \cos \pi t + v(x) \sin \pi t.\]  So $\deg \alpha = 1$.  But $\alpha$ is a composite of $n$ reflections in $\Rbb^n$, so $\deg \alpha = (-1)^n = -1$, thus giving a contradiction.
 
-\begin{wrapfigure}{r}{0.3\textwidth}
-\centering\includegraphics[width=0.2\textwidth]{figures/fig2.pdf}
-\caption{\small An orthonormal $2$-frame at $x$.}
-\end{wrapfigure}
 Now the next question is how many linearly independent vector fields there are on $S^{n-1}$.  Using Gram-Schmidt we can reduce to the case that any set of linearly independent vector fields on the sphere form an orthonormal set at each point.  This is interesting in its own right; we shall see in the long run that this question is equivalent to some important problems in homotopy theory.  For the time being, the way we will think of this is in terms of
 \begin{align*}
 V_{n, k} & = \{\hbox{orthonormal $k$-frames in $\Rbb^n$}\} \subset (S^{n-1})^k, \\

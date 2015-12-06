@@ -654,8 +654,8 @@ For $\nu(n) \le 3$, then, we have obtained an exact answer, but asymptotically, 
 
 There's another approach to this sort of calculation with Thom spaces and squares.  Suppose that $E$ is an $S^{n-1}$-bundle over a base $B$, which we will always assume to be connected. There is an inclusion into the fiberwise mapping cone $C_B E$, a disk bundle:
 \begin{ctikzcd}
-S^{n-1}\rar&E\rar[hook]\dar&C_BE\dar&D^n\lar\\
-&B\rar[equal]&B
+S^{n-1}\rar & E\rar[hook]\dar & C_BE\dar & D^n\lar\\
+& B\rar[equal] & B
 \end{ctikzcd}
 and $T(E) = C_B E / E$.  So $\Htwee^* (T(E)) = H^*(C_B E, E)$.  Now we can use the relative Serre spectral sequence to get a spectral sequence
 \[
@@ -667,7 +667,7 @@ Working over $\Zbb_2$ coefficients, this coefficient system is already canonical
 
 First, $1\in H^0 (B)$ corresponds under the Thom isomorphism to some $u \in \Htwee^n (T(E))$, called the ``Thom class''.  Now $\Htwee^* (T(E)) = H^*(C_B E, E)$ is a module over $H^* (B)$ via the ``cup product'' pairing, the composite:
 \begin{ctikzcd}
-H^*(B) \otimes H^*(C_B E, E)\rar["p^*\otimes1"]&H^*(C_B E) \otimes H^*(C_B E, E)\rar["\smile"]& H^*(C_B E, E)
+H^*(B) \otimes H^*(C_B E, E)\rar["p^*\otimes1"] & H^*(C_B E) \otimes H^*(C_B E, E)\rar["\smile"] & H^*(C_B E, E)
 \end{ctikzcd}
 We justify calling this a cup product because $C_BE$ is a disk bundle and $p^*$ is an isomorphism, so we can suppress the pullback part of the operation. The Thom isomorphism says that cup-product by the Thom class $u$ is an isomorphism $\smile u: H^* (B) \cong \Htwee^* (T(E))$.
 
@@ -691,14 +691,14 @@ Suppose that $E\downarrow B$ is an $S^{n-1}$-bundle over a connected base, and t
 This follows by naturality of the Thom isomorphism for oriented maps of oriented $S^{n-1}$-bundles, once it has been checked for the trivial $S^{n-1}$-bundle $\mathcal{E}=S^{n-1}\downarrow*$ (a simple task). Consider the map of oriented $S^{n-1}$-bundles (shown at left):
 \begin{cjointikzcd}
 \diagram[2]
-    \mathcal{E}\ar[r]\ar[d]&E\ar[d]\\
-    \ast\ar[r]&B
+    \mathcal{E}\ar[r]\ar[d] & E\ar[d]\\
+    \ast\ar[r] & B
 \diagram
-    \mathllap{S^n={}}T(\mathcal{E})\ar[r]&T(E)\\
+    \mathllap{S^n={}}T(\mathcal{E})\ar[r] & T(E)\\
     S^n\uar[equal]\ar[ur]
 %
 \diagram
-    u_\mathcal{E}\dar[equal] &\lar[mapsto]u_E\dlar[mapsto]\\
+    u_\mathcal{E}\dar[equal] & \lar[mapsto]u_E\dlar[mapsto]\\
     \mathit{o}
 \end{cjointikzcd}
 This map induces the commuting diagram in the middle: a map of Thom spaces relative to $S^n$. Using this commuting diagram, we can calculate $s^*(u_E)$ in two different ways (at right) to obtain the result.

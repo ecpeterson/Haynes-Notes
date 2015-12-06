@@ -1,0 +1,24 @@
+\begin{tikzpicture}
+	\def\R{2} % sphere radius -- actually rescales the whole diagram.
+	\def\angEl{15} % viewing elevation angle (bigger means we're looking from further above)
+    \def\Plong{-50} % longitude
+    \def\Plat{40}   % latitude
+
+
+	\fill[ball color=white!5] (0,0) circle (\R);
+    	
+    \DrawLongitudeCircle[\R]{\Plong}
+    \DrawLatitudeCircle[\R]{0}
+    \DrawLatitudeCircle[\R]{\Plat} % I set this up kinda hackily, so this has to come second
+
+    \path [name intersections={of = long and lat}]; % In order for this intersection to work correctly
+    \coordinate (P) at (intersection-1);
+
+    \LongitudePlane{\angEl}{\Plong}
+    \filldraw[shift=(P),current plane,fill=gray!10,opacity=0.4] (-2.2*\R/4,-1.6*\R/4) rectangle (2.2*\R/4,1.6*\R/4);
+
+    \draw (0,0) -- (P);
+    \draw[shift=(P),current plane,thick,->] (0,0) -- (2*\R/5,0);
+    \draw[shift=(P),current plane,thick,->] (0,0) -- (0,1.5*\R/5);
+
+\end{tikzpicture}

@@ -89,17 +89,18 @@ It follows that the Thom space of $nL$ is $T(nL)\simeq\RP^{n+k-1}/\RP^{n-1}$. In
 \ifx\OutputFactsAboutThomSpaces\undefined\else
 We'll now look at Thom spaces in more detail, and in particular in relation to some other standard constructions on fiber bundles.  First of all, we have a product: given two bundles $F \to E \to B$ and $F' \to E' \to B'$, we can build a bundle $F \times F' \to E \times E' \to B \times B'$.  Now if $B = B'$, you can pull this bundle back along the diagonal map to a bundle $F \times F' \to E \times_B E' \to B$, called the ``fiberwise product.''  If $E$ and $E'$ are vector bundles, then $E \times_B E'$ is called the ``Whitney sum,'' denoted $E \oplus E'$.
 
-\begin{wrapfigure}{r}{0.33\textwidth} % maybe it would be better to give a drawing more reflective of the construction
-\centering\includegraphics[width=0.3\textwidth]{figures/fig9.pdf}
-\caption{\small A diagram of $S^0 \ast S^1$.}
+\begin{wrapfigure}{r}{0.4\textwidth} % maybe it would be better to give a drawing more reflective of the construction
+\centering
+\input{figures/join_S1_S0}
+\caption{\small A diagram of $S^1 \ast S^0$.}
 \end{wrapfigure}
 If $E$ and $E'$ are sphere bundles, this construction isn't very satisfying, because a sphere cross a sphere isn't another sphere.  However, the join of two spheres is another sphere.  Here's another way of looking at the join\footnote{As an aside, we define $X \ast \emptyset = \emptyset \ast X = X$.} (we will return to the join often, and try as often as possible to give different definitions of it!):
 \[
 X \ast Y = \frac{X \times I \times Y}{(x, 1, y) \sim (x, 1, y'), (x, 0, y) \sim (x', 0, y)}.
 \]
-Now we define a fiberwise join by doing this on each fiber to get a bundle $F \ast F' \to E\mathop{\widehat\ast}E' \to B \times B'$, where \[E\mathop{\widehat\ast}E' = \frac{E \times I \times E'}{\substack{\hbox{$(x, 1, y) \sim (x, 1, y')$ if $p'y = p'y'$}, \\ \hbox{$(x, 0, y) \sim (x', 0, y)$ if $px = px'$.}}}\]  One can check that this construction yields something locally trivial.  The fiberwise join for sphere bundles is related to the fiberwise product of vector bundles: if $V$ and $W$ are vector bundles, then $S(V \times W) = SV \,\widehat \ast \,SW$.  Moreover, if $B = B'$ we can once again pull back by the diagonal map on $B$, and we get $SV \ast_B SW = S(V \oplus W)$.
+Now we define a fiberwise join by doing this on each fiber to get a bundle $F \ast F' \to E\asthat E' \to B \times B'$, where \[E\asthat E' = \frac{E \times I \times E'}{\substack{\hbox{$(x, 1, y) \sim (x, 1, y')$ if $p'y = p'y'$}, \\ \hbox{$(x, 0, y) \sim (x', 0, y)$ if $px = px'$.}}}\]  One can check that this construction yields something locally trivial.  The fiberwise join for sphere bundles is related to the fiberwise product of vector bundles: if $V$ and $W$ are vector bundles, then $S(V \times W) = SV \asthat SW$.  Moreover, if $B = B'$ we can once again pull back by the diagonal map on $B$, and we get $SV \ast_B SW = S(V \oplus W)$.
 
-In the case that $Y = \ptspace$, $X \ast Y = CX$ is the cone over $X$.  Applying this in the fiberwise join, we transport a bundle $F \to E \to B$ to a bundle $CF \to C_B E \to B$, where $C_BE:=E\mathop{\widehat\ast}B$.  Applying this to a sphere bundle $E \to B$ gives a disk bundle $C_B E \to B$, and it's easy to check that if $V$ is a vector bundle, then $D(V) = C_B S(V)$, so we have a way of recovering the disk bundle from the sphere bundle.
+In the case that $Y = \ptspace$, $X \ast Y = CX$ is the cone over $X$.  Applying this in the fiberwise join, we transport a bundle $F \to E \to B$ to a bundle $CF \to C_B E \to B$, where $C_BE:=E\asthat B$.  Applying this to a sphere bundle $E \to B$ gives a disk bundle $C_B E \to B$, and it's easy to check that if $V$ is a vector bundle, then $D(V) = C_B S(V)$, so we have a way of recovering the disk bundle from the sphere bundle.
 
 Now back to Thom spaces.  Recall that if $E \onto B$ is a sphere bundle, its Thom space is $T(E) = C_B E / E$, and if the fiber over the basepoint of $B$ in $E$ is $S^{n-1}$, then $CS^{n-1} = D^n \subset C_B E$, which becomes an $S^n \subset T(E)$.  The Thom space comes equipped with a canonical basepoint which is the image of $E$, which has been crushed to a point.  If $V \onto B$ is a vector bundle, then $T(V)$ is defined to be $T(S(V))$, and also $T(0) = \pt{B}:=B \amalg \ptspace$.\footnote{By convention, $0$ denotes the rank zero vector bundle.  In this case $S(0) = E = \emptyset$, and we write $T(\emptyset) = B / \emptyset = B \amalg \ptspace$ also by convention.  This is done so that the smash product identity below works.}
 
@@ -107,19 +108,19 @@ To understand this better, let's look at the trivial sphere bundle $B \times S^{
 \[T(B \times S^{n-1}) = \frac{B \times D^n}{B \times S^{n-1}} \cong \frac{B \times S^n}{B \times \ptspace} \cong \pt{B} \sprod S^n = \Suspend^n(\pt{B}),\]
 and so the Thom space of a bundle can be thought of as a twisted sort of suspension.
 
-Here's an important fact: $T(E\, \widehat \ast\, E') = T(E) \sprod T(E')$, where $\sprod$ is the smash product of pointed spaces.  A rough proof in the special case that $E = SV$ and $E' = SW$ for vector bundles $V\downarrow B$ and $V'\downarrow B'$ is:
+Here's an important fact: $T(E\asthat E') = T(E) \sprod T(E')$, where $\sprod$ is the smash product of pointed spaces.  A rough proof in the special case that $E = SV$ and $E' = SW$ for vector bundles $V\downarrow B$ and $V'\downarrow B'$ is:
 %\begin{align*}
 %TV \sprod TW & = T(S(V)) \sprod T(S(W)) \\ %A bit wordy
 %& = \frac{DV}{SV} \sprod \frac{DW}{SW} \\
 %& = \frac{\frac{DV}{SV} \times \frac{DW}{SW}}{\frac{DV}{SV} \wsum \frac{DW}{SW}} \\
 %& = \frac{DV \times DW}{(SV \times DW) \cup (DV \times SW)} \\
 %& \cong \frac{D(V \times W)}{S(V \times W)} \\
-%& = T(S(V \times W)) = T(E\,\widehat \ast\, E').
+%& = T(S(V \times W)) = T(E\asthat E').
 %\end{align*}
-\[TV \sprod TW = \frac{DV \times DW}{(SV \times DW) \cup (DV \times SW)}\cong \frac{D(V \times W)}{S(V \times W)}= T(S(V \times W)) = T(E\,\widehat \ast\, E').\]
+\[TV \sprod TW = \frac{DV \times DW}{(SV \times DW) \cup (DV \times SW)}\cong \frac{D(V \times W)}{S(V \times W)}= T(S(V \times W)) = T(E\asthat E').\]
 In the special case that $E' \to B'$ is $\Rbb^n \to \ptspace$, we get that $T(V \oplus n \epsilon) = T(V) \sprod S^n = \Suspend^n T(V)$.
 
-Note that if $V$, $W$ are vector bundles over $B$, it is \textbf{not} the case that $T(V\oplus W)=T(V)\wedge T(W)$. However, we have a pullback diagram (drawn on the left) which induces a map of Thom spaces (drawn on the right). This map commutes with the inclusion of the copies of $S^{n+m}$ (where $\dim_*V=n$ and $\dim_*W=m$):
+Note that if $V$ and $W$ are vector bundles over $B$, it is \textbf{not} the case that $T(V\oplus W)=T(V)\wedge T(W)$. However, we have a pullback diagram (drawn on the left) which induces a map of Thom spaces (drawn on the right). This map commutes with the inclusion of the copies of $S^{n+m}$ (where $\dim_*V=n$ and $\dim_*W=m$):
 %
 \begin{cjointikzcd}
 \diagram
@@ -183,7 +184,7 @@ This is a process of stabilization: the lesson of this discussion is that we hav
 \BoxedNote{
 \Bullet The fiberwise join of fiber bundles was constructed. Given $E\downarrow B$, performing the join with $B\downarrow B$ yields a bundle $C_BE$, the fiberwise cone. This recoves the disk bundle from a sphere bundle, and gives another definition of the Thom space of a sphere bundle $E$: $C_BE/E$.
 
-\Bullet $T(E\, \widehat \ast\, E') = T(E) \sprod T(E')$ for bundles $E\downarrow B$ and $E'\downarrow B'$.
+\Bullet $T(E\asthat E') = T(E) \sprod T(E')$ for bundles $E\downarrow B$ and $E'\downarrow B'$.
 
 \Bullet $T(V\times W\downarrow B\times B')=T(V)\sprod T(W)$, where $V\times W$ is the exterior direct sum of vector bundles $V\downarrow B$ and $W\downarrow B'$.
 
