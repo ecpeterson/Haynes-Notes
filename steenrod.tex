@@ -88,11 +88,11 @@ Moreover, $i_Z^*:\Htwee^{nq}(D_\pi Z)\to \Htwee^{np}(Z^{(n)})$ is the inclusion 
 We have a map (drawn with dotted arrows) of bundle-subbundle pairs:
 \begin{ctikzcd}[sep=1.2em]
 F_{n-1}Z^n\ar[dd]\ar[rd]\ar[rr, dashed] && F_{n-1}Z^n\ar[dd]\ar[rd]\\
-& Z^n\ar[rr,dashed,crossing over] && \ar[dd]Z^n\\
+& Z^n\latearrow[dd,crossing over]\ar[rr,dashed,crossing over] && \ar[dd]Z^n\\
 F_{n-1}Z^n\ar[dd]\ar[rd]\ar[rr,end anchor={[xshift=-0.7em]},dashed] && \mathclapph{F_{n-1}Z^n}{\hskip1.2em E\pi\mathop{\times}\nolimits_\pi F_{n-1}Z^n}\ar[dd]\ar[rd]\\
-& Z^n\ar[from=uu,crossing over]\ar[rr,end anchor={[xshift=-1.3em]}, dashed,crossing over] && \mathclapph{Z^n}{E\pi\times_\pi Z^n}\ar[dd]\\
+& Z^n\latearrow[dd,crossing over]\ar[rr,end anchor={[xshift=-1.3em]}, dashed,crossing over] && \mathclapph{Z^n}{E\pi\times_\pi Z^n}\ar[dd]\\
  \{b\}\ar[rr,dashed]\ar[rd,equal] && B\pi\ar[rd,equal]\\
-& \{b\}\ar[from=uu,crossing over]\ar[rr,dashed] && B\pi
+& \{b\}\ar[rr,dashed] && B\pi
 \end{ctikzcd}
 
 Now the map $Z^{(n)}=\frac{Z^n}{F_{n-1}Z^n}\longrightarrow\frac{E\pi \times_\pi Z^n}{E\pi \times_\pi F_{n-1}Z^n} = D_\pi Z$ induced by this diagram is exactly $i_Z$, so we can study $i^*_Z$ using the associated morphism of relative Serre spectral sequences.
@@ -646,7 +646,6 @@ That $(1 + x)^n \equiv 1 \pmod{x^k}$ implies that $2^\nu \ge k$.  Recall that ou
 \nu(n) & 0 & 1 & 2 & 3 & 4 & 5 \\
 \hline
 2^{\nu(n)} & 1 & 2 & 4 & 8 & 16 & 32 \\
-\hline
 \rho(n) & 1 & 2 & 4 & 8 & 9 & 10.
 \end{array}
 \]

@@ -55,8 +55,53 @@
 
 
 %
+% \latearrow
 %
-%
+
+\patchcmd\tikzcd@{\global\let\tikzcd@savedpaths\pgfutil@empty}{\global\let\tikzcd@savedpaths\pgfutil@empty\global\let\tikzcd@atendsavedpaths\pgfutil@empty}{}{}
+
+% For some reason this \patchcmd call fails =(
+%\patchcmd\endtikzcd{\tikzcd@savedpaths}{\tikzcd@savedpaths\tikzcd@atendsavedpaths}{}{}{}
+
+% So we have to copy the whole original version of \endtikzcd
+\def\endtikzcd{%
+  \pgfmatrixendrow\egroup%
+  \pgfextra{\global\let\tikzcdmatrixname\tikzlastnode};%
+  \tikzcdset{\the\pgfmatrixcurrentrow-row diagram/.try}%
+  \begingroup%
+    \pgfkeys{% `quotes' library support
+      /handlers/first char syntax/the character "/.initial=\tikzcd@forward@quotes,%
+      /tikz/edge quotes mean={%
+        edge node={node [execute at begin node=\iftikzcd@mathmode$\fi,%$
+                         execute at end node=\iftikzcd@mathmode$\fi,%$
+                         /tikz/commutative diagrams/.cd,every label,##2]{##1}}}}%
+    \let\tikzcd@errmessage\errmessage% improve error messages
+    \def\errmessage##1{\tikzcd@errmessage{##1^^J...^^Jl.\tikzcd@lineno\space%
+        I think the culprit is a tikzcd arrow in cell \tikzcd@currentrow-\tikzcd@currentcolumn}}%
+    \tikzcd@before@paths@hook%
+    \tikzcd@savedpaths\tikzcd@atendsavedpaths % I just added \tikzcd@atendsavedpaths
+  \endgroup%
+  \endtikzpicture%
+  \ifnum0=`{}\fi}
+
+\let\latearrow\tikzcd@arrow % \patchcmd comes through for us here.
+\let\late@@arrow\tikzcd@@arrow
+\let\late@ar@new\tikzcd@ar@new
+\let\late@ar@old\tikzcd@ar@old
+\let\late@ar@getlabel\tikzcd@ar@getlabel
+\patchcmd\latearrow{\tikzcd@savedpaths}{\tikzcd@atendsavedpaths}{}{}
+\patchcmd\latearrow{\tikzcd@@arrow}{\late@@arrow}{}{}
+\patchcmd\latearrow{\tikzcd@ar@old}{\late@ar@old}{}{}
+\patchcmd\late@@arrow{\tikzcd@ar@old}{\late@ar@old}{}{}
+\patchcmd\late@@arrow{\tikzcd@ar@new}{\late@ar@new}{}{}
+\patchcmd\late@ar@old{\tikzcd@ar@getlabel}{\late@ar@getlabel}{}{}
+\patchcmd\late@ar@old{\tikzcd@ar@getlabel}{\late@ar@getlabel}{}{}
+\patchcmd\late@ar@old{\tikzcd@ar@new}{\late@ar@new}{}{}
+\patchcmd\late@ar@getlabel{\tikzcd@ar@getlabel}{\late@ar@getlabel}{}{}
+\patchcmd\late@ar@getlabel{\tikzcd@ar@getlabel}{\late@ar@getlabel}{}{}
+\patchcmd\late@ar@getlabel{\tikzcd@ar@new}{\late@ar@new}{}{}
+\patchcmd\late@ar@new{\tikzcd@savedpaths}{\tikzcd@atendsavedpaths}{}{}
+
 
 
 % Intertext handling

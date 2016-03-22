@@ -196,7 +196,7 @@ What does this mean, though?  It means that $H_* (Y)$ is a Hopf algebra.  So wha
 \diagram
     H\otimes H \dar["\Delta\otimes\Delta"]\ar[dd,bend right=60,"\Delta_{H\otimes H}"'{yshift=-0.6em}]\rar["\mu"] & H\ar[dd]\\
     H\otimes H\otimes \mathrlap{H\otimes H}\dar["1\otimes T\otimes 1"]\\
-    H\otimes H\otimes H\otimes H \rar["\mu\otimes\mu"] & H\otimes H]
+    H\otimes H\otimes H\otimes H \rar["\mu\otimes\mu"] & H\otimes H
 %
 \diagram
     H\otimes H \dar["\epsilon\otimes\epsilon"]\ar[dd,bend right=50,"\epsilon_{H\otimes H}"'{yshift=-0.4em}]\rar["\mu"] & H \ar[ddl,"\epsilon"] \\
@@ -529,75 +529,77 @@ In particular, as the composite $S^{2n}\to \Omega C(f)$ is null, $h\mapsto 0$ un
 % First we want to show that $H_{2n} (\Loops C (f)) = \Zbb_H$.
 In the rational cohomology spectral sequence for the fibration $\Loops C(f) \to PC(f) \to C(f)$, we compute a crucial differential (marked $(\star)$):
 \begin{center}
-\begin{tikzpicture}
+\begin{tikzpicture}[execute at begin node=$,execute at end node=$,elt of/.style={above right=0.2 and 0.2 of #1.center},scale=2]
     %Axes
-	\path (-1,1.5) node {$\Omega S^{n+1}$};
-	\path (+3.5,-.76) node {$S^{n+1}$};
-    \draw[->] (-0.2,0) -- (5.25,0);
-    \draw[->] (0,-0.2) -- (0,2.5);
+	\node at (-0.75,0.5)    {\Omega S^{n+1}};
+	\node at (1,-.75) {S^{n+1}};
+    \begin{scope}[xshift=-0.2cm,yshift=-0.2cm]
+    \draw[->] (-0.2,0) -- (2.625,0);
+    \draw[->] (0,-0.2) -- (0,1.5);
+    \end{scope}
+    \begin{scope}[yshift=-0.2cm]
     %Horizontal ticks
-    \draw (.5,.05) -- (.5,-.05) node[below] {$0$};
-    \draw (2.5,.05) -- (2.5,-.05) node[below] {$n+1$};
-    \draw (4.5,.05) -- (4.5,-.05) node[below] {$2n+2$};
+    \draw (0,.025) -- (0,-.025) node[below] {0};
+    \draw (1,.025) -- (1,-.025) node[below] {n+1};
+    \draw (2,.05) -- (2,-.05) node[below] {\llap{2}n+2};
+    \end{scope}
+    \begin{scope}[xshift=-0.2cm]
     %Vertical Ticks
-    \draw (.05,.5) -- (-.05,.5) node[left] {$0$};
-    \draw (.05,2) -- (-.05,2) node[left] {$n$};
+    \draw (.025,0) -- (-.025,0) node[left] {0};
+    \draw (.025,1) -- (-.025,1) node[left] {n};
+    \end{scope}
+
     %Points
-    \path (.5,.5) node (v00) {$\Qbb$};
-    \path (2.5,.5) node (v10) {$\Qbb\langle x\rangle$};
-    \path (4.5,.5) node (v20) {$\Qbb\langle y\rangle$};
-    \path (.5,2) node (v01) {$\Qbb$};
-    \path (2.5,2) node (v11) {$\Qbb$};
-    \path (4.5,2) node (v21) {$\Qbb$};
+    \node at (0,0)  (v00) {\Qbb};
+    \node at (1,0) (v10) {\Qbb\langle x\rangle};
+    \node at (2,0) (v20) {\Qbb\langle y\rangle};
+    \node at (0,1)   (v01) {\Qbb};
+    \node at (1,1) (v11) {\Qbb};
+    \node at (2,1) (v21) {\Qbb};
     %Arrow
-    \draw [->] (v01) edge (v10);
+    \draw [->] (v01) -- (v10);
     \draw [->,font=\scriptsize] (v11)
-		edge node[left]{$(\star)$} (v20);
-    \path (v00) ++(.3,.3) coordinate (v00ur);
-    \path (v10) ++(.3,.3) node (v10ur) {$x$};
-    \path (v20) ++(.3,.3) node (v20ur) {$Hy$};
-    \path (v01) ++(.3,.3) node (v01ur) {$u$};
-    \path (v11) ++(.3,.3) node (v11ur) {$xu$};
-    \path (v21) ++(.3,.3) coordinate (v21ur);
-%    \path (v11ur) node {$ux$};
-%    \path (v20ur) node {$Hux$};
-%    \path (v01ur) node {$u$};
-%    \path (v10ur) node {$x$};
+		edge["(\star)" {left,xshift=-0.1cm}] (v20);
+    \node[elt of=v10] (v10ur) {x};
+    \node[elt of=v20] (v20ur) {Hy};
+    \node[elt of=v01] (v01ur) {u};
+    \node[elt of=v11] (v11ur) {xu};
 	\draw [|->] (v01ur) edge (v10ur);
 	\draw [|->] (v11ur) edge (v20ur);
-	\path (6.5, 1.25) node {\phantom{$d_{n+1}(xu)=dx\cdot u+x\cdot du = x^2=Hy$}{$d_{n+1}(xu)=dx\cdot u+x\cdot du = x^2=Hy$}};
+%
+	\node at (5, 0.5)  {d_{n+1}(xu)=dx\cdot u+x\cdot du = x^2=Hy};
 \end{tikzpicture}
 \end{center}
 Because there is no torsion in these two groups, the integral cohomology spectral sequence embeds in the rational cohomology spectral sequence, and is dual to the homology spectral sequence.  So the same differential is multiplication by $H$ in the integral homology spectral sequence (drawn at right):
 
 \begin{center}
-\begin{tikzpicture}
+\begin{tikzpicture}[execute at begin node=$,execute at end node=$,every edge quotes/.style={auto=right}]
     %Axes
-	\path (-1,2.75) node {$\Omega S^{n+1}$};
-	\path (+3.5,-.76) node {$S^{n+1}$};
+	\path (-1,2.75) node {\Omega S^{n+1}};
+	\path (+3.5,-.76) node {S^{n+1}};
     \draw[->] (-0.2,0) -- (5.25,0);
     \draw[->] (0,-0.2) -- (0,4);
     %Horizontal ticks
-    \draw (.5,.05) -- (.5,-.05) node[below] {$0$};
-    \draw (2.5,.05) -- (2.5,-.05) node[below] {$n+1$};
-    \draw (4.5,.05) -- (4.5,-.05) node[below] {$2n+2$};
+    \draw (.5,.05) -- (.5,-.05) node[below] {0};
+    \draw (2.5,.05) -- (2.5,-.05) node[below] {n+1};
+    \draw (4.5,.05) -- (4.5,-.05) node[below] {2n+2};
     %Vertical Ticks
-    \draw (.05,.5) -- (-.05,.5) node[left] {$0$};
-    \draw (.05,2) -- (-.05,2) node[left] {$n$};
-    \draw (.05,3.5) -- (-.05,3.5) node[left] {$2n$};
+    \draw (.05,.5) -- (-.05,.5) node[left] {0};
+    \draw (.05,2) -- (-.05,2) node[left] {n};
+    \draw (.05,3.5) -- (-.05,3.5) node[left] {2n};
     %Points
-    \path (.5,.5) node (v00) {$\Zbb$};
-    \path (2.5,.5) node (v10) {$\Zbb$};
-    \path (4.5,.5) node (v20) {$0$};
-    \path (.5,2) node (v01) {$\Zbb$};
-    \path (2.5,2) node (v11) {$\Zbb$};
-    \path (4.5,2) node (v21) {$0$};
-    \path (.5,3.5) node (v02) {$\Zbb$};
-    \path (2.5,3.5) node (v12) {$\Zbb$};
-    \path (4.5,3.5) node (v22) {$0$};
+    \path (.5,.5) node (v00) {\Zbb};
+    \path (2.5,.5) node (v10) {\Zbb};
+    \path (4.5,.5) node (v20) {0};
+    \path (.5,2) node (v01) {\Zbb};
+    \path (2.5,2) node (v11) {\Zbb};
+    \path (4.5,2) node (v21) {0};
+    \path (.5,3.5) node (v02) {\Zbb};
+    \path (2.5,3.5) node (v12) {\Zbb};
+    \path (4.5,3.5) node (v22) {0};
     %Arrow
-    \draw [->] (v10) edge node[above]{$\simeq$} (v01);
-    \draw [->] (v11) edge node[above]{$\simeq$} (v02);
+    \draw [->] (v10) edge["\simeq"] (v01);
+    \draw [->] (v11) edge node[above]{\simeq} (v02);
 
 %	\draw[dashed,->] (5.5,2) -- (7,2);
 %	\draw[dashed,->] (5.5,2+1.5) -- (7,2+1.5);
@@ -606,38 +608,38 @@ Because there is no torsion in these two groups, the integral cohomology spectra
 
 
     %Axes
-	\path (8-1,2.75) node {$\Omega C(f)$};
-	\path (8+3.5,-.76) node {$C(f)$};
+	\path (8-1,2.75) node {\Omega C(f)};
+	\path (8+3.5,-.76) node {C(f)};
     \draw[->] (7.8,0) -- (13.25,0);
     \draw[->] (8,-0.2) -- (8,4);
     %Horizontal ticks
-    \draw (8.5,.05) -- (8.5,-.05) node[below] {$0$};
-    \draw (10.5,.05) -- (10.5,-.05) node[below] {$n+1$};
-    \draw (12.5,.05) -- (12.5,-.05) node[below] {$2n+2$};
+    \draw (8.5,.05) -- (8.5,-.05) node[below] {0};
+    \draw (10.5,.05) -- (10.5,-.05) node[below] {n+1};
+    \draw (12.5,.05) -- (12.5,-.05) node[below] {2n+2};
     %Vertical Ticks
-    \draw (8.05,.5) -- (8+-.05,.5) node[left] {$0$};
-    \draw (8+.05,2) -- (8+-.05,2) node[left] {$n$};
-    \draw (8+.05,3.5) -- (8+-.05,3.5) node[left] {$2n$};
+    \draw (8.05,.5) -- (8+-.05,.5) node[left] {0};
+    \draw (8+.05,2) -- (8+-.05,2) node[left] {n};
+    \draw (8+.05,3.5) -- (8+-.05,3.5) node[left] {2n};
     %Points
-    \path (8+.5,.5) node (w00) {$\Zbb$};
-    \path (8+2.5,.5) node (w10) {$\Zbb$};
-    \path (8+4.5,.5) node (w20) {$\Zbb$};
-    \path (8+.5,2) node (w01) {$\Zbb$};
-    \path (8+2.5,2) node (w11) {$\Zbb$};
-    \path (8+4.5,2) node (w21) {$\Zbb$};
-    \path (8+.5,3.5) node (w02) {$\Zbb_H$};
-    \path (8+2.5,3.5) node (w12) {$\Zbb_H$};
-    \path (8+4.5,3.5) node (w22) {$\Zbb_H$};
+    \path (8+.5,.5) node (w00) {\Zbb};
+    \path (8+2.5,.5) node (w10) {\Zbb};
+    \path (8+4.5,.5) node (w20) {\Zbb};
+    \path (8+.5,2) node (w01) {\Zbb};
+    \path (8+2.5,2) node (w11) {\Zbb};
+    \path (8+4.5,2) node (w21) {\Zbb};
+    \path (8+.5,3.5) node (w02) {\Zbb_H};
+    \path (8+2.5,3.5) node (w12) {\Zbb_H};
+    \path (8+4.5,3.5) node (w22) {\Zbb_H};
     %Arrow
-    \draw [->] (w10) edge node[above]{$\simeq$} (w01);
-%    \draw [->] (w20) edge node[above right]{$\cdot H$} (w11);
+    \draw [->] (w10) edge["\simeq"] (w01);
+%    \draw [->] (w20) edge node[above right]{\cdot H} (w11);
     \draw [->,font=\scriptsize] (w20)
-		edge node[left]{$(\star)$} node[above]{$\cdot H$} (w11);
-    \draw [->>,font=\scriptsize] (w11) edge node[above] {\ \ $\;d_{n+1}$} (w02);%node[above]{$\simeq$} (w02);
-%    \draw [->] (w21) edge node[above]{$a$} (w12);
+		edge["(\star)"', "\cdot H"] (w11);
+    \draw [->>,font=\scriptsize] (w11) edge["\ \ \;d_{n+1}"] (w02);%node[above]{\simeq} (w02);
+%    \draw [->] (w21) edge node[above]{a} (w12);
 
-	\draw[dashed,->,font=\scriptsize]  (v02) edge [bend left=10] node[above] {$H_{2n}(\Omega k)$} (w02);
-	\draw[dashed,->,font=\scriptsize]  (v11) edge [bend right=10] node[above] {$\chi$}node[below] {$\simeq$} (w11);
+	\draw[dashed,->,font=\scriptsize]  (v02) edge [bend left=10,"H_{2n}(\Omega k)"'] (w02);
+	\draw[dashed,->,font=\scriptsize]  (v11) edge [bend right=10,"\chi"', "\simeq"] (w11);
 \end{tikzpicture}
 \end{center}
 As the right hand sequence converges to $H_*(\ptspace)$, we deduce that $H_{2n}(\Omega C(f))=\Zbb_H$, and the differential $d_{n+1}:E^{n+1}_{n+1,n}\to E^{n+1}_{0,2n}$ is the quotient map $\Zbb\to\Zbb_H$.
@@ -652,9 +654,9 @@ We will construct such elements using the ``Hopf construction''; to understand t
 \def\thecolumnsep{12em}
 \begin{ctikzcd}
 X\times Y    \ar[rr,"\mu"]\ar[dd] && Z\ar[dd]\\
-& CX\times Y \ar[rr,crossing over] &&[0.5em] CY\ar[dd] \\
-X\times CY   \ar[rr]     && CZ \\
-& X\ast Y    \ar[rr,"H(\mu)"]\ar[from=uu,crossing over]     && \Suspend Z
+& CX\times Y \ar[rr,crossing over]\latearrow[dd,crossing over] &&[0.5em] CY\ar[dd] \\
+X\times CY   \ar[rr]                && CZ \\
+& X\ast Y    \ar[rr,"H(\mu)"]       && \Suspend Z
 \drar[from=1-1, to=2-2]\drar[from=1-1, to=2-2,yshift=-\therowsep-0.2em, xshift=0.2em]
 \drar[from=1-1, to=2-2,xshift=\thecolumnsep+0.1em,yshift=0.2em]\drar[from=1-1, to=2-2,xshift=\thecolumnsep,yshift=-\therowsep]
 \end{ctikzcd}

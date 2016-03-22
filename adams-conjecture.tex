@@ -241,9 +241,9 @@ S^d \rar & E^{p^* \xi} \rar[stable] & S^d \\
 and we'd like to show the degree of this right-hand composite is $\pm 1$.  Well, choose a basepoint in $B$; then you have
 \begin{ctikzcd}
 d\varepsilon \ar[dd]\ar[dr]\ar[rr] & & p^*\xi\ar[dd]\ar[dr]\\
-& F\ar[rr]\ar[dd] && E\ar[dd]\\
+& F\ar[rr,crossing over] && E\ar[dd]\\
 \Rbb^d \ar[rr]\ar[dr] && \xi\ar[dr]\\
-& \ptspace \ar[rr,into] && B
+& \ptspace \ar[from=uu,crossing over]\ar[rr,into] && B
 \end{ctikzcd}
 and from this you get
 \begin{ctikzcd}
@@ -587,11 +587,12 @@ Remember what we had: there were three exact couples
 \pi_*^S \RP^{n-1} \dar\rar & \pi_*^S \RP^n \dar\rar & \pi_*^S S^n \dar\\
 j_* \RP^{n-1} \rar & j_* \RP^n \rar & j_* S^n,
 \end{ctikzcd}
-and the last spectral sequence can be written out completely; it's the chart.  Today we'll talk about two problems: first, given a class $v \in j_* \RP^\infty$, where can be find a representative, which we will denote $H(v)$, in $j_*$? and secondly, how do classes in $j_* \RP^\infty$ pull back to $\pi_*^S \RP^\infty$, or even better, to the EHP sequence?
+and the last spectral sequence can be written out completely; it's the chart.  Today we'll talk about two problems: first, given a class $v \in j_* \RP^\infty$, where can be find a representative,
+\todo{HC: What should this say?} 
+which we will denote $H(v)$, in $j_*$? and secondly, how do classes in $j_* \RP^\infty$ pull back to $\pi_*^S \RP^\infty$, or even better, to the EHP sequence?
 \begin{ctikzcd}
-S^k \ar[ddr,end anchor=north west]\drar[end anchor=north west]\rar & j \sprod \RP^\infty \\
-& |[inner xsep=0pt]|j \sprod \RP^3\uar\dar \\
-& |[inner xsep=0pt]|j \sprod S^3.
+S^k \ar[drr,bend right=60,"H(v)"' pos=0.65]\drar[end anchor=north west]\rar["v"] & j \sprod \RP^\infty \\
+& |[inner xsep=0pt]|  j \sprod \RP^3\uar\rar & j\sprod S^3.
 \end{ctikzcd}
 Recall $j_* \RP^\infty = j_* \oplus \langle \tau_k, \sigma_k$, and $j_*$ contained elements $\alpha_k$ of order $2$ and elements $j_k$.  Recall also that $\alpha_k$ were often not generators; for example, $\alpha_3 = 4j_2$.  So we introduce the notation that $\alpha_{k/i}$ is an element such that $2^{i-1} \alpha_{k/i} = \alpha_k$.  For example, $\alpha_4 = 8 \sigma$, so $\alpha_{4/2} = 4 \sigma$, $\alpha_{4/3} = 2\sigma$, $\alpha_{4/4} = \sigma$, and $\alpha_{4/1} = \alpha_4$.  With this notation we can get all the classes in the image of $J$ except $j_{4k}, j_{4k+1} \in \pi_{8k} J, \pi_{8k+1} J$.  Then the representatives of $j^* \RP^\infty$ in this spectral sequence are found as follows:
 \begin{align*}
