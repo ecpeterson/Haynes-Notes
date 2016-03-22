@@ -1,0 +1,128 @@
+\begin{center}
+\begin{tikzpicture}
+
+% Mapping cylinder
+\begin{scope}
+% Big ellipse
+\draw (-0.2,0) arc (0:360:2 and 1);
+\fill[color=gray!25] (-0.2,0) arc (0:360:2 and 1);
+
+% Elliptical part of our curve (bottom)
+\draw[densely dashed] (-1,0) arc (0:180:1 and 0.5) node (B){}; % back
+\draw (-1,0) arc (0:-110:1 and 0.5) node (A){}; % front
+
+% Elliptical part of top of mapping cone
+\draw (-1,2) arc (0:180:1 and 0.5) node (B'){};
+\draw (-1,2) arc (0:-110:1 and 0.5) node (A'){};
+
+% Get the endpoints of the elliptical arc
+\gettikzxy{(A)}{\Ax}{\Ay}
+\gettikzxy{(B)}{\Bx}{\By}
+\gettikzxy{(A')}{\Apx}{\Apy}
+\gettikzxy{(B')}{\Bpx}{\Bpy}
+
+
+%% Shading
+
+% Shading of back wall
+\fill[left color=gray!0,middle color=gray,right color=gray!50!black,opacity=0.2] (-1,0) arc (0:180:1 and 0.5) to (\Bpx,\Bpy) arc (180:0:1 and 0.5);
+
+% Shading of front elliptical part of wall
+\fill[left color=gray!0,middle color=gray,right color=gray!50!black,opacity=0.5] (-1,0) arc (0:-110:1 and 0.5) to[out=170,in=-90] (\Ax-2,\Ay+2)
+to (\Apx-2,\Apy+2) to [out=-90,in=170] (\Apx,\Apy) arc (-110:0:1 and 0.5);
+
+% Shading for reversed part of swoopy path
+\fill[left color=gray!0,middle color=gray,right color=gray!50!black,opacity=0.5] (\Ax-2,\Ay+2) to[out=90,in=170] (\Ax+4,\Ay+5) to[out=-10,in=-90] (\Ax+8,\Ay+8) to (\Apx+8,\Apy+8) to[out=-90,in=10] (\Apx+4,\Apy+5) to[out=170,in=90] (\Apx-2,\Apy+2);
+
+% Shading for forward part of swoopy path
+\fill[left color=gray!0,middle color=gray,right color=gray!50!black,opacity=0.5] (\Ax+8,\Ay+8) to[out=90, in=20]  (\Ax-2,\Ay+12) to[out=-160,in=20] (\Bx+10,\By-4) to[out=200,in=-90] (\Bx,\By) to  (\Bpx,\Bpy) to[out=-90,in=200] (\Bpx+10,\Bpy-4) to[out=20,in=-160] (\Apx-2,\Apy+12) to[out=20,in=90](\Apx+8,\Apy+8);
+
+
+%% lines
+
+% Outline of top of cylinder
+\draw (\Apx,\Apy) to[out=170,in=-90] (\Apx-2,\Apy+2) to[out=90,in=170] (\Apx+4,\Apy+5) to[out=-10,in=-90] (\Apx+8,\Apy+8) to[out=90, in=20] (\Apx-2,\Apy+12) to[out=-160,in=20] (\Bpx+10,\Bpy-4) to[out=200,in=-90] (\Bpx,\Bpy) arc (180:-110:1 and 0.5);
+
+% The obscured part of the swoopy path on the bottom of the cylinder
+\draw[densely dashed,opacity=0.4] (\Ax-2,\Ay+2) to[out=90,in=170] (\Ax+4,\Ay+5) to[out=-10,in=-90] (\Ax+8,\Ay+8) to[out=90, in=20] (\Ax-1.4,\Ay+12+0.1);
+
+% unobscured part of bottom swoopy path
+\draw (\Ax,\Ay) to[out=170,in=-90] (\Ax-2,\Ay+2)
+      (\Ax-2,\Ay+12) to[out=-160,in=20] (\Bx+10,\By-4) to[out=200,in=-90] (\Bx,\By);
+
+% redraw front of elliptical part (so that it's as dark as swooshy path)
+\draw (-1,0) arc (0:-110:1 and 0.5);
+
+% vertical lines
+\draw
+    (\Bx,\By)--(\Bpx,\Bpy)          % left end
+    (-1,0)--(-1,2)                  % right end
+    (\Ax-2,\Ay+2)--(\Apx-2,\Apy+2); % left end of swooshy path
+\draw[opacity=0.7]
+    (\Ax+8,\Ay+8-0.3) to (\Apx+8,\Apy+8); % right end of swooshy path
+
+\end{scope}
+
+\begin{scope}[xshift=150]
+% big ellipse
+\draw (-0.2,0) arc (0:360:2 and 1);
+\fill[color=gray!25] (-0.2,0) arc (0:360:2 and 1);
+
+% Elliptical part of our curve
+\draw[densely dashed] (-1,0) arc (0:180:1 and 0.5) node (B){}; % back
+\draw (-1,0) arc (0:-110:1 and 0.5) node (A){}; % front
+
+% Get the endpoints of the elliptical arc
+\gettikzxy{(A)}{\Ax}{\Ay}
+\gettikzxy{(B)}{\Bx}{\By}
+
+% Point of the cone
+\coordinate (P) at (-2,2);
+
+
+
+%% Shading
+
+% Shading of back wall
+\fill[left color=gray!0,middle color=gray,right color=gray!50!black,opacity=0.2] (\Bx,\By) arc (180:7:1 and 0.5) to (P);
+
+% Shading of front elliptical part
+\fill[left color=gray!0,middle color=gray,right color=gray!50!black,opacity=0.5] (-1,0) arc (0:-110:1 and 0.5) to[out=170,in=-90] (\Ax-2,\Ay+2) to (P);
+% Extra tiny bit on the right hand side
+\fill[left color=gray!0,middle color=gray,right color=gray!50!black,opacity=0.5] (P) to (-1,0) arc (0:7:1 and 0.5);
+
+
+% Shading for reversed part of swoopy wall
+\fill[left color=gray!0,middle color=gray,right color=gray!50!black,opacity=0.5] (P) to (\Ax-2,\Ay+2) to[out=90,in=170] (\Ax+4,\Ay+5) to[out=-10,in=-90] (\Ax+8,\Ay+8);
+
+% Shading for forward part of swoopy wall
+\fill[left color=gray!0,middle color=gray,right color=gray!50!black,opacity=0.5] (\Ax+8,\Ay+8) to[out=90, in=20]  (\Ax-0.3,\Ay+12) to[out=-170,in=20] (\Bx+10,\By-4) to[out=200,in=-90] (\Bx+0.2,\By) arc (0:10:0.2 and 0.5) to (P);
+
+
+
+
+%% Lines
+
+% Because cones are annoying and have diagonal vertical edges, things don't line up quite right so everything needs little tweaks
+
+% obscured part of swooshy path
+\draw[densely dashed,opacity=0.4] (\Ax-2,\Ay+2) to[out=90,in=170] (\Ax+4,\Ay+5) to[out=-10,in=-90] (\Ax+8,\Ay+8) to[out=90, in=20] (\Ax-0.3,\Ay+12);
+
+% unobscured part of swooshy path
+\draw (\Ax,\Ay) to[out=170,in=-90] (\Ax-2,\Ay+2)
+      (\Ax-0.3,\Ay+12) to[out=-170,in=20] (\Bx+10,\By-4) to[out=200,in=-90] (\Bx,\By) arc (180:180:1 and 0.5) to (\Bx+0.2,\By+2);
+
+% redraw the front of the ellipse so that it's as dark as the unobscured swooshy path
+\draw (\Ax,\Ay) arc (-110:12:1 and 0.5) node (C) {};
+\gettikzxy{(C)}{\Cx}{\Cy}
+
+% "Vertical" lines to point of cone
+\draw
+    (\Bx+0.2,\By+2) to (P) % left end
+    (\Cx,\Cy) to (P)      % right end
+    (\Ax-2,\Ay+2) to (P); % left end of swooshy part
+\draw[opacity=0.6]
+    (\Ax+8-0.05,\Ay+8-0.3) to (P); % right end of swooshy part
+\end{scope}
+\end{tikzpicture}
+\end{center}

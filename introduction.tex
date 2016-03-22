@@ -87,10 +87,10 @@ This process is called the ``Hopf construction'' for $\mu$, hence the name $H(\m
 We note two facts about the join: first, $S^{p-1} \ast S^{q-1} = S^{p + q - 1}$, which follows from the more general statement that $X \ast Y = \Suspend(X \sprod Y)$ for reasonable $X$ and $Y$, e.g., CW-complexes.  In the case of an $H$-space, $H(\mu)$ can be written as a map $X \ast X \to \Suspend X$, and if $X = S^{n-1}$, this is a map $S^{2n-1} \to S^n$, i.e., a homotopy class of a the $n$-sphere, something to be prized and studied. % use \pi_n notation here
 }
 
-\begin{wrapfigure}{r}{0.3\textwidth}
-\centering\includegraphics[width=0.23\textwidth]{figures/fig5.pdf}
-\caption{\small Diagram of the mapping cone on $f$.}
-\end{wrapfigure} % in the following paragraph, try to talk about the general case and the specific case of the cone on a Hopf map separately.  also, the definiiton of the cone is missing brackets and Y, CX change order.  'really means', 'is obstained by'
+%\begin{wrapfigure}{r}{0.3\textwidth}
+%\centering\includegraphics[width=0.23\textwidth]{figures/fig5.pdf}
+%\caption{\small Diagram of the mapping cone on $f$.}
+%\end{wrapfigure} % in the following paragraph, try to talk about the general case and the specific case of the cone on a Hopf map separately.  also, the definiiton of the cone is missing brackets and Y, CX change order.  'really means', 'is obtained by'
 There is a duality in homotopy between maps and objects; namely, to every map there is an associated space which contains all the information about the map, called the mapping cone.  Associated to a map $f: X \to Y$, we build $C_f = Y \amalg CX / (x, 1) \sim f(x)$.  $Y$ includes into $C_f$ as its base, so one has a ``cofiber sequence'' $X \to Y \to C_f$.  Applying this to the map $H(\mu): S^{2n-1} \to S^n$, the mapping cone really means just attaching a $2n$-cell to $S^n$ via the map $H(\mu)$, so we get $S^{2n-1} \xrightarrow{H(\mu)} S^n  \to S^n \cup_{H(\mu)} e^{2n}$.  Now, (assuming $n > 1$) the cohomology is given by
 \[
 H^*(S^n \cup_{H(\mu)} e^{2n}) =
@@ -106,7 +106,11 @@ S^3 \rar & S^2 \rar & S^2 \cup e^4 = \CP^2, \\
 S^7 \rar & S^4 \rar & S^4 \cup e^8 = \HP^2, \\
 S^{15} \rar & S^8 \rar & S^8 \cup e^{16} = \OP^2,
 \end{ctikzcd}
-where the last is called the ``Cayley projective plane.''  (Note that nonassociativity of Cayley multiplication implies that there are no other Cayley projective spaces.) % what does this mean?  no higher OP^n, right?  not that there's anything after O...?
+where the last is called the ``Cayley projective plane.''  (The nonassociativity of Cayley multiplication implies that there are no other Cayley projective spaces.) % what does this mean?  no higher OP^n, right?  not that there's anything after O...?
+\begin{center}
+\input{figures/mapping_cone_cylinder}
+\captionof{figure}{The mapping cylinder and mapping cone}
+\end{center}
 
 So now the question is: for what spheres is there an element of $\pi_{2n-1} S^n$ of Hopf invariant $1$?
 \begin{thm}[Adams] % hopf invariant was only defined for n > 1 :)

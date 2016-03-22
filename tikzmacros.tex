@@ -64,14 +64,19 @@
     \pgfpathlineto{\pgfqpoint{\pgf@xb}{\pgf@ya}}
  }
 }
+% I don't think this is used anywhere
 \tikzset{nomorepostaction/.code=\let\tikz@postactions\pgfutil@empty}
 
 \newcommand\xslashedrightarrow[2][]{%
   \mathrel{\tikz[baseline=-.7ex] \path node[slash underlined,draw,->,anchor=south] {\(\scriptstyle #2\)} node[anchor=north] {\(\scriptstyle #1\)};}}
 
 
-
-
+%%
+\newcommand{\gettikzxy}[3]{%
+  \tikz@scan@one@point\pgfutil@firstofone#1\relax
+  \edef#2{\the\pgf@x}%
+  \edef#3{\the\pgf@y}%
+}
 
 % These four macros taken from Tomas M. Trzeciak's http://www.texample.net/tikz/examples/map-projections/
 % (with some improvements)
